@@ -3,7 +3,7 @@
 . .env-profile
 
 #export MAIN=MAIN.obs.xml
-export MAIN=book.obs-admin.xml
+export MAIN=book-obs-admin.xml
 # export ROOTID="book.obs.admin"
 #export PROFARCH="x86;amd64;em64t"
 #export PROFOS="sles;sled;onsite"
