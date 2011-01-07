@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet
+ href="urn:x-suse:xslt:profiling:docbook45-profile.xsl" 
+ type="text/xml"
+ title="Profiling step"
+?>
+<!DOCTYPE book PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<book lang="en" id="book.obs-admin">
+  <title>&obs;</title>
+  <subtitle>Administration Guide</subtitle>
+  <bookinfo>
+    <authorgroup>
+      <author>
+        <firstname>Adrian</firstname>
+        <surname>Schröter</surname>
+      </author>
+    </authorgroup>
+  </bookinfo>
+  
+  <xi:include href="obs_admin_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+  <xi:include href="obs_admin_concept.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+   
+</book>

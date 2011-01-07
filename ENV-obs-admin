@@ -1,0 +1,12 @@
+# -*- shell-script -*-
+
+. .env-profile
+
+#export MAIN=MAIN.obs.xml
+export MAIN=book.obs-admin.xml
+# export ROOTID="book.obs.admin"
+#export PROFARCH="x86;amd64;em64t"
+#export PROFOS="sles;sled;onsite"
+export DISTVER=1.0
+export PKGNAME=obs-admin
+#export PRODUCTNAME="&obs;"
