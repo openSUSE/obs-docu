@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                      "http://www.docbook.org/xml/4.4/docbookx.dtd">
+<preface>
+  <title>About this Guide</title>
+  <para>This book is part of the official &obs; documentation. These books are
+        considered to be reviewed and edited to be the reference documentation of &obsa;.</para>
+  <para>These books are not considered to be focused on a special &obsa; version. They
+        are also not a replacment of the documentation inside of the openSUSE wiki. But
+        content from the wiki may get consolidated and included in these books.</para>
+  <para>Furthermore these books get written by the &obsa; community, please check the
+        chapter how to work on these books. We request esp. experienced users and 
+        administrators to join and to contribute to these books. It is not required
+        to be a very good or even native english speaker, because we built on community
+        editors to improve the language.</para>
+</preface>

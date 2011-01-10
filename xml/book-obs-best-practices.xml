@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet
+ href="urn:x-suse:xslt:profiling:docbook45-profile.xsl" 
+ type="text/xml"
+ title="Profiling step"
+?>
+<!DOCTYPE book PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<book lang="en" id="book.obs-best-practices">
+
+  <title>&obs;</title>
+  <subtitle>Best Practice Guide</subtitle>
+  <bookinfo>
+    <authorgroup>
+      <author>
+        <firstname>Adrian</firstname>
+        <surname>Schröter</surname>
+      </author>
+    </authorgroup>
+  </bookinfo>
+
+  <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+  <xi:include href="obs_best_practice_basics.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="obs_best_practice_advanced.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+  <!-- Appendices -->
+  <xi:include href="obs_glossary.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="obs_work_on_these_books.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</book>
+

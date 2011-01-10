@@ -1,0 +1,18 @@
+# -*- shell-script -*-
+
+. .env-profile
+
+#export MAIN=MAIN.obs.xml
+export MAIN=book-obs-best-practices.xml
+# export ROOTID="book.obs.admin"
+#export PROFARCH="x86;amd64;em64t"
+
+# This is the default to generate all core parts of this book
+# plus parts which are special to the openSUSE instance (build.opensuse.org).
+export PROFOS="opensuse"
+# This would create a book containing all openSUSE and MeeGo parts
+#export PROFOS="opensuse;meego"
+
+export DISTVER=1.0
+export PKGNAME=obs-best-practices
+#export PRODUCTNAME="&obs;"

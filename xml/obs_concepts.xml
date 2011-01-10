@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet
+ href="urn:x-suse:xslt:profiling:docbook45-profile.xsl" 
+ type="text/xml"
+ title="Profiling step"
+?>
+
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.concepts">
+  <title>OBS Concepts</title>
+  <para>..</para>
+  
+  <section>
+    <title>Project organisation</title>
+    <para>All sources and binaries which are hosted inside of OBS are organized in projects.</para>
+
+    <section>
+      <title>Project configuration possibilities</title>
+      <para>A project gets configured in the project meta data. This meta data contains 
+            These projects contain ...</para>
+    </section>
+
+    <section>
+      <title>An OBS Package</title>
+      <para>An OBS Package is a sub name space below a project. It contains the specification
+            of a single package build for all specified repositories. </para>
+    </section>
+  </section>
+   
+  <section>
+    <title>The API</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>The OBS Interconnect</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Attribute System</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Automatic source processing</title>
+    <para>...</para>
+  </section>
+</chapter>

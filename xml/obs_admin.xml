@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet
+ href="urn:x-suse:xslt:profiling:docbook45-profile.xsl" 
+ type="text/xml"
+ title="Profiling step"
+?>
+
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.admin">
+  <title>Administration</title>
+  <para>This chapter describes the components of an OBS server and the typical administration tasks for an OBS administrator.</para>
+  <para>This chapter is not intendend to describe special installation hints for a 
+        certain OBS version, please refer the online resourcen or the README.SETUP file for this.</para>
+
+  <xi:include href="obs_admin_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+</chapter>

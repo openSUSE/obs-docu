@@ -1,3 +1,5 @@
 
 <!ENTITY obsa "OBS" >
 <!ENTITY obs "openSUSE Build Server">
+<!ENTITY OBS "openSUSE Build Server(OBS)">
+

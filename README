@@ -2,5 +2,35 @@
                          README
 -----------------------------------------------------------
 
+This is the official and edited documentation for the openSUSE Build Service (OBS).
+
+The documentation is currently split into two books:
+  * The OBS admin guide
+  * The OBS best practices guide
+
+To work on this document you need to install the package "susedoc".
+
+Since this documentation is written in docbook, it should also work
+without this package, but we don't have documentation for this yet.
+Please provide a patch for this file in case you managed to do it ;)
+
+After editing the document validate your changes via the following 
+commands:
+
+ # . ENV-obs-reference-guide
+ # make validate
+
+or for the best practices guide:
+
+ # . ENV-obs-best-practices
+ # make validate
+
+html documentation can get generated via
+
+ # make html
+
+Please ask on opensuse-buildservice@opensuse.org mailing list to
+get write access to this document.
+
 $Revision$
 
