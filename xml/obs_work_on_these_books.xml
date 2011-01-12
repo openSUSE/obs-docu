@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//Novell//DTD NovDoc XML V1.0//EN" "novdocx.dtd"
+<!DOCTYPE appendix PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
 [
-  <!ENTITY % NOVDOC.DEACTIVATE.IDREF "INCLUDE">
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 
 <appendix id="appendix.work_on_obs_book">
  <title>How to work on this Book</title><indexterm id="idx.help">

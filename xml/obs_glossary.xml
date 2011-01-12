@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE glossary PUBLIC "-//Novell//DTD NovDoc XML V1.0//EN" "novdocx.dtd" 
+<!DOCTYPE glossary PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
 [
- <!ENTITY % NOVDOC.DEACTIVATE.IDREF "IGNORE">
- <!ENTITY % entities SYSTEM "entity-decl.ent">
- %entities;
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
 ]>
 
 <!-- 

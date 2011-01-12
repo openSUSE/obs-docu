@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet
- href="urn:x-suse:xslt:profiling:docbook45-profile.xsl" 
+ href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
  type="text/xml"
  title="Profiling step"
 ?>
@@ -12,7 +12,7 @@
   %entities;
 ]>
 
-<book lang="en" id="book.obs-reference-guide.xml">
+<book lang="en" id="book.obs-reference-guide">
   <title>&obs;</title>
   <subtitle>Reference Guide</subtitle>
   <bookinfo>
@@ -22,6 +22,7 @@
         <surname>Schröter</surname>
       </author>
     </authorgroup>
+    <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   </bookinfo>
   <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
@@ -32,5 +33,6 @@
   <!-- Appendices -->
   <xi:include href="obs_glossary.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_work_on_these_books.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="legal.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </book>
   

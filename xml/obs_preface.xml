@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
-                      "http://www.docbook.org/xml/4.4/docbookx.dtd">
+<!DOCTYPE preface PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
 <preface>
   <title>About this Guide</title>
   <para>This book is part of the official &obs; documentation. These books are
