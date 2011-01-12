@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.signing">
+  <title>Signing</title>
+  <para>OBS can sign build results.</para>
+  
+  <section>
+    <title>Package signing</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Repository signing</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Product signing</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Configure sign key</title>
+    <para>...</para>
+  </section>
+
+</chapter>

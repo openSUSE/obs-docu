@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.build_config">
+  <title>Build Configuration</title>
+  <para>prjconf</para>
+  
+  <section>
+    <title>prjconf format</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Type setup</title>
+    <para>package, pattern, repo format</para>
+  </section>
+
+  <section>
+    <title>Package configuration</title>
+    <para>...</para>
+
+    <section>
+      <title>Base Package Configuration</title>
+      <para>...</para>
+    </section>
+
+    <section>
+      <title>Package substitution</title>
+      <para>...</para>
+    </section>
+
+    <section>
+      <title>Dependency exceptions</title>
+      <para>..</para>
+    </section>
+
+  </section>
+   
+  <section>
+    <title>Macro setup</title>
+    <para>...</para>
+  </section>
+
+</chapter>

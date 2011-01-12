@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.build_process">
+  <title>Build Process</title>
+  <para>Each package build is done in a fresh environment. This is done to be able to 
+        reproduce always a again.</para>
+  
+  <section>
+    <title>How gets a build process defined</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>How does a build process work</title>
+    <para>All sources and binaries which are hosted inside of OBS are organized in projects.</para>
+
+    <section>
+      <title>Preinstall phase</title>
+      <para>...</para>
+    </section>
+
+    <section>
+      <title>Install Phase</title>
+      <para>..</para>
+    </section>
+
+    <section>
+      <title>Package build</title>
+      <para>..</para>
+    </section>
+
+    <section>
+      <title>Post build steps</title>
+      <para>..</para>
+    </section>
+  </section>
+   
+  <section>
+    <title>Different ways to build</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Security aspects</title>
+    <para>...</para>
+  </section>
+
+</chapter>

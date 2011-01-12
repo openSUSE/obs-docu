@@ -14,5 +14,7 @@
         certain OBS version, please refer the online resourcen or the README.SETUP file for this.</para>
 
   <xi:include href="obs_admin_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="obs_admin_tools.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="obs_admin_integration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
 </chapter>

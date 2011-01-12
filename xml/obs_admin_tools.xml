@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<section id="cha.obs.admin.tools">
+  <title>Tools for the admin</title>
+  <para>To be written...</para>
+
+  <section>
+    <title>obs_admin</title>
+    <para>To be written...</para>
+  </section>
+
+</section>

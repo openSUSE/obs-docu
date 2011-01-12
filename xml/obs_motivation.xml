@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.motivation">
+  <title>OBS Motivation</title>
+  <para>An overview about OBS history and motivation to build it.</para>
+  
+  <section>
+    <title>Pre OBS times</title>
+    <para>SUSE built all distributions with an inhouse developed autobuild system. It was designed to
+          collect source ....</para>
+
+    <section>
+      <title>Initial Goals for OBS</title>
+      <para>...</para>
+    </section>
+
+    <section>
+      <title>OBS history</title>
+      <para>...</para>
+    </section>
+  </section>
+   
+  <section>
+    <title>Current Motivation of OBS</title>
+    <para>...</para>
+  </section>
+
+  <section>
+    <title>Future dreams</title>
+    <para>...</para>
+  </section>
+</chapter>
