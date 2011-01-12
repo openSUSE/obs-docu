@@ -3,6 +3,11 @@
 <!-- ...................................................................... -->
 
 
+<!ENTITY obsa "OBS" >
+<!ENTITY obs "openSUSE Build Server">
+<!ENTITY OBS "openSUSE Build Server(OBS)">
+
+
 <!ENTITY exampleuser    "tux">
 <!ENTITY exampleuserII  "wilber">
 <!ENTITY examplegroup   "users">
@@ -50,7 +55,6 @@
 
 <!-- suse studio service as different from the Onsite product -->
 <!ENTITY susestudio     "&suse; Studio">
-<!ENTITY obs            "&opensuse; Build Server">
 <!ENTITY xvendor        "X.Org">
 <!ENTITY yast           "YaST">
 <!ENTITY yastcc         "&yast; Control Center">
