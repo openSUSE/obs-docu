@@ -5,7 +5,7 @@
 
 <!ENTITY obsa "OBS" >
 <!ENTITY obs "openSUSE Build Service">
-<!ENTITY OBS "openSUSE Build Service(OBS)">
+<!ENTITY OBS "openSUSE Build Service (OBS)">
 
 
 <!ENTITY exampleuser    "tux">
