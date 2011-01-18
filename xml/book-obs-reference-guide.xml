@@ -40,6 +40,8 @@
   <xi:include href="obs_product_building.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_admin.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
+  <xi:include href="factory.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
   <!-- Appendices -->
   <xi:include href="obs_glossary.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_work_on_these_books.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

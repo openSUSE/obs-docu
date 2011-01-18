@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.factory" os="opensuse">
+  <title>openSUSE Factory</title>
+  <para>This chapter describes how the development of the future openSUSE disitribution is done within OBS.</para>
+
+  <section id="cha.obs.factory.checkin">
+    <title>openSUSE:Factory project</title>
+    <para>The main project is openSUSE:Factory. This project is controlled by a small group which do review all
+          submissions according to the policies. Submissions are possible via submit requests, which get reviewed
+          by default by two groups: The Legal team and the code review team. ...</para>
+  </section>
+
+  <section id="cha.obs.factory.develprojects">
+    <title>Devel Projects</title>
+    <para>The goal of openSUSE:Factory is to have always a working state. This is needed to allow all developer groups
+          to use it as a base for testing their own, possible experimental work in their own projects. To have a complete
+          test of ...</para>
+  </section>
+
+</chapter>
