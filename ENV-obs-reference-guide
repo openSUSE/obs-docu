@@ -9,7 +9,7 @@ export MAIN=book-obs-reference-guide.xml
 
 # This is the default to generate all core parts of this book
 # plus parts which are special to the openSUSE instance (build.opensuse.org).
-export PROFOS="opensuse"
+export PROFOS="opensuse;novell"
 # This would create a book containing all openSUSE and MeeGo parts
 #export PROFOS="opensuse;meego"
 
