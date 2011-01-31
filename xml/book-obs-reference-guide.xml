@@ -38,6 +38,7 @@
 
   <xi:include href="obs_signing.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_product_building.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="obs_maintenance_setup.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_admin.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
   <xi:include href="factory.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

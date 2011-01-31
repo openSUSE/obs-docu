@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.maintenance_setup">
+  <title>The Maintenance Setup</title>
+  <para>This chapter explains the setup and workflow of doing maintenance the openSUSE way. 
+        However, this should not be limited to openSUSE distribution projects but be usable (including
+        all steps or in parts).
+        </para>
+
+  <para>The goal of the OBS maintenance process is to publish updates for a frozen project, in
+        this example an entire distribution. These updates needs be approved by a maintenance 
+        team and the published result must contain documentation about the changes and be appliable
+        in the most easy way by the users. </para>
+  
+  <section>
+    <title>The project setup</title>
+    <figure>
+      <title>Project Setup</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="maintenance_project_setup.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>This figure is giving a basic overview about the project setup and general workflow for a single
+          distribution. It shows the "openSUSE:11.4" project, which is considered to be frozen and not changing
+          at all anymore. The "openSUSE:11.4:Update" projects hosts all officially released updates. It does not build
+          any binary, just gets it sources and binaries from the maintenance project. This is the "openSUSE:Maintenance:IDxxx"
+          project, which is under control of the maintenance team. Official updates get built and reviewed here. QA is also
+          testing the binaries from here. However, a user can prepare it in the same way in his project and start the 
+          maintenance process via doing a "maintenance" request.</para>
+  </section>
+
+  <section>
+    <title>How to use the maintenance process</title>
+    <para>This describes all required steps by all involved persons from preparing to releasing a maintenance update.</para>
+
+    <section>
+      <title>The process gets started</title>
+      <para>A user is usally starting to prepare an update by creating a maintenance branch. This is typically done via
+            creating an own maintenance project (in this example for glibc including checkout) via</para>
+      <screen><command>osc mbranch -c glibc</command></screen>
+      <para>The user needs to do the needed modifications now. Packages will be built and can be tested. Afterwards he
+            need to add informations about the purpose of this maintenance update via</para>
+      <screen><command>osc patchinfo</command></screen>
+      <para>The server will create a full maintenance channel now, in case the user wants to test this as well. Otherwise
+            he can create a maintenance request:</para>
+      <screen><command>osc maintenancerequest</command></screen>
+      <para>This creates a request against the defined maintenance project, in our example this is openSUSE:Maintenance. 
+            The defined maintainer and reviewer in this project need to decide about this request. In case it gets
+            accepted, the server is creating a subproject with a unique ID and copies the sources and build settings to it.
+            The origin project will get removed by default. This maintenace project is used to build the final packages. The
+            maintenance team may still modify them or the patchinfo data at this point. When the maintenance people are okay
+            with the version, they can create a request to merge the sources and binaries to the final openSUSE:11.4:Update
+            project.</para>
+      <screen><command>osc mergerequest</command></screen>
+      <para>This request needs typically be approved by QA and other teams as defined in the Update project. In case 
+            something gets rejected, the needed changes need to be submitted to the maintenance project and the merge request
+            has to be recreated. </para>
+    </section>
+
+  </section>
+   
+  <section>
+    <title>How to setup projects for doing a maintenance cycle</title>
+    <para>...</para>
+  </section>
+
+</chapter>
