@@ -43,7 +43,7 @@
     <para>This describes all required steps by all involved persons from preparing to releasing a maintenance update.</para>
 
     <section>
-      <title>The process gets started</title>
+      <title>Process gets initiated by the maintainer</title>
       <para>A user is usally starting to prepare an update by creating a maintenance branch. This is typically done via
             creating an own maintenance project (in this example for glibc including checkout) via</para>
       <screen><command>osc mbranch -c glibc</command></screen>
@@ -53,17 +53,23 @@
       <para>The server will create a full maintenance channel now, in case the user wants to test this as well. Otherwise
             he can create a maintenance request:</para>
       <screen><command>osc maintenancerequest</command></screen>
-      <para>This creates a request against the defined maintenance project, in our example this is openSUSE:Maintenance. 
-            The defined maintainer and reviewer in this project need to decide about this request. In case it gets
+    </section>
+    <section>
+      <title>Maintenance team takes over</title>
+      <para>The maintenance request is targeted against the defined maintenance project, in our example this is openSUSE:Maintenance. 
+            The defined maintainer and reviewers in this project need to decide about this request. In case it gets
             accepted, the server is creating a subproject with a unique ID and copies the sources and build settings to it.
             The origin project will get removed by default. This maintenace project is used to build the final packages. The
             maintenance team may still modify them or the patchinfo data at this point. When the maintenance people are okay
-            with the version, they can create a request to merge the sources and binaries to the final openSUSE:11.4:Update
+            with the update, they can create a request to merge the sources and binaries to the final openSUSE:11.4:Update
             project.</para>
       <screen><command>osc mergerequest</command></screen>
-      <para>This request needs typically be approved by QA and other teams as defined in the Update project. In case 
-            something gets rejected, the needed changes need to be submitted to the maintenance project and the merge request
-            has to be recreated. </para>
+    </section>
+    <section>
+      <title>Update gets released</title>
+      <para>The merge request needs typically be approved by QA and other teams as defined in the Update project. In case 
+            something gets rejected, the needed changes need to be submitted to the maintenance project and a new merge request
+            has to be created.</para>
     </section>
 
   </section>
@@ -71,6 +77,18 @@
   <section>
     <title>How to setup projects for doing a maintenance cycle</title>
     <para>...</para>
+    <section>
+      <title>Defining a maintenance space</title>
+      <para>An OBS server is using by default a maintenance space defined via the OBS:Maintenance attribute. This must get created
+            on a project where maintenance incident projects should get created below. This project is also defining the default
+            maintenance maintainers and reviewers in it's acl list.</para>
+      <para>It is possible to have multiple and independend maintenance name spaces, however the maintenance request must be created
+            against this other namespace manually or using a different attribute. </para>
+    </section>
+    <section>
+      <title>Maintained Project Setups</title>
+      <para>...</para>
+    </section>
   </section>
 
 </chapter>
