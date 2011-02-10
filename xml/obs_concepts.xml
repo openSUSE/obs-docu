@@ -19,7 +19,9 @@
 
     <section>
       <title>Project meta data</title>
-      <para>A project gets configured in the project <command>/source/$PROJECT/_meta</command> path.
+      <para>A project gets configured in the project <command>/source/$PROJECT/_meta</command> path. It can
+            be edited in web interface in the <command>RAW Config</command> tab or via command line via
+            <screen><command>osc meta prj -e $PROJECT</command></screen>
             This file contains</para>
             <itemizedlist>
               <listitem><simpara>
@@ -99,6 +101,22 @@
               </simpara></listitem>
             </itemizedlist>
 
+    </section>
+
+    <section>
+      <title>Project build configuration.</title>
+      <para>A project gets configured in the project <command>/source/$PROJECT/_config</command> path. It can
+            be edited in web interface in the <command>Project Config</command> tab or via one of the following
+            command lines
+            <screen><command>osc meta prjconf -e $PROJECT</command>
+<command>osc co $PROJECT _project</command></screen>
+            This file contains informations how to setup a build enviroment. </para>
+    </section>
+
+    <section>
+      <title>Project build macros configuration.</title>
+      <para>The macro configuration is part of the build configuration in <command>/source/$PROJECT/_config</command>.
+            It can be added at the end behind a <command>Macro:</command></para>
     </section>
 
     <section>
