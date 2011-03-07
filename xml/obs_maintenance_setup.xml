@@ -30,10 +30,11 @@
       </mediaobject>
     </figure>
     <para>This figure is giving a basic overview about the project setup and general workflow for a single
-          distribution. It shows the "openSUSE:11.4" project, which is considered to be frozen and not changing
+          package and single maintained distribution. It shows the "openSUSE:11.4" project, which is considered to be frozen and not changing
           at all anymore. The "openSUSE:11.4:Update" projects hosts all officially released updates. It does not build
-          any binary, just gets it sources and binaries from the maintenance project. This is the "openSUSE:Maintenance:IDxxx"
-          project, which is under control of the maintenance team. Official updates get built and reviewed here. QA is also
+          any binary, just gets it sources and binaries from the maintenance incident project via the release process. The
+          incident project is named "openSUSE:Maintenance:IDxxx" in this example, which is under control of the maintenance team.
+          Official updates get built and reviewed here. QA is also
           testing the binaries from here. However, a user can prepare it in the same way in his project and start the 
           maintenance process via doing a "maintenance" request.</para>
   </section>
@@ -43,10 +44,11 @@
     <para>This describes all required steps by all involved persons from preparing to releasing a maintenance update.</para>
 
     <section>
-      <title>Process gets initiated by the maintainer</title>
+      <title>Way A: Process gets initiated by the maintainer</title>
       <para>A user is usally starting to prepare an update by creating a maintenance branch. This is typically done via
             creating an own maintenance project (in this example for glibc including checkout) via</para>
       <screen><command>osc mbranch -c glibc</command></screen>
+      <para>This is equivalent to the api call <command>/source?cmd=branch&amp;package=glibc</command>.</para>
       <para>The user needs to do the needed modifications now. Packages will be built and can be tested. Afterwards he
             need to add informations about the purpose of this maintenance update via</para>
       <screen><command>osc patchinfo</command></screen>
@@ -55,20 +57,34 @@
       <screen><command>osc maintenancerequest</command></screen>
     </section>
     <section>
+      <title>Way B: Process gets initiated by the maintenance team</title>
+      <para>The maintenance team may start the process (for example because a security became reported and the
+            maintenance team decided that a fix is required). In this case the incident gets created via the webui or via
+            the api call</para>
+      <para><command>/source?cmd=createmaintenanceincident?attribute=OBS:Maintenance</command>.</para>
+      <para>... FIXME: how to request work from developer ? </para>
+    </section>
+    <section>
       <title>Maintenance team takes over</title>
       <para>The maintenance request is targeted against the defined maintenance project, in our example this is openSUSE:Maintenance. 
             The defined maintainer and reviewers in this project need to decide about this request. In case it gets
             accepted, the server is creating a subproject with a unique ID and copies the sources and build settings to it.
             The origin project will get removed by default. This maintenace project is used to build the final packages. The
             maintenance team may still modify them or the patchinfo data at this point. When the maintenance people are okay
-            with the update, they can create a request to merge the sources and binaries to the final openSUSE:11.4:Update
+            with the update, they can create a request to release the sources and binaries to the final openSUSE:11.4:Update
             project.</para>
-      <screen><command>osc mergerequest</command></screen>
+      <screen><command>osc releaserequest</command></screen>
+      <para>The release will create a unique release ID which will become part of the updateinfo.xml file in the target project.
+            This ID is different from the incident ID and is usually in the style of "YEAR-COUNTER". A different nameing scheme
+            can be defined via the OBS:MaintenanceIdTemplate attribute value. The release will move all packages to the update
+            project and extend the target package name with the incident ID. Binaries will be moved as well without modification.
+            The exception is the updateinfo.xml which will get updates its id with the release id instead of the incident id.
+      </para>
     </section>
     <section>
       <title>Update gets released</title>
-      <para>The merge request needs typically be approved by QA and other teams as defined in the Update project. In case 
-            something gets rejected, the needed changes need to be submitted to the maintenance project and a new merge request
+      <para>The release request needs typically be approved by QA and other teams as defined in the Update project. In case 
+            something gets rejected, the needed changes need to be submitted to the maintenance project and a new release request
             has to be created.</para>
     </section>
 
