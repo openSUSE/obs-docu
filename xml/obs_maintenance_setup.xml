@@ -92,7 +92,6 @@
    
   <section>
     <title>How to setup projects for doing a maintenance cycle</title>
-    <para>...</para>
     <section>
       <title>Defining a maintenance space</title>
       <para>An OBS server is using by default a maintenance space defined via the OBS:Maintenance attribute. This must get created
@@ -103,7 +102,12 @@
     </section>
     <section>
       <title>Maintained Project Setups</title>
-      <para>...</para>
+      <para>Maintained projects must be frozen, this means no changes in sources or binaries. All updates will be hosted in defined
+            update project. This project gets defined via the OBS:UpdateProject attribute which must contain a value with the
+            update project name. In addition to this also an attribute to define the active maintenance should be defined, by default
+            the OBS:Maintained attribute. The osc mbranch command will take packages from this project as a result. </para>
+      <para>The Update project should be defined as build disabled as well. Define also a project link to the main project and at least 
+            one repository building against the main project.</para>
     </section>
   </section>
 
