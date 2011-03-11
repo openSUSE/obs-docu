@@ -29,6 +29,7 @@
   <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
   <xi:include href="obs_best_practice_basics.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="obs_best_practice_local_setup.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_best_practice_advanced.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_best_practice_kernel_build.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_best_practice_howto.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
