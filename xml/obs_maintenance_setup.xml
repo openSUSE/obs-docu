@@ -37,6 +37,20 @@
           Official updates get built and reviewed here. QA is also
           testing the binaries from here. However, a user can prepare it in the same way in his project and start the 
           maintenance process via doing a "maintenance" request.</para>
+   <itemizedlist>
+     <listitem><simpara>
+     openSUSE:11.4 is the <xref linkend="obs.glos.ga_project"/> in this example. Frozen and not changeing anymore.
+     </simpara></listitem>
+     <listitem><simpara>
+     openSUSE:11.4:Update is the <xref linkend="obs.glos.update_project"/> to release official updates.
+     </simpara></listitem>
+     <listitem><simpara>
+     openSUSE:Maintenance is the <xref linkend="obs.glos.maintenance_project"/>.
+     </simpara></listitem>
+     <listitem><simpara>
+     openSUSE:Maintenance:IDxxx is the <xref linkend="obs.glos.incident"/> project.
+     </simpara></listitem>
+   </itemizedlist>
   </section>
 
   <section>
@@ -110,6 +124,8 @@
             <listitem><simpara>
                 Package sources get added based on given package and attribute name from all existing project instances. 
                 The package name gets extended by the source project name to allow multiple instances of same package in one project.
+                Source revision links are using the xsrcmd5 to avoid that other
+                releases will affect this package instance. TBD: how to raise the source revision to current version manually ?
             </simpara></listitem>
             <listitem><simpara>
                 Build repositories gets added if missing. All repositories from all projects where the package sources gets branched
@@ -154,6 +170,12 @@
             <listitem><simpara>
             The release target condition=maintenance gets removed.
             </simpara></listitem>
+            <listitem><simpara>
+            The updateinfo.xml gets updated with the existing or now created unique updateinfo ID.
+            </simpara></listitem>
+            <listitem><simpara>
+            The server will update the repository based on all existing binaries.
+            </simpara></listitem>
           </itemizedlist>
         </para></listitem>
         <listitem><simpara>
@@ -172,11 +194,14 @@
           </itemizedlist>
         </para></listitem>
       </orderedlist>
+      <para> NOTE: The step 1 and 2 may be done via accepting an incident request instead.
+            </para>
     </section>
+
 
     <section>
       <title>Search for incidents</title>
-      <para>Incidents can get ...</para>
+      <para>The following items list some common ways to search for maintenance incidents.</para>
       <itemizedlist>
         <listitem><para>
           A developer can see the work to be done by him via searching for open pull requests.

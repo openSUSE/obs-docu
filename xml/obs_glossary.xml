@@ -65,5 +65,53 @@
    </para>
   </glossdef>
  </glossentry>
+
+  <!-- maintenance stuff -->
+ <glossentry id="obs.glos.ga_project"><glossterm>GA Project</glossterm>
+  <glossdef>
+   <para>
+    The GA project builds an initial release of a product. It gets frozen after releasing
+    the product.
+    All further updates get released via the <xref linkend="obs.glos.update_project"/>.
+    of this project.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry id="obs.glos.update_project"><glossterm>Update Project</glossterm>
+  <glossdef>
+   <para>
+    The update project is a <xref linkend="obs.glos.release_project"/> which provides
+    official updates for the products generated in the <xref linkend="obs.glos.ga_project"/>.
+    The Update project is usually linking (sources and repositories) against the <xref linkend="obs.glos.ga_project"/>.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry id="obs.glos.maintenance_project"><glossterm>Maintenance Project</glossterm>
+  <glossdef>
+   <para>
+    The maintenance project is a project without sources and binaries, which defines
+    the maintenance team. <xref linkend="obs.glos.incident"/> get created as sub projects
+    of this project.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry id="obs.glos.incident"><glossterm>Incident</glossterm>
+  <glossdef>
+   <para>
+    The maintenance incident describes a concrete problem and the required updates.
+    If the problem exists for multiple code streams, one incident covers all of them.
+    An incident is started by creating a maintenance incident project.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry id="obs.glos.release_project"><glossterm>Release Project</glossterm>
+  <glossdef>
+   <para>
+     A release project is hosting a release repository which is not building any
+     packages ever. It is just used to copy sources and binaries to this project
+     on a release event.
+   </para>
+  </glossdef>
+ </glossentry>
 </glossary>
 
