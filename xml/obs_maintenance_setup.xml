@@ -213,16 +213,16 @@
           <screen><command>/search/request?match=(state/@name='new') and action/@type='maintenance_incident' and action/target/@project='openSUSE:Maintenance')</command></screen>
         </para></listitem>
         <listitem><para>
-          A maintenance coordinator can see open incidents via searching for incidents projects which do not have a frozen flag.
-          <screen><command> TBD. </command></screen>
+          A maintenance coordinator can see open incidents via searching for incidents project repositories which have a release
+          target with maintenance trigger. Note: this search result is showing all repositories of a matching project.
+          <screen><command>/search/project?match=(repository/releasetarget/@trigger=maintenance)</command></screen>
         </para></listitem>
         <listitem><para>
-          A maintenance coordinator can see open incidents for a certain update repository via searching for incidents projects which 
-          do not have a frozen flag and have condition=maintenance in the repository release definition.
-          <screen><command> TBD. </command></screen>
+          A maintenance coordinator can see updates which get currently reviewed currently (for example by a QA team) via
+          <screen><command>/search/request?match=(state/@name='review') and action/@type='maintenance_release')</command></screen>
         </para></listitem>
         <listitem><para>
-          A maintenance coordinator can see running releases via searching for open requests with maintenance_release action.
+          A maintenance coordinator can see updates ready to release via searching for open requests with maintenance_release action.
           <screen><command>/search/request?match=(state/@name='new') and action/@type='maintenance_release')</command></screen>
         </para></listitem>
       </itemizedlist>
