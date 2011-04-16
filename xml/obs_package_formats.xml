@@ -9,7 +9,7 @@
 
 <chapter id="cha.obs.package_formats">
   <title>Package Formats</title>
-  <para>OBS is written to be not package format specific. However, every new format needs support in
+  <para>OBS is written to not be package format specific. However, every new format needs support in
         OBS. So far it does support rpm, debian, kiwi appliances and products.</para>
   
   <section>
@@ -23,7 +23,8 @@
 
     <section>
       <title>rpm</title>
-      <para>...</para>
+      <para>For building rpms you need a .spec file for each package, containing its build description. 
+      ...</para>
     </section>
 
     <section>

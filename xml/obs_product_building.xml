@@ -9,8 +9,8 @@
 
 <chapter id="cha.obs.product_building">
   <title>Product Building</title>
-  <para>OBS is used to build complete product lines. For openSUSE and also for SUSE Linux Enterprise
-        products. </para>
+  <para>OBS is used to build complete product lines. It is employed for 
+        openSUSE and also for SUSE Linux Enterprise products. </para>
   
   <section>
     <title>Requirements of a product</title>
@@ -28,7 +28,7 @@
 
     <section>
       <title>Package building</title>
-      <para>A project gets configured in the project meta data. This meta data contains 
+      <para>A project is configured in the project meta data. This meta data contains ...
             These projects contain ...</para>
     </section>
 
@@ -44,10 +44,10 @@
 
     <section>
       <title>Product Line Setup</title>
-      <para>Bigger products, like openSUSE or SUSE Linux Enterprise usually contain multiple medias.
-            These medias must be kept in sync in various ways, for example for installation patterns,
-            version numbering and other meta data. To guarantee this OBS provides the product definition
-            xml. Submitting such a product xml with create all needed sources for meta packages and also
+      <para>Bigger products, like openSUSE or SUSE Linux Enterprise usually contain multiple media.
+            These media must be kept in sync in various ways, for example for installation patterns,
+            version numbering and other meta data. To guarantee this, OBS provides the product definition
+            xml. Submitting such a product xml will create all necessary sources for meta packages and also
             all needed kiwi source files.</para>
     </section>
   </section>

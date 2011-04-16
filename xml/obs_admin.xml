@@ -10,8 +10,8 @@
 <chapter id="cha.obs.admin">
   <title>Administration</title>
   <para>This chapter describes the components of an OBS server and the typical administration tasks for an OBS administrator.</para>
-  <para>This chapter is not intendend to describe special installation hints for a 
-        certain OBS version, please refer the online resourcen or the README.SETUP file for this.</para>
+  <para>This chapter is not intended to describe special installation hints for a 
+        certain OBS version, please refer to the online resources or the README.SETUP file for this.</para>
 
   <xi:include href="obs_admin_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="obs_admin_tools.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

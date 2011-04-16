@@ -10,14 +10,14 @@
 <chapter id="cha.obs.maintenance_setup">
   <title>The Maintenance Support</title>
   <para>This chapter explains the setup and workflow of doing maintenance the openSUSE way. 
-        However, this should not be limited to openSUSE distribution projects but be usable (including
+        However, this should not be limited to openSUSE distribution projects but be usable anywhere (including
         all steps or in parts).
         </para>
 
   <para>The goal of the OBS maintenance process is to publish updates for a frozen project, in
-        this example an entire distribution. These updates needs be approved by a maintenance 
-        team and the published result must contain documentation about the changes and be appliable
-        in the most easy way by the users. </para>
+        this example an entire distribution. These updates need to be approved by a maintenance 
+        team and the published result must contain documentation about the changes and be applicable
+        in the easiest way by the users. </para>
   
   <section>
     <title>The Project Setup</title>
@@ -39,7 +39,7 @@
           maintenance process via doing a "maintenance" request.</para>
    <itemizedlist>
      <listitem><simpara>
-     openSUSE:11.4 is the <xref linkend="obs.glos.ga_project"/> in this example. Frozen and not changeing anymore.
+     openSUSE:11.4 is the <xref linkend="obs.glos.ga_project"/> in this example. Frozen and not changing anymore.
      </simpara></listitem>
      <listitem><simpara>
      openSUSE:11.4:Update is the <xref linkend="obs.glos.update_project"/> to release official updates.
@@ -59,12 +59,12 @@
 
     <section>
       <title>Way A: Process gets initiated by the maintainer</title>
-      <para>A user is usally starting to prepare an update by creating a maintenance branch. This is typically done via
+      <para>A user is usually starting to prepare an update by creating a maintenance branch. This is typically done by
             creating an own maintenance project (in this example for glibc including checkout) via</para>
       <screen><command>osc mbranch -c glibc</command></screen>
       <para>This is equivalent to the api call <command>/source?cmd=branch&amp;package=glibc</command>.</para>
       <para>The user needs to do the needed modifications now. Packages will be built and can be tested. Afterwards he
-            need to add informations about the purpose of this maintenance update via</para>
+            need to add information about the purpose of this maintenance update via</para>
       <screen><command>osc patchinfo</command></screen>
       <para>The server will create a full maintenance channel now, in case the user wants to test this as well. Otherwise
             he can create a maintenance request:</para>
@@ -72,7 +72,7 @@
     </section>
     <section>
       <title>Way B: Process gets initiated by the maintenance team</title>
-      <para>The maintenance team may start the process (for example because a security became reported and the
+      <para>The maintenance team may start the process (for example because a security issue was reported and the
             maintenance team decided that a fix is required). In this case the incident gets created via the webui or via
             the api call</para>
       <para><command>/source?cmd=createmaintenanceincident?attribute=OBS:Maintenance</command>.</para>
@@ -80,28 +80,28 @@
     </section>
     <section>
       <title>Maintenance team takes over</title>
-      <para>The maintenance request is targeted against the defined maintenance project, in our example this is openSUSE:Maintenance. 
+      <para>The maintenance request is targeted towards the defined maintenance project, in our example this is openSUSE:Maintenance. 
             The defined maintainer and reviewers in this project need to decide about this request. In case it gets
             accepted, the server is creating a subproject with a unique ID and copies the sources and build settings to it.
-            The origin project will get removed by default. This maintenace project is used to build the final packages. The
-            maintenance team may still modify them or the patchinfo data at this point. When the maintenance people are okay
+            The origin project will get removed by default. This maintenance project is used to build the final packages. The
+            maintenance team may still modify them or the patchinfo data at this point. When the maintenance people are satisfied
             with the update, they can create a request to release the sources and binaries to the final openSUSE:11.4:Update
             project.</para>
       <screen><command>osc releaserequest</command></screen>
-      <para>The release request needs to specify for each package the source and target. In case just the source package or 
+      <para>The release request needs to specify the source and target for each package. In case just the source package or 
             project is specified the api is completing the request on creation time. It is using this based on the source link
-            target of each package and the release informations in the repository defintions.</para>
+            target of each package and the release information in the repository definitions.</para>
     </section>
     <section>
       <title>Update gets released</title>
-      <para>The release request needs typically be approved by QA and other teams as defined in the Update project. In case 
-            something gets rejected, the needed changes need to be submitted to the maintenance project and a new release request
+      <para>The release request typically needs to be approved by QA and other teams as defined in the Update project. In case 
+            something gets rejected, the necessary changes need to be submitted to the maintenance project and a new release request
             has to be created.</para>
-      <para>A unique release ID which will become generated and become part of the updateinfo.xml file in the target project.
-            This ID is different from the incident ID and is usually in the style of "YEAR-COUNTER". A different nameing scheme
+      <para>A unique release ID will be generated and become part of the updateinfo.xml file in the target project.
+            This ID is different from the incident ID and is usually in the style of "YEAR-COUNTER". A different naming scheme
             can be defined via the OBS:MaintenanceIdTemplate attribute value. The release will move all packages to the update
             project and extend the target package name with the incident ID. Binaries will be moved as well without modification.
-            The exception is the updateinfo.xml which will get updates its id with the release id instead of the incident id.
+            The exception is the updateinfo.xml which will be modified by replacing its incident id with the release id.
       </para>
     </section>
   </section>
@@ -111,7 +111,7 @@
     <para>OBS is tracking maintenance work and can be used as a database for future and past updates.</para>
     <section>
       <title>The workflow step by step</title>
-      <para>A maintenance incident is getting started by creating the incident project. Either via a developer request
+      <para>A maintenance incident is started by creating the incident project, either via a developer request
             or by the maintenance team.</para>
       <orderedlist>
         <listitem><simpara>
@@ -119,20 +119,20 @@
             project. A unique ID (counter) is used as subproject name. Build is disabled by default project wide.
         </simpara></listitem>
         <listitem><para>
-          Default content for an incident get added via branch by attribute call:
+          Default content for an incident is added via branch by attribute call:
           <itemizedlist>
             <listitem><simpara>
                 Package sources get added based on given package and attribute name from all existing project instances. 
-                The package name gets extended by the source project name to allow multiple instances of same package in one project.
+                The package name is extended by the source project name to allow multiple instances of same package in one project.
                 Source revision links are using the xsrcmd5 to avoid that other
                 releases will affect this package instance. TBD: how to raise the source revision to current version manually ?
             </simpara></listitem>
             <listitem><simpara>
-                Build repositories gets added if missing. All repositories from all projects where the package sources gets branched
+                Build repositories are added if missing. All repositories from all projects where the package sources gets branched
                 from are used. The build flags in the package instances gets switched on for these.
             </simpara></listitem>
             <listitem><simpara>
-                Release target definition gets added to the repository configuration via additional releasetarget element. The special
+                A release target definition is added to the repository configuration via additional releasetarget element. The special
                 release condition "maintenance" gets defined for this.
             </simpara></listitem>
           </itemizedlist>
@@ -144,11 +144,11 @@
             A patchinfo file need to get added describing the issue. 
         </simpara></listitem>
         <listitem><simpara>
-            OBS server is building packages according to the sources and update informations according to the patchinfo data.
+            OBS server is building packages according to the sources and update information according to the patchinfo data.
         </simpara></listitem>
         <listitem><simpara>
             one or more release requests get created. It does also set the project to "freeze" state by default, this means no source 
-            changes are possible anymore and all running builds get canceld.
+            changes are possible anymore and all running builds get canceled.
         </simpara></listitem>
         <listitem><simpara>
             Usually the request is in review state with defined reviewers from the release project. All reviewers need to review
@@ -165,7 +165,7 @@
             </simpara></listitem>
             <listitem><simpara>
             A main package gets created or updated, it just contains a link to the current incident package. Eg glibc points to glibc.42. The
-            purpos of this main package is to have a place to refer to the current sources of a package.
+            purpose of this main package is to have a place to refer to the current sources of a package.
             </simpara></listitem>
             <listitem><simpara>
             The release target condition=maintenance gets removed.
@@ -218,7 +218,7 @@
           <screen><command>/search/project?match=(repository/releasetarget/@trigger=maintenance)</command></screen>
         </para></listitem>
         <listitem><para>
-          A maintenance coordinator can see updates which get currently reviewed currently (for example by a QA team) via
+          A maintenance coordinator can see updates which currently are reviewed (for example by a QA team) via
           <screen><command>/search/request?match=(state/@name='review') and action/@type='maintenance_release')</command></screen>
         </para></listitem>
         <listitem><para>
@@ -236,16 +236,16 @@
       <para>An OBS server is using by default a maintenance space defined via the OBS:Maintenance attribute. This must get created
             on a project where maintenance incident projects should get created below. This project is also defining the default
             maintenance maintainers and reviewers in it's acl list.</para>
-      <para>It is possible to have multiple and independend maintenance name spaces, however the maintenance request must be created
+      <para>It is possible to have multiple and independent maintenance name spaces, however the maintenance request must be created
             against this other namespace manually or using a different attribute. </para>
     </section>
     <section>
       <title>Maintained Project Setups</title>
-      <para>Maintained projects must be frozen, this means no changes in sources or binaries. All updates will be hosted in defined
+      <para>Maintained projects must be frozen, this means no changes in sources or binaries. All updates will be hosted in the defined
             update project. This project gets defined via the OBS:UpdateProject attribute which must contain a value with the
-            update project name. In addition to this also an attribute to define the active maintenance should be defined, by default
+            update project name. In addition to this, an attribute to define the active maintenance should also be defined, by default
             the OBS:Maintained attribute. The osc mbranch command will take packages from this project as a result. </para>
-      <para>The Update project should be defined as build disabled as well. Define also a project link to the main project and at least 
+      <para>The Update project should be defined as build disabled as well. Also define a project link to the main project and at least 
             one repository building against the main project.</para>
     </section>
   </section>

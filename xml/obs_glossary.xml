@@ -59,8 +59,8 @@
   <glossdef>
    <para>
     Binaries are considered as build results of OBS Projects. Binaries can
-    be reused in an enviroment to built further binaries.
-    Currently OBS is supporting rpm, deb and all kind of formats generated
+    be reused in an environment to build further binaries.
+    Currently OBS is supporting rpm, deb and all formats generated
     by <xref linkend="obs.glos.kiwi"/>.
    </para>
   </glossdef>
@@ -72,7 +72,7 @@
    <para>
     The GA project builds an initial release of a product. It gets frozen after releasing
     the product.
-    All further updates get released via the <xref linkend="obs.glos.update_project"/>.
+    All further updates get released via the <xref linkend="obs.glos.update_project"/>
     of this project.
    </para>
   </glossdef>
@@ -89,8 +89,8 @@
  <glossentry id="obs.glos.maintenance_project"><glossterm>Maintenance Project</glossterm>
   <glossdef>
    <para>
-    The maintenance project is a project without sources and binaries, which defines
-    the maintenance team. <xref linkend="obs.glos.incident"/> get created as sub projects
+    The maintenance project is a project without sources and binaries, defined by
+    the maintenance team. <xref linkend="obs.glos.incident"/>s are created as sub projects
     of this project.
    </para>
   </glossdef>

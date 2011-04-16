@@ -9,11 +9,12 @@
 
 <chapter id="cha.obs.build_process">
   <title>Build Process</title>
-  <para>Each package build is done in a fresh environment. This is done to be able to 
-        reproduce always a again.</para>
+  <para>Each package build is done in a fresh environment. This is done to ensure 
+        that no dependencies are missing and every later build
+        produces identical results.</para>
   
   <section>
-    <title>How gets a build process defined</title>
+    <title>How is a build process defined</title>
     <para>...</para>
   </section>
 

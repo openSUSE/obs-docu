@@ -13,7 +13,7 @@
   
   <section>
     <title>Package signing</title>
-    <para>...</para>
+    <para>Each package is signed with a PGP key to allow checking its integrity on user's machines.</para>
   </section>
 
   <section>

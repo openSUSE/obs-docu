@@ -33,18 +33,18 @@
   <section>
     <title>OBS test run on Microsoft Windows using VMware player</title>
     <para> Those who are not familiar with Linux can run and test OBS. 
-     To run and test OBS in Windows, you could use virtual machine program such as VMware or Virtual box, etc. In this chapter, how you could run OBS using VMware player will be explained. To check and test with Virtual box or other virtual machine, please check in below.  
-     After you've done install VMware player on Windows, You need to download OBS appliance program. you could get OBS appliance program in SUSE gallery. you could get OBS 2.1.2 appliance in below. 
+     To run and test OBS in Windows, you could use a virtual machine program such as VMware or VirtualBox, etc. This chapter explains, how you can run OBS using VMware player. To check and test with VirtualBox or another virtual machine, please check in below.  
+     After you are done installing VMware player on Windows, you need to download the OBS appliance program. You could get OBS appliance program in SUSE gallery. you could get OBS 2.1.2 appliance in below. 
      </para>  
          <screen> <command> http://susegallery.com/a/psNYmd/obs-215 </command> </screen>     
-     <para> Under [Download], Click [Virtual]. You could see VMWare / Virtual Box / KVM image. It would be good that you read install instructions using [View install instructions...] link.  And Download this VMware Image to the directory where you could remember. 
+     <para> Under [Download], Click [Virtual]. You could see VMware / VirtualBox / KVM image. It would be good that you read install instructions using [View install instructions...] link.  And Download this VMware Image to the directory where you could remember. 
 You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file. 
      </para>
      <para> Check and remember where decompressed "OBS_2.1.2-2.1.2" directory exists.
      Now, open VMware Player application and Select [File] - [Open a Virtual Machine] or you could press Ctrl+O directly. Search decompressed "OBS_2.1.2-2.1.2" directory in [Open Virtual Machine] dialog box.
      You would see "OBS_2.1.2.i686-2.1.2.vmx" file icon under this directory and select it.
-     You could see VMware player detect VMware Configuration files and OBS_2.1.2.i686-2.1.2 is set as Virtual Machine in VMware player. 
-     Click on to "Play virtual machine" icon or hyper link in VMware player and then you could see below screen.
+     You could see VMware player detect VMware Configuration files and OBS_2.1.2.i686-2.1.2 is setup as Virtual Machine in VMware player. 
+     Click on "Play virtual machine" icon or hyper link in VMware player and then you could see below screen.
      </para>
      <para> For Linux prompt, you could login using "root" as a login name and "opensuse" as a password.     
      Now, OBS local instance should be already loaded and running in your system.
@@ -62,8 +62,8 @@ You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file.
  </section>
 
  <section>
-    <title> OBS 1 click install on OpenSUSE 11.3 </title>
-    <para> In this section, how you could install OBS on top of OpenSUSE 11.3 would be explained.
+    <title> OBS 1 click install on openSUSE 11.3 </title>
+    <para> This section explains, how you can install OBS on top of openSUSE 11.3.
     Open your web browser and copy below URL in URL window of your web browser.
     </para>
          <screen>
@@ -84,19 +84,19 @@ You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file.
             "Open with YaST Meta Package Handler" and press OK button. then "OBS_Server Installation - YaST" window will appear.
             Select Next button after that till you get successful OBS setup message.
      </para>      
-     <para> TIPS : In case you didn't install libMagickCore.so.2 in OpenSUSE, you might face dependency warning. In that case, stop the OBS install by pressing "Abort" button in "OBS_Server Installation - YaST" window. and search and install libMagickCore using search engine like google or others.  and repeat above processes then you will get OBS setup message. 
+     <para> TIPS : In case you didn't install libMagickCore.so.2 in openSUSE, you might face dependency warning. In that case, stop the OBS install by pressing "Abort" button in "OBS_Server Installation - YaST" window. Then search and install libMagickCore using a search engine like Google or others and repeat above processes. Then you will get an OBS setup message. 
      </para>          
-     <para> Now, OBS Server is installed in your OpenSUSE. To run OBS server, you need to work on several steps more.
+     <para> Now, OBS Server is installed in your openSUSE. To run OBS server, you need to work on several further steps.
             Open /usr/share/doc/packages/obs-api/README.SETUP file.
-            To run OBS server, you need to follow each steps of README.SETUP carefully based on your system situation.
-            You could find this README.SETUP file in online using below URL also.  
+            To run OBS server, you need to follow each step of README.SETUP carefully based on your system situation.
+            You could also find this README.SETUP file online using below URL.  
      </para>
          <screen>
           <command>
              http://gitorious.org/opensuse/build-service/blobs/raw/master/dist/README.SETUP            
           </command>
         </screen>       
-     <para> If you follow instrunctions from README.SETUP file, you should be able to run OBS server in your system.
+     <para> If you follow instructions from README.SETUP file, you should be able to run OBS server in your system.
             There are several tips that I would like to comment regarding README.SETUP file. 
      </para>
      <para> TIP #1 : Check "3.1 Initialize fresh Database". It might be described as
@@ -143,13 +143,13 @@ You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file.
  <section>
     <title> OBS 1 click install on SLES(SUSE Linux Enterprise Server) 11  </title>
     <para> 1 click install for OBS in SLES11.
-    How you could install OBS in SLES11 would be explained in this section.
-    Install OBS in SLES11 is quite similar with OBS install method on OpenSUSE. I would skip same contents so you might need to have a look for prior section "OBS 1 click install on OpenSUSE 11.3". 
+    This section explains how you install OBS in SLES11.
+    Installation of OBS in SLES11 is quite similar to OBS install method on openSUSE. I would skip same contents so you might need to have a look for prior section "OBS 1 click install on openSUSE 11.3". 
     </para>
     <para> Before you install OBS on SLES11, you need to download and install SLES11 SDK first. you could download SLES11 SDK in here.      
     </para>
          <screen> <command> http://download.novell.com </command> </screen>  
-     <para> After you download and install SLES11 SDK, We could use YMP file for OBS 1 click install like OpenSUSE 11.3. 
+     <para> After you download and install SLES11 SDK, We could use YMP file for OBS 1 click install like openSUSE 11.3. 
             Open your web browser and copy below URL in URL window of your web browser.
      </para>
          <screen>
@@ -157,16 +157,16 @@ You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file.
              http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp            
           </command>
         </screen>
-      <para> Like OpenSUSE 11.3, I referenced above URL from below.
+      <para> Like openSUSE 11.3, I referenced above URL from below.
       </para>
          <screen>
           <command>
              http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE            
           </command>
         </screen>
-     <para> After you types "http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp", you would see "Opening OBS_Server.ymp" window as described in before OpenSUSE 11.3 section. Press "OK" button and "Next" button after YaST2 window pops up. If YaST lets you know successful install of OBS server, then you are ready to activate and run OBS on SLES11.  
+     <para> After you typed "http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp", you would see "Opening OBS_Server.ymp" window as described in the previous openSUSE 11.3 section. Press "OK" button and "Next" button after YaST2 window pops up. If YaST lets you know successful install of OBS server, then you are ready to activate and run OBS on SLES11.  
      </para>
-     <para> To run OBS server on SLES11, you need to follow instrunctions based on /usr/share/doc/packages/obs-api/README.SETUP file as descibed in prior section. From here, you could refer to prior section for successful OBS run on your SLES11.
+     <para> To run OBS server on SLES11, you need to follow instructions based on /usr/share/doc/packages/obs-api/README.SETUP file as described in prior section. From here, you could refer to prior section for successful OBS run on your SLES11.
      </para>
   </section> 
 
