@@ -17,10 +17,12 @@
   <para>The goal of the OBS maintenance process is to publish updates for a frozen project, in
         this example an entire distribution. These updates need to be approved by a maintenance 
         team and the published result must contain documentation about the changes and be applicable
-        in the easiest way by the users. </para>
+	in the easiest way by the users. The result is a package repository with additional informations
+	about the solved problems and defined groups of packages to achieve that. Also binary delta data
+        may get generated to reduce the needed download size for the clients.</para>
   
   <section>
-    <title>The Project Setup</title>
+    <title>Simple Project Setup</title>
     <figure>
       <title>Simple Project Setup</title>
       <mediaobject>
@@ -34,7 +36,7 @@
           at all anymore. The "openSUSE:11.4:Update" projects hosts all officially released updates. It does not build
           any binary, just gets it sources and binaries from the maintenance incident project via the release process. The
           incident project is named "openSUSE:Maintenance:IDxxx" in this example, which is under control of the maintenance team.
-          Official updates get built and reviewed here. QA is also
+          Official updates get built and reviewed here. QA teams are also
           testing the binaries from here. However, a user can prepare it in the same way in his project and start the 
           maintenance process via doing a "maintenance" request.</para>
    <itemizedlist>
@@ -75,16 +77,23 @@
       <para>The maintenance team may start the process (for example because a security issue was reported and the
             maintenance team decided that a fix is required). In this case the incident gets created via the webui or via
             the api call</para>
-      <para><command>/source?cmd=createmaintenanceincident?attribute=OBS:Maintenance</command>.</para>
+      <para><command>osc createincidient [PROJECT]</command></para>
+      <para><command>osc api /source/PROJECT?cmd=createmaintenanceincident</command></para>
+      <para><command>osc api /source?cmd=createmaintenanceincident&amp;attribute=OBS:Maintenance</command>.</para>
       <para>... FIXME: how to request work from developer ? Define the pull request</para>
     </section>
     <section>
-      <title>Maintenance team takes over</title>
-      <para>The maintenance request is targeted towards the defined maintenance project, in our example this is openSUSE:Maintenance. 
+      <title>Maintenance Incident Processing</title>
+      <para>The maintenance incidents are usually managed by a maintenance team. In case the incident got started by a 
+	    maintainer a maintenance request is targeted towards the defined maintenance project, in our example this
+	    is openSUSE:Maintenance. 
             The defined maintainer and reviewers in this project need to decide about this request. In case it gets
-            accepted, the server is creating a subproject with a unique ID and copies the sources and build settings to it.
-            The origin project will get removed by default. This maintenance project is used to build the final packages. The
-            maintenance team may still modify them or the patchinfo data at this point. When the maintenance people are satisfied
+            accepted, the server is creating a subproject with a unique incident ID and copies the sources and build settings to it.
+	    The origin project will get removed usually via the cleanup option. This maintenance project is used to build the
+	    final packages. The
+	    maintenance team may still modify them or the patchinfo data at this point. An outside maintainer can still submit
+	    changes via standard submit request mechanism, but direct write permissions are not granted.
+	    When the maintenance people are satisfied
             with the update, they can create a request to release the sources and binaries to the final openSUSE:11.4:Update
             project.</para>
       <screen><command>osc releaserequest</command></screen>
@@ -95,9 +104,9 @@
     <section>
       <title>Update gets released</title>
       <para>The release request typically needs to be approved by QA and other teams as defined in the Update project. In case 
-            something gets rejected, the necessary changes need to be submitted to the maintenance project and a new release request
+            something gets declined, the necessary changes need to be submitted to the maintenance project and a new release request
             has to be created.</para>
-      <para>A unique release ID will be generated and become part of the updateinfo.xml file in the target project.
+      <para>A unique release ID will be generated and become part of the updateinfo.xml file in the target project on release event.
             This ID is different from the incident ID and is usually in the style of "YEAR-COUNTER". A different naming scheme
             can be defined via the OBS:MaintenanceIdTemplate attribute value. The release will move all packages to the update
             project and extend the target package name with the incident ID. Binaries will be moved as well without modification.
