@@ -100,7 +100,8 @@
    <para>
     The maintenance incident describes a concrete problem and the required updates.
     If the problem exists for multiple code streams, one incident covers all of them.
-    An incident is started by creating a maintenance incident project.
+    An incident is started by creating a maintenance incident project and the update
+    get built here.
    </para>
   </glossdef>
  </glossentry>

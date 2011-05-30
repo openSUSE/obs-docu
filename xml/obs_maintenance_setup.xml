@@ -80,7 +80,8 @@
       <para><command>osc createincidient [PROJECT]</command></para>
       <para><command>osc api /source/PROJECT?cmd=createmaintenanceincident</command></para>
       <para><command>osc api /source?cmd=createmaintenanceincident&amp;attribute=OBS:Maintenance</command>.</para>
-      <para>... FIXME: how to request work from developer ? Define the pull request</para>
+      <para>Right now the developer must be notified outside of OBS about the expected work (eg. via bugzilla). In future we
+            may add a pull request here to have one place for the "my work" overview.</para>
     </section>
     <section>
       <title>Maintenance Incident Processing</title>
@@ -102,12 +103,31 @@
             target of each package and the release information in the repository definitions.</para>
     </section>
     <section>
-      <title>Update gets released</title>
+      <title>Incident gets released</title>
+      <para>The release process gets usually started via creating a release request. This sets all affected packages to the
+            locked state, which means that all commands for editing the source or triggering rebuilds are not allowed anymore.
+            </para>
       <para>The release request typically needs to be approved by QA and other teams as defined in the Update project. In case 
             something gets declined, the necessary changes need to be submitted to the maintenance project and a new release request
             has to be created.</para>
       <para>A unique release ID will be generated and become part of the updateinfo.xml file in the target project on release event.
-            This ID is different from the incident ID and is usually in the style of "YEAR-COUNTER". A different naming scheme
+            This ID is different from the incident ID and is usually in the style of "YEAR-COUNTER". The counter is strictly increasing
+            on each release. In case of a re-release of the same incident a release counter will be added.</para>
+      <para> A different naming scheme
+            can be defined via the OBS:MaintenanceIdTemplate attribute value. The release will move all packages to the update
+            project and extend the target package name with the incident ID. Binaries will be moved as well without modification.
+            The exception is the updateinfo.xml which will be modified by replacing its incident id with the release id.
+      </para>
+    </section>
+    <section>
+      <title>Incident gets reopened and re-released</title>
+      <para>An update should not, but may have an undetected regression. In this case the update needs a re-release. (If another problem
+            shall be fixed a new incident should be created instead.)</para>
+      <para>If the current update harms the systems, the maintenance team may decide to take it back immediatly. It can be done by removing the
+            patchinfo.ID package container in the Update projects. This will create a new update channel without this update.</para>
+      <para>To re-open a release incident project, the release target trigger needs to be set back to <command>trigger=maintenance</command>.
+            This can be done via editing the meta data. The incident project gets listed as running in the webui now.</para>
+      <para>To be able to do rebuilds or source changes (eg. via accepting submit requests) the packages need to be un-locked.
             can be defined via the OBS:MaintenanceIdTemplate attribute value. The release will move all packages to the update
             project and extend the target package name with the incident ID. Binaries will be moved as well without modification.
             The exception is the updateinfo.xml which will be modified by replacing its incident id with the release id.
@@ -210,12 +230,17 @@
 
     <section>
       <title>Search for incidents</title>
-      <para>The following items list some common ways to search for maintenance incidents.</para>
+      <para>The webui shows the running and past incidents when going to the maintenance project (openSUSE:Maintenance
+            in our example). It shows the open requests either for creating or release an incident. Also the open incidents,
+            which are not yet released are visible.</para>
+      <para>The following items list some common ways to search for maintenance incidents via the api:</para>
       <itemizedlist>
+<!--
         <listitem><para>
           A developer can see the work to be done by him via searching for open pull requests.
           <screen><command> TBD. </command></screen>
         </para></listitem>
+-->
         <listitem><para>
           A maintenance coordinator can see requests for doing a maintenance release via searching for open requests with maintenance_incident action 
           against the maintenance project. API call example:
