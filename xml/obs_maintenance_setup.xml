@@ -215,7 +215,7 @@
             OPTIONAL: A maintenance incident can be restarted by 
           <itemizedlist>
             <listitem><simpara>
-            Removing the frozen flag.
+            Removing the lock flag.
             </simpara></listitem>
             <listitem><simpara>
             Adding again the condition=maintenance attribute to the release target which requires a re-release.
