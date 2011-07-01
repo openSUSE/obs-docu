@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter id="cha.obs.best-practices.webuiusage" os="opensuse;novell">
+
+  <title> How to use OBS web UI </title>
+  <para>This chapter explains and shows how you could use OBS web UI. 
+        We will show and use OBS web UI based on http://build.opensuse.org.
+        So you need to make an account first to follow this chapter contents.     
+  </para>  
+
+      
+  <section>
+    <title>Start page and Login</title>
+    <para> Open your favorite browser and navigate to https://build.opensuse.org
+    </para>
+    <figure>
+      <title>Start page</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="start_page_login.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para> To proceed, you'll need to log in and authenticate with your username and your password. Click on Login and enter the data in the upper right corner.  
+     </para> 
+    <figure>
+      <title>Login </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="login_prompt.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>       
+      <para> After successful authentication, you'll end up on the start page again - with new options visible. We'll go through most of them in detail, but first lets create your home: in the next step. 
+      </para>
+    <figure>
+      <title>Logged_in </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="logged_in.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>       
+ </section>
+
+
+  <section>
+    <title>Create your home project</title>
+    <para> Every developer has his/her home:[userid] project where he/she has write access by default. This is like your personal project or dashboard where you can experiment and play. But first you need to enter some lines to describe your home project. Click on the link "Home Project" at the bottom left or upper right and answer the questions. 
+    </para>
+    <figure>
+      <title>home_project_upper_right </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="homeproject_upperright.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>    
+    <figure>
+      <title>home_project_bottom_left </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="homeproject_bottomleft.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>        
+    <para> Now you are redirected to your home: . It will be empty for now, but as you see in the picture below, you can add packages containing the sources/build recipes and projects which are the containers for the build targets. As you can see, you're the default maintainer which grants you full write access to this project. You're also the bug owner of your project.    
+    </para> 
+    <figure>
+      <title> home_project_webui_description </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="home_project_webui_description.png" width="800" />
+        </imageobject>
+      </mediaobject>  
+    </figure>  
+    <figure>
+      <title> newly_made_home_project </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="newly_made_home_project.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>            
+ </section>
+
+
+  <section>
+    <title> My Projects, Server Status </title>
+    <para> Let's leave for now your home: for a bit and explore the build service. Click on "My Projects" on the left at the bottom. This opens a page listing your watched projects and your involvements in projects or packages.  
+    </para>
+    <figure>
+      <title> My Projects </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obswebui_my_projects.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>      
+    <para> Now, let's visit the main monitor page by clicking on "Status Monitor". You see here the status of the services, some graphs and graphics are showing the currently running and completed jobs an the overall load.    
+    </para> 
+    <figure>
+      <title> Status Monitor </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="status_monitor.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>      
+ </section>
+
+
+  <section>
+     <title> Create a link to a package in your home:   </title>
+     <para>  We'll show you how you can log in and use the web interface hosted at  build.opensuse.org. This includes login, adding a link to a package in your personal workspace (home:) and how to build that package by adding a repository. First, let's enter "My Projects" by clicking on the link at the bottom left. 
+    </para>
+    <figure>
+      <title> My Projects </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obswebui_my_projects.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>   
+    <para> Now let's create a link to a package and add a repository to build against. A link is basically a pointer to sources of an already existing package in another project. By *repository*, we mean a build target - like Trunk/Fedora_12/openSUSE_11.4. Let's follow these steps: 
+
+    1. Add link to the existing package.
+    2. Add repository / build target.
+    3. Enable the build (optional, if not already enabled).
+    4. Observe the build on the monitor page
+    5. Look at package's page 
+    </para>
+
+    <section>
+    <title> Add link to existing package   </title>
+    <para> Right below packages, there's "Branch Package from other Project" . 
+    </para>
+    <figure>
+      <title> Branch Package </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="branch_package.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>               
+   <para> Open that page and enter for 
+   </para>
+         <screen> 
+            <command>
+               Name of original project:
+               Apache
+            </command> 
+         </screen>  
+   <para> and for 
+   </para>
+         <screen> 
+            <command>
+                Name of package in original project:
+                flood
+            </command> 
+         </screen>  
+    <para> - we'll leave "Name of linked package in target project" empty.
+    This is shown on the next picture: 
+    </para>
+    <figure>
+      <title> Apache Flood Branch </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="apache_flood_branch.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>   
+    <para> Proceed with "Create Branch" and you'll be redirected to your home again. You'll see a new package "flood" and a notice about the branch being added. 
+    </para> 
+    <figure>
+      <title> Branched Package </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="flood_branched.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure> 
+    <para> Wonderful, we've added a pointer to the sources - now we need a build repository added, so the builder knows the target-distribution. 
+    </para>   
+  </section>
+
+  <section>
+     <title> Add repository / build target   </title>
+     <para> To do this, click on "Add Repository" by clicking "no repositories" in above screen. This will look like:  
+    </para>
+    <figure>
+      <title> Add Repository Screen </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="add_repositories.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>   
+    <para> Now select "openSUSE Factory" as target repository and press Add selected repositories button which is located at bottom side of screen:  
+    </para>
+    <figure>
+      <title> Add OpenSUSE factory </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="adding_opensuse_factory.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure> 
+    <para> (If it is not in the initial list, see if there an an Advanced link to a more comprehensive list). This will take you back to your home: project. The build repository might be disabled: if so, klick on the cogwheel to enable it. 
+ Congratulations, it is configured. On a heavily loaded server, it can sometimes take a few minutes for your changes to become effective, but your linked package will automatically begin building. 
+    </para>
+   </section>
+
+  <section>
+     <title> Package page, build log and project monitor page    </title>
+     <para> Next, it is time to explore the Monitor page, the package detail page and the build log. Just click on the links and explore the web interface.
+
+I recommend starting with your home project's top level 'overview' page - click on the Overview tab and you may see something like this:  
+    </para>
+    <figure>
+      <title> flood_package_building </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="flood_succeeded_finished.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>      
+    <para> If you wait a bit, you would see the below building suceess screen
+    </para>
+    <figure>
+      <title> flood_package_building </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="flood_build_sucess.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>  
+    <para> please try to click blue "succeeded" message, then you could see the build log as below. 
+    </para> 
+    <figure>
+      <title> flood_package_building </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="flood_build_log.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>       
+  </section> 
+  </section>
+
+
+  <section>
+     <title> Repository Output: Built Packages    </title>
+     <para> To find the RPMs you built, go to your home project page and click Repositories. From there click on the blue repository name. For example, openSUSE_Factory: 
+    </para>
+    <figure>
+      <title> My_Repository </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="my_repository.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>  
+    <para> And from there, click on Go to download repository. You'll see something like this: 
+    </para>   
+    <figure>
+      <title> Repository_structure </title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="download_rpm_directories.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>  
+    <para> Your rpms can be found in the subdirectories, and the .repo file is suitable for use with zypper, yum or other repository-friendly package management tools. 
+    </para>   
+   </section>
+
+</chapter>
