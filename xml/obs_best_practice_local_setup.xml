@@ -13,9 +13,13 @@
         This chapter is written for those who are not so familiar with Linux and OBS.
         So in case you are confident to setup OBS, please skip this chapter. 
         Following would be explained in this chapter.
+        <screen>
+          <command>
         - OBS Manual setup and 1 click install in openSUSE 11.3
         - OBS Manual setup and 1 click install in SLES11 
         - OBS test run on Microsoft Windows using VMware player.
+           </command>
+        </screen>
         Unfortunately, didn't have a chance to install OBS in other Linux distribution yet.
   </para>
   <para>How you could install and purchase openSUSE 11.3 and SLES11 would not be explained in this chapter.
@@ -32,18 +36,21 @@
         
   <section>
     <title>OBS test run on Microsoft Windows using VMware player</title>
+
     <para> Those who are not familiar with Linux can run and test OBS. 
      To run and test OBS in Windows, you could use a virtual machine program such as VMware or VirtualBox, etc. This chapter explains, how you can run OBS using VMware player. To check and test with VirtualBox or another virtual machine, please check in below.  
-     After you are done installing VMware player on Windows, you need to download the OBS appliance program. You could get OBS appliance program in SUSE gallery. you could get OBS 2.1.2 appliance in below. 
+     After you are done installing VMware player on Windows, you need to download the OBS appliance program. You could get OBS appliance program in SUSE gallery. 
      </para>  
-         <screen> <command> http://susegallery.com/a/psNYmd/obs-215 </command> </screen>     
-     <para> Under [Download], Click [Virtual]. You could see VMware / VirtualBox / KVM image. It would be good that you read install instructions using [View install instructions...] link.  And Download this VMware Image to the directory where you could remember. 
-You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file. 
+         <screen> <command> http://susegallery.com </command> </screen>     
+     <para> 
+Type and Search OBS in SUSE gallery. you could find the latest OBS appliance program there.
+Under [Download], Click [Virtual]. You could see VMware / VirtualBox / KVM image. It would be good that you read install instructions using [View install instructions...] link.  And Download this VMware Image to the directory where you could remember. 
+You need to decompress downloaded "OBS_x.x.x.i686-x.x.x.vmx.tar" file. 
      </para>
-     <para> Check and remember where decompressed "OBS_2.1.2-2.1.2" directory exists.
-     Now, open VMware Player application and Select [File] - [Open a Virtual Machine] or you could press Ctrl+O directly. Search decompressed "OBS_2.1.2-2.1.2" directory in [Open Virtual Machine] dialog box.
-     You would see "OBS_2.1.2.i686-2.1.2.vmx" file icon under this directory and select it.
-     You could see VMware player detect VMware Configuration files and OBS_2.1.2.i686-2.1.2 is setup as Virtual Machine in VMware player. 
+     <para> Check and remember where decompressed "OBS_x.x.x-x.x.x" directory exists.
+     Now, open VMware Player application and Select [File] - [Open a Virtual Machine] or you could press Ctrl+O directly. Search decompressed "OBS_x.x.x-x.x.x" directory in [Open Virtual Machine] dialog box.
+     You would see "OBS_x.x.x.i686-x.x.x.vmx" file icon under this directory and select it.
+     You could see VMware player detect VMware Configuration files and OBS_x.x.x.i686-x.x.x is setup as Virtual Machine in VMware player. 
      Click on "Play virtual machine" icon or hyper link in VMware player and then you could see below screen.
      </para>
      <para> For Linux prompt, you could login using "root" as a login name and "opensuse" as a password.     
@@ -55,6 +62,14 @@ You need to decompress downloaded "OBS_2.1.2.i686-2.1.2.vmx.tar" file.
      You could check IP address using $ifconfig Linux command or control panel on Windows.
      Now, you probably could see below like screen in your Windows. 
      </para>
+    <figure>
+      <title>OBS_Run_On_Windows</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obs_run_on_windows.png" width="800" />
+        </imageobject>
+      </mediaobject>
+    </figure>
      <para>To login your local OBS instance, you could use default login name as "Admin" and password as "opensuse".
     Check if you could login properly by clicking "Login" on your local OBS instance web UI.
      Welcome to the openSUSE Build Service ;-)
