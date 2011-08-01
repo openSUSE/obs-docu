@@ -224,7 +224,7 @@
 I recommend starting with your home project's top level 'overview' page - click on the Overview tab and you may see something like this:  
     </para>
     <figure>
-      <title> flood_package_building </title>
+      <title> flood_succeeded_finished </title>
       <mediaobject>
         <imageobject>
           <imagedata fileref="flood_succeeded_finished.png" width="800" />
@@ -234,7 +234,7 @@ I recommend starting with your home project's top level 'overview' page - click 
     <para> If you wait a bit, you would see the below building suceess screen
     </para>
     <figure>
-      <title> flood_package_building </title>
+      <title> flood_build_success </title>
       <mediaobject>
         <imageobject>
           <imagedata fileref="flood_build_sucess.png" width="800" />
@@ -244,7 +244,7 @@ I recommend starting with your home project's top level 'overview' page - click 
     <para> please try to click blue "succeeded" message, then you could see the build log as below. 
     </para> 
     <figure>
-      <title> flood_package_building </title>
+      <title> flood_build_log </title>
       <mediaobject>
         <imageobject>
           <imagedata fileref="flood_build_log.png" width="800" />
