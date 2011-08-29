@@ -10,14 +10,15 @@
 
   <title> How to use OBS web UI </title>
   <para>This chapter explains and shows how you could use OBS web UI. 
-        We will show and use OBS web UI based on http://build.opensuse.org.
-        So you need to make an account first to follow this chapter contents.     
+        We will show and use OBS web UI based on 
+        <ulink url="http://build.opensuse.org"/>.
+        You need to make an account first to follow this chapter contents.     
   </para>  
 
       
   <section>
     <title>Start page and Login</title>
-    <para> Open your favorite browser and navigate to https://build.opensuse.org
+    <para> Open your favorite browser and navigate to <ulink url="https://build.opensuse.org"/>
     </para>
     <figure>
       <title>Start page</title>

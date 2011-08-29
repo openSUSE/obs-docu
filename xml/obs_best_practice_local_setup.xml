@@ -8,7 +8,7 @@
 ]>
 <chapter id="cha.obs.best-practices.localsetup" os="opensuse;novell">
 
-  <title>OBS Local Setup</title>
+  <title id="cha.obs.best-practices.localsetup.title">OBS Local Setup</title>
   <para>This chapter explains how you could setup/Install/test OBS in your system.
         This chapter is written for those who are not so familiar with Linux and OBS.
         So in case you are confident to setup OBS, please skip this chapter. 
