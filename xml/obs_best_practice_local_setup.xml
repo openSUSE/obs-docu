@@ -62,6 +62,10 @@ You need to decompress downloaded "OBS_x.x.x.i686-x.x.x.vmx.tar" file.
      You could check IP address using $ifconfig Linux command or control panel on Windows.
      Now, you probably could see below like screen in your Windows. 
      </para>
+<!-- fsundermeyer 2011-11-10: 
+     Image does not exist, commenting since missing images cause a failure of the the automatic
+     web update on doc.o.o
+     
     <figure>
       <title>OBS_Run_On_Windows</title>
       <mediaobject>
@@ -70,6 +74,8 @@ You need to decompress downloaded "OBS_x.x.x.i686-x.x.x.vmx.tar" file.
         </imageobject>
       </mediaobject>
     </figure>
+
+-->
      <para>To login your local OBS instance, you could use default login name as "Admin" and password as "opensuse".
     Check if you could login properly by clicking "Login" on your local OBS instance web UI.
      Welcome to the openSUSE Build Service ;-)
