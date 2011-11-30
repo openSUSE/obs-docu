@@ -73,9 +73,11 @@
             need to add information about the purpose of this maintenance update via</para>
       <screen><command>osc patchinfo</command></screen>
       <para>If the source changes contain references to bugzilla or CVE issue trackers these will be used by default</para>
-      <para>The server will create a full maintenance channel now, in case the user wants to test this as well. Otherwise
-            he can create a maintenance request:</para>
+      <para>The server will create a full maintenance channel now, in case the user wants to test this as well. After the user 
+            has tested, he has to create a maintenancerequest to ask the maintenance team to accept this as official update incident:</para>
       <screen><command>osc maintenancerequest</command></screen>
+      <para>On accepting this request all sources of the entire project will get copied to the incident project and be rebuild.
+            The origin project gets usually removed (based on the request cleanup options).</para>
     </section>
     <section>
       <title>Way B: Process gets initiated by the maintenance team</title>
