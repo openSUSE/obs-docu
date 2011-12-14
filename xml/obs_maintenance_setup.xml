@@ -256,7 +256,7 @@
         <listitem><para>
           A maintenance coordinator can see open incidents via searching for incidents project repositories which have a release
           target with maintenance trigger. Note: this search result is showing all repositories of a matching project.
-          <screen><command>/search/project?match=(repository/releasetarget/@trigger=maintenance)</command></screen>
+          <screen><command>/search/project?match=(repository/releasetarget/@trigger='maintenance')</command></screen>
         </para></listitem>
         <listitem><para>
           A maintenance coordinator can see updates which currently are reviewed (for example by a QA team) via
