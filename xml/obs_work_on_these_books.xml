@@ -16,7 +16,7 @@
   <para>
    These books are written with docbook and can be converted to html or pdf documentation.
    Please use the following command to checkout the current source of this book:
-   <screen><command>svn co https://svn.berlios.de/svnroot/repos/opensuse-doc/trunk/documents/obs/en OBS-documentation</command></screen>
+   <screen><command>svn co https://svn.opensuse.org/svn/opensuse-doc/trunk/documents/obs/en OBS-documentation</command></screen>
    Please check the README file for descriptions how to validate and generate them.
   </para>
   <para>
