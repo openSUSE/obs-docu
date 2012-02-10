@@ -1,0 +1,22 @@
+## ---------------------------- 
+## Doc Config File for Open Build Service
+## Reference Guide
+## ----------------------------
+##
+## Basics
+MAIN="book-obs-reference-guide.xml"
+
+## Profiling
+PROFOS="opensuse;novell"
+
+## stylesheet location
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse"
+HTML_CSS="/usr/share/xml/docbook/stylesheet/suse/html/susebooks.css"
+EPUB_CSS="/usr/share/xml/docbook/stylesheet/suse/epub/susebooks.css"
+
+## obsolete
+DISTVER="1.0"
+PKGNAME="obs-reference-guide"
+
+## enable sourcing
+export DOCCONF=$BASH_SOURCE
