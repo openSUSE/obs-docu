@@ -9,9 +9,9 @@
 
 <chapter id="cha.obs.maintenance_setup">
   <title>The Maintenance Support</title>
-  <para>This chapter explains the setup and workflow of doing maintenance the openSUSE way. 
-        However, this should not be limited to openSUSE distribution projects but be usable anywhere (including
-        all steps or in parts).
+  <para>This chapter explains the setup and workflow of an maintenance update in the openSUSE way. 
+        However, this should not be limited to openSUSE distribution projects but be usable anywhere
+        (the entire workflow or just parts of it).
         </para>
 
   <para>The goal of the OBS maintenance process is to publish updates for a frozen project, in
@@ -60,17 +60,15 @@
     <para>This describes all required steps by all involved persons from preparing to releasing a maintenance update.</para>
 
     <section>
-      <title>Way A: Process gets initiated by the maintainer</title>
+      <title>Way A: A maintainer builds an entire update incident for submission</title>
       <para>A user is usually starting to prepare an update by creating a maintenance branch. This is typically done by
             creating an own maintenance project. Usually multiple released products are affected, so the server can find
             out which one are maintained by a given source package name, in this example for glibc including checkout via</para>
-      <screen><command>osc mbranch --checkout glibc</command>
-              <command>osc mbranch -c glibc</command></screen>
+      <screen><command>osc mbranch glibc</command><command>osc mbranch --checkout glibc</command></screen>
       <para>This is equivalent to the api call <command>/source?cmd=branch&amp;package=glibc</command>.</para>
       <para>It is also possible to branch only one defined version, if it is known that only one version is affected. In this
             example the openSUSE:12.1 version:</para>
-      <screen><command>osc branch --maintenance --checkout openSUSE:12.1 glibc</command>
-              <command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
+      <screen><command>osc branch --maintenance openSUSE:12.1 glibc</command><command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
       <para>The user needs to do the needed modifications now. Packages will be built and can be tested. Afterwards he
             need to add information about the purpose of this maintenance update via</para>
       <screen><command>osc patchinfo</command></screen>
@@ -82,15 +80,29 @@
             The origin project gets usually removed (based on the request cleanup options).</para>
     </section>
     <section>
-      <title>Way B: Process gets initiated by the maintenance team</title>
+      <title>Way B: An OBS user is submitting a dedicated package</title>
+      <para>You may submit a package source from a project which is not prepare as maintenance project. That work via the maintenancerequest
+            and means that the first testable build will happen in the maintenance incident project. Also the maintenance team need
+            to write the update information on their own.</para>
+      <para><command>osc maintenancerequest [ SOURCEPROJECT [ SOURCEPACKAGES RELEASEPROJECT ] ]</command></para>
+      <para>The following example is submitting two packages (kdelibs4 and kdebase4) from the project KDE:Devel project as 
+            update for openSUSE:12.1
+            <command>osc maintenancerequest KDE:Devel kdelibs4 kdebase4 openSUSE:12.1</command></para>
+      <para>NOTE: it is also possible to specify an existing incident as target via the --incident parameter. The packages
+            will be merged in that case </para>
+    </section>
+    <section>
+      <title>Way C: Process gets initiated by the maintenance team</title>
       <para>The maintenance team may start the process (for example because a security issue was reported and the
             maintenance team decided that a fix is required). In this case the incident gets created via the webui or via
             the api call</para>
       <para><command>osc createincidient [PROJECT]</command></para>
       <para><command>osc api /source/PROJECT?cmd=createmaintenanceincident</command></para>
       <para><command>osc api /source?cmd=createmaintenanceincident&amp;attribute=OBS:Maintenance</command>.</para>
-      <para>Right now the developer must be notified outside of OBS about the expected work (eg. via bugzilla). In future we
-            may add a pull request here to have one place for the "my work" overview.</para>
+      <para>To document the expected work the creation of a patchinfo package is needed. This can be done via</para>
+      <para><command>osc patchinfo [PROJECT]</command></para>
+      <para>It is important to add bugzilla entries inside of the _patchinfo file. As long these are open bugzilla entries,
+            the bug assignee will see this patchinfoi on his "my work" webui and osc views, so he knows that work is expected for him.</para>
     </section>
     <section>
       <title>Maintenance Incident Processing</title>
@@ -100,8 +112,11 @@
             The defined maintainer and reviewers in this project need to decide about this request. In case it gets
             accepted, the server is creating a subproject with a unique incident ID and copies the sources and build settings to it.
 	    The origin project will get removed usually via the cleanup option. This maintenance project is used to build the
-	    final packages. The
-	    maintenance team may still modify them or the patchinfo data at this point. An outside maintainer can still submit
+	    final packages. </para>
+      <para>If the maintenance team decides to merge a new maintenance request with an existing incident, they can run the
+            <command>osc rq setincident $REQUESTID $INCIDENT</command> before accepting the request.
+            </para>
+      <para>The maintenance team may still modify them or the patchinfo data at this point. An outside maintainer can still submit
 	    changes via standard submit request mechanism, but direct write permissions are not granted.
 	    When the maintenance people are satisfied
             with the update, they can create a request to release the sources and binaries to the final openSUSE:11.4:Update
@@ -176,7 +191,7 @@
           </itemizedlist>
         </para></listitem>
         <listitem><simpara>
-            Fixes for the packages need to get submitted now. <!-- point to pull request -->
+            Fixes for the packages need to get submitted now.
         </simpara></listitem>
         <listitem><simpara>
             A patchinfo file need to get added describing the issue. 
@@ -242,17 +257,19 @@
       <para>The webui shows the running and past incidents when going to the maintenance project (openSUSE:Maintenance
             in our example). It shows the open requests either for creating or release an incident. Also the open incidents,
             which are not yet released are visible.</para>
+      <para>All users need usually just to visit their "my work" screen in webui or osc to see requests or patchinfog were actions
+            of them are expected:
+          <screen><command>osc my [work]</command></screen>
+          </para>
       <para>The following items list some common ways to search for maintenance incidents via the api:</para>
       <itemizedlist>
-<!--
         <listitem><para>
-          A developer can see the work to be done by him via searching for open pull requests.
-          <screen><command> TBD. </command></screen>
+          A developer can see the work to be done by him via searching for patchinfos with open bugzilla entries:
+          <screen><command>/search/package?match=([kind='patchinfo' and issue/[@state='OPEN' and owner/@login='$USER_LOGIN']])</command></screen>
         </para></listitem>
--->
         <listitem><para>
           A maintenance coordinator can see requests for doing a maintenance release via searching for open requests with maintenance_incident action 
-          against the maintenance project. API call example:
+          against the maintenance project. They are visible in the webui request page of that project or via
           <screen><command>/search/request?match=(state/@name='new') and action/@type='maintenance_incident' and action/target/@project='openSUSE:Maintenance')</command></screen>
         </para></listitem>
         <listitem><para>
