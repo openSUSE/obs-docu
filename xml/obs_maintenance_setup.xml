@@ -71,10 +71,12 @@
             example the openSUSE:12.1 version:</para>
       <screen><command>osc branch --maintenance openSUSE:12.1 glibc</command>
 <command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
-      <para>The user needs to do the needed modifications now. Packages will be built and can be tested. Afterwards he
-            need to add information about the purpose of this maintenance update via</para>
+      <para>NOTE: both branch commands do support the --noaccess parameter, which will create a hidden project. This may be used
+            when a not yet public known security shall get fixed.</para>
+      <para>Afterwards the user needs to do the needed modifications. Packages will be built and can be tested. Afterwards he
+            may add informations about the purpose of this maintenance update via</para>
       <screen><command>osc patchinfo</command></screen>
-      <para>If the source changes contain references to bugzilla or CVE issue trackers these will be used by default</para>
+      <para>If the source changes contain references to issue trackers (like bugzilla, CVE or FATE) these will be added to the _patchinfo file.</para>
       <para>The server will create a full maintenance channel now, in case the user wants to test this as well. After the user 
             has tested, he has to create a maintenancerequest to ask the maintenance team to accept this as official update incident:</para>
       <screen><command>osc maintenancerequest</command></screen>
@@ -82,16 +84,16 @@
             The origin project gets usually removed (based on the request cleanup options).</para>
     </section>
     <section>
-      <title>Way B: An OBS user is submitting a dedicated package</title>
-      <para>You may submit a package source from a project which is not prepare as maintenance project. That work via the maintenancerequest
-            and means that the first testable build will happen in the maintenance incident project. Also the maintenance team need
-            to write the update information on their own.</para>
+      <title>Way B: Submitting a package without branching</title>
+      <para>You may submit a package source from a project which is not prepared as maintenance project. That works via the maintenancerequest
+            mechanism by specifing one or more packages from one project. As a consequence it means also that the first testable build will
+            happen in the maintenance incident project. Also the maintenance team need to write the update information on their own.</para>
       <para><command>osc maintenancerequest [ SOURCEPROJECT [ SOURCEPACKAGES RELEASEPROJECT ] ]</command></para>
       <para>The following example is submitting two packages (kdelibs4 and kdebase4) from the project KDE:Devel project as 
             update for openSUSE:12.1
             <command>osc maintenancerequest KDE:Devel kdelibs4 kdebase4 openSUSE:12.1</command></para>
       <para>NOTE: it is also possible to specify an existing incident as target via the --incident parameter. The packages
-            will be merged in that case </para>
+            will be merged into that existing incident project then.</para>
     </section>
     <section>
       <title>Way C: Process gets initiated by the maintenance team</title>
