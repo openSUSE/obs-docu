@@ -88,10 +88,10 @@
       <para>You may submit a package source from a project which is not prepared as maintenance project. That works via the maintenancerequest
             mechanism by specifing one or more packages from one project. As a consequence it means also that the first testable build will
             happen in the maintenance incident project. Also the maintenance team need to write the update information on their own.</para>
-      <para><command>osc maintenancerequest [ SOURCEPROJECT [ SOURCEPACKAGES RELEASEPROJECT ] ]</command></para>
+      <para><screen><command>osc maintenancerequest [ SOURCEPROJECT [ SOURCEPACKAGES RELEASEPROJECT ] ]</command></screen></para>
       <para>The following example is submitting two packages (kdelibs4 and kdebase4) from the project KDE:Devel project as 
             update for openSUSE:12.1
-            <command>osc maintenancerequest KDE:Devel kdelibs4 kdebase4 openSUSE:12.1</command></para>
+            <screen><command>osc maintenancerequest KDE:Devel kdelibs4 kdebase4 openSUSE:12.1</command></screen></para>
       <para>NOTE: it is also possible to specify an existing incident as target via the --incident parameter. The packages
             will be merged into that existing incident project then.</para>
     </section>
@@ -153,13 +153,15 @@
             shall be fixed a new incident should be created instead.)</para>
       <para>If the current update harms the systems, the maintenance team may decide to take it back immediatly. It can be done by removing the
             patchinfo.ID package container in the Update projects. This will create a new update channel without this update.</para>
-      <para>To re-open a release incident project, the release target trigger needs to be set back to <command>trigger=maintenance</command>.
-            This can be done via editing the meta data. The incident project gets listed as running in the webui now.</para>
-      <para>To be able to do rebuilds or source changes (eg. via accepting submit requests) the packages need to be un-locked.
-            can be defined via the OBS:MaintenanceIdTemplate attribute value. The release will move all packages to the update
-            project and extend the target package name with the incident ID. Binaries will be moved as well without modification.
-            The exception is the updateinfo.xml which will be modified by replacing its incident id with the release id.
-      </para>
+      <para>To re-open a release incident project, it must get unlocked and marked as open again.
+            This can be done in one step by editing the project meta data of the incident project.
+            The lock enable must be change to lock disable and the release target of all or selected products needs to be set back to <command>trigger=maintenance</command>.
+            Afterwards the project can be edited again and also gets listed as running incident again.</para>
+    </section>
+    <section>
+      <title>Using custom update IDs</title>
+      <para>The used string of update IDs can be defined via the OBS:MaintenanceIdTemplate attribute value of the master
+            maintenance project.  </para>
     </section>
   </section>
    
