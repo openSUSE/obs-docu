@@ -64,11 +64,13 @@
       <para>A user is usually starting to prepare an update by creating a maintenance branch. This is typically done by
             creating an own maintenance project. Usually multiple released products are affected, so the server can find
             out which one are maintained by a given source package name, in this example for glibc including checkout via</para>
-      <screen><command>osc mbranch glibc</command><command>osc mbranch --checkout glibc</command></screen>
+      <screen><command>osc mbranch glibc</command>
+<command>osc mbranch --checkout glibc</command></screen>
       <para>This is equivalent to the api call <command>/source?cmd=branch&amp;package=glibc</command>.</para>
       <para>It is also possible to branch only one defined version, if it is known that only one version is affected. In this
             example the openSUSE:12.1 version:</para>
-      <screen><command>osc branch --maintenance openSUSE:12.1 glibc</command><command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
+      <screen><command>osc branch --maintenance openSUSE:12.1 glibc</command>
+<command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
       <para>The user needs to do the needed modifications now. Packages will be built and can be tested. Afterwards he
             need to add information about the purpose of this maintenance update via</para>
       <screen><command>osc patchinfo</command></screen>
