@@ -154,8 +154,11 @@
       <para>If the current update harms the systems, the maintenance team may decide to take it back immediatly. It can be done by removing the
             patchinfo.ID package container in the Update projects. This will create a new update channel without this update.</para>
       <para>To re-open a release incident project, it must get unlocked and marked as open again.
-            This can be done in one step by editing the project meta data of the incident project.
-            The lock enable must be change to lock disable and the release target of all or selected products needs to be set back to <command>trigger=maintenance</command>.
+            Unlocking can be done either via revoking a release request or via explicit unlocking the incident. The explicit
+            unlock via osc:
+      <screen><command>osc unlock INCIDENT_PROJECT</command></screen>
+            is also triggering a rebuild to ensure to have higher release numbers and adding the "trigger=maintenance" flags to the
+            release target definitions.
             Afterwards the project can be edited again and also gets listed as running incident again.</para>
     </section>
     <section>
