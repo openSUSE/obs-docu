@@ -17,6 +17,23 @@
 
 <glossary>
  <title>Glossary</title>
+ <glossentry id="obs.glos.obs"><glossterm>Open Build Service</glossterm>
+  <glossdef>
+   <para>
+    The Open Build Service and its acronym OBS is used to speak about the server
+    part of the build service. When speaking about OBS all possible instances are
+    affected.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry id="obs.glos.build.o.o"><glossterm>openSUSE Build Service</glossterm>
+  <glossdef>
+   <para>
+    The openSUSE Build Service is the concrete instance of <xref linkend="obs.glos.obs"/>
+    from the openSUSE project at http://build.opensuse.org.
+   </para>
+  </glossdef>
+ </glossentry>
  <glossentry><glossterm>Appliance</glossterm>
   <glossdef>
    <para>

@@ -75,7 +75,7 @@ You need to decompress downloaded "OBS_x.x.x.i686-x.x.x.vmx.tar" file.
     -->
      <para>To login your local OBS instance, you could use default login name as "Admin" and password as "opensuse".
     Check if you could login properly by clicking "Login" on your local OBS instance web UI.
-     Welcome to the openSUSE Build Service ;-)
+     Welcome to the Open Build Service ;-)
    </para>
  </section>
 
