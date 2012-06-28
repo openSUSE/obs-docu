@@ -140,7 +140,7 @@
 
     <section>
       <title>Repotype: &lt;TYPE&gt; &lt;HINT&gt;</title>
-      <para>Defines the repository format. Valid values are: none, rpm-md(default), rpm-md-legacy, suse, debian, hdlist2, comps.
+      <para>Defines the repository format. Valid values are: none, rpm-md(default), rpm-md:deltainfo, rpm-md-legacy, suse, debian, hdlist2, comps.
             To split the debug packages in an own published repository the hint splitdebug:$REPOSIORY_SUFFIX can be used.</para>
     </section>
 
