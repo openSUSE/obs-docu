@@ -146,12 +146,18 @@
 
     <section>
       <title>Binarytype: &lt;TYPE&gt;</title>
-      <para>(OBS 2.4 or later):.</para>
+      <para>(OBS 2.4 or later): Overwrite the build result format. For example a package with spec build description may generate deb packages instead of rpms.</para>
     </section>
 
     <section>
       <title>Patterntype: rpm-md ymp: &lt;TYPES&gt;</title>
       <para>Defines the pattern format. Valid values are: rpm-md(default), ymp.  </para>
+    </section>
+
+    <section>
+      <title>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</title>
+      <para>(OBS 2.4 or later): Define build constraints for build jobs. The selector is a collon seperated list which gets a string assigned. Please see 
+            the build job constraints page for details.</para>
     </section>
 
     <section>
