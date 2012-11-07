@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.build_preinstall">
+  <title>Build Preinstall Images</title>
+  <para>Preinstall images can optionally be used to install a set of packages in one fast step instead
+        via single package installations. Depending on the build host even snapshots with copy-on-write
+        support may be used which avoids any IO.</para>
+  <para>A preinstall image can be used if it provides a subset of packages which is required for the build
+        job. The largest possible image is taken if multiple are usable.</para>
+  <para>To use a preinstall image there needs to be a package container inside of the project or in a repository
+        used by the build job. This package needs a _preinstallimage file. The syntax of it is spec file like, but 
+        just needs a Name: and at least one BuildRequires: line. In addition also #!BuildIgnore: tags may be used
+        to ignore packages despite of dependencies. Also usage of %if cases is possible. </para>
+  <para>Preinstall image build jobs get always prefered to allow the best effect of them. It is recommended to define
+        images for often used standard stacks.
+        </para>
+
+  <para>Example _preinstallimage file for a basic preinstall image:
+        <screen><command>
+Name: base
+BuildRequires: bash
+#!BuildIgnore: brp-trim-desktopfiles
+        </command></screen>
+        </para>
+
+  
+</chapter>
