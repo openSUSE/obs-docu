@@ -140,12 +140,12 @@ Constraint: hardware:cpu:flag sse2</command></screen>
         <screen><command>&lt;constraints&gt;
   &lt;hardware&gt;
     &lt;disk&gt;
-      &lt;size unit=G&gt;4&lt;/size&gt;
+      &lt;size unit=&quot;G&quot;&gt;4&lt;/size&gt;
     &lt;/disk&gt;
   &lt;/hardware&gt;
 &lt;/constraints&gt; </command></screen>
         Example for project configuration:
-        <screen><command>Constraint: hardware:size:disk unit=G 4</command></screen>
+        <screen><command>Constraint: hardware:size:disk unit=&quot;G&quot; 4</command></screen>
       </para>
       </section>
     </section>
@@ -159,12 +159,12 @@ Constraint: hardware:cpu:flag sse2</command></screen>
         <screen><command>&lt;constraints&gt;
   &lt;hardware&gt;
     &lt;memory&gt;
-      &lt;size unit=M&gt;1400&lt;/size&gt;
+      &lt;size unit=&quot;M&quot;&gt;1400&lt;/size&gt;
     &lt;/memory&gt;
   &lt;/hardware&gt;
 &lt;/constraints&gt; </command></screen>
         Example for project configuration:
-        <screen><command>Constraint: hardware:size:memory unit=M 1400</command></screen>
+        <screen><command>Constraint: hardware:size:memory unit=&quot;M&quot; 1400</command></screen>
       </para>
       </section>
     </section>
