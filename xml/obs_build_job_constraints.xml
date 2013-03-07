@@ -28,9 +28,10 @@
     <title>hostlabel</title>
     <para>The hostlabel is any string which can be assigned to build hosts when starting the bs_worker
           process. It can be used to run on specific hosts, which may be used for running benchmarks
-          in a reproducable way.</para>
+          in a reproducable way. This constraints does also support to be defined as a negative definition
+          via the exclude=true attribute.</para>
     <para>Example for _constraints file:
-      <screen><command>&lt;constraints&gt;
+      <screen><command>&lt;constraints&gt; exclude=&quot;false&quot;
   &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
 &lt;/constraints&gt; </command></screen>
       Example for project configuration:
@@ -41,9 +42,10 @@
   <section>
     <title>sandbox</title>
     <para>Defines the sandbox which is used for the build job. Sandboxes are chroot, xen or kvm environments.
-          There is also the virtual secure sandbox, which allows building on xen or kvm.</para>
+          There is also the virtual secure sandbox, which allows building on xen or kvm. This constraints does
+          also support to be defined as a negative definition via the exclude=true attribute.</para>
     <para>Example for _constraints file:
-      <screen><command>&lt;constraints&gt;
+      <screen><command>&lt;constraints&gt; exclude=&quot;true&quot;
   &lt;sandbox&gt;secure&lt;/sandbox&gt;
 &lt;/constraints&gt; </command></screen>
       Example for project configuration:
