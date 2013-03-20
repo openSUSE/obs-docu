@@ -7,7 +7,7 @@
   %entities;
 ]>
 
-<appendix>
+<appendix role="legal">
  <title>GNU Licenses</title>
  <para>
   This appendix contains the GNU General Public License version 2 and the
