@@ -100,7 +100,7 @@
       <para>The maintenance team may start the process (for example because a security issue was reported and the
             maintenance team decided that a fix is required). In this case the incident gets created via the webui or via
             the api call</para>
-      <para><command>osc createincidient [PROJECT]</command></para>
+      <para><command>osc createincident [PROJECT]</command></para>
       <para><command>osc api /source/PROJECT?cmd=createmaintenanceincident</command></para>
       <para><command>osc api /source?cmd=createmaintenanceincident&amp;attribute=OBS:Maintenance</command>.</para>
       <para>To document the expected work the creation of a patchinfo package is needed. This can be done via</para>
