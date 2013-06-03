@@ -35,7 +35,7 @@ In other words, you need to create a tool chain with the tool chain that you wan
       <para> Log on to the Web API.
       The default user Admin, with the password opensuse is available. Create your own login and password and set yourself as Admin.
 
-       Log on to the Web UI as Admin and click on the Icon "Setup OBS". Accept the default. It should work.
+       Log on to the Web UI as Admin and click on the Icon "Configuration" and add the openSUSE Build Service as remote instance.
 
        Select from under 'Locations' -> 'Projects'. At the end of the list click on 'Add_Project'. Give it a name (e.g. Meego-test)
 
