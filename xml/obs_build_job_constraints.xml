@@ -147,7 +147,7 @@ Constraint: hardware:cpu:flag sse2</command></screen>
   &lt;/hardware&gt;
 &lt;/constraints&gt; </command></screen>
         Example for project configuration:
-        <screen><command>Constraint: hardware:size:disk unit=&quot;G&quot; 4</command></screen>
+        <screen><command>Constraint: hardware:disk:size unit=&quot;G&quot; 4</command></screen>
       </para>
       </section>
     </section>
@@ -156,7 +156,7 @@ Constraint: hardware:cpu:flag sse2</command></screen>
       <para>Memory specific.</para>
       <section>
         <title>size</title>
-        <para>To require a minimal memory size.</para>
+        <para>To require a minimal memory size including swap space.</para>
       <para>Example for _constraints file:
         <screen><command>&lt;constraints&gt;
   &lt;hardware&gt;
@@ -166,7 +166,26 @@ Constraint: hardware:cpu:flag sse2</command></screen>
   &lt;/hardware&gt;
 &lt;/constraints&gt; </command></screen>
         Example for project configuration:
-        <screen><command>Constraint: hardware:size:memory unit=&quot;M&quot; 1400</command></screen>
+        <screen><command>Constraint: hardware:memory:size unit=&quot;M&quot; 1400</command></screen>
+      </para>
+      </section>
+    </section>
+    <section>
+      <title>physicalmemory</title>
+      <para>Memory specific.</para>
+      <section>
+        <title>size</title>
+        <para>To require a minimal memory size. Swap space is not taken into account here.</para>
+      <para>Example for _constraints file:
+        <screen><command>&lt;constraints&gt;
+  &lt;hardware&gt;
+    &lt;physicalmemory&gt;
+      &lt;size unit=&quot;M&quot;&gt;1400&lt;/size&gt;
+    &lt;/physicalmemory&gt;
+  &lt;/hardware&gt;
+&lt;/constraints&gt; </command></screen>
+        Example for project configuration:
+        <screen><command>Constraint: hardware:physicalmemory:size unit=&quot;M&quot; 1400</command></screen>
       </para>
       </section>
     </section>
