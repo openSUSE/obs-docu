@@ -2,7 +2,8 @@
                          README
 -----------------------------------------------------------
 
-This is the official and edited documentation for the Open Build Service (OBS).
+This is the official, edited and reviewed documentation for 
+the Open Build Service (OBS).
 
 The documentation is currently split into two books:
   * The OBS admin guide
@@ -29,8 +30,13 @@ html documentation can get generated via
 
  # make html
 
-Please ask on opensuse-buildservice@opensuse.org mailing list to
-get write access to this document.
+This document gets hosted on github 
 
-$Revision$
+  https://github.com/openSUSE/open-build-service-documentation
+
+So the standard github work-flow with forked repositories and pull requests
+can be used to contribute to these books.
+
+The former svn repositories on berlios and svn.opensuse.org are not used anymore
+and will removed or write protected soon!
 

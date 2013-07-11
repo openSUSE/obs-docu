@@ -15,13 +15,17 @@
  <abstract>
   <para>
    These books are written with docbook and can be converted to html or pdf documentation.
-   Please use the following command to checkout the current source of this book:
-   <screen><command>svn co https://svn.opensuse.org/svn/opensuse-doc/trunk/documents/obs/en OBS-documentation</command></screen>
+   Please use the following command to checkout the official source of this book:
+   <screen><command>git clone https://github.com/openSUSE/open-build-service-documentation.git</command></screen>
    Please check the README file for descriptions how to validate and generate them.
   </para>
   <para>
-   We ask every experienced OBS user or admin to join to work on these books. Subversion
-   commit permissions will be granted after the first submitted patch. It is even
+   Please use the standard github work-flow to work on these books. This means fork your own
+   copy of the repository, commit your changes there and create a pull request. This can be done
+   at <ulink url="https://github.com/openSUSE/open-build-service-documentation">https://github.com/openSUSE/open-build-service-documentation</ulink>
+  </para>
+  <para>
+   It is even
    possible to host instance specific content in the official subversion repository, it is 
    just a matter to tag them correctly. Special parts of this documentation are tagged as
    <command>&lt;para os="opensuse;meego"&gt;</command> for example. In this case the paragraph will
