@@ -31,7 +31,7 @@
           in a reproducable way. This constraints does also support to be defined as a negative definition
           via the exclude=true attribute.</para>
     <para>Example for _constraints file:
-      <screen><command>&lt;constraints&gt; exclude=&quot;false&quot;
+      <screen><command>&lt;constraints exclude=&quot;false&quot;&gt;
   &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
 &lt;/constraints&gt; </command></screen>
       Example for project configuration:
