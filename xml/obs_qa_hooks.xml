@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.qa_hooks">
+  <title>Quality Assurance(QA) Hooks</title>
+  <para>OBS provides multiple hooks to place automated or manual tests at different points of time.</para>
+  <para>This chapter describes the different possibilities to provide and executre QA checks. The
+        order of the items is sorted by the order in a typical development process. It is prefered to 
+        add a check as early as possible in the process to keep turn-around times small.</para>
+  
+  <section>
+    <title>Source related checks</title>
+    <para>Things which can be verified based on a given source can be checked even before commit time on
+          the developers workstation. This is the earliest possible point of time to add a check. But it
+          can also optionaly be enforced on the server side.
+          </para>
+    <para>Automated source processing is done by source services in OBS world. Please check the source
+          service chapter how to use or write one. It is important to decide if the test case shall output
+          warning messages and when it shall report an error by exit status.
+          </para>
+    <para>Test cases in source services get usually applied to all packages of a project. (It is possible to execute it only for specific packages though.)</para>
+  </section>
+
+  <section>
+    <title>Build time check</title>
+    <section>
+      <title>In-package checks</title>
+      <para>Checks running during the build of a package are usually test cases provided by the author of
+            a package. However, also the packager might add simple checks, esp. for stuff which is known
+            to break on version updates for example and might be forgotten when the package gets touched
+            the next time.</para>
+      <para>These test are often specific for a concrete package only. So it is typically executed in %check
+            section of rpm spec files directly. In case the check can be used with multiple package source,
+            it is a good idea to package the test case in an own package and just call it from the other
+            packages.
+      </para>
+      <para>rpm calls %check after %install section and before creating the actual checks.</para>
+      <para>SUSE distros is also providing build time checks for testing the installed files inside of the
+            build root. It is to be used for test cases which shall run on all packages which are build inside
+            of a distribuition. This hook can be used by installing a file to /usr/lib/rpm/brp-suse.d/ directory.
+            These scripts have also the power to modify the installed files if needed.</para>
+    </section>
+
+    <section>
+      <title>Post build checks</title>
+      <para>The standard to test built package binaries is rpmlint for rpm based distros. Debian distributions
+            are using the lintian tool.</para>
+      <para>These checks are executed by the build script after the a successful build happened. Please note
+            that these are executed as standard user by default.</para>
+    </section>
+
+    <section>
+      <title>Post build root checks</title>
+      <para>Files in /usr/lib/build/checks/* are executed as root user. Typical uscases are install tests
+            of the build packages to ensure that the scripts inside of the packages are working in general.</para>
+    </section>
+
+    <section>
+      <title>KIWI specific post build root checks</title>
+      <para>The file /usr/lib/build/kiwi_post_run is executed after kiwi jobs have finished. It can be used
+            to run the appliance or to modify it. For example to package an appliance into a rpm.</para>
+    </section>
+
+  </section>
+
+  <section>
+    <title>Work-flow checks</title>
+      <para>Work flow steps, for example transfering packages from one project to another, are done via requests in OBS. At least when multiple parties are involved. One or more of these parties can be automated test cases. Or human manual approval steps.</para>
+      <para>Default reviews can be defined inside of projects and packages. A new request to a certain package does get the reviewers added defined in target projects and packages. Reviewers can be currently users, groups or the maintainers of a specified project or package.</para>
+
+    <section>
+      <title>Automated test cases</title>
+      <para>Open requests can be requested in an xml parseable way via the api running</para>
+      <screen><command>osc api /request?states=review&amp;user=auto-review-user&amp;roles=reviewer&amp;reviewstates=new&amp;view=collection</command></screen>
+      <para>osc can also be used to accept or decline the reviews of these requests after running the automated test. Also a comment can be given to show errors which appeared. It is important that requests, which are not  tested, for example because they are of a not matching type (eg. deleting packages) needs to get also a review accept. Otherwise the process would get blocked.</para>
+    </section>
+  </section>
+   
+</chapter>

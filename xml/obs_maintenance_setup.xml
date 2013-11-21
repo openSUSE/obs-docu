@@ -319,4 +319,20 @@
     </section>
   </section>
 
+  <section>
+    <title>Defining Channels</title>
+    <para>Channels are optional definitions to publish a sub-set of binaries in own repositories. They can be
+          used to maintain a larger amount of packages in a central place, but defining to published binaries 
+          with an independend workflow which requires an approval for each binary.  </para>
+    <section>
+      <title>Defining a channel</title>
+        <para>Channels get defined and maintained in a xml file inside of a package source. The file name of these lists must be _channel.</para>
+        <para>The file may contain a list of targets where binaries gets released to.</para>
+    </section>
+    <section>
+      <title>Using channels in maintenance workflow.</title>
+      <para>.</para>
+    </section>
+  </section>
+
 </chapter>
