@@ -165,7 +165,7 @@
       <para>The following build flags can be used to define the used build environment.</para>
       <section>
         <title>BuildFlags: vmfstype:&lt;fstype&gt;</title>
-        <para>Defines the used file system inside of VM builds.</para>
+        <para>Defines the used file system inside of VM builds. Current supported file system types are: ext2, ext3, ext4, reiserfs, btrfs, xfs</para>
       </section>
     </section>
   </section>
