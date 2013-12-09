@@ -161,6 +161,16 @@
     </section>
 
     <section>
+      <title>BuildFlags</title>
+      <para>The following build flags can be used to define the used build environment.</para>
+      <section>
+        <title>BuildFlags: vmfstype:&lt;fstype&gt;</title>
+        <para>Defines the used file system inside of VM builds.</para>
+      </section>
+    </section>
+  </section>
+   
+    <section>
       <title>Conditions</title>
       <para>The following conditions can be used to modify the config.</para>
       <section>
