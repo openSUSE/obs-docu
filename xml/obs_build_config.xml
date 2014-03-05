@@ -170,26 +170,25 @@
     </section>
   </section>
    
+  <section>
+    <title>Conditions</title>
+    <para>The following conditions can be used to modify the config.</para>
     <section>
-      <title>Conditions</title>
-      <para>The following conditions can be used to modify the config.</para>
-      <section>
-        <title>%define &lt;KEY&gt; &lt;VALUE&gt;</title>
-        <para>Defines a key with a value. This value can be used in the entire build config by using %{KEY}</para>
-      </section>
-      <section>
-        <title>%if ... %else ... %endif</title>
-        <para>Lines can become conditional using the rpm syntax. It may test one keys set by define or predefined
-              keys (%_project or %_repository).</para>
-      </section>
-      <section>
-        <title>%ifarch &lt;SCHEDULER_ARCHS&gt; ... %else ... %endif</title>
-        <para>Lines can become conditional using the rpm syntax.</para>
-      </section>
-      <section>
-        <title>%ifnarch &lt;SCHEDULER_ARCHS&gt; ... %else ... %endif</title>
-        <para>Lines can become conditional using the rpm syntax.</para>
-      </section>
+      <title>%define &lt;KEY&gt; &lt;VALUE&gt;</title>
+      <para>Defines a key with a value. This value can be used in the entire build config by using %{KEY}</para>
+    </section>
+    <section>
+      <title>%if ... %else ... %endif</title>
+      <para>Lines can become conditional using the rpm syntax. It may test one keys set by define or predefined
+            keys (%_project or %_repository).</para>
+    </section>
+    <section>
+      <title>%ifarch &lt;SCHEDULER_ARCHS&gt; ... %else ... %endif</title>
+      <para>Lines can become conditional using the rpm syntax.</para>
+    </section>
+    <section>
+      <title>%ifnarch &lt;SCHEDULER_ARCHS&gt; ... %else ... %endif</title>
+      <para>Lines can become conditional using the rpm syntax.</para>
     </section>
   </section>
    
