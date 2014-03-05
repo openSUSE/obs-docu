@@ -8,7 +8,7 @@
 ]>
 
 <chapter id="cha.obs.maintenance_setup">
-  <title>The Maintenance Support</title>
+  <title>Maintenance Support</title>
   <para>This chapter explains the setup and workflow of an maintenance update in the openSUSE way. 
         However, this should not be limited to openSUSE distribution projects but be usable anywhere
         (the entire workflow or just parts of it).
@@ -320,8 +320,8 @@
   </section>
 
   <section>
-    <title>Defining Channels</title>
-    <para>Channels are optional definitions to publish a sub-set of binaries in own repositories. They can be
+    <title>Optional Channel Setup</title>
+    <para>Channels are optional definitions to publish a sub-set of binaries into own repositories. They can be
           used to maintain a larger amount of packages in a central place, but defining to published binaries 
           with an independend workflow which requires an approval for each binary.  </para>
     <section>
@@ -331,7 +331,23 @@
     </section>
     <section>
       <title>Using channels in maintenance workflow.</title>
-      <para>.</para>
+      <para>Channel definitions for existing packages do affect incident projects. Matching channel packages get automatically branched inside
+	    and additional repositories for the channels are created. The server will build the channel package by aggregating the binary packages
+	    into the channel repositories.</para>
+      <para>The _channel files can be modified inside of the the incident project if needed. This can be necessary when binary packages get renamed or
+	added with this update. The modification will be part of the maintenance release request as simple submit actions.</para>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="maintenance_channel_project_setup.png" width="800" />
+        </imageobject>
+      </mediaobject>
+      <para>This example shows the setup where selected binary packages get released also to a defined
+            channel. The openSUSE:11.4:CryptoChannel project contains a _channel definition inside
+            of the channel package. This one gets branched as well into the incident in case a matching 
+            channel does exist. Also the additional repository gets added. The resulting binaries will
+            be transfer via a release request to the code stream project (openSUSE:11.4:Update) and the
+            special channel project.
+      </para>
     </section>
   </section>
 
