@@ -122,7 +122,12 @@
     </section>
 
     <section>
-      <title>Optflags: &lt;TARGET_ARCHITECTURE&gt; &lt;FLAGS&gt;</title>
+      <title>BuildFlags: &lt;FLAG&gt;:&lt;VALUE&gt;</title>
+      <para>To define flags for the build process. This is currently limited to the vmfstype flag, which can be used to define a specific filesystem when building inside of a VM.</para>
+    </section>
+
+    <section>
+      <title>OptFlags: &lt;TARGET_ARCHITECTURE&gt; &lt;FLAGS&gt;</title>
       <para>rpm only: Optflags exports compiler flags to the build. They will only have an effect when the spec file
             is using $RPM_OPT_FLAGS. The target architecture may be * to affect all architectures.</para>
     </section>
