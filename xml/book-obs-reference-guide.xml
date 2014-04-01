@@ -25,7 +25,6 @@
     <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   </bookinfo>
   <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <xi:include href="obs_motivation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
   <!-- basic parts -->
   <xi:include href="obs_concepts.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
