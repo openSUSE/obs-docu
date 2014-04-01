@@ -11,10 +11,6 @@ The documentation is currently split into two books:
 
 To work on this document you need to install the package "daps".
 
-Since this documentation is written in docbook, it should also work
-without this package, but we don't have documentation for this yet.
-Please provide a patch for this file in case you managed to do it ;)
-
 After editing the document validate your changes via the following 
 commands:
 
@@ -29,6 +25,10 @@ or for the best practices guide:
 html documentation can get generated via
 
  # daps html
+
+If "daps" is not available on your distribution, you can try to create a pdf with dblatex
+
+ # dblatex xml/book-obs-reference-guide.xml
 
 This document gets hosted on github 
 
