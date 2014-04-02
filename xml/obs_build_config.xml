@@ -151,7 +151,7 @@
 
     <section>
       <title>Binarytype: &lt;TYPE&gt;</title>
-      <para>(OBS 2.4 or later): Overwrite the build result format. For example a package with spec build description may generate deb packages instead of rpms.</para>
+      <para>(OBS 2.4 or later): Overwrite the binary format used to setup the build environment. For example a package with spec build description may use and generate deb packages instead of rpms. In most cases this is not need since the binarytype follows from the Type (the build type) definition.</para>
     </section>
 
     <section>
