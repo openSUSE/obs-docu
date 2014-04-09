@@ -9,6 +9,142 @@
 
 <chapter id="cha.obs.request_and_review_ystem">
   <title>Request And Review System</title>
-  <para>..</para>
-  
+  <para>The OBS comes with a generic request system where one party can ask another one do a certain action. This can be for example taking source changes, granting maintainer rights or to delete a package. The requests are also used deal with more complex workflows.</para>
+    <para>A request is an object in the database. It can be accessed via the /request api route. osc and the web interface can show and process these requests. There are also interface to show the requests which should be handled for a certain user.
+    </para>
+
+
+  <section>
+    <title>How a request looks alike</title>
+    <para>A request is an object in the database. It can be accessed via the /request api route. Main parts of the request are
+   <itemizedlist>
+     <listitem><simpara>
+     state: The state tells if the request still needs to processed or has been handled already and how.
+     </simpara></listitem>
+     <listitem><simpara>
+     actions: these are the changes which will be applied when accepting the request.
+     </simpara></listitem>
+     <listitem><simpara>
+     reviewer: reviewer can be added automatically at request creation time or manually by any involved party. Usually all of them should approve the request before it will be accepted. However, the target can ignore that and accept anyway optionally.
+     </simpara></listitem>
+     <listitem><simpara>
+     descripton: a description why the actions shall be done.
+     </simpara></listitem>
+     <listitem><simpara>
+     history: a history about state changes of the request.
+     </simpara></listitem>
+     <listitem><simpara>
+     accept_at: the request will get accepted automatically after the given time. Such a request can only be create when having write permissions in the target. Automatic cleanup requests created by Admin user are using this.
+     </simpara></listitem>
+   </itemizedlist>
+
+    A request can only be accepted entirely or not at all. Therefore it may make sense to have multiple actions in one request if changes should be applied in one transaction. For example submitting a new package and remove an old instance: Do either both or nothing.
+
+    </para>
+    <section>
+      <title>Action types</title>
+      <para>Actions do always specify some target. This can be either a project or a package. Further information depend on the action type. The following gives an overview, for details please check the xml schema for requests. </para>
+      <section>
+        <title>Submit</title>
+        <para>A submit action will transfer sources from one package to another package. Usually it refers to a certain revision in the source, but it does not has to. If no revision is specified the current revision on accept time will be used. This should be avoided when relying on complex reviews during the request process.
+        </para>
+        <para>
+          The submit action can optionally also have options to update the source or even to remove the source on accepting the request. Tools like osc are applying the cleanup rule by default when submitting from a default user home branch project.
+        </para>
+      </section>  
+      <section>
+        <title>delete</title>
+        <para>A delete action can request to remove a project or package instance.
+        </para>
+      </section>  
+      <section>
+        <title>add_role</title>
+        <para>requesting to add a specified role for a given user or group to the target. For example to
+              ask for maintainer rights. Or to become a default reviewer.</para>
+      </section>  
+      <section>
+        <title>set_bugowner</title>
+        <para>set_bugowner is similar to add_role, but removes all other bugowner roles in the target. This happens to have a uniq identifier to be used when assigning bugreports in external tools like bugzilla.</para>
+      </section>  
+      <section>
+        <title>change_devel</title>
+        <para>can be used to update the devel package information in the target.</para>
+      </section>  
+      <section>
+        <title>maintenance_incident</title>
+        <para>Official request to open a maintenance incident for official support products. This create by developers who want to start an official maintenance process. Find detail in the maintenance chapter about this. If accepted, a new maintenance incident project is created and package sources listed are copied there. All sources of all actions in one request will be merged into the same maintenance incident.</para>
+      </section>  
+      <section>
+        <title>maintenance_release</title>
+        <para>Is used to release a ready maintenance update. Unlike maintenance_incident or submit, sources and binaries are copied without a rebuild. Details can be found in maintenance chapter.</para>
+      </section>  
+      <section>
+        <title>group</title>
+        <para>Existed for some time, but never in a released OBS version. It is not allowed to be used anymore.</para>
+      </section>  
+    </section>  
+    <section>
+      <title>Request states</title>
+      <itemizedlist>
+        <listitem><simpara>
+        new: The default value for new created requests. Everybody involved in the specified targets can see the request and accept or decline it.
+        </simpara></listitem>
+        <listitem><simpara>
+        accepted: The request has been accept and the changes are applied. history files have a reference to this request.
+        </simpara></listitem>
+        <listitem><simpara>
+        declined: The request has not been accepted by the target. This may be used to ask for some more informations from the submitter, since a declined requests becomes an active request in the views of the submitter.
+        </simpara></listitem>
+        <listitem><simpara>
+        revoked: The submitter has taken back his request. The request is considered to be inactive now.
+        </simpara></listitem>
+        <listitem><simpara>
+        superseded: This request is obsolete due to a new request. The request is considered to be inactive now. The superseding request is linked in this request.
+        </simpara></listitem>
+        <listitem><simpara>
+        review: There are still open reviews inside of the request. None have declined it yet. The request is not yet visible to the target by default. The state will change automatically to new when all reviewers accept.
+        </simpara></listitem>
+      </itemizedlist>
+    </section>  
+
+    <section>
+      <title>Reviewers</title>
+      <para>Reviews can be done by users, groups, projects or packages. Review by project or package means that any maintainer of them is asked for reviews. This is handy to avoid the need to figure who actually is a maintainer of a certain package.
+      </para>
+      <section>
+        <title>Manual added reviews</title>
+        <para>Reviewers can be added manually by anyone involved in a request. This can be used to hand over a review. In that situatiation the new reviewer needs to be added and the own review needs to be accept.
+      The request becomes declined when any of the reviewers are declining the request.
+        </para>
+      </section>
+      <section>
+        <title>Automatic added reviews</title>
+        <para>Project and package objects can have users or groups with a reviewer role. They are added automatically to a request as reviwer when a request is created which has them as target. In case the project and package bother specify reviewer all of them are added to the request.
+        </para>
+      </section>
+    </section>  
+
+    <section>
+      <title>Request creation</title>
+      <para>The api is doing a number of checks on request creation time. In case a target is not specified it tries to set it according to the linked package. If an entire project is specified as source it expands it to refer all packages inside. This means it is replacing one action with multiple. When using the addrevision parameter it does also add the current revision of the package source to the action. This makes it easy to create new requests with little logic in the client.
+      </para>
+    </section>  
+
+    <section>
+      <title>Request operations</title>
+      <para>Requests can be modified only in very limited ways after creation. This is to avoid that reviewers reviewed a request but the nature of the requests is changing afterwards. Valid operations on a request are:
+      </para>
+      <itemizedlist>
+        <listitem><simpara>
+         diff: does not modify the request, just shows source modifications wanted by the request
+        </simpara></listitem>
+        <listitem><simpara>
+         changestate: to change the state of the request, for example to accept it.
+        </simpara></listitem>
+        <listitem><simpara>
+         changereviewstate: to change the state of a review inside of a request.
+        </simpara></listitem>
+      </itemizedlist>
+    </section>  
+  </section>  
 </chapter>
