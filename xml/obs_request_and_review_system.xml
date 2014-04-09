@@ -38,7 +38,7 @@
      </simpara></listitem>
    </itemizedlist>
 
-    A request can only be accepted entirely or not at all. Therefore it may make sense to have multiple actions in one request if changes should be applied in one transaction. For example submitting a new package and remove an old instance: Do either both or nothing.
+    A request can only be accepted entirely or not at all. Therefore it may make sense to have multiple actions in one request if changes should be applied in one transaction. For example submitting a new package and remove an old instance: Do either both or nothing. This means also that the request accepter needs to have write access in all targets or he will not be allow to accept the request.
 
     </para>
     <section>
