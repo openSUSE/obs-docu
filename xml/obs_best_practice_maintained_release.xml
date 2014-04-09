@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+
+<chapter id="cha.obs.best-practices.distribution-setup">
+  <title>Distribution Setup</title>
+  <para>This document describes ways to setup an entire distribution, 
+        including release management, update stack and service pack generation
+        support.</para>
+
+  <section>
+  <title>General Project setup for a maintained distribution</title>
+  <para><xref linkend="obs.glos.project_binaries"/> are the </para>
+  </section>
+
+  <section>
+  <title>Setup a project re-using other projects sources</title>
+  <para>To be written...</para>
+  </section>
+
+  <section>
+  <title>Contribute directly to foreign projects</title>
+  <para>In case a user does not have commit permissions to a project, he can request
+        to get maintainership permissions to this project. This makes sense if the user
+        is already known to the project owners and they trust him as a maintainer.
+
+        There is a way to do this via the request system of OBS, but only via osc so far:
+        
+        <screen><command># osc createrequest -a add_me maintainer PROJECT</command></screen>
+  </para>
+  </section>
+
+  <section>
+  <title>Contribute indirect to foreign projects</title>
+  <para>Users who are new to a certain project, either because they are new users at all
+        or don't have any deeper knowledge about this certain project don't have direct
+        commit permissions. However, they can still create a copy of any package source 
+        and ask back to merge their changes. &obs; has support to make this easy.
+
+       <!-- TODO: merge collaboration wiki page here, when we have this docu online -->
+
+  </para>
+
+  <!-- this should become a standard style template and added to each section. -->
+  <para>Wiki reference:
+        <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Collaboration">User comment page</ulink>
+  </para>
+
+  </section>
+
+</chapter>
