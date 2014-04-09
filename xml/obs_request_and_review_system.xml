@@ -109,7 +109,7 @@
 
     <section>
       <title>Reviewers</title>
-      <para>Reviews can be done by users, groups, projects or packages. Review by project or package means that any maintainer of them is asked for reviews. This is handy to avoid the need to figure who actually is a maintainer of a certain package.
+      <para>Reviews can be done by users, groups, projects or packages. Review by project or package means that any maintainer of them is asked for reviews. This is handy to avoid the need to figure who actually is a maintainer of a certain package. Also new maintainers of a package will see requests in case the old maintainer did not handle them.
       </para>
       <section>
         <title>Manual added reviews</title>
@@ -143,6 +143,9 @@
         </simpara></listitem>
         <listitem><simpara>
          changereviewstate: to change the state of a review inside of a request.
+        </simpara></listitem>
+        <listitem><simpara>
+         addreviewer: add further reviewer to a request
         </simpara></listitem>
       </itemizedlist>
     </section>  
