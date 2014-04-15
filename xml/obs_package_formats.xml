@@ -8,23 +8,45 @@
 ]>
 
 <chapter id="cha.obs.package_formats">
-  <title>Package Formats</title>
-  <para>OBS is written to not be package format specific. However, every new format needs support in
-        OBS. So far it does support rpm, debian, kiwi appliances and products.</para>
-  
+  <title>Package Formats </title>
+  <para>OBS differentiates between the format of the build recipes and the
+        format of the installed packages. For example, the 'spec' recipe
+        format is used to build 'rpm' packages by calling rpmbuild. In most
+        cases the build result format is the same as the package format
+        used for setting up the build environment, but sometimes the format
+        is different. An example is the 'kiwi' recipe format, which builds
+        products and isos, but uses rpm packages to setup the build process.
+  </para>
+  <para>OBS currently supports 'rpm', 'deb' (debian), 'arch' as package
+        formats and 'spec', 'dsc', 'kiwi' (both product and appliances),
+        'arch', and 'preinstallimage' as recipe formats.
+  </para>
   <section>
-    <title>Setup a format</title>
-    <para>The default format in OBS is rpm, other formats need to be specified in prjconf.</para>
+    <title>Setting up a format</title>
+    <para>If no recipe format and binary format is specified in the prjconf,
+          OBS tries to deduce them from the preinstall list, which includes
+          the name of the used package manager. This means that you need to
+          manually configure the 'kiwi' recipe config, as a 'rpm' package
+          format will select 'spec' builds as default. This configuration
+          is done by adding a 'Type' line to the project configuration.
+    </para>
   </section>
 
   <section>
-    <title>Format Specials</title>
+    <title>Recipe Specials</title>
     <para>Each format has some specials</para>
 
     <section>
-      <title>rpm</title>
-      <para>For building rpms you need a .spec file for each package, containing its build description. 
-      ...</para>
+      <title>spec</title>
+      <para>For building rpms you need a .spec file for each package,
+            containing its build description. OBS parses the spec file's
+            BuildRequires lines to get a list of package dependencies. OBS
+	    uses this information to both build the packages in the correct
+            order and also for setting up the build environment. The parser
+            understands most of rpm's macro handling, so it's possible to
+            use architecture specific BuildRequires, conditional builds
+            and other advanced rpm features.
+      </para>
     </section>
 
     <section>
