@@ -16,187 +16,172 @@
         or via webui via Project Config tab.</para>
   
   <section>
-    <title>Setup a format</title>
-    <para>The default format in OBS is rpm, other formats need to be specified in prjconf.</para>
-  </section>
-
-  <section>
-    <title>Keywords</title>
+    <title>Configuration File Syntax</title>
     <para>The build configuration is parsed by OBS in rpm style independend of the used packaging
-          format.</para>
+          format. This means that you can use rpm features like macros or conditions in the configuration.
+          All lines consist of the form 'keyword: arguments'.
+    </para>
 
     <section>
       <title>Required: &lt;PACKAGES&gt;</title>
-      <para>Required lines contain one or more packages which are needed always to start the build.
-            When these packages do change a new build of all packages get triggered automatically.</para>
+      <para>Required lines contain one or more packages that always get installed for package builds.
+            A change in one of the requires packages triggers a new build.</para>
     </section>
 
     <section>
       <title>Support: &lt;PACKAGES&gt;</title>
-      <para>Support lines contain one or more packages which are needed always to start the build.
-            However it is considered that changes in these packages do not affect other builds, therefore
-            no builds get triggered automatically.</para>
+      <para>Support lines contain one or more packages which also get installed for package builds, but
+            a change in one of the packages does not trigger an automatic rebuild. This is useful
+            for packages that most likely do not influence the build result, for example 'make',
+            or 'coreutils'.</para>
     </section>
 
     <section>
       <title>Preinstall: &lt;PACKAGES&gt;</title>
-      <para>Preinstall packages are needed to run the package installation tool. They get unpacked before
+      <para>Preinstall packages are needed to run the package installation program. They get unpacked before
             the VM gets started. Included scripts are NOT executed during this phase. However these
             packages will get installed again inside of the VM including script execution.  </para>
     </section>
 
     <section>
       <title>Keep: &lt;PACKAGES&gt;</title>
-      <para>The building package does not get installed by default, even when it is required. Keep is overwriting
-            this behaviour and lets the old build installed. It is usually needed for most preinstalled packages
-            and critical required packages at least.</para>
+      <para>To elimiate build cycles the to-be-built package is not installed by default, even when it is
+            required. Keep can be used overwrite this behaviour. It is usually needed for packages like
+            'make' that are used to build itself. Preinstalled packages are automatically kept, as
+            the package installation program needs to work all the time.</para>
     </section>
 
     <section>
       <title>VMInstall: &lt;PACKAGES&gt;</title>
-      <para>VMInstall is like Preinstall, but these packages get only installed when XEN or KVM is used.</para>
+      <para>VMInstall is like Preinstall, but these packages get only installed when a virtual machine
+            like XEN or KVM is used for building. Usually packages like 'mount' are listed here.</para>
     </section>
 
     <section>
       <title>Runscripts: &lt;PACKAGES&gt;</title>
       <para>Runscripts defines the scripts of preinstalled packages which needs to be executed directly after
-            preinstall phase, before installing the remaining packages.</para>
+            the preinstall phase, before installing the remaining packages.</para>
     </section>
 
     <section>
       <title>Order: &lt;PACKAGE_A&gt;:&lt;PACKAGE_B&gt;</title>
-      <para>The build script takes care about the installation order if they are defined via PreRequires inside
-            of the packages. However, there might be dependency loops (reported during setup of the build system).
-            The Order statement can be used then to give a hint where to break the loop. &lt;PACKAGE_A&gt; will
-            get installed before &lt;PACKAGE_B&gt;.</para>
+      <para>The build script takes care about the installation order if they are defined via dependencies
+            inside of the packages. However, there might be dependency loops (reported during setup of the
+            build system) or missing dependencies. The Order statement can be used then to give a hint where
+            to break the loop. &lt;PACKAGE_A&gt; will get installed before &lt;PACKAGE_B&gt;.</para>
     </section>
 
     <section>
-      <title>ExportFilter: &lt;GLOB&gt; &lt;ARCHITECTURES&gt;</title>
+      <title>ExportFilter: &lt;REGEXP&gt; &lt;ARCHITECTURES&gt;</title>
       <para>The export filter can be used to export build results from one architecture to others. This is 
-            required when one architecture needs packages from another one to build against.
-            The glob must match the resulting binary name of the package. It will export it to all listed
+            required when one architecture needs packages from another architector for building.
+            The regexp must match the resulting binary name of the package. It will export it to all listed
             scheduler architectures. Using a single dot will export it to the architecture which was used
             to build it. So not using a dot there will filter the package.</para>
     </section>
 
     <section>
       <title>Prefer: &lt;PACKAGES&gt;</title>
-      <para>In case multiple packages could be installed to satisfy a dependency, the OBS server will complain
-            about that situation (Unlike like most standard package installation tools, which just pick one).
-            This is done to avoid the situation that builds are not reproducable since random packages would get
-            used. The Prefer: tag lists packages to be prefered in case a choice exists. When the package name
-            is prefixed with a dash, this is a de-prefer.</para>
+      <para>In case multiple packages satisfy a dependency, the OBS system will complain about that situation.
+            This is unlike like most package managing tools, which just pick one of the package. Because
+            one of OBS' goal is to provide reproducible builds, it reports an error in this case instead
+            of chosing a random package. The Prefer: tag lists packages to be prefered in case a choice
+            exists. When the package name is prefixed with a dash, this is treated as a de-prefer.</para>
     </section>
 
     <section>
       <title>Prefer: &lt;PACKAGE_A&gt;:&lt;PACKAGES&gt;</title>
-      <para>It is possible to define the prefer only when one package is creating the choice error. This package
-             must be listed first with a colon.</para>
+      <para>It is possible to define the prefer only when one package is creating the choice error.
+            This package must be listed first with a colon.</para>
     </section>
 
     <section>
       <title>Ignore: &lt;PACKAGES&gt;</title>
-      <para>Ignore can be used to override dependencies. This can be usefull to break dependency cycles in cases
-            when a package dependency is only required in installed systems, but not required to build against this
-            package.</para>
+      <para>Ignore can be used to break dependencies. This can be usefull to reduce the number of needed
+            packages or to break cyclic dependencies. Be careful with this feature, as breaking
+            dependencies can have surprising results.</para>
     </section>
 
     <section>
       <title>Ignore: &lt;PACKAGE_A&gt;:&lt;PACKAGES&gt;</title>
-      <para>It is possible to define the ignore only for one package. This package must be listed first with a colon.</para>
+      <para>It is possible to define the ignore only for one package. This package must be listed first
+            with a colon.</para>
     </section>
 
     <section>
-      <title>FileProvides: &lt;FILE&gt; &lt;PACKAGE&gt;</title>
-      <para>Required dependendencies to files (instead of package names) are ignore by OBS by default. FileProvides
-            can be used to map a file to a certain package name. File needs to have the full path. Keep in mind
-            that some publish repository formats do not export filenames or only some of them. So installing
-            these packages may not be possible for the user.</para>
+      <title>FileProvides: &lt;FILE&gt; &lt;PACKAGES&gt;</title>
+      <para>OBS ignores dependendencies to files (instead of package names) by default. This is mostly
+            done to reduce the amount of memory needed, as the package file lists take up a
+            considerable amount of repository meta data. As a workaround, FileProvides can be used to
+            tell the systems which packages contain a file. The File needs to have the full path.</para>
     </section>
 
     <section>
-      <title>Substitute: &lt;PACKAGE_A&gt; ;&lt;PACKAGES&gt;</title>
-      <para>It is possible to replace to BuildRequires with other packages. This will have only an affect on direct
-            BuildRequired packages, not on indirect required packages.</para>
+      <title>Substitute: &lt;PACKAGE_A&gt; &lt;PACKAGES&gt;</title>
+      <para>It is possible to replace to BuildRequires with other packages. This will have only an affect
+            on directly BuildRequired packages, not on indirectly required packages.</para>
     </section>
 
     <section>
       <title>BuildFlags: &lt;FLAG&gt;:&lt;VALUE&gt;</title>
-      <para>To define flags for the build process. This is currently limited to the vmfstype flag, which can be used to define a specific filesystem when building inside of a VM.</para>
+      <para>This defines flags for the build process. The only currently supported flag is the vmfstype flag,
+            which can be used to define a specific filesystem when building inside of a VM.</para>
     </section>
 
     <section>
       <title>OptFlags: &lt;TARGET_ARCHITECTURE&gt; &lt;FLAGS&gt;</title>
-      <para>rpm only: Optflags exports compiler flags to the build. They will only have an effect when the spec file
-            is using $RPM_OPT_FLAGS. The target architecture may be * to affect all architectures.</para>
+      <para>rpm only: Optflags exports compiler flags to the build. They will only have an effect when the
+            spec file is using $RPM_OPT_FLAGS. The target architecture may be * to affect all architectures.</para>
     </section>
 
     <section>
       <title>Target: &lt;TARGET_ARCHITECTURE&gt;</title>
-      <para>rpm only: Defines the target architecture. This can be used to build for i686 on i586 schedulers for example.</para>
+      <para>rpm only: Defines the target architecture. This can be used to build for i686 on i586 schedulers
+            for example.</para>
     </section>
 
     <section>
       <title>HostArch: &lt;HOST_ARCHITECTURE&gt;</title>
-      <para>This is used for cross builds via qemu emulation. It defines the host architecture, while the scheduler architecture
-            remains the target architecture by default.</para>
+      <para>This is used for cross builds. It defines the host architecture used for building, while the
+            scheduler architecture remains the target architecture.</para>
     </section>
 
     <section>
-      <title>Repotype: &lt;TYPE&gt; &lt;HINT&gt;</title>
-      <para>Defines the repository format. Valid values are: none, rpm-md(default), rpm-md:deltainfo, rpm-md-legacy, suse, debian, hdlist2, comps.
-            To split the debug packages in an own published repository the hint splitdebug:$REPOSIORY_SUFFIX can be used.</para>
+      <title>type: &lt;TYPE&gt;</title>
+      <para>Defines the recipe format. Valid values are currently: none, spec, dsc, arch, kiwi,
+            preinstallimage. If no type is specified, OBS deduces a type from the binary type.</para>
     </section>
 
     <section>
       <title>Binarytype: &lt;TYPE&gt;</title>
-      <para>(OBS 2.4 or later): Overwrite the binary format used to setup the build environment. For example a package with spec build description may use and generate deb packages instead of rpms. In most cases this is not need since the binarytype follows from the Type (the build type) definition.</para>
+      <para>(OBS 2.4 or later): Sets the binary format used to setup the build environment. For example a
+            package with spec build description may use and generate deb packages instead of rpms.
+            If no binary type is specifed, OBS deduces it from the recipe type. If the recipe type is
+            also not set, OBS looks at the Preinstall package list for a hint.</para>
     </section>
 
     <section>
-      <title>Patterntype: rpm-md ymp: &lt;TYPES&gt;</title>
-      <para>Defines the pattern format. Valid values are: rpm-md(default), ymp.  </para>
+      <title>Repotype: &lt;TYPE[:OPTIONS]&gt; ...</title>
+      <para>Defines the repository format for pulished repositories. Valid values are: none, rpm-md,
+            suse, debian, hdlist2, arch, staticlinks. The OPTIONS parameter depends on the repository type,
+            for rpm-md the known options are 'legacy' to create the old rpm-md format, 'deltainfo' or
+            'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable gzip compression.
+            To split the debug packages in an own published repository the option
+            splitdebug:$REPOSIORY_SUFFIX can be used.</para>
+    </section>
+
+    <section>
+      <title>Patterntype: &lt;TYPES&gt;</title>
+      <para>Defines the pattern format. Valid values are: none (default), ymp, comps.  </para>
     </section>
 
     <section>
       <title>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</title>
-      <para>(OBS 2.4 or later): Define build constraints for build jobs. The selector is a collon seperated list which gets a string assigned. Please see 
-            the build job constraints page for details.</para>
+      <para>(OBS 2.4 or later): Define build constraints for build jobs. The selector is a colon seperated
+            list which gets a string assigned. Please see the build job constraints page for details.</para>
     </section>
+  </section>
 
-    <section>
-      <title>BuildFlags</title>
-      <para>The following build flags can be used to define the used build environment.</para>
-      <section>
-        <title>BuildFlags: vmfstype:&lt;fstype&gt;</title>
-        <para>Defines the used file system inside of VM builds. Current supported file system types are: ext2, ext3, ext4, reiserfs, btrfs, xfs</para>
-      </section>
-    </section>
-  </section>
-   
-  <section>
-    <title>Conditions</title>
-    <para>The following conditions can be used to modify the config.</para>
-    <section>
-      <title>%define &lt;KEY&gt; &lt;VALUE&gt;</title>
-      <para>Defines a key with a value. This value can be used in the entire build config by using %{KEY}</para>
-    </section>
-    <section>
-      <title>%if ... %else ... %endif</title>
-      <para>Lines can become conditional using the rpm syntax. It may test one keys set by define or predefined
-            keys (%_project or %_repository).</para>
-    </section>
-    <section>
-      <title>%ifarch &lt;SCHEDULER_ARCHS&gt; ... %else ... %endif</title>
-      <para>Lines can become conditional using the rpm syntax.</para>
-    </section>
-    <section>
-      <title>%ifnarch &lt;SCHEDULER_ARCHS&gt; ... %else ... %endif</title>
-      <para>Lines can become conditional using the rpm syntax.</para>
-    </section>
-  </section>
-   
   <section>
     <title>Macro Section</title>
     <para>The macro section of the build configuration starts behind a Macros: line and is only used on rpm builds. The content
