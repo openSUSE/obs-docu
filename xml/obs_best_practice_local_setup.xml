@@ -13,26 +13,24 @@
         This chapter is written for those who are not so familiar with Linux and OBS.
         So in case you are confident to setup OBS, please skip this chapter. 
         Following would be explained in this chapter.
-        <screen>
-          <command>
-        - OBS Manual setup and 1 click install in openSUSE 11.3
-        - OBS Manual setup and 1 click install in SLES11 
-        - OBS test run on Microsoft Windows using VMware player.
-           </command>
-        </screen>
+    <itemizedlist>
+        <listitem><para>OBS Manual setup and 1 click install in openSUSE 11.3;</para></listitem>
+        <listitem><para>OBS Manual setup and 1 click install in SLES11;</para></listitem>
+        <listitem><para>OBS test run on Microsoft Windows using VMware player;</para></listitem>
+        <!-- listitem><para>OBS Appliance in a Virtualbox</para></listitem -->
+    </itemizedlist>
         Unfortunately, didn't have a chance to install OBS in other Linux distribution yet.
   </para>
+
   <para>How you could install and purchase openSUSE 11.3 and SLES11 would not be explained in this chapter.
         VMware player install and purchase also wouldn't be explained.
-        For these topics, you could visit below for help.  
+        For these topics, you could visit for help:  
+    <itemizedlist>
+        <listitem><para><ulink url="http://software.opensuse.org/131/en">http://software.opensuse.org/131/en</ulink></para></listitem>
+        <listitem><para><ulink url="http://www.suse.com/products/server/">http://www.suse.com/products/server/</ulink></para></listitem>
+        <listitem><para><ulink url="http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0">http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0</ulink></para></listitem>
+    </itemizedlist>
   </para>
-        <screen>
-          <command>
-            http://software.opensuse.org/113/en
-            http://www.novell.com/products/server/
-            http://downloads.vmware.com/d/info/desktop_downloads/vmware_player/3_0            
-          </command>
-        </screen>
         
   <section>
     <title>OBS test run on Microsoft Windows using VMware player</title>
