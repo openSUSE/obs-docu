@@ -21,9 +21,8 @@
   <section>
     <title>How does a build process work</title>
     <para>All sources and binaries which are hosted inside of OBS are organized in projects.
-          You can fork/branch a project, can submit back to it, use a project as repository
-          to build your packages against them.
-    </para>
+          Projects do host in sources inside of package containers again. The sources get
+          build according to the repository configuration inside of the project.</para>
     <section>
       <title>Preinstall phase</title>
       <para>The step of this phase depends on the type of the buildroot (building environment).
