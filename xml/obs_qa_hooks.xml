@@ -10,7 +10,7 @@
 <chapter id="cha.obs.qa_hooks">
   <title>Quality Assurance(QA) Hooks</title>
   <para>OBS provides multiple hooks to place automated or manual tests at different points of time.</para>
-  <para>This chapter describes the different possibilities to provide and executre QA checks. The
+  <para>This chapter describes the different possibilities to provide and execute QA checks. The
         order of the items is sorted by the order in a typical development process. It is prefered to 
         add a check as early as possible in the process to keep turn-around times small.</para>
   
