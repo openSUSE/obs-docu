@@ -20,26 +20,57 @@
 
   <section>
     <title>How does a build process work</title>
-    <para>All sources and binaries which are hosted inside of OBS are organized in projects.</para>
-
+    <para>All sources and binaries which are hosted inside of OBS are organized in projects.
+          You can fork/branch a project, can submit back to it, use a project as repository
+          to build your packages against them.
+    </para>
     <section>
       <title>Preinstall phase</title>
-      <para>...</para>
+      <para>The step of this phase depends on the type of the buildroot (building environment).
+            OBS supports three different types buildroot:
+     <itemizedlist>
+       <listitem><simpara>
+         chroot
+       </simpara></listitem>
+       <listitem><simpara>
+         XEN
+       </simpara></listitem>
+       <listitem><simpara>
+         KVM
+       </simpara></listitem>
+     </itemizedlist>
+            In the preinstall phase the OBS Worker creates a small base system (chroot or VM Image)
+            with manually extracted packages (filesystem, coreutils, binutils,
+            rpm/debutils, etc.), copies all neccessary Buildrequirements into the
+            base system.
+</para>
     </section>
 
     <section>
       <title>Install Phase</title>
-      <para>..</para>
+      <para>Depending of the choosen buildroot the worker starts the XEN/KVM virtual maschine
+            or enters the build root. If this was successfull the Install phase reinstalls all
+            base package from above and additionally all packages you've defined in your
+            package recipe. After this phase the environment is ready to process the recipe.
+      </para>
     </section>
 
     <section>
       <title>Package build</title>
-      <para>..</para>
+      <para>Regarding the package type the buildroot executes different build commands. On RPM based
+            distributions it's called "rpmbuild". On debian-based it's "dpkg-buildpackage" and on
+            archlinux you use "pacman". Now everything depends on the quality and the type of your
+            build recipe. In most cases the source code will be compiled now and get packed into the
+            specific package format. On RPM based distributions there are additional security and
+            cleanness checks called rpmlint, which have the goal to improve the quality of the
+            packages.</para>
     </section>
 
     <section>
       <title>Post build steps</title>
-      <para>..</para>
+      <para>The generated packages are taken from the Worker get signed by the OBS Signer and are
+            published to the Repository.
+      </para>
     </section>
   </section>
    
