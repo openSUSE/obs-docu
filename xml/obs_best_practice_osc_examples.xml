@@ -120,6 +120,14 @@ osc will ask you for your credentials when you use it for the first time, and st
 		<command>
 		  osc addremove
                 </command>
+           </screen>
+           <para> Let OBS create a tar ball out of an SCM repository. This just creates or extend a _service file with some rules how to download and package sources. The actual work happens on a local build or on
+a service side build. Pleast note that you need at least the following packages installed for local runs: obs-service-tar_scm, obs-service-set_version, obs-service-recompress.
+           </para>
+	   <screen>
+		<command>
+		  osc add git://....
+                </command>
             </screen>
 	    <para> Generate a diff to view the changes
 	    </para>
