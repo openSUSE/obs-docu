@@ -342,7 +342,7 @@
         </imageobject>
       </mediaobject>
       <para>This example shows the setup where selected binary packages get released also to a defined
-            channel. The openSUSE:11.4:CryptoChannel project contains a _channel definition inside
+            channel. The openSUSE:11.4:SecurityChannel project contains a _channel definition inside
             of the channel package. This one gets branched as well into the incident in case a matching 
             channel does exist. Also the additional repository gets added. The resulting binaries will
             be transfer via a release request to the code stream project (openSUSE:11.4:Update) and the
