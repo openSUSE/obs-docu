@@ -21,6 +21,9 @@
           format. This means that you can use rpm features like macros or conditions in the configuration.
           All lines consist of the form 'keyword: arguments'.
     </para>
+    <para>
+      &lt;PACKAGES&gt; mean binary package provides, but not the full filename. For example gcc, but not gcc-1.2.3.i386.rpm. Provides of a package can not be used either.
+    </para>
 
     <section>
       <title>Required: &lt;PACKAGES&gt;</title>
