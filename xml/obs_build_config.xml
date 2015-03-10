@@ -84,6 +84,11 @@
     </section>
 
     <section>
+      <title>PublishFilter: &lt;REGEXP&gt;</title>
+      <para>The publish filter can be used limit the published binary packages in public repositories. Only packages which match the regexp will be put in exported repository.</para>
+    </section>
+
+    <section>
       <title>Prefer: &lt;PACKAGES&gt;</title>
       <para>In case multiple packages satisfy a dependency, the OBS system will complain about that situation.
             This is unlike like most package managing tools, which just pick one of the package. Because
