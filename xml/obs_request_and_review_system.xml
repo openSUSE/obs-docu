@@ -49,7 +49,7 @@
         <para>A submit action will transfer sources from one package to another package. Usually a submit request will refer to a specific revision in the source, but it does not have to. If no revision is specified, then the current revision at the time of acceptance will be used. This should be avoided when relying on complex reviews during the request process.  Hence, it is recommended to identify a specific version in your submitrequest (<command>osc submitrequest -r 42 ...</command>).
         </para>
         <para>
-          The submit action can supports options to update the source or even to remove the source. Tools like osc are applying the cleanup rule by default when submitting from a default user home branch project.
+          The submit action can support options to update the source or even to remove the source. Tools like osc are applying the cleanup rule by default when submitting from a default user home branch project.
         </para>
       </section>  
       <section>
