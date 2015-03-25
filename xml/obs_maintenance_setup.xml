@@ -323,7 +323,7 @@
     <title>Optional Channel Setup</title>
     <para>Channels are optional definitions to publish a sub-set of binaries into own repositories. They can be
           used to maintain a larger amount of packages in a central place, but defining to published binaries 
-          with an independend workflow which requires an approval for each binary.  </para>
+          with an independent workflow which requires an approval for each binary.  </para>
     <section>
       <title>Defining a channel</title>
         <para>Channels get defined and maintained in a xml file inside of a package source. The file name of these lists must be _channel.</para>

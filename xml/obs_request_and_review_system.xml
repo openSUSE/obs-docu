@@ -9,13 +9,13 @@
 
 <chapter id="cha.obs.request_and_review_ystem">
   <title>Request And Review System</title>
-  <para>The OBS comes with a generic request system where one party can ask another one do a certain action. This can be for example taking source changes, granting maintainer rights or to delete a package. The requests are also used deal with more complex workflows.</para>
-    <para>A request is an object in the database. It can be accessed via the /request api route. osc and the web interface can show and process these requests. There are also interface to show the requests which should be handled for a certain user.
+  <para>The OBS comes with a generic request system where one party can ask another to complete a certain action. This can be, for example, taking source changes, granting maintainer rights or deleting a package. Requests are also used deal with more complex workflows.</para>
+    <para>A request is an object in the database. It can be accessed via the /request api route. osc and the web interface can show and process these requests. There are also interfaces to show the requests which should be handled for a certain user.
     </para>
 
 
   <section>
-    <title>How a request looks alike</title>
+    <title>What a request looks like</title>
     <para>A request is an object in the database. It can be accessed via the /request api route. Main parts of the request are
    <itemizedlist>
      <listitem><simpara>
@@ -28,39 +28,39 @@
      reviewer: reviewer can be added automatically at request creation time or manually by any involved party. Usually all of them should approve the request before it will be accepted. However, the target can ignore that and accept anyway optionally.
      </simpara></listitem>
      <listitem><simpara>
-     descripton: a description why the actions shall be done.
+     descripton: an explanation of why the actions should be done.
      </simpara></listitem>
      <listitem><simpara>
      history: a history about state changes of the request.
      </simpara></listitem>
      <listitem><simpara>
-     accept_at: the request will get accepted automatically after the given time. Such a request can only be create when having write permissions in the target. Automatic cleanup requests created by Admin user are using this.
+     accept_at: the request will get accepted automatically after the given time. Such a request can only be created when having write permissions in the target. Automatic cleanup requests created by Admin user are using this.
      </simpara></listitem>
    </itemizedlist>
 
-    A request can only be accepted entirely or not at all. Therefore it may make sense to have multiple actions in one request if changes should be applied in one transaction. For example submitting a new package and remove an old instance: Do either both or nothing. This means also that the request accepter needs to have write access in all targets or he will not be allow to accept the request.
+    Each request can only be accepted entirely or not at all. Therefore it may make sense to have multiple actions in one request if changes should be applied in one transaction. For example submitting a new package and removing an old instance: Do either both or nothing. This implies that the person accepting the request must have write access in all targets or he will not be allowed to accept the request.
 
     </para>
     <section>
       <title>Action types</title>
-      <para>Actions do always specify some target. This can be either a project or a package. Further information depend on the action type. The following gives an overview, for details please check the xml schema for requests. </para>
+      <para>Actions always specify some target. This can be either a project or a package. Further information depend on the action type. The following gives an overview, for details please check the xml schema for requests. </para>
       <section>
         <title>Submit</title>
-        <para>A submit action will transfer sources from one package to another package. Usually it refers to a certain revision in the source, but it does not has to. If no revision is specified the current revision on accept time will be used. This should be avoided when relying on complex reviews during the request process.
+        <para>A submit action will transfer sources from one package to another package. Usually a submit request will refer to a specific revision in the source, but it does not have to. If no revision is specified, then the current revision at the time of acceptance will be used. This should be avoided when relying on complex reviews during the request process.  Hence, it is recommended to identify a specific version in your submitrequest (<command>osc submitrequest -r 42 ...</command>).
         </para>
         <para>
-          The submit action can optionally also have options to update the source or even to remove the source on accepting the request. Tools like osc are applying the cleanup rule by default when submitting from a default user home branch project.
+          The submit action can supports options to update the source or even to remove the source. Tools like osc are applying the cleanup rule by default when submitting from a default user home branch project.
         </para>
       </section>  
       <section>
         <title>delete</title>
-        <para>A delete action can request to remove a project or package instance.
+        <para>A delete action can request removal of a project or package instance.
         </para>
       </section>  
       <section>
         <title>add_role</title>
-        <para>requesting to add a specified role for a given user or group to the target. For example to
-              ask for maintainer rights. Or to become a default reviewer.</para>
+        <para>An add_role requests a specific role for a given user or group to the target. For example, one could use this to
+              ask for maintainer rights, or to become a default reviewer.</para>
       </section>  
       <section>
         <title>set_bugowner</title>
@@ -80,20 +80,20 @@
       </section>  
       <section>
         <title>group</title>
-        <para>Existed for some time, but never in a released OBS version. It is not allowed to be used anymore.</para>
+        <para>Deprecated.  Was never in a released OBS version. It is not allowed to be used anymore.</para>
       </section>  
     </section>  
     <section>
       <title>Request states</title>
       <itemizedlist>
         <listitem><simpara>
-        new: The default value for new created requests. Everybody involved in the specified targets can see the request and accept or decline it.
+        new: The default value for newly created requests. Everybody involved in the specified targets can see the request and accept or decline it.
         </simpara></listitem>
         <listitem><simpara>
-        accepted: The request has been accept and the changes are applied. history files have a reference to this request.
+        accepted: The request has been accepted and the changes applied. history files have a reference to this request.
         </simpara></listitem>
         <listitem><simpara>
-        declined: The request has not been accepted by the target. This may be used to ask for some more informations from the submitter, since a declined requests becomes an active request in the views of the submitter.
+        declined: The request has been reviewed and not (yet) been accepted by the target. This is often used to ask for some more information from the submitter, since a declined requests remains an active, returnng to the submitter's active request queue (i.e. the submitter will need to take action now).
         </simpara></listitem>
         <listitem><simpara>
         revoked: The submitter has taken back his request. The request is considered to be inactive now.
@@ -102,7 +102,7 @@
         superseded: This request is obsolete due to a new request. The request is considered to be inactive now. The superseding request is linked in this request.
         </simpara></listitem>
         <listitem><simpara>
-        review: There are still open reviews inside of the request. None have declined it yet. The request is not yet visible to the target by default. The state will change automatically to new when all reviewers accept.
+        review: There are still open reviews inside of the request. Nobody has declined it yet. The request is not yet visible to the target by default. The state will change automatically to new when all reviewers accept.
         </simpara></listitem>
       </itemizedlist>
     </section>  
