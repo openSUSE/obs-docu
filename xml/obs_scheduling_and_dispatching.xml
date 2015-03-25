@@ -19,7 +19,7 @@ The assignment of a build job to a concrete build host (aka worker) is called di
     <para>A build process is calculated and executed based on the following</para>
 <itemizedlist>
     <listitem><simpara>
-      The sources of a package defined which dependencies are required at build time. eg. "BuildRequire:" 
+      The sources of a package defined which dependencies are required at build time. eg. <parameter>BuildRequires</parameter> 
       lines in spec files defined which other packages must get installed to build a package
     </simpara></listitem>
     <listitem><simpara>
