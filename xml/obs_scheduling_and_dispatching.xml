@@ -40,7 +40,7 @@ The assignment of a build job to a concrete build host (aka worker) is called di
 
   <section>
     <title>Scheduling strategies</title>
-    <para>The defaults have the goal to create an always reproducable state. This may lead to more builds
+    <para>The defaults have the goal to create an always reproducible state. This may lead to more builds
 then practical necessary, but ensures that no hidden incompabilities between packages exist and also that
 the state can be achieved later again. This can also lead to multiple builds of the same package in case dependency loops.</para>
     <para>In some setups this may not be wanted, so each repository can be configured in a different way.
