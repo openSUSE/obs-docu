@@ -28,7 +28,7 @@
     <title>hostlabel</title>
     <para>The hostlabel is any string which can be assigned to build hosts when starting the bs_worker
           process. It can be used to run on specific hosts, which may be used for running benchmarks
-          in a reproducable way. This constraints does also support to be defined as a negative definition
+          in a reproducible way. This constraints does also support to be defined as a negative definition
           via the exclude=true attribute. However, the hostlabel is always specific to one OBS instance. You should avoid it as much as possible, since building with this constraint in another instance is usually not possible. Use any of the other constraints if possible.</para>
     <para>Example for _constraints file:
       <screen><command>&lt;constraints exclude=&quot;false&quot;&gt;
