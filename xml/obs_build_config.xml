@@ -17,7 +17,7 @@
   
   <section>
     <title>Configuration File Syntax</title>
-    <para>The build configuration is parsed by OBS in rpm style independend of the used packaging
+    <para>The build configuration is parsed by OBS in rpm style independent of the used packaging
           format. This means that you can use rpm features like macros or conditions in the configuration.
           All lines consist of the form 'keyword: arguments'.
     </para>

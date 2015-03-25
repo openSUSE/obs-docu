@@ -32,7 +32,7 @@ The assignment of a build job to a concrete build host (aka worker) is called di
     <listitem><simpara>
       Constraints regarding the worker are considered. A package may require certain amount of 
       resources or specific features to build. Please check the constraints chapter for details.
-      However, apart from this the build should be independend of the concrete worker where
+      However, apart from this the build should be independent of the specific worker where
       the job gets dispatched to.
     </simpara></listitem>
 </itemizedlist>
