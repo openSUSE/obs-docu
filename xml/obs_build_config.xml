@@ -93,7 +93,7 @@
       <para>In case multiple packages satisfy a dependency, the OBS system will complain about that situation.
             This is unlike like most package managing tools, which just pick one of the package. Because
             one of OBS' goal is to provide reproducible builds, it reports an error in this case instead
-            of chosing a random package. The Prefer: tag lists packages to be prefered in case a choice
+            of chosing a random package. The Prefer: tag lists packages to be preferred in case a choice
             exists. When the package name is prefixed with a dash, this is treated as a de-prefer.</para>
     </section>
 
