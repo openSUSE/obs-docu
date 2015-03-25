@@ -40,22 +40,24 @@ The assignment of a build job to a concrete build host (aka worker) is called di
 
   <section>
     <title>Scheduling strategies</title>
-    <para>The defaults have the goal to create an always reproducible state. This may lead to more builds
-then practical necessary, but ensures that no hidden incompabilities between packages exist and also that
-the state can be achieved later again. This can also lead to multiple builds of the same package in case dependency loops.</para>
+    <para>The defaults have the goal of creating an always reproducible state. This may lead to more builds
+then practically necessary, but ensures that no hidden incompabilities exist between packages and also that
+the same state can later be achieved again (with a subsequent rebuild of the same sources and configurations).
+This can also lead to multiple builds of the same package in the case of dependency loops.</para>
     <para>In some setups this may not be wanted, so each repository can be configured in a different way.
-The usual options to modify the project meta configurations can be used to configure different startegies.
+The usual options to modify the project meta configurations can be used to configure different strategies.
 For example using osc:
 	 <screen><command>
 	 osc meta prj -e YOUR_PROJECT
 	 </command></screen>
 	A repository is configured as following by default, however only the name attribute is required to be set.
-	 <screen>
-	 # Example
-	 &lt;repository name="standard" rebuild="transitive" block="all" linkedbuild="off"&gt;
+	 <computeroutput>
+         <![CDATA[# Example
+	 <repository name="standard" rebuild="transitive" block="all" linkedbuild="off">
 	     ...
-	 &lt;/repository&gt;
-	 </screen>
+	 </repository>
+         ]]>
+	 </computeroutput>
     </para>
 
     <section>
@@ -63,19 +65,30 @@ For example using osc:
 
       <para>
 	The build trigger setting can be set via the "rebuild" attribute. Possible  settings are
-	<itemizedlist>
-	    <listitem><simpara>
-	      '''transitive''': The default behaviour, do a clean build of all depending packages
-	    </simpara></listitem>
-	    <listitem><simpara>
-	   '''direct''': Just build the package with changed sources and direct depending packages. But not indirect depending packages.
-	    </simpara></listitem>
-	    <listitem><simpara>
-	      '''local''': Just build packages with changed sources.
-	    </simpara></listitem>
-	</itemizedlist>
+	<variablelist>
+	    <varlistentry>
+                <term>transitive</term>
+                <listitem>
+                  <para>The default behaviour, do a clean build of all depending packages</para>
+                </listitem>
+	    </varlistentry>
+	    <varlistentry>
+                <term>direct</term>
+                <listitem>
+	          <para>Just build the package with changed sources and direct depending packages. But not indirect depending packages.</para>
+                </listitem>
+	    </varlistentry>
+	    <varlistentry>
+                <term>local</term>
+                <listitem>
+	          <para>Just build packages with changed sources.</para>
+                </listitem>
+	    </varlistentry>
+	</variablelist>
 
-	Note: You can run into dependency problems in case you select "direct" or "local" without noticing this in the build state. Your packages might not even be installable or have random runtime errors (like not starting up or crashing applications), even when they claim to be "succeeded". You can also not be sure that you will be able to re-build them later. So never do a official shipment with this setting of a release.
+        <note>
+	<para>Note: You can run into dependency problems in case you select <parameter>direct</parameter> or <parameter>local</parameter> without noticing this in the build state. Your packages might not even be installable or have random runtime errors (like not starting up or crashing applications), even when they claim to be "succeeded". Also, you cannot be sure that you will be able to re-build them later. So never do a official shipment with this setting of a release.  This knob is exposed to allow deliberate suppression of the strictly reproducible builds (for example, to limit burning CPU unnecessarily).</para>
+        </note>
       </para>
     </section>
 
@@ -84,19 +97,31 @@ For example using osc:
       <para>
 
 	Usually the build of a package gets blocked when a package required to build it is still building atm. The "block" attribute can modify this behaviour:
-	<itemizedlist>
-	    <listitem><simpara>
-	      '''all''': The default behaviour, don't start the build if a depending package is currently building.
-	    </simpara></listitem>
-	    <listitem><simpara>
-	      '''local''': Just care about packages in your project for the block mode.
-	    </simpara></listitem>
-	    <listitem><simpara>
-	      '''never''': Never set a package to blocked.
-	    </simpara></listitem>
-	</itemizedlist>
+	<variablelist>
+            <varlistentry>
+	        <term>all</term>
+	        <listitem>
+                  <para>The default behaviour, don't start the build if a depending package is currently building.</para>
+	        </listitem>
+            </varlistentry>
+            <varlistentry>
+	        <term>local</term>
+	        <listitem>
+                  <para>Just care about packages in your project for the block mode.</para>
+	        </listitem>
+            </varlistentry>
+            <varlistentry>
+	        <term>never</term>
+	        <listitem>
+                  <para>Never set a package to blocked.</para>
+	        </listitem>
+            </varlistentry>
+	</variablelist>
 
-	Note: When using something else then "all" you will have to deal with a number of problems:
+	<note>
+          <para>
+          Note: When using something else then "all" you will have to deal with a number of problems:
+          </para>
 	<itemizedlist>
 	    <listitem><simpara>
 		Intermediate builds can have dependency and runtime problems.
@@ -105,6 +130,7 @@ For example using osc:
 		Your packages will get built more often, take more resources on the server side. As a result the dispatcher will rate your repository down.
 	    </simpara></listitem>
 	</itemizedlist>
+        </note>
       </para>
     </section>
 
@@ -112,17 +138,26 @@ For example using osc:
       <title>Follow Project Links</title>
 
       <para>
-	<itemizedlist>
-	    <listitem><simpara>
-	      '''off''': DEFAULT: do not build packages from project links
-	    </simpara></listitem>
-	    <listitem><simpara>
-	      '''localdep''': only build project linked packages if they depend on a local package
-	    </simpara></listitem>
-	    <listitem><simpara>
-	      '''all''': treat packages from project links like local packages
-	    </simpara></listitem>
-	</itemizedlist>
+	<variablelist>
+            <varlistentry>
+                <term>off</term>
+	        <listitem>
+	          <para>DEFAULT: do not build packages from project links</para>
+	        </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>localdep</term>
+	        <listitem>
+	          <para>only build project linked packages if they depend on a local package</para>
+	        </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>all</term>
+	        <listitem>
+	          <para>treat packages from project links like local packages</para>
+	        </listitem>
+            </varlistentry>
+	</variablelist>
       </para>
     </section>
 
