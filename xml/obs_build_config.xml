@@ -48,7 +48,7 @@
 
     <section>
       <title>Keep: &lt;PACKAGES&gt;</title>
-      <para>To elimiate build cycles the to-be-built package is not installed by default, even when it is
+      <para>To eliminate build cycles the to-be-built package is not installed by default, even when it is
             required. Keep can be used overwrite this behaviour. It is usually needed for packages like
             'make' that are used to build itself. Preinstalled packages are automatically kept, as
             the package installation program needs to work all the time.</para>
