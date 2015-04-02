@@ -153,6 +153,16 @@
     </section>
 
     <section>
+      <title>Type: &lt;TYPE&gt;</title>
+      <para>Build recepie type. This is the format of the file which provides the build description. This gets usually autodetected, but in some rare cases it can be set here to either one of these: spec, dsc, kiwi, livebuild, arch, preinstallimage</para>
+    </section>
+
+    <section>
+      <title>BinaryType: &lt;TYPE&gt;</title>
+      <para>Binary type. This is the format of the files which will be the result of the build jobs. This gets usually set depending on the build recepie type. In some situations, for example a kiwi build job result gets converted into an rpm, it can be used to overwrite it. Possible values are: rpm, deb or none</para>
+    </section>
+
+    <section>
       <title>Target: &lt;TARGET_ARCHITECTURE&gt;</title>
       <para>rpm only: Defines the target architecture. This can be used to build for i686 on i586 schedulers
             for example.</para>
