@@ -137,6 +137,16 @@
     </section>
 
     <section>
+      <title>BuildEngine: &lt;ENGINE&gt;</title>
+      <para>Use an alternative build engine. This is still chained inside of the build script 
+            for security reasons. Alternatives are mock (for Fedora and RedHat) and debootstrap (for
+            Debian). This will avoid differences in the build environment setup, but it will also
+            have an effect on speed and reduced features. It should only be used when you want
+            to emulate the distribution build.
+           </para>
+    </section>
+
+    <section>
       <title>OptFlags: &lt;TARGET_ARCHITECTURE&gt; &lt;FLAGS&gt;</title>
       <para>rpm only: Optflags exports compiler flags to the build. They will only have an effect when the
             spec file is using $RPM_OPT_FLAGS. The target architecture may be * to affect all architectures.</para>
