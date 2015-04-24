@@ -98,6 +98,16 @@
     </section>
 
     <section>
+      <title>serveronly Mode</title>
+      <para>The serviceonly mode is running the service on the service only. This can be usefull, when the service is not available or can not work on developer workstations.</para>
+    </section>
+
+    <section>
+      <title>buildtime Mode</title>
+      <para>The service is running inside of the build job, for local and server side builds. A side effect is that the service package is becoming a build dependency and must be available. Every user can provide and use a service this way in their projects. The generated sources are not part of the source repository, but part of the generated source packages. Network access is not be available when the workers are running in a secure mode.</para>
+    </section>
+
+    <section>
       <title>disabled Mode</title>
       <para>The disabled mode is neither running the service locally or on the server side. It can be used to temporarily disable the service
             but keeping the definition as part of the service definition. Or it can be used to define the way how to generate the sources and
