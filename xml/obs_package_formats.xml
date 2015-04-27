@@ -19,7 +19,7 @@
   </para>
   <para>OBS currently supports 'rpm', 'deb' (debian), 'arch' as package
         formats and 'spec', 'dsc', 'kiwi' (both product and appliances),
-        'arch', and 'preinstallimage' as recipe formats.
+        'arch', 'preinstallimage' and 'simpleimage' as recipe formats.
   </para>
   <section>
     <title>Setting up a format</title>
@@ -100,6 +100,46 @@ $PACKAGE.dsc
       <title>kiwi product</title>
       <para>...</para>
     </section>
+
+   <section>
+      <title>simpleimage</title>
+      <para>This format can be used to get simple rootfs tarball or squashfs
+            image. It doesn't contain bootloader nor kernel. For advanced
+	    features, use kiwi. Use simpleimage for simple rootfs 
+	    tarball/squashfs image of any distribution that is supported by
+	    OBS but doesn't have anything fancier than that.
+      </para>
+      <para>Simple image uses similar syntax as spec file. Supported tags
+            include Name, Version and BuildRequires which is the way how to
+	    specify list of packages to include. #!BuildIgnore can be also used.
+	    For additional customization %build phase is supported - run via
+	    bash. RPM macros are not supported, but $SRCDIR shell variable is
+	    available.
+      </para>
+      <section>
+        <title>Example</title>
+        <screen> 
+          <command> 
+	    Name:           example-image
+            Version:        1.0
+            BuildRequire:   emacs
+            #!BuildIgnore:  gcc-c++
+
+            %build
+	    # Set root password
+            passwd << EOF
+            opensuse
+            opensuse
+            EOF
+
+	    # Enable ssh
+	    systemctl enable sshd
+
+          </command> 
+        </screen> 
+      </section>
+    </section>
+
   </section>
-   
+
 </chapter>
