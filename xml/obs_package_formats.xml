@@ -120,20 +120,20 @@ $PACKAGE.dsc
         <title>Example</title>
         <screen> 
           <command> 
-	    Name:           example-image
-            Version:        1.0
-            BuildRequire:   emacs
-            #!BuildIgnore:  gcc-c++
+Name:           example-image
+Version:        1.0
+BuildRequire:   emacs
+#!BuildIgnore:  gcc-c++
 
-            %build
-	    # Set root password
-            passwd << EOF
-            opensuse
-            opensuse
-            EOF
+%build
+# Set root password
+passwd &lt;&lt; EOF
+opensuse
+opensuse
+EOF
 
-	    # Enable ssh
-	    systemctl enable sshd
+# Enable ssh
+systemctl enable sshd
 
           </command> 
         </screen> 
