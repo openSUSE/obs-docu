@@ -142,7 +142,18 @@
             for security reasons. Alternatives are mock (for Fedora and RedHat) and debootstrap (for
             Debian). This will avoid differences in the build environment setup, but it will also
             have an effect on speed and reduced features. It should only be used when you want
-            to emulate the distribution build.
+            to emulate the distribution build. debbuild enginge will build deb files out of a 
+            spec file description. It can be used by the following definition inside of the
+            projet build config:
+           <screen><command>
+Repotype: debian
+Type: spec
+Binarytype: deb
+BuildEngine: debbuild
+Support: pax
+Support: debbuild
+Keep: debbuild
+           </command></screen>
            </para>
     </section>
 

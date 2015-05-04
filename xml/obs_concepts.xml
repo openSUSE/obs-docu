@@ -11,11 +11,13 @@
 
 <chapter id="cha.obs.concepts">
   <title>OBS Concepts</title>
-  <para>..</para>
+  <para>We describe here the high level concepts how &obs; is designed, manages it's content and is supposed to work.</para>
   
   <section>
     <title>Project organization</title>
-    <para>All sources and binaries which are hosted inside of OBS are organized in projects.</para>
+    <para>All sources and binaries which are hosted inside of OBS are organized in projects. 
+          A project is the container defining a larger task. It defines who is working there
+           </para>
 
     <section>
       <title>Project meta data</title>

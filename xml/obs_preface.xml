@@ -10,7 +10,7 @@
 <preface>
   <title>About this Guide</title>
   <para>This book is part of the official &obs; documentation. These books are
-        considered to be reviewed and edited to be the reference documentation of &obsa;.</para>
+        considered to contain only reviewed content, establishing the reference documentation of &obsa;.</para>
   <para>These books are not considered to be focused on a special &obsa; version. They
         are also not a replacement of the documentation inside of the openSUSE wiki. But
         content from the wiki may get consolidated and included in these books.</para>
