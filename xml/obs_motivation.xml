@@ -22,7 +22,7 @@
     copy, distribute, study, change and improve it. The source code and the developers are on
     <ulink url="https://github.com/openSUSE/open-build-service">github</ulink>.
   </para>
-  
+
   <section>
     <title>Goals of the OBS</title>
     <para>
@@ -50,14 +50,13 @@
 	from scratch each time and once the build succeeds it also rebuilds all the dependent software. This ensures that
 	changes propagate throughout the entire stack and that users get a consistent product to install. Reproducibility
 	is especially needed if the delivered software stack consists of a lot of parts that have functional dependencies.
-	Because if something is reproducible, it is predictable, and that is what projects and ISVs aims for. If you can
-	predict how each of the software packages within you GNU/Linux distribution influences each other, you can make sure
+	Because if something is reproducible, it is predictable, and that is what projects and ISVs aim for. If you can
+	predict how each of the software packages within your GNU/Linux distribution influences the other, you can make sure
 	that if you change one of them, the whole thing still works as expected.
         The OBS also has collaboration among developers baked-in to its structure and workflows, which helps projects and 
         ISVs to harness the power of the open source development model.
       </para>
     </section>
-
 
     <section>
       <title>Easy access to software for users</title>
@@ -79,7 +78,7 @@
 	From building packages on workstations over autobuild to OBS.
     </para>
   </section>
-   
+
   <section>
     <title>Future of the OBS</title>
     <para>
