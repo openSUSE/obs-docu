@@ -30,9 +30,9 @@ If "daps" is not available on your distribution, you can try to create a pdf wit
 
  # dblatex xml/book-obs-reference-guide.xml
 
-This document gets hosted on github 
+This document gets hosted on github
 
-  https://github.com/openSUSE/open-build-service-documentation
+  https://github.com/openSUSE/obs-docu
 
 So the standard github work-flow with forked repositories and pull requests
 can be used to contribute to these books.
