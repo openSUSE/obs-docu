@@ -138,6 +138,8 @@
     <para>...</para>
   </section>
 
+  <xi:include href="obs_concepts_dod.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
   <section>
     <title>Attribute System</title>
     <para>...</para>

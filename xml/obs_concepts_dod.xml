@@ -1,0 +1,118 @@
+  <section>
+    <title>Download on Demand Projects (DoD)</title>
+    <para>In a DoD project external software repositories can be configured 
+          which should be used for dependency resolution and where package can be
+          downloaded at the build time. A DoD project has some main advantages in comparison
+          to binary import projects:
+
+            <itemizedlist>
+            <listitem><simpara>
+              less disk usage as only really required packages are download
+            </simpara></listitem>
+            <listitem><simpara>
+              automatic package updates when new upstream releases are availible
+            </simpara></listitem>
+            <listitem><simpara>
+              simple to configure in project meta without need of shell access to repo servers
+            </simpara></listitem>
+            </itemizedlist>
+          The bs_dodup daemon periodically checks for new meta data in remote repositories.
+          
+          This daemon can be enabled for startup with the command
+          <screen>
+            systemctl enable obsdodup.service
+          </screen>
+ 
+          and can be started with
+
+          <screen>
+            systemctl start obsdodup.service
+          </screen>
+
+          All cached data (meta data and packages will be stored in $BSConfig::bsdir/dods 
+          (default for $BSConfig::bsdir is "/srv/obs")
+    </para>
+    <section>  
+      <title>Examples:</title>
+      <para>
+      </para> 
+      <section>
+        <title>RPM sources (rpmmd)</title>
+        <para>
+          The master entry defines the url to the original source of the repository 
+          and be defined as https and a given ssl fingerprint, so we can check if repo data is valid.
+          The download url can be a mirror as we validate package checksums found in repo data.
+        </para>
+        <para>
+          <screen><![CDATA[
+<project name="Fedora:Rawhide">
+
+  ...
+
+  <repository name="standard">
+    <download arch="x86_64" url="http://mirror.example.org/fedora/rawhide/x86_64/os" repotype="rpmmd">
+      <master url="https://master.example.org/whereever/fedora/rawhide/x86_64/os" sslfingerprint="sha256:0a64..0303"/>
+    </download>
+    <download arch="i586" url="http://mirror.example.org/fedora/rawhide/i386/os" repotype="rpmmd">
+      <master url="https://master.example.org/whereever/fedora/rawhide/i386/os" sslfingerprint="sha256:0a64..0303"/>
+    </download>
+    <arch>x86_64</arch>
+    <arch>i586</arch>
+  </repository>
+</project>
+          ]]></screen>
+        </para>
+        <para>
+          You can easily query the ssl fingerprint of a remote server by calling the folloing command:
+        <screen><![CDATA[
+openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout -in /dev/stdin ]]>
+        </screen>
+        </para>
+      </section>
+      <section>
+        <title>Apt Sources</title>
+        <para>
+          <screen><![CDATA[
+<project name="Debian:8">
+
+  ...
+
+  <repository name="update">
+    <download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie-updates/main" repotype="deb"/>
+    <download arch="i586" url="http://ftp.de.debian.org/debian/jessie-updates/main" repotype="deb"/>
+    <path project="Debian:7" repository="ga"/>
+    <arch>x86_64</arch>
+    <arch>i586</arch>
+  </repository>
+  <repository name="ga">
+    <download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb"/>
+    <download arch="i586" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb"/>
+    <arch>x86_64</arch>
+    <arch>i586</arch>
+  </repository>
+</project>
+          ]]></screen>
+        </para>
+      </section>
+      <section>
+        <title>Arch Sources</title>
+        <para>
+        In Arch repositories we have no chance to validate packages. Please be aware that this might be insecure.
+          <screen><![CDATA[
+<project name="Arch:Core">
+  
+  ...
+  
+  <repository name="standard">
+    <download arch="x86_64" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/x86_64" repotype="arch"/>
+    <download arch="i586" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/i686" repotype="arch"/>
+    <arch>x86_64</arch>
+    <arch>i586</arch>
+  </repository>
+</project>
+          ]]></screen>
+        </para>
+      </section>
+    </section>
+  </section>
+
