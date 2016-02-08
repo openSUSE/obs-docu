@@ -63,7 +63,7 @@
           ]]></screen>
         </para>
         <para>
-          You can easily query the ssl fingerprint of a remote server by calling the folloing command:
+          You can easily query the ssl fingerprint of a remote server by calling the following command:
         <screen><![CDATA[
 openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout -in /dev/stdin ]]>
         </screen>
