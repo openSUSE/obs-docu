@@ -21,6 +21,10 @@
         <firstname>Adrian</firstname>
         <surname>Schröter</surname>
       </author>
+      <author>
+        <firstname>Frank</firstname>
+        <surname>Schreiner</surname>
+      </author>
     </authorgroup>
     <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   </bookinfo>
@@ -57,4 +61,3 @@
   <xi:include href="obs_work_on_these_books.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <xi:include href="legal.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </book>
-  
