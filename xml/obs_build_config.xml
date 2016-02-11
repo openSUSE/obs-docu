@@ -132,8 +132,15 @@
 
     <section>
       <title>BuildFlags: &lt;FLAG&gt;:&lt;VALUE&gt;</title>
-      <para>This defines flags for the build process. The only currently supported flag is the vmfstype flag,
-            which can be used to define a specific filesystem when building inside of a VM.</para>
+      <para>This defines flags for the build process. The following values for FLAG are usable.</para>
+      <itemizedlist>
+        <listitem><simpara>
+          <parameter>vmfstype:</parameter> Defines a specific filesystem when building inside of a VM.
+        </simpara></listitem>
+        <listitem><simpara>
+          <parameter>kiwiprofile:</parameter> builds the selected profile in kiwi appliance builds.
+        </simpara></listitem>
+      </itemizedlist>
     </section>
 
     <section>
