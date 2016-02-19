@@ -276,7 +276,7 @@
     Now you will see the Download on Demand form (in this case for the
     "standard" repository), just fill it with the data needed (see more info
     about it
-    <ulink url="http://g4.suse.de/obs-docu/build/obs-reference-guide/html/obs-reference-guide/cha.obs.concepts.html#idm140458398045872">here</ulink>)
+    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">here</ulink>)
     and press the "Add Download on Demand" button which is located at bottom
     side of the form:
    </para>
