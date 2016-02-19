@@ -14,7 +14,8 @@
 -->
 <legalnotice>
  <para>
-  Copyright &copy; 2006&ndash;<?dbtimestamp format="Y"?>
+  Copyright &copy; 2006&ndash;
+<?dbtimestamp format="Y"?>
   Novell, Inc. and contributors. All rights reserved.
  </para>
  <para>

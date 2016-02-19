@@ -1,37 +1,42 @@
-  <section>
-    <title>Download on Demand Projects (DoD)</title>
-    <section>
-      <title>Motivation</title>
-      <para>
-        In a DoD project external software repositories can be configured 
-        which are used for dependency resolution and where packages can be
-        downloaded at build time. A DoD project has some main advantages in comparison
-        to binary import projects:
-      </para>
-
-      <itemizedlist>
-      <listitem><simpara>
+<section>
+ <title>Download on Demand Projects (DoD)</title>
+ <section>
+  <title>Motivation</title>
+  <para>
+   In a DoD project external software repositories can be configured which
+   are used for dependency resolution and where packages can be downloaded
+   at build time. A DoD project has some main advantages in comparison to
+   binary import projects:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <simpara>
         less disk usage as only really required packages will be downloaded
-      </simpara></listitem>
-      <listitem><simpara>
+      </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
         automatic package updates when new upstream releases are availible
-      </simpara></listitem>
-      <listitem><simpara>
+      </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
         simple to configure in project meta without need of shell access to repo servers
-      </simpara></listitem>
-      </itemizedlist>
-      <para>
-        In download repotype's where package checksums can be verified (e.g. susetags, rpmmd and deb), 
-        it`s recommended to
-        use a mirror server url in &lt;download&gt; in order to reduce traffic on the master server
-        and configure a &lt;master&gt; with an <command>https</command> url and a 
-        <command>sslfinger</command> in order to avoid man in the middle attacks by peer verification.
-      </para>
-
-    </section>
-    <section>
-      <title>XML Document Hirarchy</title>
-      <screen><![CDATA[
+      </simpara>
+   </listitem>
+  </itemizedlist>
+  <para>
+   In download repotype's where package checksums can be verified (e.g.
+   susetags, rpmmd and deb), it`s recommended to use a mirror server url in
+   &lt;download&gt; in order to reduce traffic on the master server and
+   configure a &lt;master&gt; with an <command>https</command> url and a
+   <command>sslfinger</command> in order to avoid man in the middle attacks
+   by peer verification.
+  </para>
+ </section>
+ <section>
+  <title>XML Document Hirarchy</title>
+<screen><![CDATA[
 <project>
   <repository>
     <download>
@@ -41,90 +46,103 @@
   </repository>
 </project>
       ]]></screen>
-    </section>
-    <section>
-      <title>The Daemon</title>
-      <para>
-          The bs_dodup daemon periodically checks for new meta data in remote repositories.
-          
-          This daemon can be enabled for startup with the command
-          <screen>
+ </section>
+ <section>
+  <title>The Daemon</title>
+  <para>
+   The bs_dodup daemon periodically checks for new meta data in remote
+   repositories. This daemon can be enabled for startup with the command
+<screen>
             systemctl enable obsdodup.service
           </screen>
- 
-          and can be started with
-
-          <screen>
+   and can be started with
+<screen>
             systemctl start obsdodup.service
           </screen>
-      </para>
-    </section>
-    <section>
-      <title>The &lt;download&gt; element</title>
-      <para>
-        mandatory attributes:
-            <itemizedlist>
-            <listitem><simpara>
+  </para>
+ </section>
+ <section>
+  <title>The &lt;download&gt; element</title>
+  <para>
+   mandatory attributes:
+   <itemizedlist>
+    <listitem>
+     <simpara>
               arch
-            </simpara></listitem>
-            <listitem><simpara>
+            </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
               url
-            </simpara></listitem>
-            <listitem><simpara>
+            </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
               repotype
-            </simpara></listitem>
-            </itemizedlist>
-      </para>
-    </section>
-    <section>
-      <title>The &lt;master&gt; subelement</title>
-      <para>
-        The <command>&lt;master&gt;</command> tag as shown in the rpmmd example below 
-        is optional but strongly recommended for security reasons.
-      </para>
-      <para>
-        Verification is supported in the following repotype`s
-            <itemizedlist>
-            <listitem><simpara>
+            </simpara>
+    </listitem>
+   </itemizedlist>
+  </para>
+ </section>
+ <section>
+  <title>The &lt;master&gt; subelement</title>
+  <para>
+   The <command>&lt;master&gt;</command> tag as shown in the rpmmd example
+   below is optional but strongly recommended for security reasons.
+  </para>
+  <para>
+   Verification is supported in the following repotype`s
+   <itemizedlist>
+    <listitem>
+     <simpara>
               susetags 
-            </simpara></listitem>
-            <listitem><simpara>
+            </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
               rpmmd
-            </simpara></listitem>
-            <listitem><simpara>
+            </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
               deb
-            </simpara></listitem>
-            </itemizedlist>
-      </para>
-      <para>
-        This option could be defined by any valid url ( http and https )  to the origin of the repository but
-        it´s stronly ecommended to use <command>https</command> with a <command>sslfingerprint</command> 
-        to bs_dodup possibility to verify it`s peeer in order to avoid Man in the middle attacks.
-        The download url can be a mirror as we validate package checksums found in repo data.
-      </para>
-      <para>
-        You can easily query the ssl fingerprint of a remote server by calling the following command:
-        <screen><![CDATA[
+            </simpara>
+    </listitem>
+   </itemizedlist>
+  </para>
+  <para>
+   This option could be defined by any valid url ( http and https ) to the
+   origin of the repository but it´s stronly ecommended to use
+   <command>https</command> with a <command>sslfingerprint</command> to
+   bs_dodup possibility to verify it`s peeer in order to avoid Man in the
+   middle attacks. The download url can be a mirror as we validate package
+   checksums found in repo data.
+  </para>
+  <para>
+   You can easily query the ssl fingerprint of a remote server by calling
+   the following command:
+<screen><![CDATA[
 openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout
         ]]></screen>
-      </para>
-    
-    </section>  
-    <section>
-      <title>The &lt;pubkey&gt; subelement</title>
-      <para>
-        The pubkey element contains one or more gpg public keys in order to verify repository information but not packages.
-        For an example have a look at the repotype "deb" documentation below.
-      </para>
-    </section>
-    <section>  
-      <title>Repository Types</title>
-      <para>
-      </para> 
-      <section>
-        <title>YAST sources (susetags)</title>
-        <para><command>Example:</command></para>
-        <screen><![CDATA[
+  </para>
+ </section>
+ <section>
+  <title>The &lt;pubkey&gt; subelement</title>
+  <para>
+   The pubkey element contains one or more gpg public keys in order to
+   verify repository information but not packages. For an example have a
+   look at the repotype "deb" documentation below.
+  </para>
+ </section>
+ <section>
+  <title>Repository Types</title>
+  <para></para>
+  <section>
+   <title>YAST sources (susetags)</title>
+   <para>
+    <command>Example:</command>
+   </para>
+<screen><![CDATA[
 <project name="My::SuSE::CD">
 
   ...
@@ -137,12 +155,14 @@ openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -
   </repository>
 </project>
         ]]></screen>
-      </section>
-      <section>
-        <title>RPM sources (rpmmd)</title>
-        <para><command>Example:</command></para>
-        <para>
-          <screen><![CDATA[
+  </section>
+  <section>
+   <title>RPM sources (rpmmd)</title>
+   <para>
+    <command>Example:</command>
+   </para>
+   <para>
+<screen><![CDATA[
 <project name="Fedora:Rawhide">
 
   ...
@@ -159,30 +179,39 @@ openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -
   </repository>
 </project>
           ]]></screen>
-        </para>
-      </section>
-      <section>
-        <title>Apt Repository (deb)</title>
-        <para>
-          Apt supports two repository types, flat repositories and distribution repositories. 
-        </para><para>
-          The download url syntax for them is:
-        </para>
-        <itemizedlist>
-        <listitem><simpara>
+   </para>
+  </section>
+  <section>
+   <title>Apt Repository (deb)</title>
+   <para>
+    Apt supports two repository types, flat repositories and distribution
+    repositories.
+   </para>
+   <para>
+    The download url syntax for them is:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <simpara>
           &lt;baseurl&gt;/&lt;distribution&gt;/&lt;components&gt;
-        </simpara></listitem>
-        <listitem><simpara>
+        </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
           &lt;flat_url&gt;/.[/&lt;components&gt;]
-        </simpara></listitem>
-        </itemizedlist>
-        <para>
-          You can specify multiple components seperated by a comma.
-        </para><para>
-          An empty components string is parsed as "main".
-        </para>
-        <para><command>Example:</command></para>
-        <screen><![CDATA[
+        </simpara>
+    </listitem>
+   </itemizedlist>
+   <para>
+    You can specify multiple components seperated by a comma.
+   </para>
+   <para>
+    An empty components string is parsed as "main".
+   </para>
+   <para>
+    <command>Example:</command>
+   </para>
+<screen><![CDATA[
 <project name="Debian:8">
 
   ...
@@ -211,14 +240,17 @@ Version: GnuPG v1.4.12 (GNU/Linux)
   </repository>
 </project>
         ]]></screen>
-      </section>
-      <section>
-        <title>Arch Repository (arch)</title>
-        <para>
-        Please be aware that there is no way atm to verify the origin of repository for Arch.
-        </para>
-        <para><command>Example:</command></para>
-        <screen><![CDATA[
+  </section>
+  <section>
+   <title>Arch Repository (arch)</title>
+   <para>
+    Please be aware that there is no way atm to verify the origin of
+    repository for Arch.
+   </para>
+   <para>
+    <command>Example:</command>
+   </para>
+<screen><![CDATA[
 <project name="Arch:Core">
   
   ...
@@ -231,11 +263,13 @@ Version: GnuPG v1.4.12 (GNU/Linux)
   </repository>
 </project>
         ]]></screen>
-      </section>
-      <section>
-        <title>Mandriva Repository (mdk)</title>
-        <para><command>Example:</command></para>
-        <screen><![CDATA[
+  </section>
+  <section>
+   <title>Mandriva Repository (mdk)</title>
+   <para>
+    <command>Example:</command>
+   </para>
+<screen><![CDATA[
 <project name="Mageia:5">
 
   ...
@@ -248,7 +282,6 @@ Version: GnuPG v1.4.12 (GNU/Linux)
   </repository>
 </project>
         ]]></screen>
-      </section>
-    </section>
   </section>
-
+ </section>
+</section>

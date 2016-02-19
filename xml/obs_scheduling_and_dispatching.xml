@@ -6,163 +6,206 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.build_scheduling_and_dispatching">
-  <title>Scheduling and Dispatching</title>
-  <para>One of the major functionalities of OBS is to calculate always the current state, based on
-available sources, binaries and user configurations. In case a change happened it will trigger builds
-to achieve a clean state again. The calculation of the need of a build job is called scheduling here. 
-The assignment of a build job to a concrete build host (aka worker) is called dispatching.</para>
-
-  <section>
-    <title>How is a build process defined</title>
-    <para>A build process is calculated and executed based on the following</para>
-<itemizedlist>
-    <listitem><simpara>
+ <title>Scheduling and Dispatching</title>
+ <para>
+  One of the major functionalities of OBS is to calculate always the current
+  state, based on available sources, binaries and user configurations. In
+  case a change happened it will trigger builds to achieve a clean state
+  again. The calculation of the need of a build job is called scheduling
+  here. The assignment of a build job to a concrete build host (aka worker)
+  is called dispatching.
+ </para>
+ <section>
+  <title>How is a build process defined</title>
+  <para>
+   A build process is calculated and executed based on the following
+  </para>
+  <itemizedlist>
+   <listitem>
+    <simpara>
       The sources of a package defined which dependencies are required at build time. eg. <parameter>BuildRequires</parameter> 
       lines in spec files defined which other packages must get installed to build a package
-    </simpara></listitem>
-    <listitem><simpara>
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
       The project configuration of the package defines repositories and architectures to build for.
       In case other repositories are used as a base the configuration from there is also considered.
-    </simpara></listitem>
-    <listitem><simpara>
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
       Dependencies of packages which are required are considered as well.
-    </simpara></listitem>
-    <listitem><simpara>
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
       Constraints regarding the worker are considered. A package may require certain amount of 
       resources or specific features to build. Please check the constraints chapter for details.
       However, apart from this the build should be independent of the specific worker where
       the job gets dispatched to.
-    </simpara></listitem>
-</itemizedlist>
-  </section>
-
-  <section>
-    <title>Scheduling strategies</title>
-    <para>The defaults have the goal of creating an always reproducible state. This may lead to more builds
-then practically necessary, but ensures that no hidden incompabilities exist between packages and also that
-the same state can later be achieved again (with a subsequent rebuild of the same sources and configurations).
-This can also lead to multiple builds of the same package in the case of dependency loops.</para>
-    <para>In some setups this may not be wanted, so each repository can be configured in a different way.
-The usual options to modify the project meta configurations can be used to configure different strategies.
-For example using osc:
-	 <screen><command>
+    </simpara>
+   </listitem>
+  </itemizedlist>
+ </section>
+ <section>
+  <title>Scheduling strategies</title>
+  <para>
+   The defaults have the goal of creating an always reproducible state. This
+   may lead to more builds then practically necessary, but ensures that no
+   hidden incompabilities exist between packages and also that the same
+   state can later be achieved again (with a subsequent rebuild of the same
+   sources and configurations). This can also lead to multiple builds of the
+   same package in the case of dependency loops.
+  </para>
+  <para>
+   In some setups this may not be wanted, so each repository can be
+   configured in a different way. The usual options to modify the project
+   meta configurations can be used to configure different strategies. For
+   example using osc:
+<screen><command>
 	 osc meta prj -e YOUR_PROJECT
 	 </command></screen>
-	A repository is configured as following by default, however only the name attribute is required to be set.
-	 <computeroutput>
-         <![CDATA[# Example
+   A repository is configured as following by default, however only the name
+   attribute is required to be set. <computeroutput>
+<![CDATA[# Example
 	 <repository name="standard" rebuild="transitive" block="all" linkedbuild="off">
 	     ...
 	 </repository>
          ]]>
-	 </computeroutput>
-    </para>
-
-    <section>
-      <title>Build Trigger Setting</title>
-
-      <para>
-	The build trigger setting can be set via the "rebuild" attribute. Possible  settings are
-	<variablelist>
-	    <varlistentry>
-                <term>transitive</term>
-                <listitem>
-                  <para>The default behaviour, do a clean build of all depending packages</para>
-                </listitem>
-	    </varlistentry>
-	    <varlistentry>
-                <term>direct</term>
-                <listitem>
-	          <para>Just build the package with changed sources and direct depending packages. But not indirect depending packages.</para>
-                </listitem>
-	    </varlistentry>
-	    <varlistentry>
-                <term>local</term>
-                <listitem>
-	          <para>Just build packages with changed sources.</para>
-                </listitem>
-	    </varlistentry>
-	</variablelist>
-
-        <note>
-	<para>Note: You can run into dependency problems in case you select <parameter>direct</parameter> or <parameter>local</parameter> without noticing this in the build state. Your packages might not even be installable or have random runtime errors (like not starting up or crashing applications), even when they claim to be "succeeded". Also, you cannot be sure that you will be able to re-build them later. So never do a official shipment with this setting of a release.  This knob is exposed to allow deliberate suppression of the strictly reproducible builds (for example, to limit burning CPU unnecessarily).</para>
-        </note>
-      </para>
-    </section>
-
-    <section>
-      <title>Block Mode</title>
-      <para>
-
-	Usually the build of a package gets blocked when a package required to build it is still building atm. The "block" attribute can modify this behaviour:
-	<variablelist>
-            <varlistentry>
-	        <term>all</term>
-	        <listitem>
-                  <para>The default behaviour, don't start the build if a depending package is currently building.</para>
-	        </listitem>
-            </varlistentry>
-            <varlistentry>
-	        <term>local</term>
-	        <listitem>
-                  <para>Just care about packages in your project for the block mode.</para>
-	        </listitem>
-            </varlistentry>
-            <varlistentry>
-	        <term>never</term>
-	        <listitem>
-                  <para>Never set a package to blocked.</para>
-	        </listitem>
-            </varlistentry>
-	</variablelist>
-
-	<note>
-          <para>
-          Note: When using something else then "all" you will have to deal with a number of problems:
-          </para>
-	<itemizedlist>
-	    <listitem><simpara>
-		Intermediate builds can have dependency and runtime problems.
-	    </simpara></listitem>
-	    <listitem><simpara>
-		Your packages will get built more often, take more resources on the server side. As a result the dispatcher will rate your repository down.
-	    </simpara></listitem>
-	</itemizedlist>
-        </note>
-      </para>
-    </section>
-
-    <section>
-      <title>Follow Project Links</title>
-
-      <para>
-	<variablelist>
-            <varlistentry>
-                <term>off</term>
-	        <listitem>
-	          <para>DEFAULT: do not build packages from project links</para>
-	        </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term>localdep</term>
-	        <listitem>
-	          <para>only build project linked packages if they depend on a local package</para>
-	        </listitem>
-            </varlistentry>
-            <varlistentry>
-                <term>all</term>
-	        <listitem>
-	          <para>treat packages from project links like local packages</para>
-	        </listitem>
-            </varlistentry>
-	</variablelist>
-      </para>
-    </section>
-
-
+   </computeroutput>
+  </para>
+  <section>
+   <title>Build Trigger Setting</title>
+   <para>
+    The build trigger setting can be set via the "rebuild" attribute.
+    Possible settings are
+    <variablelist>
+     <varlistentry>
+      <term>transitive</term>
+      <listitem>
+       <para>
+        The default behaviour, do a clean build of all depending packages
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>direct</term>
+      <listitem>
+       <para>
+        Just build the package with changed sources and direct depending
+        packages. But not indirect depending packages.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>local</term>
+      <listitem>
+       <para>
+        Just build packages with changed sources.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+    <note>
+     <para>
+      Note: You can run into dependency problems in case you select
+      <parameter>direct</parameter> or <parameter>local</parameter> without
+      noticing this in the build state. Your packages might not even be
+      installable or have random runtime errors (like not starting up or
+      crashing applications), even when they claim to be "succeeded". Also,
+      you cannot be sure that you will be able to re-build them later. So
+      never do a official shipment with this setting of a release. This knob
+      is exposed to allow deliberate suppression of the strictly
+      reproducible builds (for example, to limit burning CPU unnecessarily).
+     </para>
+    </note>
+   </para>
   </section>
-  
-
+  <section>
+   <title>Block Mode</title>
+   <para>
+    Usually the build of a package gets blocked when a package required to
+    build it is still building atm. The "block" attribute can modify this
+    behaviour:
+    <variablelist>
+     <varlistentry>
+      <term>all</term>
+      <listitem>
+       <para>
+        The default behaviour, don't start the build if a depending package
+        is currently building.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>local</term>
+      <listitem>
+       <para>
+        Just care about packages in your project for the block mode.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>never</term>
+      <listitem>
+       <para>
+        Never set a package to blocked.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+    <note>
+     <para>
+      Note: When using something else then "all" you will have to deal with
+      a number of problems:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <simpara>
+		Intermediate builds can have dependency and runtime problems.
+	    </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+		Your packages will get built more often, take more resources on the server side. As a result the dispatcher will rate your repository down.
+	    </simpara>
+      </listitem>
+     </itemizedlist>
+    </note>
+   </para>
+  </section>
+  <section>
+   <title>Follow Project Links</title>
+   <para>
+    <variablelist>
+     <varlistentry>
+      <term>off</term>
+      <listitem>
+       <para>
+        DEFAULT: do not build packages from project links
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>localdep</term>
+      <listitem>
+       <para>
+        only build project linked packages if they depend on a local package
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>all</term>
+      <listitem>
+       <para>
+        treat packages from project links like local packages
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </para>
+  </section>
+ </section>
 </chapter>

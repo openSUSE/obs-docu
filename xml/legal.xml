@@ -6,7 +6,6 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <appendix role="legal">
  <title>GNU Licenses</title>
  <para>

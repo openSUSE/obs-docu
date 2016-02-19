@@ -6,147 +6,169 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <!-- note: this is just a collection file atm, bigger parts should be moved to own files & chapters -->
-
 <chapter id="cha.obs.concepts">
-  <title>OBS Concepts</title>
-  <para>We describe here the high level concepts how &obs; is designed, manages it's content and is supposed to work.</para>
-  
+ <title>OBS Concepts</title>
+ <para>
+  We describe here the high level concepts how &obs; is designed, manages
+  it's content and is supposed to work.
+ </para>
+ <section>
+  <title>Project organization</title>
+  <para>
+   All sources and binaries which are hosted inside of OBS are organized in
+   projects. A project is the container defining a larger task. It defines
+   who is working there
+  </para>
   <section>
-    <title>Project organization</title>
-    <para>All sources and binaries which are hosted inside of OBS are organized in projects. 
-          A project is the container defining a larger task. It defines who is working there
-           </para>
-
-    <section>
-      <title>Project meta data</title>
-      <para>A project gets configured in the project <command>/source/$PROJECT/_meta</command> path. It can
-            be edited in web interface in the <command>RAW Config</command> tab or via command line via
-            <screen><command>osc meta prj -e $PROJECT</command></screen>
-            This file contains</para>
-            <itemizedlist>
-              <listitem><simpara>
+   <title>Project meta data</title>
+   <para>
+    A project gets configured in the project
+    <command>/source/$PROJECT/_meta</command> path. It can be edited in web
+    interface in the <command>RAW Config</command> tab or via command line
+    via
+<screen><command>osc meta prj -e $PROJECT</command></screen>
+    This file contains
+   </para>
+   <itemizedlist>
+    <listitem>
+     <simpara>
                  generic description data in <command>title</command> and <command>description</command> elements.
-              </simpara></listitem>
-              <listitem><simpara>
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
                  An ACL list of users and groups connected with a role. The <command>maintainer</command>
                  role defines the list of users permitted to commit changes to the project.
-              </simpara></listitem>
-              <listitem><simpara>
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
                  A number of flags, controlling the build and publishing process and possible read
                  access protections. 
-              </simpara></listitem>
-              <listitem><simpara>
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
                  A list of repositories to be created. This list defines what other repositories
                  should be used, which architectures shall be built and build job scheduling parameters.
-              </simpara></listitem>
-            </itemizedlist>
-
-      <para>The following flags can be used to control the behavior of a package or project. Most of them can
-            also be limited to specified repositories or architectures.</para>
-
-            <itemizedlist>
-              <listitem><simpara>
-            <command>build</command> flag defines if package sources should get build. If enabled, it signals the scheduler
+              </simpara>
+    </listitem>
+   </itemizedlist>
+   <para>
+    The following flags can be used to control the behavior of a package or
+    project. Most of them can also be limited to specified repositories or
+    architectures.
+   </para>
+   <itemizedlist>
+    <listitem>
+     <simpara><command>build</command> flag defines if package sources should get build. If enabled, it signals the scheduler
             to trigger server side builds based on events like source changes, changes of packages used in
             the build environment or manual rebuild triggers. A local build via CLI is possible independent of 
             this flag.
             Default is enabled.
-              </simpara></listitem>
-           
-              <listitem><simpara>
-            <command>publish</command> can be used to enable or disable publishing the build result as repository. This happens
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara><command>publish</command> can be used to enable or disable publishing the build result as repository. This happens
             after an entire repository has finished build for an architecture. A publish also gets triggered, when
             the publish flag is enabled after a repository finished the build.
             Default is enabled.
-              </simpara></listitem>
-           
-              <listitem><simpara>
-            <command>debuginfo</command> can be used to modify the build process to create debuginfo data along with the package
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara><command>debuginfo</command> can be used to modify the build process to create debuginfo data along with the package
             build for later debugging purposes. A flag change is not triggering rebuilds, it just affects the next build.
             Default is disabled.
-              </simpara></listitem>
-           
-              <listitem><simpara>
-            <command>useforbuild</command> is used to control if a built result shall be copied to the build pool. This means it
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara><command>useforbuild</command> is used to control if a built result shall be copied to the build pool. This means it
             will get used for other builds in their buildenvironment. When this is disabled, the build has no
             influence on builds of other packages using this repository. In case a former build exists the old
             binaries will be used. Disabling this flag also means that "wipe" commands to remove binary files
             will have no effect on the build pool.
             A flag change is not triggering rebuilds, it just affects the next build.
             Default is enabled.
-              </simpara></listitem>
-           
-              <listitem><simpara>
-            <command>access</command> flag can be used to hide an entire project. This includes binaries
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara><command>access</command> flag can be used to hide an entire project. This includes binaries
             and sources. It can only be used at project creation time and can just be
             enabled (making it public again) afterwards.
              This flag can only be used on projects.
             Default is enabled.
-              </simpara></listitem>
-           
-              <listitem><simpara>
-            <command>sourceaccess</command> flag can be used to hide the sources, but still show the existence of a
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara><command>sourceaccess</command> flag can be used to hide the sources, but still show the existence of a
             project or package. This also includes debug packages in case the distribution is supporting this correctly.
               This flag can only be used at package creation time. There is no code
             yet which is checking for possible references to this package.
             Default is enabled.
-              </simpara></listitem>
-           
-              <listitem><simpara>
-            <command>downloadbinary</command> permission still exists like before. However, unlike "access"
+              </simpara>
+    </listitem>
+    <listitem>
+     <simpara><command>downloadbinary</command> permission still exists like before. However, unlike "access"
             and "sourceaccess" this is not a security feature. It is just a convenience feature, which
             makes it impossible to get the binaries via the API directly. But it is still possible
             to get the binaries via build time in any case.
             Default is enabled.
-              </simpara></listitem>
-            </itemizedlist>
-
-    </section>
-
-    <section>
-      <title>Project build configuration.</title>
-      <para>A project gets configured in the project <command>/source/$PROJECT/_config</command> path. It can
-            be edited in web interface in the <command>Project Config</command> tab or via one of the following
-            command lines
-            <screen><command>osc meta prjconf -e $PROJECT</command>
+              </simpara>
+    </listitem>
+   </itemizedlist>
+  </section>
+  <section>
+   <title>Project build configuration.</title>
+   <para>
+    A project gets configured in the project
+    <command>/source/$PROJECT/_config</command> path. It can be edited in
+    web interface in the <command>Project Config</command> tab or via one of
+    the following command lines
+<screen><command>osc meta prjconf -e $PROJECT</command>
 <command>osc co $PROJECT _project</command></screen>
-            This file contains information on how to setup a build environment. </para>
-    </section>
-
-    <section>
-      <title>Project build macro configuration</title>
-      <para>The macro configuration is part of the build configuration in <command>/source/$PROJECT/_config</command>.
-            It can be added at the end behind a <command>Macro:</command></para>
-    </section>
-
-    <section>
-      <title>An OBS Package</title>
-      <para>An OBS Package is a sub name space below a project. It contains the specification
-            of a single package build for all specified repositories. </para>
-    </section>
+    This file contains information on how to setup a build environment.
+   </para>
   </section>
-   
   <section>
-    <title>The API</title>
-    <para>...</para>
+   <title>Project build macro configuration</title>
+   <para>
+    The macro configuration is part of the build configuration in
+    <command>/source/$PROJECT/_config</command>. It can be added at the end
+    behind a <command>Macro:</command>
+   </para>
   </section>
-
   <section>
-    <title>The OBS Interconnect</title>
-    <para>...</para>
+   <title>An OBS Package</title>
+   <para>
+    An OBS Package is a sub name space below a project. It contains the
+    specification of a single package build for all specified repositories.
+   </para>
   </section>
-
-  <xi:include href="obs_concepts_dod.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-
-  <section>
-    <title>Attribute System</title>
-    <para>...</para>
-  </section>
-
-  <section>
-    <title>Automatic source processing</title>
-    <para>...</para>
-  </section>
+ </section>
+ <section>
+  <title>The API</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <section>
+  <title>The OBS Interconnect</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <xi:include href="obs_concepts_dod.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <section>
+  <title>Attribute System</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <section>
+  <title>Automatic source processing</title>
+  <para>
+   ...
+  </para>
+ </section>
 </chapter>

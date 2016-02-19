@@ -6,11 +6,12 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.cross_arch_build">
-  <title>Cross Architecture Build</title>
-  <para>OBS can build for architectures without having the hardware. This is done via emulation steps.
-        However, this is not a classic build with cross tool chains. The advantage is that the build
-        environments of the packages don't need support for cross tools.</para>
-  
+ <title>Cross Architecture Build</title>
+ <para>
+  OBS can build for architectures without having the hardware. This is done
+  via emulation steps. However, this is not a classic build with cross tool
+  chains. The advantage is that the build environments of the packages don't
+  need support for cross tools.
+ </para>
 </chapter>

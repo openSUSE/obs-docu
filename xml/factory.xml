@@ -6,23 +6,28 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.factory" os="opensuse">
-  <title>openSUSE Factory</title>
-  <para>This chapter describes how the development of the future openSUSE distribution is done within OBS.</para>
-
-  <section id="cha.obs.factory.checkin">
-    <title>openSUSE:Factory project</title>
-    <para>The main project is openSUSE:Factory. This project is controlled by a small group which does review all
-          submissions according to the policies. Submissions are possible via submit requests, which get reviewed
-          by default by two groups: The Legal team and the code review team. ...</para>
-  </section>
-
-  <section id="cha.obs.factory.develprojects">
-    <title>Devel Projects</title>
-    <para>The goal of openSUSE:Factory is to always have a working state. This is needed to allow all developer groups
-          to use it as a base for testing their own, possibly experimental work in their own projects. To have a complete
-          test of ...</para>
-  </section>
-
+ <title>openSUSE Factory</title>
+ <para>
+  This chapter describes how the development of the future openSUSE
+  distribution is done within OBS.
+ </para>
+ <section id="cha.obs.factory.checkin">
+  <title>openSUSE:Factory project</title>
+  <para>
+   The main project is openSUSE:Factory. This project is controlled by a
+   small group which does review all submissions according to the policies.
+   Submissions are possible via submit requests, which get reviewed by
+   default by two groups: The Legal team and the code review team. ...
+  </para>
+ </section>
+ <section id="cha.obs.factory.develprojects">
+  <title>Devel Projects</title>
+  <para>
+   The goal of openSUSE:Factory is to always have a working state. This is
+   needed to allow all developer groups to use it as a base for testing
+   their own, possibly experimental work in their own projects. To have a
+   complete test of ...
+  </para>
+ </section>
 </chapter>

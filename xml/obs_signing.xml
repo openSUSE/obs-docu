@@ -6,29 +6,34 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.signing">
-  <title>Signing</title>
-  <para>OBS can sign build results.</para>
-  
-  <section>
-    <title>Package signing</title>
-    <para>Each package is signed with a PGP key to allow checking its integrity on user's machines.</para>
-  </section>
-
-  <section>
-    <title>Repository signing</title>
-    <para>...</para>
-  </section>
-
-  <section>
-    <title>Product signing</title>
-    <para>...</para>
-  </section>
-
-  <section>
-    <title>Configure sign key</title>
-    <para>...</para>
-  </section>
-
+ <title>Signing</title>
+ <para>
+  OBS can sign build results.
+ </para>
+ <section>
+  <title>Package signing</title>
+  <para>
+   Each package is signed with a PGP key to allow checking its integrity on
+   user's machines.
+  </para>
+ </section>
+ <section>
+  <title>Repository signing</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <section>
+  <title>Product signing</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <section>
+  <title>Configure sign key</title>
+  <para>
+   ...
+  </para>
+ </section>
 </chapter>

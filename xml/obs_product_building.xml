@@ -6,60 +6,70 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.product_building">
-  <title>Product Building</title>
-  <para>OBS is used to build complete product lines. It is employed for 
-        openSUSE and also for SUSE Linux Enterprise products. </para>
-  
+ <title>Product Building</title>
+ <para>
+  OBS is used to build complete product lines. It is employed for openSUSE
+  and also for SUSE Linux Enterprise products.
+ </para>
+ <section>
+  <title>Requirements of a product</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <section>
+  <title>Possible shapes of a product</title>
+  <para>
+   product media, appliance, repository...
+  </para>
+ </section>
+ <section>
+  <title>Product Setup in OBS</title>
+  <para>
+   ....
+  </para>
   <section>
-    <title>Requirements of a product</title>
-    <para>...</para>
+   <title>Package building</title>
+   <para>
+    A project is configured in the project meta data. This meta data
+    contains ... These projects contain ...
+   </para>
   </section>
-
   <section>
-    <title>Possible shapes of a product</title>
-    <para>product media, appliance, repository...</para>
+   <title>Appliance setup with kiwi</title>
+   <para>
+    ...
+   </para>
   </section>
-
   <section>
-    <title>Product Setup in OBS</title>
-    <para>....</para>
-
-    <section>
-      <title>Package building</title>
-      <para>A project is configured in the project meta data. This meta data contains ...
-            These projects contain ...</para>
-    </section>
-
-    <section>
-      <title>Appliance setup with kiwi</title>
-      <para>...</para>
-    </section>
-
-    <section>
-      <title>Product creation with kiwi</title>
-      <para>...</para>
-    </section>
-
-    <section>
-      <title>Product Line Setup</title>
-      <para>Bigger products, like openSUSE or SUSE Linux Enterprise usually contain multiple media.
-            These media must be kept in sync in various ways, for example for installation patterns,
-            version numbering and other meta data. To guarantee this, OBS provides the product definition
-            xml. Submitting such a product xml will create all necessary sources for meta packages and also
-            all needed kiwi source files.</para>
-    </section>
+   <title>Product creation with kiwi</title>
+   <para>
+    ...
+   </para>
   </section>
-   
   <section>
-    <title>Release Management</title>
-    <para>...</para>
+   <title>Product Line Setup</title>
+   <para>
+    Bigger products, like openSUSE or SUSE Linux Enterprise usually contain
+    multiple media. These media must be kept in sync in various ways, for
+    example for installation patterns, version numbering and other meta
+    data. To guarantee this, OBS provides the product definition xml.
+    Submitting such a product xml will create all necessary sources for meta
+    packages and also all needed kiwi source files.
+   </para>
   </section>
-
-  <section>
-    <title>Typical Review Process Setup</title>
-    <para>...</para>
-  </section>
-
+ </section>
+ <section>
+  <title>Release Management</title>
+  <para>
+   ...
+  </para>
+ </section>
+ <section>
+  <title>Typical Review Process Setup</title>
+  <para>
+   ...
+  </para>
+ </section>
 </chapter>

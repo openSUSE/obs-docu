@@ -7,16 +7,20 @@
   %entities;
 ]>
 <section id="cha.obs.admin.integration">
-  <title>Integrate OBS into your environment</title>
-  <para>To be written...</para>
-
-  <section>
-    <title>Integrate Notifications</title>
-    <para>To be written...</para>
-  </section>
-
-  <section>
-    <title>Integrate your user management in OBS</title>
-    <para>To be written...</para>
-  </section>
+ <title>Integrate OBS into your environment</title>
+ <para>
+  To be written...
+ </para>
+ <section>
+  <title>Integrate Notifications</title>
+  <para>
+   To be written...
+  </para>
+ </section>
+ <section>
+  <title>Integrate your user management in OBS</title>
+  <para>
+   To be written...
+  </para>
+ </section>
 </section>

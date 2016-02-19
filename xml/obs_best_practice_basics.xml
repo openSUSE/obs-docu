@@ -6,54 +6,56 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.best-practices.basics">
-  <title>Basic Concepts and Work Styles</title>
-  <para>These best practices should be known by every OBS user. They describe
-        how to setup projects, working with own or foreign sources.</para>
-
-  <section>
+ <title>Basic Concepts and Work Styles</title>
+ <para>
+  These best practices should be known by every OBS user. They describe how
+  to setup projects, working with own or foreign sources.
+ </para>
+ <section>
   <title>Setup a project re-using other projects binaries</title>
-  <para><xref linkend="obs.glos.project_binaries"/> are the </para>
-  </section>
-
-  <section>
+  <para>
+   <xref linkend="obs.glos.project_binaries"/> are the
+  </para>
+ </section>
+ <section>
   <title>Setup a project reusing other projects sources</title>
-  <para>You can also setup your own project using the sources, spec files and patches from another project and develop within this project. 
-     <screen><command>#osc copypac SOURCEPRJ SOURCEPAC DESTPRJ  </command></screen>
-By default, &obs; will strip the maintainer info and now make it part of your own project. To clarify, when we speak of a project, it can mean just one 
-package or a complete set of packages with their own build dependencies.    
-    </para>
-  </section>
-
-  <section>
+  <para>
+   You can also setup your own project using the sources, spec files and
+   patches from another project and develop within this project.
+<screen><command>#osc copypac SOURCEPRJ SOURCEPAC DESTPRJ  </command></screen>
+   By default, &obs; will strip the maintainer info and now make it part of
+   your own project. To clarify, when we speak of a project, it can mean
+   just one package or a complete set of packages with their own build
+   dependencies.
+  </para>
+ </section>
+ <section>
   <title>Contribute Directly to External Projects</title>
-  <para>In case a user does not have commit permissions to a project, he can request
-       maintainership permissions for this project. This makes sense if the user
-        is already known to the project owners and they trust him as a maintainer.
-
-        There is a way to do this via the request system of OBS, but only via osc so far:
-        
-        <screen><command># osc createrequest -a add_me maintainer PROJECT</command></screen>
+  <para>
+   In case a user does not have commit permissions to a project, he can
+   request maintainership permissions for this project. This makes sense if
+   the user is already known to the project owners and they trust him as a
+   maintainer. There is a way to do this via the request system of OBS, but
+   only via osc so far:
+<screen><command># osc createrequest -a add_me maintainer PROJECT</command></screen>
   </para>
-  </section>
-
-  <section>
+ </section>
+ <section>
   <title>Contribute Indirectly to Foreign Projects</title>
-  <para>Users who are new to a given project, either because they are new users with &obs; or packaging
-        or don't have any deeper knowledge about a certain project won't have direct 
-        commit permissions. However, they can still create a copy of any package source 
-        and ask back to merge their changes. &obs; has support to make this easy.
-
-       <!-- TODO: merge collaboration wiki page here, when we have this docu online -->
-
+  <para>
+   Users who are new to a given project, either because they are new users
+   with &obs; or packaging or don't have any deeper knowledge about a
+   certain project won't have direct commit permissions. However, they can
+   still create a copy of any package source and ask back to merge their
+   changes. &obs; has support to make this easy.
+<!-- TODO: merge collaboration wiki page here, when we have this docu online -->
   </para>
-
-  <!-- this should become a standard style template and added to each section. -->
-  <para>Wiki reference:
-        <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Collaboration">User comment page</ulink>
+<!-- this should become a standard style template and added to each section. -->
+  <para>
+   Wiki reference:
+   <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Collaboration">User
+   comment page</ulink>
   </para>
-
-  </section>
-
+ </section>
 </chapter>

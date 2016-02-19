@@ -6,25 +6,28 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-
 <chapter id="cha.obs.best-practices.advanced">
-  <title>Advanced Project Setups</title>
-  <para>These best practices describe more complex setups, for example how to rebuild
-        an entire stack with minimal effort.</para>
-
-  <section>
+ <title>Advanced Project Setups</title>
+ <para>
+  These best practices describe more complex setups, for example how to
+  rebuild an entire stack with minimal effort.
+ </para>
+ <section>
   <title>Rebuild an entire project with changes</title>
-  <para>To be written...</para>
-  </section>
-
-  <section>
-    <title>Integrate Source Handling</title>
-    <para>To be written...</para>
-  </section>
-
-  <section>
-    <title>Use OBS for automated QA</title>
-    <para>To be written...</para>
-  </section>
+  <para>
+   To be written...
+  </para>
+ </section>
+ <section>
+  <title>Integrate Source Handling</title>
+  <para>
+   To be written...
+  </para>
+ </section>
+ <section>
+  <title>Use OBS for automated QA</title>
+  <para>
+   To be written...
+  </para>
+ </section>
 </chapter>
-
