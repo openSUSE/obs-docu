@@ -40,3 +40,12 @@ can be used to contribute to these books.
 The former svn repositories on berlios and svn.opensuse.org are not used anymore
 and will removed or write protected soon!
 
+
+We follow the SUSE docbook xml style. All files can be re-formated to that
+using:
+
+  for i in xml/*.xml; do 
+    /usr/bin/xmlformat.pl --config /etc/daps/docbook-xmlformat.conf -i "$i"
+  done
+
+Please seperate reformat commits from content changes.
