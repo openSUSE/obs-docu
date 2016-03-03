@@ -191,6 +191,15 @@
   </para>
  </section>
  <section>
+  <title>Dropping a source service again</title>
+  <para>
+    Sometimes it is useful to continued to work on generated files manualy. 
+    In this situation the _service file needs to be dropped, but all generated
+    files need to be commited as standard files. The OBS provides the "mergeservice"
+    command for this. It can also be used via osc by calling <command>osc service merge</command>.
+  </para>
+ </section>
+ <section>
   <title>How to write a source service</title>
   <para>
    ..
