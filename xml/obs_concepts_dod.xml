@@ -1,11 +1,11 @@
 <section id="concept_dod">
- <title>Download on Demand Projects (DoD)</title>
+ <title>Download on Demand Repositories (DoD)</title>
  <section>
   <title>Motivation</title>
   <para>
-   In a DoD project external software repositories can be configured which
-   are used for dependency resolution and where packages can be downloaded
-   at build time. A DoD project has some main advantages in comparison to
+   In a DoD repository external software repositories can be configured which
+   are used for dependency resolution and where packages will be downloaded
+   at build time. A DoD repository has some main advantages in comparison to
    binary import projects:
   </para>
   <itemizedlist>
@@ -217,7 +217,7 @@ openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -
   ...
 
   <repository name="ga">
-    <download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb"/>
+    <download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb">
       <pubkey>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.12 (GNU/Linux)
