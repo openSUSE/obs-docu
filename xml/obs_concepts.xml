@@ -155,7 +155,17 @@
  <section>
   <title>The OBS Interconnect</title>
   <para>
-   ...
+   The OBS interconnect is a mechanism to connect two OBS instances. All content, including
+   sources and binary build results will be available in the connecting instance. Unlike
+   other methods the instances will also notify each other about changes. 
+<!--
+ * xml example to setup
+ * webui interconnect page
+ * example to use sources from remote
+ * example to use remote repos
+ * default distro list functionality
+ * limitations (chainig, submitting back, read access control)
+-->
   </para>
  </section>
  <xi:include href="obs_concepts_dod.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
