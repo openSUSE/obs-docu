@@ -60,7 +60,7 @@
   </para>
   <para>
    Example for _constraints file:
-<screen><command>&lt;constraints&gt; exclude=&quot;true&quot;
+<screen><command>&lt;constraints exclude=&quot;true&quot;&gt;
   &lt;sandbox&gt;secure&lt;/sandbox&gt;
 &lt;/constraints&gt; </command></screen>
    Example for project configuration:
