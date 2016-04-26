@@ -231,43 +231,10 @@
     </mediaobject>
    </figure>
    <para>
-    Wonderful, we've added a pointer to the sources - now we need a build
-    repository added, so the builder knows the target-distribution.
-   </para>
-  </section>
-  <section>
-   <title>Add repository / build target</title>
-   <para>
-    To do this, click on "Add Repository" by clicking "no repositories" in
-    above screen. This will look like:
-   </para>
-   <figure>
-    <title>Add Repository Screen</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="add_repositories.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    Now select "openSUSE Factory" as target repository and press Add
-    selected repositories button which is located at bottom side of screen:
-   </para>
-   <figure>
-    <title>Add OpenSUSE factory</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="adding_opensuse_factory.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    (If it is not in the initial list, see if there an an Advanced link to a
-    more comprehensive list). This will take you back to your home: project.
-    The build repository might be disabled: if so, klick on the cogwheel to
-    enable it. Congratulations, it is configured. On a heavily loaded
-    server, it can sometimes take a few minutes for your changes to become
-    effective, but your linked package will automatically begin building.
+    Wonderful, we've added a pointer to the sources! Now we need to add
+    a repository, so the builder knows the target-distribution to build
+    packages for. How to add a repository to a project is documented at
+    <xref linkend="cha.obs.best-practices.webuiusage.add-repository" />.
    </para>
   </section>
   <section>
@@ -348,8 +315,53 @@
  <section>
   <title>Managing Repositories</title>
   <para>
-    This section will show how you can manage your project's repositories.
+   This section will show how you can manage your project's repositories.
+  </para>
+  <section id="cha.obs.best-practices.webuiusage.add-repository">
+   <title>Adding a repository (build target)</title>
+   <para>
+    To add a repository to your project, click on "Add Repositories" on the
+    project's repository tab.
+    This will direct you to a list of possible distributions you can built
+    packages for, see <xref linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot" />.
    </para>
+   <figure id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
+    <title>Add Repository Screen</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="add_repositories.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+   <para>
+    Now select a target repository and press the "Add selected repositories"
+    button.
+   </para>
+   <figure>
+    <title>Add OpenSUSE factory</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="adding_opensuse_factory.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+   <note>
+    <para>
+     If you could not find a repository that fits your needs, you might
+     want to switch to the expert mode. Click on the "Expert mode" link right
+     to the button.
+     This page allows you to search and select a repository of any project
+     available in OBS and add it to your projects repository list.
+    </para>
+   </note>
+   <para>
+    This will take you back to your home: project.
+    The build repository might be disabled: if so, klick on the cogwheel to
+    enable it. Congratulations, it is configured. On a heavily loaded
+    server, it can sometimes take a few minutes for your changes to become
+    effective, but your linked package will automatically begin building.
+   </para>
+  </section>
   <section>
    <title>Add Download on Demand feature to a repository</title>
    <para>
