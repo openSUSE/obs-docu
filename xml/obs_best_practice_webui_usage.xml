@@ -155,10 +155,24 @@
    Now let's create a link to a package and add a repository to build
    against. A link is basically a pointer to sources of an already existing
    package in another project. By *repository*, we mean a build target -
-   like Trunk/Fedora_12/openSUSE_11.4. Let's follow these steps: 1. Add link
-   to the existing package. 2. Add repository / build target. 3. Enable the
-   build (optional, if not already enabled). 4. Observe the build on the
-   monitor page 5. Look at package's page
+   like Trunk/Fedora_12/openSUSE_11.4. Let's follow these steps:
+     <orderedlist>
+       <listitem>
+         <para>Add link to the existing package.</para>
+       </listitem>
+       <listitem>
+         <para>Add repository / build target.</para>
+       </listitem>
+       <listitem>
+         <para>Enable the build (optional, if not already enabled).</para>
+       </listitem>
+       <listitem>
+         <para>Observe the build on the monitor page.</para>
+       </listitem>
+       <listitem>
+         <para>Look at package's page.</para>
+       </listitem>
+    </orderedlist>
   </para>
   <section>
    <title>Add link to existing package</title>
