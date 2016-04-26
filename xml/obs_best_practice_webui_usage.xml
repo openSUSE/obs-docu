@@ -349,63 +349,84 @@
    </para>
   </section>
   <section>
-   <title>Add Download on Demand feature to a repository</title>
+   <title>Add Download on Demand repositories to a project</title>
    <para>
-    Only if you have administrator rights you can do this. If so, just click
-    on the link "Add" after the text "No download on demand repositories",
-    in the below screen for instance we can see the link for the "standard"
-    repository:
+    When you have administrator rights you will be able to add Download on Demand
+    repositories to your project. To do so, click on the "Add DoD repository"
+    link and enter your DoD repository data into the form.
    </para>
    <figure>
-    <title>Add Download on Demand link on Repositories Screen</title>
+    <title>Add Download on Demand repository</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="added_repo_without_DoD.png" width="800" />
+      <imagedata fileref="repository_tab.png" />
      </imageobject>
     </mediaobject>
    </figure>
    <para>
-    Now you will see the Download on Demand form (in this case for the
-    "standard" repository), just fill it with the data needed (see more info
-    about it
-    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">here</ulink>)
-    and press the "Add Download on Demand" button which is located at bottom
-    side of the form:
+    The minimal set of fields you have to enter are architecture, repository type and
+    the url that provides the binary packages.
+    Detailed information about the data you can enter here you can find at the
+    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">DoD concept section</ulink>.
+    Press "Save" to create the repository.
    </para>
    <figure>
-    <title>Add Download on Demand for the "standard" repository</title>
+    <title>Download on Demand repository form</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="add_DoD_form.png" width="800" />
+      <imagedata fileref="add_dod_repository.png" />
      </imageobject>
     </mediaobject>
    </figure>
    <para>
-    After adding a Download on Demand feature to a repository you are able
-    to edit or delete it by clicking the proper link.
+    Once the repository got added you are able to edit, delete or add
+    additional DoD repository sources.
    </para>
+  </section>
+  <section>
+   <title>Add additional DoD repository sources to a repository</title>
    <figure>
-    <title>Added Download on Demand</title>
+    <title>Adding Download on Demand repository sources</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="added_DoD.png" width="800" />
+      <imagedata fileref="dod_repositories.png" />
      </imageobject>
     </mediaobject>
    </figure>
    <para>
-    If you clicked on the "Edit" link you will see a form to modify the
-    values of the Download on Demand:
+    Open the DoD repository sources form by clicking the "Add" link. Here
+    you can enter your additional DoD repository source. Click
+    the "Add Download on Demand" button.
    </para>
    <figure>
-    <title>Edit form for the Download on Demand of the "standard" repository</title>
+    <title>Form for adding DoD repository sources</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="edit_DoD_form.png" width="800" />
+      <imagedata fileref="add_dod_repository_source.png" />
      </imageobject>
     </mediaobject>
    </figure>
+  </section>
+  <section>
+   <title>Edit DoD repository sources</title>
    <para>
-    And if you clicked the "Delete" link you will be asked for confirmation.
+    To edit DoD repository sources after they got added click on the "Edit" link
+    that you find right to each DoD repository source.
+   </para>
+   <figure>
+    <title>Form for editing DoD repository sources</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="edit_dod_repository_source.png" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </section>
+  <section>
+   <title>Edit DoD repository sources</title>
+   <para>
+    To delete a repository or repository source, click on the "Delete" link and
+    accept the confirmation dialog.
    </para>
   </section>
  </section>
