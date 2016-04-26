@@ -326,19 +326,7 @@
     packages for, see <xref linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot" />.
    </para>
    <figure id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
-    <title>Add Repository Screen</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="add_repositories.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    Now select a target repository and press the "Add selected repositories"
-    button.
-   </para>
-   <figure>
-    <title>Add OpenSUSE factory</title>
+    <title>Add Repository to project</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="adding_opensuse_factory.png" width="800" />
