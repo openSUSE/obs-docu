@@ -271,66 +271,6 @@
    </para>
   </section>
   <section>
-   <title>Add Download on Demand feature to a repository</title>
-   <para>
-    Only if you have administrator rights you can do this. If so, just click
-    on the link "Add" after the text "No download on demand repositories",
-    in the below screen for instance we can see the link for the "standard"
-    repository:
-   </para>
-   <figure>
-    <title>Add Download on Demand link on Repositories Screen</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="added_repo_without_DoD.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    Now you will see the Download on Demand form (in this case for the
-    "standard" repository), just fill it with the data needed (see more info
-    about it
-    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">here</ulink>)
-    and press the "Add Download on Demand" button which is located at bottom
-    side of the form:
-   </para>
-   <figure>
-    <title>Add Download on Demand for the "standard" repository</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="add_DoD_form.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    After adding a Download on Demand feature to a repository you are able
-    to edit or delete it by clicking the proper link.
-   </para>
-   <figure>
-    <title>Added Download on Demand</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="added_DoD.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    If you clicked on the "Edit" link you will see a form to modify the
-    values of the Download on Demand:
-   </para>
-   <figure>
-    <title>Edit form for the Download on Demand of the "standard" repository</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="edit_DoD_form.png" width="800" />
-     </imageobject>
-    </mediaobject>
-   </figure>
-   <para>
-    And if you clicked the "Delete" link you will be asked for confirmation.
-   </para>
-  </section>
-  <section>
    <title>Package page, build log and project monitor page</title>
    <para>
     Next, it is time to explore the Monitor page, the package detail page
@@ -404,5 +344,71 @@
    suitable for use with zypper, yum or other repository-friendly package
    management tools.
   </para>
+ </section>
+ <section>
+  <title>Managing Repositories</title>
+  <para>
+    This section will show how you can manage your project's repositories.
+   </para>
+  <section>
+   <title>Add Download on Demand feature to a repository</title>
+   <para>
+    Only if you have administrator rights you can do this. If so, just click
+    on the link "Add" after the text "No download on demand repositories",
+    in the below screen for instance we can see the link for the "standard"
+    repository:
+   </para>
+   <figure>
+    <title>Add Download on Demand link on Repositories Screen</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="added_repo_without_DoD.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+   <para>
+    Now you will see the Download on Demand form (in this case for the
+    "standard" repository), just fill it with the data needed (see more info
+    about it
+    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">here</ulink>)
+    and press the "Add Download on Demand" button which is located at bottom
+    side of the form:
+   </para>
+   <figure>
+    <title>Add Download on Demand for the "standard" repository</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="add_DoD_form.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+   <para>
+    After adding a Download on Demand feature to a repository you are able
+    to edit or delete it by clicking the proper link.
+   </para>
+   <figure>
+    <title>Added Download on Demand</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="added_DoD.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+   <para>
+    If you clicked on the "Edit" link you will see a form to modify the
+    values of the Download on Demand:
+   </para>
+   <figure>
+    <title>Edit form for the Download on Demand of the "standard" repository</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="edit_DoD_form.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+   <para>
+    And if you clicked the "Delete" link you will be asked for confirmation.
+   </para>
+  </section>
  </section>
 </chapter>
