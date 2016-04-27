@@ -154,24 +154,22 @@
   <para>
    Now let's create a link to a package and add a repository to build
    against. A link is basically a pointer to sources of an already existing
-   package in another project. By *repository*, we mean a build target -
-   like Trunk/Fedora_12/openSUSE_11.4. Let's follow these steps:
-     <orderedlist>
-       <listitem>
-         <para>Add link to the existing package.</para>
-       </listitem>
-       <listitem>
-         <para>Add repository / build target.</para>
-       </listitem>
-       <listitem>
-         <para>Enable the build (optional, if not already enabled).</para>
-       </listitem>
-       <listitem>
-         <para>Observe the build on the monitor page.</para>
-       </listitem>
-       <listitem>
-         <para>Look at package's page.</para>
-       </listitem>
+   package. 
+   By "repository" we mean container of built binary packages like Debian_8
+   or openSUSE_13.2. Let's follow these steps:
+    <orderedlist>
+     <listitem>
+       <para>Add link to the existing package.</para>
+     </listitem>
+     <listitem>
+       <para>Add repository.</para>
+     </listitem>
+     <listitem>
+       <para>Observe the build on the monitor page.</para>
+     </listitem>
+     <listitem>
+       <para>Look at package's page.</para>
+     </listitem>
     </orderedlist>
   </para>
   <section>
@@ -318,7 +316,7 @@
    This section will show how you can manage your project's repositories.
   </para>
   <section id="cha.obs.best-practices.webuiusage.add-repository">
-   <title>Adding a repository (build target)</title>
+   <title>Adding a repository</title>
    <para>
     To add a repository to your project, click on "Add Repositories" on the
     project's repository tab.
