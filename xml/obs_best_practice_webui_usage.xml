@@ -292,9 +292,22 @@
     </imageobject>
    </mediaobject>
   </figure>
+  <note>
+   <para>
+    Published repositories are marked with the OBS LKW
+    <inlineequation>
+     <inlinemediaobject>
+      <imageobject>
+       <imagedata fileref="obs_lkw.png" />
+      </imageobject>
+     </inlinemediaobject>
+    </inlineequation>
+   </para>
+  </note>
   <para>
-   And from there, click on Go to download repository. You'll see something
-   like this:
+   Now click on Go to download repository. Note that publishing the repository might
+   take a while. Until then you will get a 404 error. Once the binaries are there,
+   you'll see something like this:
   </para>
   <figure>
    <title>Repository_structure</title>

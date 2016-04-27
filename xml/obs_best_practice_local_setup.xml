@@ -156,6 +156,8 @@
    situation. You can also find this <filename>README.SETUP</filename>
    file in our public 
    <ulink url="https://github.com/openSUSE/open-build-service/blob/master/dist/README.SETUP.md">git repository</ulink>.
+   If you are using our stable release, you might want to switch to the corresponding branch, eg.
+   <ulink url="https://github.com/openSUSE/open-build-service/blob/2.7/dist/README.SETUP">2.7</ulink>.
   </para>
   <para>
    If you follow instructions from README.SETUP file, you should be able to
