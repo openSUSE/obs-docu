@@ -153,9 +153,9 @@
    need to work on several further steps. Open
    /usr/share/doc/packages/obs-api/README.SETUP file. To run OBS server, you
    need to follow each step of README.SETUP carefully based on your system
-   situation. You could also find this <filename>README.SETUP</filename>
-   file online using this URL
-   <ulink url="http://gitorious.org/opensuse/build-service/blobs/raw/master/dist/README.SETUP">http://gitorious.org/opensuse/build-service/blobs/raw/master/dist/README.SETUP</ulink>.
+   situation. You can also find this <filename>README.SETUP</filename>
+   file in our public 
+   <ulink url="https://github.com/openSUSE/open-build-service/blob/master/dist/README.SETUP.md">git repository</ulink>.
   </para>
   <para>
    If you follow instructions from README.SETUP file, you should be able to
