@@ -28,7 +28,7 @@
    distributions (openSUSE, SLES, Fedora, Mandriva, Debian, etc.). If you
    want to check out the latest source code, you can do so with Git:
   </para>
-<screen> <command> git clone git://gitorious.org/opensuse/osc.git </command> </screen>
+<screen> <command> git clone git@github.com:openSUSE/osc.git </command> </screen>
   <para>
    osc is a subversion-like client. It serves as client for the source code
    repository part of the build service, and it is used to edit metadata or
