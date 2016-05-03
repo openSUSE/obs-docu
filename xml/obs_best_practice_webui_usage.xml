@@ -98,6 +98,24 @@
     </mediaobject>
    </figure>
   </section>
+  <section>
+   <title>Creating subprojects to a project</title>
+   <para>
+    Subprojects are projects that are part of another projects namespace. Subprojects
+    are an easy way to organize multiple projects.    
+    On the "Subprojects" tab you can find a list subprojects that belong to a
+    project. To create a new subproject click on the "New subproject" link, fill
+    in the form and press the "Create project" button.
+   </para>
+   <figure>
+    <title>Creating subprojects</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="create_subprojects.png" width="800" />
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </section>
  </section>
  <section>
   <title>My Projects, Server Status</title>
