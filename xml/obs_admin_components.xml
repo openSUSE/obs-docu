@@ -7,8 +7,147 @@
   %entities;
 ]>
 <section id="cha.obs.admin.components">
- <title>Server Components</title>
+ <title>OBS Components</title>
  <para>
-  To be written...
+   The OBS is not a monolithic server, it consists of multiple daemons that
+   fulfill different tasks.
  </para>
+ <figure>
+  <title>OBS Component Overview</title>
+  <mediaobject>
+   <imageobject>
+    <imagedata fileref="obs_components.png" width="800" />
+   </imageobject>
+  </mediaobject>
+ </figure>
+ <section>
+   <title>Frontend</title>
+   <para>
+     The OBS Frontend is a Ruby on Rails application that manages the access and
+     manipulation of the OBS data. It provides a web user interface and an
+     application programming interface to do so. Both can be used to create,
+     read, update and delete users, projects/packages, requests and other
+     objects. It also implements additional sub-systems like authentication,
+     search or email notifications.
+   </para>
+ </section>
+ <section>
+   <title>Backend</title>
+   <para>
+     The OBS Backend is a collection of Perl applications that manage the source
+     files and build jobs of the OBS.
+   </para>
+   <section>
+     <title>Source Server</title>
+     <para>
+       Maintains the source repository and project/package configurations.
+       It is the only interface for the Frontend and it may forward requests to
+       one of the repository servers. Each OBS installation only has one
+       Source Server.
+     </para>
+   </section>
+   <section>
+     <title>Repository Server</title>
+     <para>
+       A repository server provides access to the repositories of
+       some projects/packages/architectures. It also maintains the
+       build client worker pool, sending jobs to the clients and informing
+       the schedulers about finished jobs. Each OBS installation has
+       one or more repository servers.
+     </para>
+   </section>
+   <section>
+     <title>Scheduler</title>
+     <para>
+       A scheduler maintains all projects/packages of the corresponding
+       repository server, but for just one architecture. It is responsible
+       for starting jobs in the right order, collecting the built
+       binary packages and creating the external repository if a
+       project's repository is completely built. Each OBS installation has
+       one scheduler per available architecture.
+     </para>
+   </section>
+   <section>
+     <title>Dispatcher</title>
+     <para>
+       To be written...
+     </para>
+   </section>
+   <section>
+     <title>Publisher</title>
+     <para>
+       To be written...
+     </para>
+   </section>
+   <section>
+     <title>Worker</title>
+     <para>
+       The workers contact the repository servers for jobs, build
+       the jobs and send the result back to the repository server. Each OBS
+       installation has one or more workers.
+     </para>
+   </section>
+   <section>
+     <title>Signer</title>
+     <para>
+       Sign Packages. To be written...
+     </para>
+   </section>
+   <section>
+     <title>Warden</title>
+     <para>
+       Monitor workers. To be written...
+     </para>
+   </section>
+   <section>
+     <title>Download on Demand</title>
+     <para>
+       To be written...
+     </para>
+   </section>
+   <section>
+     <title>Delta Storage</title>
+     <para>
+       To be written...
+     </para>
+   </section>
+ </section>
+ <section>
+   <title>Command Line Client</title>
+   <para>
+     The Open Build Service Commander (osc) is a Python application with a
+     Subversion style command-line interface. It can be used to to manipulate or
+     query data from the OBS through its application programming interface.
+   </para>
+ </section>
+ <section>
+   <title>Content Delivery Server</title>
+   <para>
+     The OBS is agnostic about how you serve build results to your users. It will
+     just write repositories to disk. But many people sync these repositories to
+     some content delivery system like
+     <ulink url="http://mirrorbrain.org/">MirrorBrain</ulink>.
+   </para>
+ </section>
+ <section>
+  <title>Installation</title>
+  <para>
+    How to install the OBS components depends on the base operating
+    system and the version of the OBS. It does not fit this manual.
+    The installation is covered on the OBS
+    <ulink url="http://openbuildservice.org/download/">download page</ulink>.
+  </para>
+  <section>
+   <title>Requirements</title>
+   <para>
+     We highly recommend, and in fact only test, installations on the
+     <ulink url="https://www.suse.com/products/server/">SUSE Linux Enterprise Server</ulink>
+     and <ulink url="http://www.opensuse.org">openSUSE</ulink> operating systems.
+   </para>
+   <para>
+     The OBS also needs a SQL database (MySQL or MariaDB) for persistent and a
+     memcache daemon for volatile data.
+   </para>
+  </section>
+ </section>
 </section>
