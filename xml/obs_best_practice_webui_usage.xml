@@ -107,6 +107,10 @@
     project. To create a new subproject click on the "New subproject" link, fill
     in the form and press the "Create project" button.
    </para>
+   <note><para>
+    Please note that maintainer of upper projects always can modify the sub projects.
+    Apart from that all projects are seperated and have no influence to each other.
+   </para></note>
    <figure>
     <title>Creating subprojects</title>
     <mediaobject>
