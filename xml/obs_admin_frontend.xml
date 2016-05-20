@@ -7,7 +7,7 @@
   %entities;
 ]>
 <section id="cha.obs.admin.frontend">
- <title>Frontend</title>
+ <title>Frontend Administration</title>
  <para>
    The Ruby on Rails application is run through the apache web server with
    <ulink url="https://www.phusionpassenger.com/">mod_passenger</ulink>.
