@@ -12,6 +12,11 @@
   This chapter describes the components of an OBS installation and the typical
   administration tasks for an OBS administrator.
  </para>
+ <para>
+  This chapter is not intended to describe special installation hints for a
+  certain OBS version, please refer the README.md file of the package for that.
+ </para>
+ <xi:include href="obs_admin_appliance.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_admin_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_admin_backend.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_admin_frontend.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

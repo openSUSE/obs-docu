@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<section id="cha.obs.admin.appliance">
+ <title>How to use the OBS appliances in production</title>
+ <para>
+  This is a generic overview how to use the OBS appliances in production. The appliances can be just
+run executed for testing purposes, but in production use you may want to setup it up in a way 
+where production data is seperated from the appliance. That way a newer version of the appliance 
+can be used just by replacing the system image and it will migrate your user data.
+
+This can be achieved by createing a LVM volume group with the name "OBS". This volume group should
+be as big as possible because it get's used by the OBS server components for data storage and the
+OBS workers for root/swap/cache file systems. Prepare a partition of type "8e" and create the LVM
+via
+
+<screen><command>pvcreate /dev/sdX1
+vgcreate "OBS" /dev/sdX1
+</command></screen>
+
+All images come pre-configured with the right set of repositories and can be updated via the system tools YaST or zypper at any time. 
+Another way is to replace the entire image. If you update the image, keep in mind that you need to
+have your data directory (/srv/obs) on a separate storage (LVM volume, partition etc.). Otherwise
+it will get deleted.
+ </para>
+ <section>
+  <title>Server Appliance</title>
+  <para>
+The OBS server images contain a recent openSUSE distribution with a pre-installed and pre-configured OBS backend, API, web frontend and worker.
+
+The system adapts to the hardware on first boot and defaults to automatic IP and DNS configuration via DHCP. The image scans for a LVM volume group called "OBS" and will use that to set up logical volumes for the workers root/swap/cache file systems. Additionally if this volume group contains a logical volume named "server", it will be used as the data partition for the server.
+<screen><command>lvcreate "OBS" -n "server"
+mkfs.xfs /dev/OBS/server
+</command></screen>
+
+
+  </para>
+  <section>
+   <title>Installation Images</title>
+   <para>
+There are installation images. When you boot, they run a basic installer that let you choose the
+block device to deploy the image to. These images are available with the suffix install.org here:
+
+http://openbuildservice.org/download/
+
+The image can be written to an USB stick to boot from it:
+
+<screen><command> xzcat obs-server-install.x86_64.raw.xz > /dev/sdX </command></screen>
+
+   </para>
+<warning><para>/dev/sdX is the main device of your USB stick. Do NOT put it into a partition like /dev/sda1.
+If you use the wrong device, you will destroy all data on it!</para></warning>
+  </section>
+
+  <section>
+   <title>VirtualBox</title>
+   <para>
+For VirtualBox there are disk images (.vdi). You can load the configuration into VirtualBox.
+
+   </para>
+  </section>
+
+  <section>
+   <title>VMware</title>
+   <para>
+For VMware there are disk images (.vmdk). You can load the configuration into VMware Workstation and Player. Please note that our VirtualBox images are usually better tested.
+
+   </para>
+  </section>
+
+  <section>
+   <title>KVM/Qemu</title>
+   <para>
+For QEMU/KVM there is a qcow2 disk image in the qcow format which you can start.
+   </para>
+  </section>
+
+  <section>
+   <title>RAW Disk Image</title>
+   <para>
+If you want to deploy directly to a block device there is an file system image (.raw)
+   </para>
+  </section>
+
+ </section>
+ <section>
+  <title>Worker Appliance</title>
+  <para>
+There is also an image which includes a recent openSUSE distribtion and only the OBS worker component. The system on this image adapts to the hardware on first boot, defaults to automatic IP and DNS configuration via DHCP and OBS server discovery via SLP. This image is also looking for a LVM volume group with the name "OBS" during boot to create logical volumes for the workers root/swap/cache filesystems.   
+   </para>
+  </section>
+
+  <section>
+   <title>RAW Disk Image</title>
+   <para>
+You can use this file system image to deploy it directly to a block device or boot it with KVM/QEMU.
+   </para>
+  </section>
+
+  <section>
+   <title>PXE Image</title>
+   <para>
+A larger build farm is likely installed via PXE from a central server. 
+
+  </para>
+ </section>
+    
+</section>
