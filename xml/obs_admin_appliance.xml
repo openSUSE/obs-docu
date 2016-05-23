@@ -7,107 +7,157 @@
   %entities;
 ]>
 <section id="cha.obs.admin.appliance">
- <title>How to use the OBS appliances in production</title>
- <para>
-  This is a generic overview how to use the OBS appliances in production. The appliances can be just
-run executed for testing purposes, but in production use you may want to setup it up in a way 
-where production data is seperated from the appliance. That way a newer version of the appliance 
-can be used just by replacing the system image and it will migrate your user data.
-
-This can be achieved by createing a LVM volume group with the name "OBS". This volume group should
-be as big as possible because it get's used by the OBS server components for data storage and the
-OBS workers for root/swap/cache file systems. Prepare a partition of type "8e" and create the LVM
-via
-
-<screen><command>pvcreate /dev/sdX1
+  <title>OBS Appliances</title>
+  <para>
+    This chapter gives an overview over the different OBS appliances and
+    how to deploy them for production use.
+  </para>
+  <section>
+    <title>Server Appliance</title>
+    <para>
+      The OBS server appliance contains a recent openSUSE distribution with a
+      pre-installed and pre-configured OBS frontend, backend and worker.
+      The operating system on this appliance adapts to the hardware on first
+      boot and defaults to automatic IP and DNS configuration via DHCP.
+    </para>
+  </section>
+  <section>
+    <title>Worker Appliance</title>
+    <para>
+      The OBS worker appliance includes a recent openSUSE distribtion and the
+      OBS worker component. The operating system on this appliance adapts to the
+      hardware on first boot, defaults to automatic IP and DNS configuration via
+      DHCP and OBS server discovery via SLP.
+    </para>
+  </section>
+  <section>
+    <title>Image Types</title>
+    <para>
+      There are different types of OBS appliance images.
+      <table id='cha.obs.best-practices.appliance_types'>
+        <title>Appliance Types</title>
+        <tgroup cols='2' align='left'>
+          <thead>
+            <row>
+              <entry>Filename Suffix</entry>
+              <entry>Appliance for</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                .vdi
+              </entry>
+              <entry>
+                <ulink url="https://www.virtualbox.org/">VirtualBox</ulink>.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                .vmdk
+              </entry>
+              <entry>
+                <ulink url="http://www.vmware.com/">VMware</ulink>
+                Workstation and Player.
+                <note>
+                  <para>
+                  Our VirtualBox images are usually better tested.
+                  </para>
+                </note>
+              </entry>
+            </row>
+            <row>
+              <entry>
+                .qcow2
+              </entry>
+              <entry>
+                <ulink url="http://qemu.org">QEMU/KVM</ulink>.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                .raw
+              </entry>
+              <entry>
+                 Direct writing to a block device
+              </entry>
+            </row>
+            <row>
+              <entry>
+                .tgz
+              </entry>
+              <entry>
+                 Deploying via PXE from a central server
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </para>
+  </section>
+  <section>
+    <title>Deployment</title>
+    <para>
+      To help you deploy the OBS server appliance to a hard disk there
+      is an basic installer that you can boot from an USB stick. The installer
+      can be found on the
+      <ulink url="http://openbuildservice.org/download/">OBS Download page</ulink>.
+    </para>
+    <para>
+      The image can be written to an USB stick to boot from it:
+      <screen><command>
+xzcat obs-server-install.x86_64.raw.xz > /dev/sdX
+      </command></screen>
+    </para>
+    <warning>
+      <para>
+         /dev/sdX is the main device of your USB stick. Do NOT put it into a
+         partition like /dev/sda1. If you use the wrong device, you will
+         destroy all data on it!
+      </para>
+    </warning>
+    <para>
+      How to deploy the other image types deeply depends on your virtualization
+      setup. Describing this is out of scope for this guide, sorry.
+    </para>
+  </section>
+  <section>
+    <title>Separating Data from the System</title>
+    <para>
+      For production use you want to seperate the OBS data from operating system
+      of the appliance so you can re-deploy the appliance without touching your
+      OBS data. This can be achieved by createing a LVM volume group with the
+      name "OBS". This volume group should be as large as possible because it is
+      getting used by the OBS backend for data storage and the OBS workers for
+      root/swap/cache file systems. To create a LVM volume prepare a partition
+      of type "8e" and create the LVM via
+    <screen><command>
+pvcreate /dev/sdX1
 vgcreate "OBS" /dev/sdX1
-</command></screen>
-
-All images come pre-configured with the right set of repositories and can be updated via the system tools YaST or zypper at any time. 
-Another way is to replace the entire image. If you update the image, keep in mind that you need to
-have your data directory (/srv/obs) on a separate storage (LVM volume, partition etc.). Otherwise
-it will get deleted.
- </para>
- <section>
-  <title>Server Appliance</title>
-  <para>
-The OBS server images contain a recent openSUSE distribution with a pre-installed and pre-configured OBS backend, API, web frontend and worker.
-
-The system adapts to the hardware on first boot and defaults to automatic IP and DNS configuration via DHCP. The image scans for a LVM volume group called "OBS" and will use that to set up logical volumes for the workers root/swap/cache file systems. Additionally if this volume group contains a logical volume named "server", it will be used as the data partition for the server.
-<screen><command>lvcreate "OBS" -n "server"
+    </command></screen>
+    </para>
+    <para>
+      Additionally if the OBS volume group contains a logical volume named
+      "server", it will be used as the data partition for the server.
+    <screen><command>
+lvcreate "OBS" -n "server"
 mkfs.xfs /dev/OBS/server
-</command></screen>
-
-
-  </para>
-  <section>
-   <title>Installation Images</title>
-   <para>
-There are installation images. When you boot, they run a basic installer that let you choose the
-block device to deploy the image to. These images are available with the suffix install.org here:
-
-http://openbuildservice.org/download/
-
-The image can be written to an USB stick to boot from it:
-
-<screen><command> xzcat obs-server-install.x86_64.raw.xz > /dev/sdX </command></screen>
-
-   </para>
-<warning><para>/dev/sdX is the main device of your USB stick. Do NOT put it into a partition like /dev/sda1.
-If you use the wrong device, you will destroy all data on it!</para></warning>
+    </command></screen>
+    </para>
   </section>
-
   <section>
-   <title>VirtualBox</title>
-   <para>
-For VirtualBox there are disk images (.vdi). You can load the configuration into VirtualBox.
-
-   </para>
+    <title>Updating the Appliance</title>
+    <para>
+      All images come pre-configured with the right set of repositories and can be
+      updated via the system tools YaST or <command>zypper</command> at any time.
+      Another way to update is to re-deploy the entire image.
+    </para>
+    <warning>
+      <para>
+        If you re-deploy the entire image, keep in mind that you need to have
+        your data directory (/srv/obs) on a separate storage (LVM volume,
+        partition etc.) otherwise it will get deleted!
+      </para>
+    </warning>
   </section>
-
-  <section>
-   <title>VMware</title>
-   <para>
-For VMware there are disk images (.vmdk). You can load the configuration into VMware Workstation and Player. Please note that our VirtualBox images are usually better tested.
-
-   </para>
-  </section>
-
-  <section>
-   <title>KVM/Qemu</title>
-   <para>
-For QEMU/KVM there is a qcow2 disk image in the qcow format which you can start.
-   </para>
-  </section>
-
-  <section>
-   <title>RAW Disk Image</title>
-   <para>
-If you want to deploy directly to a block device there is an file system image (.raw)
-   </para>
-  </section>
-
- </section>
- <section>
-  <title>Worker Appliance</title>
-  <para>
-There is also an image which includes a recent openSUSE distribtion and only the OBS worker component. The system on this image adapts to the hardware on first boot, defaults to automatic IP and DNS configuration via DHCP and OBS server discovery via SLP. This image is also looking for a LVM volume group with the name "OBS" during boot to create logical volumes for the workers root/swap/cache filesystems.   
-   </para>
-  </section>
-
-  <section>
-   <title>RAW Disk Image</title>
-   <para>
-You can use this file system image to deploy it directly to a block device or boot it with KVM/QEMU.
-   </para>
-  </section>
-
-  <section>
-   <title>PXE Image</title>
-   <para>
-A larger build farm is likely installed via PXE from a central server. 
-
-  </para>
- </section>
-    
 </section>
