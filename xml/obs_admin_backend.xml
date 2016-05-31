@@ -7,177 +7,176 @@
   %entities;
 ]>
 <section id="cha.obs.admin.backend">
-  <title>Backend Administration</title>
+ <title>Backend Administration</title>
+ <para></para>
+ <section>
+  <title>Services</title>
   <para>
-
-  </para>
-  <section>
-    <title>Services</title>
-    <para>
-      You can control the different backend components via <command>systemctl</command>.
-      Basically you can enable/disable the service during booting the system and
-      start/stop/restart it in a running system. Have a look at the
-      <ulink url="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">man page</ulink>
-      for more information. For instance to restart the repository server use
+   You can control the different backend components via
+   <command>systemctl</command>. Basically you can enable/disable the
+   service during booting the system and start/stop/restart it in a running
+   system. Have a look at the
+   <ulink url="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">man
+   page</ulink> for more information. For instance to restart the repository
+   server use
 <screen><command>systemctl restart obsrepserver.service</command></screen>
-    </para>
-    <table id='cha.obs.best-practices.upstream.download.params'>
-      <title>Service Names</title>
-      <tgroup cols='2' align='left'>
-        <thead>
-          <row>
-            <entry>Component</entry>
-            <entry>Service Name</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry>
+  </para>
+  <table id='cha.obs.best-practices.upstream.download.params'>
+   <title>Service Names</title>
+   <tgroup cols='2' align='left'>
+    <thead>
+     <row>
+      <entry>Component</entry>
+      <entry>Service Name</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>
               Repository Server
             </entry>
-            <entry>
+      <entry>
               obsrepserver.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Source Server
             </entry>
-            <entry>
+      <entry>
               obssrcserver.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Scheduler
             </entry>
-            <entry>
+      <entry>
               obsscheduler.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Dispatcher
             </entry>
-            <entry>
+      <entry>
               obsdispatcher.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Publisher
             </entry>
-            <entry>
+      <entry>
               obspublisher.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Worker
             </entry>
-            <entry>
+      <entry>
               obsworker.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Source Services
             </entry>
-            <entry>
+      <entry>
               obsservice.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Download On Demand Updates
             </entry>
-            <entry>
+      <entry>
               obsdodup.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Delta Storage
             </entry>
-            <entry>
+      <entry>
               obsdeltastore.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Signer
             </entry>
-            <entry>
+      <entry>
               obssigner.service
             </entry>
-          </row>
-          <row>
-            <entry>
+     </row>
+     <row>
+      <entry>
               Warden
             </entry>
-            <entry>
+      <entry>
               obswarden.service
             </entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </section>
+ <section>
+  <title>Advanced Setups</title>
+  <para>
+   It makes sense to run some of the different components of the OBS backend
+   on isolated hosts.
+  </para>
+  <section>
+   <title>Distributed Workers</title>
+   <para>
+    OBS workers can be very resource hungry. It all depends on the software
+    that is being built, and how. Single builds deep down in the dependency
+    chain can also trigger a sea of jobs. It makes sense to split off
+    workers from all the other services so they don't have to fight for the
+    same operating system/hardware resources. Here is an example on how to
+    setup a remote OBS worker.
+   </para>
+   <orderedlist>
+    <listitem>
+     <para>
+      Install the worker package called obs-worker
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Configure the OBS repository server address in the file
+      /etc/sysconfig/obs-server. Change the variable OBS_REPO_SERVERS to the
+      hostname of the machine where the repository server is running:
+      OBS_REPO_SERVERS="myreposerver.example:5252"
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Start the worker
+     </para>
+    </listitem>
+   </orderedlist>
   </section>
   <section>
-    <title>Advanced Setups</title>
-    <para>
-      It makes sense to run some of the different components of the OBS backend
-      on isolated hosts.
-    </para>
-    <section>
-      <title>Distributed Workers</title>
-      <para>
-        OBS workers can be very resource hungry. It all depends on the software
-        that is being built, and how. Single builds deep down in the dependency
-        chain can also trigger a sea of jobs. It makes sense to split off
-        workers from all the other services so they don't have to fight for the
-        same operating system/hardware resources. Here is an example on how to
-        setup a remote OBS worker.
-      </para>
-      <orderedlist>
-        <listitem>
-          <para>
-            Install the worker package called obs-worker
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-          Configure the OBS repository server address in the file
-          /etc/sysconfig/obs-server. Change the variable
-          OBS_REPO_SERVERS to the hostname of the machine where the
-          repository server is running:
-          OBS_REPO_SERVERS="myreposerver.example:5252"
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-          Start the worker
-          </para>
-        </listitem>
-      </orderedlist>
-    </section>
-    <section>
-      <title>Distributed Source Services</title>
-      <para>
-        To be written...
-      </para>
-    </section>
-    <section>
-      <title>Isolated Signer</title>
-      <para>
-        To be written...
-      </para>
-    </section>
-    <section>
-      <title>Repository Partitions</title>
-      <para>
-        To be written...
-      </para>
-    </section>
+   <title>Distributed Source Services</title>
+   <para>
+    To be written...
+   </para>
   </section>
+  <section>
+   <title>Isolated Signer</title>
+   <para>
+    To be written...
+   </para>
+  </section>
+  <section>
+   <title>Repository Partitions</title>
+   <para>
+    To be written...
+   </para>
+  </section>
+ </section>
 </section>

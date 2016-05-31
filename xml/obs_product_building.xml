@@ -63,14 +63,12 @@
  <section>
   <title>Release Management</title>
   <para>
-    Products needs usually multiple approval steps and should only be released on 
-    manual approval. OBS is providing a mechanism which allows to copy sources
-    and binaries to another project in this case. 
-
-    To use this the release target must be configured inside of a repository
-    defintion of the project meta data:
-
-    <screen><command>&lt;project name="BuildProject"&gt;
+   Products needs usually multiple approval steps and should only be
+   released on manual approval. OBS is providing a mechanism which allows to
+   copy sources and binaries to another project in this case. To use this
+   the release target must be configured inside of a repository defintion of
+   the project meta data:
+<screen><command>&lt;project name="BuildProject"&gt;
   ...
   &lt;repository name="BuildRepo"&gt;
     &lt;releasetarget project="ReleaseProject" repository="ReleaseRepo" trigger="manual" /&gt;
@@ -78,15 +76,13 @@
   &lt;/repository&gt;
 &lt;/project&gt;
     </command></screen>
-
-    The ReleaseProject must be create before and it should be configured as build disabled.
-    The release can be triggered then via
-
-    <screen><command>osc release BuildProject</command></screen>
-
-    All sources and build results will be copied over from BuildProject to the ReleaseProject
-    and the publishing will happen afterwards. The operation will happen in background
-    since it can take quite some time depending on the project size.
+   The ReleaseProject must be create before and it should be configured as
+   build disabled. The release can be triggered then via
+<screen><command>osc release BuildProject</command></screen>
+   All sources and build results will be copied over from BuildProject to
+   the ReleaseProject and the publishing will happen afterwards. The
+   operation will happen in background since it can take quite some time
+   depending on the project size.
   </para>
  </section>
  <section>

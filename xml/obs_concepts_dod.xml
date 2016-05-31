@@ -3,10 +3,10 @@
  <section>
   <title>Motivation</title>
   <para>
-   In a DoD repository external software repositories can be configured which
-   are used for dependency resolution and where packages will be downloaded
-   at build time. A DoD repository has some main advantages in comparison to
-   binary import projects:
+   In a DoD repository external software repositories can be configured
+   which are used for dependency resolution and where packages will be
+   downloaded at build time. A DoD repository has some main advantages in
+   comparison to binary import projects:
   </para>
   <itemizedlist>
    <listitem>

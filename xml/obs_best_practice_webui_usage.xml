@@ -59,18 +59,17 @@
   <para>
    Every user has a home project (home:[userid]) where he/she has write
    access by default. This is your personal workspace where you can
-   experiment and play.
-   Click on the link "Home Project" at the upper right to get to your
-   home project.
+   experiment and play. Click on the link "Home Project" at the upper right
+   to get to your home project.
   </para>
   <section>
    <title>The project page</title>
    <para>
-    Your home project will be empty for now, but you can add packages containing
-    sources/build recipes and projects which are containers for the build
-    targets. As you can see, you're the default maintainer which grants you
-    full write access to this project. You're also the bug owner of your
-    project.
+    Your home project will be empty for now, but you can add packages
+    containing sources/build recipes and projects which are containers for
+    the build targets. As you can see, you're the default maintainer which
+    grants you full write access to this project. You're also the bug owner
+    of your project.
    </para>
    <figure>
     <title>project page</title>
@@ -84,10 +83,9 @@
   <section>
    <title>Changing a project's title and description</title>
    <para>
-     On every project page you will find a "Edit description" link. This link will
-     lead you to a place were you can review and change your project's title and
-     description.
-     Click on the "Update project" button to save.
+    On every project page you will find a "Edit description" link. This link
+    will lead you to a place were you can review and change your project's
+    title and description. Click on the "Update project" button to save.
    </para>
    <figure>
     <title>Updating project description</title>
@@ -101,16 +99,19 @@
   <section>
    <title>Creating subprojects to a project</title>
    <para>
-    Subprojects are projects that are part of another projects namespace. Subprojects
-    are an easy way to organize multiple projects.    
-    On the "Subprojects" tab you can find a list subprojects that belong to a
-    project. To create a new subproject click on the "New subproject" link, fill
-    in the form and press the "Create project" button.
+    Subprojects are projects that are part of another projects namespace.
+    Subprojects are an easy way to organize multiple projects. On the
+    "Subprojects" tab you can find a list subprojects that belong to a
+    project. To create a new subproject click on the "New subproject" link,
+    fill in the form and press the "Create project" button.
    </para>
-   <note><para>
-    Please note that maintainer of upper projects always can modify the sub projects.
-    Apart from that all projects are seperated and have no influence to each other.
-   </para></note>
+   <note>
+    <para>
+     Please note that maintainer of upper projects always can modify the sub
+     projects. Apart from that all projects are seperated and have no
+     influence to each other.
+    </para>
+   </note>
    <figure>
     <title>Creating subprojects</title>
     <mediaobject>
@@ -171,23 +172,30 @@
   <para>
    Now let's create a link to a package and add a repository to build
    against. A link is basically a pointer to sources of an already existing
-   package. 
-   By "repository" we mean container of built binary packages like Debian_8
-   or openSUSE_13.2. Let's follow these steps:
-    <orderedlist>
-     <listitem>
-       <para>Add link to the existing package.</para>
-     </listitem>
-     <listitem>
-       <para>Add repository.</para>
-     </listitem>
-     <listitem>
-       <para>Observe the build on the monitor page.</para>
-     </listitem>
-     <listitem>
-       <para>Look at package's page.</para>
-     </listitem>
-    </orderedlist>
+   package. By "repository" we mean container of built binary packages like
+   Debian_8 or openSUSE_13.2. Let's follow these steps:
+   <orderedlist>
+    <listitem>
+     <para>
+      Add link to the existing package.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Add repository.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Observe the build on the monitor page.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Look at package's page.
+     </para>
+    </listitem>
+   </orderedlist>
   </para>
   <section>
    <title>Add link to existing package</title>
@@ -246,8 +254,8 @@
     </mediaobject>
    </figure>
    <para>
-    Wonderful, we've added a pointer to the sources! Now we need to add
-    a repository, so the builder knows the target-distribution to build
+    Wonderful, we've added a pointer to the sources! Now we need to add a
+    repository, so the builder knows the target-distribution to build
     packages for. How to add a repository to a project is documented at
     <xref linkend="cha.obs.best-practices.webuiusage.add-repository" />.
    </para>
@@ -311,20 +319,18 @@
   </figure>
   <note>
    <para>
-    Published repositories are marked with the OBS LKW
-    <inlineequation>
-     <inlinemediaobject>
-      <imageobject>
-       <imagedata fileref="obs_lkw.png" />
-      </imageobject>
-     </inlinemediaobject>
-    </inlineequation>
+    Published repositories are marked with the OBS LKW <inlineequation>
+    <inlinemediaobject>
+    <imageobject>
+     <imagedata fileref="obs_lkw.png" />
+    </imageobject>
+    </inlinemediaobject> </inlineequation>
    </para>
   </note>
   <para>
-   Now click on Go to download repository. Note that publishing the repository might
-   take a while. Until then you will get a 404 error. Once the binaries are there,
-   you'll see something like this:
+   Now click on Go to download repository. Note that publishing the
+   repository might take a while. Until then you will get a 404 error. Once
+   the binaries are there, you'll see something like this:
   </para>
   <figure>
    <title>Repository_structure</title>
@@ -349,9 +355,9 @@
    <title>Adding a repository</title>
    <para>
     To add a repository to your project, click on "Add Repositories" on the
-    project's repository tab.
-    This will direct you to a list of possible distributions you can built
-    packages for, see <xref linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot" />.
+    project's repository tab. This will direct you to a list of possible
+    distributions you can built packages for, see
+    <xref linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot" />.
    </para>
    <figure id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
     <title>Add Repository to project</title>
@@ -363,27 +369,27 @@
    </figure>
    <note>
     <para>
-     If you could not find a repository that fits your needs, you might
-     want to switch to the expert mode. Click on the "Expert mode" link right
-     to the button.
-     This page allows you to search and select a repository of any project
-     available in OBS and add it to your projects repository list.
+     If you could not find a repository that fits your needs, you might want
+     to switch to the expert mode. Click on the "Expert mode" link right to
+     the button. This page allows you to search and select a repository of
+     any project available in OBS and add it to your projects repository
+     list.
     </para>
    </note>
    <para>
-    This will take you back to your home: project.
-    The build repository might be disabled: if so, klick on the cogwheel to
-    enable it. Congratulations, it is configured. On a heavily loaded
-    server, it can sometimes take a few minutes for your changes to become
-    effective, but your linked package will automatically begin building.
+    This will take you back to your home: project. The build repository
+    might be disabled: if so, klick on the cogwheel to enable it.
+    Congratulations, it is configured. On a heavily loaded server, it can
+    sometimes take a few minutes for your changes to become effective, but
+    your linked package will automatically begin building.
    </para>
   </section>
   <section>
    <title>Add Download on Demand repositories to a project</title>
    <para>
-    When you have administrator rights you will be able to add Download on Demand
-    repositories to your project. To do so, click on the "Add DoD repository"
-    link and enter your DoD repository data into the form.
+    When you have administrator rights you will be able to add Download on
+    Demand repositories to your project. To do so, click on the "Add DoD
+    repository" link and enter your DoD repository data into the form.
    </para>
    <figure>
     <title>Add Download on Demand repository</title>
@@ -394,11 +400,11 @@
     </mediaobject>
    </figure>
    <para>
-    The minimal set of fields you have to enter are architecture, repository type and
-    the url that provides the binary packages.
-    Detailed information about the data you can enter here you can find at the
-    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">DoD concept section</ulink>.
-    Press "Save" to create the repository.
+    The minimal set of fields you have to enter are architecture, repository
+    type and the url that provides the binary packages. Detailed information
+    about the data you can enter here you can find at the
+    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">DoD
+    concept section</ulink>. Press "Save" to create the repository.
    </para>
    <figure>
     <title>Download on Demand repository form</title>
@@ -425,8 +431,8 @@
    </figure>
    <para>
     Open the DoD repository sources form by clicking the "Add" link. Here
-    you can enter your additional DoD repository source. Click
-    the "Add Download on Demand" button.
+    you can enter your additional DoD repository source. Click the "Add
+    Download on Demand" button.
    </para>
    <figure>
     <title>Form for adding DoD repository sources</title>
@@ -440,8 +446,8 @@
   <section>
    <title>Edit DoD repository sources</title>
    <para>
-    To edit DoD repository sources after they got added click on the "Edit" link
-    that you find right to each DoD repository source.
+    To edit DoD repository sources after they got added click on the "Edit"
+    link that you find right to each DoD repository source.
    </para>
    <figure>
     <title>Form for editing DoD repository sources</title>
@@ -455,8 +461,8 @@
   <section>
    <title>Edit DoD repository sources</title>
    <para>
-    To delete a repository or repository source, click on the "Delete" link and
-    accept the confirmation dialog.
+    To delete a repository or repository source, click on the "Delete" link
+    and accept the confirmation dialog.
    </para>
   </section>
  </section>

@@ -155,9 +155,10 @@
  <section>
   <title>The OBS Interconnect</title>
   <para>
-   The OBS interconnect is a mechanism to connect two OBS instances. All content, including
-   sources and binary build results will be available in the connecting instance. Unlike
-   other methods the instances will also notify each other about changes. 
+   The OBS interconnect is a mechanism to connect two OBS instances. All
+   content, including sources and binary build results will be available in
+   the connecting instance. Unlike other methods the instances will also
+   notify each other about changes.
 <!--
  * xml example to setup
  * webui interconnect page
