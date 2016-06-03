@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<section id="_frontend_components">
+ <title>Frontend Components</title>
+ <para></para>
+ <section id="_database_server">
+  <title>Database server</title>
+  <para></para>
+ </section>
+ <section id="_web_server_apache">
+  <title>Web server (Apache)</title>
+  <para></para>
+ </section>
+ <section id="_api">
+  <title>API</title>
+  <para></para>
+ </section>
+ <section id="_webui">
+  <title>WebUI</title>
+  <para></para>
+  </section>
+</section>

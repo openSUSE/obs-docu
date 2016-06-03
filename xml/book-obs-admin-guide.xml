@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet
+ href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+ type="text/xml"
+ title="Profiling step"
+?>
+<!DOCTYPE book PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<book lang="en" id="book.obs-admin">
+ <title>&obs;</title>
+ <subtitle>Administator Guide</subtitle>
+ <bookinfo>
+  <authorgroup>
+   <author>
+     <firstname>Karsten</firstname>
+     <surname>Keil</surname>
+     <affiliation>
+        <orgname>B1 Sytems GmbH </orgname>
+     </affiliation>
+   </author>
+  </authorgroup>
+  <copyright>
+    <year>2016</year>
+    <holder>B1 Systems GmbH</holder>
+  </copyright>
+  <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ </bookinfo>
+ <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_obs_architecture.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_installation_and_configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_overview_filesystem.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_administration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_troubleshooting.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+<!-- Appendices -->
+ <xi:include  href="legal.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</book>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter id="_overview_filesystem">
+ <title>Overview filesystem</title>
+ <para></para>
+ <section id="_configuration_files">
+  <title>Configuration files</title>
+  <para></para>
+ </section>
+ <section id="_log_files">
+  <title>Log files</title>
+  <para></para>
+ </section>
+ <section id="_src_obs_tree">
+  <title>/src/obs tree</title>
+  <para></para>
+ </section>
+ <section id="_meta_data">
+  <title>Meta data</title>
+  <para></para>
+ </section>
+</chapter>

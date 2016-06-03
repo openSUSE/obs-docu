@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter id="_installation_and_configuration">
+ <title>Installation and configuration</title>
+ <para></para>
+ <section id="_planing">
+  <title>Planing</title>
+  <para></para>
+ </section>
+ <section id="_simple">
+  <title>Simple</title>
+  <para></para>
+ </section>
+ <section id="_worker_farm">
+  <title>Worker farm</title>
+  <para></para>
+ </section>
+ <section id="_partitioning">
+  <title>Partitioning</title>
+  <para></para>
+ </section>
+ <section id="_monitoring">
+  <title>Monitoring</title>
+  <para></para>
+ </section>
+</chapter>

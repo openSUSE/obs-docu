@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter id="_administration">
+ <title>Administration</title>
+ <para></para>
+ <section id="_tools">
+  <title>Tools</title>
+  <para></para>
+  <section id="_obs_admin">
+   <title>obs_admin</title>
+   <para></para>
+  </section>
+  <section id="_osc">
+   <title>osc</title>
+   <para></para>
+  </section>
+ </section>
+ <section id="_managing_build_targets">
+  <title>Managing build targets</title>
+  <para></para>
+  <section id="_interconnect">
+   <title>Interconnect</title>
+   <para></para>
+  </section>
+  <section id="_importing_distributions">
+   <title>Importing distributions</title>
+   <para></para>
+  </section>
+ </section>
+ <section id="_source_services">
+  <title>Source services</title>
+  <para></para>
+ </section>
+ <section id="_constraints">
+  <title>Constraints</title>
+  <para></para>
+ </section>
+ <xi:include href="obs_ag_publish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_unpublish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <section id="_user_management">
+  <title>User management</title>
+  <para></para>
+  <section id="_user_roles">
+   <title>User roles</title>
+   <para></para>
+  </section>
+  <section id="_ldap_active_directory">
+   <title>LDAP/Active directory</title>
+   <para></para>
+  </section>
+  <section id="_authentification_methods">
+   <title>Authentification methods</title>
+   <para></para>
+  </section>
+ </section>
+ <section id="_backup">
+  <title>Backup</title>
+  <para></para>
+ </section>
+</chapter>

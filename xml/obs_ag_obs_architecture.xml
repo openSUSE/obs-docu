@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter id="_obs_architecture">
+ <title>OBS Architecture</title>
+ <para></para>
+ <section id="_overview_graph">
+  <title>Overview graph</title>
+  <para>
+   The OBS is not a monolithic server, it consists of multiple daemons that
+   fulfill different tasks.
+  </para>
+  <figure>
+   <title>Simplified OBS Component Overview</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="obs_components.png" width="500" />
+    </imageobject>
+   </mediaobject>
+  </figure>
+ </section>
+
+ <xi:include href="obs_ag_backend_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+
+ <xi:include href="obs_ag_frontend_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+   
+ <section id="_communication_flow_diagram">
+  <title>Communication flow diagram</title>
+  <para></para>
+  <literallayout class="monospaced">(who communicates with whom and how)</literallayout>
+ </section>
+</chapter>
