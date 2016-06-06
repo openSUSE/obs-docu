@@ -43,22 +43,7 @@
  </section>
  <xi:include href="obs_ag_publish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_unpublish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <section id="_user_management">
-  <title>User management</title>
-  <para></para>
-  <section id="_user_roles">
-   <title>User roles</title>
-   <para></para>
-  </section>
-  <section id="_ldap_active_directory">
-   <title>LDAP/Active directory</title>
-   <para></para>
-  </section>
-  <section id="_authentification_methods">
-   <title>Authentification methods</title>
-   <para></para>
-  </section>
- </section>
+ <xi:include href="obs_ag_user_management.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <section id="_backup">
   <title>Backup</title>
   <para></para>
