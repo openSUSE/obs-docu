@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="cha.obs.source_service">
+<section id="cha.obs.source_service">
  <title>Source Services</title>
  <para>
   Source Services are tools to validate, generate or modify sources in a
@@ -200,16 +200,4 @@
    calling <command>osc service merge</command>.
   </para>
  </section>
- <section>
-  <title>How to write a source service</title>
-  <para>
-   ..
-  </para>
- </section>
- <section>
-  <title>Interfaces for using source services</title>
-  <para>
-   ..
-  </para>
- </section>
-</chapter>
+</section>

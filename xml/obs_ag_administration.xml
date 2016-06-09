@@ -11,10 +11,7 @@
  <para></para>
  <xi:include href="obs_ag_tools.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_build_targets.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <section id="_source_services">
-  <title>Source services</title>
-  <para></para>
- </section>
+ <xi:include href="obs_ag_source_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_constraints.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_publish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_unpublish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
