@@ -15,10 +15,7 @@
   <title>Source services</title>
   <para></para>
  </section>
- <section id="_constraints">
-  <title>Constraints</title>
-  <para></para>
- </section>
+ <xi:include href="obs_ag_constraints.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_publish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_unpublish_hooks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_user_management.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

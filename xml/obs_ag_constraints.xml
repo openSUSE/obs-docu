@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="cha.obs.build_job_constraints">
+<section id="cha.obs.build_job_constraints">
  <title>Build Job Constraints</title>
  <para>
   The build job constraints can define requirements to the hardware or
@@ -241,4 +241,4 @@ Constraint: hardware:cpu:flag sse2</command></screen>
    </section>
   </section>
  </section>
-</chapter>
+</section>
