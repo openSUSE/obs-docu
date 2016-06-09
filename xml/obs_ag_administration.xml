@@ -9,30 +9,8 @@
 <chapter id="_administration">
  <title>Administration</title>
  <para></para>
- <section id="_tools">
-  <title>Tools</title>
-  <para></para>
-  <section id="_obs_admin">
-   <title>obs_admin</title>
-   <para></para>
-  </section>
-  <section id="_osc">
-   <title>osc</title>
-   <para></para>
-  </section>
- </section>
- <section id="_managing_build_targets">
-  <title>Managing build targets</title>
-  <para></para>
-  <section id="_interconnect">
-   <title>Interconnect</title>
-   <para></para>
-  </section>
-  <section id="_importing_distributions">
-   <title>Importing distributions</title>
-   <para></para>
-  </section>
- </section>
+ <xi:include href="obs_ag_tools.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_ag_build_targets.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <section id="_source_services">
   <title>Source services</title>
   <para></para>

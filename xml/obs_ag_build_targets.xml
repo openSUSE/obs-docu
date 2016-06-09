@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+  <section id="_managing_build_targets">
+   <title>Managing build targets</title>
+   <section id="_interconnect">
+    <title>Interconnect</title>
+    <simpara>Use another openbuild server as source for build targets is the easiest way
+to start. The advantage is, that you save local resources and you do not
+need to build everything from scratch. The disadvantage is that you depend
+on the remote instance, if it has a downtime your instance cannot do any
+builds for these targets, if the remote admins decide to remove some
+targets you cannot use them anymore.</simpara>
+    <simpara>The easiest way to interconnect with some of the public OBS instances is to
+use the Web UI. You need to login on an adminstrator account of your instance
+to do this. On the start page of an administrator account you will find
+a <emphasis role="strong">Configuration</emphasis> link. On the Configuration page you find a Interconnect
+tab on the top, use this and select the public side you want.</simpara>
+    <simpara>If you want to connect to a not listed instance, you can simple create a
+remote project using the <emphasis>osc meta prj</emphasis> command. A remote project differs
+from a local project the it has a <emphasis role="strong">remoteurl</emphasis> tag (see <xref linkend="_project_meta_data"/>).</simpara>
+    <simpara>Example:</simpara>
+    <screen>&lt;project name="openSUSE.org"&gt;
+  &lt;title&gt;openSUSE.org Project Link&lt;/title&gt;
+  &lt;description&gt;
+This project refers to projects hosted on the openSUSE Build Service
+&lt;/description&gt;
+  &lt;remoteurl&gt;https://api.opensuse.org/public&lt;/remoteurl&gt;
+&lt;/project&gt;</screen>
+    <simpara>Sending this via osc to the server:</simpara>
+    <screen>osc meta prj -m "add openSUSE.org remote" -F /tmp/openSUSE.org.prj</screen>
+   </section>
+   <section id="_importing_distributions">
+    <title>Importing distributions</title>
+    <simpara>With local hosted distributions packages you are independent from other parties.
+On sides with no or bad internet connections, this is the only way to go.
+You do not need to build the distribution packages on your instance, you can use binary
+pakages for this. Here are different ways to get a local build repository:</simpara>
+    <orderedlist numeration="arabic">
+     <listitem>
+      <simpara>
+mirror a distribution from another OBS instance
+</simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+mirror a binary distribution from a public mirror and import the binaries
+</simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+use already existing local install repositories (e.g. from an SMT)
+</simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+use the install media to import the binaries
+</simpara>
+     </listitem>
+    </orderedlist>
+    <simpara>These tasks need to be run on the obs backend. In a partition setup you need to run it on the partition
+which would the owner for the project.</simpara>
+    <section id="_mirror_from_a_remote_obs_instance">
+     <title>Mirror from a remote OBS instance</title>
+     <simpara>Mirroring a project from a remote OBS instance can be done with the <emphasis role="strong">obs_mirror_project</emphasis>  script which is
+supplied with the obs sources, but unfortunately not part of the binary packages.
+You can get the latest version from GitHub:
+<ulink url="https://raw.githubusercontent.com/openSUSE/open-build-service/master/dist/obs_mirror_project"><emphasis>https://raw.githubusercontent.com/openSUSE/open-build-service/master/dist/obs_mirror_project</emphasis></ulink>.</simpara>
+     <simpara>The usage:</simpara>
+     <screen>____________________________________________________________________________________
+Usage: obs_mirror_project.rb -p PROJECT -r REPOSITORY
+                            [-a ARCHITECTURE] [-d DESTINATION] [-A APIURL] [-t] [-v]
+
+Example: (mirror openSUSE 13.1 as base distro)
+obs_mirror_project -p openSUSE:13.1 -r standard -a i586,x86_64
+____________________________________________________________________________________
+Options help:
+    -p, --proj PROJECT         Project Name: eg. openSUSE:13.1,Ubuntu:14.04,etc.
+    -r, --repo REPOSITORY      Repository Name:   eg. standard,qemu,etc.
+    -a, --arch Architecture    Architecture Name: eg. i586,x86_64,etc.
+    -d, --dest DESTINATION     Destination Path:  eg. /obs
+                                           Default: PWD (current working directory)
+    -A, --api APIURL           OSC API URL :Default: https://api.opensuse.org
+    -t, --trialrun             Trial run: not executing actions
+    -v, --verbose              Verbose
+    -h, --help                 Display this screen</screen>
+    </section>
+    <section id="_import_binary_packages">
+     <title>Import binary packages</title>
+     <simpara>This is the same procedure for all local sources.
+If you have a local copy of a distribution, you can either use symbolic links to
+the binary packages or copy them in a directory on the backend repo server under the
+<emphasis>'/srv/obs/build'</emphasis> directory. You should follow the common name schema for build repository here.
+As first step you should create a empty project for the distribution, you can use the WebUI or the <emphasis role="strong">osc</emphasis>
+commandline tool.
+Then you add a repository with name <emphasis>standard</emphasis> and the build architectures you want.
+Here a example project meta file:</simpara>
+     <screen>&lt;project name="SUSE:13.2"&gt;
+  &lt;title&gt;openSUSE 13.2 build repositories&lt;/title&gt;
+  &lt;description&gt;openSUSE 13.2 build repositories&lt;/description&gt;
+  &lt;person userid="Admin" role="maintainer"/&gt;
+  &lt;build&gt;
+    &lt;disable repository="standard"/&gt;
+  &lt;/build&gt;
+  &lt;publish&gt;
+    &lt;disable/&gt;
+  &lt;/publish&gt;
+  &lt;repository name="standard"&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;arch&gt;i586&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;</screen>
+     <simpara>After you have created the project with these settings, the /srv/obs/build directory should have a tree for
+SUSE:13.2:</simpara>
+     <screen>/srv/obs/
+├── build
+│   └── SUSE:13.2
+│       └── standard
+│           ├── i586
+│           │   ├── :bininfo
+│           │   └── :schedulerstate
+│           └── x86_64
+│               ├── :bininfo
+│               └── :schedulerstate</screen>
+     <warning>
+      <simpara>All the directories under /srv/obs/build have to be owned by the <emphasis role="strong">obsrun</emphasis> user and
+group. The <emphasis role="strong">obsrun</emphasis> user need write access to them.
+ <emphasis role="strong">If not the scheduler process will crash on your instance.</emphasis></simpara>
+     </warning>
+     <simpara>You need to import the project configuration as well, you can get them for example from the openSUSE buildserver.</simpara>
+     <screen>osc -A https://api.opensuse.org meta prjconf openSUSE:13.2 &gt;/tmp/13.2.prjconf
+osc meta prjconf -m 'Original version from openSUSE' SUSE:13.2 -F /tmp/13.2.prjconf</screen>
+     <simpara>Now you need to create the directory <emphasis>':full'</emphasis> for the binary sources under each architecture, this should be owned by
+<emphasis role="strong">obsrun</emphasis> too.</simpara>
+     <screen>testobs:/srv/www/obs/api # mkdir /srv/obs/build/SUSE\:13.2/standard/i586/:full
+testobs:/srv/www/obs/api # mkdir /srv/obs/build/SUSE\:13.2/standard/x86_64/:full
+testobs:/srv/www/obs/api # chown obsrun:obsrun \
+                                 /srv/obs/build/SUSE\:13.2/standard/i586/:full
+testobs:/srv/www/obs/api # chown obsrun:obsrun \
+                                 /srv/obs/build/SUSE\:13.2/standard/x86_64/:full</screen>
+     <simpara>Now you can copy (or link) all binary packages for the architecture in the <emphasis>:full</emphasis> directory.
+You need the architecture specific package and the <emphasis>noarch</emphasis> packages as well.</simpara>
+     <important>
+      <simpara>If you import packages for enterprise distributions like SLES12 you also need the packages
+from the SDK. Maybe you need packages from addon products as well, depending what software you want build.</simpara>
+     </important>
+     <simpara>Finally you should trigger a rescan for the project on the backend server using <emphasis role="strong">obs_admin</emphasis>:</simpara>
+     <screen>testobs # obs_admin --rescan-repository SUSE:13.2 standard i586
+testobs # obs_admin --rescan-repository SUSE:13.2 standard x86_64</screen>
+     <simpara>This reads all packages and creates the dependency tree.</simpara>
+    </section>
+   </section>
+  </section>

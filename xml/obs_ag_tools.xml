@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+  <section id="_tools">
+   <title>Tools</title>
+   <section id="_obs_admin">
+    <title>obs_admin</title>
+    <simpara>obs_admin is a commandline tool used on the backend server(s) to manage
+the running services, submit maintenance tasks and debuging.
+It should be only used by experienced admins.</simpara>
+    <simpara>It has an builtin help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
+    <simpara>Options to control the running services:</simpara>
+    <screen>Job Controlling
+===============
+
+ --shutdown-scheduler &lt;architecture&gt;
+   Stops the scheduler nicely with dumping out its current state
+   for fast startup.
+
+ --check-project &lt;project&gt; &lt;architecture&gt;
+ --check-project &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
+ --check-all-projects &lt;architecture&gt;
+   Check status of a project and its repositories again
+
+ --deep-check-project &lt;project&gt; &lt;architecture&gt;
+ --deep-check-project &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
+   Check status of a project and its repositories again
+   This deep check includes also the sources, in case of lost events.
+
+ --check-package &lt;project&gt; &lt;package&gt; &lt;architecture&gt;
+   Check status of a package in all repositories
+
+ --publish-repository &lt;project&gt; &lt;repository&gt;
+   Creates an event for the publisher. The scheduler is NOT scanning for new packages.
+   The publisher may skip the event, if nothing has changed.
+   Use --republish-repository when you want to enforce a publish.
+
+ --unpublish-repository &lt;project&gt; &lt;repository&gt;
+   Removes the prepared :repo collection and let the publisher remove the result. This
+   is also updating the search database.
+   WARNING: this works also for locked projects!
+
+ --prefer-publish-event &lt;name&gt;
+   prefers a publish event to be next. &lt;name&gt; is the file name inside of the publish
+   event directory.
+
+ --republish-repository &lt;project&gt; &lt;repository&gt;
+   enforce to publish a repository
+
+ --rebuild-full-tree &lt;project&gt; &lt;repository&gt; &lt;arch&gt;
+   rebuild the content of :full/ directory
+
+ --clone-repository &lt;source project&gt; &lt;source repository&gt; &lt;destination repository&gt;
+ --clone-repository &lt;source project&gt; &lt;source repository&gt; &lt;destination project&gt; &lt;destination repository&gt;
+   Clone an existing repo into another existing repository.
+   Usefull for creating snapshots.
+
+ --rescan-repository &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
+   Asks the scheduler to scan a repository for new packages and add
+   them to the cache file.
+
+ --force-check-project &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
+   Enforces the check of an repository, even when it is currently blocked due to amount of
+   calculating time.
+
+ --create-patchinfo-from-updateinfo
+   creates a patchinfo submission based on an updateinfo information.</screen>
+    <simpara>Options for maintenance are:</simpara>
+    <screen>Maintenance Tasks
+=================
+
+Note: the --update-*-db calls are usually only needed when corrupt data has been created, for
+      example after a file system corruption.
+
+ --update-source-db [&lt;project&gt;]
+   Update the index for all source files.
+
+ --update-request-db
+   Updates the index for all requests.
+
+ --remove-old-sources &lt;days&gt; &lt;y&gt; (--debug)
+   WARNING: this is an experimental feature atm. It may trash your data, but you have anyway
+            a backup, right?
+   remove sources older than &lt;x&gt; days, but keep &lt;y&gt; number of revisions
+   --debug for debug output</screen>
+    <simpara>Options for debugging:</simpara>
+    <screen>Debug Options
+=============
+
+ --dump-cache &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
+   Dumps out the content of a binary cache file.
+   This shows all the content of a repository, including all provides
+   and requires.
+
+ --dump-state &lt;architecture&gt;
+
+ --dump-project-from-state &lt;project&gt; &lt;arch&gt;
+   dump the state of a project.
+
+ --dump-relsync &lt;file&gt;
+   To dump content of :relsync files.
+
+ --set-relsync &lt;file&gt; &lt;key&gt; &lt;value&gt;
+   Modify key content in a a :relsync file.
+
+ --check-meta-xml &lt;project&gt;
+ --check-meta-xml &lt;project&gt; &lt;package&gt;
+   Is parsing a project or package xml file and puts out error messages, in case of errors.
+
+ --check-product-xml &lt;file&gt;
+   Is parsing a product xml file and puts out error messages, in case of errors.
+   It does expand all xi:include references and validates the result.
+
+ --check-product-group-xml &lt;file&gt;
+   Is parsing a group xml file from a product definition and puts out error messages, in case of errors.
+
+ --check-kiwi-xml &lt;file&gt;
+ --check-kiwi-xml &lt;project&gt; &lt;package&gt;
+   Is parsing a kiwi xml file and puts out error messages, in case of errors.
+
+ --check-constraints &lt;file&gt;
+ --check-constraints &lt;project&gt; &lt;package&gt;
+   Validates a _constraints file
+
+ --check-pattern-xml &lt;file&gt;
+   Is parsing a pattern xml file and puts out error messages, in case of errors.
+
+ --check-request-xml &lt;file&gt;
+   Is parsing a request xml file and puts out error messages, in case of errors.
+
+ --parse-build-desc &lt;file&gt; [&lt;arch&gt; [&lt;buildconfigfile&gt;]]
+   Parse a spec, dsc or kiwi file with the Build script parser.
+
+ --show-scheduler-architectures
+   Show all architectures which are configured in configuration.xml to be supported by this instance.
+
+ --show-delta-file &lt;file&gt;
+   Show all instructions of a OBS delta file
+
+ --show-delta-store &lt;file&gt;
+   Show delta store statistics</screen>
+   </section>
+   <section id="_osc">
+    <title>osc</title>
+    <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> commandline client is mainly used by developer and packager. But
+for some tasks also admin people need this tool. It has an builtin help
+simple call <emphasis>osc --help</emphasis>. The tool need to be configured first to know the
+OBS API URL and your user details.</simpara>
+    <simpara>To configure the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool the first time you need to call it with</simpara>
+    <screen>osc -A &lt;URL to the OBS API&gt;
+For example:
+osc -A https://api.testobs.org</screen>
+    <simpara>Follow the instructions on the terminal.</simpara>
+    <warning>
+     <simpara>The password is stored in clear text in the .oscrc file by default, so you need to
+give this file restrictive access rights, only read/write access for your user
+should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
+for example) and may use different methods for authentification like
+kerberos see <xref linkend="_kerberos"/></simpara>
+    </warning>
+    <simpara>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</simpara>
+    <itemizedlist>
+     <listitem>
+      <simpara>
+meta  - to create or update projects or package data
+</simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+api - to read and write online configuration data
+</simpara>
+     </listitem>
+    </itemizedlist>
+    <section id="_osc_meta_subcommand">
+     <title>osc meta subcommand</title>
+     <screen>meta: Show meta information, or edit it
+
+Show or edit build service metadata of type &lt;prj|pkg|prjconf|user|pattern&gt;.
+
+This command displays metadata on buildservice objects like projects,
+packages, or users. The type of metadata is specified by the word after
+"meta", like e.g. "meta prj".
+
+prj denotes metadata of a buildservice project.
+prjconf denotes the (build) configuration of a project.
+pkg denotes metadata of a buildservice package.
+user denotes the metadata of a user.
+pattern denotes installation patterns defined for a project.
+
+To list patterns, use 'osc meta pattern PRJ'. An additional argument
+will be the pattern file to view or edit.
+
+With the --edit switch, the metadata can be edited. Per default, osc
+opens the program specified by the environmental variable EDITOR with a
+temporary file. Alternatively, content to be saved can be supplied via
+the --file switch. If the argument is '-', input is taken from stdin:
+osc meta prjconf home:user | sed ... | osc meta prjconf home:user -F -
+
+For meta prj and prjconf updates optional commit messages can be applied
+with --message.
+
+When trying to edit a non-existing resource, it is created implicitly.
+
+
+Examples:
+    osc meta prj PRJ
+    osc meta pkg PRJ PKG
+    osc meta pkg PRJ PKG -e
+
+Usage:
+    osc meta &lt;prj|prjconf&gt; [-r|--revision REV] ARGS...
+    osc meta &lt;prj|pkg|prjconf|user|pattern&gt; ARGS...
+    osc meta &lt;prj|pkg|prjconf|user|pattern&gt; [-m|--message TEXT] -e|--edit
+    ARGS...
+    osc meta &lt;prj|pkg|prjconf|user|pattern&gt; [-m|--message TEXT] -F|--file
+    ARGS...
+    osc meta pattern --delete PRJ PATTERN
+    osc meta attribute PRJ [PKG [SUBPACKAGE]] [--attribute ATTRIBUTE]
+    [--create|--delete|--set [value_list]]
+Options:
+    -h, --help          show this help message and exit
+    --delete            delete a pattern or attribute
+    -s ATTRIBUTE_VALUES, --set=ATTRIBUTE_VALUES
+                        set attribute values
+    -R, --remove-linking-repositories
+                        Try to remove also all repositories building against
+                        remove ones.
+    -c, --create        create attribute without values
+    -e, --edit          edit metadata
+    -m TEXT, --message=TEXT
+                        specify log message TEXT. For prj and prjconf meta
+                        only
+    -r REV, --revision=REV
+                        checkout given revision instead of head revision.
+ For
+                        prj and prjconf meta only
+    -F FILE, --file=FILE
+                        read metadata from FILE, instead of opening an
+ editor.
+                        '-' denotes standard input.
+    -f, --force         force the save operation, allows one to ignores some
+                        errors like depending repositories. For prj meta
+ only.
+    --attribute-project
+                        include project values, if missing in packages
+    --attribute-defaults
+                        include defined attribute defaults
+    -a ATTRIBUTE, --attribute=ATTRIBUTE
+                        affect only a given attribute</screen>
+    </section>
+    <section id="_osc_api_subcommand">
+     <title>osc api subcommand</title>
+     <screen>api: Issue an arbitrary request to the API
+
+Useful for testing.
+
+URL can be specified either partially (only the path component), or fully
+with URL scheme and hostname ('http://...').
+
+Note the global -A and -H options (see osc help).
+
+Examples:
+  osc api /source/home:user
+  osc api -X PUT -T /etc/fstab source/home:user/test5/myfstab
+  osc api -e /configuration
+
+Usage:
+    osc api URL
+
+Options:
+    -h, --help          show this help message and exit
+    -a NAME STRING, --add-header=NAME STRING
+                        add the specified header to the request
+    -T FILE, -f FILE, --file=FILE
+                        specify filename to upload, uses PUT mode by default
+    -d STRING, --data=STRING
+                        specify string data for e.g. POST
+    -e, --edit          GET, edit and PUT the location
+    -X HTTP_METHOD, -m HTTP_METHOD, --method=HTTP_METHOD
+                        specify HTTP method to use (GET|PUT|DELETE|POST)</screen>
+     <simpara>The online API documentation is available at
+<ulink url="https://build.opensuse.org/apidocs"><emphasis>https://build.opensuse.org/apidocs</emphasis></ulink></simpara>
+     <simpara>Some examples for admin stuff:</simpara>
+     <screen># Read the global configuration file
+  osc api /configuration
+# Update the global configuration
+  osc api /configuration -T /tmp/configuration.xml
+
+# Read the distributions list
+  osc api /distributions
+# Udate the distributions list
+  osc api /distributions -T /tmp/distributions.xml
+
+# retrieve statistics
+  osc api /statistics/latest_added</screen>
+    </section>
+   </section>
+  </section>
