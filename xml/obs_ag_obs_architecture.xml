@@ -29,9 +29,74 @@
 
  <xi:include href="obs_ag_frontend_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
    
- <section id="_communication_flow_diagram">
-  <title>Communication flow diagram</title>
-  <para></para>
-  <literallayout class="monospaced">(who communicates with whom and how)</literallayout>
- </section>
+<section id="_communication_flow">
+<title>Communication flow</title>
+<simpara>The communication flow can be splitted in 3 parts:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+User to frontend communication
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+frontend to backend communication
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+communication between the backend components
+</simpara>
+</listitem>
+</orderedlist>
+<simpara>The user use the WebGui or the frontend API (via tools like <emphasis role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the Open
+Build Service. The WebUI and the API implemented as Ruby on rails
+application. All communcation happens via the <emphasis role="strong"><emphasis>http</emphasis></emphasis> protocol (normally
+encrypted so <emphasis role="strong"><emphasis>https</emphasis></emphasis> is used.</simpara>
+<simpara>The communication between the frontend and the backend also use the http
+protocol, using the backend source server as gateway to most of the other
+backend components.</simpara>
+<simpara>The figure <xref linkend="fig_obs_communication"/> shows the comunication flow between the OBS components if a
+a package source (e.g. a _service file) was updated.</simpara>
+<simpara>If a source file of a package was updated, the new source file is uploaded
+with a http PUT operation to the frontend.
+The frontend may ask for authentification (if not already done) and check
+the access rights for the user. If everything is OK, the new file will be
+send to the backend <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  via a http PUT request as well.
+The source server stores the changed source (under revision control) and
+check if for this change source service runs are needed. If yes the <emphasis role="strong"><emphasis>Source
+Service server</emphasis></emphasis> is informed via a http PUT request of the _service file to
+run the requested services.</simpara>
+<simpara>The <emphasis role="strong"><emphasis>Source  Service server</emphasis></emphasis> runs the different source services, e.g download the requested revision from a GIT server.
+After running all services it  delivers the final
+sources back to the <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>, which then store these under revision control
+as well.</simpara>
+<simpara>The <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  then notifies the <emphasis role="strong"><emphasis>Schedulers</emphasis></emphasis> (for each architecture) about the
+change of the package via an event.</simpara>
+<simpara>The <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis> recalculates the package and project state and if all build requires are solved, a build Job
+is created and put in the <emphasis role="strong"><emphasis>Job pool</emphasis></emphasis>. The notified <emphasis role="strong"><emphasis>Dispatcher</emphasis></emphasis> checks for free worker which
+met the build contrains for the job and send the job to the <emphasis role="strong"><emphasis>worker</emphasis></emphasis>.</simpara>
+<figure id="fig_obs_communication"><title>OBS communication</title>
+<mediaobject>
+  <imageobject>
+  <imagedata fileref="obs_communication.png" contentwidth="320"/>
+  </imageobject>
+  <textobject><phrase>obs_communication.png</phrase></textobject>
+</mediaobject>
+<mediaobject>
+  <imageobject>
+  <imagedata fileref="obs_communication_legend.png" contentwidth="180"/>
+  </imageobject>
+  <textobject><phrase>obs_communication_legend.png</phrase></textobject>
+</mediaobject>
+</figure>
+<simpara>The <emphasis role="strong"><emphasis>Worker</emphasis></emphasis> downloads the sources from the <emphasis role="strong"><emphasis>Source server</emphasis></emphasis> and all required binary packages from
+the <emphasis role="strong"><emphasis>Repo server</emphasis></emphasis>. The package then will be built, the worker is monitored by the <emphasis role="strong"><emphasis>warden</emphasis></emphasis> service to detect any
+worker crashes.</simpara>
+<simpara>If the build was finished the build results (which are also contain build logs) the results are uploaded to the <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis>
+again and if requested the <emphasis role="strong"><emphasis>Signer</emphasis></emphasis> does sign the packages.
+The <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis> recalculate the project status if here are more dependent packages to build. If not it informs the <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis>
+to publish the new build results and create an updated version of the repository.
+Th <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis> will also request signing of the repository meta data.</simpara>
+</section>
 </chapter>

@@ -1,0 +1,69 @@
+digraph "OBS_Communication"
+{
+  dpi=200.0
+  size="6.0,9.0";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="14",shape=record];
+  subgraph level0 {
+    User [label="{<f0> User |<f1> osc commit ...}", shape=Mrecord, color="black", fillcolor="orange", style="filled", fontcolor="black"];
+    RevCtrl [label="GIT\nSVN", color="black", fillcolor="darkseagreen", style="filled", fontcolor="black"];
+    Worker [label=" Worker cloud ",color="black", width=4.5, fillcolor="yellowgreen", style="filled", fontcolor="black", shape=Mrecord];
+    {rank=max; Worker};
+  }
+  subgraph cluster_level1{
+    label="OBS Frontend"
+    DownloadRepos [label=" Download\nrepositories ", shape=Mrecord, color="black", fillcolor="bisque", style="filled", fontcolor="black"];
+    API [label=" API ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    Helper1 [label="", style="invis"]
+    {rank=same; DownloadRepos, API, Helper1}
+  }
+  subgraph cluster_level2{
+    label="OBS Backend"
+    Publisher [label=" Publisher ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    SrcServer [label=" Source\nserver ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    ServiceSrv [label="Source\nservice\nserver",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    BuildPool [label=" Build\npool ",color="black", fillcolor="lightblue", style="filled", fontcolor="black", shape=egg];
+    JobPool [label=" Job\npool ",color="black", fillcolor="lightblue", style="filled", fontcolor="black", shape=egg];
+    Signer [label=" Signer ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    Scheduler [label=" Scheduler ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    RepoSrv [label=" Repo\nserver ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    BuildResults [label="Build\nresults",color="black", fillcolor="lightblue", style="filled", fontcolor="black", shape=egg];
+    Dispatcher [label=" Dispatcher ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    Warden [label=" Warden ",color="black", fillcolor="bisque", style="filled", fontcolor="black", shape=Mrecord];
+    {rank=same; ServiceSrv,SrcServer, Publisher};
+    {rank=same; BuildPool, Signer};
+    {rank=same; JobPool, Scheduler, RepoSrv};
+    {rank=same; Warden, Dispatcher, BuildResults};
+  }
+  DownloadRepos -> API -> Helper1 [style="invis"]
+  Helper1 -> ServiceSrv  [weight=3, style="invis"];
+  RepoSrv -> Warden  [weight=1, style="invis"];
+  Signer -> JobPool  [weight=12, style="invis"];
+  Publisher -> SrcServer  [weight=2, style="invis"];
+  DownloadRepos -> Publisher [dir="back", weight=8, penwidth=4, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  User -> API [dir="forward", weight=3, penwidth=2, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  SrcServer -> ServiceSrv [dir="back", weight=1, penwidth=4, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  SrcServer -> ServiceSrv [dir="forward", weight=1, penwidth=1, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  RevCtrl -> ServiceSrv [dir="forward", weight=8, penwidth=4, color="purple", style="solid"];
+  API -> SrcServer [weight=8, penwidth=2, dir="forward", color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  Publisher -> Signer [dir="both", weight=12, penwidth=1, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  BuildResults -> Signer [dir="both", weight=8, penwidth=1, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  BuildPool -> Publisher [dir="forward", weight=8, penwidth=4, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  BuildPool -> RepoSrv [dir="forward", weight=2, penwidth=4, color="black",fontsize="10",style="solid",fontname="Helvetica"];
+  Scheduler -> BuildResults [dir="back", weight=12, penwidth=4, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  Dispatcher -> Worker [dir="forward", weight=7, penwidth=2, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  BuildResults -> Worker [dir="back", weight=6, penwidth=4, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  BuildPool -> Scheduler [dir="back", weight=10, penwidth=4, color="blue",fontsize="10",style="solid",fontname="Helvetica"];
+  SrcServer -> Scheduler [dir="forward", weight=1, color="red",fontsize="10",style="solid",fontname="Helvetica"];
+  SrcServer -> Scheduler [dir="forward", weight=2, color="green",fontsize="10",style="solid",fontname="Helvetica"];
+  SrcServer -> RepoSrv [dir="forward", weight=1, penwidth=1, color="red",fontsize="10",style="solid",fontname="Helvetica"];
+  Publisher -> Scheduler [dir="back", weight=1, penwidth=1, color="red",fontsize="10",style="solid",fontname="Helvetica"];
+  Scheduler -> RepoSrv [dir="back", weight=1, penwidth=1, color="red",fontsize="10",style="solid",fontname="Helvetica"];
+  Scheduler -> Dispatcher [dir="forward", weight=1, penwidth=1, color="red",fontsize="10",style="solid",fontname="Helvetica"];
+  RepoSrv -> SrcServer [dir="forward", weight=1, penwidth=4, color="black",fontsize="10",style="solid",fontname="Helvetica"];
+  JobPool -> Scheduler [dir="back", weight=4, penwidth=2, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  JobPool -> Dispatcher [dir="forward", weight=2, penwidth=2, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+  RepoSrv -> Worker [dir="forward", weight=3, penwidth=4, color="black",fontsize="10",style="solid",fontname="Helvetica"];
+  Warden -> Worker [dir="forward", weight=4, color="green",fontsize="10",style="solid",fontname="Helvetica"];
+  SrcServer -> Worker [dir="forward", weight=3, penwidth=4, color="purple",fontsize="10",style="solid",fontname="Helvetica"];
+}

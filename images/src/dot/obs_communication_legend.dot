@@ -1,0 +1,26 @@
+digraph {
+  rankdir=LR
+  node [shape=plaintext]
+  subgraph cluster_01 { 
+    label = "Path colors";
+    key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+      <tr><td align="right" port="i1">Source data </td></tr>
+      <tr><td align="right" port="i2">Binary package data </td></tr>
+      <tr><td align="right" port="i3">Build result data </td></tr>
+      <tr><td align="right" port="i4">Notification </td></tr>
+      <tr><td align="right" port="i5">Monitoring </td></tr>
+      </table>>]
+    key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+      <tr><td port="i1">&nbsp;</td></tr>
+      <tr><td port="i2">&nbsp;</td></tr>
+      <tr><td port="i3">&nbsp;</td></tr>
+      <tr><td port="i4">&nbsp;</td></tr>
+      <tr><td port="i5">&nbsp;</td></tr>
+      </table>>]
+    key:i1:e -> key2:i1:w [color=purple, penwidth=3, style=solid]
+    key:i2:e -> key2:i2:w [color=black, penwidth=3, style=solid]
+    key:i3:e -> key2:i3:w [color=blue, penwidth=3, style=solid]
+    key:i4:e -> key2:i4:w [color=red, penwidth=1, style=solid]
+    key:i5:e -> key2:i5:w [color=green, penwidth=1, style=solid]
+  }
+}
