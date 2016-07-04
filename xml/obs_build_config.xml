@@ -107,11 +107,12 @@
    </para>
   </section>
   <section>
-   <title>PublishFilter: &lt;REGEXP&gt;</title>
+   <title>PublishFilter: &lt;REGEXP&gt; [&lt;REGEXP&gt; [...]]</title>
    <para>
     The publish filter can be used limit the published binary packages in
     public repositories. Only packages which match the regexp will be put in
-    exported repository.
+    exported repository. There can be only one line of PublishFilter for historic
+    reasons.
    </para>
   </section>
   <section>
