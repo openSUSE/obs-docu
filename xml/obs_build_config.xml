@@ -110,9 +110,10 @@
    <title>PublishFilter: &lt;REGEXP&gt; [&lt;REGEXP&gt; [...]]</title>
    <para>
     The publish filter can be used limit the published binary packages in
-    public repositories. Only packages which match the regexp will be put in
-    exported repository. There can be only one line of PublishFilter for historic
-    reasons.
+    public repositories. Packages that match any &lt;REGEXP&gt; will not
+    be put into the exported repository. There can be only one line of
+    PublishFilter for historic reasons. However, multiple &lt;REGEXP&gt;
+    can be given.
    </para>
   </section>
   <section>
