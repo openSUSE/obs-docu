@@ -69,6 +69,17 @@
    Each OBS installation has one dispatcher per partition (only one of them
    is the master dispatcher).
   </para>
+  <para>
+  The dispatcher tries to assign jobs fair between the project repositories. For
+  this the dispatcher maintains a <emphasis role="strong">load</emphasis> per
+  project repository (similar to the Unix system load) of used build time.
+  The dispatcher assigned jobs to build clients from the repository
+  with the lowest load (thereby increasing the its load). It is possible to tweak this
+  mechanism via dispatching priorities assigned to the repositories via the
+  <emphasis>/build/<emphasis>dispatchprios</emphasis> <emphasis role="strong">API</emphasis></emphasis>
+  call or via the <emphasis role="strong">dispatch_adjust</emphasis> map in the BSConfig.pm
+  configuration file. See section <xref linkend="_dispatch_priorities"/> for more details.
+  </para>
  </section>
  <section id="_publisher">
   <title>Publisher</title>
