@@ -38,7 +38,7 @@ So the standard github work-flow with forked repositories and pull requests
 can be used to contribute to these books.
 
 The former svn repositories on berlios and svn.opensuse.org are not used anymore
-and will be removed or made write protected soon!
+and will removed or write protected soon!
 
 
 We follow the SUSE docbook xml style. All files can be re-formated to that
