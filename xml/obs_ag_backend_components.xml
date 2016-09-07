@@ -77,7 +77,7 @@
    <emphasis>/build/<emphasis>dispatchprios</emphasis>
    <emphasis role="strong">API</emphasis></emphasis> call or via the
    <emphasis role="strong">dispatch_adjust</emphasis> map in the BSConfig.pm
-   configuration file. See section <xref linkend="_dispatch_priorities"/> for
+   configuration file. See the dispatch priorities in reference guide for
    more details.
   </para>
  </section>

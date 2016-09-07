@@ -20,6 +20,11 @@
    </author>
    <author><firstname>Frank</firstname><surname>Schreiner</surname>
    </author>
+   <author><firstname>Karsten</firstname><surname>Keil</surname>
+    <affiliation>
+     <orgname>B1 Sytems GmbH </orgname>
+    </affiliation>
+   </author>
   </authorgroup>
   <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  </bookinfo>

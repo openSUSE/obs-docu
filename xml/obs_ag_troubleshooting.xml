@@ -48,7 +48,7 @@ reported system or HW problems.
    <listitem>
     <simpara>
 Check if all services are running on the backend and frontend. See the
-OBS Architecture <xref linkend="_obs_architecture"/> for details.
+OBS Architecture in reference book for details.
 </simpara>
    </listitem>
    <listitem>

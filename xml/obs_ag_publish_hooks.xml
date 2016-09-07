@@ -8,7 +8,7 @@
 ]>
 <section id="_publisher_hooks">
  <title>Publisher Hooks</title>
- <simpara>The job of the publisher service (see <xref linkend="_publisher"/>) is to publish the build packages and/or images
+ <simpara>The job of the publisher service is to publish the build packages and/or images
 by creating repositories that are made available through a web server.</simpara>
  <simpara>It can be configured to use custom scripts to copy the build results to
 different servers or do anything with them that comes to mind.  These

@@ -8,7 +8,7 @@
 ]>
 <section id="_unpublisher_hooks">
  <title>Unpublisher Hooks</title>
- <simpara>The job of the publisher service (see <xref linkend="_publisher"/>) is to publish the build packages and/or images
+ <simpara>The job of the publisher service is to publish the build packages and/or images
 by creating repositories that are made available through a web server.</simpara>
  <simpara>The OBS Publisher can be configured to use custom scripts to be called whenever already
 published packages get removed. These scripts are called <emphasis role="strong">unpublisher hooks</emphasis>.
