@@ -24,8 +24,9 @@
    The Source Server keeps track of all sources that are available for
    building. It takes care about file deduplication so that every source file
    is stored just once. This is realized by keeping track on the MD5-sums of
-   the files in combination with the file names. By default all revisions of
-   committed sources are stored and will not be deleted.
+   the files in combination with the file names. All revisions of
+   committed sources are stored and will not be deleted. This guarantees to
+   be able to get the source for every delivered binary package.
   </para>
   <para>
    Each OBS installation has one Source Server only. It maintains the
@@ -110,7 +111,9 @@
    call different services for different tasks. It can download sources from
    websites and version control systems such as subversion and git. Services
    can also include working on the source to extract spec-files from archives,
-   repack the archives or adjust version numbers in spec files.
+   repack the archives or adjust version numbers in spec files. It is also
+   often used to enforce policies by running checks. A failed check will
+   appear as broken source and blocks a package from building.
   </para>
   <para>
    The Source Service Server is optional and currently only one Source Service
@@ -156,7 +159,7 @@
    Multiple obscpio archives can be stored in one deltastore to avoid
    duplication on disk. This services is calculating the delta and maintains
    the delta store. Each OBS installation can have one delta store process
-   running next to the source serv.er
+   running next to the source server.
   </para>
  </section>
  <section id="_worker">

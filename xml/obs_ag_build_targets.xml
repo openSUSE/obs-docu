@@ -10,7 +10,7 @@
  <title>Managing build targets</title>
  <section id="_interconnect">
   <title>Interconnect</title>
-  <simpara>Use another openbuild server as source for build targets is the easiest way
+  <simpara>Using another &obs; as source for build targets is the easiest way
 to start. The advantage is, that you save local resources and you do not
 need to build everything from scratch. The disadvantage is that you depend
 on the remote instance, if it has a downtime your instance cannot do any
@@ -68,7 +68,7 @@ which would the owner for the project.</simpara>
   <section id="_mirror_from_a_remote_obs_instance">
    <title>Mirror from a remote OBS instance</title>
    <simpara>Mirroring a project from a remote OBS instance can be done with the <emphasis role="strong">obs_mirror_project</emphasis>  script which is
-supplied with the obs sources, but unfortunately not part of the binary packages.
+supplied with the obs sources and via the obs-utils package.
 You can get the latest version from GitHub:
 <ulink url="https://raw.githubusercontent.com/openSUSE/open-build-service/master/dist/obs_mirror_project"><emphasis>https://raw.githubusercontent.com/openSUSE/open-build-service/master/dist/obs_mirror_project</emphasis></ulink>.</simpara>
    <simpara>The usage:</simpara>
