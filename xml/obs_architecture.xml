@@ -25,7 +25,6 @@
   </figure>
  </section>
  <xi:include href="obs_ag_backend_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_ag_frontend_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <section id="_communication_flow">
   <title>Communication flow</title>
   <simpara>The communication flow can be splitted in 3 parts:</simpara>
