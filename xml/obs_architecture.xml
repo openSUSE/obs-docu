@@ -37,12 +37,12 @@ User to frontend communication
    </listitem>
    <listitem>
     <simpara>
-frontend to backend communication
+frontend to source server communication
 </simpara>
    </listitem>
    <listitem>
     <simpara>
-communication between the backend components
+communication between source server and other backend components, in first place the repository servers.
 </simpara>
    </listitem>
   </orderedlist>
