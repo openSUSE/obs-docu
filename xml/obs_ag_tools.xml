@@ -6,16 +6,16 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-  <section id="_tools">
-   <title>Tools</title>
-   <section id="_obs_admin">
-    <title>obs_admin</title>
-    <simpara>obs_admin is a commandline tool used on the backend server(s) to manage
+<section id="_tools">
+ <title>Tools</title>
+ <section id="_obs_admin">
+  <title>obs_admin</title>
+  <simpara>obs_admin is a commandline tool used on the backend server(s) to manage
 the running services, submit maintenance tasks and debuging.
 It should be only used by experienced admins.</simpara>
-    <simpara>It has an builtin help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
-    <simpara>Options to control the running services:</simpara>
-    <screen>Job Controlling
+  <simpara>It has an builtin help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
+  <simpara>Options to control the running services:</simpara>
+<screen>Job Controlling
 ===============
 
  --shutdown-scheduler &lt;architecture&gt;
@@ -70,8 +70,8 @@ It should be only used by experienced admins.</simpara>
 
  --create-patchinfo-from-updateinfo
    creates a patchinfo submission based on an updateinfo information.</screen>
-    <simpara>Options for maintenance are:</simpara>
-    <screen>Maintenance Tasks
+  <simpara>Options for maintenance are:</simpara>
+<screen>Maintenance Tasks
 =================
 
 Note: the --update-*-db calls are usually only needed when corrupt data has been created, for
@@ -88,8 +88,8 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
             a backup, right?
    remove sources older than &lt;x&gt; days, but keep &lt;y&gt; number of revisions
    --debug for debug output</screen>
-    <simpara>Options for debugging:</simpara>
-    <screen>Debug Options
+  <simpara>Options for debugging:</simpara>
+<screen>Debug Options
 =============
 
  --dump-cache &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
@@ -144,41 +144,42 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
 
  --show-delta-store &lt;file&gt;
    Show delta store statistics</screen>
-   </section>
-   <section id="_osc">
-    <title>osc</title>
-    <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> commandline client is mainly used by developer and packager. But
+ </section>
+ <section id="_osc">
+  <title>osc</title>
+  <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> commandline client is mainly used by developer and packager. But
 for some tasks also admin people need this tool. It has an builtin help
 simple call <emphasis>osc --help</emphasis>. The tool need to be configured first to know the
 OBS API URL and your user details.</simpara>
-    <simpara>To configure the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool the first time you need to call it with</simpara>
-    <screen>osc -A &lt;URL to the OBS API&gt;
+  <simpara>To configure the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool the first time you need to call it with</simpara>
+<screen>osc -A &lt;URL to the OBS API&gt;
 For example:
 osc -A https://api.testobs.org</screen>
-    <simpara>Follow the instructions on the terminal.</simpara>
-    <warning>
-     <simpara>The password is stored in clear text in the .oscrc file by default, so you need to
+  <simpara>Follow the instructions on the terminal.</simpara>
+  <warning>
+   <simpara>The password is stored in clear text in the .oscrc file by default, so you need to
 give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
 for example) and may use different methods for authentification like
-kerberos see <xref linkend="_kerberos"/></simpara>
-    </warning>
-    <simpara>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</simpara>
-    <itemizedlist>
-     <listitem>
-      <simpara>
+kerberos see <xref linkend="_kerberos"/>
+   </simpara>
+  </warning>
+  <simpara>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</simpara>
+  <itemizedlist>
+   <listitem>
+    <simpara>
 meta  - to create or update projects or package data
 </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
+   </listitem>
+   <listitem>
+    <simpara>
 api - to read and write online configuration data
 </simpara>
-     </listitem>
-    </itemizedlist>
-    <section id="_osc_meta_subcommand">
-     <title>osc meta subcommand</title>
-     <screen>meta: Show meta information, or edit it
+   </listitem>
+  </itemizedlist>
+  <section id="_osc_meta_subcommand">
+   <title>osc meta subcommand</title>
+<screen>meta: Show meta information, or edit it
 
 Show or edit build service metadata of type &lt;prj|pkg|prjconf|user|pattern&gt;.
 
@@ -252,10 +253,10 @@ Options:
                         include defined attribute defaults
     -a ATTRIBUTE, --attribute=ATTRIBUTE
                         affect only a given attribute</screen>
-    </section>
-    <section id="_osc_api_subcommand">
-     <title>osc api subcommand</title>
-     <screen>api: Issue an arbitrary request to the API
+  </section>
+  <section id="_osc_api_subcommand">
+   <title>osc api subcommand</title>
+<screen>api: Issue an arbitrary request to the API
 
 Useful for testing.
 
@@ -283,10 +284,11 @@ Options:
     -e, --edit          GET, edit and PUT the location
     -X HTTP_METHOD, -m HTTP_METHOD, --method=HTTP_METHOD
                         specify HTTP method to use (GET|PUT|DELETE|POST)</screen>
-     <simpara>The online API documentation is available at
-<ulink url="https://build.opensuse.org/apidocs"><emphasis>https://build.opensuse.org/apidocs</emphasis></ulink></simpara>
-     <simpara>Some examples for admin stuff:</simpara>
-     <screen># Read the global configuration file
+   <simpara>The online API documentation is available at
+<ulink url="https://build.opensuse.org/apidocs"><emphasis>https://build.opensuse.org/apidocs</emphasis></ulink>
+   </simpara>
+   <simpara>Some examples for admin stuff:</simpara>
+<screen># Read the global configuration file
   osc api /configuration
 # Update the global configuration
   osc api /configuration -T /tmp/configuration.xml
@@ -298,6 +300,6 @@ Options:
 
 # retrieve statistics
   osc api /statistics/latest_added</screen>
-    </section>
-   </section>
   </section>
+ </section>
+</section>

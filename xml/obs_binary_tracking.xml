@@ -12,16 +12,16 @@
   Official products and their updates are often claimed to be supported.
   Multiple parties, like release managers, maintenance engineers, QA and
   support need to be able to check which exact versions of a package got
-  released. OBS server can track these binaries and offers a database to
-  search them.
+  released. OBS server can track these binaries and offers a database to search
+  them.
  </para>
  <section>
   <title>Which binaries get tracked?</title>
   <para>
    All binaries which get released in to projects providing
    kind=maintenance_release get tracked. In addition to that the OBS
-   admininistrator may configure addition projects via the packtrack setting
-   in BSConfig.pm
+   admininistrator may configure addition projects via the packtrack setting in
+   BSConfig.pm
   </para>
  </section>
  <section>
@@ -34,17 +34,17 @@
   <title>What data is tracked?</title>
   <para>
    In short the informations to identify a binary, it's building place and
-   timestamps are tracked. In addition to that also information about
-   possible successor versions or if the binary got removed meanwhile. If
-   products do reference the repositories the search interface does offer
-   also a listing of products which are supposed to use it. Either as part
-   of the product media itself or in one of it's update repositories.
+   timestamps are tracked. In addition to that also information about possible
+   successor versions or if the binary got removed meanwhile. If products do
+   reference the repositories the search interface does offer also a listing of
+   products which are supposed to use it. Either as part of the product media
+   itself or in one of it's update repositories.
   </para>
   <section>
    <title>Binary Identifier</title>
    <para>
-    A binary gets identified by the following informations. This is
-    basically the components of the storage path and filename of the binary.
+    A binary gets identified by the following informations. This is basically
+    the components of the storage path and filename of the binary.
     <itemizedlist>
      <listitem>
       <simpara>
@@ -87,8 +87,8 @@
   <section>
    <title>Binary informations</title>
    <para>
-    Additional informations of a binary are informations which get updated
-    when a binary gets added or replaced.
+    Additional informations of a binary are informations which get updated when
+    a binary gets added or replaced.
     <itemizedlist>
      <listitem>
       <simpara>

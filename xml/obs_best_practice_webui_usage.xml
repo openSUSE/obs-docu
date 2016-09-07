@@ -29,8 +29,7 @@
   </figure>
   <para>
    To proceed, you'll need to log in and authenticate with your username and
-   your password. Click on Login and enter the data in the upper right
-   corner.
+   your password. Click on Login and enter the data in the upper right corner.
   </para>
   <figure>
    <title>Login</title>
@@ -42,8 +41,8 @@
   </figure>
   <para>
    After successful authentication, you'll end up on the start page again -
-   with new options visible. We'll go through most of them in detail, but
-   first lets create your home: in the next step.
+   with new options visible. We'll go through most of them in detail, but first
+   lets create your home: in the next step.
   </para>
   <figure>
    <title>Logged in</title>
@@ -57,19 +56,19 @@
  <section>
   <title>Home project</title>
   <para>
-   Every user has a home project (home:[userid]) where he/she has write
-   access by default. This is your personal workspace where you can
-   experiment and play. Click on the link "Home Project" at the upper right
-   to get to your home project.
+   Every user has a home project (home:[userid]) where he/she has write access
+   by default. This is your personal workspace where you can experiment and
+   play. Click on the link "Home Project" at the upper right to get to your
+   home project.
   </para>
   <section>
    <title>The project page</title>
    <para>
     Your home project will be empty for now, but you can add packages
-    containing sources/build recipes and projects which are containers for
-    the build targets. As you can see, you're the default maintainer which
-    grants you full write access to this project. You're also the bug owner
-    of your project.
+    containing sources/build recipes and projects which are containers for the
+    build targets. As you can see, you're the default maintainer which grants
+    you full write access to this project. You're also the bug owner of your
+    project.
    </para>
    <figure>
     <title>project page</title>
@@ -101,15 +100,15 @@
    <para>
     Subprojects are projects that are part of another projects namespace.
     Subprojects are an easy way to organize multiple projects. On the
-    "Subprojects" tab you can find a list subprojects that belong to a
-    project. To create a new subproject click on the "New subproject" link,
-    fill in the form and press the "Create project" button.
+    "Subprojects" tab you can find a list subprojects that belong to a project.
+    To create a new subproject click on the "New subproject" link, fill in the
+    form and press the "Create project" button.
    </para>
    <note>
     <para>
      Please note that maintainer of upper projects always can modify the sub
-     projects. Apart from that all projects are seperated and have no
-     influence to each other.
+     projects. Apart from that all projects are seperated and have no influence
+     to each other.
     </para>
    </note>
    <figure>
@@ -126,9 +125,8 @@
   <title>My Projects, Server Status</title>
   <para>
    Let's leave for now your home: for a bit and explore the build service.
-   Click on "My Projects" on the left at the bottom. This opens a page
-   listing your watched projects and your involvements in projects or
-   packages.
+   Click on "My Projects" on the left at the bottom. This opens a page listing
+   your watched projects and your involvements in projects or packages.
   </para>
   <figure>
    <title>My Projects</title>
@@ -139,9 +137,9 @@
    </mediaobject>
   </figure>
   <para>
-   Now, let's visit the main monitor page by clicking on "Status Monitor".
-   You see here the status of the services, some graphs and graphics are
-   showing the currently running and completed jobs an the overall load.
+   Now, let's visit the main monitor page by clicking on "Status Monitor". You
+   see here the status of the services, some graphs and graphics are showing
+   the currently running and completed jobs an the overall load.
   </para>
   <figure>
    <title>Status Monitor</title>
@@ -156,10 +154,10 @@
   <title>Create a link to a package in your home:</title>
   <para>
    We'll show you how you can log in and use the web interface hosted at
-   build.opensuse.org. This includes login, adding a link to a package in
-   your personal workspace (home:) and how to build that package by adding a
-   repository. First, let's enter "My Projects" by clicking on the link at
-   the bottom left.
+   build.opensuse.org. This includes login, adding a link to a package in your
+   personal workspace (home:) and how to build that package by adding a
+   repository. First, let's enter "My Projects" by clicking on the link at the
+   bottom left.
   </para>
   <figure>
    <title>My Projects</title>
@@ -170,10 +168,10 @@
    </mediaobject>
   </figure>
   <para>
-   Now let's create a link to a package and add a repository to build
-   against. A link is basically a pointer to sources of an already existing
-   package. By "repository" we mean container of built binary packages like
-   Debian_8 or openSUSE_13.2. Let's follow these steps:
+   Now let's create a link to a package and add a repository to build against.
+   A link is basically a pointer to sources of an already existing package. By
+   "repository" we mean container of built binary packages like Debian_8 or
+   openSUSE_13.2. Let's follow these steps:
    <orderedlist>
     <listitem>
      <para>
@@ -241,9 +239,8 @@
     </mediaobject>
    </figure>
    <para>
-    Proceed with "Create Branch" and you'll be redirected to your home
-    again. You'll see a new package "flood" and a notice about the branch
-    being added.
+    Proceed with "Create Branch" and you'll be redirected to your home again.
+    You'll see a new package "flood" and a notice about the branch being added.
    </para>
    <figure>
     <title>Branched Package</title>
@@ -255,19 +252,18 @@
    </figure>
    <para>
     Wonderful, we've added a pointer to the sources! Now we need to add a
-    repository, so the builder knows the target-distribution to build
-    packages for. How to add a repository to a project is documented at
+    repository, so the builder knows the target-distribution to build packages
+    for. How to add a repository to a project is documented at
     <xref linkend="cha.obs.best-practices.webuiusage.add-repository" />.
    </para>
   </section>
   <section>
    <title>Package page, build log and project monitor page</title>
    <para>
-    Next, it is time to explore the Monitor page, the package detail page
-    and the build log. Just click on the links and explore the web
-    interface. I recommend starting with your home project's top level
-    'overview' page - click on the Overview tab and you may see something
-    like this:
+    Next, it is time to explore the Monitor page, the package detail page and
+    the build log. Just click on the links and explore the web interface. I
+    recommend starting with your home project's top level 'overview' page -
+    click on the Overview tab and you may see something like this:
    </para>
    <figure>
     <title>flood_succeeded_finished</title>
@@ -289,8 +285,8 @@
     </mediaobject>
    </figure>
    <para>
-    please try to click blue "succeeded" message, then you could see the
-    build log as below.
+    please try to click blue "succeeded" message, then you could see the build
+    log as below.
    </para>
    <figure>
     <title>flood_build_log</title>
@@ -328,9 +324,9 @@
    </para>
   </note>
   <para>
-   Now click on Go to download repository. Note that publishing the
-   repository might take a while. Until then you will get a 404 error. Once
-   the binaries are there, you'll see something like this:
+   Now click on Go to download repository. Note that publishing the repository
+   might take a while. Until then you will get a 404 error. Once the binaries
+   are there, you'll see something like this:
   </para>
   <figure>
    <title>Repository_structure</title>
@@ -341,9 +337,9 @@
    </mediaobject>
   </figure>
   <para>
-   Your rpms can be found in the subdirectories, and the .repo file is
-   suitable for use with zypper, yum or other repository-friendly package
-   management tools.
+   Your rpms can be found in the subdirectories, and the .repo file is suitable
+   for use with zypper, yum or other repository-friendly package management
+   tools.
   </para>
  </section>
  <section>
@@ -369,19 +365,18 @@
    </figure>
    <note>
     <para>
-     If you could not find a repository that fits your needs, you might want
-     to switch to the expert mode. Click on the "Expert mode" link right to
-     the button. This page allows you to search and select a repository of
-     any project available in OBS and add it to your projects repository
-     list.
+     If you could not find a repository that fits your needs, you might want to
+     switch to the expert mode. Click on the "Expert mode" link right to the
+     button. This page allows you to search and select a repository of any
+     project available in OBS and add it to your projects repository list.
     </para>
    </note>
    <para>
-    This will take you back to your home: project. The build repository
-    might be disabled: if so, klick on the cogwheel to enable it.
-    Congratulations, it is configured. On a heavily loaded server, it can
-    sometimes take a few minutes for your changes to become effective, but
-    your linked package will automatically begin building.
+    This will take you back to your home: project. The build repository might
+    be disabled: if so, klick on the cogwheel to enable it. Congratulations, it
+    is configured. On a heavily loaded server, it can sometimes take a few
+    minutes for your changes to become effective, but your linked package will
+    automatically begin building.
    </para>
   </section>
   <section>
@@ -430,9 +425,9 @@
     </mediaobject>
    </figure>
    <para>
-    Open the DoD repository sources form by clicking the "Add" link. Here
-    you can enter your additional DoD repository source. Click the "Add
-    Download on Demand" button.
+    Open the DoD repository sources form by clicking the "Add" link. Here you
+    can enter your additional DoD repository source. Click the "Add Download on
+    Demand" button.
    </para>
    <figure>
     <title>Form for adding DoD repository sources</title>
@@ -461,8 +456,8 @@
   <section>
    <title>Edit DoD repository sources</title>
    <para>
-    To delete a repository or repository source, click on the "Delete" link
-    and accept the confirmation dialog.
+    To delete a repository or repository source, click on the "Delete" link and
+    accept the confirmation dialog.
    </para>
   </section>
  </section>

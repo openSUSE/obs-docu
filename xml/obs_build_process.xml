@@ -49,10 +49,10 @@
        </simpara>
      </listitem>
     </itemizedlist>
-    In the preinstall phase the OBS Worker creates a small base system
-    (chroot or VM Image) with manually extracted packages (filesystem,
-    coreutils, binutils, rpm/debutils, etc.), copies all neccessary build
-    requirements into the base system.
+    In the preinstall phase the OBS Worker creates a small base system (chroot
+    or VM Image) with manually extracted packages (filesystem, coreutils,
+    binutils, rpm/debutils, etc.), copies all neccessary build requirements
+    into the base system.
    </para>
   </section>
   <section>
@@ -60,22 +60,22 @@
    <para>
     Depending of the chosen build root the worker starts the XEN/KVM virtual
     maschine or enters the build root. If this was successfull the install
-    phase reinstalls all base package from above and additionally all
-    packages you've defined in your package recipe. After this phase the
-    environment is ready to process the recipe.
+    phase reinstalls all base package from above and additionally all packages
+    you've defined in your package recipe. After this phase the environment is
+    ready to process the recipe.
    </para>
   </section>
   <section>
    <title>Package build</title>
    <para>
-    Regarding the package type the buildroot executes different build
-    commands. On RPM based distributions it's called "rpmbuild". On
-    debian-based it's "dpkg-buildpackage" and on archlinux you use "pacman".
-    Now everything depends on the quality and the type of your build recipe.
-    In most cases the source code will be compiled now and get packed into
-    the specific package format. On RPM based distributions there are
-    additional security and cleanness checks called rpmlint, which have the
-    goal to improve the quality of the packages.
+    Regarding the package type the buildroot executes different build commands.
+    On RPM based distributions it's called "rpmbuild". On debian-based it's
+    "dpkg-buildpackage" and on archlinux you use "pacman". Now everything
+    depends on the quality and the type of your build recipe. In most cases the
+    source code will be compiled now and get packed into the specific package
+    format. On RPM based distributions there are additional security and
+    cleanness checks called rpmlint, which have the goal to improve the quality
+    of the packages.
    </para>
   </section>
   <section>

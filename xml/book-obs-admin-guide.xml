@@ -16,17 +16,13 @@
  <subtitle>Administator Guide</subtitle>
  <bookinfo>
   <authorgroup>
-   <author>
-     <firstname>Karsten</firstname>
-     <surname>Keil</surname>
-     <affiliation>
-        <orgname>B1 Sytems GmbH </orgname>
-     </affiliation>
+   <author><firstname>Karsten</firstname><surname>Keil</surname>
+    <affiliation>
+     <orgname>B1 Sytems GmbH </orgname>
+    </affiliation>
    </author>
   </authorgroup>
-  <copyright>
-    <year>2016</year>
-    <holder>B1 Systems GmbH</holder>
+  <copyright><year>2016</year><holder>B1 Systems GmbH</holder>
   </copyright>
   <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  </bookinfo>
@@ -35,7 +31,6 @@
  <xi:include href="obs_ag_overview_filesystem.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_administration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_troubleshooting.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-
 <!-- Appendices -->
  <xi:include  href="legal.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </book>

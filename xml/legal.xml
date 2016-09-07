@@ -9,8 +9,8 @@
 <appendix role="legal">
  <title>GNU Licenses</title>
  <para>
-  This appendix contains the GNU General Public License version 2 and the
-  GNU Free Documentation License version 1.2.
+  This appendix contains the GNU General Public License version 2 and the GNU
+  Free Documentation License version 1.2.
  </para>
  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gplv2.xml"/>
  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gfdl.xml"/>

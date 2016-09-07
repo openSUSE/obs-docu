@@ -9,24 +9,24 @@
 <chapter id="cha.obs.build_job_constraints">
  <title>Build Job Constraints</title>
  <para>
-  The build job constraints can define requirements to the hardware or
-  software of the used build host. The constraints can be defined per
-  package or for repositories.
+  The build job constraints can define requirements to the hardware or software
+  of the used build host. The constraints can be defined per package or for
+  repositories.
  </para>
  <para>
   The build constraints for a package is part of of the package sources. An
-  _constraints source file can contain following values. The format of the
-  file is XML and gets validated on submission.
+  _constraints source file can contain following values. The format of the file
+  is XML and gets validated on submission.
  </para>
  <para>
-  The build constraints for entire project or specific repositories is part
-  of the project config. It contains for each constraint a line
+  The build constraints for entire project or specific repositories is part of
+  the project config. It contains for each constraint a line
 <screen><command>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</command></screen>
   The selector is a collon seperated list.
  </para>
  <para>
-  NOTE: If no build host is offering the constraints, the package will stay
-  in scheduled state and never get dispatched.
+  NOTE: If no build host is offering the constraints, the package will stay in
+  scheduled state and never get dispatched.
  </para>
  <section>
   <title>hostlabel</title>
@@ -34,11 +34,11 @@
    The hostlabel is any string which can be assigned to build hosts when
    starting the bs_worker process. It can be used to run on specific hosts,
    which may be used for running benchmarks in a reproducible way. This
-   constraints does also support to be defined as a negative definition via
-   the exclude=true attribute. However, the hostlabel is always specific to
-   one OBS instance. You should avoid it as much as possible, since building
-   with this constraint in another instance is usually not possible. Use any
-   of the other constraints if possible.
+   constraints does also support to be defined as a negative definition via the
+   exclude=true attribute. However, the hostlabel is always specific to one OBS
+   instance. You should avoid it as much as possible, since building with this
+   constraint in another instance is usually not possible. Use any of the other
+   constraints if possible.
   </para>
   <para>
    Example for _constraints file:
@@ -52,11 +52,10 @@
  <section>
   <title>sandbox</title>
   <para>
-   Defines the sandbox which is used for the build job. Sandboxes are
-   chroot, xen or kvm environments. There is also the virtual secure
-   sandbox, which allows building on xen or kvm. This constraints does also
-   support to be defined as a negative definition via the exclude=true
-   attribute.
+   Defines the sandbox which is used for the build job. Sandboxes are chroot,
+   xen or kvm environments. There is also the virtual secure sandbox, which
+   allows building on xen or kvm. This constraints does also support to be
+   defined as a negative definition via the exclude=true attribute.
   </para>
   <para>
    Example for _constraints file:

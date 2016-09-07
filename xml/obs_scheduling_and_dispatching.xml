@@ -10,11 +10,11 @@
  <title>Scheduling and Dispatching</title>
  <para>
   One of the major functionalities of OBS is to calculate always the current
-  state, based on available sources, binaries and user configurations. In
-  case a change happened it will trigger builds to achieve a clean state
-  again. The calculation of the need of a build job is called scheduling
-  here. The assignment of a build job to a concrete build host (aka worker)
-  is called dispatching.
+  state, based on available sources, binaries and user configurations. In case
+  a change happened it will trigger builds to achieve a clean state again. The
+  calculation of the need of a build job is called scheduling here. The
+  assignment of a build job to a concrete build host (aka worker) is called
+  dispatching.
  </para>
  <section>
   <title>How is a build process defined</title>
@@ -54,16 +54,16 @@
   <para>
    The defaults have the goal of creating an always reproducible state. This
    may lead to more builds then practically necessary, but ensures that no
-   hidden incompabilities exist between packages and also that the same
-   state can later be achieved again (with a subsequent rebuild of the same
-   sources and configurations). This can also lead to multiple builds of the
-   same package in the case of dependency loops.
+   hidden incompabilities exist between packages and also that the same state
+   can later be achieved again (with a subsequent rebuild of the same sources
+   and configurations). This can also lead to multiple builds of the same
+   package in the case of dependency loops.
   </para>
   <para>
-   In some setups this may not be wanted, so each repository can be
-   configured in a different way. The usual options to modify the project
-   meta configurations can be used to configure different strategies. For
-   example using osc:
+   In some setups this may not be wanted, so each repository can be configured
+   in a different way. The usual options to modify the project meta
+   configurations can be used to configure different strategies. For example
+   using osc:
 <screen><command>
 	 osc meta prj -e YOUR_PROJECT
 	 </command></screen>
@@ -79,8 +79,8 @@
   <section>
    <title>Build Trigger Setting</title>
    <para>
-    The build trigger setting can be set via the "rebuild" attribute.
-    Possible settings are
+    The build trigger setting can be set via the "rebuild" attribute. Possible
+    settings are
     <variablelist>
      <varlistentry>
       <term>transitive</term>
@@ -114,11 +114,11 @@
       <parameter>direct</parameter> or <parameter>local</parameter> without
       noticing this in the build state. Your packages might not even be
       installable or have random runtime errors (like not starting up or
-      crashing applications), even when they claim to be "succeeded". Also,
-      you cannot be sure that you will be able to re-build them later. So
-      never do a official shipment with this setting of a release. This knob
-      is exposed to allow deliberate suppression of the strictly
-      reproducible builds (for example, to limit burning CPU unnecessarily).
+      crashing applications), even when they claim to be "succeeded". Also, you
+      cannot be sure that you will be able to re-build them later. So never do
+      a official shipment with this setting of a release. This knob is exposed
+      to allow deliberate suppression of the strictly reproducible builds (for
+      example, to limit burning CPU unnecessarily).
      </para>
     </note>
    </para>
@@ -134,8 +134,8 @@
       <term>all</term>
       <listitem>
        <para>
-        The default behaviour, don't start the build if a depending package
-        is currently building.
+        The default behaviour, don't start the build if a depending package is
+        currently building.
        </para>
       </listitem>
      </varlistentry>
@@ -158,8 +158,8 @@
     </variablelist>
     <note>
      <para>
-      Note: When using something else then "all" you will have to deal with
-      a number of problems:
+      Note: When using something else then "all" you will have to deal with a
+      number of problems:
      </para>
      <itemizedlist>
       <listitem>

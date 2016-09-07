@@ -9,13 +9,12 @@
 <chapter id="cha.obs.best-practices.oscexamples" os="opensuse;novell">
  <title>OSC commands examples</title>
  <para>
-  This chapter explains and shows OSC commands examples. You could use OBS
-  much more efficiently with OSC commands. $man OSC will show you
-  [GLOBALOPTS], SUBCOMMAND, [OPTS][ARGS....]. You also could find some OSC
-  commands examples from OBS Build Service portal. This chapter will take
-  every OSC command examples from OBS Build Service portal and describes it
-  in here. You could visit Build Service portal OSC command explanation via
-  below described URL.
+  This chapter explains and shows OSC commands examples. You could use OBS much
+  more efficiently with OSC commands. $man OSC will show you [GLOBALOPTS],
+  SUBCOMMAND, [OPTS][ARGS....]. You also could find some OSC commands examples
+  from OBS Build Service portal. This chapter will take every OSC command
+  examples from OBS Build Service portal and describes it in here. You could
+  visit Build Service portal OSC command explanation via below described URL.
  </para>
 <screen> <command>  http://en.opensuse.org/Build_Service/CLI  </command> </screen>
  <section>
@@ -23,21 +22,20 @@
   <para>
    osc is written in Python, and in addition to the commandline interface it
    also provides a Python module, for use by other Python programs. Packages
-   can be found at
-   http://download.opensuse.org/repositories/openSUSE:/Tools/ for various
-   distributions (openSUSE, SLES, Fedora, Mandriva, Debian, etc.). If you
-   want to check out the latest source code, you can do so with Git:
+   can be found at http://download.opensuse.org/repositories/openSUSE:/Tools/
+   for various distributions (openSUSE, SLES, Fedora, Mandriva, Debian, etc.).
+   If you want to check out the latest source code, you can do so with Git:
   </para>
 <screen> <command> git clone git@github.com:openSUSE/osc.git </command> </screen>
   <para>
    osc is a subversion-like client. It serves as client for the source code
    repository part of the build service, and it is used to edit metadata or
-   query about build results. Introductory usage examples are shown below.
-   Note the Build Service Tutorial, which gives a more systematic
-   introduction. osc is extensible. You can modify the behavior or write
-   your own commands. osc will ask you for your credentials when you use it
-   for the first time, and store them in ~/.oscrc. The password is stored in
-   plain text. Protect your ~/.oscrc file and your filesystem appropriately.
+   query about build results. Introductory usage examples are shown below. Note
+   the Build Service Tutorial, which gives a more systematic introduction. osc
+   is extensible. You can modify the behavior or write your own commands. osc
+   will ask you for your credentials when you use it for the first time, and
+   store them in ~/.oscrc. The password is stored in plain text. Protect your
+   ~/.oscrc file and your filesystem appropriately.
   </para>
   <para>
    Show usage info on a command
@@ -59,11 +57,11 @@
             </command> 
          </screen>
   <para>
-   "osc ls" shows you a list of projects on OBS. But which OBS it would
-   show? it depends on your .oscrc setting. please have a look on your
-   .oscrc file. If it is set as "apiurl = https://api.opensuse.org". osc ls
-   would show build.opensuse.org OBS projects list to you. So what if you
-   would like to list projects of another OBS?
+   "osc ls" shows you a list of projects on OBS. But which OBS it would show?
+   it depends on your .oscrc setting. please have a look on your .oscrc file.
+   If it is set as "apiurl = https://api.opensuse.org". osc ls would show
+   build.opensuse.org OBS projects list to you. So what if you would like to
+   list projects of another OBS?
   </para>
 <screen> 
             <command>
@@ -122,8 +120,8 @@
           </screen>
   <para>
    If an update cannot be merged automatically, a file is in 'C' (conflict)
-   state, and conflicts are marked with special lines. After manually
-   resolving the problem, use
+   state, and conflicts are marked with special lines. After manually resolving
+   the problem, use
   </para>
 <screen>
              <command>
@@ -149,11 +147,10 @@
            </screen>
   <para>
    Let OBS create a tar ball out of an SCM repository. This just creates or
-   extend a _service file with some rules how to download and package
-   sources. The actual work happens on a local build or on a service side
-   build. Pleast note that you need at least the following packages
-   installed for local runs: obs-service-tar_scm, obs-service-set_version,
-   obs-service-recompress.
+   extend a _service file with some rules how to download and package sources.
+   The actual work happens on a local build or on a service side build. Pleast
+   note that you need at least the following packages installed for local runs:
+   obs-service-tar_scm, obs-service-set_version, obs-service-recompress.
   </para>
 <screen>
 		<command>
@@ -178,8 +175,7 @@
  		</command>
 	    </screen>
   <para>
-   Show the log file of a package (you need to be inside a package
-   directory)
+   Show the log file of a package (you need to be inside a package directory)
   </para>
 <screen> 
 		<command>
@@ -187,8 +183,7 @@
 		</command>
 	    </screen>
   <para>
-   Show the URLs of .repo files which are packages sources for
-   Yum/YaST/smart
+   Show the URLs of .repo files which are packages sources for Yum/YaST/smart
   </para>
 <screen>
 		<command>
@@ -239,9 +234,9 @@
 		</command>
 	    </screen>
   <para>
-   Edit meta information. Creates new package/project if it doesn't exist.
-   It will open an Editor with the raw XML metadata. If unsure about XML,
-   you can use the web client instead.
+   Edit meta information. Creates new package/project if it doesn't exist. It
+   will open an Editor with the raw XML metadata. If unsure about XML, you can
+   use the web client instead.
   </para>
 <screen>
 		<command>
@@ -252,8 +247,8 @@
 	    </screen>
   <para>
    (The project configuration (prjconf) may well be empty. It is needed in
-   special cases only.) Update package meta data with metadata taken from
-   spec file
+   special cases only.) Update package meta data with metadata taken from spec
+   file
   </para>
 <screen>
 		<command> 
@@ -287,9 +282,9 @@
   </para>
 <screen> <command> osc deletepac [package] </command> </screen>
   <para>
-   All the commands above only change your local working copy. To submit
-   your changes to the buildservice you have to commit them (osc ci -m
-   [message]). The status command also displays the state of the packages
+   All the commands above only change your local working copy. To submit your
+   changes to the buildservice you have to commit them (osc ci -m [message]).
+   The status command also displays the state of the packages
   </para>
 <screen> <command>  osc st  </command> </screen>
  </section>

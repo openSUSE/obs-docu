@@ -3,10 +3,10 @@
  <section>
   <title>Motivation</title>
   <para>
-   In a DoD repository external software repositories can be configured
-   which are used for dependency resolution and where packages will be
-   downloaded at build time. A DoD repository has some main advantages in
-   comparison to binary import projects:
+   In a DoD repository external software repositories can be configured which
+   are used for dependency resolution and where packages will be downloaded at
+   build time. A DoD repository has some main advantages in comparison to
+   binary import projects:
   </para>
   <itemizedlist>
    <listitem>
@@ -30,8 +30,8 @@
    susetags, rpmmd and deb), it`s recommended to use a mirror server url in
    &lt;download&gt; in order to reduce traffic on the master server and
    configure a &lt;master&gt; with an <command>https</command> url and a
-   <command>sslfinger</command> in order to avoid man in the middle attacks
-   by peer verification.
+   <command>sslfinger</command> in order to avoid man in the middle attacks by
+   peer verification.
   </para>
  </section>
  <section>
@@ -119,8 +119,8 @@
    checksums found in repo data.
   </para>
   <para>
-   You can easily query the ssl fingerprint of a remote server by calling
-   the following command:
+   You can easily query the ssl fingerprint of a remote server by calling the
+   following command:
 <screen><![CDATA[
 openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout
         ]]></screen>
@@ -129,9 +129,9 @@ openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -
  <section>
   <title>The &lt;pubkey&gt; subelement</title>
   <para>
-   The pubkey element contains one or more gpg public keys in order to
-   verify repository information but not packages. For an example have a
-   look at the repotype "deb" documentation below.
+   The pubkey element contains one or more gpg public keys in order to verify
+   repository information but not packages. For an example have a look at the
+   repotype "deb" documentation below.
   </para>
  </section>
  <section>
@@ -244,8 +244,8 @@ Version: GnuPG v1.4.12 (GNU/Linux)
   <section>
    <title>Arch Repository (arch)</title>
    <para>
-    Please be aware that there is no way atm to verify the origin of
-    repository for Arch.
+    Please be aware that there is no way atm to verify the origin of repository
+    for Arch.
    </para>
    <para>
     <command>Example:</command>

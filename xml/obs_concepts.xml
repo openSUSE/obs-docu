@@ -10,23 +10,22 @@
 <chapter id="cha.obs.concepts">
  <title>OBS Concepts</title>
  <para>
-  We describe here the high level concepts how &obs; is designed, manages
-  it's content and is supposed to work.
+  We describe here the high level concepts how &obs; is designed, manages it's
+  content and is supposed to work.
  </para>
  <section>
   <title>Project organization</title>
   <para>
    All sources and binaries which are hosted inside of OBS are organized in
-   projects. A project is the container defining a larger task. It defines
-   who is working there
+   projects. A project is the container defining a larger task. It defines who
+   is working there
   </para>
   <section>
    <title>Project meta data</title>
    <para>
     A project gets configured in the project
     <command>/source/$PROJECT/_meta</command> path. It can be edited in web
-    interface in the <command>RAW Config</command> tab or via command line
-    via
+    interface in the <command>RAW Config</command> tab or via command line via
 <screen><command>osc meta prj -e $PROJECT</command></screen>
     This file contains
    </para>
@@ -122,9 +121,9 @@
    <title>Project build configuration.</title>
    <para>
     A project gets configured in the project
-    <command>/source/$PROJECT/_config</command> path. It can be edited in
-    web interface in the <command>Project Config</command> tab or via one of
-    the following command lines
+    <command>/source/$PROJECT/_config</command> path. It can be edited in web
+    interface in the <command>Project Config</command> tab or via one of the
+    following command lines
 <screen><command>osc meta prjconf -e $PROJECT</command>
 <command>osc co $PROJECT _project</command></screen>
     This file contains information on how to setup a build environment.
@@ -156,9 +155,9 @@
   <title>The OBS Interconnect</title>
   <para>
    The OBS interconnect is a mechanism to connect two OBS instances. All
-   content, including sources and binary build results will be available in
-   the connecting instance. Unlike other methods the instances will also
-   notify each other about changes.
+   content, including sources and binary build results will be available in the
+   connecting instance. Unlike other methods the instances will also notify
+   each other about changes.
 <!--
  * xml example to setup
  * webui interconnect page

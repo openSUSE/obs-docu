@@ -15,14 +15,14 @@
   <title>How to work best with limited bandwidth</title>
   <para>
    Packages can contain large files, esp. some tar balls can become quite
-   large, in some real life examples several hundred mega bytes. This can be
-   a problem when you need to work on the package via a slow connection.
+   large, in some real life examples several hundred mega bytes. This can be a
+   problem when you need to work on the package via a slow connection.
   </para>
   <section>
    <title>Use the web interface</title>
    <para>
-    The web interface is the easiest way to edit simple things without the
-    need of the checkout.
+    The web interface is the easiest way to edit simple things without the need
+    of the checkout.
    </para>
    <para>
     Disadvantages are
@@ -48,11 +48,10 @@
   <section>
    <title>Use osc with size limit</title>
    <para>
-    <command>osc</command> offers to skip files with a certain size
-    (specified with <command>-l</command> switch) on checkout. The limit is
-    stored locally and you can also run an update later without downloading
-    any large files. All other files can be edited, diffed and committed as
-    usual.
+    <command>osc</command> offers to skip files with a certain size (specified
+    with <command>-l</command> switch) on checkout. The limit is stored locally
+    and you can also run an update later without downloading any large files.
+    All other files can be edited, diffed and committed as usual.
    </para>
    <para>
     Disadvantages are
@@ -75,13 +74,12 @@
    <para>
     Manage your large files via source services. The easiest way is to use
 <screen><command>osc add $URL</command></screen>
-    which just stores a small <command>_service</command> file. The check
-    will not contain the large files by default, but they get downloaded
-    when needed via the service. However, they will never get committed, so
-    this is the best approach when you have a fast downstream, but slow
-    upstream like with standard DSL connections. Also other users can trust
-    your tar ball, esp. important when you do version upgrades on foreign
-    packages.
+    which just stores a small <command>_service</command> file. The check will
+    not contain the large files by default, but they get downloaded when needed
+    via the service. However, they will never get committed, so this is the
+    best approach when you have a fast downstream, but slow upstream like with
+    standard DSL connections. Also other users can trust your tar ball, esp.
+    important when you do version upgrades on foreign packages.
    </para>
    <para>
     Disadvantages are
@@ -97,14 +95,14 @@
   <section>
    <title>Use source service in trylocal mode</title>
    <para>
-    Manage your large files via source services in try local mode for
-    example with <command>download_url</command> or
-    <command>download_files</command> service. This means you can be
-    flexible depending on your current connection without changing the
-    setup. The service is generating the file on the server side when you
-    decide not to commit it, but you can also decide to commit it and avoid
-    the _service: prefix on the files. Also other users can trust your tar
-    ball, esp. important when you do version upgrades on foreign packages.
+    Manage your large files via source services in try local mode for example
+    with <command>download_url</command> or <command>download_files</command>
+    service. This means you can be flexible depending on your current
+    connection without changing the setup. The service is generating the file
+    on the server side when you decide not to commit it, but you can also
+    decide to commit it and avoid the _service: prefix on the files. Also other
+    users can trust your tar ball, esp. important when you do version upgrades
+    on foreign packages.
    </para>
    <para>
     Disadvantages are

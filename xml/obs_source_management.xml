@@ -15,20 +15,20 @@
   <title>Find Package Sources</title>
   <para>
    OBS is adding information to each created package about the origin of the
-   sources. This information is stored in the <command>DISTURL</command> tag
-   of an rpm, which can be displayed as follows
+   sources. This information is stored in the <command>DISTURL</command> tag of
+   an rpm, which can be displayed as follows
 <screen><command>rpm -q --queryformat '%{DISTURL}\n' glibc</command></screen>
 <screen><command>rpm -q --queryformat '%{DISTURL}\n' -p glibc-2.1.0-1.i586.rpm</command></screen>
    The disturl can look like this:
    <command>obs://build.opensuse.org/openSUSE:Factory/standard/80d21fdd2299302358246d757b4d8c4f-glibc</command>
    It always starts with obs://. The second part is the name of the build
    instance, which usually also hosts the webui. Next comes the project name
-   and the repository name where the binary got built. Last part is the
-   source md5 sum and the package name.
+   and the repository name where the binary got built. Last part is the source
+   md5 sum and the package name.
   </para>
   <para>
-   The disturl can also be entered in the search field of the web interface
-   of the build service.
+   The disturl can also be entered in the search field of the web interface of
+   the build service.
   </para>
  </section>
 </chapter>

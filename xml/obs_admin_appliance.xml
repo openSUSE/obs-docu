@@ -9,25 +9,25 @@
 <section id="cha.obs.admin.appliance">
  <title>OBS Appliances</title>
  <para>
-  This chapter gives an overview over the different OBS appliances and how
-  to deploy them for production use.
+  This chapter gives an overview over the different OBS appliances and how to
+  deploy them for production use.
  </para>
  <section>
   <title>Server Appliance</title>
   <para>
    The OBS server appliance contains a recent openSUSE distribution with a
    pre-installed and pre-configured OBS frontend, backend and worker. The
-   operating system on this appliance adapts to the hardware on first boot
-   and defaults to automatic IP and DNS configuration via DHCP.
+   operating system on this appliance adapts to the hardware on first boot and
+   defaults to automatic IP and DNS configuration via DHCP.
   </para>
  </section>
  <section>
   <title>Worker Appliance</title>
   <para>
-   The OBS worker appliance includes a recent openSUSE distribtion and the
-   OBS worker component. The operating system on this appliance adapts to
-   the hardware on first boot, defaults to automatic IP and DNS
-   configuration via DHCP and OBS server discovery via SLP.
+   The OBS worker appliance includes a recent openSUSE distribtion and the OBS
+   worker component. The operating system on this appliance adapts to the
+   hardware on first boot, defaults to automatic IP and DNS configuration via
+   DHCP and OBS server discovery via SLP.
   </para>
  </section>
  <section>
@@ -95,10 +95,10 @@
  <section>
   <title>Deployment</title>
   <para>
-   To help you deploy the OBS server appliance to a hard disk there is an
-   basic installer that you can boot from an USB stick. The installer can be
-   found on the <ulink url="http://openbuildservice.org/download/">OBS
-   Download page</ulink>.
+   To help you deploy the OBS server appliance to a hard disk there is an basic
+   installer that you can boot from an USB stick. The installer can be found on
+   the <ulink url="http://openbuildservice.org/download/">OBS Download
+   page</ulink>.
   </para>
   <para>
    The image can be written to an USB stick to boot from it:
@@ -109,8 +109,8 @@ xzcat obs-server-install.x86_64.raw.xz > /dev/sdX
   <warning>
    <para>
     /dev/sdX is the main device of your USB stick. Do NOT put it into a
-    partition like /dev/sda1. If you use the wrong device, you will destroy
-    all data on it!
+    partition like /dev/sda1. If you use the wrong device, you will destroy all
+    data on it!
    </para>
   </warning>
   <para>
@@ -121,13 +121,13 @@ xzcat obs-server-install.x86_64.raw.xz > /dev/sdX
  <section>
   <title>Separating Data from the System</title>
   <para>
-   For production use you want to seperate the OBS data from operating
-   system of the appliance so you can re-deploy the appliance without
-   touching your OBS data. This can be achieved by createing a LVM volume
-   group with the name "OBS". This volume group should be as large as
-   possible because it is getting used by the OBS backend for data storage
-   and the OBS workers for root/swap/cache file systems. To create a LVM
-   volume prepare a partition of type "8e" and create the LVM via
+   For production use you want to seperate the OBS data from operating system
+   of the appliance so you can re-deploy the appliance without touching your
+   OBS data. This can be achieved by createing a LVM volume group with the name
+   "OBS". This volume group should be as large as possible because it is
+   getting used by the OBS backend for data storage and the OBS workers for
+   root/swap/cache file systems. To create a LVM volume prepare a partition of
+   type "8e" and create the LVM via
 <screen><command>
 pvcreate /dev/sdX1
 vgcreate "OBS" /dev/sdX1
@@ -145,15 +145,15 @@ mkfs.xfs /dev/OBS/server
  <section>
   <title>Updating the Appliance</title>
   <para>
-   All images come pre-configured with the right set of repositories and can
-   be updated via the system tools YaST or <command>zypper</command> at any
-   time. Another way to update is to re-deploy the entire image.
+   All images come pre-configured with the right set of repositories and can be
+   updated via the system tools YaST or <command>zypper</command> at any time.
+   Another way to update is to re-deploy the entire image.
   </para>
   <warning>
    <para>
-    If you re-deploy the entire image, keep in mind that you need to have
-    your data directory (/srv/obs) on a separate storage (LVM volume,
-    partition etc.) otherwise it will get deleted!
+    If you re-deploy the entire image, keep in mind that you need to have your
+    data directory (/srv/obs) on a separate storage (LVM volume, partition
+    etc.) otherwise it will get deleted!
    </para>
   </warning>
  </section>

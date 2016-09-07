@@ -17,14 +17,14 @@
    documentation. Please use the following command to checkout the official
    source of this book:
 <screen><command>git clone https://github.com/openSUSE/open-build-service-documentation.git</command></screen>
-   Please check the README file for descriptions how to validate and
-   generate them.
+   Please check the README file for descriptions how to validate and generate
+   them.
   </para>
 
   <para>
-   Please use the standard github work-flow to work on these books. This
-   means fork your own copy of the repository, commit your changes there and
-   create a pull request. This can be done at
+   Please use the standard github work-flow to work on these books. This means
+   fork your own copy of the repository, commit your changes there and create a
+   pull request. This can be done at
    <ulink url="https://github.com/openSUSE/open-build-service-documentation">https://github.com/openSUSE/open-build-service-documentation</ulink>
   </para>
 
