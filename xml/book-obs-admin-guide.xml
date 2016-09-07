@@ -31,7 +31,6 @@
   <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  </bookinfo>
  <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_ag_obs_architecture.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_installation_and_configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_overview_filesystem.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_ag_administration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

@@ -49,8 +49,8 @@ communication between the backend components
 </simpara>
 </listitem>
 </orderedlist>
-<simpara>The user use the WebGui or the frontend API (via tools like <emphasis role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the Open
-Build Service. The WebUI and the API implemented as Ruby on rails
+<simpara>The user is using the frontend (via tools like <emphasis role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the Open
+Build Service. The frontent is providing a web interface and also an api. The frontend is implemented as Ruby on rails
 application. All communcation happens via the <emphasis role="strong"><emphasis>http</emphasis></emphasis> protocol (normally
 encrypted so <emphasis role="strong"><emphasis>https</emphasis></emphasis> is used.</simpara>
 <simpara>The communication between the frontend and the backend also use the http
