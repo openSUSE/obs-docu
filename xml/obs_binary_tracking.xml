@@ -27,12 +27,6 @@
  <section>
   <title>What data is tracked?</title>
   <para>
-   product media, appliance, repository...
-  </para>
- </section>
- <section>
-  <title>What data is tracked?</title>
-  <para>
    In short the informations to identify a binary, it's building place and
    timestamps are tracked. In addition to that also information about possible
    successor versions or if the binary got removed meanwhile. If products do
