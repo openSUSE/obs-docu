@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="_obs_architecture">
+<chapter id="cha.obs.architecture">
  <title>OBS Architecture</title>
  <para></para>
  <section id="_overview_graph">
