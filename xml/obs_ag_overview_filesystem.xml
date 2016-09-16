@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="_overview_filesystem">
+<chapter id="obs.cha.overview_filesystem">
  <title>Overview filesystem</title>
  <section id="_configuration_files">
   <title>Configuration files</title>

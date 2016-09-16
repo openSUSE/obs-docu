@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="_installation_and_configuration">
+<chapter id="obs.cha.installation_and_configuration">
  <title>Installation and configuration</title>
  <section id="_planning">
   <title>Planning</title>
