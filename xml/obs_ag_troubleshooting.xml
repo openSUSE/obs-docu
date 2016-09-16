@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="_troubleshooting">
+<chapter id="obs.cha.troubleshooting">
  <title>Troubleshooting</title>
  <simpara>Here are two major classes of problems regarding the <emphasis role="strong">Open Build Service</emphasis>
  </simpara>

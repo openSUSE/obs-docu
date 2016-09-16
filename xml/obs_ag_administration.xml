@@ -6,7 +6,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="_administration">
+<chapter id="obs.cha.administration">
  <title>Administration</title>
  <para></para>
  <xi:include href="obs_ag_tools.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
