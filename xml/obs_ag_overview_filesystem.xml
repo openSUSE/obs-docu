@@ -2759,7 +2759,7 @@ warden.log - warden log
   </section>
  </section>
  <section id="_src_obs_tree">
-  <title>/src/obs tree</title>
+  <title>/srv/obs tree</title>
   <simpara>The default backend data directory is located under
 <emphasis>/srv/obs/</emphasis>. Here are a bunch of subdirectories used for communication
 between the different server, to store data, status information und logs.
@@ -3336,7 +3336,7 @@ can be used to trigger special actions.</simpara>
   </section>
   <section id="_job_files">
    <title>Job files</title>
-   <simpara>Jobs are stored bei the scheduler in the <emphasis>/srv/obs/jobs</emphasis> directory and
+   <simpara>Jobs are stored by the scheduler in the <emphasis>/srv/obs/jobs</emphasis> directory and
 contain the build setup information for the package, e.g. reference to the
 exact source version, build dependencies, build repository information,
 timestamps.</simpara>
