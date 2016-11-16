@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<section id="_obs_spider_identification">
+ <title>Spider Identification</title>
+ <para>
+   OBS identifies spiders by using an extension called <command>voight_kampff</command>. Spiders will be identified to hide certain
+   content and links for performance reasons.
+ </para>
+ <para>
+   To update the spider list, you must run the command <command>rake voight_kampf:import_user_agents</command> in the
+   root directory of your OBS instance. This downloads an updated list of user agents as a JSON file into the
+   <filename>config/</filename> directory of the Rails application.
+ </para>
+ <para>
+   If you want to extend or edit this list, switch to the <filename>config/</filename> directory and open the
+   <filename>crawler-user-agents.json</filename> file with the editor of your choice. The content can look like this:
+
+   <screen>[
+   {
+       "pattern": "Googlebot\\/",
+       "url": "http://www.google.com/bot.html"
+   },
+   {
+       "pattern": "Googlebot-Mobile"
+   },
+   {
+       "pattern": "Googlebot-Image"
+   },
+   [...]
+]</screen>
+ </para>
+ <para>
+  To add a new bot to this list, a pattern must be defined. This is required to identify a bot. Almost all bots have their
+  own user agent that they're sending to a web server to identify them. For example, the user agent of the Googlebot looks
+  like this:
+  <screen>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</screen>
+  To choose the pattern for the new bot, compare the user agent of the bot you want to identify with others and look for a
+  part that is unique (like in the Googlebot example, the part: Googlebot).
+ </para>
+ <para>
+  Let's assume we want to add the bot Geekobot to the list of bots and the user agent looks like this:
+  <screen>Mozilla/5.0 (compatible; Geekobot/2.1; +https://www.opensuse.org)</screen>
+  Our unique part would be Geekobot. So we add a new entry to the list of bots:
+  <screen>[
+   {
+       "pattern": "Googlebot\\/",
+       "url": "http://www.google.com/bot.html"
+   },
+   {
+       "pattern": "Googlebot-Mobile"
+   },
+   {
+       "pattern": "Googlebot-Image"
+   },
+   [...]
+   {
+       "pattern": "Geekobot"
+   }
+]</screen>
+ </para>
+ <note>
+  <para>You can also use regular expressions in the pattern element.</para>
+ </note>
+ <para>
+  Save the file and restart the Rails application and the bot Geekobot should be identified properly.
+ </para>
+</section>
