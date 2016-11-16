@@ -9,16 +9,17 @@
 <section id="_obs_spider_identification">
  <title>Spider Identification</title>
  <para>
-   OBS identifys spiders by using the gem <command>voight_kampff</command>. Spiders will be identified to optimize the
-   page content for them.
+   OBS identifies spiders by using an extension called <command>voight_kampff</command>. Spiders will be identified to hide certain
+   content and links for performance reasons.
  </para>
  <para>
-   To update the spider list, you must run the command <command>rake voight_kampf:import_user_agents</command>.
-   This downloads a list of spiders as a JSON file into the <filename>config/</filename> directory of the Rails application.
+   To update the spider list, you must run the command <command>rake voight_kampf:import_user_agents</command> in the
+   root directory of your OBS instance. This downloads an updated list of user agents as a JSON file into the
+   <filename>config/</filename> directory of the Rails application.
  </para>
  <para>
-   Switch to the <filename>config/</filename> directory and open the <filename>crawler-user-agents.json</filename> file with
-   the editor of your choice. The content can look like this:
+   If you want to extend or edit this list, switch to the <filename>config/</filename> directory and open the
+   <filename>crawler-user-agents.json</filename> file with the editor of your choice. The content can look like this:
 
    <screen>[
    {
@@ -62,6 +63,11 @@
        "pattern": "Geekobot"
    }
 ]</screen>
+ </para>
+ <note>
+  <para>You can also use regular expressions in the pattern element.</para>
+ </note>
+ <para>
   Save the file and restart the Rails application and the bot Geekobot should be identified properly.
  </para>
 </section>
