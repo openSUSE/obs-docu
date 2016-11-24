@@ -9,12 +9,13 @@
 <section id="_obs_spider_identification">
  <title>Spider Identification</title>
  <para>
-   OBS identifies spiders by using an extension called <command>voight_kampff</command>. Spiders will be identified to hide certain
-   content and links for performance reasons.
+   OBS is hiding specific parts/pages of the application from search crawlers (duckduckgo, google etc.), mostly for
+   performance reasons. Which user-agent strings are identified as crawlers configured in the file
+   <filename>/srv/www/obs/api/config/crawler-user-agents.json</filename>.
  </para>
  <para>
-   To update the spider list, you must run the command <command>bundle exec rake voight_kampf:import_user_agents</command> in the
-   root directory of your OBS instance. This downloads an updated list of user agents as a JSON file into the
+   To update that list, you must run the command <command>bundle exec rake voight_kampf:import_user_agents</command> in the
+   root directory of your OBS instance. This downloads the current crawler list of user agents as a JSON file into the
    <filename>config/</filename> directory of the Rails application.
  </para>
  <para>
