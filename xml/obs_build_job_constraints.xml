@@ -240,4 +240,35 @@ Constraint: hardware:cpu:flag sse2</command></screen>
    </section>
   </section>
  </section>
+ <section>
+    <title>Constraint Handling</title>
+    <para>
+     The constraint handling depends on what is met by the restrictions. The handling starts when there is no worker to fulfill the constraints.
+    </para>
+    <section>
+      <title>More than half of the workers satisfy the constraints</title>
+      <para>
+       The job will just stay in state scheduled and no further notification is set.
+      </para>
+    </section>
+    <section>
+      <title>Less than half of the workers satisfy the constraints</title>
+      <para>
+       The job will stay in state scheduled and the dispatch details are set to tell the user that this job can take a long time to be built. This will be shown in the WebUI on mouse over and the scheduled state will be highlighted as well.
+<screen><command>waiting for 4 compliant workers (4 down)</command></screen>
+       The <command>(4 down)</command> means that 4 of the 4 compliant workers are down and that someone should have a look.
+      </para>
+    </section>
+    <section>
+      <title>No workers satisfy the constraints</title>
+      <para>
+       If no worker can handle the constraints defined by the package or project the build job fails. There is also a hint in the build log what has failed.
+<screen><command>package build was not possible:
+
+no compliant workers (constraints mismatch hint: hardware:processors sandbox)
+
+Please adapt your constraints.</command></screen>
+      </para>
+    </section>
+  </section>
 </chapter>
