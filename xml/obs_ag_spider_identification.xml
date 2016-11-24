@@ -13,7 +13,7 @@
    content and links for performance reasons.
  </para>
  <para>
-   To update the spider list, you must run the command <command>rake voight_kampf:import_user_agents</command> in the
+   To update the spider list, you must run the command <command>bundle exec rake voight_kampf:import_user_agents</command> in the
    root directory of your OBS instance. This downloads an updated list of user agents as a JSON file into the
    <filename>config/</filename> directory of the Rails application.
  </para>
