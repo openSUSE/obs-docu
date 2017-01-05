@@ -271,4 +271,49 @@ Please adapt your constraints.</command></screen>
       </para>
     </section>
   </section>
+  <section>
+      <title>Checking constraints with osc</title>
+      <para>
+      You can check the constraints of a project / package with the osc tool. You have to be in an osc working directory.
+      <screen><command>osc checkconstraints [OPTS] REPOSITORY ARCH CONSTRAINTSFILE</command></screen>
+      Either you give a repository and an arch or osc will check the constraints for all repository / arch pairs for the package.
+      A few examples:
+      <screen><command># osc checkconstraints
+
+Repository                Arch                      Worker
+----------                ----                      ------
+openSUSE_Leap_42.2        x86_64                    1
+openSUSE_Leap_42.1        x86_64                    1</command></screen>
+      If no file is given it takes the local _constraints file. If this file does not
+      exist or the --ignore-file switch is set only the project constraints are used.
+      <screen><command># osc checkconstraints openSUSE_Leap_42.1 x86_64
+
+Worker
+------
+x86_64:worker:1
+x86_64:worker:2</command></screen>
+      If a repository and an arch is given a list of compliant workers is returned.
+      </para>
+      <para>
+      Another command to verify a worker and display the worker information is osc workerinfo. 
+      <screen><command>&lt;worker hostarch="x86_64" registerserver="http://localhost:5252" workerid="worker:1"&gt;
+  &lt;hostlabel&gt;MY_WORKER_LABEL_1&lt;/hostlabel&gt;
+  &lt;sandbox&gt;chroot&lt;/sandbox&gt;
+  &lt;linux&gt;
+    &lt;version&gt;4.1.34-33&lt;/version&gt;
+    &lt;flavor&gt;default&lt;/flavor&gt;
+  &lt;/linux&gt;
+  &lt;hardware&gt;
+    &lt;cpu&gt;
+      &lt;flag&gt;fpu&lt;/flag&gt;
+      &lt;flag&gt;vme&lt;/flag&gt;
+      &lt;flag&gt;de&lt;/flag&gt;
+    &lt;/cpu&gt;
+    &lt;processors&gt;2&lt;/processors&gt;
+    &lt;jobs&gt;1&lt;/jobs&gt;
+  &lt;/hardware&gt;
+&lt;/worker&gt;</command></screen>
+      It returns the information of the desired worker. 
+      </para>
+  </section>
 </chapter>
