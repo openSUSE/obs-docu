@@ -5,8 +5,9 @@
 This is the official, edited and reviewed documentation for 
 the Open Build Service (OBS).
 
-The documentation is currently split into two books:
+The documentation is currently split into three books:
   * The OBS admin guide
+  * The OBS reference guide
   * The OBS best practices guide
 
 To work on this document you need to install the package "daps".
@@ -20,6 +21,11 @@ commands:
 or for the best practices guide:
 
  # . DC-obs-best-practices
+ # daps validate
+
+or for the admin guide:
+
+ # . DC-obs-admin-guide
  # daps validate
 
 html documentation can get generated via
