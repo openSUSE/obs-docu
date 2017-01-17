@@ -372,26 +372,27 @@ for example), refer to the osc documentation for this.</simpara>
 cat /tmp/obs.config
 &lt;configuration&gt;
   &lt;title&gt;Open Build Service&lt;/title&gt;
-  &lt;description&gt;  &amp;lt;p class="description"&amp;gt;
-    The &amp;lt;a href="http://openbuildservice.org"&amp;gt; Open Build Service (OBS)&amp;lt;/a&amp;gt;
-    is an open and complete distribution development platform that provides a transparent
-    infrastructure for development of Linux distributions, used by openSUSE, MeeGo
-    and other distributions.
-    Supporting also Fedora, Debian, Ubuntu, RedHat and other Linux distributions.
-  &amp;lt;/p&amp;gt;
-  &amp;lt;p class="description"&amp;gt;
-    The OBS is developed under the umbrella of the &amp;lt;a href="http://www.opensuse.org"&amp;gt;openSUSE project&amp;lt;
-    /a&amp;gt;. Please find further informations on the &amp;lt;
-    a href="http://wiki.opensuse.org/openSUSE:Build_Service"&amp;gt;openSUSE Project wiki pages&amp;lt;/a&amp;gt;.
-  &amp;lt;/p&amp;gt;
+  &lt;description&gt;
+    &amp;lt;p class="description"&amp;gt;
+      The &amp;lt;a href="http://openbuildservice.org"&amp;gt; Open Build Service (OBS)&amp;lt;/a&amp;gt;
+      is an open and complete distribution development platform that provides a transparent
+      infrastructure for development of Linux distributions, used by openSUSE, MeeGo
+      and other distributions.
+      Supporting also Fedora, Debian, Ubuntu, RedHat and other Linux distributions.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p class="description"&amp;gt;
+      The OBS is developed under the umbrella of the &amp;lt;a href="http://www.opensuse.org"&amp;gt;openSUSE project&amp;lt;
+      /a&amp;gt;. Please find further informations on the &amp;lt;
+      a href="http://wiki.opensuse.org/openSUSE:Build_Service"&amp;gt;openSUSE Project wiki pages&amp;lt;/a&amp;gt;.
+    &amp;lt;/p&amp;gt;
 
-  &amp;lt;p class="description"&amp;gt;
-    The Open Build Service developer team is greeting you. In case you use your OBS productive
-    in your facility, please do us a favor and add yourself at &amp;lt;
-    a href="http://wiki.opensuse.org/openSUSE:Build_Service_installations"&amp;gt;
-    this wiki page&amp;lt;/a&amp;gt;. Have fun and fast build times!
-  &amp;lt;/p&amp;gt;
-&lt;/description&gt;
+    &amp;lt;p class="description"&amp;gt;
+      The Open Build Service developer team is greeting you. In case you use your OBS productive
+      in your facility, please do us a favor and add yourself at &amp;lt;
+      a href="http://wiki.opensuse.org/openSUSE:Build_Service_installations"&amp;gt;
+      this wiki page&amp;lt;/a&amp;gt;. Have fun and fast build times!
+    &amp;lt;/p&amp;gt;
+  &lt;/description&gt;
   &lt;name&gt;private&lt;/name&gt;
   &lt;download_on_demand&gt;on&lt;/download_on_demand&gt;
   &lt;enforce_project_keys&gt;off&lt;/enforce_project_keys&gt;
@@ -406,12 +407,21 @@ cat /tmp/obs.config
   &lt;cleanup_empty_projects&gt;on&lt;/cleanup_empty_projects&gt;
   &lt;disable_publish_for_branches&gt;on&lt;/disable_publish_for_branches&gt;
   &lt;admin_email&gt;unconfigured@openbuildservice.org&lt;/admin_email&gt;
+  &lt;unlisted_projects_filter&gt;^home:.+&lt;/unlisted_projects_filter&gt;
+  &lt;unlisted_projects_filter_description&gt;home projects&lt;/unlisted_projects_filter_description&gt;
   &lt;schedulers&gt;
     &lt;arch&gt;armv7l&lt;/arch&gt;
     &lt;arch&gt;i586&lt;/arch&gt;
     &lt;arch&gt;x86_64&lt;/arch&gt;
   &lt;/schedulers&gt;
 &lt;/configuration&gt;</screen>
+  <important>
+    <simpara>
+      <emphasis role="strong">unlisted_projects_filter</emphasis> only admit Regular Expression (see RLIKE specifications of MySQL/MariaDB for more information) and
+      <emphasis role="strong">unlisted_projects_filter_description</emphasis> is part of the link shown in the project list for filtering
+    </simpara>
+  </important>
+
    <simpara>You should edit this file according to your prereferences, then sent it back
 to the server:</simpara>
 <screen>osc -c ~/.obsadmin_osc.rc api /configuration -T /tmp/obs.config</screen>

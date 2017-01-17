@@ -539,34 +539,6 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>see LDAP setion</simpara>
         </entry>
        </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>unlisted_project_filter:</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Regular expression to unlist projects from project list</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>^home:.*</literal></simpara>
-        </entry>
-        <entry align="left" valign="top">
-          <simpara>Only Regular expression (see RLIKE specifications for MySQL/MariaDB)</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>unlisted_projects_filter_description:</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Part of the link shown in the project list for filtering</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>home projects</literal></simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara></simpara>
-        </entry>
-       </row>
       </tbody>
      </tgroup>
     </table>
@@ -634,11 +606,7 @@ auto_cleanup_after_days: 30
 # see
 # http://colszowka.heroku.com/2011/02/22/setting-up-your-custom-hoptoad-notifier-endpoint-for-free-using-errbit-on-heroku
 #errbit_api_key: api_key_of_your_app
-#errbit_host: installation.of.errbit.com
-
-# Unlist projects filter
-unlisted_projects_filter: ^home:.+
-unlisted_projects_filter_description: home projects</screen>
+#errbit_host: installation.of.errbit.com</screen>
    </section>
    <section id="_apache_vhost_obs_conf">
     <title>Apache vhost obs.conf</title>
