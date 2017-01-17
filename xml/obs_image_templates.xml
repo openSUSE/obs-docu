@@ -48,4 +48,16 @@
    project.
   </para>
  </section>
+ <section>
+  <title>Receiving image templates via interconnect</title>
+  <para>
+   If your OBS instance is connected to a remote instance via interconnect, OBS
+   will fetch image templates from the remote instance and present it on the
+   image templates page. They appear below the local templates.
+  </para>
+  <para>
+   Have a look at the Managing build targets - Interconnect chapter of the OBS
+   Administator Guide to learn more about interconnects.
+  </para>
+ </section>
 </chapter> 
