@@ -166,6 +166,11 @@ roles and user properties are managed inside the OBS.</simpara>
  </section>
  <section id="_ldap_active_directory">
   <title>LDAP/Active Directory</title>
+  <note>
+   <para>
+    Note: The LDAP support is considered experimental and is not official supported.
+   </para>
+  </note>
   <simpara>Using LDAP or Active Directory as source for user and optional group
 information in environments which already have such a server has the
 advantage for the admin people that the user related information only need
