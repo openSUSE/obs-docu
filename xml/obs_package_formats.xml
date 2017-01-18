@@ -101,8 +101,39 @@ $PACKAGE.dsc
   <section>
    <title>kiwi appliance</title>
    <para>
-    KIWI is image producing plattform which builds images for ISO images and
-    virtualization systems like QEMU, XEN and VMWare.
+    <ulink url="http://opensuse.github.io/kiwi/">KIWI</ulink> is an image producing
+    platform that builds images for various formats, starting from hardware images,
+    virtualization systems like QEMU, XEN and VMWare and many more.
+    It supports a wide range of architecure, which are x86, x86_64, s390 and ppc.
+   </para>
+   <para>
+    Build instructions for KIWI usually consists of:
+    <itemizedlist>
+     <listitem>
+      <simpara>
+       <command>config.xml</command> contains the image configuration in xml format.
+       Full XML schema documentation can be found
+       <ulink url="https://doc.opensuse.org/projects/kiwi/schema-doc/">here</ulink>.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       <command>config.sh (optional)</command> configuration script that runs at
+       the end of the installation, but before package scripts have run.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       <command>root/</command> directory that contains files that will be applied
+       to the built image after package installation. This can also be an archived
+       and compressed directory.
+      </simpara>
+     </listitem>
+    </itemizedlist>
+   </para>
+   <para>
+    Please refer to the <ulink url="https://doc.opensuse.org/projects/kiwi/doc/">
+    KIWI cookbook</ulink> for indepth guidance for building images with KIWI.
    </para>
   </section>
   <section>
