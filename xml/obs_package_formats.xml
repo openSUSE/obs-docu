@@ -98,7 +98,7 @@ $PACKAGE.dsc
     build packages without subpackage. They are no *-dev oder *-devel packages.
    </para>
   </section>
-  <section>
+  <section id="_kiwi_appliance" >
    <title>kiwi appliance</title>
    <para>
     KIWI is image producing plattform which builds images for ISO images and
