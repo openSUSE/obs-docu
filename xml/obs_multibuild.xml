@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter id="cha.obs.multibuild">
+ <title>Multibuild</title>
+ <section>
+  <title>Overview</title>
+  <para>
+   Multibuild is used for sources that can build multiple packages. For that to
+   be accomplished you must provide a file with a list of package names.
+   For each of these listed packages a build instruction, e.g. a spec file, is
+   needed. A set of package builds, repositories and architectures will be built
+   for each package.
+  </para>
+  <para>
+   For example, with the <command>kernel</command> package we can build both
+   <command>kernel-source</command> and <command>kernel-obs-build</command>
+   packages.
+  </para>
+ </section>
+ <section>
+  <title>How Multibuild is Defined</title>
+  <para>
+   Multibuild packages are defined with the <command>_multibuild</command>
+   directive file in the package sources.
+  </para>
+  <para>
+   The <command>_multibuild</command> file is an xml file. For example:
+<screen><command>&lt;multibuild&gt;
+  &lt;package&gt;gcc-package1&lt;/package&gt;
+  &lt;package&gt;gcc-package2&lt;/package&gt;
+&lt;/multibuild&gt;
+</command></screen>
+  </para>
+ </section>
+</chapter>
