@@ -111,7 +111,7 @@ $PACKAGE.dsc
     <itemizedlist>
      <listitem>
       <simpara>
-       <command>config.xml</command> contains the image configuration in xml format.
+       <command>my_image.kiwi</command> contains the image configuration in xml format.
        Full XML schema documentation can be found
        <ulink url="https://doc.opensuse.org/projects/kiwi/schema-doc/">here</ulink>.
       </simpara>
@@ -131,6 +131,12 @@ $PACKAGE.dsc
      </listitem>
     </itemizedlist>
    </para>
+   <note>
+    <para>
+     OBS only accepts files with a <filename class="extension">.kiwi</filename> suffix as a KIWI configuration file. Other
+     naming schemes KIWI supports, like the 'config.xml', are getting ignored in OBS.
+    </para>
+   </note>
    <para>
     Please refer to the <ulink url="https://doc.opensuse.org/projects/kiwi/doc/">
     KIWI cookbook</ulink> for indepth guidance for building images with KIWI.
