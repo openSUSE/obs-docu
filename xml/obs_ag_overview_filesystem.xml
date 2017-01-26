@@ -12,22 +12,19 @@
   <title>Configuration files</title>
   <section id="_frontend_configuration">
    <title>Frontend Configuration</title>
-   <simpara>The Frontend is configured with 3 files:</simpara>
+   <simpara>The Frontend is configured with 4 files:</simpara>
    <itemizedlist>
     <listitem>
-     <simpara>
-/srv/www/obs/api/config/database.yml
-</simpara>
+     <simpara>/srv/www/obs/api/config/database.yml</simpara>
     </listitem>
     <listitem>
-     <simpara>
-/srv/www/obs/api/config/options.yml
-</simpara>
+     <simpara>/srv/www/obs/api/config/options.yml</simpara>
     </listitem>
     <listitem>
-     <simpara>
-/etc/apache2/vhosts.d/obs.conf
-</simpara>
+     <simpara>/srv/www/obs/api/config/feature.yml</simpara>
+    </listitem>
+    <listitem>
+     <simpara>/etc/apache2/vhosts.d/obs.conf</simpara>
     </listitem>
    </itemizedlist>
    <section id="_database_yml">
@@ -607,6 +604,50 @@ auto_cleanup_after_days: 30
 # http://colszowka.heroku.com/2011/02/22/setting-up-your-custom-hoptoad-notifier-endpoint-for-free-using-errbit-on-heroku
 #errbit_api_key: api_key_of_your_app
 #errbit_host: installation.of.errbit.com</screen>
+   </section>
+   <section id="_feature_yml">
+    <title>feature.yml</title>
+    <simpara>The configuration file /srv/www/obs/api/config/feature.yml contains the default configuration
+      about features that can be enabled or disabled in Open Build Service.</simpara>
+    <table frame="all" rowsep="1" colsep="1">
+     <title>feature.yml configuration items</title>
+     <tgroup cols="4">
+      <colspec colname="col_1" colwidth="28*"/>
+      <colspec colname="col_2" colwidth="25*"/>
+      <colspec colname="col_3" colwidth="20*"/>
+      <colspec colname="col_4" colwidth="25*"/>
+      <thead>
+       <row>
+        <entry align="left" valign="top"> Config item </entry>
+        <entry align="left" valign="top"> Description </entry>
+        <entry align="left" valign="top"> Values <literal>default</literal>
+        </entry>
+        <entry align="left" valign="top"> Remarks</entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry align="left" valign="top">
+         <simpara>image_templates</simpara>
+        </entry>
+        <entry align="left" valign="top">
+          <simpara>enable/disable image template feature</simpara>
+        </entry>
+        <entry align="left" valign="top">
+         <simpara><literal>true</literal> false</simpara>
+        </entry>
+        <entry align="left" valign="top">
+         <simpara>see Reference Guide for more information</simpara>
+        </entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </table>
+    <simpara>Example feature.yml</simpara>
+    <screen>
+features:
+  image_templates: true
+    </screen>
    </section>
    <section id="_apache_vhost_obs_conf">
     <title>Apache vhost obs.conf</title>
