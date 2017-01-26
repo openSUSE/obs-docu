@@ -53,6 +53,20 @@
    </mediaobject>
   </figure>
   <para>
+   Add the 'KIWI image build' repository to your project. This repository is
+   needed to build KIWI images in your project.
+   Go to the 'Repositories' tab, click on 'Add repositories' and chlick on the
+   'KIWI image build' checkbox.
+  </para>
+  <figure>
+   <title>Enabling the kIWI image build repository</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="image_templates_enable_image_repository.png" />
+    </imageobject>
+   </mediaobject>
+  </figure>
+  <para>
    Add sources for your image configuration.
   </para>
   <figure>
