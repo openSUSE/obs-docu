@@ -8,7 +8,7 @@
 ]>
 <chapter id="cha.obs.image_templates">
  <title>Image templates</title>
- <para>
+ <para id="image_template_introduction_paragraph">
   Image templates are pre-configured image configurations. The
   <ulink url="https://build.opensuse.org/image_templates">image templates page
   </ulink> provides a list of these templates. Users can clone these templates
@@ -22,7 +22,7 @@
    As any KIWI configuration they usually contain a tarball containing image
    sources, a config.sh file and the KIWI configuration xml file.
   </para>
-  <para>
+  <para id="image_template_icon_paragraph">
    In addition you can define an icon for your image templates by adding graphical
    image (eg. png, jpg) to your template sources and name it <command>_icon</command>.
    If that file exists, it will be used as icon for your image on the image
