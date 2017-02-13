@@ -125,8 +125,8 @@
 <?dbfo-need height="3in" ?>
   <para>
    The warden is monitoring the workers and detects crashed or hanging workers.
-   Their build jobs will be canceld restarted on another host then. Each OBS
-   installation can have one Warden service running on each partition.
+   Their build jobs will be canceled and restarted on another host then. Each
+   OBS installation can have one Warden service running on each partition.
   </para>
  </section>
  <section id="_download_on_demand_updater">
