@@ -15,17 +15,17 @@ To work on this document you need to install the package "daps".
 After editing the document validate your changes via the following
 commands:
 
- # . DC-obs-reference-guide
+ # . ./DC-obs-reference-guide
  # daps validate
 
 or for the best practices guide:
 
- # . DC-obs-best-practices
+ # . ./DC-obs-best-practices
  # daps validate
 
 or for the admin guide:
 
- # . DC-obs-admin-guide
+ # . ./DC-obs-admin-guide
  # daps validate
 
 HTML documentation can get generated via
