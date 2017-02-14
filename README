@@ -28,7 +28,7 @@ or for the admin guide:
  # . DC-obs-admin-guide
  # daps validate
 
-html documentation can get generated via
+HTML documentation can get generated via
 
  # daps html
 
@@ -36,22 +36,22 @@ If "daps" is not available on your distribution, you can try to create a pdf wit
 
  # dblatex xml/book-obs-reference-guide.xml
 
-This document gets hosted on github
+This document is hosted on github
 
   https://github.com/openSUSE/obs-docu
 
-So the standard github work-flow with forked repositories and pull requests
+So the standard github workflow with forked repositories and pull requests
 can be used to contribute to these books.
 
 The former svn repositories on berlios and svn.opensuse.org are not used anymore
 and will be removed or made write protected soon!
 
 
-We follow the SUSE docbook xml style. All files can be re-formated to that
+We follow the SUSE docbook XML style. All files can be reformatted to that
 using:
 
   for i in xml/*.xml; do
     /usr/bin/xmlformat.pl --config /etc/daps/docbook-xmlformat.conf -i "$i"
   done
 
-Please seperate reformat commits from content changes.
+Please separate reformat commits from content changes.
