@@ -2,7 +2,7 @@
                          README
 -----------------------------------------------------------
 
-This is the official, edited and reviewed documentation for 
+This is the official, edited and reviewed documentation for
 the Open Build Service (OBS).
 
 The documentation is currently split into three books:
@@ -12,7 +12,7 @@ The documentation is currently split into three books:
 
 To work on this document you need to install the package "daps".
 
-After editing the document validate your changes via the following 
+After editing the document validate your changes via the following
 commands:
 
  # . DC-obs-reference-guide
@@ -50,7 +50,7 @@ and will be removed or made write protected soon!
 We follow the SUSE docbook xml style. All files can be re-formated to that
 using:
 
-  for i in xml/*.xml; do 
+  for i in xml/*.xml; do
     /usr/bin/xmlformat.pl --config /etc/daps/docbook-xmlformat.conf -i "$i"
   done
 
