@@ -18,7 +18,7 @@
   <para>
    Maintains the source repository and project/package configurations. It
    provides an HTTP interface, which is the only interface for the Frontend and
-   it may forward requests to further backend services.
+   It may forward requests to further backend services.
   </para>
   <para>
    The Source Server keeps track of all sources that are available for
@@ -42,7 +42,7 @@
    server for registration, requesting the needed binaries for the build jobs
    and storing the result. Notifications for schedulers are also created by
    repository servers. Each OBS installation has at least one repository
-   servers. A larger installation using partitioning has one on each partition.
+   server. A larger installation using partitioning has one on each partition.
   </para>
  </section>
  <section id="_scheduler">
@@ -69,11 +69,11 @@
    master dispatcher.
   </para>
   <para>
-   The dispatcher tries to assign jobs fair between the project repositories.
+   The dispatcher tries to assign jobs fairly between the project repositories.
    For this the dispatcher maintains a <emphasis role="strong">load</emphasis>
    per project repository (similar to the Unix system load) of used build time.
    The dispatcher assigned jobs to build clients from the repository with the
-   lowest load (thereby increasing the its load). It is possible to tweak this
+   lowest load (thereby increasing its load). It is possible to tweak this
    mechanism via dispatching priorities assigned to the repositories via the
    <emphasis>/build/<emphasis>dispatchprios</emphasis>
    <emphasis role="strong">API</emphasis></emphasis> call or via the
@@ -106,12 +106,12 @@
   <title>Source service server</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The Source Service Server helps to automatize processes for
+   The Source Service Server helps to automate processes for
    <emphasis role="strong">continuous integration</emphasis>. The server can
    call different services for different tasks. It can download sources from
    websites and version control systems such as subversion and git. Services
    can also include working on the source to extract spec-files from archives,
-   repack the archives or adjust version numbers in spec files. It is also
+   repacking the archives or adjusting version numbers in spec files. It is also
    often used to enforce policies by running checks. A failed check will
    appear as broken source and blocks a package from building.
   </para>
