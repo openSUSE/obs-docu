@@ -41,7 +41,7 @@
    <title>Source Server</title>
    <para>
     Maintains the source repository and project/package configurations. It
-    provides a http interface, which is the only interface for the Frontend and
+    provides an HTTP interface, which is the only interface for the Frontend and
     it may forward requests to further backend services. Each OBS installation
     has one Source Server only. It maintains the "sources", "trees" and
     "projects" directories.
@@ -50,7 +50,7 @@
   <section>
    <title>Repository Server</title>
    <para>
-    A repository server provides access to the binaries via a http interface.
+    A repository server provides access to the binaries via an HTTP interface.
     It is used by the frontend via the source server only. Workers are using
     the server for registration, requesting the needed binaries for the build
     jobs and are storing the result. Notifications for schedulers are also

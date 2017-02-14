@@ -111,7 +111,7 @@ needed after registration before the user may login.</simpara>
   <title>Proxy mode</title>
   <simpara>The proxy mode can be used for esp. secured instances, where the OBS web
 server shall not get connected to the network directly. There are authentification proxy products
-out there which do the authentification and send the user name via a HTTP header to OBS.
+out there which do the authentification and send the user name via an HTTP header to OBS.
 Original this was developed for IChain - a legacy single login authentification method from Novell.
 This has also the advantage that the user password never reaches OBS.</simpara>
   <simpara>The proxy mode can also be used for LDAP or Active Directory, but only for

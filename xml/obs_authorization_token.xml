@@ -30,7 +30,7 @@
     The proxy mode can be used for esp. secured instances, where the OBS web
     server shall not get connected to the network directly. There are
     authentification proxy products out there which do the authentification and
-    send the user name via a HTTP header to OBS. This has also the advantage
+    send the user name via an HTTP header to OBS. This has also the advantage
     that the user password never reaches OBS.
    </para>
   </section>
