@@ -141,7 +141,8 @@
     source repository, but part of the generated source packages. Note that
     services requiring external network access are likely to fail in this mode,
     because such access is not available if the build workers are running in
-    secure mode (as is always the case on <ulink url="https://build.opensuse.org"/>).
+    secure mode<phrase os="opensuse;novell"> (as is always the case on
+    <ulink url="https://build.opensuse.org"/>)</phrase>.
    </para>
   </section>
   <section>
