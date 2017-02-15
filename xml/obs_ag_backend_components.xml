@@ -17,16 +17,16 @@
 <?dbfo-need height="3in" ?>
   <para>
    Maintains the source repository and project/package configurations. It
-   provides a http interface, which is the only interface for the Frontend and
-   it may forward requests to further backend services.
+   provides an HTTP interface, which is the only interface for the Frontend and
+   It may forward requests to further backend services.
   </para>
   <para>
    The Source Server keeps track of all sources that are available for
-   building. It takes care about file deduplication so that every source file
-   is stored just once. This is realized by keeping track on the MD5-sums of
-   the files in combination with the file names. All revisions of
-   committed sources are stored and will not be deleted. This guarantees to
-   be able to get the source for every delivered binary package.
+   building. It takes care of file deduplication so that every source file
+   is stored just once. This is done by keeping track of the MD5 hashes of
+   the files in combination with the filenames. All revisions of
+   committed sources are stored and will not be deleted. This guarantees the
+   ability to get the source for every delivered binary package.
   </para>
   <para>
    Each OBS installation has one Source Server only. It maintains the
@@ -37,19 +37,19 @@
   <title>Repository server</title>
 <?dbfo-need height="3in" ?>
   <para>
-   A repository server provides access to the binaries via a http interface. It
-   is used by the frontend via the source server only. Workers are using the
+   A repository server provides access to the binaries via an HTTP interface. It
+   is used by the frontend via the source server only. Workers use the
    server for registration, requesting the needed binaries for the build jobs
-   and are storing the result. Notifications for schedulers are also created by
+   and storing the result. Notifications for schedulers are also created by
    repository servers. Each OBS installation has at least one repository
-   servers. A larger installation using partitioning has one on each partition.
+   server. A larger installation using partitioning has one on each partition.
   </para>
  </section>
  <section id="_scheduler">
   <title>Scheduler</title>
 <?dbfo-need height="3in" ?>
   <para>
-   A scheduler is calculating the need for build jobs. It detects changes in
+   A scheduler calculates the need for build jobs. It detects changes in
    sources, project configurations or in binaries used in the build
    environment. It is responsible for starting jobs in the right order and
    integrating the built binary packages. Each OBS installation has one
@@ -61,19 +61,19 @@
   <title>Dispatcher</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The dispatcher takes a job (created by the scheduler) and is assigning it to
+   The dispatcher takes a job (created by the scheduler) and assigns it to
    a free worker. It also checks possible build constraints to verify that the
-   worker qualifies for the job. It only notifies a worker about a job, the
-   worker is downloading the needed resources itself afterwards. Each OBS
-   installation has one dispatcher per partition (only one of them is the
-   master dispatcher).
+   worker qualifies for the job. It only notifies a worker about a job; the
+   worker downloads the needed resources itself afterwards. Each OBS
+   installation has one dispatcher per partition, one of which is the
+   master dispatcher.
   </para>
   <para>
-   The dispatcher tries to assign jobs fair between the project repositories.
+   The dispatcher tries to assign jobs fairly between the project repositories.
    For this the dispatcher maintains a <emphasis role="strong">load</emphasis>
    per project repository (similar to the Unix system load) of used build time.
    The dispatcher assigned jobs to build clients from the repository with the
-   lowest load (thereby increasing the its load). It is possible to tweak this
+   lowest load (thereby increasing its load). It is possible to tweak this
    mechanism via dispatching priorities assigned to the repositories via the
    <emphasis>/build/<emphasis>dispatchprios</emphasis>
    <emphasis role="strong">API</emphasis></emphasis> call or via the
@@ -86,9 +86,9 @@
   <title>Publisher</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The publisher is processing publish events from the scheduler for finished
-   repositories. It is merging the build result of all architectures into a
-   defined directory structure, creates the needed meta data and may sync it to
+   The publisher processes publish events from the scheduler for finished
+   repositories. It merges the build result of all architectures into a
+   defined directory structure, creates the needed metadata, and may sync it to
    a download server. It maintains the content of the "repos" directory on the
    backend. Each OBS installation has one publisher per partition.
   </para>
@@ -97,8 +97,8 @@
   <title>Signer</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The signer is handling signing events and is calling an external tool to
-   execute the signing. Each OBS installation usally has one signer per
+   The signer handles signing events and calls an external tool to
+   execute the signing. Each OBS installation usually has one signer per
    partition and also on the source server installation.
   </para>
  </section>
@@ -106,12 +106,12 @@
   <title>Source service server</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The Source Service Server helps to automatize processes for
+   The Source Service Server helps to automate processes for
    <emphasis role="strong">continuous integration</emphasis>. The server can
    call different services for different tasks. It can download sources from
    websites and version control systems such as subversion and git. Services
    can also include working on the source to extract spec-files from archives,
-   repack the archives or adjust version numbers in spec files. It is also
+   repacking the archives or adjusting version numbers in spec files. It is also
    often used to enforce policies by running checks. A failed check will
    appear as broken source and blocks a package from building.
   </para>
@@ -124,8 +124,8 @@
   <title>Warden</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The warden is monitoring the workers and detects crashed or hanging workers.
-   Their build jobs will be canceled and restarted on another host then. Each
+   The warden monitors the workers and detects crashed or hanging workers.
+   Their build jobs will be canceled and restarted on another host. Each
    OBS installation can have one Warden service running on each partition.
   </para>
  </section>
@@ -138,9 +138,9 @@
    </simpara>
   </note>
   <para>
-   The download on demand updater is monitoring all external repositories which
-   are defined as download on demand resources. It is polling for changes in
-   the meta data and redownloads the meta data in case. The scheduler will be
+   The download on demand updater monitors all external repositories which
+   are defined as download on demand resources. It polls for changes in
+   the metadata and re-downloads the metadata in case. The scheduler will be
    notified to recalculate the build jobs depending on these repositories
    afterwards. Each OBS installation can have one dodup service running on each
    partition.
@@ -155,9 +155,9 @@
    </simpara>
   </note>
   <para>
-   The delta store daemon is maintaining the deltas in the source storage.
+   The delta store daemon maintains the deltas in the source storage.
    Multiple obscpio archives can be stored in one deltastore to avoid
-   duplication on disk. This services is calculating the delta and maintains
+   duplication on disk. This service calculates the delta and maintains
    the delta store. Each OBS installation can have one delta store process
    running next to the source server.
   </para>
@@ -166,10 +166,10 @@
   <title>Worker</title>
 <?dbfo-need height="3in" ?>
   <para>
-   The workers register at the repository servers. They receive build jobs from
-   the dispatcher. Afterwards they download sources from source server and the
-   needed binaries from the repository server(s). They are building the package
-   using the build script and sending the result back to the repository server.
+   The workers register with the repository servers. They receive build jobs from
+   the dispatcher. Afterwards they download sources from the source server and the
+   needed binaries from the repository server(s). They build the package
+   using the build script and send the result back to the repository server.
    A worker can run on the same host as the other services, but most OBS
    installations have dedicated hardware for the workers.
   </para>
