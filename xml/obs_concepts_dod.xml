@@ -21,13 +21,13 @@
    </listitem>
    <listitem>
     <simpara>
-        simple to configure in project meta without need of shell access to repo servers
+        simple to configure in project meta with no for shell access to repo servers
       </simpara>
    </listitem>
   </itemizedlist>
   <para>
-   In download repotype's where package checksums can be verified (e.g.
-   susetags, rpmmd and deb), it`s recommended to use a mirror server url in
+   In download repotypes where package checksums can be verified (e.g.
+   susetags, rpmmd and deb), we recommend that you use a mirror server URL in
    &lt;download&gt; in order to reduce traffic on the master server and
    configure a &lt;master&gt; with an <command>https</command> url and a
    <command>sslfinger</command> in order to avoid man in the middle attacks by
@@ -35,7 +35,7 @@
   </para>
  </section>
  <section>
-  <title>XML Document Hirarchy</title>
+  <title>XML Document Hierarchy</title>
 <screen><![CDATA[
 <project>
   <repository>
@@ -91,7 +91,7 @@
    below is optional but strongly recommended for security reasons.
   </para>
   <para>
-   Verification is supported in the following repotype`s
+   Verification is supported in the following repotypes
    <itemizedlist>
     <listitem>
      <simpara>
@@ -111,15 +111,15 @@
    </itemizedlist>
   </para>
   <para>
-   This option could be defined by any valid url ( http and https ) to the
-   origin of the repository but it´s stronly ecommended to use
+   This option could be defined by any valid URL (HTTP and HTTPS) to the
+   origin of the repository but it's stronly recommended to use
    <command>https</command> with a <command>sslfingerprint</command> to
-   bs_dodup possibility to verify it`s peeer in order to avoid Man in the
-   middle attacks. The download url can be a mirror as we validate package
+   bs_dodup possibility to verify its peer in order to avoid man-in-the-middle
+   attacks. The download URL can be a mirror as we validate package
    checksums found in repo data.
   </para>
   <para>
-   You can easily query the ssl fingerprint of a remote server by calling the
+   You can easily query the SSL fingerprint of a remote server with the
    following command:
 <screen><![CDATA[
 openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout
@@ -129,8 +129,8 @@ openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -
  <section>
   <title>The &lt;pubkey&gt; subelement</title>
   <para>
-   The pubkey element contains one or more gpg public keys in order to verify
-   repository information but not packages. For an example have a look at the
+   The pubkey element contains one or more GPG public keys in order to verify
+   repository information but not packages. For an example, look at the
    repotype "deb" documentation below.
   </para>
  </section>
@@ -203,7 +203,7 @@ openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -
     </listitem>
    </itemizedlist>
    <para>
-    You can specify multiple components seperated by a comma.
+    You can specify multiple components separated by a comma.
    </para>
    <para>
     An empty components string is parsed as "main".
@@ -244,7 +244,7 @@ Version: GnuPG v1.4.12 (GNU/Linux)
   <section>
    <title>Arch Repository (arch)</title>
    <para>
-    Please be aware that there is no way atm to verify the origin of repository
+    Please be aware that there is currently no way to verify the origin of repository
     for Arch.
    </para>
    <para>

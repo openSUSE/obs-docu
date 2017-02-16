@@ -11,8 +11,8 @@
    systems. The source service system will mirror the sources and provide it to
    the build systems. OBS makes sure that you can access the sources of all
    builds also in the future, even when the upstream server delivers different
-   or no content at all anymore. Using external SCM references have the
-   following advantages
+   or no content at all anymore. Using external SCM references has the
+   following advantages:
   </para>
   <itemizedlist>
    <listitem>
@@ -28,7 +28,7 @@
    </listitem>
    <listitem>
     <simpara>
-        The sources can be stored incremental and need less storage on the server.
+        The sources can be stored incrementally and need less storage on the server.
       </simpara>
    </listitem>
   </itemizedlist>
@@ -54,21 +54,21 @@
 </services>
       ]]>
 </screen>
-   The services are doing the following:
+   The services do the following:
    <itemizedlist>
     <listitem>
      <simpara>
-      obs_scm: is mirroring the source. It is storing it as cpio archive, but for the build process this looks like a directory. It stores also additional information from the meta data to a file with obsinfo suffix.
+      obs_scm: mirrors the source. It stores it as a cpio archive, but for the build process this looks like a directory. It also stores additional information from the metadata to a file with obsinfo suffix.
     </simpara>
     </listitem>
     <listitem>
      <simpara>
-      tar: creates a tar ball from the directory
+      tar: creates a tar file from the directory
     </simpara>
     </listitem>
     <listitem>
      <simpara>
-      recompress: applies a compression on the tar ball
+      recompress: applies a compression on the tar file
     </simpara>
     </listitem>
     <listitem>
@@ -77,10 +77,10 @@
     </simpara>
     </listitem>
    </itemizedlist>
-   Please note that only the first service (obs_scm) is running on the OBS
-   server. The other services are running during the build process. They can
+   Please note that only the first service (obs_scm) runs on the OBS
+   server. The other services run during the build process. They can
    also be replaced by any user by providing alternative implementations of
-   them or writing their own service from scratch.
+   them, or by writing their own service from scratch.
   </para>
  </section>
  <section>
@@ -90,11 +90,11 @@
 <screen>
             osc build
           </screen>
-   in any package with such a defintion will do the same process local. The
+   in any package with such a defintion will do the same process locally. The
    only difference is that you get a local subdirectory with the SCM content.
    You can go inside and work as you are used to. Any changes inside will be
-   used for your next local build. No matter if they got pushed to the upstream
-   server or not. However, you need to push it to upstream when you let the OBS
+   used for your next local build, whether they were pushed to the upstream
+   server or not. However, you need to push it upstream when you let the OBS
    server re-fetch the changes from upstream. The only way out would be to set
    the "obs_scm" service to mode disabled and upload your local archive.
   </para>
