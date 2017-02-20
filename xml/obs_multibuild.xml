@@ -7,24 +7,56 @@
   %entities;
 ]>
 <chapter id="cha.obs.multibuild">
- <title>Multibuild</title>
+ <title>Multiple Build Description File Handling</title>
  <section>
   <title>Overview</title>
   <para>
-   Multibuild is used for sources that can build multiple packages. For that to
-   be accomplished you must provide a file with a list of package names.
-   For each of these listed packages a build instruction, e.g. a spec file, is
-   needed. A set of package builds, repositories and architectures will be built
-   for each package.
+   A package source may contain multiple build description files. They can be used
+   depending on the base distribution, the repository name or for different configurations.
+   These mechanics can be also combined.
   </para>
   <para>
-   For example, with the <command>kernel</command> package we can build both
-   <command>kernel-source</command> and <command>kernel-obs-build</command>
-   packages.
+   The right build description file gets picked by filtering. The build will not
+   start when either no file matches or multiple candidates exist. The filtering happens
+   with the following steps:
+   <orderedlist numeration="arabic">
+    <listitem><simpara>
+      Based on the package build format of the based distributions. Rpm based distros
+      will used spec files for example.
+    </simpara></listitem>
+    <listitem><simpara>
+      Based on the file name of the file before the suffix. It is not important as
+      long as just one file exists, but it has to match when multiple files exist.
+      The name is defined by the build container name, which is either defined in
+      a _multibuild directive file or is the source package name.
+    </simpara></listitem>
+    <listitem><simpara>
+      Specific files can be created to be built for a specific repository. Append the
+      repository name of the build container behind the suffix with a dot. For example
+      <command>hello.spec.openSUSE_13.2</command>.
+    </simpara></listitem>
+   </orderedlist>
   </para>
  </section>
+
  <section>
   <title>How Multibuild is Defined</title>
+  <para>
+   Use the _multibuild directive to build the same source in same repository with
+   different flavours. This handy to define all flavours in one place without the
+   need to maintain packages with local links. This allows also to transfer all
+   sources including a possible changed flavour from one project to another with
+   a standard copy or submit request.
+  </para>
+  <para>
+   The _multibuild file lists all build container names, each of them will be build
+   as usual for each defined repository and each scheduler architecture.
+  </para>
+  <para>
+   For example, inside the <command>kernel</command> source package we can build both
+   <command>kernel-source</command> and <command>kernel-obs-build</command>
+   packages by listing them inside the file.
+  </para>
   <para>
    Multibuild packages are defined with the <command>_multibuild</command>
    directive file in the package sources.
@@ -32,10 +64,14 @@
   <para>
    The <command>_multibuild</command> file is an xml file. For example:
 <screen><command>&lt;multibuild&gt;
-  &lt;package&gt;gcc-package1&lt;/package&gt;
-  &lt;package&gt;gcc-package2&lt;/package&gt;
+  &lt;package&gt;kernel-source&lt;/package&gt;
+  &lt;package&gt;kernel-obs-build&lt;/package&gt;
 &lt;/multibuild&gt;
 </command></screen>
+   Build description files are needed for each of them for each package (eg. kernel-source.spec or
+   kernel-obs-build.dsc) inside of the sources. There will be another build in case there 
+   is also a matching file for the source package container name, otherwise it will just
+   turn into "excluded" state.
   </para>
  </section>
 </chapter>
