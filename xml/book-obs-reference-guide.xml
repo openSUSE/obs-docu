@@ -34,6 +34,7 @@
  <xi:include href="obs_architecture.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_concepts.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_build_process.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_build_containers.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_source_management.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_request_and_review_system.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_package_formats.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
