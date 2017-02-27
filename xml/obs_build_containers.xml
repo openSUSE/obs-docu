@@ -40,7 +40,7 @@
     <section>
       <title>AppImage</title>
       <para>
-       The Desktop orianted AppImage format is currently only formated as side effect of an rpm build. &OBS;
+       The Desktop oriented AppImage format is currently only formated as side effect of an rpm build. &OBS;
        supports signing and publishing the .AppImage files, the rest is handled via wrapper
        packages which converts a rpm (or deb package) into an AppImage file. 
        Own build rules can provided via a "Recipe" file, fallback code will be used if no 
