@@ -127,7 +127,7 @@ outside.</simpara>
 roles and user properties are managed inside the OBS.</simpara>
   <section id="_obs_proxy_mode_configuration">
    <title>OBS proxy mode configuration</title>
-   <simpara>Currently the LDAP configuration is in the <emphasis>option.yml</emphasis> file.</simpara>
+   <simpara>Currently the LDAP configuration is in the <emphasis>options.yml</emphasis> file.</simpara>
    <table frame="all" rowsep="1" colsep="1">
     <title>Proxy mode configuration option</title>
     <tgroup cols="4">
@@ -212,7 +212,7 @@ in the local database become members.</simpara>
   </note>
   <section id="_obs_ldap_configuration">
    <title>OBS LDAP configuration</title>
-   <simpara>Currently the main OBS LDAP configuration is in the <emphasis>option.yml</emphasis> file.
+   <simpara>Currently the main OBS LDAP configuration is in the <emphasis>options.yml</emphasis> file.
 Beside the settings here also the openldap config file is evaluated by the
 Ruby LDAP implementation. This configfile is usually located at
 <emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional TLS/SSL directives
@@ -658,7 +658,7 @@ refer to the openldap ldap.conf man page.</simpara>
      </tbody>
     </tgroup>
    </table>
-   <simpara>Example LDAP section of the <emphasis>option.yml</emphasis> file:</simpara>
+   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
 <screen>...
 ##################
 # LDAP options

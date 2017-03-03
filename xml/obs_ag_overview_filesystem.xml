@@ -185,7 +185,7 @@ exist in this file. The database configuration can be accessed via the API
 <emphasis>/configuration</emphasis> path.</simpara>
     </note>
     <table frame="all" rowsep="1" colsep="1">
-     <title>option.yml configuration items</title>
+     <title>options.yml configuration items</title>
      <tgroup cols="4">
       <colspec colname="col_1" colwidth="28*"/>
       <colspec colname="col_2" colwidth="25*"/>
