@@ -921,7 +921,7 @@ the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emph
          <simpara/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>space separated list</simpara>
+         <simpara>space-separated list</simpara>
         </entry>
        </row>
        <row>

@@ -286,7 +286,7 @@ Keep: debbuild
    <title>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</title>
    <para>
     (OBS 2.4 or later): Define build constraints for build jobs. The selector
-    is a colon separated list which gets a string assigned. Please see the
+    is a colon-separated list which gets a string assigned. Please see the
     build job constraints page for details.
    </para>
   </section>
