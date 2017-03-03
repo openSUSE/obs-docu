@@ -95,7 +95,7 @@ wrong. If you report a problem regarding the <emphasis role="strong"><emphasis>o
 <emphasis role="strong">additional *<emphasis>--http-debug --traceback</emphasis></emphasis> options.</simpara>
   <warning>
    <simpara>With <emphasis role="strong"><emphasis>--http-full-debug</emphasis></emphasis> all http headers are included, this may include
-user data and authentification stuff so review and replace such data with
+user data and authentication stuff so review and replace such data with
 XXXXXXXX or so before you post it on the internet.</simpara>
   </warning>
  </section>

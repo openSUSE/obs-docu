@@ -160,7 +160,7 @@ osc -A https://api.testobs.org</screen>
    <simpara>The password is stored in clear text in the .oscrc file by default, so you need to
 give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
-for example) and may use different methods for authentification like
+for example) and may use different methods for authentication like
 kerberos see <xref linkend="_kerberos"/>
    </simpara>
   </warning>
