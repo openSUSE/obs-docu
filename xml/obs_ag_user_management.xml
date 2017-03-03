@@ -795,7 +795,7 @@ Local method.<?asciidoc-br?>
    <caution>
     <simpara>The local method should be not used, since the <emphasis>userPassword</emphasis> attribute in most
 LDAP installations will not be available until you are bind with a
-priviledge user.</simpara>
+privilege user.</simpara>
    </caution>
   </section>
   <section id="_kerberos">
