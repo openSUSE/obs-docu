@@ -68,7 +68,7 @@
     In openSUSE Build Service, packages are divided into categories regarding
     their function. MySQL is in <emphasis>server:database</emphasis>
     repository, lighttpd in <emphasis>server:http</emphasis> and for example
-    KMyMoney has it's own subproject in <emphasis>KDE:Apps</emphasis>. So it is
+    KMyMoney has its own subproject in <emphasis>KDE:Apps</emphasis>. So it is
     a good idea to think about in what category available on the OBS your
     application will fit the best.
    </para>
@@ -79,7 +79,7 @@
     OBS admins for it on
     <ulink
     url="mailto:opensuse-buildservice+subscribe@opensuse.org">opensuse-buildservice
-    mailing list </ulink> .It's archive and link for subscribing can be found
+    mailing list </ulink>. Its archive and link for subscribing can be found
     at <ulink url="http://lists.opensuse.org/opensuse-buildservice/"/> .
    </para>
    <para>

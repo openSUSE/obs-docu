@@ -16,7 +16,7 @@
  <section>
    <title>Supported Containers</title>
    <para>
-     A container that is providing it's own kernel is called virtual machine in this book.
+     A container that is providing its own kernel is called virtual machine in this book.
      &OBS; supports container builds either by supporting the native build format or as
      side product of a different format. The range is from very simple chroot containers via 
      server format (eg Docker) or desktop format (eg. AppImage or Snap) up to full
