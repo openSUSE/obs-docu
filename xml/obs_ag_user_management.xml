@@ -260,7 +260,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>colon seperated list</simpara>
+        <simpara>colon separated list</simpara>
        </entry>
       </row>
       <row>

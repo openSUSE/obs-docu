@@ -171,7 +171,7 @@
    Url always has to start with
    <ulink
    url='http://software.opensuse.org/download.html?'/>.You can attach
-   any number of '&amp;'-seperated parameters. But at least two of them -
+   any number of '&amp;'-separated parameters. But at least two of them -
    <emphasis>project</emphasis> and <emphasis>package</emphasis> - are
    required. All parameters with descriptions can be found in
    <xref
