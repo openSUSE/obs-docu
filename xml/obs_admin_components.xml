@@ -9,7 +9,7 @@
 <section id="cha.obs.admin.components">
  <title>OBS Components</title>
  <para>
-  The OBS is not a monolithic server, it consists of multiple daemons that
+  The OBS is not a monolithic server: it consists of multiple daemons that
   fulfill different tasks.
  </para>
  <figure>

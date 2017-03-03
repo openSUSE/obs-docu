@@ -14,7 +14,7 @@
  </para>
  <para>
   This chapter is not intended to describe special installation hints for a
-  certain OBS version, please refer to the
+  certain OBS version; please refer to the
   <ulink url="http://mirrorbrain.org/">OBS download page</ulink> for that.
  </para>
  <xi:include href="obs_admin_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
