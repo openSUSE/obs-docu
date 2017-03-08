@@ -18,8 +18,8 @@
   <section>
    <title>Default Mode</title>
    <para>
-    OBS provides it's own user database which can also store a password. The
-    authentification to the api happens via HTTP BASIC AUTH. Please see the api
+    OBS provides its own user database which can also store a password. The
+    authentication to the api happens via HTTP BASIC AUTH. Please see the api
     documentation to find out how to create, modify or delete user data. Also a
     call for changing the password exists.
    </para>
@@ -29,7 +29,7 @@
    <para>
     The proxy mode can be used for esp. secured instances, where the OBS web
     server shall not get connected to the network directly. There are
-    authentification proxy products out there which do the authentification and
+    authentication proxy products out there which do the authentication and
     send the user name via an HTTP header to OBS. This has also the advantage
     that the user password never reaches OBS.
    </para>
@@ -37,7 +37,7 @@
   <section>
    <title>LDAP Mode</title>
    <para>
-    LDAP authentification code is still part of OBS, but due to the lack of any
+    LDAP authentication code is still part of OBS, but due to the lack of any
     test cases it is currently not recommended to use it.
    </para>
   </section>

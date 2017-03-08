@@ -56,7 +56,7 @@ backend components.</simpara>
 a package source (e.g. a _service file) was updated.</simpara>
   <simpara>If a source file of a package was updated, the new source file is uploaded
 with an HTTP PUT operation to the frontend.
-The frontend may ask for authentification (if not already done) and check
+The frontend may ask for authentication (if not already done) and check
 the access rights for the user. If everything is OK, the new file will be
 send to the backend <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  via an HTTP PUT request as well.
 The source server stores the changed source (under revision control) and

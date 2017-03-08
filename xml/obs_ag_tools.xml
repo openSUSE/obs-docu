@@ -10,10 +10,10 @@
  <title>Tools</title>
  <section id="_obs_admin">
   <title>obs_admin</title>
-  <simpara>obs_admin is a commandline tool used on the backend server(s) to manage
-the running services, submit maintenance tasks and debuging.
+  <simpara>obs_admin is a command-line tool used on the backend server(s) to manage
+running services, submit maintenance tasks, and debug problems.
 It should be only used by experienced admins.</simpara>
-  <simpara>It has an builtin help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
+  <simpara>It has built-in help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
   <simpara>Options to control the running services:</simpara>
 <screen>Job Controlling
 ===============
@@ -147,9 +147,9 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
  </section>
  <section id="_osc">
   <title>osc</title>
-  <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> commandline client is mainly used by developer and packager. But
-for some tasks also admin people need this tool. It has an builtin help
-simple call <emphasis>osc --help</emphasis>. The tool need to be configured first to know the
+  <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> commandline client is mainly used by developers and packagers. But
+for some tasks, admin people also need this tool. It too has builtin help:
+use <emphasis>osc --help</emphasis>. The tool needs to be configured first to know the
 OBS API URL and your user details.</simpara>
   <simpara>To configure the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool the first time you need to call it with</simpara>
 <screen>osc -A &lt;URL to the OBS API&gt;
@@ -160,7 +160,7 @@ osc -A https://api.testobs.org</screen>
    <simpara>The password is stored in clear text in the .oscrc file by default, so you need to
 give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
-for example) and may use different methods for authentification like
+for example) and may use different methods for authentication like
 kerberos see <xref linkend="_kerberos"/>
    </simpara>
   </warning>

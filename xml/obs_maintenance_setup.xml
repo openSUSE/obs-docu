@@ -486,7 +486,7 @@
     An OBS server is using by default a maintenance space defined via the
     OBS:Maintenance attribute. This must get created on a project where
     maintenance incident projects should get created below. This project is
-    also defining the default maintenance maintainers and reviewers in it's acl
+    also defining the default maintenance maintainers and reviewers in its acl
     list.
    </para>
    <para>

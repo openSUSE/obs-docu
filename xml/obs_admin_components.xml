@@ -9,8 +9,8 @@
 <section id="cha.obs.admin.components">
  <title>OBS Components</title>
  <para>
-  The OBS is not a monolithic server, it consists of multiple daemons that
-  fulfill different tasks.
+  The OBS is not a monolithic server: it consists of multiple daemons that
+  perform different tasks.
  </para>
  <figure>
   <title>Simplified OBS Component Overview</title>
@@ -24,11 +24,11 @@
   <title>Frontend</title>
   <para>
    The OBS Frontend is a Ruby on Rails application that manages the access and
-   manipulation of the OBS data. It provides a web user interface and an
+   manipulation of OBS data. It provides a web user interface and an
    application programming interface to do so. Both can be used to create,
-   read, update and delete users, projects/packages, requests and other
+   read, update and delete users, projects, packages, requests and other
    objects. It also implements additional sub-systems like authentication,
-   search or email notifications.
+   search, and email notifications.
   </para>
  </section>
  <section>
@@ -41,9 +41,9 @@
    <title>Source Server</title>
    <para>
     Maintains the source repository and project/package configurations. It
-    provides an HTTP interface, which is the only interface for the Frontend and
-    it may forward requests to further backend services. Each OBS installation
-    has one Source Server only. It maintains the "sources", "trees" and
+    provides an HTTP interface, which is the only interface to the Frontend.
+    It may forward requests to other backend services. Each OBS installation
+    has exactly one Source Server. It maintains the "sources", "trees" and
     "projects" directories.
    </para>
   </section>
@@ -51,80 +51,80 @@
    <title>Repository Server</title>
    <para>
     A repository server provides access to the binaries via an HTTP interface.
-    It is used by the frontend via the source server only. Workers are using
-    the server for registration, requesting the needed binaries for the build
-    jobs and are storing the result. Notifications for schedulers are also
+    It is used by the frontend via the source server only. Workers use
+    the server to register, request the binaries needed for build
+    jobs, and store the results. Notifications for schedulers are also
     created by repository servers. Each OBS installation has at least one
-    repository servers. A larger installation using partitioning has one on
+    repository server. A larger installation using partitioning has one on
     each partition.
    </para>
   </section>
   <section>
    <title>Scheduler</title>
    <para>
-    A scheduler is calculating the need for build jobs. It detects changes in
+    A scheduler calculates the need for build jobs. It detects changes in
     sources, project configurations or in binaries used in the build
     environment. It is responsible for starting jobs in the right order and
     integrating the built binary packages. Each OBS installation has one
     scheduler per available architecture and partition. It maintains the
-    content of the "build" directory.
+    "build" directory.
    </para>
   </section>
   <section>
    <title>Dispatcher</title>
    <para>
-    The dispatcher takes a job (created by the scheduler) and is assigning it
+    The dispatcher takes a job (created by the scheduler) and assigns it
     to a free worker. It also checks possible build constraints to verify that
-    the worker qualifies for the job. It only notifies a worker about a job,
-    the worker is downloading the needed resources itself afterwards. Each OBS
-    installation has one dispatcher per partition (only one of them is the
+    the worker qualifies for the job. It only notifies a worker about a job;
+    the worker itself downloads the required resources. Each OBS
+    installation has one dispatcher per partition (one of which is the
     master dispatcher).
    </para>
   </section>
   <section>
    <title>Publisher</title>
    <para>
-    The publisher is processing publish events from the scheduler for finished
-    repositories. It is merging the build result of all architectures into a
-    defined directory structure, creates the needed meta data and may sync it
-    to a download server. It maintains the content of the "repos" directory on
-    the backend. Each OBS installation has one publisher per partition.
+    The publisher processes "publish" events from the scheduler for finished
+    repositories. It merges the build result of all architectures into a
+    defined directory structure, creates the required metadata, and optionally
+    syncs it to a download server. It maintains the "repos" directory on the
+    backend. Each OBS installation has one publisher per partition.
    </para>
   </section>
   <section>
    <title>Worker</title>
    <para>
-    The workers register at the repository servers. They receive build jobs
+    The workers register with the repository servers. They receive build jobs
     from the dispatcher. Afterwards they download sources from source server
-    and the needed binaries from the repository server(s). They are building
-    the package using the build script and sending the result back to the
-    repository server. A worker can run on the same host as the other services,
+    and the required binaries from the repository server(s). They build
+    the package using the build script and send the results back to the
+    repository server. A worker can run on the same host as other services,
     but most OBS installations have dedicated hardware for the workers.
    </para>
   </section>
   <section>
    <title>Signer</title>
    <para>
-    The signer is handling signing events and is calling an external tool to
-    execute the signing. Each OBS installation usally has one signer per
-    partition and also on the source server installation.
+    The signer handles signing events and calls an external tool to
+    execute the signing. Each OBS installation usually has one signer per
+    partition and one on the source server installation.
    </para>
   </section>
   <section>
    <title>Warden</title>
    <para>
-    The warden is monitoring the workers and detects crashed or hanging
-    workers. Their build jobs will be canceled and restarted on another host
-    then.  Each OBS installation can have one Warden service running on each
+    The warden monitors the workers and detects crashed or hanging
+    workers. Their build jobs will be canceled and restarted on another host.
+    Each OBS installation can have one Warden service running on each
     partition.
    </para>
   </section>
   <section>
    <title>Download on Demand Updater (dodup)</title>
    <para>
-    The download on demand updater is monitoring all external repositories
-    which are defined as download on demand resources. It is polling for
-    changes in the meta data and redownloads the meta data in case. The
+    The download on demand updater monitors all external repositories
+    which are defined as "download on demand" resources. It polls for
+    changes in the metadata and re-downloads the metadata as needed. The
     scheduler will be notified to recalculate the build jobs depending on these
     repositories afterwards. Each OBS installation can have one dodup service
     running on each partition.
@@ -133,11 +133,11 @@
   <section>
    <title>Delta Store</title>
    <para>
-    The delta store daemon is maintaining the deltas in the source storage.
+    The delta store daemon maintains the deltas in the source storage.
     Multiple obscpio archives can be stored in one deltastore to avoid
-    duplication on disk. This services is calculating the delta and maintains
+    duplication on disk. This services calculates the delta and maintains
     the delta store. Each OBS installation can have one delta store process
-    running next to the source serv.er
+    running next to the source server.
    </para>
   </section>
  </section>
@@ -145,7 +145,7 @@
   <title>Command Line Client</title>
   <para>
    The Open Build Service Commander (osc) is a Python application with a
-   Subversion style command-line interface. It can be used to to manipulate or
+   Subversion-style command-line interface. It can be used to to manipulate or
    query data from the OBS through its application programming interface.
   </para>
  </section>

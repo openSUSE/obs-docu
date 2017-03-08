@@ -9,24 +9,23 @@
 <chapter id="cha.obs.build_job_constraints">
  <title>Build Job Constraints</title>
  <para>
-  The build job constraints can define requirements to the hardware or software
-  of the used build host. The constraints can be defined per package or for
-  repositories.
+  Build job constraints can define requirements for the hardware or software of
+  the build host. Constraints can be defined per package or for repositories.
  </para>
  <para>
-  The build constraints for a package is part of of the package sources. An
-  _constraints source file can contain following values. The format of the file
-  is XML and gets validated on submission.
- </para>
- <para>
-  The build constraints for entire project or specific repositories is part of
-  the project config. It contains for each constraint a line
+  The build constraints for an entire project or specific repositories is part of
+  the project config. For each constraint, it contains a line
 <screen><command>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</command></screen>
-  The selector is a collon seperated list.
+  The selector is a colon-separated list.
  </para>
  <para>
-  NOTE: If no build host is offering the constraints, the package will stay in
-  scheduled state and never get dispatched.
+  The build constraints for a package are part of the package sources, as
+  a _constraints XML source file (validated on submission). The
+  _constraints source file can contain the values listed below.
+ </para>
+ <para>
+  NOTE: If no build host meets the constraints, the package will stay in
+  state "scheduled" and never be dispatched.
  </para>
  <section>
   <title>hostlabel</title>
@@ -34,7 +33,7 @@
    The hostlabel is any string which can be assigned to build hosts when
    starting the bs_worker process. It can be used to run on specific hosts,
    which may be used for running benchmarks in a reproducible way. This
-   constraints does also support to be defined as a negative definition via the
+   constraint may also defined as a negative definition via the
    exclude=true attribute. However, the hostlabel is always specific to one OBS
    instance. You should avoid it as much as possible, since building with this
    constraint in another instance is usually not possible. Use any of the other
@@ -54,7 +53,7 @@
   <para>
    Defines the sandbox which is used for the build job. Sandboxes are chroot,
    xen or kvm environments. There is also the virtual secure sandbox, which
-   allows building on xen or kvm. This constraints does also support to be
+   allows building on xen or kvm. This constraints may also be
    defined as a negative definition via the exclude=true attribute.
   </para>
   <para>
