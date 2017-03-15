@@ -75,7 +75,7 @@
    </para>
 <screen><command>osc token --create</command></screen>
 <screen><command>osc token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
-<screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;&amp;project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</command></screen>
+<screen><command>curl -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice?project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</command></screen>
    <para>
     You can also limit the token to a specific package. The advantage is that
     the operation is limited to that package, so less bad things can happen
@@ -84,7 +84,7 @@
    </para>
 <screen><command>osc token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
 <screen><command>osc token --trigger &lt;TOKEN&gt;</command></screen>
-<screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</command></screen>
+<screen><command>curl -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice</command></screen>
   </section>
   <section>
    <title>Change Request Review Status</title>
