@@ -800,14 +800,71 @@ privilege user.</simpara>
   </section>
   <section id="_kerberos">
    <title>Kerberos</title>
-   <simpara>For connecting the API you can use single sign on via kerberos tickets.</simpara>
-   <itemizedlist>
-    <listitem>
-     <simpara>
-Need more information **
-</simpara>
-    </listitem>
-   </itemizedlist>
+   <simpara>In OBS you can use single sign on via kerberos tickets.</simpara>
+   <simpara>OBS Kerberos configuration resides in the <emphasis>options.yml</emphasis> file.</simpara>
+   <table frame="all" rowsep="1" colsep="1">
+    <title>Kerberos configuration options</title>
+    <tgroup cols="3">
+     <colspec colname="col_1" colwidth="30*" />
+     <colspec colname="col_2" colwidth="40*" />
+     <colspec colname="col_3" colwidth="28*" />
+     <thead>
+      <row>
+       <entry align="left" valign="top"> Config item </entry>
+       <entry align="left" valign="top"> Description </entry>
+       <entry align="left" valign="top"> Example </entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry align="left" valign="top">
+        <simpara>kerberos_keytab</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>Kerberos key table: file where long-term keys for one or more principals are stored</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>"/etc/krb5.keytab"</simpara>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <simpara>kerberos_service_principal</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>Kerberos OBS principal: OBS unique identity to which Kerberos can assign tickets</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>"HTTP/hostname.example.com@EXAMPLE.COM"</simpara>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <simpara>kerberos_realm</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>Kerberos realm: authentication administrative domain</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>"EXAMPLE.COM"</simpara>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
+<screen>...
+
+##################
+# Kerberos options
+##################
+
+kerberos_keytab: "/etc/krb5.keytab"
+kerberos_service_principal: "HTTP/hostname.example.com@EXAMPLE.COM"
+kerberos_realm: "EXAMPLE.COM"
+
+...
+</screen>
   </section>
   <section>
    <title>OBS Token Authorization</title>
