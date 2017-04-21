@@ -859,12 +859,21 @@ privilege user.</simpara>
 # Kerberos options
 ##################
 
+kerberos_mode: true
 kerberos_keytab: "/etc/krb5.keytab"
 kerberos_service_principal: "HTTP/hostname.example.com@EXAMPLE.COM"
 kerberos_realm: "EXAMPLE.COM"
 
 ...
 </screen>
+  <note>
+   <para>
+    Note: Once kerberos is enabled, only users with logins that match users known to
+          kerberos will be able to authenticate to OBS.
+          It is recommended to give admin rights to a matching user before enabling
+          kerberos mode.
+   </para>
+  </note>
   </section>
   <section>
    <title>OBS Token Authorization</title>
