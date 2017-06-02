@@ -200,16 +200,4 @@
    <command>osc service merge</command>.
   </para>
  </section>
- <section>
-  <title>How to write a source service</title>
-  <para>
-   ..
-  </para>
- </section>
- <section>
-  <title>Interfaces for using source services</title>
-  <para>
-   ..
-  </para>
- </section>
 </chapter>

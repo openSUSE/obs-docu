@@ -6,9 +6,3 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<chapter id="cha.obs.best-practices.kmp" os="opensuse;novell">
- <title>Kernel Module Building</title>
- <para>
-  Ann Davis wants to write this ...
- </para>
-</chapter>

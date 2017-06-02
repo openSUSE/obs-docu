@@ -146,12 +146,6 @@
   </section>
  </section>
  <section>
-  <title>The API</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
   <title>The OBS Interconnect</title>
   <para>
    The OBS interconnect is a mechanism to connect two OBS instances. All
@@ -170,16 +164,4 @@
  </section>
  <xi:include href="obs_concepts_dod.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
  <xi:include href="obs_concepts_scm.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <section>
-  <title>Attribute System</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
-  <title>Automatic source processing</title>
-  <para>
-   ...
-  </para>
- </section>
 </chapter>
