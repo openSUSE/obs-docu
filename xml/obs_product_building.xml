@@ -13,40 +13,24 @@
   also for SUSE Linux Enterprise products.
  </para>
  <section>
-  <title>Requirements of a product</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
   <title>Possible shapes of a product</title>
   <para>
-   product media, appliance, repository...
+   product media, appliance, repository and many more
   </para>
  </section>
  <section>
   <title>Product Setup in OBS</title>
-  <para>
-   ....
-  </para>
   <section>
    <title>Package building</title>
    <para>
-    A project is configured in the project meta data. This meta data contains
-    ... These projects contain ...
+    A project is configured in the project meta data.
    </para>
   </section>
   <section>
    <title>Appliance setup with kiwi</title>
-   <para>
-    ...
-   </para>
   </section>
   <section>
    <title>Product creation with kiwi</title>
-   <para>
-    ...
-   </para>
   </section>
   <section>
    <title>Product Line Setup</title>
@@ -83,12 +67,6 @@
    ReleaseProject and the publishing will happen afterwards. The operation will
    happen in background since it can take quite some time depending on the
    project size.
-  </para>
- </section>
- <section>
-  <title>Typical Review Process Setup</title>
-  <para>
-   ...
   </para>
  </section>
 </chapter>

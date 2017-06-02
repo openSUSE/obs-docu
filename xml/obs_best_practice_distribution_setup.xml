@@ -19,12 +19,6 @@
   </para>
  </section>
  <section>
-  <title>Setup a project re-using other projects sources</title>
-  <para>
-   To be written...
-  </para>
- </section>
- <section>
   <title>Contribute directly to foreign projects</title>
   <para>
    In case a user does not have commit permissions to a project, he can request

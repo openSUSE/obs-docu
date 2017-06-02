@@ -6,15 +6,3 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<section id="cha.obs.admin.tools">
- <title>Tools for the admin</title>
- <para>
-  To be written...
- </para>
- <section>
-  <title>obs_admin</title>
-  <para>
-   To be written...
-  </para>
- </section>
-</section>

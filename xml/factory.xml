@@ -18,7 +18,7 @@
    The main project is openSUSE:Factory. This project is controlled by a small
    group which does review all submissions according to the policies.
    Submissions are possible via submit requests, which get reviewed by default
-   by two groups: The Legal team and the code review team. ...
+   by two groups: The Legal team and the code review team.
   </para>
  </section>
  <section id="cha.obs.factory.develprojects">
@@ -26,8 +26,7 @@
   <para>
    The goal of openSUSE:Factory is to always have a working state. This is
    needed to allow all developer groups to use it as a base for testing their
-   own, possibly experimental work in their own projects. To have a complete
-   test of ...
+   own, possibly experimental work in their own projects.
   </para>
  </section>
 </chapter>

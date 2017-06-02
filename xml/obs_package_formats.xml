@@ -143,12 +143,6 @@ $PACKAGE.dsc
    </para>
   </section>
   <section>
-   <title>kiwi product</title>
-   <para>
-    ...
-   </para>
-  </section>
-  <section>
    <title>simpleimage</title>
    <para>
     This format can be used to get simple rootfs tarball or squashfs image. It

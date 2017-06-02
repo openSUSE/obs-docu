@@ -14,12 +14,6 @@
   results.
  </para>
  <section>
-  <title>How is a build process defined</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
   <title>How does a build process work</title>
   <para>
    All sources and binaries which are hosted inside of OBS are organized in
@@ -85,17 +79,5 @@
     Signer and are published to the Repository.
    </para>
   </section>
- </section>
- <section>
-  <title>Different ways to build</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
-  <title>Security aspects</title>
-  <para>
-   ...
-  </para>
  </section>
 </chapter>
