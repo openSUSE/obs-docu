@@ -78,7 +78,7 @@
    </mediaobject>
   </figure>
   <para>
-   KIWI configurations usually consists of an xml configuratioe root tarball.
+   KIWI configurations usually consists of an xml configuration root tarball.
   </para>
   <xi:include href="obs_image_templates.xml" xpointer="image_template_icon_paragraph" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <para>
