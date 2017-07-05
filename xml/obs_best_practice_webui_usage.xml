@@ -462,4 +462,5 @@
   </section>
  </section>
  <xi:include href="obs_best_practice_image_templates.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_best_practice_kiwi_editor.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </chapter>
