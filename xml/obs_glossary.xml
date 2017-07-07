@@ -33,6 +33,15 @@
    </para>
   </glossdef>
  </glossentry>
+ <glossentry><glossterm>osc</glossterm>
+  <glossdef>
+   <para>
+    The Command Line Interface to work with an instance of
+    <xref linkend="obs.glos.obs"/> called opensuse-commander with svn
+    like handling. More info: https://github.com/openSUSE/osc
+   </para>
+  </glossdef>
+ </glossentry>
  <glossentry><glossterm>Appliance</glossterm>
   <glossdef>
    <para>
