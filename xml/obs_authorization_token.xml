@@ -68,12 +68,29 @@
     service for that can be setup with
    </para>
 <screen><command>osc add git://....</command></screen>
+  <para>
+  The best way to create a token is bind it to a specific package. The advantage is that
+  the operation is limited to that package, so less bad things can happen
+  when the token leaks.
+  </para>
+<screen><command>osc token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
+<para>
+  Also, you do not need to specify the package at execution time.
+  But keep in mind that such form only works when you run it on an as
+  checkout of a package. Both commands below do the same thing in a different way:
+</para>
+<screen><command>osc token --trigger &lt;TOKEN&gt;</command></screen>
+<screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</command></screen>
    <para>
-    A token can be registered as generic token, means allowing to execute all
-    source services in OBS if the user has permissions. You can create such a
-    token and execute operation with
+    A token can be registered as generic token, means allowing to execute
+    all source services in OBS if the user has permissions. You can create such a
+    token by skipping project/package on creation command:
    </para>
 <screen><command>osc token --create</command></screen>
+    <para>
+      In this case you forced to specify project/package when using such a token.
+      On other hand you not limited from where two execute it. Again two examples doing same thing:
+    </para>
 <screen><command>osc token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
 <screen><command>curl -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice?project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</command></screen>
    <para>
