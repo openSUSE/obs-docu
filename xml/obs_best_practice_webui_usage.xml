@@ -107,7 +107,7 @@
    <note>
     <para>
      Please note that maintainer of upper projects always can modify the sub
-     projects. Apart from that all projects are seperated and have no influence
+     projects. Apart from that all projects are separated and have no influence
      to each other.
     </para>
    </note>
@@ -462,4 +462,5 @@
   </section>
  </section>
  <xi:include href="obs_best_practice_image_templates.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <xi:include href="obs_best_practice_kiwi_editor.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </chapter>

@@ -77,7 +77,7 @@ remaining parts.</simpara>
  </section>
  <section id="_simple_installation">
   <title>Simple installation</title>
-  <simpara>Simple installation means, all OBS services (except workers) running on the same machine.</simpara>
+  <simpara>Simple installation means, all OBS services running on the same machine.</simpara>
   <important>
    <simpara>It is very important that you read the <emphasis role="strong">README.SETUP</emphasis> file comming with your OBS
 version and follow the instructions there, because here maybe changes to

@@ -20,7 +20,7 @@
   <listitem>
    <simpara>
      server side generated files must be easy to identify and must not be modifiable by the user. 
-     This way others user can trust them to be generated in the documented way without modifications.
+     This way other users can trust them to be generated in the documented way without modifications.
     </simpara>
   </listitem>
   <listitem>
@@ -66,7 +66,7 @@
   </listitem>
   <listitem>
    <simpara>
-     service can be defined per package or project wide.
+     services can be defined per package or project wide.
     </simpara>
   </listitem>
  </itemizedlist>

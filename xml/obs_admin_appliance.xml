@@ -121,7 +121,7 @@ xzcat obs-server-install.x86_64.raw.xz > /dev/sdX
  <section>
   <title>Separating Data from the System</title>
   <para>
-   For production use you want to seperate the OBS data from operating system
+   For production use you want to separate the OBS data from operating system
    of the appliance so you can re-deploy the appliance without touching your
    OBS data. This can be achieved by createing a LVM volume group with the name
    "OBS". This volume group should be as large as possible because it is

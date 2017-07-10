@@ -53,7 +53,7 @@
    <title>Reproducibility for Free Software projects and Independent Software Vendors (<acronym>ISV</acronym>)</title>
    <para>
     The OBS emphasizes making builds reproducible. It builds packages in a
-    jailed environment that the OBS sets up from scratch each time and once the
+    jailed environment that the OBS sets up from scratch each time; once the
     build succeeds it also rebuilds all the dependent software. This ensures
     that changes propagate throughout the entire stack and that users get a
     consistent product to install. Reproducibility is especially needed if the
@@ -74,7 +74,7 @@
     software as binary packages for their operating system. They don't have to
     know about tarballs, make install, package formats or other stuff from the
     90's. Another priority is to make use of the package management tools of
-    the users OS with which they are already familiar. Users should get their
+    the user's OS with which they are already familiar. Users should get their
     software from the OBS just as they get software from their OS supplier, no
     special tools needed. And once users are connected to a repository, they
     get served with maintenance or security updates or even add-ons for their
@@ -91,7 +91,7 @@
  <section>
   <title>Future of the OBS</title>
   <para>
-   With the advent of test driven development and similar agile methods in
+   With the advent of test-driven development and similar agile methods in
    recent years, the software development community has shown a clear trend
    towards automated and continuous
    <ulink url="https://en.wikipedia.org/wiki/Continuous_Integration">integration</ulink>,

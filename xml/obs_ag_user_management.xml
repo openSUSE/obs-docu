@@ -100,7 +100,7 @@ to an user or a group.</simpara>
  <section id="_standalone_user_and_group_database">
   <title>Standalone user and group database</title>
   <simpara>OBS provides it’s own user database which can also store a password. The
-authentification to the api happens via HTTP BASIC AUTH. Please see the
+authentication to the api happens via HTTP BASIC AUTH. Please see the
 api documentation to find out how to create, modify or delete user data.
 Also a call for changing the password exists.</simpara>
   <simpara>Users can be added by the maintainer or if registration is allowed via the
@@ -110,12 +110,12 @@ needed after registration before the user may login.</simpara>
  <section id="_proxy_mode">
   <title>Proxy mode</title>
   <simpara>The proxy mode can be used for esp. secured instances, where the OBS web
-server shall not get connected to the network directly. There are authentification proxy products
-out there which do the authentification and send the user name via a HTTP header to OBS.
-Original this was developed for IChain - a legacy single login authentification method from Novell.
+server shall not get connected to the network directly. There are authentication proxy products
+out there which do the authentication and send the user name via an HTTP header to OBS.
+Original this was developed for IChain - a legacy single login authentication method from Novell.
 This has also the advantage that the user password never reaches OBS.</simpara>
   <simpara>The proxy mode can also be used for LDAP or Active Directory, but only for
-authentification.</simpara>
+authentication.</simpara>
   <caution>
    <simpara>With enabled proxy mode the OBS trust the username in the http header.
 Since this was verified by the Web server and the the Web server only forward requests
@@ -127,7 +127,7 @@ outside.</simpara>
 roles and user properties are managed inside the OBS.</simpara>
   <section id="_obs_proxy_mode_configuration">
    <title>OBS proxy mode configuration</title>
-   <simpara>Currently the LDAP configuration is in the <emphasis>option.yml</emphasis> file.</simpara>
+   <simpara>Currently the LDAP configuration is in the <emphasis>options.yml</emphasis> file.</simpara>
    <table frame="all" rowsep="1" colsep="1">
     <title>Proxy mode configuration option</title>
     <tgroup cols="4">
@@ -196,7 +196,7 @@ because on every role check a LDAP search operation will contact the LDAP
 server.
 As alternative method group mirroring was implemented. This allows that the
 internal OBS group database is updated with the group membership information
-during the user authentification. All role test are made local against the
+during the user authentication. All role test are made local against the
 OBS database and do not need additional LDAPoperations.</simpara>
   <note>
    <simpara>The local user group membership in :mirror mode is updated as follows: When the user logins,
@@ -212,7 +212,7 @@ in the local database become members.</simpara>
   </note>
   <section id="_obs_ldap_configuration">
    <title>OBS LDAP configuration</title>
-   <simpara>Currently the main OBS LDAP configuration is in the <emphasis>option.yml</emphasis> file.
+   <simpara>Currently the main OBS LDAP configuration is in the <emphasis>options.yml</emphasis> file.
 Beside the settings here also the openldap config file is evaluated by the
 Ruby LDAP implementation. This configfile is usually located at
 <emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional TLS/SSL directives
@@ -260,7 +260,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>colon seperated list</simpara>
+        <simpara>colon-separated list</simpara>
        </entry>
       </row>
       <row>
@@ -658,7 +658,7 @@ refer to the openldap ldap.conf man page.</simpara>
      </tbody>
     </tgroup>
    </table>
-   <simpara>Example LDAP section of the <emphasis>option.yml</emphasis> file:</simpara>
+   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
 <screen>...
 ##################
 # LDAP options
@@ -772,8 +772,8 @@ ldap_group_objectclass_attr: group
 ldap_obs_admin_group: obsadmins</screen>
   </section>
  </section>
- <section id="_authentification_methods">
-  <title>Authentification methods</title>
+ <section id="_authentication_methods">
+  <title>Authentication methods</title>
   <section id="_ldap_methods">
    <title>LDAP methods</title>
    <simpara>The LDAP mode has 2 methods implemented to check authorization:</simpara>
@@ -795,19 +795,85 @@ Local method.<?asciidoc-br?>
    <caution>
     <simpara>The local method should be not used, since the <emphasis>userPassword</emphasis> attribute in most
 LDAP installations will not be available until you are bind with a
-priviledge user.</simpara>
+privilege user.</simpara>
    </caution>
   </section>
   <section id="_kerberos">
    <title>Kerberos</title>
-   <simpara>For connecting the API you can use single sign on via kerberos tickets.</simpara>
-   <itemizedlist>
-    <listitem>
-     <simpara>
-Need more information **
-</simpara>
-    </listitem>
-   </itemizedlist>
+   <simpara>In OBS you can use single sign on via kerberos tickets.</simpara>
+   <simpara>OBS Kerberos configuration resides in the <emphasis>options.yml</emphasis> file.</simpara>
+   <table frame="all" rowsep="1" colsep="1">
+    <title>Kerberos configuration options</title>
+    <tgroup cols="3">
+     <colspec colname="col_1" colwidth="30*" />
+     <colspec colname="col_2" colwidth="40*" />
+     <colspec colname="col_3" colwidth="28*" />
+     <thead>
+      <row>
+       <entry align="left" valign="top"> Config item </entry>
+       <entry align="left" valign="top"> Description </entry>
+       <entry align="left" valign="top"> Example </entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry align="left" valign="top">
+        <simpara>kerberos_keytab</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>Kerberos key table: file where long-term keys for one or more principals are stored</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>"/etc/krb5.keytab"</simpara>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <simpara>kerberos_service_principal</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>Kerberos OBS principal: OBS unique identity to which Kerberos can assign tickets</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>"HTTP/hostname.example.com@EXAMPLE.COM"</simpara>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <simpara>kerberos_realm</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>Kerberos realm: authentication administrative domain</simpara>
+       </entry>
+       <entry align="left" valign="top">
+        <simpara>"EXAMPLE.COM"</simpara>
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
+<screen>...
+
+##################
+# Kerberos options
+##################
+
+kerberos_mode: true
+kerberos_keytab: "/etc/krb5.keytab"
+kerberos_service_principal: "HTTP/hostname.example.com@EXAMPLE.COM"
+kerberos_realm: "EXAMPLE.COM"
+
+...
+</screen>
+  <note>
+   <para>
+    Note: Once kerberos is enabled, only users with logins that match users known to
+          kerberos will be able to authenticate to OBS.
+          It is recommended to give admin rights to a matching user before enabling
+          kerberos mode.
+   </para>
+  </note>
   </section>
   <section>
    <title>OBS Token Authorization</title>
