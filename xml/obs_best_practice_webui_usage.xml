@@ -7,10 +7,10 @@
   %entities;
 ]>
 <chapter id="cha.obs.best-practices.webuiusage" os="opensuse;novell">
- <title>How to use OBS web UI</title>
+ <title>How to use the OBS Web UI</title>
  <para>
-  This chapter explains and shows how you could use OBS web UI. We will show
-  and use OBS web UI based on <ulink url="http://build.opensuse.org"/>. You
+  This chapter explains and shows how you could use OBS Web UI. We will show
+  and use OBS Web UI based on <ulink url="http://build.opensuse.org"/>. You
   need to make an account first to follow this chapter contents.
  </para>
  <section>
@@ -56,8 +56,8 @@
  <section>
   <title>Home project</title>
   <para>
-   Every user has a home project (home:[userid]) where he/she has write access
-   by default. This is your personal workspace where you can experiment and
+   Every user has a home project (home:[userid]) where they have write access
+   by default. This is a personal workspace where you can experiment and
    play. Click on the link "Home Project" at the upper right to get to your
    home project.
   </para>
@@ -106,9 +106,9 @@
    </para>
    <note>
     <para>
-     Please note that maintainer of upper projects always can modify the sub
-     projects. Apart from that all projects are separated and have no influence
-     to each other.
+     Maintainers of upper projects can always modify the subprojects.
+     Apart from that all projects are separated and have no influence
+     on each other.
     </para>
    </note>
    <figure>
@@ -212,20 +212,16 @@
     Open that page and enter for
    </para>
 <screen>
-            <command>
-               Name of original project:
-               Apache
-            </command>
-         </screen>
+Name of original project:
+Apache
+</screen>
    <para>
     and for
    </para>
 <screen>
-            <command>
-                Name of package in original project:
-                flood
-            </command>
-         </screen>
+Name of package in original project:
+flood
+</screen>
    <para>
     - we'll leave "Name of linked package in target project" empty. This is
     shown on the next picture:
@@ -274,7 +270,7 @@
     </mediaobject>
    </figure>
    <para>
-    If you wait a bit, you would see the below building suceess screen
+    If you wait a bit, you would see the below building success screen
    </para>
    <figure>
     <title>flood_build_success</title>
@@ -285,7 +281,7 @@
     </mediaobject>
    </figure>
    <para>
-    please try to click blue "succeeded" message, then you could see the build
+    Click the <quote>succeeded</quote> message, then you will see the build
     log as below.
    </para>
    <figure>
@@ -315,7 +311,7 @@
   </figure>
   <note>
    <para>
-    Published repositories are marked with the OBS LKW <inlineequation>
+    Published repositories are marked with the OBS truck <inlineequation>
     <inlinemediaobject>
     <imageobject>
      <imagedata fileref="obs_lkw.png" />
@@ -325,7 +321,7 @@
   </note>
   <para>
    Now click on Go to download repository. Note that publishing the repository
-   might take a while. Until then you will get a 404 error. Once the binaries
+   might take a while. Until then you will get a 404 error. When the binaries
    are there, you'll see something like this:
   </para>
   <figure>
@@ -373,7 +369,7 @@
    </note>
    <para>
     This will take you back to your home: project. The build repository might
-    be disabled: if so, klick on the cogwheel to enable it. Congratulations, it
+    be disabled: if so, click on the cogwheel to enable it. Congratulations, it
     is configured. On a heavily loaded server, it can sometimes take a few
     minutes for your changes to become effective, but your linked package will
     automatically begin building.
@@ -396,7 +392,7 @@
    </figure>
    <para>
     The minimal set of fields you have to enter are architecture, repository
-    type and the url that provides the binary packages. Detailed information
+    type and the URL that provides the binary packages. Detailed information
     about the data you can enter here you can find at the
     <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">DoD
     concept section</ulink>. Press "Save" to create the repository.
@@ -410,7 +406,7 @@
     </mediaobject>
    </figure>
    <para>
-    Once the repository got added you are able to edit, delete or add
+    When the repository got added you are able to edit, delete or add
     additional DoD repository sources.
    </para>
   </section>

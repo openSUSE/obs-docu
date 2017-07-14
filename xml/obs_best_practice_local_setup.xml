@@ -11,7 +11,7 @@
  <para>
   This chapter explains how you could setup/Install/test OBS in your system.
   This chapter is written for those who are not so familiar with Linux and OBS.
-  So in case you are confident to setup OBS, please skip this chapter.
+  So in case you are confident to setup OBS, skip this chapter.
   Following would be explained in this chapter.
   <itemizedlist>
    <listitem>
@@ -41,7 +41,7 @@
  </para>
  <para>
   How you could install and purchase openSUSE 13.1 and SLES12 will not be
-  explained in this chapter. VMware player install and purchase also won't be
+  explained in this chapter. VMware player install and purchase also will not be
   explained. For these topics, you could visit for help:
   <itemizedlist>
    <listitem>
@@ -67,14 +67,14 @@
    Those who are not familiar with Linux can run and test OBS. To run and test
    OBS in Windows, you could use a virtual machine program such as VMware or
    VirtualBox, etc. This chapter explains, how you can run OBS using VMware
-   player. To check and test with VirtualBox or another virtual machine, please
+   player. To check and test with VirtualBox or another virtual machine,
    check in below.
   </para>
   <para>
    After you are done installing VMware player on Windows, you need to download
    the OBS appliance program. You could get OBS appliance file by visiting
    <ulink url="http://openbuildservice.org/download/other/">http://openbuildservice.org/download/other/</ulink>
-   and clicking on <guibutton>Virtualbox/VMWare Image</guibutton>. After
+   and clicking on <guibutton>VirtualBox/VMware Image</guibutton>. After
    downloading, uncompress with some Windows archiving program that understands
    the <filename>.tar.bz2</filename> file format.
   </para>
@@ -91,14 +91,14 @@
   <para>
    At the Linux prompt, you can login using "root" as a login name and
    "opensuse" as a password. Now, OBS local instance should be already loaded
-   and running in your system. To make sure OBS webui is successfully up and
-   running, you probably want to see OBS web ui.
+   and running in your system. To make sure that the OBS Web UI is successfully up and
+   running, open the OBS Web UI.
   </para>
   <para>
-   To access OBS web user interface, open your web browser and try the address
-   http://vm.ip.address You can check the virtual machine's IP address by using
+   To access OBS Web user interface, open your web browser and try the address
+   <literal>http://vm.ip.address</literal>. You can check the virtual machine's IP address by using
    <command>ifconfig</command> Linux command. Now, you probably could see a
-   screen like the one below in your Windows:
+   screen like the one below in your window:
   </para>
 <!-- fs 2011-10-13: Image missing
 
@@ -114,8 +114,7 @@
   <para>
    To login your local OBS instance, you could use default login name as
    "Admin" and password as "opensuse". Check if you could login properly by
-   clicking <guibutton>Login</guibutton> on your local OBS instance web UI.
-   Welcome to the Open Build Service ;-)
+   clicking <guibutton>Login</guibutton> on your local OBS instance Web UI.
   </para>
  </section>
  <section>
@@ -127,7 +126,7 @@
   </para>
   <para>
    This YaST Meta Package file lets you install OBS by 1 click. In case you are
-   using openSUSE 11.2 or below version, please check if you could find 1 click
+   using openSUSE 11.2 or below version, check if you could find 1 click
    install file in this URL
    <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE">http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE</ulink>
   </para>
@@ -169,44 +168,33 @@
    be described as
   </para>
 <screen>
-              <command>
-                  # cd /srv/www/obs/api/
-                  # sudo RAILS_ENV="production" rake db:setup
-                  # sudo chown lighttpd.lighttpd log/*
+# cd /srv/www/obs/api/
+# sudo RAILS_ENV="production" rake db:setup
+# sudo chown lighttpd.lighttpd log/*
 
-                  # cd /srv/www/obs/webui/
-                  # sudo RAILS_ENV="production" rake db:setup
-                  # sudo chown lighttpd.lighttpd log/*
-               </command>
-              </screen>
+# cd /srv/www/obs/webui/
+# sudo RAILS_ENV="production" rake db:setup
+# sudo chown lighttpd.lighttpd log/*
+</screen>
   <para>
    but it should be
   </para>
 <screen>
-                <command>  
-                  # cd /srv/www/obs/api/
-                  # sudo RAILS_ENV="production" rake db:migrate
-                  # sudo chown lighttpd.lighttpd log/*
+# cd /srv/www/obs/api/
+# sudo RAILS_ENV="production" rake db:migrate
+# sudo chown lighttpd.lighttpd log/*
 
-                  # cd /srv/www/obs/webui/
-                  # sudo RAILS_ENV="production" rake db:migrate
-                  # sudo chown lighttpd.lighttpd log/*
-                </command>
-              </screen>
+# cd /srv/www/obs/webui/
+# sudo RAILS_ENV="production" rake db:migrate
+# sudo chown lighttpd.lighttpd log/*
+</screen>
   <para>
-   You could check this Tip in below URL also.
-  </para>
-<screen>
-          <command>
-             http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE            
-          </command>
-        </screen>
-  <para>
-   You would find same description in above URL for this TIP #1.
+   For more information, see
+   <ulink url="https://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE"/>.
   </para>
   <para>
    TIP #2 : If you get fail message because of "apisrv" in "6. Using osc with
-   your local build service:", please try apiurl instead.
+   your local build service:", try apiurl instead.
   </para>
   <para>
    You might face some issues during process to follow README.SETUP file. If
@@ -255,7 +243,7 @@
   <title>Installing a readymade OBS appliance in a VirtualBox</title>
   <para>
    This method is slightly less easy than the method using the readymade vmdk
-   VMWare disk, but it enables you to determine the size of your virtual disks
+   VMware disk, but it enables you to determine the size of your virtual disks
    to your convenience. It could also work with a real computer with two disks.
    It requires some knowledge of command line and partitioning.
   </para>
@@ -320,26 +308,22 @@
      <filename>/dev/sdb1</filename> to use all the space, with type 8e (Linux
      LVM):
 <screen>
-              <command>
-                 # pvcreate /dev/sdb1
-                 # vgcreate OBS /dev/sdb1
-                 # lvcreate -n server -L 48G OBS
-                 # mkfs.ext4 /dev/OBS/server
-              </command>
-            </screen>
+ # pvcreate /dev/sdb1
+ # vgcreate OBS /dev/sdb1
+ # lvcreate -n server -L 48G OBS
+ # mkfs.ext4 /dev/OBS/server
+</screen>
     </para>
    </step>
    <step>
     <para>
      Reboot, this time onto the hard disk. The CD-ROM might be disconnected, we
-     won't need it anymore. Log in as root user, change keyboardi if needed,
+     will not need it anymore. Log in as root user, change keyboard if needed,
      and format <filename>/dev/sda2</filename>: <command># mkfs.ext4
      /dev/sda2</command>. Add following entry to /etc/fstab:
 <screen>
-              <command>
-                 /dev/sda2  /var/cache/obs  ext4  defaults  2 1
-              </command>
-            </screen>
+/dev/sda2  /var/cache/obs  ext4  defaults  2 1
+</screen>
      Mount the new partition: <command># mount /dev/sda2</command>. Get your IP
      address: <command># ifconfig</command>.
     </para>
@@ -350,7 +334,7 @@
   <title>First steps with your new OBS server</title>
   <para>
    At this point, one of the methods above should have provided you with a
-   running OBS instance. Let's get our first package building.
+   running OBS instance. Let us get our first package building.
   </para>
   <procedure>
    <step>
@@ -409,24 +393,20 @@
      From outside the virtual machine and as a normal user, declare in
      <filename>~/.oscrc</filename> your new OBS user:
 <screen>
-                <command>
-                    [https://vm.ip.address]
-                    user=hmustermann
-                    pass=bond007
-                </command>
-             </screen>
+[https://vm.ip.address]
+user=hmustermann
+pass=bond007
+</screen>
      then checkout your new package: <command>$ osc -A https://vm.ip.address co
      home:hmustermann</command>. go to your first package: <command>$ cd
      home:hmustermann/mypackage</command>. and add some sources there (tarball,
      spec file, changelog, patches). Check them in, then trigger a remote
      build:
-<screen>
-                <command>
-                $ osc add *
-                $ osc commit
-                $ osc rebuild
-                </command>
-             </screen>
+ <screen>
+ $ osc add *
+ $ osc commit
+ $ osc rebuild
+ </screen>
     </para>
    </step>
    <step>

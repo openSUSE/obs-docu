@@ -7,12 +7,12 @@
   %entities;
 ]>
 <chapter id="obs.cha.overview_filesystem">
- <title>Overview filesystem</title>
+ <title>Overview File System</title>
  <section id="_configuration_files">
   <title>Configuration files</title>
   <section id="_frontend_configuration">
-   <title>Frontend Configuration</title>
-   <simpara>The Frontend is configured with 4 files:</simpara>
+   <title>Front-end Configuration</title>
+   <simpara>The Front-end is configured with 4 files:</simpara>
    <itemizedlist>
     <listitem>
      <simpara>/srv/www/obs/api/config/database.yml</simpara>
@@ -31,7 +31,7 @@
     <title>database.yml</title>
     <simpara>This file has the information needed to access the database. It contain
 credentials for the database access and should be only readable by root and
-the group running the webserver (www).</simpara>
+the group running the Web server (www).</simpara>
     <simpara>The file has settings for the production, development and test ruby
 environment, for production systems only the production section is
 important.</simpara>
@@ -151,7 +151,7 @@ important.</simpara>
          <simpara>host</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Ip address or hostname of the mysql server</simpara>
+         <simpara>IP address or hostname of the mysql server</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>for remote servers</simpara>
@@ -175,9 +175,9 @@ important.</simpara>
    <section id="_options_yml">
     <title>options.yml</title>
     <simpara>The configuration file /srv/www/obs/api/config/options.yml is the default
-configuration file for the Open Build Service WebUI and API. It contains
-configuration parameters for example for backend connections and connection to the
-API. Important are the configurations for source and frontend hosts
+configuration file for the Open Build Service Web UI and API. It contains
+configuration parameters for example for back-end connections and connection to the
+API. Important are the configurations for source and front-end hosts
 The configuration for LDAP authentication is also located in this file.</simpara>
     <note>
      <simpara>More and more configurations will be moved to the database and do not longer
@@ -212,7 +212,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara><literal>true</literal> false</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>apache only, should be true</simpara>
+         <simpara>Apache only, should be true</simpara>
         </entry>
        </row>
        <row>
@@ -250,7 +250,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>response_schema_validation</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Set to true to verify XML reponses comply to the schema</simpara>
+         <simpara>Set to true to verify XML responses comply to the schema</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>true <literal>false</literal>
@@ -265,7 +265,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>source_host</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>backend source server host</simpara>
+         <simpara>back-end source server host</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>localhost</literal>
@@ -280,7 +280,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>source_port</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>backend source server port</simpara>
+         <simpara>back-end source server port</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>integer <literal>5352</literal>
@@ -295,7 +295,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>source_protocol</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>backend source server protocol</simpara>
+         <simpara>back-end source server protocol</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>http</literal>, https</simpara>
@@ -306,10 +306,10 @@ exist in this file. The database configuration can be accessed via the API
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>frontend_host</simpara>
+         <simpara>front end_host</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Frontend host</simpara>
+         <simpara>Front-end host</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>localhost</literal>
@@ -324,7 +324,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>frontend_port</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Frontend port</simpara>
+         <simpara>Front-end port</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>integer <literal>443</literal>
@@ -339,7 +339,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>frontend_protocol</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Frontend protocol</simpara>
+         <simpara>Front-end protocol</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>http <literal>https</literal>
@@ -354,7 +354,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>external_frontend_host</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>External Frontend host</simpara>
+         <simpara>External Front-end host</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara/>
@@ -368,7 +368,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>external_frontend_port</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>External Frontend port</simpara>
+         <simpara>External Front-end port</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>integer <literal>443</literal>
@@ -383,7 +383,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>external_frontend_protocol</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>External Frontend protocol</simpara>
+         <simpara>External Front-end protocol</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>http <literal>https</literal>
@@ -398,7 +398,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>extended_backend_log</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Extended backen log</simpara>
+         <simpara>Extended back-end log</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>true</literal> false</simpara>
@@ -456,7 +456,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara>global_write_through</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>if set to false, the API will only fake writes to backend</simpara>
+         <simpara>if set to false, the API will only fake writes to back-end</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>true</literal> false</simpara>
@@ -533,7 +533,7 @@ exist in this file. The database configuration can be accessed via the API
          <simpara><literal>:off</literal> :on</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see LDAP setion</simpara>
+         <simpara>see LDAP section</simpara>
         </entry>
        </row>
       </tbody>
@@ -651,8 +651,8 @@ features:
    </section>
    <section id="_apache_vhost_obs_conf">
     <title>Apache vhost obs.conf</title>
-    <simpara>The apache configuration depends on the apache version and what extra
-options are used, so please use the documentation of the apache version you
+    <simpara>The Apache configuration depends on the Apache version and which extra
+options are used, so use the documentation of the Apache version you
 are using.</simpara>
     <simpara>Here as example the standard configuration used by the appliance:
 Apache vhost example</simpara>
@@ -693,7 +693,7 @@ LimitRequestFieldsize 20000
 &lt;/VirtualHost&gt;
 
 
-# OBS WEBUI &amp; API
+# OBS WEB UI &amp; API
 &lt;VirtualHost *:443&gt;
         ServerName api
 
@@ -760,8 +760,8 @@ LimitRequestFieldsize 20000
    </section>
   </section>
   <section id="_backend_configuration">
-   <title>Backend Configuration</title>
-   <simpara>The Backend is configured with 2 files:</simpara>
+   <title>Back-end Configuration</title>
+   <simpara>The Back-end is configured with 2 files:</simpara>
    <itemizedlist>
     <listitem>
      <simpara>
@@ -776,7 +776,7 @@ LimitRequestFieldsize 20000
    </itemizedlist>
    <section id="_etc_sysconfig_obs_server">
     <title>/etc/sysconfig/obs-server</title>
-    <simpara>This script is used to setup the basic pathes and the worker.
+    <simpara>This script is used to setup the basic paths and the worker.
 the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emphasis> and <emphasis role="strong">OBS_REPO_SERVERS</emphasis> and the
 <emphasis role="strong">OBS_WORKER_INSTANCES</emphasis>.</simpara>
     <table frame="all" rowsep="1" colsep="1">
@@ -801,7 +801,7 @@ the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emph
          <simpara>OBS_BACKENDCODE_DIR</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Path to the backend scripts</simpara>
+         <simpara>Path to the back-end scripts</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>/usr/lib/obs/server/</simpara>
@@ -857,7 +857,7 @@ the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emph
          <simpara>OBS_API_AUTOSETUP</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Automatically setup api and webui</simpara>
+         <simpara>Automatically setup API and Web UI</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara>yes <literal>no</literal>
@@ -1131,7 +1131,7 @@ the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emph
          <simpara>OBS_VM_DISK_AUTOSETUP _FILESYSTEM</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Filesystem used with autosetup</simpara>
+         <simpara>File System used with autosetup</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>ext3</literal>
@@ -1146,7 +1146,7 @@ the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emph
          <simpara>OBS_VM_DISK_AUTOSETUP _MOUNT_OPTIONS</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Special mountoptions</simpara>
+         <simpara>Special mount options</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara/>
@@ -1348,7 +1348,7 @@ OBS_LOG_DIR="/srv/obs/log"
 OBS_BASE_DIR=""
 
 ## Path:        Applications/OBS
-## Description: Automatically setup api and webui for OBS server, be warned, this will replace config files !
+## Description: Automatically set up API and Web UI for OBS server, be warned, this will replace config files!
 ## Type:        ("yes" | "no")
 ## Default:     "no"
 ## Config:      OBS
@@ -1668,11 +1668,11 @@ OBS_WORKER_SCRIPT_URL=""</screen>
    </section>
    <section id="_bsconfig_pm">
     <title>BSConfig.pm</title>
-    <simpara>This file is a perl module used by most backend scripts, it mainly defines global
-variables. Since it is a perl module, after changes the backend servers need
+    <simpara>This file is a perl module used by most back-end scripts, it mainly defines global
+variables. Since it is a perl module, after changes the back-end servers need
 to be restarted to become aware of the changes.</simpara>
     <caution>
-     <simpara>If you have an perl syntax error in this file, the services won’t start.
+     <simpara>If there is a Perl syntax error in this file, the services will not start.
 Most likely you forgot the semicolon on the end of a statement.</simpara>
     </caution>
     <table frame="all" rowsep="1" colsep="1">
@@ -1697,7 +1697,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$hostname</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>FQDN of the backend host</simpara>
+         <simpara>FQDN of the back-end host</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara/>
@@ -1711,7 +1711,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$ip</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>IP address of the backen host</simpara>
+         <simpara>IP address of the back-end host</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara/>
@@ -1725,14 +1725,14 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$frontend</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>FQDN of the frontend host</simpara>
+         <simpara>FQDN of the front-end host</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>undef</literal>
          </simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>set only if the frontend runs on another host</simpara>
+         <simpara>set only if the front-end runs on another host</simpara>
         </entry>
        </row>
        <row>
@@ -1956,7 +1956,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$bsdir</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Path to the backend directory</simpara>
+         <simpara>Path to the back-end directory</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>/srv/obs</literal>
@@ -1971,7 +1971,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$bsuser</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>OS user running the backend</simpara>
+         <simpara>OS user running the back-end</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>obsrun</literal>
@@ -1986,7 +1986,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$bsgroup</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>OS group running the backend</simpara>
+         <simpara>OS group running the back-end</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>obsrun</literal>
@@ -2015,7 +2015,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$sched_asyncmode</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Use asynchronus scheduler</simpara>
+         <simpara>Use asynchronous scheduler</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara/>
@@ -2057,7 +2057,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$rundir</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>backend communication</simpara>
+         <simpara>back-end communication</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara><literal>$bsdir/run</literal>
@@ -2094,7 +2094,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          </simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>optional for non-acl systems, should be set for access control</simpara>
+         <simpara>optional for non-ACL systems, should be set for access control</simpara>
         </entry>
        </row>
        <row>
@@ -2131,7 +2131,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara>$relsync_pool</simpara>
         </entry>
         <entry align="left" valign="top">
-         <simpara>allow seperation of releasenumber syncing per architecture</simpara>
+         <simpara>allow separation of releasenumber syncing per architecture</simpara>
         </entry>
         <entry align="left" valign="top">
          <simpara/>
@@ -2310,7 +2310,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>obsolete use contraints</simpara>
+         <simpara>obsolete use constraints</simpara>
         </entry>
        </row>
        <row>
@@ -2324,7 +2324,7 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
          <simpara/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>obsolete use contraints</simpara>
+         <simpara>obsolete use constraints</simpara>
         </entry>
        </row>
        <row>
@@ -2510,7 +2510,7 @@ my $hostname = Net::Domain::hostfqdn() || 'localhost';
 # IP corresponding to hostname (only used for $ipaccess); fallback to localhost since inet_aton may fail to resolve at shutdown.
 my $ip = quotemeta inet_ntoa(inet_aton($hostname) || inet_aton("localhost"));
 
-my $frontend = undef; # FQDN of the WebUI/API server if it's not $hostname
+my $frontend = undef; # FQDN of the Web UI/API server if it's not $hostname
 
 # If defined, restrict access to the backend servers (bs_repserver, bs_srcserver, bs_service)
 our $ipaccess = {
@@ -2519,7 +2519,7 @@ our $ipaccess = {
    '.*' =&gt; 'worker',  # build results can be delivered from any client in the network
 };
 
-# IP of the WebUI/API Server (only used for $ipaccess)
+# IP of the Web UI/API Server (only used for $ipaccess)
 if ($frontend) {
   my $frontendip = quotemeta inet_ntoa(inet_aton($frontend) || inet_aton("localhost"));
   $ipaccess-&gt;{$frontendip} = 'rw' ; # in dotted.quad format
@@ -2700,13 +2700,13 @@ if (-r $hostconfig) {
  <section id="_log_files">
   <title>Log files</title>
   <section id="_frontend">
-   <title>Frontend</title>
-   <simpara>The frontend log files are foound under <emphasis>/srv/www/obs/api/log</emphasis>.</simpara>
-   <simpara>The following frontend logfiles exist:</simpara>
+   <title>Front-end</title>
+   <simpara>The front-end log files are found under <emphasis>/srv/www/obs/api/log</emphasis>.</simpara>
+   <simpara>The following front-end log files exist:</simpara>
    <itemizedlist>
     <listitem>
      <simpara>
-apache_access.log - apache reqests
+apache_access.log - apache requests
 </simpara>
     </listitem>
     <listitem>
@@ -2747,9 +2747,9 @@ production.searchd.query.log - search request logs
    </itemizedlist>
   </section>
   <section id="_backend">
-   <title>Backend</title>
-   <simpara>The backend logfiles are found by default under <emphasis>/srv/obs/log/</emphasis>.</simpara>
-   <simpara>The following backend logfiles exist:</simpara>
+   <title>Back-end</title>
+   <simpara>The back-end log files are found by default under <emphasis>/srv/obs/log/</emphasis>.</simpara>
+   <simpara>The following back-end log files exist:</simpara>
    <itemizedlist>
     <listitem>
      <simpara>
@@ -2801,18 +2801,18 @@ warden.log - warden log
  </section>
  <section id="_src_obs_tree">
   <title>/srv/obs tree</title>
-  <simpara>The default backend data directory is located under
+  <simpara>The default back-end data directory is located under
 <emphasis>/srv/obs/</emphasis>. Here are a bunch of subdirectories used for communication
-between the different server, to store data, status information und logs.
+between the different server, to store data, status information and logs.
 Here is one file <emphasis role="strong"><emphasis>configuration.xml</emphasis></emphasis> in the top directory, which stores
-the global OBS configuration for the backend. You should not modify this
-file directely, but use the API /configuration interface instead, since this
-information needs to kept in sync with the frontend.</simpara>
+the global OBS configuration for the back-end. You should not modify this
+file directly, but use the API /configuration interface instead, since this
+information needs to kept in sync with the front-end.</simpara>
   <section id="_build_directory">
    <title>build directory</title>
    <simpara>In this subdirectory managed by the repo server daemon, all repository data,
-meta data and build results are stored in a hierachical tree.</simpara>
-   <simpara>Example build directory tree of a binary imported distribution (OpenSuSE:13.2)
+meta data and build results are stored in a hierarchical tree.</simpara>
+   <simpara>Example build directory tree of a binary imported distribution (OpenSUSE:13.2)
 and a small test project with 3 packages:</simpara>
 <screen>├── openSUSE:13.2
 │   └── standard
@@ -2843,7 +2843,7 @@ and a small test project with 3 packages:</simpara>
   </section>
   <section id="_db_directory">
    <title>db directory</title>
-   <simpara>Backend database root directory use by the source server, repo server
+   <simpara>Back-end database root directory use by the source server, repo server
 scheduler and publisher. Nobody should touch this.</simpara>
   </section>
   <section id="_diffcache_directory">
@@ -2872,11 +2872,11 @@ bybuild architecture:</simpara>
   </section>
   <section id="_log_directory">
    <title>log directory</title>
-   <simpara>Contains the log files of the backend daemons.</simpara>
+   <simpara>Contains the log files of the back-end daemons.</simpara>
   </section>
   <section id="_projects_directory">
    <title>projects directory</title>
-   <simpara>Contains the project hierachy and meta data under revision control.</simpara>
+   <simpara>Contains the project hierarchy and meta data under revision control.</simpara>
   </section>
   <section id="_remotecache_directory">
    <title>remotecache directory</title>
@@ -2894,7 +2894,7 @@ publisher rsync.</simpara>
   </section>
   <section id="_run_directory">
    <title>run directory</title>
-   <simpara>State and lock information for the backend daemons</simpara>
+   <simpara>State and lock information for the back-end daemons</simpara>
   </section>
   <section id="_sources_directory">
    <title>sources directory</title>
@@ -2921,7 +2921,7 @@ server.</simpara>
   </section>
   <section id="_upload_directory">
    <title>upload directory</title>
-   <simpara>Temporary directory for uploading files for other backend components.</simpara>
+   <simpara>Temporary directory for uploading files for other back-end components.</simpara>
   </section>
   <section id="_workers_directory">
    <title>workers directory</title>
@@ -2932,12 +2932,12 @@ server.</simpara>
   <title>Meta data</title>
   <section id="_obs_revision_control">
    <title>OBS revision control</title>
-   <simpara>This section gives a short generic overview how the revision informations are stored
-in the OBS backend for packages and projects.
-The OBS backend stores all files in a light weight content based hierarchical tree. Each
+   <simpara>This section gives a short generic overview how the revision information are stored
+in the OBS back-end for packages and projects.
+The OBS back-end stores all files in a light weight content based hierarchical tree. Each
 file is hashed (with MD5) and stored with the hash as part of the filename
 under the <emphasis>/srv/obs/tree</emphasis> or <emphasis>/srv/obs/sources</emphasis> directories.
-The revision information is stored in separate files by the Source Server int he <emphasis>/srv/obs/projects directory</emphasis>.</simpara>
+The revision information is stored in separate files by the Source Server in the <emphasis>/srv/obs/projects directory</emphasis>.</simpara>
    <section id="_obs_revision_control_files">
     <title>OBS revision control files</title>
     <simpara>The revision information is stored in simple CSV like file format with a bar
@@ -3106,9 +3106,9 @@ used to set a commit message.</simpara>
   </section>
   <section id="_project_meta_data">
    <title>Project meta data</title>
-   <simpara>Project meta data are XML files containing the meta project infomation, such
+   <simpara>Project meta data are XML files containing the meta project information, such
 as title, description, related user and groups with roles, build settings, repository
-settings, publish setiings, debug settings and more.</simpara>
+settings, publish settings, debug settings and more.</simpara>
    <table frame="all" rowsep="1" colsep="1">
     <title>Project meta XML</title>
     <tgroup cols="3">
@@ -3339,13 +3339,13 @@ settings, publish setiings, debug settings and more.</simpara>
   </section>
   <section id="_package_meta_data">
    <title>Package meta data</title>
-   <simpara>XML file about package meta informations, like Title, description,
-related user and groups with roles, build settings, publish setiings, debug
+   <simpara>XML file about package meta information, like Title, description,
+related user and groups with roles, build settings, publish settings, debug
 settings and more. Most XML tags are the same as for projects.</simpara>
    <simpara>Example package meta data:</simpara>
 <screen>&lt;package name="test1" project="Test11"&gt;
   &lt;title&gt;A test package for learning&lt;/title&gt;
-  &lt;description&gt;A example test package for learning.&amp;#13;
+  &lt;description&gt;An example test package for learning.&amp;#13;
 &lt;/description&gt;
   &lt;person userid="user5" role="bugowner"/&gt;
   &lt;person userid="user5" role="maintainer"/&gt;
@@ -3364,7 +3364,7 @@ settings and more. Most XML tags are the same as for projects.</simpara>
    <title>Attribute meta data</title>
    <simpara>Attributes can be used to add special information to packages. Attributes
 can be used to trigger special actions.</simpara>
-   <simpara>Example atrribute data:</simpara>
+   <simpara>Example attribute data:</simpara>
 <screen>&lt;attributes&gt;
   &lt;attribute name="Issues" namespace="OBS"/&gt;
   &lt;attribute name="AutoCleanup" namespace="OBS"&gt;

@@ -21,9 +21,9 @@
   </mediaobject>
  </figure>
  <section>
-  <title>Frontend</title>
+  <title>Front-end</title>
   <para>
-   The OBS Frontend is a Ruby on Rails application that manages the access and
+   The OBS Front-end is a Ruby on Rails application that manages the access and
    manipulation of OBS data. It provides a web user interface and an
    application programming interface to do so. Both can be used to create,
    read, update and delete users, projects, packages, requests and other
@@ -32,17 +32,17 @@
   </para>
  </section>
  <section>
-  <title>Backend</title>
+  <title>Back-end</title>
   <para>
-   The OBS Backend is a collection of Perl applications that manage the source
+   The OBS Back-end is a collection of Perl applications that manage the source
    files and build jobs of the OBS.
   </para>
   <section>
    <title>Source Server</title>
    <para>
     Maintains the source repository and project/package configurations. It
-    provides an HTTP interface, which is the only interface to the Frontend.
-    It may forward requests to other backend services. Each OBS installation
+    provides an HTTP interface, which is the only interface to the Front-end.
+    It may forward requests to other back-end services. Each OBS installation
     has exactly one Source Server. It maintains the "sources", "trees" and
     "projects" directories.
    </para>
@@ -51,7 +51,7 @@
    <title>Repository Server</title>
    <para>
     A repository server provides access to the binaries via an HTTP interface.
-    It is used by the frontend via the source server only. Workers use
+    It is used by the front-end via the source server only. Workers use
     the server to register, request the binaries needed for build
     jobs, and store the results. Notifications for schedulers are also
     created by repository servers. Each OBS installation has at least one
@@ -88,7 +88,7 @@
     repositories. It merges the build result of all architectures into a
     defined directory structure, creates the required metadata, and optionally
     syncs it to a download server. It maintains the "repos" directory on the
-    backend. Each OBS installation has one publisher per partition.
+    back-end. Each OBS installation has one publisher per partition.
    </para>
   </section>
   <section>
@@ -145,7 +145,7 @@
   <title>Command Line Client</title>
   <para>
    The Open Build Service Commander (osc) is a Python application with a
-   Subversion-style command-line interface. It can be used to to manipulate or
+   Subversion-style command-line interface. It can be used to manipulate or
    query data from the OBS through its application programming interface.
   </para>
  </section>
@@ -164,8 +164,8 @@
    We highly recommend, and in fact only test, installations on the
    <ulink url="https://www.suse.com/products/server/">SUSE Linux Enterprise
    Server</ulink> and <ulink url="http://www.opensuse.org">openSUSE</ulink>
-   operating systems. However, we are aware that there a few installations on
-   debian and fedora systems out there.
+   operating systems. However, there also are installations on Debian and
+   Fedora systems.
   </para>
   <para>
    The OBS also needs a SQL database (MySQL or MariaDB) for persistent and a

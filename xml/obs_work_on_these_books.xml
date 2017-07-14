@@ -13,16 +13,16 @@
  <see>help</see></indexterm>
  <abstract>
   <para>
-   These books are written with docbook and can be converted to html or pdf
-   documentation. Please use the following command to checkout the official
+   These books are written with DocBook and can be converted to HTML or PDF
+   documentation. Use the following command to checkout the official
    source of this book:
 <screen><command>git clone https://github.com/openSUSE/open-build-service-documentation.git</command></screen>
-   Please check the README file for descriptions how to validate and generate
+   Check the README file for descriptions how to validate and generate
    them.
   </para>
 
   <para>
-   Please use the standard github work-flow to work on these books. This means
+   Use the standard GitHub work-flow to work on these books. This means
    fork your own copy of the repository, commit your changes there and create a
    pull request. This can be done at
    <ulink url="https://github.com/openSUSE/open-build-service-documentation">https://github.com/openSUSE/open-build-service-documentation</ulink>

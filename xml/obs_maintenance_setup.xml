@@ -9,7 +9,7 @@
 <chapter id="cha.obs.maintenance_setup">
  <title>Maintenance Support</title>
  <para>
-  This chapter explains the setup and workflow of an maintenance update in the
+  This chapter explains the setup and workflow of a maintenance update in the
   openSUSE way. However, this should not be limited to openSUSE distribution
   projects but be usable anywhere (the entire workflow or just parts of it).
  </para>
@@ -18,7 +18,7 @@
   project, in this example an entire distribution. These updates need to be
   approved by a maintenance team and the published result must contain
   documentation about the changes and be applicable in the easiest way by the
-  users. The result is a package repository with additional informations about
+  users. The result is a package repository with additional information about
   the solved problems and defined groups of packages to achieve that. Also
   binary delta data may get generated to reduce the needed download size for
   the clients.
@@ -43,7 +43,7 @@
    process. The incident project is named "openSUSE:Maintenance:IDxxx" in this
    example, which is under control of the maintenance team. Official updates
    get built and reviewed here. QA teams are also testing the binaries from
-   here. However, a user can prepare it in the same way in his project and
+   here. However, a user can prepare it in the same way in their project and
    start the maintenance process via doing a "maintenance" request.
   </para>
   <itemizedlist>
@@ -87,7 +87,7 @@
 <screen><command>osc mbranch glibc</command>
 <command>osc mbranch --checkout glibc</command></screen>
    <para>
-    This is equivalent to the api call
+    This is equivalent to the API call
     <command>/source?cmd=branch&amp;package=glibc</command>.
    </para>
    <para>
@@ -98,23 +98,23 @@
 <command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
    <para>
     NOTE: both branch commands do support the --noaccess parameter, which will
-    create a hidden project. This may be used when a not yet public known
-    security shall get fixed.
+    create a hidden project. This may be used when a not yet publicly known
+    security issue is get fixed.
    </para>
    <para>
     Afterwards the user needs to do the needed modifications. Packages will be
-    built and can be tested. Afterwards he may add informations about the
+    built and can be tested. Afterwards they may add information about the
     purpose of this maintenance update via
    </para>
 <screen><command>osc patchinfo</command></screen>
    <para>
-    If the source changes contain references to issue trackers (like bugzilla,
+    If the source changes contain references to issue trackers (like Bugzilla,
     CVE or FATE) these will be added to the _patchinfo file.
    </para>
    <para>
     The server will create a full maintenance channel now, in case the user
-    wants to test this as well. After the user has tested, he has to create a
-    maintenancerequest to ask the maintenance team to accept this as official
+    wants to test this as well. After the user has tested, they have to create a
+    maintenancerequest to ask the maintenance team to accept this as an official
     update incident:
    </para>
 <screen><command>osc maintenancerequest</command></screen>
@@ -129,7 +129,7 @@
    <para>
     You may submit a package source from a project which is not prepared as
     maintenance project. That works via the maintenancerequest mechanism by
-    specifing one or more packages from one project. As a consequence it means
+    specifying one or more packages from one project. As a consequence it means
     also that the first testable build will happen in the maintenance incident
     project. Also the maintenance team need to write the update information on
     their own.
@@ -142,19 +142,22 @@
     from the project KDE:Devel project as update for openSUSE:12.1
 <screen><command>osc maintenancerequest KDE:Devel kdelibs4 kdebase4 openSUSE:12.1</command></screen>
    </para>
+   <note>
+    <title>Specifying an Existing Incident</title>
    <para>
-    NOTE: it is also possible to specify an existing incident as target via the
-    --incident parameter. The packages will be merged into that existing
-    incident project then.
+    It is also possible to specify an existing incident as target with the
+    <literal>--incident</literal> parameter. The packages will then be merged
+    into the existing incident project.
    </para>
+   </note>
   </section>
   <section>
    <title>Way C: Process gets initiated by the maintenance team</title>
    <para>
     The maintenance team may start the process (for example because a security
     issue was reported and the maintenance team decided that a fix is
-    required). In this case the incident gets created via the webui or via the
-    api call
+    required). In this case the incident gets created via the Web UI or via the
+    API call:
    </para>
    <para>
     <command>osc createincident [PROJECT]</command>
@@ -174,10 +177,10 @@
     <command>osc patchinfo [PROJECT]</command>
    </para>
    <para>
-    It is important to add bugzilla entries inside of the _patchinfo file. As
-    long these are open bugzilla entries, the bug assignee will see this
-    patchinfoi on his "my work" webui and osc views, so he knows that work is
-    expected for him.
+    It is important to add Bugzilla entries inside of the _patchinfo file. As
+    long these are open Bugzilla entries, the bug assignee will see this
+    patchinfo on their "my work" Web UI and osc views, so they knows that work is
+    expected from them.
    </para>
   </section>
   <section>
@@ -253,7 +256,7 @@
    </para>
    <para>
     If the current update harms the systems, the maintenance team may decide to
-    take it back immediatly. It can be done by removing the patchinfo.ID
+    take it back immediately. It can be done by removing the patchinfo.ID
     package container in the Update projects. This will create a new update
     channel without this update.
    </para>
@@ -421,14 +424,14 @@
   <section>
    <title>Search for incidents</title>
    <para>
-    The webui shows the running and past incidents when going to the
+    The Web UI shows the running and past incidents when going to the
     maintenance project (openSUSE:Maintenance in our example). It shows the
     open requests either for creating or release an incident. Also the open
     incidents, which are not yet released are visible.
    </para>
    <para>
-    All users need usually just to visit their "my work" screen in webui or osc
-    to see requests or patchinfog were actions of them are expected:
+    All users need usually just to visit their "my work" screen in Web UI or osc
+    to see requests or patchinfos where actions of them are expected:
 <screen><command>osc my [work]</command></screen>
    </para>
    <para>
@@ -439,7 +442,7 @@
     <listitem>
      <para>
       A developer can see the work to be done by him via searching for
-      patchinfos with open bugzilla entries:
+      patchinfos with open Bugzilla entries:
 <screen><command>/search/package?match=([kind='patchinfo' and issue/[@state='OPEN' and owner/@login='$USER_LOGIN']])</command></screen>
      </para>
     </listitem>
@@ -447,7 +450,7 @@
      <para>
       A maintenance coordinator can see requests for doing a maintenance
       release via searching for open requests with maintenance_incident action
-      against the maintenance project. They are visible in the webui request
+      against the maintenance project. They are visible in the Web UI request
       page of that project or via
 <screen><command>/search/request?match=(state/@name='new') and action/@type='maintenance_incident' and action/target/@project='openSUSE:Maintenance')</command></screen>
      </para>
@@ -486,7 +489,7 @@
     An OBS server is using by default a maintenance space defined via the
     OBS:Maintenance attribute. This must get created on a project where
     maintenance incident projects should get created below. This project is
-    also defining the default maintenance maintainers and reviewers in its acl
+    also defining the default maintenance maintainers and reviewers in its ACL
     list.
    </para>
    <para>
@@ -524,7 +527,7 @@
   <section>
    <title>Defining a channel</title>
    <para>
-    Channels get defined and maintained in a xml file inside of a package
+    Channels get defined and maintained in an xml file inside of a package
     source. The file name of these lists must be _channel.
    </para>
    <para>
@@ -541,7 +544,7 @@
     repositories.
    </para>
    <para>
-    The _channel files can be modified inside of the the incident project if
+    The _channel files can be modified inside of the incident project if
     needed. This can be necessary when binary packages get renamed or added
     with this update. The modification will be part of the maintenance release
     request as simple submit actions.

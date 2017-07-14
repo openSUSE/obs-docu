@@ -27,7 +27,7 @@ the current XML priority file can be read.</simpara>
 &lt;/dispatchprios&gt;</screen>
   <simpara>The attributes <emphasis>project</emphasis>, <emphasis>repository</emphasis> and <emphasis>arch</emphasis> are all optional, if for
 example <emphasis>arch</emphasis> and <emphasis>repository</emphasis> are missing the entry is used for all
-repositories and architectures for the given project. It is not suported to
+repositories and architectures for the given project. It is not supported to
 use regular expressions for the names.
 The adjust value is taken as logarithmic scale factor to the current load of the
 repositories during the compare.
@@ -222,7 +222,7 @@ build time.</simpara>
   <simpara>With the <emphasis role="strong"><emphasis>dispatch_adjust</emphasis></emphasis> array in the <emphasis>BSConfig.pm</emphasis> file the dispatch
 priorities of project repositories based on regular expressions for the
 project, repository name and maybe architecture.
-Each match will add or subtract a value to the priotity of the repository.
+Each match will add or subtract a value to the priority of the repository.
 The default priority is 0, higher values cause the matching
 projects to get more build time.</simpara>
   <simpara>Each entry in the dispatch_adjust array has the format</simpara>
@@ -233,7 +233,7 @@ projects to get more build time.</simpara>
 Examples:
    Devel:Science/SLES-11/i586
    home:king:test/Leap42/x86_64</screen>
-  <simpara>If a repopsitory match a string the adjustment is added to the current
+  <simpara>If a repository matches a string the adjustment is added to the current
 value. The final value is the sum of the adjustments of all matched entries.
 This sum is the same logarithmic scale factor as described in
 the previous section.</simpara>

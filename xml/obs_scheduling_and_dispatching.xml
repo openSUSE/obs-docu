@@ -42,7 +42,7 @@
    <listitem>
     <simpara>
       Constraints regarding the worker are considered. A package may require certain amount of 
-      resources or specific features to build. Please check the constraints chapter for details.
+      resources or specific features to build. Check the constraints chapter for details.
       However, apart from this the build should be independent of the specific worker where
       the job gets dispatched to.
     </simpara>
@@ -53,8 +53,8 @@
   <title>Scheduling strategies</title>
   <para>
    The defaults have the goal of creating an always reproducible state. This
-   may lead to more builds then practically necessary, but ensures that no
-   hidden incompabilities exist between packages and also that the same state
+   may lead to more builds than practically necessary, but ensures that no
+   hidden incompatibilities exist between packages and also that the same state
    can later be achieved again (with a subsequent rebuild of the same sources
    and configurations). This can also lead to multiple builds of the same
    package in the case of dependency loops.
@@ -86,7 +86,7 @@
       <term>transitive</term>
       <listitem>
        <para>
-        The default behaviour, do a clean build of all depending packages
+        The default behavior, do a clean build of all depending packages
        </para>
       </listitem>
      </varlistentry>
@@ -116,7 +116,7 @@
       installable or have random runtime errors (like not starting up or
       crashing applications), even when they claim to be "succeeded". Also, you
       cannot be sure that you will be able to re-build them later. So never do
-      a official shipment with this setting of a release. This knob is exposed
+      an official shipment with this setting of a release. This knob is exposed
       to allow deliberate suppression of the strictly reproducible builds (for
       example, to limit burning CPU unnecessarily).
      </para>
@@ -127,14 +127,15 @@
    <title>Block Mode</title>
    <para>
     Usually the build of a package gets blocked when a package required to
-    build it is still building atm. The "block" attribute can modify this
+    build it is still building at the moment. The "block" attribute can modify this
     behaviour:
+   </para>
     <variablelist>
      <varlistentry>
       <term>all</term>
       <listitem>
        <para>
-        The default behaviour, don't start the build if a depending package is
+        The default behavior, do not start the build if a depending package is
         currently building.
        </para>
       </listitem>
@@ -158,23 +159,22 @@
     </variablelist>
     <note>
      <para>
-      Note: When using something else then "all" you will have to deal with a
-      number of problems:
+      When using something other than <quote>all</quote> you will have
+      to deal with the following problems:
      </para>
      <itemizedlist>
       <listitem>
-       <simpara>
-		Intermediate builds can have dependency and runtime problems.
-	    </simpara>
+       <para>
+        Intermediate builds can have dependency and runtime problems.
+       </para>
       </listitem>
       <listitem>
-       <simpara>
-		Your packages will get built more often, take more resources on the server side. As a result the dispatcher will rate your repository down.
-	    </simpara>
+       <para>
+        Your packages will get built more often, take more resources on the server side. As a result the dispatcher will rate your repository down.
+       </para>
       </listitem>
      </itemizedlist>
     </note>
-   </para>
   </section>
   <section>
    <title>Follow Project Links</title>

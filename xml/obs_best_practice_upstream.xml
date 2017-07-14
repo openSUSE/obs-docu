@@ -19,10 +19,10 @@
    <para>
     OBS is open source project and therefore you can setup your own instance
     and run it by your own. The main advantage of this approach is that you can
-    keep all your sources and recepies unpublished if you need to (for example
+    keep all your sources and recipes unpublished if you need to (for example
     because of NDA). Obvious downside of this approach is that you need to
     maintain your own server/servers for running builds, publishing and
-    mirroring. Also making your project public may attract some potentional
+    mirroring. Also making your project public may attract some potential
     contributors.
    </para>
    <para>
@@ -33,14 +33,13 @@
   <section>
    <title>openSUSE Build Service</title>
    <para>
-    Other option is to use some publically available instance of OBS. One good
+    Other option is to use some publicly available instance of OBS. One good
     example is openSUSE Build Service -
-    <ulink
-    url="http://build.opensuse.org"/> . This OBS instance can be
+    <ulink url="http://build.opensuse.org"/>. This OBS instance can be
     used by anybody to freely create binaries for any of the supported
-    distributions. Big advanatage is that somebody is already taking care of
+    distributions. Big advantage is that somebody is already taking care of
     all the infrastructure. You can store your sources there, build your
-    packages and got them mirrored around the world. You don't need to get your
+    packages and got them mirrored around the world. You do not need to get your
     own server a configure it, you can start using it right a way.
    </para>
   </section>
@@ -51,8 +50,7 @@
    This part helps you to decide on how to name and where to place your project
    and what project structure to create. This is more important if you are
    sharing your OBS instance with other people like in
-   <ulink
-    url="http://build.opensuse.org">openSUSE Build Service</ulink>.
+   <ulink url="http://build.opensuse.org">openSUSE Build Service</ulink>.
   </para>
   <section>
    <title>Base project</title>
@@ -61,7 +59,7 @@
     <ulink
       url="http://build.opensuse.org">openSUSE Build
     Service</ulink>, these packages needs to be somehow divided into projects
-    so it is easier to find what people are looking for and it isn't all just
+    so it is easier to find what people are looking for and it is not all just
     one big mess.
    </para>
    <para>
@@ -83,27 +81,28 @@
     at <ulink url="http://lists.opensuse.org/opensuse-buildservice/"/> .
    </para>
    <para>
-    If you need to just put yout package somewhere, you can create it in your
+    If you need to just put your package somewhere, you can create it in your
     home project and then send submitrequest to the project you want your
-    packge to get included in.
+    package to get included in.
    </para>
   </section>
   <section>
    <title>More supported versions?</title>
    <para>
-    If you want to support more than just one version of your program, you will
-    need to use several projects for that. There can't be same packages with.
+    If you want to support more than one version of your program, you
+    need to use several projects. The same package cannot be contained in the
+    same project multiple times.
    </para>
    <section>
     <title>Stable and development version</title>
     <para>
-     Let's asume that you have found project suitable for your program. Some
+     Let's assume that you have found project suitable for your program. Some
      projects already have something like <emphasis>STABLE</emphasis> and
      <emphasis>UNSTABLE</emphasis> subprojects. So you can use these, if you
      discuss it with maintainers of these project. Other way is to ask somebody
      from the maintainers of the project to create either these subprojects (if
-     they don't exists) or something similar. Always try to discuss it with the
-     maintainers of the project. They might have good ideas, sugestions and may
+     they do not exist) or something similar. Always try to discuss it with the
+     maintainers of the project. They might have good ideas, suggestions and may
      help you in various ways.
     </para>
    </section>
@@ -130,7 +129,7 @@
   <para>
    Packaging is quite a complex topic. Instead of trying to cover it in this
    book, it is a good idea to start with available internet documentation. One
-   of the recomended online resource is Portal:Packaging on openSUSE wiki. You
+   of the recommended online resource is Portal:Packaging on openSUSE wiki. You
    can find it at <ulink url='http://en.opensuse.org/Portal:Packaging'/>. It
    contains links to several packaging tutorials and other packaging related
    documentation.
@@ -141,7 +140,7 @@
   <note>
    <para>
     This sections discuss feature available only in openSUSE Build Service -
-    one of the freely availble instances of OBS.
+    one of the freely available instances of OBS.
    </para>
   </note>
   <para>
@@ -151,12 +150,10 @@
    <code>iframe</code>
    or
    <code>object</code>
-   on newer webs . Example of download page can be following one
-   <ulink
-   url='http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc'/>.
+   on newer websites. An example of download page can be following one
+   <ulink url='http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc'/>.
    You can see how it looks like in
-   <xref
-   linkend="cha.obs.best-practices.upstream.download.screenshot"/>. It
+   <xref linkend="cha.obs.best-practices.upstream.download.screenshot"/>. It
    contains links to the packages and instructions how to install them.
   </para>
   <figure id="cha.obs.best-practices.upstream.download.screenshot">
@@ -168,10 +165,10 @@
    </mediaobject>
   </figure>
   <para>
-   Url always has to start with
+   URL always has to start with
    <ulink
    url='http://software.opensuse.org/download.html?'/>.You can attach
-   any number of '&amp;'-separated parameters. But at least two of them -
+   any number of <literal>&amp;</literal>-separated parameters. But at least two of them -
    <emphasis>project</emphasis> and <emphasis>package</emphasis> - are
    required. All parameters with descriptions can be found in
    <xref
@@ -247,13 +244,12 @@
     change, we will use theme that would match Midnight Commander.
    </para>
    <para>
-    First we will start with recent web page supporting new standarts. On such
+    First we will start with recent web page supporting new standards. On such
     a website, we would use
     <code>object</code>
     to include download code:
    </para>
-<screen>
-  <command><![CDATA[
+<screen><![CDATA[
 <object type="text/html" 
    data="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"
    width="100%" height="100%">
@@ -263,14 +259,12 @@
    <a href="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff">
    download page</a>
 </object>
-  ]]></command>
-  </screen>
+]]></screen>
    <para>
     If you are using php on your server, you can make it easier by using
     following code:
    </para>
-<screen>
-  <command><![CDATA[
+<screen><![CDATA[
 <?php
    $url = "http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff";
    echo '
@@ -284,18 +278,15 @@
 </object>
 ';
 ?>
-  ]]></command>
-  </screen>
+]]></screen>
    <para>
     If you are running some legacy website, you might have to use
     <code>iframe</code>
     :
    </para>
-<screen>
-  <command><![CDATA[
-  <iframe src="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"/>
-  ]]></command>
-  </screen>
+<screen><![CDATA[
+<iframe src="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"/>
+]]></screen>
   </section>
  </section>
 </chapter>

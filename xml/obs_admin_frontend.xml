@@ -7,9 +7,9 @@
   %entities;
 ]>
 <section id="cha.obs.admin.frontend">
- <title>Frontend Administration</title>
+ <title>Front-end Administration</title>
  <para>
-  The Ruby on Rails application is run through the apache web server with
+  The Ruby on Rails application is run through the Apache web server with
   <ulink url="https://www.phusionpassenger.com/">mod_passenger</ulink>. You can
   control it via <command>systemctl</command>
 <screen><command>systemctl {start, stop, restart} apache2</command></screen>
@@ -17,7 +17,7 @@
  <section>
   <title>Delayed Jobs</title>
   <para>
-   Another component of the OBS frontend are delayed jobs for asynchronously
+   Another component of the OBS front-end are delayed jobs for asynchronously
    executing longer tasks in the background. You can control this service also
    via <command>systemctl</command>.
 <screen><command>systemctl {start, stop, restart} obsapidelayed</command></screen>

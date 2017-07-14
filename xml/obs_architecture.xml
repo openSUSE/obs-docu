@@ -31,34 +31,34 @@
   <orderedlist numeration="arabic">
    <listitem>
     <simpara>
-User to frontend communication
+User-to-front-end communication
 </simpara>
    </listitem>
    <listitem>
     <simpara>
-frontend to source server communication
+Front-end-to-source-server communication
 </simpara>
    </listitem>
    <listitem>
     <simpara>
-communication between source server and other backend components, in first place the repository servers.
+communication between source server and other back-end components, in first place the repository servers.
 </simpara>
    </listitem>
   </orderedlist>
-  <simpara>The user is using the frontend (via tools like <emphasis role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the Open
-Build Service. The frontent is providing a web interface and also an api. The frontend is implemented as Ruby on rails
-application. All communcation happens via the <emphasis role="strong"><emphasis>http</emphasis></emphasis> protocol (normally
+  <simpara>The user is using the front-end (via tools like <emphasis role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the Open
+Build Service. The front-end is providing a web interface and also an API. The front-end is implemented as Ruby on Rails
+application. All communication happens via the <emphasis role="strong"><emphasis>http</emphasis></emphasis> protocol (normally
 encrypted so <emphasis role="strong"><emphasis>https</emphasis></emphasis> is used.</simpara>
-  <simpara>The communication between the frontend and the backend also use the http
-protocol, using the backend source server as gateway to most of the other
-backend components.</simpara>
-  <simpara>The figure <xref linkend="fig_obs_communication"/> shows the comunication flow between the OBS components if a
+  <simpara>The communication between the front-end and the back-end also use the http
+protocol, using the back-end source server as gateway to most of the other
+back-end components.</simpara>
+  <simpara>The figure <xref linkend="fig_obs_communication"/> shows the communication flow between the OBS components if
 a package source (e.g. a _service file) was updated.</simpara>
   <simpara>If a source file of a package was updated, the new source file is uploaded
-with an HTTP PUT operation to the frontend.
-The frontend may ask for authentication (if not already done) and check
+with an HTTP PUT operation to the front-end.
+The front-end may ask for authentication (if not already done) and check
 the access rights for the user. If everything is OK, the new file will be
-send to the backend <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  via an HTTP PUT request as well.
+send to the back-end <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  via an HTTP PUT request as well.
 The source server stores the changed source (under revision control) and
 check if for this change source service runs are needed. If yes the <emphasis role="strong"><emphasis>Source
 Service server</emphasis></emphasis> is informed via an HTTP PUT request of the _service file to
@@ -71,7 +71,7 @@ as well.</simpara>
 change of the package via an event.</simpara>
   <simpara>The <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis> recalculates the package and project state and if all build requires are solved, a build Job
 is created and put in the <emphasis role="strong"><emphasis>Job pool</emphasis></emphasis>. The notified <emphasis role="strong"><emphasis>Dispatcher</emphasis></emphasis> checks for free worker which
-met the build contrains for the job and send the job to the <emphasis role="strong"><emphasis>worker</emphasis></emphasis>.</simpara>
+met the build constraints for the job and send the job to the <emphasis role="strong"><emphasis>worker</emphasis></emphasis>.</simpara>
   <figure id="fig_obs_communication">
    <title>OBS communication</title>
    <mediaobject>

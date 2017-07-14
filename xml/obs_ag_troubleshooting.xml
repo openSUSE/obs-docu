@@ -22,8 +22,8 @@ Bugs, resource shortage or config issues caused issues
 </simpara>
   </listitem>
  </orderedlist>
- <simpara>The first category are errors like missing dependend packages in the build
-environment, errors during compiling or linking, errors in the buid
+ <simpara>The first category are errors like missing dependent packages in the build
+environment, errors during compiling or linking, errors in the build
 description and so on. Most of them should not happen if the packager does
 test the build locally before committing it to the OBS. This type of
 problems is not covered by this chapter.</simpara>
@@ -34,8 +34,8 @@ follow some rules to locate the problem:</simpara>
   <orderedlist numeration="arabic">
    <listitem>
     <simpara>
-Consult the logfiles, for the backend look at <emphasis>/srv/obs/log</emphasis> for the
-backend log files and <emphasis>/srv/www/obs/api/log</emphasis> for the frontend log files. See
+Consult the log files, for the back-end look at <emphasis>/srv/obs/log</emphasis> for the
+back-end log files and <emphasis>/srv/www/obs/api/log</emphasis> for the front-end log files. See
 the Log files <xref linkend="_log_files"/> for more details.
 </simpara>
    </listitem>
@@ -47,7 +47,7 @@ reported system or HW problems.
    </listitem>
    <listitem>
     <simpara>
-Check if all services are running on the backend and frontend. See the
+Check if all services are running on the back-end and front-end. See the
 OBS Architecture in reference book for details.
 </simpara>
    </listitem>
@@ -58,8 +58,8 @@ Try to find an easy way to reproduce the problem.
    </listitem>
    <listitem>
     <simpara>
-Look on <ulink url="https://github.com/openSUSE/open-build-service">https://github.com/openSUSE/open-build-service</ulink>
-  if this issue was already reported.
+     To check whether this issue was already reported, see
+     <ulink url="https://github.com/openSUSE/open-build-service"/>.
 </simpara>
    </listitem>
    <listitem>
@@ -76,10 +76,10 @@ problem and the complete error message/error log if here are any.
   </orderedlist>
  </section>
  <section id="_debug_frontend_problems">
-  <title>Debug frontend problems</title>
-  <simpara>If you get unexpected results from submitting comands with the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool,
-you can use the debug feature of the tools to get some more informations
-what happen.</simpara>
+  <title>Debug front-end problems</title>
+  <simpara>If you get unexpected results from submitting commands with the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool,
+you can use the debug feature of the tools to find more information about
+what happened.</simpara>
   <simpara>osc debug options</simpara>
 <screen>     --debugger         jump into the debugger before executing anything
      --post-mortem      jump into the debugger in case of errors
@@ -88,7 +88,7 @@ what happen.</simpara>
      --http-full-debug  debug HTTP traffic (filters no headers)
      -d, --debug        print info useful for debugging</screen>
   <simpara>The <emphasis role="strong"><emphasis>--debugger</emphasis></emphasis> and <emphasis role="strong"><emphasis>--post-mortem</emphasis></emphasis> are only suitable for <emphasis>osc</emphasis>
-developers. If you get a error message from osc the <emphasis role="strong"><emphasis>-t, --traceback</emphasis></emphasis> can
+developers. If you get an error message from osc, the <emphasis role="strong"><emphasis>-t, --traceback</emphasis></emphasis> can
 give the developer some more information about the problem. The <emphasis role="strong"><emphasis>-H, --http-debug</emphasis></emphasis> and
 <emphasis role="strong"><emphasis>--http-full-debug</emphasis></emphasis> options are useful to see the raw answers of OBS API, often this gives a hint what maybe
 wrong. If you report a problem regarding the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool, it may help to include the osc output with

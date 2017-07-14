@@ -16,7 +16,7 @@
  </para>
  <para>
   A request is an object in the database. It can be accessed via the /request
-  api route. osc and the web interface can show and process these requests.
+  API route. osc and the web interface can show and process these requests.
   There are also interfaces to show the requests which should be handled for a
   certain user.
  </para>
@@ -24,7 +24,7 @@
   <title>What a request looks like</title>
   <para>
    A request is an object in the database. It can be accessed via the /request
-   api route. Main parts of the request are
+   API route. Main parts of the request are
    <itemizedlist>
     <listitem>
      <simpara>
@@ -43,7 +43,7 @@
     </listitem>
     <listitem>
      <simpara>
-     descripton: an explanation of why the actions should be done.
+     description: an explanation of why the actions should be done.
      </simpara>
     </listitem>
     <listitem>
@@ -61,7 +61,7 @@
    make sense to have multiple actions in one request if changes should be
    applied in one transaction. For example submitting a new package and
    removing an old instance: Do either both or nothing. This implies that the
-   person accepting the request must have write access in all targets or he
+   person accepting the request must have write access in all targets or they
    will not be allowed to accept the request.
   </para>
   <section>
@@ -69,7 +69,7 @@
    <para>
     Actions always specify some target. This can be either a project or a
     package. Further information depend on the action type. The following gives
-    an overview, for details please check the xml schema for requests.
+    an overview, for details, see the XML schema for requests.
    </para>
    <section>
     <title>Submit</title>
@@ -106,8 +106,8 @@
     <title>set_bugowner</title>
     <para>
      set_bugowner is similar to add_role, but removes all other bugowner roles
-     in the target. This happens to have a uniq identifier to be used when
-     assigning bugreports in external tools like bugzilla.
+     in the target. This happens to have a unique identifier to be used when
+     assigning bug reports in external tools like Bugzilla.
     </para>
    </section>
    <section>
@@ -158,12 +158,12 @@
     </listitem>
     <listitem>
      <simpara>
-        declined: The request has been reviewed and not (yet) been accepted by the target. This is often used to ask for some more information from the submitter, since a declined requests remains an active, returnng to the submitter's active request queue (i.e. the submitter will need to take action now).
+        declined: The request has been reviewed and not (yet) been accepted by the target. This is often used to ask for some more information from the submitter, since a declined requests remains an active, returning to the submitter's active request queue (i.e. the submitter will need to take action now).
         </simpara>
     </listitem>
     <listitem>
      <simpara>
-        revoked: The submitter has taken back his request. The request is considered to be inactive now.
+        revoked: The submitter has taken back their request. The request is considered to be inactive now.
         </simpara>
     </listitem>
     <listitem>
@@ -191,7 +191,7 @@
     <title>Manual added reviews</title>
     <para>
      Reviewers can be added manually by anyone involved in a request. This can
-     be used to hand over a review. In that situatiation the new reviewer needs
+     be used to hand over a review. In that situation the new reviewer needs
      to be added and the own review needs to be accept. The request becomes
      declined when any of the reviewers are declining the request.
     </para>
@@ -200,7 +200,7 @@
     <title>Automatic added reviews</title>
     <para>
      Project and package objects can have users or groups with a reviewer role.
-     They are added automatically to a request as reviwer when a request is
+     They are added automatically to a request as reviewer when a request is
      created which has them as target. In case the project and package bother
      specify reviewer all of them are added to the request.
     </para>
@@ -209,7 +209,7 @@
   <section>
    <title>Request creation</title>
    <para>
-    The api is doing a number of checks on request creation time. In case a
+    The API is doing a number of checks on request creation time. In case a
     target is not specified it tries to set it according to the linked package.
     If an entire project is specified as source it expands it to refer all
     packages inside. This means it is replacing one action with multiple. When

@@ -5,7 +5,7 @@
   <para>
    This chapter makes some recommendations how upstream resources can be
    integrated into the build process. SCM stands for source control management.
-   git, subversion or CVS are concrete implementations of a SCM. The OBS itself
+   git, subversion or CVS are concrete implementations of an SCM. The OBS itself
    comes also with an own SCM, but this is only intended to manage the files
    needed for packaging. However, you can add references to external SCM
    systems. The source service system will mirror the sources and provide it to
@@ -34,10 +34,11 @@
   </itemizedlist>
  </section>
  <section>
-  <title>Creating a external SCM reference</title>
+  <title>Creating an external SCM reference</title>
   <para>
-   External refernces are defined in _service files. The file can look like
+   External references are defined in _service files. The file can look like
    this:
+  </para>
 <screen>
 <![CDATA[
 <services>
@@ -54,30 +55,33 @@
 </services>
       ]]>
 </screen>
+  <para>
    The services do the following:
+  </para>
    <itemizedlist>
     <listitem>
      <simpara>
-      obs_scm: mirrors the source. It stores it as a cpio archive, but for the build process this looks like a directory. It also stores additional information from the metadata to a file with obsinfo suffix.
+      <systemitem>obs_scm</systemitem>: mirrors the source. It stores it as a cpio archive, but for the build process this looks like a directory. It also stores additional information from the metadata to a file with obsinfo suffix.
     </simpara>
     </listitem>
     <listitem>
      <simpara>
-      tar: creates a tar file from the directory
+      <systemitem>tar</systemitem>: creates a tar file from the directory
     </simpara>
     </listitem>
     <listitem>
      <simpara>
-      recompress: applies a compression on the tar file
+      <systemitem>recompress</systemitem>: applies a compression on the tar file
     </simpara>
     </listitem>
     <listitem>
      <simpara>
-      set_version: reads the version from the obsinfo file and adapts the build descriptions to it.
+      <systemitem>set_version</systemitem>: reads the version from the obsinfo file and adapts the build descriptions to it.
     </simpara>
     </listitem>
    </itemizedlist>
-   Please note that only the first service (obs_scm) runs on the OBS
+  <para>
+   Note that only the first service (<systemitem>obs_scm</systemitem>) runs on the OBS
    server. The other services run during the build process. They can
    also be replaced by any user by providing alternative implementations of
    them, or by writing their own service from scratch.
@@ -86,24 +90,21 @@
  <section>
   <title>Working with local checkouts</title>
   <para>
-   Using
-<screen>
-            osc build
-          </screen>
-   in any package with such a defintion will do the same process locally. The
+   Using <command>osc build</command>
+   in any package with such a definition will do the same process locally. The
    only difference is that you get a local subdirectory with the SCM content.
    You can go inside and work as you are used to. Any changes inside will be
    used for your next local build, whether they were pushed to the upstream
    server or not. However, you need to push it upstream when you let the OBS
    server re-fetch the changes from upstream. The only way out would be to set
-   the "obs_scm" service to mode disabled and upload your local archive.
+   the <systemitem>obs_scm</systemitem> service to mode disabled and upload your local archive.
   </para>
  </section>
  <section>
   <title>Manage your build description in SCM</title>
   <para>
-   The "obs_scm" service allows you to export files next to the archive. You
-   can specify one or more files using the "extract" parameter. Use it for your
+   The <systemitem>obs_scm</systemitem> service allows you to export files next to the archive. You
+   can specify one or more files using the <literal>extract</literal> parameter. Use it for your
    build description files.
   </para>
  </section>

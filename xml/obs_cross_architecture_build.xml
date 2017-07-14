@@ -11,7 +11,7 @@
  <para>
   OBS can build for architectures without having the hardware. This is done via
   emulation steps. However, this is not a classic build with cross tool chains.
-  The advantage is that the build environments of the packages don't need
+  The advantage is that the build environments of the packages do not need
   support for cross tools.
  </para>
 </chapter>

@@ -27,8 +27,8 @@
  <section>
   <title>Contribute directly to foreign projects</title>
   <para>
-   In case a user does not have commit permissions to a project, he can request
-   to get maintainership permissions to this project. This makes sense if the
+   In case a user does not have commit permissions to a project, they can request
+   maintainership permissions to this project. This makes sense if the
    user is already known to the project owners and they trust him as a
    maintainer. There is a way to do this via the request system of OBS, but
    only via osc so far:
@@ -39,7 +39,7 @@
   <title>Contribute indirect to foreign projects</title>
   <para>
    Users who are new to a certain project, either because they are new users at
-   all or don't have any deeper knowledge about this certain project don't have
+   all or do not have any deeper knowledge about this certain project don't have
    direct commit permissions. However, they can still create a copy of any
    package source and ask back to merge their changes. &obs; has support to
    make this easy.

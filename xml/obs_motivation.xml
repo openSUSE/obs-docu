@@ -12,10 +12,10 @@
   The basic challenge when distributing Free and Open Source Software
   (<acronym>FOSS</acronym>) is compiling into machine code all of the source
   code that the awesome community produces. It may sound simple, but it
-  isn’t. A typical GNU/Linux distribution consists of thousands of individual
+  is not. A typical GNU/Linux distribution consists of thousands of individual
   software projects. They build on top of each other, have functional
-  dependencies, some of the projects are interdependent, conflict with each
-  other and what not. In short, it's like herding cats. Another challenge
+  dependencies, some projects are interdependent, conflict with each
+  other and what not. In short, it is like herding cats. Another challenge of
   distributing software is that, sadly, software is sometimes defective and
   people, even developers, make mistakes. One has to master the art of
   exchanging pieces without breaking the whole: in other words, software
@@ -53,7 +53,7 @@
    <title>Reproducibility for Free Software projects and Independent Software Vendors (<acronym>ISV</acronym>)</title>
    <para>
     The OBS emphasizes making builds reproducible. It builds packages in a
-    jailed environment that the OBS sets up from scratch each time; once the
+    jailed environment that the OBS sets up from scratch each time. When the
     build succeeds it also rebuilds all the dependent software. This ensures
     that changes propagate throughout the entire stack and that users get a
     consistent product to install. Reproducibility is especially needed if the
@@ -71,7 +71,7 @@
    <title>Easy access to software for users</title>
    <para>
     The OBS aims to make it easy for users to download the latest version of
-    software as binary packages for their operating system. They don't have to
+    software as binary packages for their operating system. They do not have to
     know about tarballs, make install, package formats or other stuff from the
     90's. Another priority is to make use of the package management tools of
     the user's OS with which they are already familiar. Users should get their

@@ -66,7 +66,7 @@
    Products needs usually multiple approval steps and should only be released
    on manual approval. OBS is providing a mechanism which allows to copy
    sources and binaries to another project in this case. To use this the
-   release target must be configured inside of a repository defintion of the
+   release target must be configured inside of a repository definition of the
    project meta data:
 <screen><command>&lt;project name="BuildProject"&gt;
   ...

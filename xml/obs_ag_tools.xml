@@ -10,7 +10,7 @@
  <title>Tools</title>
  <section id="_obs_admin">
   <title>obs_admin</title>
-  <simpara>obs_admin is a command-line tool used on the backend server(s) to manage
+  <simpara>obs_admin is a command-line tool used on the back-end server(s) to manage
 running services, submit maintenance tasks, and debug problems.
 It should be only used by experienced admins.</simpara>
   <simpara>It has built-in help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
@@ -147,7 +147,7 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
  </section>
  <section id="_osc">
   <title>osc</title>
-  <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> commandline client is mainly used by developers and packagers. But
+  <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> command-line client is mainly used by developers and packagers. But
 for some tasks, admin people also need this tool. It too has builtin help:
 use <emphasis>osc --help</emphasis>. The tool needs to be configured first to know the
 OBS API URL and your user details.</simpara>
@@ -161,7 +161,7 @@ osc -A https://api.testobs.org</screen>
 give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
 for example) and may use different methods for authentication like
-kerberos see <xref linkend="_kerberos"/>
+Kerberos see <xref linkend="_kerberos"/>
    </simpara>
   </warning>
   <simpara>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</simpara>
@@ -173,7 +173,7 @@ meta  - to create or update projects or package data
    </listitem>
    <listitem>
     <simpara>
-api - to read and write online configuration data
+API - to read and write online configuration data
 </simpara>
    </listitem>
   </itemizedlist>
@@ -255,7 +255,7 @@ Options:
                         affect only a given attribute</screen>
   </section>
   <section id="_osc_api_subcommand">
-   <title>osc api subcommand</title>
+   <title>osc API subcommand</title>
 <screen>api: Issue an arbitrary request to the API
 
 Useful for testing.

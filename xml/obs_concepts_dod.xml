@@ -16,7 +16,7 @@
    </listitem>
    <listitem>
     <simpara>
-        automatic package updates when new upstream releases are availible
+        automatic package updates when new upstream releases are available
       </simpara>
    </listitem>
    <listitem>
@@ -112,7 +112,7 @@
   </para>
   <para>
    This option could be defined by any valid URL (HTTP and HTTPS) to the
-   origin of the repository but it's stronly recommended to use
+   origin of the repository but it is strongly recommended to use
    <command>https</command> with a <command>sslfingerprint</command> to
    bs_dodup possibility to verify its peer in order to avoid man-in-the-middle
    attacks. The download URL can be a mirror as we validate package
@@ -244,7 +244,7 @@ Version: GnuPG v1.4.12 (GNU/Linux)
   <section>
    <title>Arch Repository (arch)</title>
    <para>
-    Please be aware that there is currently no way to verify the origin of repository
+    Be aware that there is currently no way to verify the origin of repository
     for Arch.
    </para>
    <para>

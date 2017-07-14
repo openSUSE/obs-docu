@@ -15,7 +15,7 @@
  <para>
   The build constraints for an entire project or specific repositories is part of
   the project config. For each constraint, it contains a line
-<screen><command>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</command></screen>
+<screen>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</screen>
   The selector is a colon-separated list.
  </para>
  <para>
@@ -41,51 +41,51 @@
   </para>
   <para>
    Example for _constraints file:
-<screen><command>&lt;constraints exclude=&quot;false&quot;&gt;
+<screen>&lt;constraints exclude=&quot;false&quot;&gt;
   &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
    Example for project configuration:
-<screen><command>Constraint: hostlabel benchmark_runner</command></screen>
+<screen>Constraint: hostlabel benchmark_runner</screen>
   </para>
  </section>
  <section>
   <title>sandbox</title>
   <para>
    Defines the sandbox which is used for the build job. Sandboxes are chroot,
-   xen or kvm environments. There is also the virtual secure sandbox, which
-   allows building on xen or kvm. This constraints may also be
-   defined as a negative definition via the exclude=true attribute.
+   Xen or KVM environments. There is also the virtual secure sandbox, which
+   allows building on Xen or KVM. This constraints may also be
+   defined as a negative definition via the <literal>exclude=true</literal> attribute.
   </para>
   <para>
-   Example for _constraints file:
-<screen><command>&lt;constraints exclude=&quot;true&quot;&gt;
+   Example for <filename>_constraints</filename> file:
+<screen>&lt;constraints exclude=&quot;true&quot;&gt;
   &lt;sandbox&gt;secure&lt;/sandbox&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
    Example for project configuration:
-<screen><command>Constraint: sandbox secure</command></screen>
+<screen>Constraint: sandbox secure</screen>
   </para>
  </section>
  <section>
   <title>linux</title>
   <para>
-   The linux kernel specific part.
+   The Linux kernel specific part.
   </para>
   <section>
    <title>version</title>
    <para>
-    To require a specific linux kernel version.
+    To require a specific Linux kernel version.
    </para>
    <para>
     Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;linux&gt;&lt;version&gt;
     &lt;min&gt;3.0&lt;/min&gt;
     &lt;max&gt;4.0&lt;/max&gt;
   &lt;/version&gt;&lt;/linux&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
     Example for project configuration:
-<screen><command>Constraint: linux:version:min 3.0
-Constraint: linux:version:max 4.0</command></screen>
+<screen>Constraint: linux:version:min 3.0
+Constraint: linux:version:max 4.0</screen>
    </para>
    <section>
     <title>min</title>
@@ -108,13 +108,13 @@ Constraint: linux:version:max 4.0</command></screen>
    </para>
    <para>
     Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;linux&gt;
     &lt;flavor&gt;default&lt;/flavor&gt;
   &lt;/linux&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
     Example for project configuration:
-<screen><command>Constraint: linux:flavor default</command></screen>
+<screen>Constraint: linux:flavor default</screen>
    </para>
   </section>
  </section>
@@ -126,26 +126,26 @@ Constraint: linux:version:max 4.0</command></screen>
   <section>
    <title>cpu</title>
    <para>
-    To require a specific linux kernel version.
+    To require a specific Linux kernel version.
    </para>
    <section>
     <title>flag</title>
     <para>
-     CPU features which are provided by the hardware. On linux they can be
+     CPU features which are provided by the hardware. On Linux they can be
      found in /proc/cpuinfo. The flag element may be used multiple times to
-     require multiple cpu features.
+     require multiple CPU features.
     </para>
     <para>
      Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;hardware&gt;&lt;cpu&gt;
     &lt;flag&gt;mmx&lt;/flag&gt;
     &lt;flag&gt;sse2&lt;/flag&gt;
   &lt;/cpu&gt;&lt;/hardware&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
      Example for project configuration:
-<screen><command>Constraint: hardware:cpu:flag mmx
-Constraint: hardware:cpu:flag sse2</command></screen>
+<screen>Constraint: hardware:cpu:flag mmx
+Constraint: hardware:cpu:flag sse2</screen>
     </para>
    </section>
   </section>
@@ -156,13 +156,13 @@ Constraint: hardware:cpu:flag sse2</command></screen>
    </para>
    <para>
     Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;hardware&gt;
     &lt;processors&gt;4&lt;/processors&gt;
   &lt;/hardware&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
     Example for project configuration:
-<screen><command>Constraint: hardware:processors 4</command></screen>
+<screen>Constraint: hardware:processors 4</screen>
    </para>
   </section>
   <section>
@@ -177,15 +177,15 @@ Constraint: hardware:cpu:flag sse2</command></screen>
     </para>
     <para>
      Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;hardware&gt;
     &lt;disk&gt;
       &lt;size unit=&quot;G&quot;&gt;4&lt;/size&gt;
     &lt;/disk&gt;
   &lt;/hardware&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
      Example for project configuration:
-<screen><command>Constraint: hardware:disk:size unit=&quot;G&quot; 4</command></screen>
+<screen>Constraint: hardware:disk:size unit=&quot;G&quot; 4</screen>
     </para>
    </section>
   </section>
@@ -201,15 +201,15 @@ Constraint: hardware:cpu:flag sse2</command></screen>
     </para>
     <para>
      Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;hardware&gt;
     &lt;memory&gt;
       &lt;size unit=&quot;M&quot;&gt;1400&lt;/size&gt;
     &lt;/memory&gt;
   &lt;/hardware&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
      Example for project configuration:
-<screen><command>Constraint: hardware:memory:size unit=&quot;M&quot; 1400</command></screen>
+<screen>Constraint: hardware:memory:size unit=&quot;M&quot; 1400</screen>
     </para>
    </section>
   </section>
@@ -226,15 +226,15 @@ Constraint: hardware:cpu:flag sse2</command></screen>
     </para>
     <para>
      Example for _constraints file:
-<screen><command>&lt;constraints&gt;
+<screen>&lt;constraints&gt;
   &lt;hardware&gt;
     &lt;physicalmemory&gt;
       &lt;size unit=&quot;M&quot;&gt;1400&lt;/size&gt;
     &lt;/physicalmemory&gt;
   &lt;/hardware&gt;
-&lt;/constraints&gt; </command></screen>
+&lt;/constraints&gt;</screen>
      Example for project configuration:
-<screen><command>Constraint: hardware:physicalmemory:size unit=&quot;M&quot; 1400</command></screen>
+<screen>Constraint: hardware:physicalmemory:size unit=&quot;M&quot; 1400</screen>
     </para>
    </section>
   </section>
@@ -253,8 +253,8 @@ Constraint: hardware:cpu:flag sse2</command></screen>
     <section>
       <title>Less than half of the workers satisfy the constraints</title>
       <para>
-       The job will stay in state scheduled and the dispatch details are set to tell the user that this job can take a long time to be built. This will be shown in the WebUI on mouse over and the scheduled state will be highlighted as well.
-<screen><command>waiting for 4 compliant workers (4 down)</command></screen>
+       The job will stay in state scheduled and the dispatch details are set to tell the user that this job can take a long time to be built. This will be shown in the Web UI on mouse over and the scheduled state will be highlighted as well.
+<screen>waiting for 4 compliant workers (4 down)</screen>
        The <command>(4 down)</command> means that 4 of the 4 compliant workers are down and that someone should have a look.
       </para>
     </section>
@@ -262,11 +262,11 @@ Constraint: hardware:cpu:flag sse2</command></screen>
       <title>No workers satisfy the constraints</title>
       <para>
        If no worker can handle the constraints defined by the package or project the build job fails. There is also a hint in the build log what has failed.
-<screen><command>package build was not possible:
+<screen>package build was not possible:
 
 no compliant workers (constraints mismatch hint: hardware:processors sandbox)
 
-Please adapt your constraints.</command></screen>
+Please adapt your constraints.</screen>
       </para>
     </section>
   </section>
@@ -277,25 +277,24 @@ Please adapt your constraints.</command></screen>
       <screen><command>osc checkconstraints [OPTS] REPOSITORY ARCH CONSTRAINTSFILE</command></screen>
       Either you give a repository and an arch or osc will check the constraints for all repository / arch pairs for the package.
       A few examples:
-      <screen><command># osc checkconstraints
-
+      <screen><command># osc checkconstraints</command>
 Repository                Arch                      Worker
 ----------                ----                      ------
 openSUSE_Leap_42.2        x86_64                    1
-openSUSE_Leap_42.1        x86_64                    1</command></screen>
+openSUSE_Leap_42.1        x86_64                    1</screen>
       If no file is given it takes the local _constraints file. If this file does not
       exist or the --ignore-file switch is set only the project constraints are used.
-      <screen><command># osc checkconstraints openSUSE_Leap_42.1 x86_64
-
+      <screen><command># osc checkconstraints openSUSE_Leap_42.1 x86_64</command>
 Worker
 ------
 x86_64:worker:1
-x86_64:worker:2</command></screen>
+x86_64:worker:2</screen>
       If a repository and an arch is given a list of compliant workers is returned.
       </para>
       <para>
       Another command to verify a worker and display the worker information is osc workerinfo. 
-      <screen><command>&lt;worker hostarch="x86_64" registerserver="http://localhost:5252" workerid="worker:1"&gt;
+      </para>
+      <screen>&lt;worker hostarch="x86_64" registerserver="http://localhost:5252" workerid="worker:1"&gt;
   &lt;hostlabel&gt;MY_WORKER_LABEL_1&lt;/hostlabel&gt;
   &lt;sandbox&gt;chroot&lt;/sandbox&gt;
   &lt;linux&gt;
@@ -311,7 +310,8 @@ x86_64:worker:2</command></screen>
     &lt;processors&gt;2&lt;/processors&gt;
     &lt;jobs&gt;1&lt;/jobs&gt;
   &lt;/hardware&gt;
-&lt;/worker&gt;</command></screen>
+&lt;/worker&gt;</screen>
+      <para>
       It returns the information of the desired worker. 
       </para>
   </section>

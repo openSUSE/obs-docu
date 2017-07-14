@@ -17,9 +17,9 @@ on the remote instance, if it has a downtime your instance cannot do any
 builds for these targets, if the remote admins decide to remove some
 targets you cannot use them anymore.</simpara>
   <simpara>The easiest way to interconnect with some of the public OBS instances is to
-use the Web UI. You need to login on an adminstrator account of your instance
+use the Web UI. You need to log in with an administrator account of your instance
 to do this. On the start page of an administrator account you will find
-a <emphasis role="strong">Configuration</emphasis> link. On the Configuration page you find a Interconnect
+a <emphasis role="strong">Configuration</emphasis> link. On the Configuration page you find an Interconnect
 tab on the top, use this and select the public side you want.</simpara>
   <simpara>If you want to connect to a not listed instance, you can simple create a
 remote project using the <emphasis>osc meta prj</emphasis> command. A remote project differs
@@ -40,7 +40,7 @@ This project refers to projects hosted on the openSUSE Build Service
   <simpara>With local hosted distributions packages you are independent from other parties.
 On sides with no or bad internet connections, this is the only way to go.
 You do not need to build the distribution packages on your instance, you can use binary
-pakages for this. Here are different ways to get a local build repository:</simpara>
+packages for this. Here are different ways to get a local build repository:</simpara>
   <orderedlist numeration="arabic">
    <listitem>
     <simpara>
@@ -63,7 +63,7 @@ use the install media to import the binaries
 </simpara>
    </listitem>
   </orderedlist>
-  <simpara>These tasks need to be run on the obs backend. In a partition setup you need to run it on the partition
+  <simpara>These tasks need to be run on the obs back-end. In a partition setup you need to run it on the partition
 which would the owner for the project.</simpara>
   <section id="_mirror_from_a_remote_obs_instance">
    <title>Mirror from a remote OBS instance</title>
@@ -94,12 +94,12 @@ Options help:
    <title>Import binary packages</title>
    <simpara>This is the same procedure for all local sources.
 If you have a local copy of a distribution, you can either use symbolic links to
-the binary packages or copy them in a directory on the backend repo server under the
+the binary packages or copy them in a directory on the back-end repo server under the
 <emphasis>'/srv/obs/build'</emphasis> directory. You should follow the common name schema for build repository here.
-As first step you should create a empty project for the distribution, you can use the WebUI or the <emphasis role="strong">osc</emphasis>
-commandline tool.
+As first step you should create an empty project for the distribution, you can use the Web UI or the <emphasis role="strong">osc</emphasis>
+command-line tool.
 Then you add a repository with name <emphasis>standard</emphasis> and the build architectures you want.
-Here a example project meta file:</simpara>
+Here an example project meta file:</simpara>
 <screen>&lt;project name="SUSE:13.2"&gt;
   &lt;title&gt;openSUSE 13.2 build repositories&lt;/title&gt;
   &lt;description&gt;openSUSE 13.2 build repositories&lt;/description&gt;
@@ -148,9 +148,9 @@ testobs:/srv/www/obs/api # chown obsrun:obsrun \
 You need the architecture specific package and the <emphasis>noarch</emphasis> packages as well.</simpara>
    <important>
     <simpara>If you import packages for enterprise distributions like SLES12 you also need the packages
-from the SDK. Maybe you need packages from addon products as well, depending what software you want build.</simpara>
+from the SDK. Maybe you need packages from add-on products as well, depending what software you want build.</simpara>
    </important>
-   <simpara>Finally you should trigger a rescan for the project on the backend server using <emphasis role="strong">obs_admin</emphasis>:</simpara>
+   <simpara>Finally you should trigger a rescan for the project on the back-end server using <emphasis role="strong">obs_admin</emphasis>:</simpara>
 <screen>testobs # obs_admin --rescan-repository SUSE:13.2 standard i586
 testobs # obs_admin --rescan-repository SUSE:13.2 standard x86_64</screen>
    <simpara>This reads all packages and creates the dependency tree.</simpara>

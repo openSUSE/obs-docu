@@ -76,7 +76,7 @@
    Source Services may be used to validate sources. This can happen per
    package, which is useful when the packager wants to validate that downloaded
    sources are really from the original maintainer. Or validation can happen
-   for an entire project to apply general policies. These services can't get
+   for an entire project to apply general policies. These services cannot get
    skipped in any package
   </para>
   <para>
@@ -111,7 +111,7 @@
     _service: prefix. Additionally the service runs on the server by default,
     but usually the service should detect that the result is the same and skip
     the generated files. In case they differ for any reason (because the webui
-    or api was used for example) they get generated and added on the server.
+    or API was used for example) they get generated and added on the server.
    </para>
   </section>
   <section>
@@ -127,7 +127,7 @@
    <title>serveronly Mode</title>
    <para>
     The serviceonly mode is running the service on the service only. This can
-    be usefull, when the service is not available or can not work on developer
+    be useful, when the service is not available or can not work on developer
     workstations.
    </para>
   </section>
@@ -166,7 +166,7 @@
    order. Each service may define a list of parameters and a mode. The project
    wide services get called after the per package defined services. The
    _service file is an xml file like this example:
-<screen><command>
+<screen>
 &lt;services&gt;
   &lt;service name="download_files" mode="trylocal" /&gt;
   &lt;service name="verify_file"&gt;
@@ -176,7 +176,7 @@
   &lt;/service&gt;
   &lt;service name="update_source" mode="disabled" /&gt;
 &lt;/services&gt;
-        </command></screen>
+</screen>
    This example downloads the files via download_files service via the given
    URLs from the spec file. When using osc this file gets committed as part of
    the commit. Afterwards the krabber-1.0.tar.gz file will always be compared
@@ -190,9 +190,9 @@
  <section>
   <title>Dropping a source service again</title>
   <para>
-   Sometimes it is useful to continued to work on generated files manualy. In
+   Sometimes it is useful to continued to work on generated files manually. In
    this situation the _service file needs to be dropped, but all generated
-   files need to be commited as standard files. The OBS provides the
+   files need to be committed as standard files. The OBS provides the
    "mergeservice" command for this. It can also be used via osc by calling
    <command>osc service merge</command>.
   </para>

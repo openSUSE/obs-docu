@@ -16,7 +16,8 @@
  </para>
  <para>
   The build config is reachable via API /source/PROJECT/_config, via
-  <command>osc meta prjconf</command> or via webui via Project Config tab.
+  <command>osc meta prjconf</command> or via the Web UI via the
+  <guimenu>Project Config</guimenu> tab.
  </para>
  <section>
   <title>Configuration File Syntax</title>
@@ -27,7 +28,7 @@
    arguments'.
   </para>
   <para>
-   &lt;PACKAGES&gt; mean binary package provides, but not the full filename.
+   &lt;PACKAGES&gt; mean binary package provides, but not the full file name.
    For example gcc, but not gcc-1.2.3.i386.rpm. Provides of a package can not
    be used either.
   </para>
@@ -62,7 +63,7 @@
    <para>
     To eliminate build cycles the to-be-built package is not installed by
     default, even when it is required. Keep can be used overwrite this
-    behaviour. It is usually needed for packages like 'make' that are used to
+    behavior. It is usually needed for packages like 'make' that are used to
     build itself. Preinstalled packages are automatically kept, as the package
     installation program needs to work all the time.
    </para>
@@ -71,7 +72,7 @@
    <title>VMInstall: &lt;PACKAGES&gt;</title>
    <para>
     VMInstall is like Preinstall, but these packages get only installed when a
-    virtual machine like XEN or KVM is used for building. Usually packages like
+    virtual machine like Xen or KVM is used for building. Usually packages like
     'mount' are listed here.
    </para>
   </section>
@@ -99,7 +100,7 @@
    <para>
     The export filter can be used to export build results from one architecture
     to others. This is required when one architecture needs packages from
-    another architector for building. The regexp must match the resulting
+    another architecture for building. The regexp must match the resulting
     binary name of the package. It will export it to all listed scheduler
     architectures. Using a single dot will export it to the architecture which
     was used to build it. So not using a dot there will filter the package.
@@ -121,7 +122,7 @@
     complain about that situation. This is unlike like most package managing
     tools, which just pick one of the package. Because one of OBS' goal is to
     provide reproducible builds, it reports an error in this case instead of
-    chosing a random package. The Prefer: tag lists packages to be preferred in
+    choosing a random package. The Prefer: tag lists packages to be preferred in
     case a choice exists. When the package name is prefixed with a dash, this
     is treated as a de-prefer.
    </para>
@@ -136,7 +137,7 @@
   <section>
    <title>Ignore: &lt;PACKAGES&gt;</title>
    <para>
-    Ignore can be used to break dependencies. This can be usefull to reduce the
+    Ignore can be used to break dependencies. This can be useful to reduce the
     number of needed packages or to break cyclic dependencies. Be careful with
     this feature, as breaking dependencies can have surprising results.
    </para>
@@ -151,7 +152,7 @@
   <section>
    <title>FileProvides: &lt;FILE&gt; &lt;PACKAGES&gt;</title>
    <para>
-    OBS ignores dependendencies to files (instead of package names) by default.
+    OBS ignores dependencies to files (instead of package names) by default.
     This is mostly done to reduce the amount of memory needed, as the package
     file lists take up a considerable amount of repository meta data. As a
     workaround, FileProvides can be used to tell the systems which packages
@@ -174,7 +175,7 @@
    </para>
    <itemizedlist>
     <listitem>
-     <simpara><parameter>vmfstype:</parameter> Defines a specific filesystem when building inside of a VM.
+     <simpara><parameter>vmfstype:</parameter> Defines a specific file system when building inside of a VM.
         </simpara>
     </listitem>
     <listitem>
@@ -187,13 +188,13 @@
    <title>BuildEngine: &lt;ENGINE&gt;</title>
    <para>
     Use an alternative build engine. This is still chained inside of the build
-    script for security reasons. Alternatives are mock (for Fedora and RedHat)
+    script for security reasons. Alternatives are mock (for Fedora and Red Hat)
     and debootstrap (for Debian). This will avoid differences in the build
     environment setup, but it will also have an effect on speed and reduced
     features. It should only be used when you want to emulate the distribution
-    build. debbuild enginge will build deb files out of a spec file
+    build. debbuild engine will build deb files out of a spec file
     description. It can be used by the following definition inside of the
-    projet build config:
+    project build config:
 <screen><command>
 Repotype: debian
 Type: spec
@@ -216,7 +217,7 @@ Keep: debbuild
   <section>
    <title>Type: &lt;TYPE&gt;</title>
    <para>
-    Build recepie type. This is the format of the file which provides the build
+    Build recipe type. This is the format of the file which provides the build
     description. This gets usually autodetected, but in some rare cases it can
     be set here to either one of these: spec, dsc, kiwi, livebuild, arch,
     preinstallimage
@@ -226,7 +227,7 @@ Keep: debbuild
    <title>BinaryType: &lt;TYPE&gt;</title>
    <para>
     Binary type. This is the format of the files which will be the result of
-    the build jobs. This gets usually set depending on the build recepie type.
+    the build jobs. This gets usually set depending on the build recipe type.
     In some situations, for example a kiwi build job result gets converted into
     an rpm, it can be used to overwrite it. Possible values are: rpm, deb or
     none
@@ -259,7 +260,7 @@ Keep: debbuild
    <para>
     (OBS 2.4 or later): Sets the binary format used to setup the build
     environment. For example a package with spec build description may use and
-    generate deb packages instead of rpms. If no binary type is specifed, OBS
+    generate deb packages instead of rpms. If no binary type is specified, OBS
     deduces it from the recipe type. If the recipe type is also not set, OBS
     looks at the Preinstall package list for a hint.
    </para>
@@ -267,13 +268,13 @@ Keep: debbuild
   <section>
    <title>Repotype: &lt;TYPE[:OPTIONS]&gt; ...</title>
    <para>
-    Defines the repository format for pulished repositories. Valid values are:
+    Defines the repository format for published repositories. Valid values are:
     none, rpm-md, suse, debian, hdlist2, arch, staticlinks. The OPTIONS
     parameter depends on the repository type, for rpm-md the known options are
     'legacy' to create the old rpm-md format, 'deltainfo' or 'prestodelta' to
     create delta rpm packages, 'rsyncable' to use rsyncable gzip compression.
     To split the debug packages in an own published repository the option
-    splitdebug:$REPOSIORY_SUFFIX can be used.
+    <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal> can be used.
    </para>
   </section>
   <section>
@@ -286,7 +287,7 @@ Keep: debbuild
    <title>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</title>
    <para>
     (OBS 2.4 or later): Define build constraints for build jobs. The selector
-    is a colon-separated list which gets a string assigned. Please see the
+    is a colon-separated list which gets a string assigned. See the
     build job constraints page for details.
    </para>
   </section>

@@ -64,8 +64,8 @@ The use of regular expressions has to be activated by defining <emphasis>$publis
     our $publishedhook = {
         "Product\/SLES11.*" =&gt; ["/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"],
     };</screen>
-  <simpara>The configuration is read by the publisher at startup only, so it has to be restarted after cofiguration changes have been made.
-The hook script’s output is not logged by the publisher and should be written to a logfile by the script itself. In case of a broken script,this is logged in the publisher’s logfile (/srv/obs/log/publisher.log by default):</simpara>
+  <simpara>The configuration is read by the publisher at startup only, so it has to be restarted after configuration changes have been made.
+The hook script’s output is not logged by the publisher and should be written to a log file by the script itself. In case of a broken script,this is logged in the publisher’s log file (/srv/obs/log/publisher.log by default):</simpara>
 <screen>Mon Mar  7 14:34:17 2016 publishing Product/SLES12
     fetched 0 patterns
     running createrepo
@@ -73,7 +73,7 @@ The hook script’s output is not logged by the publisher and should be written 
     /usr/local/bin/script2run_sles12 failed: 65280
     syncing database (6 ops)</screen>
   <simpara>Interactive scripts are not working and will fail immediately.</simpara>
-  <simpara>If you need to do a lot of work in the hook script and dont want to block the publisher all the time, you should consider using a separate daemon that does all the work and just gets triggered by the configured hook script.</simpara>
+  <simpara>If you need to do a lot of work in the hook script and don't want to block the publisher all the time, you should consider using a separate daemon that does all the work and just gets triggered by the configured hook script.</simpara>
   <simpara>The scripts are called without a timeout.</simpara>
  </section>
  <section id="_example_publisher_scripts">

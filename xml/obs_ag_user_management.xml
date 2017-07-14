@@ -9,21 +9,21 @@
 <section id="_user_and_group_management">
  <title>User and group management</title>
  <simpara>The OBS has an integrated user and group management with a role based
-access rights model. In every OBS instance at least one user need to
-exist an have the global Admin role assigned. Groups can be defined by the
-Admin and and istead of adding a list of users to a project/package role
-usercan be added to a group and the group will be added to a project or
+access rights model. In every OBS instance, at least one user need to
+exist and have the global Admin role assigned. Groups can be defined by the
+Admin and and instead of adding a list of users to a project/package role
+user can be added to a group and the group will be added to a project or
 package role.</simpara>
  <section id="_user_and_group_roles">
   <title>User and group roles</title>
   <simpara>The OBS role model has one global role: Admin, which can be granted to users.
 Am OBS admin has access to all projects and packages via the API interface
-and the web user interface. Some menues in the web ui do not allow changes
+and the web user interface. Some menus in the Web UI do not allow changes
 by an Admin (e.g. the Repository Menu) as long the Admin is not a Maintainer
 for the project as well. But the same change can be done via editing the
-meta data directely.
+meta data directly.
 The other roles are specific to projects and packages and can be assigned
-to an user or a group.</simpara>
+to a user or a group.</simpara>
   <table frame="all" rowsep="1" colsep="1">
    <title>OBS roles</title>
    <tgroup cols="3">
@@ -99,9 +99,9 @@ to an user or a group.</simpara>
  </section>
  <section id="_standalone_user_and_group_database">
   <title>Standalone user and group database</title>
-  <simpara>OBS provides it’s own user database which can also store a password. The
-authentication to the api happens via HTTP BASIC AUTH. Please see the
-api documentation to find out how to create, modify or delete user data.
+  <simpara>OBS provides its own user database which can also store a password. The
+authentication to the API happens via HTTP BASIC AUTH. See the
+API documentation to find out how to create, modify or delete user data.
 Also a call for changing the password exists.</simpara>
   <simpara>Users can be added by the maintainer or if registration is allowed via the
 registration menu on the Web UI. It can be configured that a confirmation is
@@ -109,17 +109,17 @@ needed after registration before the user may login.</simpara>
  </section>
  <section id="_proxy_mode">
   <title>Proxy mode</title>
-  <simpara>The proxy mode can be used for esp. secured instances, where the OBS web
+  <simpara>The proxy mode can be used for specially secured instances, where the OBS web
 server shall not get connected to the network directly. There are authentication proxy products
 out there which do the authentication and send the user name via an HTTP header to OBS.
-Original this was developed for IChain - a legacy single login authentication method from Novell.
-This has also the advantage that the user password never reaches OBS.</simpara>
+Originally, this was developed for IChain - a legacy single login authentication method from Novell.
+This also has the advantage that the user password never reaches OBS.</simpara>
   <simpara>The proxy mode can also be used for LDAP or Active Directory, but only for
 authentication.</simpara>
   <caution>
    <simpara>With enabled proxy mode the OBS trust the username in the http header.
 Since this was verified by the Web server and the the Web server only forward requests
-for a verified and authentificated session, this is safe, as long you make
+for a verified and authenticated session, this is safe, as long you make
 sure that the direct web/API interface of the OBS is not reachable from the
 outside.</simpara>
   </caution>
@@ -168,14 +168,14 @@ roles and user properties are managed inside the OBS.</simpara>
   <title>LDAP/Active Directory</title>
   <note>
    <para>
-    Note: The LDAP support is considered experimental and is not official supported.
+    The LDAP support is considered experimental and is not officially supported.
    </para>
   </note>
   <simpara>Using LDAP or Active Directory as source for user and optional group
 information in environments which already have such a server has the
 advantage for the admin people that the user related information only need
 to be maintained in one place. In the following sections we are writing
-LDAP, but this includes Microsofts Active Directory as well. Only in parts
+LDAP, but this includes Microsoft's Active Directory as well. Only in parts
 where differences exists Active Directory (AD) will be explicit mentioned.</simpara>
   <simpara>In this mode the OBS  contact the LDAP server directly
 from the OBS API, if the user was found and provides the correct password
@@ -189,10 +189,10 @@ also filtered.</simpara>
 need to had logged in at least one time, since the check for available users
 is local only.
 If the LDAP group mode is enabled, LDAP groups are also added transparently,
-if a existing group on the LDAP server is added to a project or package.</simpara>
+if an existing group on the LDAP server is added to a project or package.</simpara>
   <simpara>On bigger installations this mode can result in many search requests to
 the LDAP server and slow down the the access to projects and packages,
-because on every role check a LDAP search operation will contact the LDAP
+because on every role check an LDAP search operation will contact the LDAP
 server.
 As alternative method group mirroring was implemented. This allows that the
 internal OBS group database is updated with the group membership information
@@ -201,8 +201,8 @@ OBS database and do not need additional LDAPoperations.</simpara>
   <note>
    <simpara>The local user group membership in :mirror mode is updated as follows: When the user logins,
 the user <emphasis>memberOf</emphasis> attributes are parsed and compared with the global OBS
-grouplist, if a group match the user is added, if he does not longer be a
-group member, he is removed. since this maybe a costly operation, depending
+grouplist, if a group matches, the user is added, if they are no longer a
+group member, they are removed. since this maybe a costly operation, depending
 on the group counts, this is only done on a full login. After a full login
 the user status is cashed for 2 minutes, if the user do a login during this
 time, nothing will be checked or updated. Here is a second mechanism to
@@ -214,7 +214,7 @@ in the local database become members.</simpara>
    <title>OBS LDAP configuration</title>
    <simpara>Currently the main OBS LDAP configuration is in the <emphasis>options.yml</emphasis> file.
 Beside the settings here also the openldap config file is evaluated by the
-Ruby LDAP implementation. This configfile is usually located at
+Ruby LDAP implementation. This config file is usually located at
 <emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional TLS/SSL directives
 like <emphasis role="strong">TLS_CACERT</emphasis>, <emphasis role="strong">TLS_CACERTDIR</emphasis> and <emphasis role="strong">TLS_REQCERT</emphasis>. For more information
 refer to the openldap ldap.conf man page.</simpara>
@@ -283,7 +283,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara>ldap_search_timeout</simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>timeout of a LDAP search</simpara>
+        <simpara>timeout of an LDAP search</simpara>
        </entry>
        <entry align="left" valign="top">
         <simpara>int 0…N <literal>5</literal>
@@ -305,7 +305,7 @@ refer to the openldap ldap.conf man page.</simpara>
         </simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>case senitive</simpara>
+        <simpara>case sensitive</simpara>
        </entry>
       </row>
       <row>
@@ -342,7 +342,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara>ldap_start_tls</simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>usr Start TLS on ldap protocol</simpara>
+        <simpara>usr Start TLS on LDAP protocol</simpara>
        </entry>
        <entry align="left" valign="top">
         <simpara>:off <literal>:on</literal>
@@ -363,7 +363,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>if not set 389 for ldap, 636 for ldaps</simpara>
+        <simpara>if not set 389 for LDAP, 636 for LDAPS</simpara>
        </entry>
       </row>
       <row>
@@ -385,7 +385,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara>ldap_search_base</simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>company’s ldap search base for the users who will use OBS</simpara>
+        <simpara>company’s LDAP search base for the users who will use OBS</simpara>
        </entry>
        <entry align="left" valign="top">
         <simpara><literal>none</literal>
@@ -514,7 +514,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara>ldap_auth_attr</simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Used auth atrribute for :local</simpara>
+        <simpara>Used auth attribute for :local</simpara>
        </entry>
        <entry align="left" valign="top">
         <simpara><literal>userPassword</literal>
@@ -559,7 +559,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara>ldap_entry_base</simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Base dn for the new added entry</simpara>
+        <simpara>Base DN for the new added entry</simpara>
        </entry>
        <entry align="left" valign="top">
         <simpara/>
@@ -602,7 +602,7 @@ refer to the openldap ldap.conf man page.</simpara>
         <simpara>ldap_group_search_base</simpara>
        </entry>
        <entry align="left" valign="top">
-        <simpara>company’s ldap search base for groups</simpara>
+        <simpara>company’s LDAP search base for groups</simpara>
        </entry>
        <entry align="left" valign="top">
         <simpara/>
@@ -673,7 +673,7 @@ ldap_servers: ldap1.mycompany.com:ldap2.mycompany.com
 # Max number of times to attempt to contact the LDAP servers
 ldap_max_attempts: 15
 
-# timeout of a ldap search requests to avoid infinitely lookups (in seconds, 0 no timeout)
+# timeout of an ldap search requests to avoid infinitely lookups (in seconds, 0 no timeout)
 ldap_search_timeout: 5
 
 # The attribute the user member of is stored in (case sensitive !)
@@ -767,7 +767,7 @@ ldap_group_title_attr: cn
 ldap_group_objectclass_attr: group
 
 # The LDAP group for obs admins
-# if this group is set and a user belongs to this group he get the global admin role
+# if this group is set and a user belongs to this group they get the global admin role
 #
 ldap_obs_admin_group: obsadmins</screen>
   </section>
@@ -781,7 +781,7 @@ ldap_obs_admin_group: obsadmins</screen>
     <listitem>
      <simpara>
 LDAP bind method.<?asciidoc-br?>
-   With the provided credentials a LDAP bind request is tried.
+   With the provided credentials, an LDAP bind request is tried.
 </simpara>
     </listitem>
     <listitem>
@@ -800,7 +800,7 @@ privilege user.</simpara>
   </section>
   <section id="_kerberos">
    <title>Kerberos</title>
-   <simpara>In OBS you can use single sign on via kerberos tickets.</simpara>
+   <simpara>In OBS you can use single sign on via Kerberos tickets.</simpara>
    <simpara>OBS Kerberos configuration resides in the <emphasis>options.yml</emphasis> file.</simpara>
    <table frame="all" rowsep="1" colsep="1">
     <title>Kerberos configuration options</title>
@@ -868,10 +868,10 @@ kerberos_realm: "EXAMPLE.COM"
 </screen>
   <note>
    <para>
-    Note: Once kerberos is enabled, only users with logins that match users known to
-          kerberos will be able to authenticate to OBS.
+    Once Kerberos is enabled, only users with logins that match users known to
+          Kerberos will be able to authenticate to OBS.
           It is recommended to give admin rights to a matching user before enabling
-          kerberos mode.
+          Kerberos mode.
    </para>
   </note>
   </section>
@@ -904,7 +904,7 @@ kerberos_realm: "EXAMPLE.COM"
     <para>
      A token can be registered as generic token, means allowing to execute all
      source services in OBS if the user has permissions. You can create such a
-     token and execute operation with
+     token and execute the operation with
     </para>
 <screen><command>osc token --create</command></screen>
 <screen><command>osc token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>

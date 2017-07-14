@@ -23,12 +23,12 @@
   <para>
    Things which can be verified based on a given source can be checked even
    before commit time on the developers workstation. This is the earliest
-   possible point of time to add a check. But it can also optionaly be enforced
+   possible point of time to add a check. But it can also optionally be enforced
    on the server side.
   </para>
   <para>
-   Automated source processing is done by source services in OBS world. Please
-   check the source service chapter how to use or write one. It is important to
+   Automated source processing is done by source services in OBS world.
+   Check the source service chapter how to use or write one. It is important to
    decide if the test case shall output warning messages and when it shall
    report an error by exit status.
   </para>
@@ -62,7 +62,7 @@
    <para>
     SUSE distros is also providing build time checks for testing the installed
     files inside of the build root. It is to be used for test cases which shall
-    run on all packages which are build inside of a distribuition. This hook
+    run on all packages which are build inside of a distribution. This hook
     can be used by installing a file to /usr/lib/rpm/brp-suse.d/ directory.
     These scripts have also the power to modify the installed files if needed.
    </para>
@@ -74,14 +74,14 @@
     distros. Debian distributions are using the lintian tool.
    </para>
    <para>
-    These checks are executed by the build script after the a successful build
-    happened. Please note that these are executed as standard user by default.
+    These checks are executed by the build script after a successful build.
+    Note that these are executed as the standard user by default.
    </para>
   </section>
   <section>
    <title>Post build root checks</title>
    <para>
-    Files in /usr/lib/build/checks/* are executed as root user. Typical uscases
+    Files in /usr/lib/build/checks/* are executed as root user. Typical use cases
     are install tests of the build packages to ensure that the scripts inside
     of the packages are working in general.
    </para>
@@ -91,14 +91,14 @@
    <para>
     The file /usr/lib/build/kiwi_post_run is executed after kiwi jobs have
     finished. It can be used to run the appliance or to modify it. For example
-    to package an appliance into a rpm.
+    to package an appliance into an rpm.
    </para>
   </section>
  </section>
  <section>
   <title>Work-flow checks</title>
   <para>
-   Work flow steps, for example transfering packages from one project to
+   Work flow steps, for example transferring packages from one project to
    another, are done via requests in OBS. At least when multiple parties are
    involved. One or more of these parties can be automated test cases. Or human
    manual approval steps.
@@ -112,7 +112,7 @@
   <section>
    <title>Automated test cases</title>
    <para>
-    Open requests can be requested in an xml parseable way via the api running
+    Open requests can be requested in an XML parseable way via the API running
    </para>
 <screen><command>osc api /request?states=review&amp;user=auto-review-user&amp;roles=reviewer&amp;reviewstates=new&amp;view=collection</command></screen>
    <para>

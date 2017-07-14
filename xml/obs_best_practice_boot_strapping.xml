@@ -13,10 +13,10 @@
   you could have other OBS projects and packages to your local OBS instance
   after your OBS install. There are some useful OSC commands examples and OBS
   working mechanism explanation in this chapter also. Basically this chapter is
-  a copy from Build Service portal. please check below for OBS bootstrap from
-  Build Service portal.
+  a copy from Build Service portal. For information about OBS bootstrapping on the
+  Build Service portal, see
+  <ulink url="https://en.opensuse.org/openSUSE:Build_Service_private_instance_boot_strapping"/>.
  </para>
-<screen> <command>  http://en.opensuse.org/openSUSE:Build_Service_private_instance_boot_strapping </command> </screen>
  <section>
   <title>The issue</title>
   <para>
@@ -32,11 +32,12 @@
   <section>
    <title>Create your first project</title>
    <para>
-    Log on to the Web API. The default user Admin, with the password opensuse
+    Log on to the Web API. The default user Admin, with the password <literal>opensuse</literal>
     is available. Create your own login and password and set yourself as Admin.
     Log on to the Web UI as Admin and click on the Icon "Configuration" and add
     the openSUSE Build Service as remote instance. Select from under
-    'Locations' -> 'Projects'. At the end of the list click on 'Add_Project'.
+    <menuchoice><guimenu>Locations</guimenu><guimenu>Projects</guimenu></menuchoice>.
+    At the end of the list, click <guimenu>Add Project</guimenu>.
     Give it a name (e.g. Meego-test) Select your new project and create a
     sub-project 0.1. You have now a project Meego-test:1.0 Sub projects are
     handy to propagate Access Control Lists (acl) and for creating the version
@@ -60,24 +61,20 @@
      use these. First you need to import the project configuration.
     </para>
 <screen> 
-           <command> 
-            $ export PROJECT=MeeGo-test:0.1
-            $ osc -A http://api-url-source-obs meta prjconf $PROJECT > my_project.conf
-            $ osc -A http://api-url-target-obs meta prjconf -F my_project.conf $PROJECT
-           </command> 
-         </screen>
+$ export PROJECT=MeeGo-test:0.1
+$ osc -A http://api-url-source-obs meta prjconf $PROJECT > my_project.conf
+$ osc -A http://api-url-target-obs meta prjconf -F my_project.conf $PROJECT
+</screen>
     <para>
      Then import the project. As you might have some Links in the project that
      you import, it is a good idea to keep the source and target project names
      identical.
     </para>
 <screen> 
-           <command> 
-        $ PRJ=ProjectToCopy; for i in `osc -A http://api.source.obs.domain ls $PRJ`; do \\
+$ PRJ=ProjectToCopy; for i in `osc -A http://api.source.obs.domain ls $PRJ`; do \\
 osc -A http://api.source.obs.domain \\
 copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done 
-           </command> 
-         </screen>
+</screen>
    </section>
    <section>
     <title>Without a Login on a remote OBS</title>
@@ -88,14 +85,14 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
      as provided by openSUSE or MeeGo - before proceeding this way. You will
      not be able to import the project config and you will have to create it by
      hand. This is too long to be covered in this HowTo. For more explanation
-     about Build Service project config, please visit below.
+     about Build Service project config, see
+     <ulink url="http://en.opensuse.org/openSUSE:Build_Service_prjconf"/>.
     </para>
-<screen> <command> http://en.opensuse.org/openSUSE:Build_Service_prjconf </command> </screen>
     <para>
      Then you need to download all your rpm source on to a local machine and
      import it into your project with the command.
     </para>
-<screen> <command> $ osc importsrcpkg  </command> </screen>
+<screen><command>$ osc importsrcpkg</command></screen>
    </section>
    <section>
     <title>Bootstrapping</title>
@@ -113,12 +110,15 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
      that you can also build against remote baseline. Double check that the
      preliminary step have been executed correctly. You must have already :
      copied a Linux base distribution in an OBS project defined a build target
-     for that base project. Note : If you have not defined a build target the
-     need directory structure will not exist. It's a preliminary mandatory
-     step. stop the scheduler as it will create a mess if the system is not
-     stable
+     for that base project.
     </para>
-<screen> <command> # rcobsscheduler stop  </command> </screen>
+    <para>
+     If you have not defined a build target, the
+     necessary directory structure will not exist. This is a mandatory
+     step of preparation. Stop the scheduler as it will create a mess if the system is not
+     stable:
+    </para>
+<screen><command># rcobsscheduler stop</command></screen>
     <para>
      * Add binaries to the :full directory of the Project ssh onto the OBS
      server. Now go to the project’s build directory, and create a directory
@@ -126,7 +126,7 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
      repository as defined in your project. It might change depending of who
      created the initial build repo.
     </para>
-<screen> <command> # cd /obs/build/$PROJECT/standard/i586 </command> </screen>
+<screen><command># cd /obs/build/$PROJECT/standard/i586</command></screen>
     <para>
      This directory structure should already exist. If not, there is a problem
      (note that /obs is link and the target may vary with your implementation).
@@ -139,22 +139,21 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
      to the :full directory of the Project. Change all user/group privileges
      under /srv/obs/build/ to “obsrun”
     </para>
-<screen> <command> # chown -R obsrun:obsrun /srv/obs/build </command> </screen>
+<screen><command># chown -R obsrun:obsrun /srv/obs/build</command></screen>
     <para>
      If you leave root as owner of :full, it will still build but the scheduler
      will fail (almost silently) to upgrade :full with the latest built
      packages. Except in very special cases, it is very unlikely that you want
      to do so. * Start the OBS scheduler
     </para>
-<screen> <command> # rcobsscheduler start </command> </screen>
+<screen><command># rcobsscheduler start</command></screen>
     <para>
      * Force the obs to reindex your new :full directory. It will send an event
      to the scheduler which will create a file named :full.solv
     </para>
 <screen> 
-             <command> # obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH 
-             </command> 
-           </screen>
+<command># obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH</command>
+</screen>
     <section>
      <title>Troubleshooting</title>
      <para>
@@ -164,26 +163,22 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
       not return any file name.
      </para>
 <screen> 
-           <command> 
-             #find /obs/build ! -user obsrun
-             #chown -R obsrun:obsrun  /obs/build   (will correct ownership issue)
-           </command> 
-         </screen>
+#find /obs/build ! -user obsrun
+#chown -R obsrun:obsrun  /obs/build   (will correct ownership issue)
+</screen>
      <para>
       * Force the obs to reindex your new :full directory. It will create a
       file named :full.solv
      </para>
-<screen> <command> $obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH  </command> </screen>
+<screen><command>$obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH</command></screen>
      <para>
       * Check that your rpm are valid (e.g. not damaged during transfer)
      </para>
 <screen> 
-            <command> 
-              #cd /obs/build/$PROJECT/standard/i586:full
-              #for I in `ls *.rpm` ; do rpm -qlp $I >/dev/null; if [ $? -ne 0 ] ;then echo $I >>../error.lst ; fi ; done
-              #cat ../error.lst (must be empty, all rpm in error needs re-installation) 
-            </command> 
-         </screen>
+#cd /obs/build/$PROJECT/standard/i586:full
+#for I in `ls *.rpm` ; do rpm -qlp $I >/dev/null; if [ $? -ne 0 ] ;then echo $I >>../error.lst ; fi ; done
+#cat ../error.lst (must be empty, all rpm in error needs re-installation) 
+</screen>
      <para>
       * Still not working, get a look in the log files in the directory
       /obs/log. You can start by having a look at
@@ -191,15 +186,15 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
       "expanding dependencies". You will find from there why the scheduler
       fails.
      </para>
-<screen> <command> #tail -f /obs/log/scheduler_i586.log  </command> </screen>
+<screen><command>#tail -f /obs/log/scheduler_i586.log</command></screen>
     </section>
    </section>
   </section>
  </section>
  <section>
-  <title>Creating my first project</title>
+  <title>Creating a first project</title>
   <para>
-   After creating a dedicated user via the web API, relog onto the web UI with
+   After creating a dedicated user via the Web API, log onto the Web UI again with
    your new login. Open your home project and create a sub project called
    "MyTest". To add a package in your new Home project, simply create a link
    [link Package from other Project] with one of the packages recently copied
@@ -207,10 +202,10 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
    Pick up a small one to speed compilation time. Click on the "+" near Build
    Repositories to add a repository. Move to the end of the page where all the
    standard Linux distributions are listed and click on [Advance]. Give a name
-   to your repo, e.g. my-test and pick fom the list the project/repo that you
+   to your repo, e.g. my-test and pick from the list the project/repo that you
    have just imported and rebuilt. This will request the OBS to build your new
    Home project against that repository. You can now check out your Home
-   project with the ocs command, modify a file or two and at your next
+   project with the osc command, modify a file or two and at your next
    check-in, the OBS will rebuild your Home project. If your reference project
    changes, the OBS will also rebuild your Home project.
   </para>

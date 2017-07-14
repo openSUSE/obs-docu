@@ -38,7 +38,7 @@
  </para>
  <para>
   To add a new bot to this list, a pattern must be defined. This is required to identify a bot. Almost all bots have their
-  own user agent that they're sending to a web server to identify them. For example, the user agent of the Googlebot looks
+  own user agent that they are sending to a Web server to identify them. For example, the user agent of the Googlebot looks
   like this:
   <screen>Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</screen>
   To choose the pattern for the new bot, compare the user agent of the bot you want to identify with others and look for a

@@ -19,7 +19,7 @@
    <title>Default Mode</title>
    <para>
     OBS provides its own user database which can also store a password. The
-    authentication to the api happens via HTTP BASIC AUTH. Please see the api
+    authentication to the API happens via HTTP BASIC AUTH. See the API
     documentation to find out how to create, modify or delete user data. Also a
     call for changing the password exists.
    </para>

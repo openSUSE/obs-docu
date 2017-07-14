@@ -16,7 +16,7 @@
   <title>Server Appliance</title>
   <para>
    The OBS server appliance contains a recent openSUSE distribution with a
-   pre-installed and pre-configured OBS frontend, backend and worker. The
+   pre-installed and pre-configured OBS front-end, back-end and worker. The
    operating system on this appliance adapts to the hardware on first boot and
    defaults to automatic IP and DNS configuration via DHCP.
   </para>
@@ -24,7 +24,7 @@
  <section>
   <title>Worker Appliance</title>
   <para>
-   The OBS worker appliance includes a recent openSUSE distribtion and the OBS
+   The OBS worker appliance includes a recent openSUSE distribution and the OBS
    worker component. The operating system on this appliance adapts to the
    hardware on first boot, defaults to automatic IP and DNS configuration via
    DHCP and OBS server discovery via SLP.
@@ -39,7 +39,7 @@
     <tgroup cols='2' align='left'>
      <thead>
       <row>
-       <entry>Filename Suffix</entry>
+       <entry>File Name Suffix</entry>
        <entry>Appliance for</entry>
       </row>
      </thead>
@@ -95,16 +95,14 @@
  <section>
   <title>Deployment</title>
   <para>
-   To help you deploy the OBS server appliance to a hard disk there is an basic
-   installer that you can boot from an USB stick. The installer can be found on
+   To help you deploy the OBS server appliance to a hard disk there is a basic
+   installer that you can boot from a USB stick. The installer can be found on
    the <ulink url="http://openbuildservice.org/download/">OBS Download
    page</ulink>.
   </para>
   <para>
-   The image can be written to an USB stick to boot from it:
-<screen><command>
-xzcat obs-server-install.x86_64.raw.xz > /dev/sdX
-      </command></screen>
+   The image can be written to a USB stick to boot from it:
+<screen><command>xzcat obs-server-install.x86_64.raw.xz > /dev/sdX</command></screen>
   </para>
   <warning>
    <para>
@@ -123,23 +121,22 @@ xzcat obs-server-install.x86_64.raw.xz > /dev/sdX
   <para>
    For production use you want to separate the OBS data from operating system
    of the appliance so you can re-deploy the appliance without touching your
-   OBS data. This can be achieved by createing a LVM volume group with the name
+   OBS data. This can be achieved by creating an LVM volume group with the name
    "OBS". This volume group should be as large as possible because it is
-   getting used by the OBS backend for data storage and the OBS workers for
-   root/swap/cache file systems. To create a LVM volume prepare a partition of
+   getting used by the OBS back-end for data storage and the OBS workers for
+   root/swap/cache file systems. To create an LVM volume prepare a partition of
    type "8e" and create the LVM via
-<screen><command>
-pvcreate /dev/sdX1
-vgcreate "OBS" /dev/sdX1
-    </command></screen>
+<screen>
+<command>pvcreate /dev/sdX1</command>
+<command>vgcreate "OBS" /dev/sdX1</command>
+</screen>
   </para>
   <para>
    Additionally if the OBS volume group contains a logical volume named
    "server", it will be used as the data partition for the server.
-<screen><command>
-lvcreate "OBS" -n "server"
-mkfs.xfs /dev/OBS/server
-    </command></screen>
+<screen>
+<command>lvcreate "OBS" -n "server"</command>
+<command>mkfs.xfs /dev/OBS/server</command></screen>
   </para>
  </section>
  <section>
@@ -152,8 +149,8 @@ mkfs.xfs /dev/OBS/server
   <warning>
    <para>
     If you re-deploy the entire image, keep in mind that you need to have your
-    data directory (/srv/obs) on a separate storage (LVM volume, partition
-    etc.) otherwise it will get deleted!
+    data directory (<filename>/srv/obs</filename>) on a separate storage (LVM volume, partition
+    etc.) otherwise it will be deleted!
    </para>
   </warning>
  </section>

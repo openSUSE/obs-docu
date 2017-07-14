@@ -7,9 +7,9 @@
   %entities;
 ]>
 <section id="_backend_components">
- <title>Backend Components</title>
+ <title>Back-end Components</title>
  <para>
-  The OBS Backend is a collection of Perl applications that manage the source
+  The OBS Back-end is a collection of Perl applications that manage the source
   files and build jobs of the OBS.
  </para>
  <section id="_source_server">
@@ -17,14 +17,14 @@
 <?dbfo-need height="3in" ?>
   <para>
    Maintains the source repository and project/package configurations. It
-   provides an HTTP interface, which is the only interface for the Frontend and
-   It may forward requests to further backend services.
+   provides an HTTP interface, which is the only interface for the Front-end and
+   It may forward requests to further back-end services.
   </para>
   <para>
    The Source Server keeps track of all sources that are available for
    building. It takes care of file deduplication so that every source file
-   is stored just once. This is done by keeping track of the MD5 hashes of
-   the files in combination with the filenames. All revisions of
+   is stored only once. This is done by keeping track of the MD5 hashes of
+   the files in combination with the file names. All revisions of
    committed sources are stored and will not be deleted. This guarantees the
    ability to get the source for every delivered binary package.
   </para>
@@ -38,7 +38,7 @@
 <?dbfo-need height="3in" ?>
   <para>
    A repository server provides access to the binaries via an HTTP interface. It
-   is used by the frontend via the source server only. Workers use the
+   is used by the front-end via the source server only. Workers use the
    server for registration, requesting the needed binaries for the build jobs
    and storing the result. Notifications for schedulers are also created by
    repository servers. Each OBS installation has at least one repository
@@ -90,7 +90,7 @@
    repositories. It merges the build result of all architectures into a
    defined directory structure, creates the needed metadata, and may sync it to
    a download server. It maintains the content of the "repos" directory on the
-   backend. Each OBS installation has one publisher per partition.
+   back-end. Each OBS installation has one publisher per partition.
   </para>
  </section>
  <section id="_signer">

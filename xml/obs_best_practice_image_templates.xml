@@ -55,11 +55,11 @@
   <para>
    Add the 'KIWI image build' repository to your project. This repository is
    needed to build KIWI images in your project.
-   Go to the 'Repositories' tab, click on 'Add repositories' and chlick on the
-   'KIWI image build' checkbox.
+   Go to the 'Repositories' tab, click on 'Add repositories' and click on the
+   'KIWI image build' check box.
   </para>
   <figure>
-   <title>Enabling the kIWI image build repository</title>
+   <title>Enabling the KIWI image build repository</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="image_templates_enable_image_repository.png" />
@@ -83,9 +83,12 @@
   <xi:include href="obs_image_templates.xml" xpointer="image_template_icon_paragraph" xmlns:xi="http://www.w3.org/2001/XInclude"/>
   <para>
    For a full list of image descriptions and general information about building
-   images with KIWI please refer to the <ulink url="http://opensuse.github.io/kiwi/">
+   images with KIWI, see the <ulink url="http://opensuse.github.io/kiwi/">
    KIWI project page</ulink> and the
    <ulink url="https://doc.opensuse.org/projects/kiwi/doc/">KIWI cookbook</ulink>.
+   <remark>
+    Refer to new (Python) KIWI page instead? - sknorr, 2017-07-14
+   </remark>
   </para>
  </section>
  <section>

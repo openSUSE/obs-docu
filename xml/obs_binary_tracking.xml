@@ -20,25 +20,25 @@
   <para>
    All binaries which get released in to projects providing
    kind=maintenance_release get tracked. In addition to that the OBS
-   admininistrator may configure addition projects via the packtrack setting in
+   administrator may configure addition projects via the packtrack setting in
    BSConfig.pm
   </para>
  </section>
  <section>
   <title>What data is tracked?</title>
   <para>
-   In short the informations to identify a binary, it's building place and
+   In short the information to identify a binary, its building place and
    timestamps are tracked. In addition to that also information about possible
-   successor versions or if the binary got removed meanwhile. If products do
-   reference the repositories the search interface does offer also a listing of
+   successor versions or if the binary got removed in the meantime. If products do
+   reference the repositories the search interface offers also a listing of
    products which are supposed to use it. Either as part of the product media
-   itself or in one of it's update repositories.
+   itself or in one of its update repositories.
   </para>
   <section>
    <title>Binary Identifier</title>
    <para>
-    A binary gets identified by the following informations. This is basically
-    the components of the storage path and filename of the binary.
+    A binary is identified by the following information&mdash;this is
+    the components of the storage path and File Name of the binary:
     <itemizedlist>
      <listitem>
       <simpara>
@@ -79,9 +79,9 @@
    </para>
   </section>
   <section>
-   <title>Binary informations</title>
+   <title>Binary information</title>
    <para>
-    Additional informations of a binary are informations which get updated when
+    Additional information about a binary is information which gets updated when
     a binary gets added or replaced.
     <itemizedlist>
      <listitem>
@@ -91,7 +91,7 @@
      </listitem>
      <listitem>
       <simpara>
-	      publish time, aka the time when the repository gets published by OBS. This is not the same time as when the release action gots invoked.
+	      publish time, aka the time when the repository gets published by OBS. This is not the same time as when the release action got invoked.
 	     </simpara>
      </listitem>
      <listitem>
@@ -128,9 +128,9 @@
    </para>
   </section>
   <section>
-   <title>Product informations</title>
+   <title>Product information</title>
    <para>
-    Additional informations about products referencing to this binary.
+    Additional information about products referencing to this binary.
     <itemizedlist>
      <listitem>
       <simpara>
@@ -153,7 +153,7 @@
   </para>
  </section>
  <section>
-  <title>webui search interface</title>
+  <title>Web UI search interface</title>
   <para>
    not yet implemented
   </para>
@@ -161,8 +161,8 @@
  <section>
   <title>API search interface</title>
   <para>
-   The search is provided via the generic xpath search interface. It is
-   provided below the pathes:
+   The search is provided via the generic XPath search interface. It is
+   provided below the paths:
    <itemizedlist>
     <listitem>
      <simpara>
@@ -171,7 +171,7 @@
     </listitem>
     <listitem>
      <simpara>
-         /search/released/binary : long form, provides all other tracked informations as described above
+         /search/released/binary : long form, provides all other tracked information as described above
         </simpara>
     </listitem>
    </itemizedlist>
@@ -181,42 +181,42 @@
    <para>
     To find the latest version of given glibc-devel binary in all products.
     Skipping old and revoked versions:
-<screen><command>/search/released/binary?match=@name"=glibc-devel"+and+obsolete[not(@time)]</command></screen>
+<screen>/search/released/binary?match=@name"=glibc-devel"+and+obsolete[not(@time)]</screen>
    </para>
    <para>
     To find a specific version by given updateinfo id. This ID is visible in
     the update tools to the end user:
-<screen><command>/search/released/binary?match=updateinfo/@id="OBS-2014-42"</command></screen>
+<screen>/search/released/binary?match=updateinfo/@id="OBS-2014-42"</screen>
    </para>
    <para>
     To find a specific version by given disturl. Used to find all affected
     products by a certain build of a binary:
-<screen><command>/search/released/binary?match=disturl="obs://..."</command></screen>
+<screen>/search/released/binary?match=disturl="obs://..."</screen>
    </para>
    <para>
     When got the specific package version got released the first time:
-<screen><command>/search/released/binary?match=@name='kernel-default'+and+@version='1.0'+and+@release='1'+and+@arch='i586'+and+supportstatus='l3'+and+operation='added'</command></screen>
+<screen>/search/released/binary?match=@name='kernel-default'+and+@version='1.0'+and+@release='1'+and+@arch='i586'+and+supportstatus='l3'+and+operation='added'</screen>
    </para>
    <para>
     All binaries in a given repository:
-<screen><command>/search/released/binary?match=repository/[@project='BaseDistro3'+and+@name='BaseDistro3_repo']</command></screen>
+<screen>/search/released/binary?match=repository/[@project='BaseDistro3'+and+@name='BaseDistro3_repo']</screen>
    </para>
    <para>
     All binaries part of a product release:
-<screen><command>/search/released/binary?match=product/[@project='openSUSE'+and+@name='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</command></screen>
+<screen>/search/released/binary?match=product/[@project='openSUSE'+and+@name='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
    </para>
    <para>
     All binaries part of the update repositories of a product:
-<screen><command>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</command></screen>
+<screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
    </para>
    <para>
     All binaries part of the update repositories of a versioned product:
-<screen><command>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@version='13.2']</command></screen>
+<screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@version='13.2']</screen>
    </para>
    <para>
     All binaries part of the update repositories of a versioned product
     (enterprise style):
-<screen><command>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@baseversion='12'+and+@patchlevel='1']</command></screen>
+<screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@baseversion='12'+and+@patchlevel='1']</screen>
    </para>
   </section>
  </section>

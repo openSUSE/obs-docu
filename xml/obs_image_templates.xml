@@ -18,19 +18,19 @@
   <title>Structure of image templates</title>
   <para>
    As mentioned image templates are essentially pre-configured
-   <ulink url="http://opensuse.github.io/kiwi/">KIWI</ulink> image configurations.
-   As any KIWI configuration they usually contain a tarball containing image
-   sources, a config.sh file and the KIWI configuration xml file.
+   <ulink url="http://opensuse.github.io/kiwi/">&kiwi;</ulink> image configurations.
+   As any &kiwi; configuration they usually contain a tarball containing image
+   sources, a config.sh file and the &kiwi; configuration XML file.
   </para>
   <para id="image_template_icon_paragraph">
    In addition you can define an icon for your image templates by adding graphical
-   image (eg. png, jpg) to your template sources and name it <command>_icon</command>.
+   image (for example, PNG, JPG) to your template sources and name it <command>_icon</command>.
    If that file exists, it will be used as icon for your image on the image
    templates page.
   </para>
   <note>
    <para>
-    If you want to know more about KIWI images, please refer to
+    For more information about &kiwi; images, see
     <xref linkend="_kiwi_appliance"/>.
    </para>
   </note>
@@ -57,7 +57,7 @@
   </para>
   <para>
    Have a look at the Managing build targets - Interconnect chapter of the OBS
-   Administator Guide to learn more about interconnects.
+   Administrator Guide to learn more about interconnects.
   </para>
  </section>
 </chapter> 

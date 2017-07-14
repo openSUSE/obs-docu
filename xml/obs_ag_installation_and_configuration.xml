@@ -18,25 +18,25 @@ obs-server appliance images are the easiest way. You can download them from
   <simpara>If you want to use the OBS for your Linux software development with many
 packages, projects and users you should build your own installation.
 Depending on how many users and projects you have and for how many
-architectures you want to build packages you can split up the backend
-(called partitioning) and have separate hosts for the frontend and database.</simpara>
+architectures you want to build packages you can split up the back-end
+(called partitioning) and have separate hosts for the front-end and database.</simpara>
   <simpara>But for most installations it is still OK to run everything but workers one
 host with enough resources.</simpara>
   <simpara>For flexibility and if you want some kind of high availability it is
-recommended to use virtualisation for the different components.</simpara>
+recommended to use virtualization for the different components.</simpara>
   <section id="_resource_planning">
    <title>Resource planning</title>
    <simpara>Normally for a small to middle installation a setup with everything except
-workers on one host is sufficient. You should have separate /srv volume for the backend
-data, XFS as filesystem is best choice.</simpara>
+workers on one host is sufficient. You should have separate /srv volume for the back-end
+data, XFS as file system is best choice.</simpara>
    <simpara>For each scheduler architecture you should add 4 GB RAM and one CPU core.
-For each build distribution you should add at least 50GB diskspace per
+For each build distribution you should add at least 50GB disk space per
 architecture.</simpara>
    <simpara>A medium instance with about 50 users can easily run on a machine with 16GB
 RAM 4 cores and 1 TB storage. The storage of course depend on the size of
 your projects and how often you have new versions.</simpara>
-   <simpara>For bigger installations you can use separate networks for backend
-communication, workers and frontend.</simpara>
+   <simpara>For bigger installations you can use separate networks for back-end
+communication, workers and front-end.</simpara>
    <simpara>The reference installation on <emphasis role="strong"><emphasis>build.opensuse.org</emphasis></emphasis> with lot of users,
 distributions runs on a partitioned setup with:</simpara>
    <itemizedlist>
@@ -52,7 +52,7 @@ api-server: 16GB RAM 4 cores  50GB disk
     </listitem>
     <listitem>
      <simpara>
-separate binary backends (scheduler, dispatcher, reposerver, publisher, warden)
+separate binary back-ends (scheduler, dispatcher, reposerver, publisher, warden)
 </simpara>
     </listitem>
     <listitem>
@@ -62,7 +62,7 @@ source server 11 GB RAM, 4 cores, 3 TB disk (RAM used mainly for caching)
     </listitem>
     <listitem>
      <simpara>
-main backend: 62 GB RAM (oversized), 16TB disk
+main back-end: 62 GB RAM (oversized), 16TB disk
 </simpara>
     </listitem>
     <listitem>
@@ -79,20 +79,20 @@ remaining parts.</simpara>
   <title>Simple installation</title>
   <simpara>Simple installation means, all OBS services running on the same machine.</simpara>
   <important>
-   <simpara>It is very important that you read the <emphasis role="strong">README.SETUP</emphasis> file comming with your OBS
+   <simpara>It is very important that you read the <emphasis role="strong">README.SETUP</emphasis> file coming with your OBS
 version and follow the instructions there, because here maybe changes to
 this version.</simpara>
   </important>
   <simpara>Before you start the installation of the OBS, you should make sure that your hosts
-have the correct full qualified hostname and DNS is working and can resolve all
+have the correct fully qualified hostname and DNS is working and can resolve all
 names.</simpara>
   <section id="_backend_installation">
-   <title>Backend installation</title>
-   <simpara>The backend hosts all sources and built packages.
+   <title>Back-end installation</title>
+   <simpara>The back-end hosts all sources and built packages.
 It also schedules the jobs. You need to install the "obs-server" package for this.
 You need to check the <emphasis role="strong"><emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis></emphasis> file, but the defaults should be good enough
 for the simple case.</simpara>
-   <simpara>You can control the different backend components via systemctl. Basically you can enable/disable the
+   <simpara>You can control the different back-end components via systemctl. Basically you can enable/disable the
 service during booting the system and start/stop/restart it in a running
 system.
 Have a look at the <ulink url="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands"><emphasis>https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands</emphasis></ulink> man page
@@ -249,12 +249,12 @@ network or make sure to block the ports with a firewall.</simpara>
    </warning>
   </section>
   <section id="_frontend_installation">
-   <title>Frontend installation</title>
+   <title>Front-end installation</title>
    <simpara>You need to install the "obs-api" package for this and a MySQL server.</simpara>
    <section id="_mysql_setup">
     <title>MySQL setup</title>
     <simpara>Make sure that the mysql server is started on every system reboot (use "insserv mysql" for permanent start).
-You should run mysql_secure_installation and follow the intructions.</simpara>
+You should run mysql_secure_installation and follow the instructions.</simpara>
     <simpara>Create the empty production databases:</simpara>
 <screen># mysql -u root -p
 mysql&gt; create database api_production;
@@ -296,16 +296,16 @@ sudo chown -R wwwrun.www log tmp</screen>
    </section>
    <section id="_apache_setup">
     <title>Apache setup</title>
-    <simpara>Now we need to configure the webserver. By default, you can reach the
+    <simpara>Now we need to configure the Web server. By default, you can reach the
 familiar web user interface and also api both on port 443 speaking https.
 Repositories can be accessed via http on port 82 (once some packages are built).
 An overview page about your OBS instance can be found behind <emphasis>'http://localhost'</emphasis>.</simpara>
-    <simpara>The obs-api package comes with a apache vhost file, which does not need to get
+    <simpara>The obs-api package comes with an Apache vhost file, which does not need to get
 modified when you stay with these defaults: <emphasis>/etc/apache2/vhosts.d/obs.conf</emphasis>
     </simpara>
     <simpara>Install the required packages via</simpara>
 <screen>  zypper in obs-api apache2 apache2-mod_xforward rubygem-passenger-apache2 memcached</screen>
-    <simpara>Add the follwing apache modules in /etc/sysconfig/apache2:</simpara>
+    <simpara>Add the following Apache modules in /etc/sysconfig/apache2:</simpara>
 <screen>  APACHE_MODULES="... passenger rewrite proxy proxy_http xforward headers socache_shmcb"</screen>
     <simpara>Enable SSL in /etc/sysconfig/apache2 via</simpara>
 <screen>  APACHE_SERVER_FLAGS="SSL"</screen>
@@ -319,7 +319,7 @@ openssl x509 -req -days 365 -in /srv/obs/certs/server.csr \
         -signkey /srv/obs/certs/server.key -out /srv/obs/certs/server.crt
 cat /srv/obs/certs/server.key /srv/obs/certs/server.crt \
       &gt; /srv/obs/certs/server.pem</screen>
-    <simpara>To allow the usage of https api in webui code you need to trust your
+    <simpara>To allow the usage of https API in Web UI code you need to trust your
 certificate as well:</simpara>
 <screen>cp /srv/obs/certs/server.pem /etc/ssl/certs/
 c_rehash /etc/ssl/certs/</screen>
@@ -353,7 +353,7 @@ configuration steps.</simpara>
    <simpara>To customize the OBS instance you may need to configure some settings via the
 OBS API and Web user interface.</simpara>
    <simpara>First you should change the password of the Admin account, for this you
-need first login as user Admin in the WebUI with the default password "opensuse".
+need first login as user Admin in the Web UI with the default password "opensuse".
 Click on the Admin link (right top of the page), here you can change the
 password.</simpara>
    <simpara>After you changed the Admin password, you need to setup osc to use the Admin
@@ -367,7 +367,7 @@ give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
 for example), refer to the osc documentation for this.</simpara>
    </warning>
-   <simpara>Now you can checkout the main configuration of the OBS:</simpara>
+   <simpara>Now you can check out the main configuration of the OBS:</simpara>
 <screen>osc -c ~/.obsadmin_osc.rc api /configuration &gt;/tmp/obs.config
 cat /tmp/obs.config
 &lt;configuration&gt;
@@ -422,7 +422,7 @@ cat /tmp/obs.config
     </simpara>
   </important>
 
-   <simpara>You should edit this file according to your prereferences, then sent it back
+   <simpara>You should edit this file according to your preferences, then sent it back
 to the server:</simpara>
 <screen>osc -c ~/.obsadmin_osc.rc api /configuration -T /tmp/obs.config</screen>
    <simpara>If you want to use an interconnect to another OBS instance to reuse the
@@ -466,12 +466,12 @@ This list can be managed via the API path /distributions</simpara>
  </section>
  <section id="_worker_farm">
   <title>Worker farm</title>
-  <simpara>To not burden your OBS backend daemons with the unpredictable load package builds can produce
+  <simpara>To not burden your OBS back-end daemons with the unpredictable load package builds can produce
 (think someone builds a monstrous package like LibreOffice) you should not
-run OBS workers on the same host as the rest of the backend daemons.</simpara>
+run OBS workers on the same host as the rest of the back-end daemons.</simpara>
   <important>
-   <simpara>You backend need to be configured to use the correct hostnames for the repo and source server and
-the ports need to be reachable by the workes. Also the IP addresses of the workers need to be allowed to connect the services.
+   <simpara>You back-end need to be configured to use the correct hostnames for the repo and source server and
+the ports need to be reachable by the workers. Also the IP addresses of the workers need to be allowed to connect the services.
 (look at the <emphasis>/usr/lib/obs/server/BSConfig.pm::ipaccess</emphasis> array).</simpara>
   </important>
   <simpara>You can deploy workers quite simply using the worker appliance. Or install a
@@ -484,21 +484,21 @@ systemctl start obsworker</screen>
  </section>
  <section id="_distributed_setup">
   <title>Distributed setup</title>
-  <simpara>All OBS backend daemons can also be started on individual machines in your network.
-Also the frontend webserver and the MySQL server can run on different machines.
+  <simpara>All OBS back-end daemons can also be started on individual machines in your network.
+Also the front-end Web server and the MySQL server can run on different machines.
 Especially for large scale OBS installations this is the recommended setup.</simpara>
-  <simpara>A setup with partioning is very similar to the steps of the simple setup.
+  <simpara>A setup with partitioning is very similar to the steps of the simple setup.
 Here we are only mention the differences to the simple setup.</simpara>
   <note>
    <simpara>You need to make sure that the different machines can communicate via the network, it is very recommended to use a separate
 network for this to isolate it from the public part.</simpara>
   </note>
-  <simpara>On all backend hosts you need to install the obs-server package.
-On the frontend host you need to install the obs-api package.</simpara>
+  <simpara>On all back-end hosts you need to install the obs-server package.
+On the front-end host you need to install the obs-api package.</simpara>
   <important>
    <simpara>Only one source server instance can be exist on a single OBS installation.</simpara>
   </important>
-  <simpara>The binary backend can be splitted on project level, this is called partitioning.</simpara>
+  <simpara>The binary back-end can be split on project level, this is called partitioning.</simpara>
   <simpara>One one partition following services needs to be configured and run:</simpara>
   <orderedlist numeration="arabic">
    <listitem>
@@ -527,8 +527,8 @@ publisher
 </simpara>
    </listitem>
   </orderedlist>
-  <simpara>You do not need to share any directories on filesystem level between the partions.</simpara>
-  <simpara>Here some example for partioning:</simpara>
+  <simpara>You do not need to share any directories on File System level between the partitions.</simpara>
+  <simpara>Here some example for partitioning:</simpara>
   <orderedlist numeration="arabic">
    <listitem>
     <simpara>
@@ -546,15 +546,15 @@ A release partition for released software projects (host releasebackend)
 </simpara>
    </listitem>
   </orderedlist>
-  <simpara>The configuration is done in the backen config file <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis>.
-Most parts of the file can be shared between the backends.</simpara>
+  <simpara>The configuration is done in the back-end config file <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis>.
+Most parts of the file can be shared between the back-ends.</simpara>
   <simpara>Here the important parts of the mainbackend of out testobs.org installation:</simpara>
 <screen>...
 my $hostname = Net::Domain::hostfqdn() || 'localhost';
 # IP corresponding to hostname (only used for $ipaccess); fallback to localhost since inet_aton may fail to resolve at shutdown.
 my $ip = quotemeta inet_ntoa(inet_aton($hostname) || inet_aton("localhost"));
 
-my $frontend = 'api.testobs.org'; # FQDN of the WebUI/API server if it's not $hostname
+my $frontend = 'api.testobs.org'; # FQDN of the Web UI/API server if it's not $hostname
 
 # If defined, restrict access to the backend servers (bs_repserver, bs_srcserver, bs_service)
 our $ipaccess = {
@@ -567,7 +567,7 @@ our $ipaccess = {
    '10.20.2.*' =&gt; 'worker',  # build results can be delivered from any client in the network
 };
 
-# IP of the WebUI/API Server (only used for $ipaccess)
+# IP of the Web UI/API Server (only used for $ipaccess)
 if ($frontend) {
   my $frontendip = quotemeta inet_ntoa(inet_aton($frontend) || inet_aton("localhost"));
   $ipaccess-&gt;{$frontendip} = 'rw' ; # in dotted.quad format
@@ -627,7 +627,7 @@ be easily adaptable for other monitoring solutions.</simpara>
     <simpara>This check will output a critical if the HTTP server
 with ip address 172.19.19.19 (-I 172.19.19.19) listening
 on port 80 (-p 80) does not answer and output a warning
-if the HTTP return code is not 200. The servername that
+if the HTTP return code is not 200. The server name that
 will be used is server (-H server) which is important if
 different virtual hosts are listening on the same port.</simpara>
 <screen>check_http -H server -I 172.19.19.19 -p 80 -u http://server</screen>
@@ -674,16 +674,16 @@ Source Service Server: port 5152
 individual server.</simpara>
    <section id="_disk_space_check_for_available_disk_space">
     <title>Disk Space - Check for available disk space</title>
-    <simpara>This check will output a warning if less then 10 percent disk
-space is available (-w 10) and output a critical if less then 5 percent
-disk space are available (-c 5). It will check all filesystems except
-filesystems with type <emphasis>none</emphasis> (-x none).</simpara>
+    <simpara>This check will output a warning if less than 10 percent disk
+space is available (-w 10) and output a critical if less than 5 percent
+disk space are available (-c 5). It will check all file systems except
+file systems with type <emphasis>none</emphasis> (-x none).</simpara>
 <screen>check_disk -w 10 -c 5 -x none</screen>
    </section>
    <section id="_memory_usage_check_for_available_memory">
     <title>Memory Usage - Check for available memory</title>
-    <simpara>This check will output a warning if less then 10 percent memory
-is available (-w 10) and output a critical if less then 5 percent
+    <simpara>This check will output a warning if less than 10 percent memory
+is available (-w 10) and output a critical if less than 5 percent
 memory is available (-c 5). OS caches will be counted as free memory
 (-C) and it will check the available memory (-f). check_mem.pl is
 not a standard Nagios plugin and can be downloaded at
@@ -747,7 +747,7 @@ mysql
     </orderedlist>
    </section>
    <section id="_backup_status_check_that_a_valid_backup_is_avilable">
-    <title>Backup Status - Check that a valid backup is avilable</title>
+    <title>Backup Status - Check that a valid backup is available</title>
     <simpara>It is always advisable to check that the last backup run was successful
 and a recent backup is available. The check itself depends on the Backup
 solution that is used.</simpara>
