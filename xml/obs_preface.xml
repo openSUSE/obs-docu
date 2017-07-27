@@ -1,29 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE preface PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<preface>
+
+
+<preface xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
  <title>About this Guide</title>
- <para>
-  This book is part of the official &obs; documentation. These books are
-  considered to contain only reviewed content, establishing the reference
-  documentation of &obsa;.
- </para>
- <para>
-  These books are not considered to be focused on a special &obsa; version.
+ <info/>
+ <para> This book is part of the official Open Build Service documentation.
+  These books are considered to contain only reviewed content, establishing the
+  reference documentation of OBS. </para>
+ <para> These books are not considered to be focused on a special OBS version.
   They are also not a replacement of the documentation inside of the openSUSE
   wiki. But content from the wiki may get consolidated and included in these
-  books.
- </para>
- <para>
-  Furthermore these books are written by the &obsa; community. Check the
-  chapter how to work on these books. We request especially experienced users and
-  administrators to join and to contribute to these books. It is not required
-  to be a very good or even native English speaker, because we rely on
-  community editors to improve the language.
- </para>
+  books. </para>
+ <para> Furthermore these books are written by the OBS community. Check the
+  chapter how to work on these books. We request especially experienced users
+  and administrators to join and to contribute to these books. It is not
+  required to be a very good or even native English speaker, because we rely on
+  community editors to improve the language. </para>
 </preface>

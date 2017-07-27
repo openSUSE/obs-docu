@@ -1,82 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.build_containers">
+<chapter version="5.0" xml:id="cha.obs.build_containers"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Containers</title>
- <para>
-  Containers are workloads which container all necessary files to make the workload
-  independent of the running host OS. This includes (but is not limited to) libraries,
-  executables and shared resource files.
- </para>
- <section>
-   <title>Supported Containers</title>
-   <para>
-     A container that is providing its own kernel is called virtual machine in this book.
-     &OBS; supports container builds either by supporting the native build format or as
-     side product of a different format. The range is from very simple chroot containers via 
-     server format (eg Docker) or desktop format (eg. AppImage or Snap) up to full
-     VM builds (OpenStack, kvm or LiveCD via kiwi).
-    </para>
-   <section>
-     <title>SimpleImage</title>
-     <para>
-      SimpleImage is a special format which is using rpm spec file syntax and just packages
-      the resulting install root as tar ball or squashfs image. The format is just using
-      the BuildRequires tags inside of a file called "simpleimage", it supports also
-      rpm macro handling to allow to define exceptions depending on the build environment.
-     </para>
-   </section>
-   <section>
-      <title>Docker</title>
-      <para>
-       Docker images are currently only supported via the kiwi tool.
-      </para>
-    </section>
-    <section>
-      <title>AppImage</title>
-      <para>
-       The Desktop oriented AppImage format is currently only formatted as side effect of an rpm build. &OBS;
-       supports signing and publishing the .AppImage files, the rest is handled via wrapper
-       packages which converts an rpm (or deb package) into an AppImage file. 
-       Own build rules can provided via a "Recipe" file, fallback code will be used if no 
-       "Recipe" file is available.
-      </para>
-    </section>
-    <section>
-      <title>Snap</title>
-      <para>
-       Snap format is supported natively. However, external resources are only supported 
-       via source services and therefore not all build types are supported. Snapcraft 
-       works also only with an Ubuntu-based base system (code for supporting rpm distros
-       exists as well but got not merged upstream yet).
-      </para>
-    </section>
-    <section>
-      <title>Flatpack</title>
-      <para>
-        Flatpack is currently not supported due to the lacking ability of reproducible builds.
-      </para>
-    </section>
-    <section>
-      <title>Livebuild</title>
-      <para>
-       Livebuild is the Debian livebuild support for ISO images.
-      </para>
-    </section>
-    <section>
-      <title>KIWI appliance formats</title>
-      <para>
-      </para>
-    </section>
-    <section>
-      <title>KIWI product builds</title>
-      <para>
-      </para>
-    </section>
-  </section>
+ <info/>
+ <para> Containers are workloads which container all necessary files to make
+  the workload independent of the running host OS. This includes (but is not
+  limited to) libraries, executables and shared resource files. </para>
+ <sect1>
+  <title>Supported Containers</title>
+  <para> A container that is providing its own kernel is called virtual machine
+   in this book. Open Build Service (OBS) supports container builds either by
+   supporting the native build format or as side product of a different format.
+   The range is from very simple chroot containers via server format (eg
+   Docker) or desktop format (eg. AppImage or Snap) up to full VM builds
+   (OpenStack, kvm or LiveCD via kiwi). </para>
+  <sect2>
+   <title>SimpleImage</title>
+   <para> SimpleImage is a special format which is using rpm spec file syntax
+    and just packages the resulting install root as tar ball or squashfs image.
+    The format is just using the BuildRequires tags inside of a file called
+    "simpleimage", it supports also rpm macro handling to allow to define
+    exceptions depending on the build environment. </para>
+  </sect2>
+  <sect2>
+   <title>Docker</title>
+   <para> Docker images are currently only supported via the kiwi tool. </para>
+  </sect2>
+  <sect2>
+   <title>AppImage</title>
+   <para> The Desktop oriented AppImage format is currently only formatted as
+    side effect of an rpm build. Open Build Service (OBS) supports signing and
+    publishing the .AppImage files, the rest is handled via wrapper packages
+    which converts an rpm (or deb package) into an AppImage file. Own build
+    rules can provided via a "Recipe" file, fallback code will be used if no
+    "Recipe" file is available. </para>
+  </sect2>
+  <sect2>
+   <title>Snap</title>
+   <para> Snap format is supported natively. However, external resources are
+    only supported via source services and therefore not all build types are
+    supported. Snapcraft works also only with an Ubuntu-based base system (code
+    for supporting rpm distros exists as well but got not merged upstream yet).
+   </para>
+  </sect2>
+  <sect2>
+   <title>Flatpack</title>
+   <para> Flatpack is currently not supported due to the lacking ability of
+    reproducible builds. </para>
+  </sect2>
+  <sect2>
+   <title>Livebuild</title>
+   <para> Livebuild is the Debian livebuild support for ISO images. </para>
+  </sect2>
+  <sect2>
+   <title>KIWI appliance formats</title>
+   <para> </para>
+  </sect2>
+  <sect2>
+   <title>KIWI product builds</title>
+   <para> </para>
+  </sect2>
+ </sect1>
 </chapter>

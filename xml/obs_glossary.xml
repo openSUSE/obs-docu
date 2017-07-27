@@ -1,11 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE glossary PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
 <!-- 
   ******* This is the official glossar of OBS terms                   ********
   ******* Please do not add new terms, if you are not sure that there ********
@@ -13,128 +5,122 @@
   ******* Please post on the OBS mailing list your suggestion, if you ********
   ******* are unsure.                                                 ********
 -->
-<glossary>
+<glossary version="5.0"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Glossary</title>
- <glossentry id="obs.glos.obs"><glossterm>Open Build Service</glossterm>
+ <info/>
+
+ <glossentry xml:id="obs.glos.obs">
+  <glossterm>Open Build Service</glossterm>
   <glossdef>
-   <para>
-    The Open Build Service and its acronym OBS is used to speak about the
+   <para> The Open Build Service and its acronym OBS is used to speak about the
     server part of the build service. When speaking about OBS all possible
-    instances are affected.
-   </para>
+    instances are affected. </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.build.o.o"><glossterm>openSUSE Build Service</glossterm>
+ <glossentry xml:id="obs.glos.build.o.o">
+  <glossterm>openSUSE Build Service</glossterm>
   <glossdef>
-   <para>
-    The openSUSE Build Service is the concrete instance of
-    <xref linkend="obs.glos.obs"/> from the openSUSE project at
-    http://build.opensuse.org.
-   </para>
+   <para> The openSUSE Build Service is the concrete instance of <xref
+     linkend="obs.glos.obs"/> from the openSUSE project at
+    http://build.opensuse.org. </para>
   </glossdef>
  </glossentry>
- <glossentry><glossterm>osc</glossterm>
+ <glossentry>
+  <glossterm>osc</glossterm>
   <glossdef>
-   <para>
-    The Command Line Interface to work with an instance of
-    <xref linkend="obs.glos.obs"/> called opensuse-commander with SVN
-    like handling. More info: https://github.com/openSUSE/osc
-   </para>
+   <para> The Command Line Interface to work with an instance of <xref
+     linkend="obs.glos.obs"/> called opensuse-commander with SVN like handling.
+    More info: https://github.com/openSUSE/osc </para>
   </glossdef>
  </glossentry>
- <glossentry><glossterm>Appliance</glossterm>
+ <glossentry>
+  <glossterm>Appliance</glossterm>
   <glossdef>
-   <para>
-    A software appliance is a preconfigured combination of an application (for
-    example, a Web server) and its configuration, and includes an operating
-    system (for example, &sls;). All these parts are integrated into a single
-    image and can be deployed on industry hardware or on a virtual environment.
-   </para>
+   <para> A software appliance is a preconfigured combination of an application
+    (for example, a Web server) and its configuration, and includes an
+    operating system (for example, SUSE Linux Enterprise Server). All these
+    parts are integrated into a single image and can be deployed on industry
+    hardware or on a virtual environment. </para>
   </glossdef>
  </glossentry>
- <glossentry><glossterm>EULA</glossterm>
+ <glossentry>
+  <glossterm>EULA</glossterm>
   <glossdef>
-   <para>
-    End User License Agreement. For software that needs a special license
+   <para> End User License Agreement. For software that needs a special license
     (usually non-open source) which the user has to agree to before installing.
    </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.kiwi"><glossterm>&kiwi;</glossterm>
+ <glossentry xml:id="obs.glos.kiwi">
+  <glossterm>KIWI</glossterm>
   <glossdef>
-   <para>
-    &kiwi; provides a complete operating system image solution. It can create
-    images for Linux supported hardware platforms or for virtualization
-    systems.
-   </para>
+   <para> KIWI provides a complete operating system image solution. It can
+    create images for Linux supported hardware platforms or for virtualization
+    systems. </para>
   </glossdef>
  </glossentry>
- <glossentry><glossterm>Overlay Files</glossterm>
+ <glossentry>
+  <glossterm>Overlay Files</glossterm>
   <glossdef>
-   <para>
-    Files which are created, removed, or modified during your test drive are
-    considered <emphasis>overlay files</emphasis>. These files can be added
-    later as a supplement to your appliance.
-   </para>
+   <para> Files which are created, removed, or modified during your test drive
+    are considered <emphasis>overlay files</emphasis>. These files can be added
+    later as a supplement to your appliance. </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.project_binaries"><glossterm>Binaries</glossterm>
+ <glossentry xml:id="obs.glos.project_binaries">
+  <glossterm>Binaries</glossterm>
   <glossdef>
-   <para>
-    Binaries are considered build results of OBS Projects. Binaries can be
-    reused in an environment to build further binaries. Currently OBS is
-    supporting rpm, deb and all formats generated by
-    <xref linkend="obs.glos.kiwi"/>.
-   </para>
+   <para> Binaries are considered build results of OBS Projects. Binaries can
+    be reused in an environment to build further binaries. Currently OBS is
+    supporting rpm, deb and all formats generated by <xref
+     linkend="obs.glos.kiwi"/>. </para>
   </glossdef>
  </glossentry>
-<!-- maintenance stuff -->
- <glossentry id="obs.glos.ga_project"><glossterm>GA Project</glossterm>
+ <!-- maintenance stuff -->
+ <glossentry xml:id="obs.glos.ga_project">
+  <glossterm>GA Project</glossterm>
   <glossdef>
-   <para>
-    The GA project builds an initial release of a product. It gets frozen after
-    releasing the product. All further updates get released via the
-    <xref linkend="obs.glos.update_project"/> of this project.
-   </para>
+   <para> The GA project builds an initial release of a product. It gets frozen
+    after releasing the product. All further updates get released via the <xref
+     linkend="obs.glos.update_project"/> of this project. </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.update_project"><glossterm>Update Project</glossterm>
+ <glossentry xml:id="obs.glos.update_project">
+  <glossterm>Update Project</glossterm>
   <glossdef>
-   <para>
-    The update project is a <xref linkend="obs.glos.release_project"/> which
-    provides official updates for the products generated in the
-    <xref linkend="obs.glos.ga_project"/>. The Update project is usually
-    linking (sources and repositories) against the
-    <xref linkend="obs.glos.ga_project"/>.
-   </para>
+   <para> The update project is a <xref linkend="obs.glos.release_project"/>
+    which provides official updates for the products generated in the <xref
+     linkend="obs.glos.ga_project"/>. The Update project is usually linking
+    (sources and repositories) against the <xref linkend="obs.glos.ga_project"
+    />. </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.maintenance_project"><glossterm>Maintenance Project</glossterm>
+ <glossentry xml:id="obs.glos.maintenance_project">
+  <glossterm>Maintenance Project</glossterm>
   <glossdef>
-   <para>
-    The maintenance project is a project without sources and binaries, defined
-    by the maintenance team. <xref linkend="obs.glos.incident"/>s are created
-    as sub projects of this project.
-   </para>
+   <para> The maintenance project is a project without sources and binaries,
+    defined by the maintenance team. <xref linkend="obs.glos.incident"/>s are
+    created as sub projects of this project. </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.incident"><glossterm>Incident</glossterm>
+ <glossentry xml:id="obs.glos.incident">
+  <glossterm>Incident</glossterm>
   <glossdef>
-   <para>
-    The maintenance incident describes a concrete problem and the required
-    updates. If the problem exists for multiple code streams, one incident
-    covers all of them. An incident is started by creating a maintenance
-    incident project and the update get built here.
-   </para>
+   <para> The maintenance incident describes a concrete problem and the
+    required updates. If the problem exists for multiple code streams, one
+    incident covers all of them. An incident is started by creating a
+    maintenance incident project and the update get built here. </para>
   </glossdef>
  </glossentry>
- <glossentry id="obs.glos.release_project"><glossterm>Release Project</glossterm>
+ <glossentry xml:id="obs.glos.release_project">
+  <glossterm>Release Project</glossterm>
   <glossdef>
-   <para>
-    A release project is hosting a release repository which is not building any
-    packages ever. It is just used to copy sources and binaries to this project
-    on a release event.
-   </para>
+   <para> A release project is hosting a release repository which is not
+    building any packages ever. It is just used to copy sources and binaries to
+    this project on a release event. </para>
   </glossdef>
  </glossentry>
 </glossary>

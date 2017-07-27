@@ -1,36 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet
- href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
- type="text/xml"
- title="Profiling step"
-?>
-<!DOCTYPE book PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml" title="Profiling step"?>
+
+<!DOCTYPE book
 [
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+   <!ENTITY % entities SYSTEM "entity-decl.ent">
+   %entities;
 ]>
-<book lang="en" id="book.obs-admin">
- <title>&obs;</title>
+
+<book xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en"
+ xml:id="book.obs-admin">
+ <title>Open Build Service</title>
  <subtitle>Administrator Guide</subtitle>
- <bookinfo>
+ <info>
   <authorgroup>
-   <author><firstname>Karsten</firstname><surname>Keil</surname>
-    <affiliation>
+   <author>
+    <personname>
+     <firstname>Karsten</firstname>
+     <surname>Keil</surname>
+    </personname>
+    <!--<affiliation>
      <orgname>B1 Sytems GmbH </orgname>
-    </affiliation>
+    </affiliation>-->
    </author>
   </authorgroup>
-  <copyright><year>2016</year><holder>B1 Systems GmbH</holder>
+  <copyright>
+   <year>2016</year>
+<!--   <holder>B1 Systems GmbH</holder>-->
   </copyright>
-  <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- </bookinfo>
- <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_ag_installation_and_configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_ag_overview_filesystem.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_ag_administration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_ag_troubleshooting.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-<!-- Appendices -->
- <xi:include  href="legal.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="copyright.xml"/>
+ </info>
+
+ <xi:include href="obs_preface.xml"/>
+ <xi:include href="obs_ag_installation_and_configuration.xml"/>
+ <xi:include href="obs_ag_overview_filesystem.xml"/>
+ <xi:include href="obs_ag_administration.xml"/>
+ <xi:include href="obs_ag_troubleshooting.xml"/>
+ <!-- Appendices -->
+ <xi:include href="legal.xml"/>
 </book>

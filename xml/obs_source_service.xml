@@ -1,175 +1,136 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.source_service">
+<chapter version="5.0" xml:id="cha.obs.source_service"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Source Services</title>
- <para>
-  Source Services are tools to validate, generate or modify sources in a
+ <info/>
+ <para> Source Services are tools to validate, generate or modify sources in a
   trustable way. They are designed as smallest possible tools and can be
-  combined following the powerful idea of the classic UNIX design.
- </para>
- <para>
-  Design goals of source services were:
- </para>
+  combined following the powerful idea of the classic UNIX design. </para>
+ <para> Design goals of source services were: </para>
  <itemizedlist>
   <listitem>
-   <simpara>
-     server side generated files must be easy to identify and must not be modifiable by the user. 
-     This way others user can trust them to be generated in the documented way without modifications.
-    </simpara>
+   <para> server side generated files must be easy to identify and must not
+    be modifiable by the user. This way others user can trust them to be
+    generated in the documented way without modifications. </para>
   </listitem>
   <listitem>
-   <simpara>
-     generated files must never create merge conflicts
-    </simpara>
+   <para> generated files must never create merge conflicts </para>
   </listitem>
   <listitem>
-   <simpara>
-     generated files must be a separate commit to the user change
-    </simpara>
+   <para> generated files must be a separate commit to the user change
+   </para>
   </listitem>
   <listitem>
-   <simpara>
-     services must be runnable at any time without user commit
-    </simpara>
+   <para> services must be runnable at any time without user commit
+   </para>
   </listitem>
   <listitem>
-   <simpara>
-     services must be runnable on server and client side in the same way
-    </simpara>
+   <para> services must be runnable on server and client side in the same
+    way </para>
   </listitem>
   <listitem>
-   <simpara>
-     services must be designed in a safe way. A source checkout and service run must never harm the system of a user.
-    </simpara>
+   <para> services must be designed in a safe way. A source checkout and
+    service run must never harm the system of a user. </para>
   </listitem>
   <listitem>
-   <simpara>
-     services shall be designed in a way to avoid unnecessary commits. This means there shall be no time-dependent
-     changes. In case the package already contains the same file, the newly generated file must be dropped.
-    </simpara>
+   <para> services shall be designed in a way to avoid unnecessary commits.
+    This means there shall be no time-dependent changes. In case the package
+    already contains the same file, the newly generated file must be dropped.
+   </para>
   </listitem>
   <listitem>
-   <simpara>
-     local services can be added and used by everybody.
-    </simpara>
+   <para> local services can be added and used by everybody. </para>
   </listitem>
   <listitem>
-   <simpara>
-     server side services must be installed by the admin of the OBS server.
-    </simpara>
+   <para> server side services must be installed by the admin of the OBS
+    server. </para>
   </listitem>
   <listitem>
-   <simpara>
-     service can be defined per package or project wide.
-    </simpara>
+   <para> service can be defined per package or project wide. </para>
   </listitem>
  </itemizedlist>
- <section>
+ <sect1>
   <title>Using services for validation</title>
-  <para>
-   Source Services may be used to validate sources. This can happen per
+  <para> Source Services may be used to validate sources. This can happen per
    package, which is useful when the packager wants to validate that downloaded
    sources are really from the original maintainer. Or validation can happen
    for an entire project to apply general policies. These services cannot get
-   skipped in any package
-  </para>
-  <para>
-   Validation can happen by validating files (for example using the
-   <command>verify_file</command> or <command>source_validator</command>
+   skipped in any package </para>
+  <para> Validation can happen by validating files (for example using the
+    <command>verify_file</command> or <command>source_validator</command>
    service. These services just fail in the error case which leads to the build
    state "broken". Or validation can happen by redoing a certain action and
    store the result as new file as <command>download_files</command> is doing.
    In this case the newly generated file will be used instead of the committed
-   one during build.
-  </para>
- </section>
- <section>
+   one during build. </para>
+ </sect1>
+ <sect1>
   <title>Different Modes when using services</title>
-  <para>
-   Each service can be used in a special mode defining when it should run and
-   how to use the result. This can be done per package or globally for an
-   entire project.
-  </para>
-  <section>
+  <para> Each service can be used in a special mode defining when it should run
+   and how to use the result. This can be done per package or globally for an
+   entire project. </para>
+  <sect2>
    <title>Default Mode</title>
-   <para>
-    The default mode of a service is to always run after each commit on the
-    server side and locally before every local build.
-   </para>
-  </section>
-  <section>
+   <para> The default mode of a service is to always run after each commit on
+    the server side and locally before every local build. </para>
+  </sect2>
+  <sect2>
    <title>trylocal Mode</title>
-   <para>
-    The trylocal mode is running the service locally when using current osc
-    versions. The result gets committed as standard files and not named with
-    _service: prefix. Additionally the service runs on the server by default,
-    but usually the service should detect that the result is the same and skip
-    the generated files. In case they differ for any reason (because the Web UI
-    or API was used for example), they get generated and added on the server.
-   </para>
-  </section>
-  <section>
+   <para> The trylocal mode is running the service locally when using current
+    osc versions. The result gets committed as standard files and not named
+    with _service: prefix. Additionally the service runs on the server by
+    default, but usually the service should detect that the result is the same
+    and skip the generated files. In case they differ for any reason (because
+    the Web UI or API was used for example), they get generated and added on
+    the server. </para>
+  </sect2>
+  <sect2>
    <title>localonly Mode</title>
-   <para>
-    The localonly mode is running the service locally when using current osc
-    versions. The result gets committed as standard files and not named with
-    _service: prefix. The service is never running on the server side. It is
-    also not possible to trigger it manually.
-   </para>
-  </section>
-  <section>
+   <para> The localonly mode is running the service locally when using current
+    osc versions. The result gets committed as standard files and not named
+    with _service: prefix. The service is never running on the server side. It
+    is also not possible to trigger it manually. </para>
+  </sect2>
+  <sect2>
    <title>serveronly Mode</title>
-   <para>
-    The serviceonly mode is running the service on the service only. This can
-    be useful, when the service is not available or can not work on developer
-    workstations.
-   </para>
-  </section>
-  <section>
+   <para> The serviceonly mode is running the service on the service only. This
+    can be useful, when the service is not available or can not work on
+    developer workstations. </para>
+  </sect2>
+  <sect2>
    <title>buildtime Mode</title>
-   <para>
-    The service is running inside of the build job, for local and server side
-    builds. A side effect is that the service package is becoming a build
+   <para> The service is running inside of the build job, for local and server
+    side builds. A side effect is that the service package is becoming a build
     dependency and must be available. Every user can provide and use a service
     this way in their projects. The generated sources are not part of the
     source repository, but part of the generated source packages. Note that
     services requiring external network access are likely to fail in this mode,
     because such access is not available if the build workers are running in
-    secure mode<phrase os="opensuse;novell"> (as is always the case at
-    <ulink url="https://build.opensuse.org"/>)</phrase>.
-   </para>
-  </section>
-  <section>
+    secure mode<phrase os="opensuse;novell"> (as is always the case at <link
+      xlink:href="https://build.opensuse.org"/>)</phrase>. </para>
+  </sect2>
+  <sect2>
    <title>disabled Mode</title>
-   <para>
-    The disabled mode is neither running the service locally or on the server
-    side. It can be used to temporarily disable the service but keeping the
-    definition as part of the service definition. Or it can be used to define
-    the way how to generate the sources and doing so by manually calling
-<screen><command>osc service disabledrun</command></screen>
-    The result will get committed as standard files again.
-   </para>
-  </section>
- </section>
- <section>
+   <para> The disabled mode is neither running the service locally or on the
+    server side. It can be used to temporarily disable the service but keeping
+    the definition as part of the service definition. Or it can be used to
+    define the way how to generate the sources and doing so by manually calling
+    <command>osc service disabledrun</command> The result will
+    get committed as standard files again. </para>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>How are source service definitions stored</title>
-  <para>
-   The called services are always defined in a <command>_service</command>
-   file. It is either part of the package sources or used project-wide when
-   stored inside the <command>_project</command> package.
-  </para>
-  <para>
-   The _service file contains a list of services which get called in this
+  <para> The called services are always defined in a
+    <command>_service</command> file. It is either part of the package sources
+   or used project-wide when stored inside the <command>_project</command>
+   package. </para>
+  <para> The _service file contains a list of services which get called in this
    order. Each service may define a list of parameters and a mode. The project
    wide services get called after the per package defined services. The
-   _service file is an XML file like this example:
-<screen>
+   _service file is an XML file like this example:</para>
+   <screen>
 &lt;services&gt;
   &lt;service name="download_files" mode="trylocal" /&gt;
   &lt;service name="verify_file"&gt;
@@ -180,36 +141,29 @@
   &lt;service name="update_source" mode="disabled" /&gt;
 &lt;/services&gt;
 </screen>
-   This example downloads the files via download_files service via the given
+   <para>This example downloads the files via download_files service via the given
    URLs from the spec file. When using osc this file gets committed as part of
    the commit. Afterwards the krabber-1.0.tar.gz file will always be compared
    with the sha256 checksum. And last but not least there is the
-   <command>update_source</command> service mentioned, which is usually not
+    <command>update_source</command> service mentioned, which is usually not
    executed. Except when <command>osc service disabledrun</command> is called,
    which will try to upgrade the package to a newer source version available
-   online.
-  </para>
- </section>
- <section>
+   online. </para>
+ </sect1>
+ <sect1>
   <title>Dropping a source service again</title>
-  <para>
-   Sometimes it is useful to continued to work on generated files manually. In
-   this situation the _service file needs to be dropped, but all generated
-   files need to be committed as standard files. The OBS provides the
+  <para> Sometimes it is useful to continued to work on generated files
+   manually. In this situation the _service file needs to be dropped, but all
+   generated files need to be committed as standard files. The OBS provides the
    "mergeservice" command for this. It can also be used via osc by calling
-   <command>osc service merge</command>.
-  </para>
- </section>
- <section>
+    <command>osc service merge</command>. </para>
+ </sect1>
+ <sect1>
   <title>How to write a source service</title>
-  <para>
-   ..
-  </para>
- </section>
- <section>
+  <para> .. </para>
+ </sect1>
+ <sect1>
   <title>Interfaces for using source services</title>
-  <para>
-   ..
-  </para>
- </section>
+  <para> .. </para>
+ </sect1>
 </chapter>

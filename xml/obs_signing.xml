@@ -1,39 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.signing">
+<chapter version="5.0" xml:id="cha.obs.signing"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Signing</title>
- <para>
-  OBS can sign build results.
- </para>
- <section>
+ <info/>
+ <para> OBS can sign build results. </para>
+ <sect1>
   <title>Package signing</title>
-  <para>
-   Each package is signed with a PGP key to allow checking its integrity on
-   user's machines.
-  </para>
- </section>
- <section>
+  <para> Each package is signed with a PGP key to allow checking its integrity
+   on user's machines. </para>
+ </sect1>
+ <sect1>
   <title>Repository signing</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
+  <para> ... </para>
+ </sect1>
+ <sect1>
   <title>Product signing</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
+  <para> ... </para>
+ </sect1>
+ <sect1>
   <title>Configure sign key</title>
-  <para>
-   ...
-  </para>
- </section>
+  <para> ... </para>
+ </sect1>
 </chapter>

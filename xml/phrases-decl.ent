@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ENTITY image_template_introduction_paragraph
+  "<para xmlns='http://docbook.org/ns/docbook'
+         xmlns:xlink='http://www.w3.org/1999/xlink'>
+   Image templates are pre-configured image configurations. The <link
+     xlink:href='https://build.opensuse.org/image_templates'
+    >image templates page</link> provides a list of these templates. Users
+    can clone these templates and further configure them as they like.
+  </para>">
+
+<!ENTITY image_template_icon_paragraph
+  "<para xmlns='http://docbook.org/ns/docbook'>
+   In addition you can define an
+   icon for your image templates by adding graphical image (for example, PNG,
+   JPG) to your template sources and name it <command>_icon</command>. If that
+   file exists, it will be used as icon for your image on the image templates
+   page.
+  </para>">

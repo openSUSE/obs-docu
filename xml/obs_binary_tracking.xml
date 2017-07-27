@@ -1,223 +1,160 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.binary_tracking">
+<chapter version="5.0" xml:id="cha.obs.binary_tracking"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Binary Package Tracking</title>
- <para>
-  Official products and their updates are often claimed to be supported.
+ <info/>
+ <para> Official products and their updates are often claimed to be supported.
   Multiple parties, like release managers, maintenance engineers, QA and
   support need to be able to check which exact versions of a package got
   released. OBS server can track these binaries and offers a database to search
-  them.
- </para>
- <section>
+  them. </para>
+ <sect1>
   <title>Which binaries get tracked?</title>
-  <para>
-   All binaries which get released in to projects providing
+  <para> All binaries which get released in to projects providing
    kind=maintenance_release get tracked. In addition to that the OBS
    administrator may configure addition projects via the packtrack setting in
-   BSConfig.pm
-  </para>
- </section>
- <section>
+   BSConfig.pm </para>
+ </sect1>
+ <sect1>
   <title>What data is tracked?</title>
-  <para>
-   In short the information to identify a binary, its building place and
+  <para> In short the information to identify a binary, its building place and
    timestamps are tracked. In addition to that also information about possible
-   successor versions or if the binary got removed in the meantime. If products do
-   reference the repositories the search interface offers also a listing of
+   successor versions or if the binary got removed in the meantime. If products
+   do reference the repositories the search interface offers also a listing of
    products which are supposed to use it. Either as part of the product media
-   itself or in one of its update repositories.
-  </para>
-  <section>
+   itself or in one of its update repositories. </para>
+  <sect2>
    <title>Binary Identifier</title>
-   <para>
-    A binary is identified by the following information&mdash;this is
-    the components of the storage path and File Name of the binary:
-    <itemizedlist>
-     <listitem>
-      <simpara>
-	      repository: where is the binary hosted
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      name: the name of the binary file
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      epoch: the epoch version (optional, usually not used)
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      version: the version
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      release: the release number
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      architecture: the architecture
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      medium: the medium name, this exists only for product builds
-	     </simpara>
-     </listitem>
-    </itemizedlist>
-   </para>
-  </section>
-  <section>
-   <title>Binary information</title>
-   <para>
-    Additional information about a binary is information which gets updated when
-    a binary gets added or replaced.
-    <itemizedlist>
-     <listitem>
-      <simpara>
-	      operation, got the binary added, removed or modified
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      publish time, aka the time when the repository gets published by OBS. This is not the same time as when the release action got invoked.
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      build time
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      obsolete time, exists only when a binary gets removed or replaced
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      supportstatus, meta information about the level of support which is granted for the binary at the time of releasing it.
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      updateinfo id from rpm-md repository
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      maintainer of the binary who has prepared this update
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      disturl, the exact identifier to the source and build repository
-	     </simpara>
-     </listitem>
-    </itemizedlist>
-   </para>
-  </section>
-  <section>
-   <title>Product information</title>
-   <para>
-    Additional information about products referencing to this binary.
-    <itemizedlist>
-     <listitem>
-      <simpara>
-	      updatefor: the listed products do reference the repository as update channel.
-	     </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-	      product: exists when the binary was part of a product medium
-	     </simpara>
-     </listitem>
-    </itemizedlist>
-   </para>
-  </section>
- </section>
- <section>
-  <title>osc search interface</title>
-  <para>
-   not yet implemented
-  </para>
- </section>
- <section>
-  <title>Web UI search interface</title>
-  <para>
-   not yet implemented
-  </para>
- </section>
- <section>
-  <title>API search interface</title>
-  <para>
-   The search is provided via the generic XPath search interface. It is
-   provided below the paths:
+   <para> A binary is identified by the following information—this is the
+    components of the storage path and File Name of the binary:</para>
    <itemizedlist>
     <listitem>
-     <simpara>
-          /search/released/binary/id : short form, just listing the matched binary identifiers
-        </simpara>
+     <para> repository: where is the binary hosted </para>
     </listitem>
     <listitem>
-     <simpara>
-         /search/released/binary : long form, provides all other tracked information as described above
-        </simpara>
+     <para> name: the name of the binary file </para>
+    </listitem>
+    <listitem>
+     <para> epoch: the epoch version (optional, usually not used) </para>
+    </listitem>
+    <listitem>
+     <para> version: the version </para>
+    </listitem>
+    <listitem>
+     <para> release: the release number </para>
+    </listitem>
+    <listitem>
+     <para> architecture: the architecture </para>
+    </listitem>
+    <listitem>
+     <para> medium: the medium name, this exists only for product builds
+     </para>
     </listitem>
    </itemizedlist>
-  </para>
-  <section>
+  </sect2>
+  <sect2>
+   <title>Binary information</title>
+   <para> Additional information about a binary is information which gets
+    updated when a binary gets added or replaced. </para>
+   <itemizedlist>
+    <listitem>
+     <para> operation, got the binary added, removed or modified </para>
+    </listitem>
+    <listitem>
+     <para> publish time, aka the time when the repository gets published by
+      OBS. This is not the same time as when the release action got invoked.
+     </para>
+    </listitem>
+    <listitem>
+     <para> build time </para>
+    </listitem>
+    <listitem>
+     <para> obsolete time, exists only when a binary gets removed or replaced
+     </para>
+    </listitem>
+    <listitem>
+     <para> supportstatus, meta information about the level of support which is
+      granted for the binary at the time of releasing it. </para>
+    </listitem>
+    <listitem>
+     <para> updateinfo id from rpm-md repository </para>
+    </listitem>
+    <listitem>
+     <para> maintainer of the binary who has prepared this update </para>
+    </listitem>
+    <listitem>
+     <para> disturl, the exact identifier to the source and build repository
+     </para>
+    </listitem>
+   </itemizedlist>
+  </sect2>
+  <sect2>
+   <title>Product information</title>
+   <para> Additional information about products referencing to this binary. </para>
+   <itemizedlist>
+    <listitem>
+     <para> updatefor: the listed products do reference the repository as
+      update channel. </para>
+    </listitem>
+    <listitem>
+     <para> product: exists when the binary was part of a product medium
+     </para>
+    </listitem>
+   </itemizedlist>
+  </sect2>
+ </sect1>
+ <sect1>
+  <title>osc search interface</title>
+  <para> not yet implemented </para>
+ </sect1>
+ <sect1>
+  <title>Web UI search interface</title>
+  <para> not yet implemented </para>
+ </sect1>
+ <sect1>
+  <title>API search interface</title>
+  <para> The search is provided via the generic XPath search interface. It is
+   provided below the paths:</para>
+  <itemizedlist>
+   <listitem>
+    <para> /search/released/binary/id : short form, just listing the matched
+     binary identifiers </para>
+   </listitem>
+   <listitem>
+    <para> /search/released/binary : long form, provides all other tracked
+     information as described above </para>
+   </listitem>
+  </itemizedlist>
+  <sect2>
    <title>Examples</title>
-   <para>
-    To find the latest version of given glibc-devel binary in all products.
-    Skipping old and revoked versions:
-<screen>/search/released/binary?match=@name"=glibc-devel"+and+obsolete[not(@time)]</screen>
-   </para>
-   <para>
-    To find a specific version by given updateinfo id. This ID is visible in
-    the update tools to the end user:
-<screen>/search/released/binary?match=updateinfo/@id="OBS-2014-42"</screen>
-   </para>
-   <para>
-    To find a specific version by given disturl. Used to find all affected
-    products by a certain build of a binary:
-<screen>/search/released/binary?match=disturl="obs://..."</screen>
-   </para>
-   <para>
-    When got the specific package version got released the first time:
+   <para> To find the latest version of given glibc-devel binary in all
+    products. Skipping old and revoked versions:</para>
+   <screen>/search/released/binary?match=@name"=glibc-devel"+and+obsolete[not(@time)]</screen>
+   <para> To find a specific version by given updateinfo id. This ID is visible
+    in the update tools to the end user:</para>
+   <screen>/search/released/binary?match=updateinfo/@id="OBS-2014-42"</screen>
+   <para> To find a specific version by given disturl. Used to find all
+    affected products by a certain build of a binary:</para>
+   <screen>/search/released/binary?match=disturl="obs://..."</screen>
+   <para> When got the specific package version got released the first time: </para>
 <screen>/search/released/binary?match=@name='kernel-default'+and+@version='1.0'+and+@release='1'+and+@arch='i586'+and+supportstatus='l3'+and+operation='added'</screen>
-   </para>
-   <para>
-    All binaries in a given repository:
-<screen>/search/released/binary?match=repository/[@project='BaseDistro3'+and+@name='BaseDistro3_repo']</screen>
-   </para>
-   <para>
-    All binaries part of a product release:
-<screen>/search/released/binary?match=product/[@project='openSUSE'+and+@name='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
-   </para>
-   <para>
-    All binaries part of the update repositories of a product:
-<screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
-   </para>
-   <para>
-    All binaries part of the update repositories of a versioned product:
-<screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@version='13.2']</screen>
-   </para>
-   <para>
-    All binaries part of the update repositories of a versioned product
-    (enterprise style):
-<screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@baseversion='12'+and+@patchlevel='1']</screen>
-   </para>
-  </section>
- </section>
+   <para> All binaries in a given repository:</para>
+   <screen>/search/released/binary?match=repository/[@project='BaseDistro3'+and+@name='BaseDistro3_repo']</screen>
+
+   <para> All binaries part of a product release:</para>
+   <screen>/search/released/binary?match=product/[@project='openSUSE'+and+@name='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
+
+   <para> All binaries part of the update repositories of a product:</para>
+   <screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
+
+   <para> All binaries part of the update repositories of a versioned product: </para>
+   <screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@version='13.2']</screen>
+
+   <para> All binaries part of the update repositories of a versioned product
+    (enterprise style):</para>
+   <screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@baseversion='12'+and+@patchlevel='1']</screen>
+
+  </sect2>
+ </sect1>
 </chapter>

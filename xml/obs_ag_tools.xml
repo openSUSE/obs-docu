@@ -1,20 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<section id="_tools">
+
+
+<sect1 xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="_tools">
  <title>Tools</title>
- <section id="_obs_admin">
+ <sect2 xml:id="_obs_admin">
   <title>obs_admin</title>
-  <simpara>obs_admin is a command-line tool used on the back-end server(s) to manage
+  <para>obs_admin is a command-line tool used on the back-end server(s) to manage
 running services, submit maintenance tasks, and debug problems.
-It should be only used by experienced admins.</simpara>
-  <simpara>It has built-in help which you can display with <emphasis>obs_admin --help</emphasis>.</simpara>
-  <simpara>Options to control the running services:</simpara>
+It should be only used by experienced admins.</para>
+  <para>It has built-in help which you can display with <emphasis>obs_admin --help</emphasis>.</para>
+  <para>Options to control the running services:</para>
 <screen>Job Controlling
 ===============
 
@@ -70,7 +64,7 @@ It should be only used by experienced admins.</simpara>
 
  --create-patchinfo-from-updateinfo
    creates a patchinfo submission based on an updateinfo information.</screen>
-  <simpara>Options for maintenance are:</simpara>
+  <para>Options for maintenance are:</para>
 <screen>Maintenance Tasks
 =================
 
@@ -88,7 +82,7 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
             a backup, right?
    remove sources older than &lt;x&gt; days, but keep &lt;y&gt; number of revisions
    --debug for debug output</screen>
-  <simpara>Options for debugging:</simpara>
+  <para>Options for debugging:</para>
 <screen>Debug Options
 =============
 
@@ -144,40 +138,40 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
 
  --show-delta-store &lt;file&gt;
    Show delta store statistics</screen>
- </section>
- <section id="_osc">
+ </sect2>
+ <sect2 xml:id="_osc">
   <title>osc</title>
-  <simpara>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> command-line client is mainly used by developers and packagers. But
+  <para>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> command-line client is mainly used by developers and packagers. But
 for some tasks, admin people also need this tool. It too has builtin help:
 use <emphasis>osc --help</emphasis>. The tool needs to be configured first to know the
-OBS API URL and your user details.</simpara>
-  <simpara>To configure the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool the first time you need to call it with</simpara>
+OBS API URL and your user details.</para>
+  <para>To configure the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool the first time you need to call it with</para>
 <screen>osc -A &lt;URL to the OBS API&gt;
 For example:
 osc -A https://api.testobs.org</screen>
-  <simpara>Follow the instructions on the terminal.</simpara>
+  <para>Follow the instructions on the terminal.</para>
   <warning>
-   <simpara>The password is stored in clear text in the .oscrc file by default, so you need to
+   <para>The password is stored in clear text in the .oscrc file by default, so you need to
 give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
 for example) and may use different methods for authentication like
 Kerberos see <xref linkend="_kerberos"/>
-   </simpara>
+   </para>
   </warning>
-  <simpara>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</simpara>
+  <para>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</para>
   <itemizedlist>
    <listitem>
-    <simpara>
+    <para>
 meta  - to create or update projects or package data
-</simpara>
+</para>
    </listitem>
    <listitem>
-    <simpara>
+    <para>
 API - to read and write online configuration data
-</simpara>
+</para>
    </listitem>
   </itemizedlist>
-  <section id="_osc_meta_subcommand">
+  <sect3 xml:id="_osc_meta_subcommand">
    <title>osc meta subcommand</title>
 <screen>meta: Show meta information, or edit it
 
@@ -253,8 +247,8 @@ Options:
                         include defined attribute defaults
     -a ATTRIBUTE, --attribute=ATTRIBUTE
                         affect only a given attribute</screen>
-  </section>
-  <section id="_osc_api_subcommand">
+  </sect3>
+  <sect3 xml:id="_osc_api_subcommand">
    <title>osc API subcommand</title>
 <screen>api: Issue an arbitrary request to the API
 
@@ -284,10 +278,10 @@ Options:
     -e, --edit          GET, edit and PUT the location
     -X HTTP_METHOD, -m HTTP_METHOD, --method=HTTP_METHOD
                         specify HTTP method to use (GET|PUT|DELETE|POST)</screen>
-   <simpara>The online API documentation is available at
-<ulink url="https://build.opensuse.org/apidocs"><emphasis>https://build.opensuse.org/apidocs</emphasis></ulink>
-   </simpara>
-   <simpara>Some examples for admin stuff:</simpara>
+   <para>The online API documentation is available at
+<link xlink:href="https://build.opensuse.org/apidocs"><emphasis>https://build.opensuse.org/apidocs</emphasis></link>
+   </para>
+   <para>Some examples for admin stuff:</para>
 <screen># Read the global configuration file
   osc api /configuration
 # Update the global configuration
@@ -300,6 +294,6 @@ Options:
 
 # retrieve statistics
   osc api /statistics/latest_added</screen>
-  </section>
- </section>
-</section>
+  </sect3>
+ </sect2>
+</sect1>

@@ -1,13 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.best-practices.distribution-setup">
- <title>Distribution Setup</title>
+
+
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="cha.obs.best-practices.distribution-setup"><title>Distribution Setup</title><info/>
+ 
  <para>
   This document describes ways to setup an entire distribution, including
   release management, update stack and service pack generation support.
@@ -41,15 +35,15 @@
    Users who are new to a certain project, either because they are new users at
    all or don't have any deeper knowledge about this certain project do not have
    direct commit permissions. However, they can still create a copy of any
-   package source and ask back to merge their changes. &obs; has support to
+   package source and ask back to merge their changes. Open Build Service has support to
    make this easy.
 <!-- TODO: merge collaboration wiki page here, when we have this docu online -->
   </para>
 <!-- this should become a standard style template and added to each section. -->
   <para>
    Wiki reference:
-   <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Collaboration">User
-   comment page</ulink>
+   <link xlink:href="http://en.opensuse.org/openSUSE:Build_Service_Collaboration">User
+   comment page</link>
   </para>
  </section>
 </chapter>

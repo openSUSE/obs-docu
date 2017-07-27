@@ -1,119 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.best-practices.howto">
+<chapter version="5.0" xml:id="cha.obs.best-practices.howto"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>HOW TO -- a list of common questions and solutions</title>
- <para>
-  This currently an unsorted list of asked questions.
- </para>
- <section>
+ <info/>
+ <para> This currently an unsorted list of asked questions. </para>
+ <sect1>
   <title>How to work best with limited bandwidth</title>
-  <para>
-   Packages can contain large files, esp. some tar balls can become quite
+  <para> Packages can contain large files, esp. some tar balls can become quite
    large, in some real life examples several hundred mega bytes. This can be a
-   problem when you need to work on the package via a slow connection.
-  </para>
-  <section>
+   problem when you need to work on the package via a slow connection. </para>
+  <sect2>
    <title>Use the web interface</title>
-   <para>
-    The web interface is the easiest way to edit simple things without the need
-    of the checkout.
-   </para>
-   <para>
-    Disadvantages are
-    <itemizedlist>
-     <listitem>
-      <simpara>
-           Not the preferred solution for power packagers
-          </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-           No local build possible
-          </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-           Still a significant bandwidth is needed compared to the size of the edited file.
-          </simpara>
-     </listitem>
-    </itemizedlist>
-   </para>
-  </section>
-  <section>
+   <para> The web interface is the easiest way to edit simple things without
+    the need of the checkout. </para>
+   <para> Disadvantages are</para>
+   <itemizedlist>
+    <listitem>
+     <para> Not the preferred solution for power packagers </para>
+    </listitem>
+    <listitem>
+     <para> No local build possible </para>
+    </listitem>
+    <listitem>
+     <para> Still a significant bandwidth is needed compared to the size of
+      the edited file. </para>
+    </listitem>
+   </itemizedlist>
+  </sect2>
+  <sect2>
    <title>Use osc with size limit</title>
    <para>
     <command>osc</command> offers to skip files with a certain size (specified
     with <command>-l</command> switch) on checkout. The limit is stored locally
     and you can also run an update later without downloading any large files.
-    All other files can be edited, diffed and committed as usual.
-   </para>
-   <para>
-    Disadvantages are
+    All other files can be edited, diffed and committed as usual. </para>
+   <para> Disadvantages are </para>
     <itemizedlist>
      <listitem>
-      <simpara>
-           The checkout is incomplete
-          </simpara>
+      <para> The checkout is incomplete </para>
      </listitem>
      <listitem>
-      <simpara>
-           No local build possible
-          </simpara>
+      <para> No local build possible </para>
      </listitem>
     </itemizedlist>
-   </para>
-  </section>
-  <section>
+  </sect2>
+  <sect2>
    <title>Use <command>download_url</command></title>
-   <para>
-    Manage your large files via source services. The easiest way is to use
-<screen><command>osc add $URL</command></screen>
-    which just stores a small <command>_service</command> file. The check will
-    not contain the large files by default, but they get downloaded when needed
-    via the service. However, they will never get committed, so this is the
-    best approach when you have a fast downstream, but slow upstream like with
+   <para> Manage your large files via source services. The easiest way is to
+    use <command>osc add $URL</command> which just stores a
+    small <command>_service</command> file. The check will not contain the
+    large files by default, but they get downloaded when needed via the
+    service. However, they will never get committed, so this is the best
+    approach when you have a fast downstream, but slow upstream like with
     standard DSL connections. Also other users can trust your tar ball, esp.
-    important when you do version upgrades on foreign packages.
-   </para>
-   <para>
-    Disadvantages are
+    important when you do version upgrades on foreign packages. </para>
+   <para> Disadvantages are </para>
     <itemizedlist>
      <listitem>
-      <simpara>
-           The generated files have the _service: prefix in check out (but not during build).
-          </simpara>
+      <para> The generated files have the _service: prefix in check out (but
+       not during build). </para>
      </listitem>
     </itemizedlist>
-   </para>
-  </section>
-  <section>
+  </sect2>
+  <sect2>
    <title>Use source service in trylocal mode</title>
-   <para>
-    Manage your large files via source services in try local mode for example
-    with <command>download_url</command> or <command>download_files</command>
-    service. This means you can be flexible depending on your current
-    connection without changing the setup. The service is generating the file
-    on the server side when you decide not to commit it, but you can also
-    decide to commit it and avoid the _service: prefix on the files. Also other
-    users can trust your tar ball, esp. important when you do version upgrades
-    on foreign packages.
-   </para>
-   <para>
-    Disadvantages are
+   <para> Manage your large files via source services in try local mode for
+    example with <command>download_url</command> or
+     <command>download_files</command> service. This means you can be flexible
+    depending on your current connection without changing the setup. The
+    service is generating the file on the server side when you decide not to
+    commit it, but you can also decide to commit it and avoid the _service:
+    prefix on the files. Also other users can trust your tar ball, esp.
+    important when you do version upgrades on foreign packages. </para>
+   <para> Disadvantages are </para>
     <itemizedlist>
      <listitem>
-      <simpara>
-            A checkout may still need the size limit switch when last commit contained the large files.
-          </simpara>
+      <para> A checkout may still need the size limit switch when last
+       commit contained the large files. </para>
      </listitem>
     </itemizedlist>
-   </para>
-  </section>
- </section>
+  </sect2>
+ </sect1>
 </chapter>

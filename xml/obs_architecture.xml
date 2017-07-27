@@ -1,101 +1,118 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.architecture">
+<chapter version="5.0" xml:id="cha.obs.architecture"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>OBS Architecture</title>
- <para></para>
- <section id="_overview_graph">
+ <info/>
+ <para/>
+ <sect1 xml:id="_overview_graph">
   <title>Overview graph</title>
-  <para>
-   The OBS is not a monolithic server; it consists of multiple daemons that
-   fulfill different tasks.
-  </para>
+  <para> The OBS is not a monolithic server; it consists of multiple daemons
+   that fulfill different tasks. </para>
   <figure>
    <title>Simplified OBS Component Overview</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="obs_components.png" width="500" />
+     <imagedata fileref="obs_components.png" width="500"/>
     </imageobject>
    </mediaobject>
   </figure>
- </section>
- <xi:include href="obs_ag_backend_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <section id="_communication_flow">
+ </sect1>
+ <xi:include href="obs_ag_backend_components.xml"/>
+ <sect1 xml:id="_communication_flow">
   <title>Communication flow</title>
-  <simpara>The communication flow can be split into 3 parts:</simpara>
-  <orderedlist numeration="arabic">
+  <para>The communication flow can be split into 3 parts:</para>
+  <orderedlist>
    <listitem>
-    <simpara>
-User-to-front-end communication
-</simpara>
+    <para> User-to-front-end communication </para>
    </listitem>
    <listitem>
-    <simpara>
-Front-end-to-source-server communication
-</simpara>
+    <para> Front-end-to-source-server communication </para>
    </listitem>
    <listitem>
-    <simpara>
-communication between source server and other back-end components, in first place the repository servers.
-</simpara>
+    <para> communication between source server and other back-end
+     components, in first place the repository servers. </para>
    </listitem>
   </orderedlist>
-  <simpara>The user is using the front-end (via tools like <emphasis role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the Open
-Build Service. The front-end is providing a web interface and also an API. The front-end is implemented as Ruby on Rails
-application. All communication happens via the <emphasis role="strong"><emphasis>http</emphasis></emphasis> protocol (normally
-encrypted so <emphasis role="strong"><emphasis>https</emphasis></emphasis> is used.</simpara>
-  <simpara>The communication between the front-end and the back-end also use the http
-protocol, using the back-end source server as gateway to most of the other
-back-end components.</simpara>
-  <simpara>The figure <xref linkend="fig_obs_communication"/> shows the communication flow between the OBS components if
-a package source (e.g. a _service file) was updated.</simpara>
-  <simpara>If a source file of a package was updated, the new source file is uploaded
-with an HTTP PUT operation to the front-end.
-The front-end may ask for authentication (if not already done) and check
-the access rights for the user. If everything is OK, the new file will be
-send to the back-end <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  via an HTTP PUT request as well.
-The source server stores the changed source (under revision control) and
-check if for this change source service runs are needed. If yes the <emphasis role="strong"><emphasis>Source
-Service server</emphasis></emphasis> is informed via an HTTP PUT request of the _service file to
-run the requested services.</simpara>
-  <simpara>The <emphasis role="strong"><emphasis>Source  Service server</emphasis></emphasis> runs the different source services, e.g download the requested revision from a GIT server.
-After running all services it  delivers the final
-sources back to the <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>, which then store these under revision control
-as well.</simpara>
-  <simpara>The <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>  then notifies the <emphasis role="strong"><emphasis>Schedulers</emphasis></emphasis> (for each architecture) about the
-change of the package via an event.</simpara>
-  <simpara>The <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis> recalculates the package and project state and if all build requires are solved, a build Job
-is created and put in the <emphasis role="strong"><emphasis>Job pool</emphasis></emphasis>. The notified <emphasis role="strong"><emphasis>Dispatcher</emphasis></emphasis> checks for free worker which
-met the build constraints for the job and send the job to the <emphasis role="strong"><emphasis>worker</emphasis></emphasis>.</simpara>
-  <figure id="fig_obs_communication">
+  <para>The user is using the front-end (via tools like <emphasis
+    role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the
+   Open Build Service. The front-end is providing a web interface and also an
+   API. The front-end is implemented as Ruby on Rails application. All
+   communication happens via the <emphasis role="strong"
+     ><emphasis>http</emphasis></emphasis> protocol (normally encrypted so
+    <emphasis role="strong"><emphasis>https</emphasis></emphasis> is
+   used.</para>
+  <para>The communication between the front-end and the back-end also use
+   the http protocol, using the back-end source server as gateway to most of
+   the other back-end components.</para>
+  <para>The figure <xref linkend="fig_obs_communication"/> shows the
+   communication flow between the OBS components if a package source (e.g. a
+   _service file) was updated.</para>
+  <para>If a source file of a package was updated, the new source file is
+   uploaded with an HTTP PUT operation to the front-end. The front-end may ask
+   for authentication (if not already done) and check the access rights for the
+   user. If everything is OK, the new file will be send to the back-end
+    <emphasis role="strong"><emphasis>Source server</emphasis></emphasis> via
+   an HTTP PUT request as well. The source server stores the changed source
+   (under revision control) and check if for this change source service runs
+   are needed. If yes the <emphasis role="strong"><emphasis>Source Service
+     server</emphasis></emphasis> is informed via an HTTP PUT request of the
+   _service file to run the requested services.</para>
+  <para>The <emphasis role="strong"><emphasis>Source Service
+     server</emphasis></emphasis> runs the different source services, e.g
+   download the requested revision from a GIT server. After running all
+   services it delivers the final sources back to the <emphasis role="strong"
+     ><emphasis>Source server</emphasis></emphasis>, which then store these
+   under revision control as well.</para>
+  <para>The <emphasis role="strong"><emphasis>Source
+    server</emphasis></emphasis> then notifies the <emphasis role="strong"
+     ><emphasis>Schedulers</emphasis></emphasis> (for each architecture) about
+   the change of the package via an event.</para>
+  <para>The <emphasis role="strong"
+    ><emphasis>Scheduler</emphasis></emphasis> recalculates the package and
+   project state and if all build requires are solved, a build Job is created
+   and put in the <emphasis role="strong"><emphasis>Job
+    pool</emphasis></emphasis>. The notified <emphasis role="strong"
+     ><emphasis>Dispatcher</emphasis></emphasis> checks for free worker which
+   met the build constraints for the job and send the job to the <emphasis
+    role="strong"><emphasis>worker</emphasis></emphasis>.</para>
+  <figure xml:id="fig_obs_communication">
    <title>OBS communication</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="obs_communication.png" contentwidth="320"/>
     </imageobject>
-    <textobject><phrase>obs_communication.png</phrase>
+    <textobject>
+     <phrase>obs_communication.png</phrase>
     </textobject>
    </mediaobject>
-   <mediaobject>
+   <!--<mediaobject>
     <imageobject>
      <imagedata fileref="obs_communication_legend.png" contentwidth="180"/>
     </imageobject>
-    <textobject><phrase>obs_communication_legend.png</phrase>
+    <textobject>
+     <phrase>obs_communication_legend.png</phrase>
     </textobject>
-   </mediaobject>
+   </mediaobject>-->
   </figure>
-  <simpara>The <emphasis role="strong"><emphasis>Worker</emphasis></emphasis> downloads the sources from the <emphasis role="strong"><emphasis>Source server</emphasis></emphasis> and all required binary packages from
-the <emphasis role="strong"><emphasis>Repo server</emphasis></emphasis>. The package then will be built, the worker is monitored by the <emphasis role="strong"><emphasis>warden</emphasis></emphasis> service to detect any
-worker crashes.</simpara>
-  <simpara>If the build was finished the build results (which are also contain build logs) the results are uploaded to the <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis>
-again and if requested the <emphasis role="strong"><emphasis>Signer</emphasis></emphasis> does sign the packages.
-The <emphasis role="strong"><emphasis>Scheduler</emphasis></emphasis> recalculate the project status if here are more dependent packages to build. If not it informs the <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis>
-to publish the new build results and create an updated version of the repository.
-Th <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis> will also request signing of the repository meta data.</simpara>
- </section>
+  <para>The <emphasis role="strong"><emphasis>Worker</emphasis></emphasis>
+   downloads the sources from the <emphasis role="strong"><emphasis>Source
+     server</emphasis></emphasis> and all required binary packages from the
+    <emphasis role="strong"><emphasis>Repo server</emphasis></emphasis>. The
+   package then will be built, the worker is monitored by the <emphasis
+    role="strong"><emphasis>warden</emphasis></emphasis> service to detect any
+   worker crashes.</para>
+  <para>If the build was finished the build results (which are also contain
+   build logs) the results are uploaded to the <emphasis role="strong"
+     ><emphasis>Scheduler</emphasis></emphasis> again and if requested the
+    <emphasis role="strong"><emphasis>Signer</emphasis></emphasis> does sign
+   the packages. The <emphasis role="strong"
+    ><emphasis>Scheduler</emphasis></emphasis> recalculate the project status
+   if here are more dependent packages to build. If not it informs the
+    <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis> to
+   publish the new build results and create an updated version of the
+   repository. Th <emphasis role="strong"
+    ><emphasis>Publisher</emphasis></emphasis> will also request signing of the
+   repository meta data.</para>
+ </sect1>
 </chapter>
