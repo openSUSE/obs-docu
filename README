@@ -10,7 +10,8 @@ The documentation is currently split into three books:
   * The OBS reference guide
   * The OBS best practices guide
 
-To work on this document you need to install the package "daps".
+To work on this document you need to install the package "daps" in
+version 2.4.0 or later.
 
 After editing the document validate your changes via the following
 commands:
