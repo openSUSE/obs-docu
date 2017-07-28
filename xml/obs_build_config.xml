@@ -1,304 +1,246 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.build_config">
+<chapter version="5.0" xml:id="cha.obs.build_config"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Configuration</title>
- <para>
-  The build configuration is needed at least in each base project to define the
-  setup of the build system. In addition to that it can be used to handle
-  compatibility layers or to switch on or off certain features during the
-  build.
- </para>
- <para>
-  The build config is reachable via API /source/PROJECT/_config, via
-  <command>osc meta prjconf</command> or via the Web UI via the
-  <guimenu>Project Config</guimenu> tab.
- </para>
- <section>
+ <info/>
+ <para> The build configuration is needed at least in each base project to
+  define the setup of the build system. In addition to that it can be used to
+  handle compatibility layers or to switch on or off certain features during
+  the build. </para>
+ <para> The build config is reachable via API /source/PROJECT/_config, via
+   <command>osc meta prjconf</command> or via the Web UI via the
+   <guimenu>Project Config</guimenu> tab. </para>
+ <sect1>
   <title>Configuration File Syntax</title>
-  <para>
-   The build configuration is parsed by OBS in rpm style independent of the
-   used packaging format. This means that you can use rpm features like macros
-   or conditions in the configuration. All lines consist of the form 'keyword:
-   arguments'.
-  </para>
-  <para>
-   &lt;PACKAGES&gt; mean binary package provides, but not the full file name.
-   For example gcc, but not gcc-1.2.3.i386.rpm. Provides of a package can not
-   be used either.
-  </para>
-  <section>
+  <para> The build configuration is parsed by OBS in rpm style independent of
+   the used packaging format. This means that you can use rpm features like
+   macros or conditions in the configuration. All lines consist of the form
+   'keyword: arguments'. </para>
+  <para> &lt;PACKAGES&gt; mean binary package provides, but not the full file
+   name. For example gcc, but not gcc-1.2.3.i386.rpm. Provides of a package can
+   not be used either. </para>
+  <sect2>
    <title>Required: &lt;PACKAGES&gt;</title>
-   <para>
-    Required lines contain one or more packages that always get installed for
-    package builds. A change in one of the requires packages triggers a new
-    build.
-   </para>
-  </section>
-  <section>
+   <para> Required lines contain one or more packages that always get installed
+    for package builds. A change in one of the requires packages triggers a new
+    build. </para>
+  </sect2>
+  <sect2>
    <title>Support: &lt;PACKAGES&gt;</title>
-   <para>
-    Support lines contain one or more packages which also get installed for
-    package builds, but a change in one of the packages does not trigger an
+   <para> Support lines contain one or more packages which also get installed
+    for package builds, but a change in one of the packages does not trigger an
     automatic rebuild. This is useful for packages that most likely do not
-    influence the build result, for example 'make', or 'coreutils'.
-   </para>
-  </section>
-  <section>
+    influence the build result, for example 'make', or 'coreutils'. </para>
+  </sect2>
+  <sect2>
    <title>Preinstall: &lt;PACKAGES&gt;</title>
-   <para>
-    Preinstall packages are needed to run the package installation program.
-    They get unpacked before the VM gets started. Included scripts are NOT
-    executed during this phase. However these packages will get installed again
-    inside of the VM including script execution.
-   </para>
-  </section>
-  <section>
+   <para> Preinstall packages are needed to run the package installation
+    program. They get unpacked before the VM gets started. Included scripts are
+    NOT executed during this phase. However these packages will get installed
+    again inside of the VM including script execution. </para>
+  </sect2>
+  <sect2>
    <title>Keep: &lt;PACKAGES&gt;</title>
-   <para>
-    To eliminate build cycles the to-be-built package is not installed by
+   <para> To eliminate build cycles the to-be-built package is not installed by
     default, even when it is required. Keep can be used overwrite this
     behavior. It is usually needed for packages like 'make' that are used to
     build itself. Preinstalled packages are automatically kept, as the package
-    installation program needs to work all the time.
-   </para>
-  </section>
-  <section>
+    installation program needs to work all the time. </para>
+  </sect2>
+  <sect2>
    <title>VMInstall: &lt;PACKAGES&gt;</title>
-   <para>
-    VMInstall is like Preinstall, but these packages get only installed when a
-    virtual machine like Xen or KVM is used for building. Usually packages like
-    'mount' are listed here.
-   </para>
-  </section>
-  <section>
+   <para> VMInstall is like Preinstall, but these packages get only installed
+    when a virtual machine like Xen or KVM is used for building. Usually
+    packages like 'mount' are listed here. </para>
+  </sect2>
+  <sect2>
    <title>Runscripts: &lt;PACKAGES&gt;</title>
-   <para>
-    Runscripts defines the scripts of preinstalled packages which needs to be
-    executed directly after the preinstall phase, before installing the
-    remaining packages.
-   </para>
-  </section>
-  <section>
+   <para> Runscripts defines the scripts of preinstalled packages which needs
+    to be executed directly after the preinstall phase, before installing the
+    remaining packages. </para>
+  </sect2>
+  <sect2>
    <title>Order: &lt;PACKAGE_A&gt;:&lt;PACKAGE_B&gt;</title>
-   <para>
-    The build script takes care about the installation order if they are
+   <para> The build script takes care about the installation order if they are
     defined via dependencies inside of the packages. However, there might be
     dependency loops (reported during setup of the build system) or missing
     dependencies. The Order statement can be used then to give a hint where to
     break the loop. &lt;PACKAGE_A&gt; will get installed before
-    &lt;PACKAGE_B&gt;.
-   </para>
-  </section>
-  <section>
+    &lt;PACKAGE_B&gt;. </para>
+  </sect2>
+  <sect2>
    <title>ExportFilter: &lt;REGEXP&gt; &lt;ARCHITECTURES&gt;</title>
-   <para>
-    The export filter can be used to export build results from one architecture
-    to others. This is required when one architecture needs packages from
-    another architecture for building. The regexp must match the resulting
-    binary name of the package. It will export it to all listed scheduler
-    architectures. Using a single dot will export it to the architecture which
-    was used to build it. So not using a dot there will filter the package.
-   </para>
-  </section>
-  <section>
+   <para> The export filter can be used to export build results from one
+    architecture to others. This is required when one architecture needs
+    packages from another architecture for building. The regexp must match the
+    resulting binary name of the package. It will export it to all listed
+    scheduler architectures. Using a single dot will export it to the
+    architecture which was used to build it. So not using a dot there will
+    filter the package. </para>
+  </sect2>
+  <sect2>
    <title>PublishFilter: &lt;REGEXP&gt; [&lt;REGEXP&gt; [...]]</title>
-   <para>
-    The publish filter can be used limit the published binary packages in
+   <para> The publish filter can be used limit the published binary packages in
     public repositories. Packages that match any &lt;REGEXP&gt; will not be put
     into the exported repository. There can be only one line of PublishFilter
     for historic reasons. However, multiple &lt;REGEXP&gt; can be given.
    </para>
-  </section>
-  <section>
+  </sect2>
+  <sect2>
    <title>Prefer: &lt;PACKAGES&gt;</title>
-   <para>
-    In case multiple packages satisfy a dependency, the OBS system will
+   <para> In case multiple packages satisfy a dependency, the OBS system will
     complain about that situation. This is unlike like most package managing
     tools, which just pick one of the package. Because one of OBS' goal is to
     provide reproducible builds, it reports an error in this case instead of
-    choosing a random package. The Prefer: tag lists packages to be preferred in
-    case a choice exists. When the package name is prefixed with a dash, this
-    is treated as a de-prefer.
-   </para>
-  </section>
-  <section>
+    choosing a random package. The Prefer: tag lists packages to be preferred
+    in case a choice exists. When the package name is prefixed with a dash,
+    this is treated as a de-prefer. </para>
+  </sect2>
+  <sect2>
    <title>Prefer: &lt;PACKAGE_A&gt;:&lt;PACKAGES&gt;</title>
-   <para>
-    It is possible to define the prefer only when one package is creating the
-    choice error. This package must be listed first with a colon.
-   </para>
-  </section>
-  <section>
+   <para> It is possible to define the prefer only when one package is creating
+    the choice error. This package must be listed first with a colon. </para>
+  </sect2>
+  <sect2>
    <title>Ignore: &lt;PACKAGES&gt;</title>
-   <para>
-    Ignore can be used to break dependencies. This can be useful to reduce the
-    number of needed packages or to break cyclic dependencies. Be careful with
-    this feature, as breaking dependencies can have surprising results.
-   </para>
-  </section>
-  <section>
+   <para> Ignore can be used to break dependencies. This can be useful to
+    reduce the number of needed packages or to break cyclic dependencies. Be
+    careful with this feature, as breaking dependencies can have surprising
+    results. </para>
+  </sect2>
+  <sect2>
    <title>Ignore: &lt;PACKAGE_A&gt;:&lt;PACKAGES&gt;</title>
-   <para>
-    It is possible to define the ignore only for one package. This package must
-    be listed first with a colon.
-   </para>
-  </section>
-  <section>
+   <para> It is possible to define the ignore only for one package. This
+    package must be listed first with a colon. </para>
+  </sect2>
+  <sect2>
    <title>FileProvides: &lt;FILE&gt; &lt;PACKAGES&gt;</title>
-   <para>
-    OBS ignores dependencies to files (instead of package names) by default.
-    This is mostly done to reduce the amount of memory needed, as the package
-    file lists take up a considerable amount of repository meta data. As a
-    workaround, FileProvides can be used to tell the systems which packages
-    contain a file. The File needs to have the full path.
-   </para>
-  </section>
-  <section>
+   <para> OBS ignores dependencies to files (instead of package names) by
+    default. This is mostly done to reduce the amount of memory needed, as the
+    package file lists take up a considerable amount of repository meta data.
+    As a workaround, FileProvides can be used to tell the systems which
+    packages contain a file. The File needs to have the full path. </para>
+  </sect2>
+  <sect2>
    <title>Substitute: &lt;PACKAGE_A&gt; &lt;PACKAGES&gt;</title>
-   <para>
-    It is possible to replace to BuildRequires with other packages. This will
-    have only an affect on directly BuildRequired packages, not on indirectly
-    required packages.
-   </para>
-  </section>
-  <section>
+   <para> It is possible to replace to BuildRequires with other packages. This
+    will have only an affect on directly BuildRequired packages, not on
+    indirectly required packages. </para>
+  </sect2>
+  <sect2>
    <title>BuildFlags: &lt;FLAG&gt;:&lt;VALUE&gt;</title>
-   <para>
-    This defines flags for the build process. The following values for FLAG are
-    usable.
-   </para>
+   <para> This defines flags for the build process. The following values for
+    FLAG are usable. </para>
    <itemizedlist>
     <listitem>
-     <simpara><parameter>vmfstype:</parameter> Defines a specific file system when building inside of a VM.
-        </simpara>
+    <para>
+     <parameter>vmfstype:</parameter> Defines a specific file system
+      when building inside of a VM. 
+    </para>
     </listitem>
     <listitem>
-     <simpara><parameter>kiwiprofile:</parameter> builds the selected profile in kiwi appliance builds.
-        </simpara>
-    </listitem>
+    <para>
+     <parameter>kiwiprofile:</parameter> builds the selected profile
+      in kiwi appliance builds. 
+    </para>
+     </listitem>
    </itemizedlist>
-  </section>
-  <section>
+  </sect2>
+  <sect2>
    <title>BuildEngine: &lt;ENGINE&gt;</title>
-   <para>
-    Use an alternative build engine. This is still chained inside of the build
-    script for security reasons. Alternatives are mock (for Fedora and Red Hat)
-    and debootstrap (for Debian). This will avoid differences in the build
-    environment setup, but it will also have an effect on speed and reduced
-    features. It should only be used when you want to emulate the distribution
-    build. debbuild engine will build deb files out of a spec file
+   <para> Use an alternative build engine. This is still chained inside of the
+    build script for security reasons. Alternatives are mock (for Fedora and
+    Red Hat) and debootstrap (for Debian). This will avoid differences in the
+    build environment setup, but it will also have an effect on speed and
+    reduced features. It should only be used when you want to emulate the
+    distribution build. debbuild engine will build deb files out of a spec file
     description. It can be used by the following definition inside of the
-    project build config:
-<screen><command>
+    project build config:</para>
+    <screen>
 Repotype: debian
 Type: spec
 Binarytype: deb
 BuildEngine: debbuild
 Support: pax
 Support: debbuild
-Keep: debbuild
-           </command></screen>
-   </para>
-  </section>
-  <section>
+Keep: debbuild</screen>
+  </sect2>
+  <sect2>
    <title>OptFlags: &lt;TARGET_ARCHITECTURE&gt; &lt;FLAGS&gt;</title>
-   <para>
-    rpm only: Optflags exports compiler flags to the build. They will only have
-    an effect when the spec file is using $RPM_OPT_FLAGS. The target
-    architecture may be * to affect all architectures.
-   </para>
-  </section>
-  <section>
+   <para> rpm only: Optflags exports compiler flags to the build. They will
+    only have an effect when the spec file is using $RPM_OPT_FLAGS. The target
+    architecture may be * to affect all architectures. </para>
+  </sect2>
+  <sect2>
    <title>Type: &lt;TYPE&gt;</title>
-   <para>
-    Build recipe type. This is the format of the file which provides the build
-    description. This gets usually autodetected, but in some rare cases it can
-    be set here to either one of these: spec, dsc, kiwi, livebuild, arch,
-    preinstallimage
-   </para>
-  </section>
-  <section>
+   <para> Build recipe type. This is the format of the file which provides the
+    build description. This gets usually autodetected, but in some rare cases
+    it can be set here to either one of these: spec, dsc, kiwi, livebuild,
+    arch, preinstallimage </para>
+  </sect2>
+  <sect2>
    <title>BinaryType: &lt;TYPE&gt;</title>
-   <para>
-    Binary type. This is the format of the files which will be the result of
-    the build jobs. This gets usually set depending on the build recipe type.
-    In some situations, for example a kiwi build job result gets converted into
-    an rpm, it can be used to overwrite it. Possible values are: rpm, deb or
-    none
-   </para>
-  </section>
-  <section>
+   <para> Binary type. This is the format of the files which will be the result
+    of the build jobs. This gets usually set depending on the build recipe
+    type. In some situations, for example a kiwi build job result gets
+    converted into an rpm, it can be used to overwrite it. Possible values are:
+    rpm, deb or none </para>
+  </sect2>
+  <sect2>
    <title>Target: &lt;TARGET_ARCHITECTURE&gt;</title>
-   <para>
-    rpm only: Defines the target architecture. This can be used to build for
-    i686 on i586 schedulers for example.
-   </para>
-  </section>
-  <section>
+   <para> rpm only: Defines the target architecture. This can be used to build
+    for i686 on i586 schedulers for example. </para>
+  </sect2>
+  <sect2>
    <title>HostArch: &lt;HOST_ARCHITECTURE&gt;</title>
-   <para>
-    This is used for cross builds. It defines the host architecture used for
-    building, while the scheduler architecture remains the target architecture.
-   </para>
-  </section>
-  <section>
+   <para> This is used for cross builds. It defines the host architecture used
+    for building, while the scheduler architecture remains the target
+    architecture. </para>
+  </sect2>
+  <sect2>
    <title>type: &lt;TYPE&gt;</title>
-   <para>
-    Defines the recipe format. Valid values are currently: none, spec, dsc,
-    arch, kiwi, preinstallimage. If no type is specified, OBS deduces a type
-    from the binary type.
-   </para>
-  </section>
-  <section>
+   <para> Defines the recipe format. Valid values are currently: none, spec,
+    dsc, arch, kiwi, preinstallimage. If no type is specified, OBS deduces a
+    type from the binary type. </para>
+  </sect2>
+  <sect2>
    <title>Binarytype: &lt;TYPE&gt;</title>
-   <para>
-    (OBS 2.4 or later): Sets the binary format used to setup the build
+   <para> (OBS 2.4 or later): Sets the binary format used to setup the build
     environment. For example a package with spec build description may use and
     generate deb packages instead of rpms. If no binary type is specified, OBS
     deduces it from the recipe type. If the recipe type is also not set, OBS
-    looks at the Preinstall package list for a hint.
-   </para>
-  </section>
-  <section>
+    looks at the Preinstall package list for a hint. </para>
+  </sect2>
+  <sect2>
    <title>Repotype: &lt;TYPE[:OPTIONS]&gt; ...</title>
-   <para>
-    Defines the repository format for published repositories. Valid values are:
-    none, rpm-md, suse, debian, hdlist2, arch, staticlinks. The OPTIONS
-    parameter depends on the repository type, for rpm-md the known options are
-    'legacy' to create the old rpm-md format, 'deltainfo' or 'prestodelta' to
-    create delta rpm packages, 'rsyncable' to use rsyncable gzip compression.
-    To split the debug packages in an own published repository the option
-    <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal> can be used.
-   </para>
-  </section>
-  <section>
+   <para> Defines the repository format for published repositories. Valid
+    values are: none, rpm-md, suse, debian, hdlist2, arch, staticlinks. The
+    OPTIONS parameter depends on the repository type, for rpm-md the known
+    options are 'legacy' to create the old rpm-md format, 'deltainfo' or
+    'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable
+    gzip compression. To split the debug packages in an own published
+    repository the option
+      <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal>
+    can be used. </para>
+  </sect2>
+  <sect2>
    <title>Patterntype: &lt;TYPES&gt;</title>
-   <para>
-    Defines the pattern format. Valid values are: none (default), ymp, comps.
-   </para>
-  </section>
-  <section>
+   <para> Defines the pattern format. Valid values are: none (default), ymp,
+    comps. </para>
+  </sect2>
+  <sect2>
    <title>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</title>
-   <para>
-    (OBS 2.4 or later): Define build constraints for build jobs. The selector
-    is a colon-separated list which gets a string assigned. See the
-    build job constraints page for details.
-   </para>
-  </section>
- </section>
- <section>
+   <para> (OBS 2.4 or later): Define build constraints for build jobs. The
+    selector is a colon-separated list which gets a string assigned. See the
+    build job constraints page for details. </para>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>Macro Section</title>
-  <para>
-   The macro section of the build configuration starts behind a Macros: line
-   and is only used on rpm builds. The content gets exported to be used by
+  <para> The macro section of the build configuration starts behind a Macros:
+   line and is only used on rpm builds. The content gets exported to be used by
    rpmbuild during the build. It can be used to export a define using "%key
-   value" lines.
-  </para>
- </section>
+   value" lines. </para>
+ </sect1>
 </chapter>

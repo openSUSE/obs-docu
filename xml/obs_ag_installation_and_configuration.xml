@@ -1,108 +1,110 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+
+<!DOCTYPE chapter
 [
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+<!--  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+-->
 ]>
-<chapter id="obs.cha.installation_and_configuration">
+<chapter xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+ xml:id="obs.cha.installation_and_configuration">
  <title>Installation and configuration</title>
- <section id="_planning">
+ <info/>
+
+ <sect1 xml:id="_planning">
   <title>Planning</title>
-  <simpara>For testing an own OBS instance and for small
-setups like only packaging some scripts from your administrators into RPMS
-and creating proper installation sources from them, the ready to use
-obs-server appliance images are the easiest way. You can download them from
-<ulink url="http://openbuildservice.org/download/">http://openbuildservice.org/download/</ulink>.</simpara>
-  <simpara>If you want to use the OBS for your Linux software development with many
-packages, projects and users you should build your own installation.
-Depending on how many users and projects you have and for how many
-architectures you want to build packages you can split up the back-end
-(called partitioning) and have separate hosts for the front-end and database.</simpara>
-  <simpara>But for most installations it is still OK to run everything but workers one
-host with enough resources.</simpara>
-  <simpara>For flexibility and if you want some kind of high availability it is
-recommended to use virtualization for the different components.</simpara>
-  <section id="_resource_planning">
+  <para>For testing an own OBS instance and for small setups like only
+   packaging some scripts from your administrators into RPMS and creating
+   proper installation sources from them, the ready to use obs-server appliance
+   images are the easiest way. You can download them from <link
+    xlink:href="http://openbuildservice.org/download/"
+    >http://openbuildservice.org/download/</link>.</para>
+  <para>If you want to use the OBS for your Linux software development with
+   many packages, projects and users you should build your own installation.
+   Depending on how many users and projects you have and for how many
+   architectures you want to build packages you can split up the back-end
+   (called partitioning) and have separate hosts for the front-end and
+   database.</para>
+  <para>But for most installations it is still OK to run everything but workers
+   one host with enough resources.</para>
+  <para>For flexibility and if you want some kind of high availability it is
+   recommended to use virtualization for the different components.</para>
+  <sect2 xml:id="_resource_planning">
    <title>Resource planning</title>
-   <simpara>Normally for a small to middle installation a setup with everything except
-workers on one host is sufficient. You should have separate /srv volume for the back-end
-data, XFS as file system is best choice.</simpara>
-   <simpara>For each scheduler architecture you should add 4 GB RAM and one CPU core.
-For each build distribution you should add at least 50GB disk space per
-architecture.</simpara>
-   <simpara>A medium instance with about 50 users can easily run on a machine with 16GB
-RAM 4 cores and 1 TB storage. The storage of course depend on the size of
-your projects and how often you have new versions.</simpara>
-   <simpara>For bigger installations you can use separate networks for back-end
-communication, workers and front-end.</simpara>
-   <simpara>The reference installation on <emphasis role="strong"><emphasis>build.opensuse.org</emphasis></emphasis> with lot of users,
-distributions runs on a partitioned setup with:</simpara>
+   <para>Normally for a small to middle installation a setup with everything
+    except workers on one host is sufficient. You should have separate /srv
+    volume for the back-end data, XFS as file system is best choice.</para>
+   <para>For each scheduler architecture you should add 4 GB RAM and one CPU
+    core. For each build distribution you should add at least 50GB disk space
+    per architecture.</para>
+   <para>A medium instance with about 50 users can easily run on a machine with
+    16GB RAM 4 cores and 1 TB storage. The storage of course depend on the size
+    of your projects and how often you have new versions.</para>
+   <para>For bigger installations you can use separate networks for back-end
+    communication, workers and front-end.</para>
+   <para>The reference installation on <emphasis role="strong"
+      ><emphasis>build.opensuse.org</emphasis></emphasis> with lot of users,
+    distributions runs on a partitioned setup with:</para>
    <itemizedlist>
     <listitem>
-     <simpara>
-a mysql cluster as database
-</simpara>
+     <para> a mysql cluster as database </para>
     </listitem>
     <listitem>
-     <simpara>
-api-server: 16GB RAM 4 cores  50GB disk
-</simpara>
+     <para> api-server: 16GB RAM 4 cores 50GB disk </para>
     </listitem>
     <listitem>
-     <simpara>
-separate binary back-ends (scheduler, dispatcher, reposerver, publisher, warden)
-</simpara>
+     <para> separate binary back-ends (scheduler, dispatcher, reposerver,
+      publisher, warden) </para>
     </listitem>
     <listitem>
-     <simpara>
-source server 11 GB RAM, 4 cores, 3 TB disk (RAM used mainly for caching)
-</simpara>
+     <para> source server 11 GB RAM, 4 cores, 3 TB disk (RAM used mainly for
+      caching) </para>
     </listitem>
     <listitem>
-     <simpara>
-main back-end: 62 GB RAM (oversized), 16TB disk
-</simpara>
+     <para> main back-end: 62 GB RAM (oversized), 16TB disk </para>
     </listitem>
     <listitem>
-     <simpara>
-lot of workers (see - <ulink url="https://build.opensuse.org/monitor">https://build.opensuse.org/monitor</ulink>)
-</simpara>
+     <para> lot of workers (see - <link
+       xlink:href="https://build.opensuse.org/monitor"
+       >https://build.opensuse.org/monitor</link>) </para>
     </listitem>
    </itemizedlist>
-   <simpara>For build time and performance the count and performance of available worker hosts more important as the
-remaining parts.</simpara>
-  </section>
- </section>
- <section id="_simple_installation">
+   <para>For build time and performance the count and performance of available
+    worker hosts more important as the remaining parts.</para>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_simple_installation">
   <title>Simple installation</title>
-  <simpara>Simple installation means, all OBS services running on the same machine.</simpara>
+  <para>Simple installation means, all OBS services running on the same
+   machine.</para>
   <important>
-   <simpara>It is very important that you read the <emphasis role="strong">README.SETUP</emphasis> file coming with your OBS
-version and follow the instructions there, because here maybe changes to
-this version.</simpara>
+   <para>It is very important that you read the <emphasis role="strong"
+     >README.SETUP</emphasis> file coming with your OBS version and follow the
+    instructions there, because here maybe changes to this version.</para>
   </important>
-  <simpara>Before you start the installation of the OBS, you should make sure that your hosts
-have the correct fully qualified hostname and DNS is working and can resolve all
-names.</simpara>
-  <section id="_backend_installation">
+  <para>Before you start the installation of the OBS, you should make sure that
+   your hosts have the correct fully qualified hostname and DNS is working and
+   can resolve all names.</para>
+  <sect2 xml:id="_backend_installation">
    <title>Back-end installation</title>
-   <simpara>The back-end hosts all sources and built packages.
-It also schedules the jobs. You need to install the "obs-server" package for this.
-You need to check the <emphasis role="strong"><emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis></emphasis> file, but the defaults should be good enough
-for the simple case.</simpara>
-   <simpara>You can control the different back-end components via systemctl. Basically you can enable/disable the
-service during booting the system and start/stop/restart it in a running
-system.
-Have a look at the <ulink url="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands"><emphasis>https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands</emphasis></ulink> man page
-for more information. For instance to restart the repository server use</simpara>
-<screen>systemctl restart obsrepserver.service</screen>
+   <para>The back-end hosts all sources and built packages. It also schedules
+    the jobs. You need to install the "obs-server" package for this. You need
+    to check the <emphasis role="strong"
+      ><emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis></emphasis> file,
+    but the defaults should be good enough for the simple case.</para>
+   <para>You can control the different back-end components via systemctl.
+    Basically you can enable/disable the service during booting the system and
+    start/stop/restart it in a running system. Have a look at the <link
+     xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands" >https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands</link>
+    man page for more information. For instance to restart the repository
+    server use</para>
+   <screen>systemctl restart obsrepserver.service</screen>
    <table frame="all" rowsep="1" colsep="1">
     <title>Service names</title>
-<?dbhtml table-width="75%"?>
-<?dbfo table-width="75%"?>
-<?dblatex table-width="75%"?>
+    <?dbhtml table-width="75%"?>
+    <?dbfo table-width="75%"?>
+    <?dblatex table-width="75%"?>
     <tgroup cols="3">
      <colspec colname="col_1" colwidth="98*"/>
      <colspec colname="col_2" colwidth="147*"/>
@@ -117,122 +119,122 @@ for more information. For instance to restart the repository server use</simpara
      <tbody>
       <row>
        <entry align="left" valign="top">
-        <simpara>Source Server</simpara>
+        <para>Source Server</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>obssrcserver.service</simpara>
+        <para>obssrcserver.service</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>Repository</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Server obsrepserver.service</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>Source</simpara>
+        <para>Repository</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Services obsservice.service</simpara>
+        <para>Server obsrepserver.service</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>Download</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>obsdodup.service</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>since 2.7</simpara>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>Delta Storage</simpara>
+        <para>Source</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>obsdeltastore.service</simpara>
+        <para>Services obsservice.service</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>since 2.7</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>Scheduler</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>obsscheduler.service</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>Dispatcher</simpara>
+        <para>Download</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>obsdispatcher.service</simpara>
+        <para>obsdodup.service</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>Publisher</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>obspublisher.service</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para>since 2.7</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>Signer</simpara>
+        <para>Delta Storage</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>obssigner.service</simpara>
+        <para>obsdeltastore.service</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para>since 2.7</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>Warden</simpara>
+        <para>Scheduler</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>obswarden.service</simpara>
+        <para>obsscheduler.service</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Dispatcher</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obsdispatcher.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Publisher</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obspublisher.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Signer</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obssigner.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Warden</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obswarden.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
        </entry>
       </row>
      </tbody>
     </tgroup>
    </table>
-   <simpara>The sequence in the table reflects the start sequence, you need to enable the
-services with</simpara>
-<screen>systemctl start &lt;name&gt;</screen>
-   <simpara>first and then you can start them:</simpara>
-<screen>systemctl start obssrcserver.service
+   <para>The sequence in the table reflects the start sequence, you need to
+    enable the services with</para>
+   <screen>systemctl start &lt;name&gt;</screen>
+   <para>first and then you can start them:</para>
+   <screen>systemctl start obssrcserver.service
 systemctl start obsrepserver.service
 systemctl start obsservice.service
 systemctl start obsdodup.service
@@ -243,35 +245,39 @@ systemctl start obspublisher.service
 systemctl start obssigner.service
 systemctl start obswarden.service</screen>
    <warning>
-    <simpara>The commands start services which are accessible from
-the outside. Do not do this on a system connected to an untrusted
-network or make sure to block the ports with a firewall.</simpara>
+    <para>The commands start services which are accessible from the outside. Do
+     not do this on a system connected to an untrusted network or make sure to
+     block the ports with a firewall.</para>
    </warning>
-  </section>
-  <section id="_frontend_installation">
+  </sect2>
+  <sect2 xml:id="_frontend_installation">
    <title>Front-end installation</title>
-   <simpara>You need to install the "obs-api" package for this and a MySQL server.</simpara>
-   <section id="_mysql_setup">
+   <para>You need to install the "obs-api" package for this and a MySQL
+    server.</para>
+   <sect3 xml:id="_mysql_setup">
     <title>MySQL setup</title>
-    <simpara>Make sure that the mysql server is started on every system reboot (use "insserv mysql" for permanent start).
-You should run mysql_secure_installation and follow the instructions.</simpara>
-    <simpara>Create the empty production databases:</simpara>
-<screen># mysql -u root -p
+    <para>Make sure that the mysql server is started on every system reboot
+     (use "insserv mysql" for permanent start). You should run
+     mysql_secure_installation and follow the instructions.</para>
+    <para>Create the empty production databases:</para>
+    <screen># mysql -u root -p
 mysql&gt; create database api_production;
 mysql&gt; quit</screen>
-    <simpara>You should use an own MySQL user (e.g. "obs") for the  OBS access:</simpara>
-<screen># mysql -u root -p
+    <para>You should use an own MySQL user (e.g. "obs") for the OBS
+     access:</para>
+    <screen># mysql -u root -p
 mysql&gt; create user 'obs'@'%' identified by 'TopSecretPassword';
 mysql&gt; create user 'obs'@'localhost' identified by 'TopSecretPassword';
 mysql&gt; GRANT all privileges ON api_production.*
       TO 'obs'@'%', 'obs'@'localhost';
 mysql&gt; FLUSH PRIVILEGES;
 mysql&gt; quit</screen>
-    <simpara>Configure your MySQL user and password in the "production" section of the api config:
-<emphasis role="strong"><emphasis>/srv/www/obs/api/config/database.yml</emphasis></emphasis>
-    </simpara>
-    <simpara>Example:</simpara>
-<screen># MySQL (default setup).  Versions 4.1 and 5.0 are recommended.
+    <para>Configure your MySQL user and password in the "production" section of
+     the api config: <emphasis role="strong"
+       ><emphasis>/srv/www/obs/api/config/database.yml</emphasis></emphasis>
+    </para>
+    <para>Example:</para>
+    <screen># MySQL (default setup).  Versions 4.1 and 5.0 are recommended.
 #
 # Get the fast C bindings:
 #   gem install mysql
@@ -287,31 +293,34 @@ production:
   encoding: utf8
   timeout: 15
   pool: 30</screen>
-    <simpara>Now populate the database</simpara>
-<screen>cd /srv/www/obs/api/
+    <para>Now populate the database</para>
+    <screen>cd /srv/www/obs/api/
 sudo RAILS_ENV="production" rake db:setup
 sudo RAILS_ENV="production" rake writeconfiguration
 sudo chown -R wwwrun.www log tmp</screen>
-    <simpara>Now you are done with the database setup.</simpara>
-   </section>
-   <section id="_apache_setup">
+    <para>Now you are done with the database setup.</para>
+   </sect3>
+   <sect3 xml:id="_apache_setup">
     <title>Apache setup</title>
-    <simpara>Now we need to configure the Web server. By default, you can reach the
-familiar web user interface and also api both on port 443 speaking https.
-Repositories can be accessed via http on port 82 (once some packages are built).
-An overview page about your OBS instance can be found behind <emphasis>'http://localhost'</emphasis>.</simpara>
-    <simpara>The obs-api package comes with an Apache vhost file, which does not need to get
-modified when you stay with these defaults: <emphasis>/etc/apache2/vhosts.d/obs.conf</emphasis>
-    </simpara>
-    <simpara>Install the required packages via</simpara>
-<screen>  zypper in obs-api apache2 apache2-mod_xforward rubygem-passenger-apache2 memcached</screen>
-    <simpara>Add the following Apache modules in /etc/sysconfig/apache2:</simpara>
-<screen>  APACHE_MODULES="... passenger rewrite proxy proxy_http xforward headers socache_shmcb"</screen>
-    <simpara>Enable SSL in /etc/sysconfig/apache2 via</simpara>
-<screen>  APACHE_SERVER_FLAGS="SSL"</screen>
-    <simpara>For production systems you should order official SSL certificates. For testing follow the instructions
-to create a self signed SSL certificate:</simpara>
-<screen>mkdir /srv/obs/certs
+    <para>Now we need to configure the Web server. By default, you can reach
+     the familiar web user interface and also api both on port 443 speaking
+     https. Repositories can be accessed via http on port 82 (once some
+     packages are built). An overview page about your OBS instance can be found
+     behind <emphasis>'http://localhost'</emphasis>.</para>
+    <para>The obs-api package comes with an Apache vhost file, which does not
+     need to get modified when you stay with these defaults:
+      <emphasis>/etc/apache2/vhosts.d/obs.conf</emphasis>
+    </para>
+    <para>Install the required packages via</para>
+    <screen>  zypper in obs-api apache2 apache2-mod_xforward rubygem-passenger-apache2 memcached</screen>
+    <para>Add the following Apache modules in /etc/sysconfig/apache2:</para>
+    <screen>  APACHE_MODULES="... passenger rewrite proxy proxy_http xforward headers socache_shmcb"</screen>
+    <para>Enable SSL in /etc/sysconfig/apache2 via</para>
+    <screen>  APACHE_SERVER_FLAGS="SSL"</screen>
+    <para>For production systems you should order official SSL certificates.
+     For testing follow the instructions to create a self signed SSL
+     certificate:</para>
+    <screen>mkdir /srv/obs/certs
 openssl genrsa -out /srv/obs/certs/server.key 1024
 openssl req -new -key /srv/obs/certs/server.key \
         -out /srv/obs/certs/server.csr
@@ -319,24 +328,28 @@ openssl x509 -req -days 365 -in /srv/obs/certs/server.csr \
         -signkey /srv/obs/certs/server.key -out /srv/obs/certs/server.crt
 cat /srv/obs/certs/server.key /srv/obs/certs/server.crt \
       &gt; /srv/obs/certs/server.pem</screen>
-    <simpara>To allow the usage of https API in Web UI code you need to trust your
-certificate as well:</simpara>
-<screen>cp /srv/obs/certs/server.pem /etc/ssl/certs/
+    <para>To allow the usage of https API in Web UI code you need to trust your
+     certificate as well:</para>
+    <screen>cp /srv/obs/certs/server.pem /etc/ssl/certs/
 c_rehash /etc/ssl/certs/</screen>
-   </section>
-   <section id="_api_configuration">
+   </sect3>
+   <sect3 xml:id="_api_configuration">
     <title>API configuration</title>
-    <simpara>Check and edit  <emphasis role="strong"><emphasis>/srv/www/obs/api/config/options.yml</emphasis></emphasis>
-    </simpara>
-    <simpara>If you change the hostnames/ips of the api, you need to adjust
-<emphasis role="strong"><emphasis>frontend_host</emphasis></emphasis> accordingly. If you want to use LDAP, you need to change the LDAP settings
-as well. Look at the <xref linkend="_user_and_group_management"/>  for details.
-You will find examples and more details in the <xref linkend="_configuration_files"/>.</simpara>
-    <simpara>It is recommended to enable</simpara>
-<screen>use_xforward: true</screen>
-    <simpara>as well here.</simpara>
-    <simpara>Afterwards you can start the OBS web api and make it permanent via</simpara>
-<screen>systemctl enable apache2
+    <para>Check and edit <emphasis role="strong"
+       ><emphasis>/srv/www/obs/api/config/options.yml</emphasis></emphasis>
+    </para>
+    <para>If you change the hostnames/ips of the api, you need to adjust
+      <emphasis role="strong"><emphasis>frontend_host</emphasis></emphasis>
+     accordingly. If you want to use LDAP, you need to change the LDAP settings
+     as well. Look at the <xref linkend="_user_and_group_management"/> for
+     details. You will find examples and more details in the <xref
+      linkend="_configuration_files"/>.</para>
+    <para>It is recommended to enable</para>
+    <screen>use_xforward: true</screen>
+    <para>as well here.</para>
+    <para>Afterwards you can start the OBS web api and make it permanent
+     via</para>
+    <screen>systemctl enable apache2
 systemctl start apache2
 
 systemctl enable obsapidelayed.service
@@ -344,31 +357,31 @@ systemctl start obsapidelayed.service
 
 systemctl enable memcached.service
 systemctl start memcached.service</screen>
-    <simpara>Now you have you own empty instance running and you can do some online
-configuration steps.</simpara>
-   </section>
-  </section>
-  <section id="_online_configuration">
+    <para>Now you have you own empty instance running and you can do some
+     online configuration steps.</para>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="_online_configuration">
    <title>Online configuration</title>
-   <simpara>To customize the OBS instance you may need to configure some settings via the
-OBS API and Web user interface.</simpara>
-   <simpara>First you should change the password of the Admin account, for this you
-need first login as user Admin in the Web UI with the default password "opensuse".
-Click on the Admin link (right top of the page), here you can change the
-password.</simpara>
-   <simpara>After you changed the Admin password, you need to setup osc to use the Admin
-account for more changes.
-Here an example:</simpara>
-<screen>osc -c ~/.obsadmin_osc.rc -A https://api.testobs.org</screen>
-   <simpara>Follow the instructions on the terminal.</simpara>
+   <para>To customize the OBS instance you may need to configure some settings
+    via the OBS API and Web user interface.</para>
+   <para>First you should change the password of the Admin account, for this
+    you need first login as user Admin in the Web UI with the default password
+    "opensuse". Click on the Admin link (right top of the page), here you can
+    change the password.</para>
+   <para>After you changed the Admin password, you need to setup osc to use the
+    Admin account for more changes. Here an example:</para>
+   <screen>osc -c ~/.obsadmin_osc.rc -A https://api.testobs.org</screen>
+   <para>Follow the instructions on the terminal.</para>
    <warning>
-    <simpara>The password is stored in clear text in this file by default, so you need to
-give this file restrictive access rights, only read/write access for your user
-should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
-for example), refer to the osc documentation for this.</simpara>
+    <para>The password is stored in clear text in this file by default, so you
+     need to give this file restrictive access rights, only read/write access
+     for your user should be allowed. <emphasis role="strong">osc</emphasis>
+     allows to store the password in other ways (in keyrings for example),
+     refer to the osc documentation for this.</para>
    </warning>
-   <simpara>Now you can check out the main configuration of the OBS:</simpara>
-<screen>osc -c ~/.obsadmin_osc.rc api /configuration &gt;/tmp/obs.config
+   <para>Now you can check out the main configuration of the OBS:</para>
+   <screen>osc -c ~/.obsadmin_osc.rc api /configuration &gt;/tmp/obs.config
 cat /tmp/obs.config
 &lt;configuration&gt;
   &lt;title&gt;Open Build Service&lt;/title&gt;
@@ -415,20 +428,23 @@ cat /tmp/obs.config
     &lt;arch&gt;x86_64&lt;/arch&gt;
   &lt;/schedulers&gt;
 &lt;/configuration&gt;</screen>
-  <important>
-    <simpara>
-      <emphasis role="strong">unlisted_projects_filter</emphasis> only admit Regular Expression (see RLIKE specifications of MySQL/MariaDB for more information) and
-      <emphasis role="strong">unlisted_projects_filter_description</emphasis> is part of the link shown in the project list for filtering
-    </simpara>
-  </important>
+   <important>
+    <para>
+     <emphasis role="strong">unlisted_projects_filter</emphasis> only admit
+     Regular Expression (see RLIKE specifications of MySQL/MariaDB for more
+     information) and <emphasis role="strong"
+      >unlisted_projects_filter_description</emphasis> is part of the link
+     shown in the project list for filtering </para>
+   </important>
 
-   <simpara>You should edit this file according to your preferences, then sent it back
-to the server:</simpara>
-<screen>osc -c ~/.obsadmin_osc.rc api /configuration -T /tmp/obs.config</screen>
-   <simpara>If you want to use an interconnect to another OBS instance to reuse the
-build targets you can do this as Admin via the Web UI or create a
-project with a <emphasis role="strong">remoteurl</emphasis> tag (see <xref linkend="_project_meta_data"/>)</simpara>
-<screen>&lt;project name="openSUSE.org"&gt;
+   <para>You should edit this file according to your preferences, then sent it
+    back to the server:</para>
+   <screen>osc -c ~/.obsadmin_osc.rc api /configuration -T /tmp/obs.config</screen>
+   <para>If you want to use an interconnect to another OBS instance to reuse
+    the build targets you can do this as Admin via the Web UI or create a
+    project with a <emphasis role="strong">remoteurl</emphasis> tag (see <xref
+     linkend="_project_meta_data"/>)</para>
+   <screen>&lt;project name="openSUSE.org"&gt;
   &lt;title&gt;openSUSE.org Project&lt;/title&gt;
   &lt;description&gt;
  This project refers to projects hosted on the Build Service
@@ -439,16 +455,18 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
 &lt;/description&gt;
   &lt;remoteurl&gt;https://api.opensuse.org/public&lt;/remoteurl&gt;
 &lt;/project&gt;</screen>
-   <simpara>You can create the project using a file with the above content with <emphasis role="strong"><emphasis>osc</emphasis></emphasis> like this:</simpara>
-<screen>osc -c ~/.obsadmin_osc.rc meta prj openSUSE.org -F /tmp/openSUSE.org.meta</screen>
-   <simpara>You also can import binary distribution, see <xref linkend="_importing_distributions"/>
-for this.</simpara>
-   <simpara>The OBS has a list of available distributions used for build. This list is
-displayed to user, if they are adding repositories to their projects.
-This list can be managed via the API path /distributions</simpara>
-<screen>osc -c ~/.obsadmin_osc.rc api /distributions &gt; /tmp/distributions.xml</screen>
-   <simpara>Example distributions.xml file:</simpara>
-<screen>&lt;distributions&gt;
+   <para>You can create the project using a file with the above content with
+     <emphasis role="strong"><emphasis>osc</emphasis></emphasis> like
+    this:</para>
+   <screen>osc -c ~/.obsadmin_osc.rc meta prj openSUSE.org -F /tmp/openSUSE.org.meta</screen>
+   <para>You also can import binary distribution, see <xref
+     linkend="_importing_distributions"/> for this.</para>
+   <para>The OBS has a list of available distributions used for build. This
+    list is displayed to user, if they are adding repositories to their
+    projects. This list can be managed via the API path /distributions</para>
+   <screen>osc -c ~/.obsadmin_osc.rc api /distributions &gt; /tmp/distributions.xml</screen>
+   <para>Example distributions.xml file:</para>
+   <screen>&lt;distributions&gt;
   &lt;distribution vendor="SUSE" version="SLE-12-SP1" id="137"&gt;
     &lt;name&gt;SLE-12-SP1&lt;/name&gt;
     &lt;project&gt;SUSE:SLE-12-SP1&lt;/project&gt;
@@ -460,96 +478,100 @@ This list can be managed via the API path /distributions</simpara>
     &lt;architecture&gt;x86_64&lt;/architecture&gt;
   &lt;/distribution&gt;
 &lt;/distributions&gt;</screen>
-   <simpara>You can add your own distributions here and update the list on the server:</simpara>
-<screen>osc -c ~/.obsadmin_osc.rc api /distributions -T /tmp/distributions.xml</screen>
-  </section>
- </section>
- <section id="_worker_farm">
+   <para>You can add your own distributions here and update the list on the
+    server:</para>
+   <screen>osc -c ~/.obsadmin_osc.rc api /distributions -T /tmp/distributions.xml</screen>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_worker_farm">
   <title>Worker farm</title>
-  <simpara>To not burden your OBS back-end daemons with the unpredictable load package builds can produce
-(think someone builds a monstrous package like LibreOffice) you should not
-run OBS workers on the same host as the rest of the back-end daemons.</simpara>
+  <para>To not burden your OBS back-end daemons with the unpredictable load
+   package builds can produce (think someone builds a monstrous package like
+   LibreOffice) you should not run OBS workers on the same host as the rest of
+   the back-end daemons.</para>
   <important>
-   <simpara>You back-end need to be configured to use the correct hostnames for the repo and source server and
-the ports need to be reachable by the workers. Also the IP addresses of the workers need to be allowed to connect the services.
-(look at the <emphasis>/usr/lib/obs/server/BSConfig.pm::ipaccess</emphasis> array).</simpara>
+   <para>You back-end need to be configured to use the correct hostnames for
+    the repo and source server and the ports need to be reachable by the
+    workers. Also the IP addresses of the workers need to be allowed to connect
+    the services. (look at the
+     <emphasis>/usr/lib/obs/server/BSConfig.pm::ipaccess</emphasis>
+    array).</para>
   </important>
-  <simpara>You can deploy workers quite simply using the worker appliance. Or install a
-minimum system plus the obs-worker package on the hardware.</simpara>
-  <simpara>Edit the <emphasis role="strong"><emphasis>/etc/sysconfig/obs-server</emphasis></emphasis> file, at least <emphasis role="strong">OBS_SRC_SERVER</emphasis>, <emphasis role="strong">OBS_REPO_SERVERS</emphasis> and <emphasis role="strong">OBS_WORKER_INSTANCES</emphasis> need to be set.
-More details in the <xref linkend="_configuration_files"/>.</simpara>
-  <simpara>start the worker:</simpara>
-<screen>systemctl enable obsworker
+  <para>You can deploy workers quite simply using the worker appliance. Or
+   install a minimum system plus the obs-worker package on the hardware.</para>
+  <para>Edit the <emphasis role="strong"
+     ><emphasis>/etc/sysconfig/obs-server</emphasis></emphasis> file, at least
+    <emphasis role="strong">OBS_SRC_SERVER</emphasis>, <emphasis role="strong"
+    >OBS_REPO_SERVERS</emphasis> and <emphasis role="strong"
+    >OBS_WORKER_INSTANCES</emphasis> need to be set. More details in the <xref
+    linkend="_configuration_files"/>.</para>
+  <para>start the worker:</para>
+  <screen>systemctl enable obsworker
 systemctl start obsworker</screen>
- </section>
- <section id="_distributed_setup">
+ </sect1>
+ <sect1 xml:id="_distributed_setup">
   <title>Distributed setup</title>
-  <simpara>All OBS back-end daemons can also be started on individual machines in your network.
-Also the front-end Web server and the MySQL server can run on different machines.
-Especially for large scale OBS installations this is the recommended setup.</simpara>
-  <simpara>A setup with partitioning is very similar to the steps of the simple setup.
-Here we are only mention the differences to the simple setup.</simpara>
+  <para>All OBS back-end daemons can also be started on individual machines in
+   your network. Also the front-end Web server and the MySQL server can run on
+   different machines. Especially for large scale OBS installations this is the
+   recommended setup.</para>
+  <para>A setup with partitioning is very similar to the steps of the simple
+   setup. Here we are only mention the differences to the simple setup.</para>
   <note>
-   <simpara>You need to make sure that the different machines can communicate via the network, it is very recommended to use a separate
-network for this to isolate it from the public part.</simpara>
+   <para>You need to make sure that the different machines can communicate via
+    the network, it is very recommended to use a separate network for this to
+    isolate it from the public part.</para>
   </note>
-  <simpara>On all back-end hosts you need to install the obs-server package.
-On the front-end host you need to install the obs-api package.</simpara>
+  <para>On all back-end hosts you need to install the obs-server package. On
+   the front-end host you need to install the obs-api package.</para>
   <important>
-   <simpara>Only one source server instance can be exist on a single OBS installation.</simpara>
+   <para>Only one source server instance can be exist on a single OBS
+    installation.</para>
   </important>
-  <simpara>The binary back-end can be split on project level, this is called partitioning.</simpara>
-  <simpara>One one partition following services needs to be configured and run:</simpara>
-  <orderedlist numeration="arabic">
+  <para>The binary back-end can be split on project level, this is called
+   partitioning.</para>
+  <para>One one partition following services needs to be configured and
+   run:</para>
+  <orderedlist>
    <listitem>
-    <simpara>
-repserver
-</simpara>
+    <para> repserver </para>
    </listitem>
    <listitem>
-    <simpara>
-schedulers
-</simpara>
+    <para> schedulers </para>
    </listitem>
    <listitem>
-    <simpara>
-dispatcher
-</simpara>
+    <para> dispatcher </para>
    </listitem>
    <listitem>
-    <simpara>
-warden
-</simpara>
+    <para> warden </para>
    </listitem>
    <listitem>
-    <simpara>
-publisher
-</simpara>
+    <para> publisher </para>
    </listitem>
   </orderedlist>
-  <simpara>You do not need to share any directories on File System level between the partitions.</simpara>
-  <simpara>Here some example for partitioning:</simpara>
-  <orderedlist numeration="arabic">
+  <para>You do not need to share any directories on File System level between
+   the partitions.</para>
+  <para>Here some example for partitioning:</para>
+  <orderedlist>
    <listitem>
-    <simpara>
-A main partition for everything not in the others (host mainbackend)
-</simpara>
+    <para> A main partition for everything not in the others (host mainbackend)
+    </para>
    </listitem>
    <listitem>
-    <simpara>
-A home partition for all home projects of the users (host homebackend)
-</simpara>
+    <para> A home partition for all home projects of the users (host
+     homebackend) </para>
    </listitem>
    <listitem>
-    <simpara>
-A release partition for released software projects (host releasebackend)
-</simpara>
+    <para> A release partition for released software projects (host
+     releasebackend) </para>
    </listitem>
   </orderedlist>
-  <simpara>The configuration is done in the back-end config file <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis>.
-Most parts of the file can be shared between the back-ends.</simpara>
-  <simpara>Here the important parts of the mainbackend of out testobs.org installation:</simpara>
-<screen>...
+  <para>The configuration is done in the back-end config file <emphasis
+    role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis>. Most parts of the
+   file can be shared between the back-ends.</para>
+  <para>Here the important parts of the mainbackend of out testobs.org
+   installation:</para>
+  <screen>...
 my $hostname = Net::Domain::hostfqdn() || 'localhost';
 # IP corresponding to hostname (only used for $ipaccess); fallback to localhost since inet_aton may fail to resolve at shutdown.
 my $ip = quotemeta inet_ntoa(inet_aton($hostname) || inet_aton("localhost"));
@@ -603,155 +625,146 @@ our $partitionservers = {
     'main' =&gt; 'http://mainbackend.testobs.org:5252',
 };
 ...</screen>
-  <simpara>On the other partition server you need to change <emphasis role="strong"><emphasis>"our $reposerver"</emphasis></emphasis>, <emphasis role="strong"><emphasis>"our $workerreposerver"</emphasis></emphasis> and
-<emphasis role="strong"><emphasis>"our $partition"</emphasis></emphasis>.</simpara>
-  <simpara>On all partition servers you need to start:</simpara>
-<screen>systemctl start obsrepserver.service
+  <para>On the other partition server you need to change <emphasis
+    role="strong"><emphasis>"our $reposerver"</emphasis></emphasis>, <emphasis
+    role="strong"><emphasis>"our $workerreposerver"</emphasis></emphasis> and
+    <emphasis role="strong"><emphasis>"our
+   $partition"</emphasis></emphasis>.</para>
+  <para>On all partition servers you need to start:</para>
+  <screen>systemctl start obsrepserver.service
 systemctl start obsscheduler.service
 systemctl start obsdispatcher.service
 systemctl start obspublisher.service
 systemctl start obswarden.service</screen>
-  <simpara>On the worker machines you should set of repo servers in the <emphasis role="strong">OBS_REPO_SERVERS</emphasis> variable. You can also
-define workers with a subset of the repo servers to prioritize partitions.</simpara>
- </section>
- <section id="_monitoring">
+  <para>On the worker machines you should set of repo servers in the <emphasis
+    role="strong">OBS_REPO_SERVERS</emphasis> variable. You can also define
+   workers with a subset of the repo servers to prioritize partitions.</para>
+ </sect1>
+ <sect1 xml:id="_monitoring">
   <title>Monitoring</title>
-  <simpara>In this chapter you will find some general monitoring
-instructions for the Open Build Service. All examples are
-based on Nagios plugins, but the information provided should
-be easily adaptable for other monitoring solutions.</simpara>
-  <section id="_endpoint_checks">
+  <para>In this chapter you will find some general monitoring instructions for
+   the Open Build Service. All examples are based on Nagios plugins, but the
+   information provided should be easily adaptable for other monitoring
+   solutions.</para>
+  <sect2 xml:id="_endpoint_checks">
    <title>Endpoint Checks</title>
-   <section id="_http_checks_check_if_the_http_server_responds">
+   <sect3 xml:id="_http_checks_check_if_the_http_server_responds">
     <title>HTTP Checks - Check if the HTTP server responds</title>
-    <simpara>This check will output a critical if the HTTP server
-with ip address 172.19.19.19 (-I 172.19.19.19) listening
-on port 80 (-p 80) does not answer and output a warning
-if the HTTP return code is not 200. The server name that
-will be used is server (-H server) which is important if
-different virtual hosts are listening on the same port.</simpara>
-<screen>check_http -H server -I 172.19.19.19 -p 80 -u http://server</screen>
-    <simpara>The same check, but this time it will check a ssl enabled
-HTTP server.</simpara>
-<screen>check_http -S -H server -I 172.19.19.19 -p 443 -u https://server</screen>
-    <simpara>It is also possible to check the presence of a certain string
-in the HTTP response. In this case it will check for the string
-<emphasis>Source Service Server</emphasis>.</simpara>
-<screen>check_http -s "Source Service Server" -S -H server -I 172.19.19.19 -p 5152</screen>
-    <simpara>Open Build Service HTTP endpoints that should be checked:</simpara>
-    <orderedlist numeration="arabic">
+    <para>This check will output a critical if the HTTP server with ip address
+     172.19.19.19 (-I 172.19.19.19) listening on port 80 (-p 80) does not
+     answer and output a warning if the HTTP return code is not 200. The server
+     name that will be used is server (-H server) which is important if
+     different virtual hosts are listening on the same port.</para>
+    <screen>check_http -H server -I 172.19.19.19 -p 80 -u http://server</screen>
+    <para>The same check, but this time it will check a ssl enabled HTTP
+     server.</para>
+    <screen>check_http -S -H server -I 172.19.19.19 -p 443 -u https://server</screen>
+    <para>It is also possible to check the presence of a certain string in the
+     HTTP response. In this case it will check for the string <emphasis>Source
+      Service Server</emphasis>.</para>
+    <screen>check_http -s "Source Service Server" -S -H server -I 172.19.19.19 -p 5152</screen>
+    <para>Open Build Service HTTP endpoints that should be checked:</para>
+    <orderedlist>
      <listitem>
-      <simpara>
-Web Interface / API: port 443
-</simpara>
+      <para> Web Interface / API: port 443 </para>
      </listitem>
      <listitem>
-      <simpara>
-Repository Server: port 82
-</simpara>
+      <para> Repository Server: port 82 </para>
      </listitem>
      <listitem>
-      <simpara>
-Package Repository Server: port 5252
-</simpara>
+      <para> Package Repository Server: port 5252 </para>
      </listitem>
      <listitem>
-      <simpara>
-Source Repository Server: port 5352
-</simpara>
+      <para> Source Repository Server: port 5352 </para>
      </listitem>
      <listitem>
-      <simpara>
-Source Service Server: port 5152
-</simpara>
+      <para> Source Service Server: port 5152 </para>
      </listitem>
     </orderedlist>
-   </section>
-  </section>
-  <section id="_common_checks">
+   </sect3>
+  </sect2>
+  <sect2 xml:id="_common_checks">
    <title>Common Checks</title>
-   <simpara>This is a list of common checks that should be run on each
-individual server.</simpara>
-   <section id="_disk_space_check_for_available_disk_space">
+   <para>This is a list of common checks that should be run on each individual
+    server.</para>
+   <sect3 xml:id="_disk_space_check_for_available_disk_space">
     <title>Disk Space - Check for available disk space</title>
-    <simpara>This check will output a warning if less than 10 percent disk
-space is available (-w 10) and output a critical if less than 5 percent
-disk space are available (-c 5). It will check all file systems except
-file systems with type <emphasis>none</emphasis> (-x none).</simpara>
-<screen>check_disk -w 10 -c 5 -x none</screen>
-   </section>
-   <section id="_memory_usage_check_for_available_memory">
+    <para>This check will output a warning if less than 10 percent disk space
+     is available (-w 10) and output a critical if less than 5 percent disk
+     space are available (-c 5). It will check all file systems except file
+     systems with type <emphasis>none</emphasis> (-x none).</para>
+    <screen>check_disk -w 10 -c 5 -x none</screen>
+   </sect3>
+   <sect3 xml:id="_memory_usage_check_for_available_memory">
     <title>Memory Usage - Check for available memory</title>
-    <simpara>This check will output a warning if less than 10 percent memory
-is available (-w 10) and output a critical if less than 5 percent
-memory is available (-c 5). OS caches will be counted as free memory
-(-C) and it will check the available memory (-f). check_mem.pl is
-not a standard Nagios plugin and can be downloaded at
-<ulink url="https://exchange.nagios.org/">https://exchange.nagios.org/</ulink>.</simpara>
-<screen>check_mem.pl -f -C -w 10 -c 5</screen>
-   </section>
-   <section id="_ntp_check_date_and_time">
+    <para>This check will output a warning if less than 10 percent memory is
+     available (-w 10) and output a critical if less than 5 percent memory is
+     available (-c 5). OS caches will be counted as free memory (-C) and it
+     will check the available memory (-f). check_mem.pl is not a standard
+     Nagios plugin and can be downloaded at <link
+      xlink:href="https://exchange.nagios.org/"
+      >https://exchange.nagios.org/</link>.</para>
+    <screen>check_mem.pl -f -C -w 10 -c 5</screen>
+   </sect3>
+   <sect3 xml:id="_ntp_check_date_and_time">
     <title>NTP - Check Date and Time</title>
-    <simpara>This check will compare the local time with the time provided by the
-NTP server pool.ntp.org (-H pool.ntp.org). It will output a warning
-if the time differs by 0.5 seconds (-w 0.5) and output a critical
-if the time differs by 1 seconds (-c 1).</simpara>
-<screen>check_ntp_time -H pool.ntp.org -w 0.5 -c 1</screen>
-   </section>
-   <section id="_ping_check_that_the_server_is_alive">
+    <para>This check will compare the local time with the time provided by the
+     NTP server pool.ntp.org (-H pool.ntp.org). It will output a warning if the
+     time differs by 0.5 seconds (-w 0.5) and output a critical if the time
+     differs by 1 seconds (-c 1).</para>
+    <screen>check_ntp_time -H pool.ntp.org -w 0.5 -c 1</screen>
+   </sect3>
+   <sect3 xml:id="_ping_check_that_the_server_is_alive">
     <title>Ping - Check that the server is alive</title>
-    <simpara>This plugin checks if the server responds to a ping request and
-it will output a warning if the respond time exceeds 200ms or
-30 percent package loss (-w 200.0,30%) and output a critical
-if the respond time exceeds 500ms or 60 percent package loss.</simpara>
-<screen>check_icmp -H server -w 200.0,30% -c 500.0,60%</screen>
-   </section>
-   <section id="_load_check_the_load_on_the_server">
+    <para>This plugin checks if the server responds to a ping request and it
+     will output a warning if the respond time exceeds 200ms or 30 percent
+     package loss (-w 200.0,30%) and output a critical if the respond time
+     exceeds 500ms or 60 percent package loss.</para>
+    <screen>check_icmp -H server -w 200.0,30% -c 500.0,60%</screen>
+   </sect3>
+   <sect3 xml:id="_load_check_the_load_on_the_server">
     <title>Load - Check the load on the server</title>
-    <simpara>This check will output a warning if the load value exceeded 7.0
-in the last minute, 6.0 in the last 5 minutes or 5.0 in the
-last 15 minutes (-w 7.0,6.0,5.0). It will output a critical if
-the load value exceeded 12.0 in the last minute, 8.0 in the last
-5 minutes or 6.0 in the last 15 minutes (-c 12.0,8.0,6.0).</simpara>
-<screen>check_load -w 7.0,6.0,5.0 -c 12.0,8.0,6.0</screen>
-   </section>
-   <section id="_disk_health_check_the_health_of_local_hard_disks">
+    <para>This check will output a warning if the load value exceeded 7.0 in
+     the last minute, 6.0 in the last 5 minutes or 5.0 in the last 15 minutes
+     (-w 7.0,6.0,5.0). It will output a critical if the load value exceeded
+     12.0 in the last minute, 8.0 in the last 5 minutes or 6.0 in the last 15
+     minutes (-c 12.0,8.0,6.0).</para>
+    <screen>check_load -w 7.0,6.0,5.0 -c 12.0,8.0,6.0</screen>
+   </sect3>
+   <sect3 xml:id="_disk_health_check_the_health_of_local_hard_disks">
     <title>Disk Health - Check the health of local hard disks</title>
-    <simpara>This check is only relevant on physical systems with local storage
-attached to it. It will check the disk status utilizing the S.M.A.R.T
-interface and it will output a critical if any of the S.M.A.R.T values
-exceeds critical limits. check_smartmon is not a standard Nagios plugin
-and can be downloaded at <ulink url="https://exchange.nagios.org/">https://exchange.nagios.org/</ulink>.</simpara>
-<screen>check_smartmon --drive /dev/sda --drive /dev/sdb</screen>
-   </section>
-  </section>
-  <section id="_other_checks">
+    <para>This check is only relevant on physical systems with local storage
+     attached to it. It will check the disk status utilizing the S.M.A.R.T
+     interface and it will output a critical if any of the S.M.A.R.T values
+     exceeds critical limits. check_smartmon is not a standard Nagios plugin
+     and can be downloaded at <link xlink:href="https://exchange.nagios.org/"
+      >https://exchange.nagios.org/</link>.</para>
+    <screen>check_smartmon --drive /dev/sda --drive /dev/sdb</screen>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="_other_checks">
    <title>Other Checks</title>
-   <section id="_mysql_check_that_the_mysql_database_is_responding">
+   <sect3 xml:id="_mysql_check_that_the_mysql_database_is_responding">
     <title>MySQL - Check that the MySQL database is responding</title>
-    <simpara>This check will check that the MySQL database server is running and
-that the database <emphasis>api_production</emphasis> is available.</simpara>
-<screen>check_mysql -H localhost -u nagios -p xxxxxx -d api_production</screen>
-    <simpara>MySQL Databases to check:</simpara>
-    <orderedlist numeration="arabic">
+    <para>This check will check that the MySQL database server is running and
+     that the database <emphasis>api_production</emphasis> is available.</para>
+    <screen>check_mysql -H localhost -u nagios -p xxxxxx -d api_production</screen>
+    <para>MySQL Databases to check:</para>
+    <orderedlist>
      <listitem>
-      <simpara>
-api_production
-</simpara>
+      <para> api_production </para>
      </listitem>
      <listitem>
-      <simpara>
-mysql
-</simpara>
+      <para> mysql </para>
      </listitem>
     </orderedlist>
-   </section>
-   <section id="_backup_status_check_that_a_valid_backup_is_avilable">
+   </sect3>
+   <sect3 xml:id="_backup_status_check_that_a_valid_backup_is_avilable">
     <title>Backup Status - Check that a valid backup is available</title>
-    <simpara>It is always advisable to check that the last backup run was successful
-and a recent backup is available. The check itself depends on the Backup
-solution that is used.</simpara>
-   </section>
-  </section>
- </section>
+    <para>It is always advisable to check that the last backup run was
+     successful and a recent backup is available. The check itself depends on
+     the Backup solution that is used.</para>
+   </sect3>
+  </sect2>
+ </sect1>
 </chapter>

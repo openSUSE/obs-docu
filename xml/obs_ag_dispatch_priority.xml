@@ -1,49 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<section id="_dispatch_priorities">
+<sect1 version="5.0" xml:id="_dispatch_priorities"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Dispatch Priorities</title>
- <simpara>The dispatcher takes a job from the  scheduler and assign it
-to a free worker. It tries to share the available build time fair between
-all the project repositories with pending jobs. To achieve this the dispatcher
-calculates a <emphasis role="strong"><emphasis>load</emphasis></emphasis>  per project repository of the used build time (similar to the system load in Unix
-operating systems). The dispatcher assigned jobs to build clients from the
-repository with the lowest load (thereby increasing the its load).
-It is possible to tweak this mechanism via dispatching priorities assigned
-to the repositories via the <emphasis role="strong"><emphasis>/build/_dispatchprios</emphasis></emphasis><emphasis role="strong">API</emphasis> call or via the
-<emphasis role="strong"><emphasis>dispatch_adjust</emphasis></emphasis> array in the <emphasis>BSConfig.pm</emphasis><xref linkend="_bsconfig_pm"/> configuration file.</simpara>
- <section id="_build__dispatchprios_api_call">
+ <para>The dispatcher takes a job from the scheduler and assign it to a free
+  worker. It tries to share the available build time fair between all the
+  project repositories with pending jobs. To achieve this the dispatcher
+  calculates a <emphasis role="strong"><emphasis>load</emphasis></emphasis> per
+  project repository of the used build time (similar to the system load in Unix
+  operating systems). The dispatcher assigned jobs to build clients from the
+  repository with the lowest load (thereby increasing the its load). It is
+  possible to tweak this mechanism via dispatching priorities assigned to the
+  repositories via the <emphasis role="strong"
+    ><emphasis>/build/_dispatchprios</emphasis></emphasis><emphasis
+   role="strong">API</emphasis> call or via the <emphasis role="strong"
+    ><emphasis>dispatch_adjust</emphasis></emphasis> array in the
+   <emphasis>BSConfig.pm</emphasis><xref linkend="_bsconfig_pm"/> configuration
+  file.</para>
+ <sect2 xml:id="_build__dispatchprios_api_call">
   <title>/build/_dispatchprios API call</title>
-  <simpara>The <emphasis>/build/_dispatchprios</emphasis> API call allows an Admin to set a priority for defined
-projects and repositories using the HTML put method. With the HTML get method
-the current XML priority file can be read.</simpara>
-<screen>&lt;dispatchprios&gt;
+  <para>The <emphasis>/build/_dispatchprios</emphasis> API call allows an
+   Admin to set a priority for defined projects and repositories using the HTML
+   put method. With the HTML get method the current XML priority file can be
+   read.</para>
+  <screen>&lt;dispatchprios&gt;
   &lt;prio project="ProjectName" repository="RepoName" arch="Architecture" adjust="Number" /&gt;
 &lt;/dispatchprios&gt;</screen>
-  <simpara>The attributes <emphasis>project</emphasis>, <emphasis>repository</emphasis> and <emphasis>arch</emphasis> are all optional, if for
-example <emphasis>arch</emphasis> and <emphasis>repository</emphasis> are missing the entry is used for all
-repositories and architectures for the given project. It is not supported to
-use regular expressions for the names.
-The adjust value is taken as logarithmic scale factor to the current load of the
-repositories during the compare.
-Projects without any entry get a default priority of 0, higher values cause the matching projects to get more
-build time.</simpara>
-  <simpara>Example dispatchprios XML file</simpara>
-<screen>&lt;dispatchprios&gt;
+  <para>The attributes <emphasis>project</emphasis>,
+    <emphasis>repository</emphasis> and <emphasis>arch</emphasis> are all
+   optional, if for example <emphasis>arch</emphasis> and
+    <emphasis>repository</emphasis> are missing the entry is used for all
+   repositories and architectures for the given project. It is not supported to
+   use regular expressions for the names. The adjust value is taken as
+   logarithmic scale factor to the current load of the repositories during the
+   compare. Projects without any entry get a default priority of 0, higher
+   values cause the matching projects to get more build time.</para>
+  <para>Example dispatchprios XML file</para>
+  <screen>&lt;dispatchprios&gt;
    &lt;prio project="DemoProject1" repository="openSUSE_Leap_42.1" adjust="10" /&gt;
    &lt;prio project="Test1" adjust="5" /&gt;
    &lt;prio project="Test11" repository="openSUSE_13.2" arch="i586" adjust="-10"/&gt;
 &lt;/dispatchprios&gt;</screen>
   <table frame="all" rowsep="1" colsep="1">
    <title>Rounded scale factors resulting from a priority</title>
-<?dbhtml table-width="70%"?>
-<?dbfo table-width="70%"?>
-<?dblatex table-width="70%"?>
+   <?dbhtml table-width="70%"?>
+   <?dbfo table-width="70%"?>
+   <?dblatex table-width="70%"?>
    <tgroup cols="5">
     <colspec colname="col_1" colwidth="58*"/>
     <colspec colname="col_2" colwidth="88*"/>
@@ -62,183 +64,184 @@ build time.</simpara>
     <tbody>
      <row>
       <entry align="left" valign="top">
-       <simpara>-50</simpara>
+       <para>-50</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>100000</simpara>
+       <para>100000</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
+       <para/>
       </entry>
       <entry align="left" valign="top">
-       <simpara>3</simpara>
+       <para>3</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>0.5</simpara>
-      </entry>
-     </row>
-     <row>
-      <entry align="left" valign="top">
-       <simpara>-30</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>1000</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara/>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>5</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>0.3</simpara>
+       <para>0.5</para>
       </entry>
      </row>
      <row>
       <entry align="left" valign="top">
-       <simpara>-20</simpara>
+       <para>-30</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>100</simpara>
+       <para>1000</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
+       <para/>
       </entry>
       <entry align="left" valign="top">
-       <simpara>7</simpara>
+       <para>5</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>0.2</simpara>
-      </entry>
-     </row>
-     <row>
-      <entry align="left" valign="top">
-       <simpara>-15</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>30</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara/>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>10</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>0.1</simpara>
+       <para>0.3</para>
       </entry>
      </row>
      <row>
       <entry align="left" valign="top">
-       <simpara>-10</simpara>
+       <para>-20</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>10</simpara>
+       <para>100</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
+       <para/>
       </entry>
       <entry align="left" valign="top">
-       <simpara>15</simpara>
+       <para>7</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>0.03</simpara>
-      </entry>
-     </row>
-     <row>
-      <entry align="left" valign="top">
-       <simpara>-7</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>5</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara/>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>20</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>0.01</simpara>
+       <para>0.2</para>
       </entry>
      </row>
      <row>
       <entry align="left" valign="top">
-       <simpara>-5</simpara>
+       <para>-15</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>3</simpara>
+       <para>30</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
+       <para/>
       </entry>
       <entry align="left" valign="top">
-       <simpara>30</simpara>
+       <para>10</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>0.001</simpara>
-      </entry>
-     </row>
-     <row>
-      <entry align="left" valign="top">
-       <simpara>-3</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>2</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara/>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>40</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>0.0001</simpara>
+       <para>0.1</para>
       </entry>
      </row>
      <row>
       <entry align="left" valign="top">
-       <simpara>0</simpara>
+       <para>-10</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>1</simpara>
+       <para>10</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
+       <para/>
       </entry>
       <entry align="left" valign="top">
-       <simpara>50</simpara>
+       <para>15</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>0.00001</simpara>
+       <para>0.03</para>
+      </entry>
+     </row>
+     <row>
+      <entry align="left" valign="top">
+       <para>-7</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>5</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para/>
+      </entry>
+      <entry align="left" valign="top">
+       <para>20</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>0.01</para>
+      </entry>
+     </row>
+     <row>
+      <entry align="left" valign="top">
+       <para>-5</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>3</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para/>
+      </entry>
+      <entry align="left" valign="top">
+       <para>30</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>0.001</para>
+      </entry>
+     </row>
+     <row>
+      <entry align="left" valign="top">
+       <para>-3</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>2</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para/>
+      </entry>
+      <entry align="left" valign="top">
+       <para>40</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>0.0001</para>
+      </entry>
+     </row>
+     <row>
+      <entry align="left" valign="top">
+       <para>0</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>1</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para/>
+      </entry>
+      <entry align="left" valign="top">
+       <para>50</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>0.00001</para>
       </entry>
      </row>
     </tbody>
    </tgroup>
   </table>
- </section>
- <section id="_dispatch_adjust_array">
+ </sect2>
+ <sect2 xml:id="_dispatch_adjust_array">
   <title>dispatch_adjust array</title>
-  <simpara>With the <emphasis role="strong"><emphasis>dispatch_adjust</emphasis></emphasis> array in the <emphasis>BSConfig.pm</emphasis> file the dispatch
-priorities of project repositories based on regular expressions for the
-project, repository name and maybe architecture.
-Each match will add or subtract a value to the priority of the repository.
-The default priority is 0, higher values cause the matching
-projects to get more build time.</simpara>
-  <simpara>Each entry in the dispatch_adjust array has the format</simpara>
-<screen>      'regex string'  =&gt; priority adjustment</screen>
-  <simpara>The full name of a build repository looks like</simpara>
-<screen>      Project:Subproject/Repository/Architecture
+  <para>With the <emphasis role="strong"
+     ><emphasis>dispatch_adjust</emphasis></emphasis> array in the
+    <emphasis>BSConfig.pm</emphasis> file the dispatch priorities of project
+   repositories based on regular expressions for the project, repository name
+   and maybe architecture. Each match will add or subtract a value to the
+   priority of the repository. The default priority is 0, higher values cause
+   the matching projects to get more build time.</para>
+  <para>Each entry in the dispatch_adjust array has the format</para>
+  <screen>      'regex string'  =&gt; priority adjustment</screen>
+  <para>The full name of a build repository looks like</para>
+  <screen>      Project:Subproject/Repository/Architecture
 
 Examples:
    Devel:Science/SLES-11/i586
    home:king:test/Leap42/x86_64</screen>
-  <simpara>If a repository matches a string the adjustment is added to the current
-value. The final value is the sum of the adjustments of all matched entries.
-This sum is the same logarithmic scale factor as described in
-the previous section.</simpara>
-  <simpara>Example dispatch_adjust definition in the BSConfig.pm</simpara>
-<screen>our $dispatch_adjust = [
+  <para>If a repository matches a string the adjustment is added to the
+   current value. The final value is the sum of the adjustments of all matched
+   entries. This sum is the same logarithmic scale factor as described in the
+   previous section.</para>
+  <para>Example dispatch_adjust definition in the BSConfig.pm</para>
+  <screen>our $dispatch_adjust = [
     'Devel:' =&gt; 7,
     'HotFix:' =&gt; +20,
     '.+:test.*' =&gt; -10,
@@ -246,20 +249,21 @@ the previous section.</simpara>
     'home:king' =&gt; +30,
     '.+/SLE12-SP2' =&gt; -40,
 ];</screen>
-  <simpara>The above example could have the following background:
-All Devel projects should get some higher priority so the developer jobs
-getting more build time. The projects under HotFix are very important fixes for
-customers and so they should get a worker as soon as possible. All projects
-with test in the name get some penalty, also home projects are getting only
-about half of the build time as a normal project, with the exception of the
-home project from king, the user account of the boss.
-The SLES12-SP2 repository is not in real use yet, but if here is nothing
-else to do build for it as well.</simpara>
+  <para>The above example could have the following background: All Devel
+   projects should get some higher priority so the developer jobs getting more
+   build time. The projects under HotFix are very important fixes for customers
+   and so they should get a worker as soon as possible. All projects with test
+   in the name get some penalty, also home projects are getting only about half
+   of the build time as a normal project, with the exception of the home
+   project from king, the user account of the boss. The SLES12-SP2 repository
+   is not in real use yet, but if here is nothing else to do build for it as
+   well.</para>
   <important>
-   <simpara>The dispatcher calculates the values form the <emphasis role="strong"><emphasis>'dispatch_adjust'</emphasis></emphasis> array
-first, if the same project and repository also has an entry in the
-dispatchprios XML file, the XML file entry will overwrite the calculated
-priority. The best practice is to only use one of the methods.</simpara>
+   <para>The dispatcher calculates the values form the <emphasis
+     role="strong"><emphasis>'dispatch_adjust'</emphasis></emphasis> array
+    first, if the same project and repository also has an entry in the
+    dispatchprios XML file, the XML file entry will overwrite the calculated
+    priority. The best practice is to only use one of the methods.</para>
   </important>
- </section>
-</section>
+ </sect2>
+</sect1>

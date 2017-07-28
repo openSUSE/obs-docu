@@ -1,26 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<section id="cha.obs.admin.integration">
+<sect1 version="5.0" xml:id="cha.obs.admin.integration"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Integrate OBS into your environment</title>
- <para>
-  To be written...
- </para>
- <section>
+ <para> To be written... </para>
+ <sect2>
   <title>Integrate Notifications</title>
-  <para>
-   To be written...
-  </para>
- </section>
- <section>
+  <para> To be written... </para>
+ </sect2>
+ <sect2>
   <title>Integrate your user management in OBS</title>
-  <para>
-   To be written...
-  </para>
- </section>
-</section>
+  <para> To be written... </para>
+ </sect2>
+</sect1>

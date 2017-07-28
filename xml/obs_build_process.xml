@@ -1,101 +1,74 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.build_process">
+<chapter version="5.0" xml:id="cha.obs.build_process"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Process</title>
- <para>
-  Each package build is done in a fresh environment. This is done to ensure
-  that no dependencies are missing and every later build produces identical
-  results.
- </para>
- <section>
+ <info/>
+ <para> Each package build is done in a fresh environment. This is done to
+  ensure that no dependencies are missing and every later build produces
+  identical results. </para>
+ <sect1>
   <title>How is a build process defined</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
+  <para> ... </para>
+ </sect1>
+ <sect1>
   <title>How does a build process work</title>
-  <para>
-   All sources and binaries which are hosted inside of OBS are organized in
-   projects. Projects do host in sources inside of package containers again.
+  <para> All sources and binaries which are hosted inside of OBS are organized
+   in projects. Projects do host in sources inside of package containers again.
    The sources get build according to the repository configuration inside of
-   the project.
-  </para>
-  <section>
+   the project. </para>
+  <sect2>
    <title>Preinstall phase</title>
-   <para>
-    The step of this phase depends on the type of the buildroot (building
-    environment). OBS supports three different types buildroot:
+   <para> The step of this phase depends on the type of the buildroot (building
+    environment). OBS supports three different types buildroot: </para>
     <itemizedlist>
      <listitem>
-      <simpara>
-         chroot
-       </simpara>
+      <para> chroot </para>
      </listitem>
      <listitem>
-      <simpara>
-         XEN
-       </simpara>
+      <para> XEN </para>
      </listitem>
      <listitem>
-      <simpara>
-         KVM
-       </simpara>
+      <para> KVM </para>
      </listitem>
-    </itemizedlist>
-    In the preinstall phase, the OBS Worker creates a small base system (chroot
-    or VM Image) with manually extracted packages (file system, coreutils,
-    binutils, rpm/debutils, etc.), copies all necessary build requirements
-    into the base system.
-   </para>
-  </section>
-  <section>
+    </itemizedlist> 
+    <para>
+    In the preinstall phase, the OBS Worker creates a small
+    base system (chroot or VM Image) with manually extracted packages (file
+    system, coreutils, binutils, rpm/debutils, etc.), copies all necessary
+    build requirements into the base system. </para>
+  </sect2>
+  <sect2>
    <title>Install Phase</title>
-   <para>
-    Depending of the chosen build root the worker starts the XEN/KVM virtual
-    machine or enters the build root. If this was successful the install
-    phase reinstalls all base package from above and additionally all packages
-    you have defined in your package recipe. After this phase the environment is
-    ready to process the recipe.
-   </para>
-  </section>
-  <section>
+   <para> Depending of the chosen build root the worker starts the XEN/KVM
+    virtual machine or enters the build root. If this was successful the
+    install phase reinstalls all base package from above and additionally all
+    packages you have defined in your package recipe. After this phase the
+    environment is ready to process the recipe. </para>
+  </sect2>
+  <sect2>
    <title>Package build</title>
-   <para>
-    Regarding the package type the buildroot executes different build commands.
-    On RPM-based distributions it is called "rpmbuild". On Debian-based distributions, it is
-    "dpkg-buildpackage" and on Arch Linux you use "pacman". Now everything
-    depends on the quality and the type of your build recipe. In most cases the
-    source code will be compiled now and get packed into the specific package
-    format. On RPM based distributions there are additional security and
-    cleanness checks called rpmlint, which have the goal to improve the quality
-    of the packages.
-   </para>
-  </section>
-  <section>
+   <para> Regarding the package type the buildroot executes different build
+    commands. On RPM-based distributions it is called "rpmbuild". On
+    Debian-based distributions, it is "dpkg-buildpackage" and on Arch Linux you
+    use "pacman". Now everything depends on the quality and the type of your
+    build recipe. In most cases the source code will be compiled now and get
+    packed into the specific package format. On RPM based distributions there
+    are additional security and cleanness checks called rpmlint, which have the
+    goal to improve the quality of the packages. </para>
+  </sect2>
+  <sect2>
    <title>Post build steps</title>
-   <para>
-    The generated packages are taken from the Worker get signed by the OBS
-    Signer and are published to the Repository.
-   </para>
-  </section>
- </section>
- <section>
+   <para> The generated packages are taken from the Worker get signed by the
+    OBS Signer and are published to the Repository. </para>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>Different ways to build</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
+  <para> ... </para>
+ </sect1>
+ <sect1>
   <title>Security aspects</title>
-  <para>
-   ...
-  </para>
- </section>
+  <para> ... </para>
+ </sect1>
 </chapter>

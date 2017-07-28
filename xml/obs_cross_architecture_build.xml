@@ -1,17 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.cross_arch_build">
+<chapter version="5.0" xml:id="cha.obs.cross_arch_build"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Cross Architecture Build</title>
- <para>
-  OBS can build for architectures without having the hardware. This is done via
-  emulation steps. However, this is not a classic build with cross tool chains.
-  The advantage is that the build environments of the packages do not need
-  support for cross tools.
- </para>
+ <info/>
+ <para> OBS can build for architectures without having the hardware. This is
+  done via emulation steps. However, this is not a classic build with cross
+  tool chains. The advantage is that the build environments of the packages do
+  not need support for cross tools. </para>
 </chapter>

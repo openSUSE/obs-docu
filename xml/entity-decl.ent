@@ -227,11 +227,6 @@
 <!ENTITY nomad           "Nomad">
 <!ENTITY cpufreq         "CPUfreq">
 
-
-
-
-
-
 <!ENTITY wypublic          "/srv/www/yast/public/">
 <!ENTITY mac               "<replaceable>MAC</replaceable>">
 <!ENTITY hwmac             "hwtype.<replaceable>MAC</replaceable>">
@@ -245,6 +240,8 @@
 <!ENTITY % network-entities SYSTEM "network-decl.ent">
 %network-entities;
 
+<!ENTITY % phrases-entities SYSTEM "phrases-decl.ent">
+%phrases-entities;
 
 <!--                             End of file                       -->
 <!-- ............................................................. -->

@@ -1,59 +1,51 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.motivation">
+<chapter version="5.0" xml:id="cha.obs.motivation"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Distributing Free Software: Herding Cats</title>
- <para>
-  The basic challenge when distributing Free and Open Source Software
-  (<acronym>FOSS</acronym>) is compiling into machine code all of the source
-  code that the awesome community produces. It may sound simple, but it
-  is not. A typical GNU/Linux distribution consists of thousands of individual
-  software projects. They build on top of each other, have functional
-  dependencies, some projects are interdependent, conflict with each
-  other and what not. In short, it is like herding cats. Another challenge of
-  distributing software is that, sadly, software is sometimes defective and
-  people, even developers, make mistakes. One has to master the art of
-  exchanging pieces without breaking the whole: in other words, software
-  updates. The Open Build Service (<acronym>OBS</acronym>) is a tool that makes
-  this possible. It is a generic system to build and distribute binary packages
-  from sources in an <emphasis>automatic</emphasis>,
-  <emphasis>consistent</emphasis> and <emphasis>reproducible</emphasis> way.
-  The OBS is free software itself; you can run, copy, distribute, study, change
-  and improve it. The source code and the developers are on
-  <ulink url="https://github.com/openSUSE/open-build-service">github</ulink>.
- </para>
- <section>
+ <info/>
+
+ <para> The basic challenge when distributing Free and Open Source Software
+   (FOSS) is compiling into machine code all of the source
+  code that the awesome community produces. It may sound simple, but it is not.
+  A typical GNU/Linux distribution consists of thousands of individual software
+  projects. They build on top of each other, have functional dependencies, some
+  projects are interdependent, conflict with each other and what not. In short,
+  it is like herding cats. Another challenge of distributing software is that,
+  sadly, software is sometimes defective and people, even developers, make
+  mistakes. One has to master the art of exchanging pieces without breaking the
+  whole: in other words, software updates. The Open Build Service
+   (OBS) is a tool that makes this possible. It is a generic
+  system to build and distribute binary packages from sources in an
+   <emphasis>automatic</emphasis>, <emphasis>consistent</emphasis> and
+   <emphasis>reproducible</emphasis> way. The OBS is free software itself; you
+  can run, copy, distribute, study, change and improve it. The source code and
+  the developers are on <link
+   xlink:href="https://github.com/openSUSE/open-build-service">GitHub</link>. </para>
+ <sect1>
   <title>Goals of the OBS</title>
-  <para>
-   The goals of the OBS are oriented towards the three groups of people that
-   use it: People who contribute to the Free Software community by building
-   binary packages of software, so called <emphasis>packagers</emphasis>.
-   <emphasis>Free Software projects and Independent Software Vendors
-   (<acronym>ISV</acronym>)</emphasis> who provide complete software stacks and
-   distributions to their users. And, of course, <emphasis>users</emphasis> who
-   are looking to install software on their GNU/Linux distribution.
-  </para>
-  <section>
+  <para> The goals of the OBS are oriented towards the three groups of people
+   that use it: People who contribute to the Free Software community by
+   building binary packages of software, so called
+    <emphasis>packagers</emphasis>. <emphasis>Free Software projects and
+    Independent Software Vendors (ISV)</emphasis> who
+   provide complete software stacks and distributions to their users. And, of
+   course, <emphasis>users</emphasis> who are looking to install software on
+   their GNU/Linux distribution. </para>
+  <sect2>
    <title>Automated software builds for packagers</title>
-   <para>
-    For people who contribute to the Free Software community by packaging
+   <para> For people who contribute to the Free Software community by packaging
     software, so called packagers, the OBS tries to automate that task as much
     as possible. Especially the need to maintain a lot of different operating
-    system (<acronym>OS</acronym>) installations, of different
-    <acronym>OS</acronym> versions, on a lot of different hardware
-    architectures is something the OBS makes easier.
-   </para>
-  </section>
-  <section>
-   <title>Reproducibility for Free Software projects and Independent Software Vendors (<acronym>ISV</acronym>)</title>
-   <para>
-    The OBS emphasizes making builds reproducible. It builds packages in a
-    jailed environment that the OBS sets up from scratch each time. When the
+    system (OS) installations, of different
+     OS versions, on a lot of different hardware
+    architectures is something the OBS makes easier. </para>
+  </sect2>
+  <sect2>
+   <title>Reproducibility for Free Software projects and Independent Software
+    Vendors (ISV)</title>
+   <para> The OBS emphasizes making builds reproducible. It builds packages in
+    a jailed environment that the OBS sets up from scratch each time. When the
     build succeeds it also rebuilds all the dependent software. This ensures
     that changes propagate throughout the entire stack and that users get a
     consistent product to install. Reproducibility is especially needed if the
@@ -64,49 +56,44 @@
     you can make sure that if you change one of them, the whole thing still
     works as expected. The OBS also has collaboration among developers baked-in
     to its structure and workflows, which helps projects and ISVs to harness
-    the power of the open source development model.
-   </para>
-  </section>
-  <section>
+    the power of the open source development model. </para>
+  </sect2>
+  <sect2>
    <title>Easy access to software for users</title>
-   <para>
-    The OBS aims to make it easy for users to download the latest version of
-    software as binary packages for their operating system. They do not have to
-    know about tarballs, make install, package formats or other stuff from the
-    90's. Another priority is to make use of the package management tools of
-    the user's OS with which they are already familiar. Users should get their
-    software from the OBS just as they get software from their OS supplier, no
-    special tools needed. And once users are connected to a repository, they
-    get served with maintenance or security updates or even add-ons for their
-    software.
-   </para>
-  </section>
- </section>
- <section>
+   <para> The OBS aims to make it easy for users to download the latest version
+    of software as binary packages for their operating system. They do not have
+    to know about tarballs, make install, package formats or other stuff from
+    the 90's. Another priority is to make use of the package management tools
+    of the user's OS with which they are already familiar. Users should get
+    their software from the OBS just as they get software from their OS
+    supplier, no special tools needed. And once users are connected to a
+    repository, they get served with maintenance or security updates or even
+    add-ons for their software. </para>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>History of the OBS</title>
-  <para>
-   From building packages on workstations over autobuild to OBS.
-  </para>
- </section>
- <section>
+  <para> From building packages on workstations over autobuild to OBS. </para>
+ </sect1>
+ <sect1>
   <title>Future of the OBS</title>
-  <para>
-   With the advent of test-driven development and similar agile methods in
-   recent years, the software development community has shown a clear trend
-   towards automated and continuous
-   <ulink url="https://en.wikipedia.org/wiki/Continuous_Integration">integration</ulink>,
-   <ulink url="https://en.wikipedia.org/wiki/Continuous_deployment">deployment</ulink>
-   and
-   <ulink url="https://en.wikipedia.org/wiki/Continuous_delivery">delivery</ulink>.
-   The OBS is moving more and more from a standalone solution to be one link in
-   the chain of software development tools. And while "software is eating the
-   world", it is also becoming more complex every day. This prompts for the
-   need to know who changed what and when. And when and how was that delivered
-   to the users? Tracking and analyzing this, making trends visible to be able
-   to act upon them is another challenge for the future. All of this besides
-   the general challenge of keeping up with the fast and disruptive evolution
-   of the Free Software ecosystem, which constantly supports new hardware,
-   software, standards and tools makes for a very interesting future.
-  </para>
- </section>
+  <para> With the advent of test-driven development and similar agile methods
+   in recent years, the software development community has shown a clear trend
+   towards automated and continuous <link
+    xlink:href="https://en.wikipedia.org/wiki/Continuous_Integration"
+    >integration</link>, <link
+    xlink:href="https://en.wikipedia.org/wiki/Continuous_deployment"
+    >deployment</link> and <link
+    xlink:href="https://en.wikipedia.org/wiki/Continuous_delivery"
+    >delivery</link>. The OBS is moving more and more from a standalone
+   solution to be one link in the chain of software development tools. And
+   while "software is eating the world", it is also becoming more complex every
+   day. This prompts for the need to know who changed what and when. And when
+   and how was that delivered to the users? Tracking and analyzing this, making
+   trends visible to be able to act upon them is another challenge for the
+   future. All of this besides the general challenge of keeping up with the
+   fast and disruptive evolution of the Free Software ecosystem, which
+   constantly supports new hardware, software, standards and tools makes for a
+   very interesting future. </para>
+ </sect1>
 </chapter>

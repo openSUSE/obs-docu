@@ -1,17 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE appendix PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<appendix role="legal">
+<appendix  version="5.0" role="legal"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>GNU Licenses</title>
- <para>
-  This appendix contains the GNU General Public License version 2 and the GNU
-  Free Documentation License version 1.2.
- </para>
- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gplv2.xml"/>
- <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gfdl.xml"/>
+ <info/>
+
+ <para> This appendix contains the GNU General Public License version 2 and the
+  GNU Free Documentation License version 1.2. </para>
+ <xi:include href="gplv2.xml"/>
+ <xi:include href="gfdl.xml"/>
 </appendix>

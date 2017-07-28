@@ -1,29 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<section id="_user_and_group_management">
+
+
+<sect1 xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+ xml:id="_user_and_group_management">
  <title>User and group management</title>
- <simpara>The OBS has an integrated user and group management with a role based
-access rights model. In every OBS instance, at least one user need to
-exist and have the global Admin role assigned. Groups can be defined by the
-Admin and and instead of adding a list of users to a project/package role
-user can be added to a group and the group will be added to a project or
-package role.</simpara>
- <section id="_user_and_group_roles">
+ <para>The OBS has an integrated user and group management with a role based
+  access rights model. In every OBS instance, at least one user need to exist
+  and have the global Admin role assigned. Groups can be defined by the Admin
+  and and instead of adding a list of users to a project/package role user can
+  be added to a group and the group will be added to a project or package
+  role.</para>
+ <sect2 xml:id="_user_and_group_roles">
   <title>User and group roles</title>
-  <simpara>The OBS role model has one global role: Admin, which can be granted to users.
-Am OBS admin has access to all projects and packages via the API interface
-and the web user interface. Some menus in the Web UI do not allow changes
-by an Admin (e.g. the Repository Menu) as long the Admin is not a Maintainer
-for the project as well. But the same change can be done via editing the
-meta data directly.
-The other roles are specific to projects and packages and can be assigned
-to a user or a group.</simpara>
+  <para>The OBS role model has one global role: Admin, which can be granted
+   to users. Am OBS admin has access to all projects and packages via the API
+   interface and the web user interface. Some menus in the Web UI do not allow
+   changes by an Admin (e.g. the Repository Menu) as long the Admin is not a
+   Maintainer for the project as well. But the same change can be done via
+   editing the meta data directly. The other roles are specific to projects and
+   packages and can be assigned to a user or a group.</para>
   <table frame="all" rowsep="1" colsep="1">
    <title>OBS roles</title>
    <tgroup cols="3">
@@ -40,94 +36,97 @@ to a user or a group.</simpara>
     <tbody>
      <row>
       <entry align="left" valign="top">
-       <simpara>Maintainer</simpara>
+       <para>Maintainer</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>Read and write access to projects or packages</simpara>
+       <para>Read and write access to projects or packages</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
-      </entry>
-     </row>
-     <row>
-      <entry align="left" valign="top">
-       <simpara>Bugowner</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>Read access to projects or packages</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>should be unique per package</simpara>
+       <para/>
       </entry>
      </row>
      <row>
       <entry align="left" valign="top">
-       <simpara>Reader</simpara>
+       <para>Bugowner</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>Read access to sources</simpara>
+       <para>Read access to projects or packages</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
-      </entry>
-     </row>
-     <row>
-      <entry align="left" valign="top">
-       <simpara>Downloader</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara>Read access to the binaries</simpara>
-      </entry>
-      <entry align="left" valign="top">
-       <simpara/>
+       <para>should be unique per package</para>
       </entry>
      </row>
      <row>
       <entry align="left" valign="top">
-       <simpara>Reviewer</simpara>
+       <para>Reader</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara>Default reviewer for a package or project</simpara>
+       <para>Read access to sources</para>
       </entry>
       <entry align="left" valign="top">
-       <simpara/>
+       <para/>
+      </entry>
+     </row>
+     <row>
+      <entry align="left" valign="top">
+       <para>Downloader</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>Read access to the binaries</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para/>
+      </entry>
+     </row>
+     <row>
+      <entry align="left" valign="top">
+       <para>Reviewer</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para>Default reviewer for a package or project</para>
+      </entry>
+      <entry align="left" valign="top">
+       <para/>
       </entry>
      </row>
     </tbody>
    </tgroup>
   </table>
- </section>
- <section id="_standalone_user_and_group_database">
+ </sect2>
+ <sect2 xml:id="_standalone_user_and_group_database">
   <title>Standalone user and group database</title>
-  <simpara>OBS provides its own user database which can also store a password. The
-authentication to the API happens via HTTP BASIC AUTH. See the
-API documentation to find out how to create, modify or delete user data.
-Also a call for changing the password exists.</simpara>
-  <simpara>Users can be added by the maintainer or if registration is allowed via the
-registration menu on the Web UI. It can be configured that a confirmation is
-needed after registration before the user may login.</simpara>
- </section>
- <section id="_proxy_mode">
+  <para>OBS provides its own user database which can also store a password.
+   The authentication to the API happens via HTTP BASIC AUTH. See the API
+   documentation to find out how to create, modify or delete user data. Also a
+   call for changing the password exists.</para>
+  <para>Users can be added by the maintainer or if registration is allowed
+   via the registration menu on the Web UI. It can be configured that a
+   confirmation is needed after registration before the user may
+   login.</para>
+ </sect2>
+ <sect2 xml:id="_proxy_mode">
   <title>Proxy mode</title>
-  <simpara>The proxy mode can be used for specially secured instances, where the OBS web
-server shall not get connected to the network directly. There are authentication proxy products
-out there which do the authentication and send the user name via an HTTP header to OBS.
-Originally, this was developed for IChain - a legacy single login authentication method from Novell.
-This also has the advantage that the user password never reaches OBS.</simpara>
-  <simpara>The proxy mode can also be used for LDAP or Active Directory, but only for
-authentication.</simpara>
-  <caution>
-   <simpara>With enabled proxy mode the OBS trust the username in the http header.
-Since this was verified by the Web server and the the Web server only forward requests
-for a verified and authenticated session, this is safe, as long you make
-sure that the direct web/API interface of the OBS is not reachable from the
-outside.</simpara>
-  </caution>
-  <simpara>With the proxy mode the user still need to be registered in the OBS and all OBS
-roles and user properties are managed inside the OBS.</simpara>
-  <section id="_obs_proxy_mode_configuration">
+  <para>The proxy mode can be used for specially secured instances, where
+   the OBS web server shall not get connected to the network directly. There
+   are authentication proxy products out there which do the authentication and
+   send the user name via an HTTP header to OBS. Originally, this was developed
+   for IChain - a legacy single login authentication method from Novell. This
+   also has the advantage that the user password never reaches OBS.</para>
+  <para>The proxy mode can also be used for LDAP or Active Directory, but
+   only for authentication.</para>
+  <important>
+   <para>With enabled proxy mode the OBS trust the username in the http
+    header. Since this was verified by the Web server and the the Web server
+    only forward requests for a verified and authenticated session, this is
+    safe, as long you make sure that the direct web/API interface of the OBS is
+    not reachable from the outside.</para>
+  </important>
+  <para>With the proxy mode the user still need to be registered in the OBS
+   and all OBS roles and user properties are managed inside the OBS.</para>
+  <sect3 xml:id="_obs_proxy_mode_configuration">
    <title>OBS proxy mode configuration</title>
-   <simpara>Currently the LDAP configuration is in the <emphasis>options.yml</emphasis> file.</simpara>
+   <para>Currently the LDAP configuration is in the
+     <emphasis>options.yml</emphasis> file.</para>
    <table frame="all" rowsep="1" colsep="1">
     <title>Proxy mode configuration option</title>
     <tgroup cols="4">
@@ -147,77 +146,81 @@ roles and user properties are managed inside the OBS.</simpara>
      <tbody>
       <row>
        <entry align="left" valign="top">
-        <simpara>proxy_auth_mode</simpara>
+        <para>proxy_auth_mode</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>turn proxy mode on/off</simpara>
+        <para>turn proxy mode on/off</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>:off</literal> :on</simpara>
+        <para><literal>:off</literal> :on</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>need to be :off if ldap_mode: is :on</simpara>
+        <para>need to be :off if ldap_mode: is :on</para>
        </entry>
       </row>
      </tbody>
     </tgroup>
    </table>
-  </section>
- </section>
- <section id="_ldap_active_directory">
+  </sect3>
+ </sect2>
+ <sect2 xml:id="_ldap_active_directory">
   <title>LDAP/Active Directory</title>
   <note>
-   <para>
-    The LDAP support is considered experimental and is not officially supported.
-   </para>
+   <para> The LDAP support is considered experimental and is not officially
+    supported. </para>
   </note>
-  <simpara>Using LDAP or Active Directory as source for user and optional group
-information in environments which already have such a server has the
-advantage for the admin people that the user related information only need
-to be maintained in one place. In the following sections we are writing
-LDAP, but this includes Microsoft's Active Directory as well. Only in parts
-where differences exists Active Directory (AD) will be explicit mentioned.</simpara>
-  <simpara>In this mode the OBS  contact the LDAP server directly
-from the OBS API, if the user was found and provides the correct password
-the user is added transparently to the OBS user database. The password or
-password hash is not stored in the OBS database. Because the user database
-password field is mandatory, a random hash is stored instead. The LDAP interface
-allows to restrict the access to users which are in a special LDAP group.
-Optional also groups can be discovered from the LDAP server. This can be
-also filtered.</simpara>
-  <simpara>Before anybody can add a user to a package or project with a role, the user
-need to had logged in at least one time, since the check for available users
-is local only.
-If the LDAP group mode is enabled, LDAP groups are also added transparently,
-if an existing group on the LDAP server is added to a project or package.</simpara>
-  <simpara>On bigger installations this mode can result in many search requests to
-the LDAP server and slow down the the access to projects and packages,
-because on every role check an LDAP search operation will contact the LDAP
-server.
-As alternative method group mirroring was implemented. This allows that the
-internal OBS group database is updated with the group membership information
-during the user authentication. All role test are made local against the
-OBS database and do not need additional LDAPoperations.</simpara>
+  <para>Using LDAP or Active Directory as source for user and optional group
+   information in environments which already have such a server has the
+   advantage for the admin people that the user related information only need
+   to be maintained in one place. In the following sections we are writing
+   LDAP, but this includes Microsoft's Active Directory as well. Only in parts
+   where differences exists Active Directory (AD) will be explicit
+   mentioned.</para>
+  <para>In this mode the OBS contact the LDAP server directly from the OBS
+   API, if the user was found and provides the correct password the user is
+   added transparently to the OBS user database. The password or password hash
+   is not stored in the OBS database. Because the user database password field
+   is mandatory, a random hash is stored instead. The LDAP interface allows to
+   restrict the access to users which are in a special LDAP group. Optional
+   also groups can be discovered from the LDAP server. This can be also
+   filtered.</para>
+  <para>Before anybody can add a user to a package or project with a role,
+   the user need to had logged in at least one time, since the check for
+   available users is local only. If the LDAP group mode is enabled, LDAP
+   groups are also added transparently, if an existing group on the LDAP server
+   is added to a project or package.</para>
+  <para>On bigger installations this mode can result in many search requests
+   to the LDAP server and slow down the the access to projects and packages,
+   because on every role check an LDAP search operation will contact the LDAP
+   server. As alternative method group mirroring was implemented. This allows
+   that the internal OBS group database is updated with the group membership
+   information during the user authentication. All role test are made local
+   against the OBS database and do not need additional
+   LDAPoperations.</para>
   <note>
-   <simpara>The local user group membership in :mirror mode is updated as follows: When the user logins,
-the user <emphasis>memberOf</emphasis> attributes are parsed and compared with the global OBS
-grouplist, if a group matches, the user is added, if they are no longer a
-group member, they are removed. since this maybe a costly operation, depending
-on the group counts, this is only done on a full login. After a full login
-the user status is cashed for 2 minutes, if the user do a login during this
-time, nothing will be checked or updated. Here is a second mechanism to
-update user membership: If somebody adds a new Group in the OBS, the
-<emphasis>member</emphasis> attributes of the group are parsed and all current users which are
-in the local database become members.</simpara>
+   <para>The local user group membership in :mirror mode is updated as
+    follows: When the user logins, the user <emphasis>memberOf</emphasis>
+    attributes are parsed and compared with the global OBS grouplist, if a
+    group matches, the user is added, if they are no longer a group member,
+    they are removed. since this maybe a costly operation, depending on the
+    group counts, this is only done on a full login. After a full login the
+    user status is cashed for 2 minutes, if the user do a login during this
+    time, nothing will be checked or updated. Here is a second mechanism to
+    update user membership: If somebody adds a new Group in the OBS, the
+     <emphasis>member</emphasis> attributes of the group are parsed and all
+    current users which are in the local database become members.</para>
   </note>
-  <section id="_obs_ldap_configuration">
+  <sect3 xml:id="_obs_ldap_configuration">
    <title>OBS LDAP configuration</title>
-   <simpara>Currently the main OBS LDAP configuration is in the <emphasis>options.yml</emphasis> file.
-Beside the settings here also the openldap config file is evaluated by the
-Ruby LDAP implementation. This config file is usually located at
-<emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional TLS/SSL directives
-like <emphasis role="strong">TLS_CACERT</emphasis>, <emphasis role="strong">TLS_CACERTDIR</emphasis> and <emphasis role="strong">TLS_REQCERT</emphasis>. For more information
-refer to the openldap ldap.conf man page.</simpara>
+   <para>Currently the main OBS LDAP configuration is in the
+     <emphasis>options.yml</emphasis> file. Beside the settings here also the
+    openldap config file is evaluated by the Ruby LDAP implementation. This
+    config file is usually located at
+     <emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional
+    TLS/SSL directives like <emphasis role="strong">TLS_CACERT</emphasis>,
+     <emphasis role="strong">TLS_CACERTDIR</emphasis> and <emphasis
+     role="strong">TLS_REQCERT</emphasis>. For more information refer to the
+    openldap ldap.conf man page.</para>
    <table frame="all" rowsep="1" colsep="1">
     <title>LDAP configuration options</title>
     <tgroup cols="4">
@@ -237,429 +240,432 @@ refer to the openldap ldap.conf man page.</simpara>
      <tbody>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_mode</simpara>
+        <para>ldap_mode</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>OBS LDAP mode on/off</simpara>
+        <para>OBS LDAP mode on/off</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>:off</literal> :on</simpara>
+        <para><literal>:off</literal> :on</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_servers</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>List of LDAP servers</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>colon-separated list</simpara>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_max_attempts</simpara>
+        <para>ldap_servers</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>tries to ping LDAP server</simpara>
+        <para>List of LDAP servers</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>int <literal>15</literal>
-        </simpara>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_search_timeout</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>timeout of an LDAP search</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>int 0…N <literal>5</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>0 wait for ever</simpara>
+        <para>colon-separated list</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_user_memberof_attr</simpara>
+        <para>ldap_max_attempts</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>User attribute for Group membership</simpara>
+        <para>tries to ping LDAP server</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>memberOf</literal>
-        </simpara>
+        <para>int <literal>15</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>case sensitive</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_group_member_attr</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Group attribute for members</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>member</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_ssl</simpara>
+        <para>ldap_search_timeout</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>use ldaps port and protocol</simpara>
+        <para>timeout of an LDAP search</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>:off</literal> :on</simpara>
+        <para>int 0…N <literal>5</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_start_tls</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>usr Start TLS on LDAP protocol</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>:off <literal>:on</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para>0 wait for ever</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_port</simpara>
+        <para>ldap_user_memberof_attr</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>LDAP portnumbers</simpara>
+        <para>User attribute for Group membership</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para><literal>memberOf</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>if not set 389 for LDAP, 636 for LDAPS</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_referrals</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Windows 2003 AD requires</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>:off</literal> :on</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para>case sensitive</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_search_base</simpara>
+        <para>ldap_group_member_attr</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>company’s LDAP search base for the users who will use OBS</simpara>
+        <para>Group attribute for members</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>none</literal>
-        </simpara>
+        <para><literal>member</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_search_attr</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>user ID attribute</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>sAMAccountName</literal> uid</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>sAMAccountName for AD, uid for openldap</simpara>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_name_attr</simpara>
+        <para>ldap_ssl</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Full user name</simpara>
+        <para>use ldaps port and protocol</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>cn</literal>
-        </simpara>
+        <para><literal>:off</literal> :on</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_mail_attr</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Attribute for users email</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>mail</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_search_user</simpara>
+        <para>ldap_start_tls</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Bind user for LDAP search</simpara>
+        <para>usr Start TLS on LDAP protocol</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para>:off <literal>:on</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>e.g. cn=ldapbind, ou=system, dc=mycompany, dc=com</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_search_auth</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Password for the ldap_search_user</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_user_filter</simpara>
+        <para>ldap_port</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Search filter for OBS users</simpara>
+        <para>LDAP portnumbers</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>e.g. a group membership, empty all users allowed</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_authenticate</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>How user how the credentials are verified</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>:ldap</literal> :local</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>only use :ldap</simpara>
+        <para>if not set 389 for LDAP, 636 for LDAPS</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_auth_mech</simpara>
+        <para>ldap_referrals</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Used auth mech</simpara>
+        <para>Windows 2003 AD requires</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>:md5</literal> :cleartext</simpara>
+        <para><literal>:off</literal> :on</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>only if local</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_auth_attr</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Used auth attribute for :local</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>userPassword</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>do not use</simpara>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_update_support</simpara>
+        <para>ldap_search_base</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Update password or other user setting on the LDAP server</simpara>
+        <para>company’s LDAP search base for the users who will use
+         OBS</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>:on <literal>:off</literal>
-        </simpara>
+        <para><literal>none</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>do not use</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_object_class</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Object class for user</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>inetOrgPerson</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>only for ldap_update_support: :on</simpara>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_entry_base</simpara>
+        <para>ldap_search_attr</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Base DN for the new added entry</simpara>
+        <para>user ID attribute</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para><literal>sAMAccountName</literal> uid</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>only for ldap_update_support: :on</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_sn_attr_required</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Does sn attribute required</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>:off <literal>:on</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>only for ldap_update_support: :on</simpara>
+        <para>sAMAccountName for AD, uid for openldap</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_group_support</simpara>
+        <para>ldap_name_attr</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Import OBS groups from LDAP</simpara>
+        <para>Full user name</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>:off</literal> :on :mirror</simpara>
+        <para><literal>cn</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>see text</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_group_search_base</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>company’s LDAP search base for groups</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_group_title_attr</simpara>
+        <para>ldap_mail_attr</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Attribute of the group name</simpara>
+        <para>Attribute for users email</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara><literal>cn</literal>
-        </simpara>
+        <para><literal>mail</literal>
+        </para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_group_objectclass_attr</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Object class for group</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>Group</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_obs_admin_group</simpara>
+        <para>ldap_search_user</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Group name for OBS Admins</simpara>
+        <para>Bind user for LDAP search</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>if set, members of that group become OBS admin role</simpara>
+        <para>e.g. cn=ldapbind, ou=system, dc=mycompany, dc=com</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_search_auth</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Password for the ldap_search_user</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_user_filter</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Search filter for OBS users</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>e.g. a group membership, empty all users allowed</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_authenticate</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>How user how the credentials are verified</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>:ldap</literal> :local</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>only use :ldap</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_auth_mech</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Used auth mech</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>:md5</literal> :cleartext</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>only if local</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_auth_attr</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Used auth attribute for :local</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>userPassword</literal>
+        </para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>do not use</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_update_support</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Update password or other user setting on the LDAP
+         server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>:on <literal>:off</literal>
+        </para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>do not use</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_object_class</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Object class for user</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>inetOrgPerson</literal>
+        </para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>only for ldap_update_support: :on</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_entry_base</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Base DN for the new added entry</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>only for ldap_update_support: :on</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_sn_attr_required</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Does sn attribute required</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>:off <literal>:on</literal>
+        </para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>only for ldap_update_support: :on</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_group_support</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Import OBS groups from LDAP</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>:off</literal> :on :mirror</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>see text</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_group_search_base</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>company’s LDAP search base for groups</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_group_title_attr</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Attribute of the group name</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>cn</literal>
+        </para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_group_objectclass_attr</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Object class for group</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para><literal>Group</literal>
+        </para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>ldap_obs_admin_group</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Group name for OBS Admins</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>if set, members of that group become OBS admin role</para>
        </entry>
       </row>
      </tbody>
     </tgroup>
    </table>
-   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
-<screen>...
+   <para>Example LDAP section of the <emphasis>options.yml</emphasis>
+    file:</para>
+   <screen>...
 ##################
 # LDAP options
 ##################
@@ -770,44 +776,42 @@ ldap_group_objectclass_attr: group
 # if this group is set and a user belongs to this group they get the global admin role
 #
 ldap_obs_admin_group: obsadmins</screen>
-  </section>
- </section>
- <section id="_authentication_methods">
+  </sect3>
+ </sect2>
+ <sect2 xml:id="_authentication_methods">
   <title>Authentication methods</title>
-  <section id="_ldap_methods">
+  <sect3 xml:id="_ldap_methods">
    <title>LDAP methods</title>
-   <simpara>The LDAP mode has 2 methods implemented to check authorization:</simpara>
-   <orderedlist numeration="arabic">
+   <para>The LDAP mode has 2 methods implemented to check
+    authorization:</para>
+   <orderedlist>
     <listitem>
-     <simpara>
-LDAP bind method.<?asciidoc-br?>
-   With the provided credentials, an LDAP bind request is tried.
-</simpara>
+     <para> LDAP bind method.<?asciidoc-br?> With the provided credentials,
+      an LDAP bind request is tried. </para>
     </listitem>
     <listitem>
-     <simpara>
-Local method.<?asciidoc-br?>
-   The provided credentials checked locally against the content of the
-   of the <emphasis>userPassword</emphasis> attribute.
-</simpara>
+     <para> Local method.<?asciidoc-br?> The provided credentials checked
+      locally against the content of the of the
+       <emphasis>userPassword</emphasis> attribute. </para>
     </listitem>
    </orderedlist>
-   <caution>
-    <simpara>The local method should be not used, since the <emphasis>userPassword</emphasis> attribute in most
-LDAP installations will not be available until you are bind with a
-privilege user.</simpara>
-   </caution>
-  </section>
-  <section id="_kerberos">
+   <important>
+    <para>The local method should be not used, since the
+      <emphasis>userPassword</emphasis> attribute in most LDAP installations
+     will not be available until you are bind with a privilege user.</para>
+   </important>
+  </sect3>
+  <sect3 xml:id="_kerberos">
    <title>Kerberos</title>
-   <simpara>In OBS you can use single sign on via Kerberos tickets.</simpara>
-   <simpara>OBS Kerberos configuration resides in the <emphasis>options.yml</emphasis> file.</simpara>
+   <para>In OBS you can use single sign on via Kerberos tickets.</para>
+   <para>OBS Kerberos configuration resides in the
+     <emphasis>options.yml</emphasis> file.</para>
    <table frame="all" rowsep="1" colsep="1">
     <title>Kerberos configuration options</title>
     <tgroup cols="3">
-     <colspec colname="col_1" colwidth="30*" />
-     <colspec colname="col_2" colwidth="40*" />
-     <colspec colname="col_3" colwidth="28*" />
+     <colspec colname="col_1" colwidth="30*"/>
+     <colspec colname="col_2" colwidth="40*"/>
+     <colspec colname="col_3" colwidth="28*"/>
      <thead>
       <row>
        <entry align="left" valign="top"> Config item </entry>
@@ -818,42 +822,45 @@ privilege user.</simpara>
      <tbody>
       <row>
        <entry align="left" valign="top">
-        <simpara>kerberos_keytab</simpara>
+        <para>kerberos_keytab</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Kerberos key table: file where long-term keys for one or more principals are stored</simpara>
+        <para>Kerberos key table: file where long-term keys for one or more
+         principals are stored</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>"/etc/krb5.keytab"</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>kerberos_service_principal</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Kerberos OBS principal: OBS unique identity to which Kerberos can assign tickets</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>"HTTP/hostname.example.com@EXAMPLE.COM"</simpara>
+        <para>"/etc/krb5.keytab"</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>kerberos_realm</simpara>
+        <para>kerberos_service_principal</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Kerberos realm: authentication administrative domain</simpara>
+        <para>Kerberos OBS principal: OBS unique identity to which Kerberos
+         can assign tickets</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>"EXAMPLE.COM"</simpara>
+        <para>"HTTP/hostname.example.com@EXAMPLE.COM"</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>kerberos_realm</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Kerberos realm: authentication administrative domain</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>"EXAMPLE.COM"</para>
        </entry>
       </row>
      </tbody>
     </tgroup>
    </table>
-   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
-<screen>...
+   <para>Example LDAP section of the <emphasis>options.yml</emphasis>
+    file:</para>
+   <screen>...
 
 ##################
 # Kerberos options
@@ -866,59 +873,48 @@ kerberos_realm: "EXAMPLE.COM"
 
 ...
 </screen>
-  <note>
-   <para>
-    Once Kerberos is enabled, only users with logins that match users known to
-          Kerberos will be able to authenticate to OBS.
-          It is recommended to give admin rights to a matching user before enabling
-          Kerberos mode.
-   </para>
-  </note>
-  </section>
-  <section>
+   <note>
+    <para> Once Kerberos is enabled, only users with logins that match users
+     known to Kerberos will be able to authenticate to OBS. It is recommended
+     to give admin rights to a matching user before enabling Kerberos mode.
+    </para>
+   </note>
+  </sect3>
+  <sect3>
    <title>OBS Token Authorization</title>
-   <para>
-    OBS 2.5 provides a mechanism to create tokens for specific operations. This
-    can be used to allow certain operations in the name of a user to others.
-    This is esp. useful when integrating external infrastructure. The create
-    token should be kept secret by default, but it can also be revoked at any
-    time if it became obsolete or leaked.
-   </para>
-   <section>
+   <para> OBS 2.5 provides a mechanism to create tokens for specific
+    operations. This can be used to allow certain operations in the name of a
+    user to others. This is esp. useful when integrating external
+    infrastructure. The create token should be kept secret by default, but it
+    can also be revoked at any time if it became obsolete or leaked. </para>
+   <sect4>
     <title>Manage tokens of a user</title>
-    <para>
-     Tokens belong always to a user. A list of active tokens can received via
-    </para>
-<screen><command>osc token</command></screen>
-<screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
-   </section>
-   <section>
+    <para> Tokens belong always to a user. A list of active tokens can received
+     via </para>
+    <screen><command>osc token</command></screen>
+    <screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
+   </sect4>
+   <sect4>
     <title>Execute a source service</title>
-    <para>
-     A token can be used to execute a source service. The source service has to
-     be setup for the package first, check the source service chapter for this.
-     A typical example is to update sources of a package from git. A source
-     service for that can be setup with
-    </para>
-<screen><command>osc add git://....</command></screen>
-    <para>
-     A token can be registered as generic token, means allowing to execute all
-     source services in OBS if the user has permissions. You can create such a
-     token and execute the operation with
-    </para>
-<screen><command>osc token --create</command></screen>
-<screen><command>osc token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
-<screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;&amp;project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</command></screen>
-    <para>
-     You can also limit the token to a specific package. The advantage is that
-     the operation is limited to that package, so less bad things can happen
-     when the token leaks. Also you do not need to specify the package on
-     execution time. Create and execute it with
-    </para>
-<screen><command>osc token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
-<screen><command>osc token --trigger &lt;TOKEN&gt;</command></screen>
-<screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</command></screen>
-   </section>
-  </section>
- </section>
-</section>
+    <para> A token can be used to execute a source service. The source service
+     has to be setup for the package first, check the source service chapter
+     for this. A typical example is to update sources of a package from git. A
+     source service for that can be setup with </para>
+    <screen><command>osc add git://....</command></screen>
+    <para> A token can be registered as generic token, means allowing to
+     execute all source services in OBS if the user has permissions. You can
+     create such a token and execute the operation with </para>
+    <screen><command>osc token --create</command></screen>
+    <screen><command>osc token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
+    <screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;&amp;project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</command></screen>
+    <para> You can also limit the token to a specific package. The advantage is
+     that the operation is limited to that package, so less bad things can
+     happen when the token leaks. Also you do not need to specify the package
+     on execution time. Create and execute it with </para>
+    <screen><command>osc token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
+    <screen><command>osc token --trigger &lt;TOKEN&gt;</command></screen>
+    <screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</command></screen>
+   </sect4>
+  </sect3>
+ </sect2>
+</sect1>

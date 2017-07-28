@@ -1,113 +1,85 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.authorization.token">
+<chapter version="5.0" xml:id="cha.obs.authorization.token"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Authorization</title>
- <para></para>
- <section>
+ <info/>
+
+ <sect1>
   <title>OBS Authorization Methods</title>
-  <para>
-   Each package is signed with a PGP key to allow checking its integrity on
-   user's machines.
-  </para>
-  <section>
+  <para> Each package is signed with a PGP key to allow checking its integrity
+   on user's machines. </para>
+  <sect2>
    <title>Default Mode</title>
-   <para>
-    OBS provides its own user database which can also store a password. The
-    authentication to the API happens via HTTP BASIC AUTH. See the API
+   <para> OBS provides its own user database which can also store a password.
+    The authentication to the API happens via HTTP BASIC AUTH. See the API
     documentation to find out how to create, modify or delete user data. Also a
-    call for changing the password exists.
-   </para>
-  </section>
-  <section>
+    call for changing the password exists. </para>
+  </sect2>
+  <sect2>
    <title>Proxy Mode</title>
-   <para>
-    The proxy mode can be used for esp. secured instances, where the OBS web
-    server shall not get connected to the network directly. There are
+   <para> The proxy mode can be used for esp. secured instances, where the OBS
+    web server shall not get connected to the network directly. There are
     authentication proxy products out there which do the authentication and
     send the user name via an HTTP header to OBS. This has also the advantage
-    that the user password never reaches OBS.
-   </para>
-  </section>
-  <section>
+    that the user password never reaches OBS. </para>
+  </sect2>
+  <sect2>
    <title>LDAP Mode</title>
-   <para>
-    LDAP authentication code is still part of OBS, but due to the lack of any
-    test cases it is currently not recommended to use it.
-   </para>
-  </section>
- </section>
- <section>
+   <para> LDAP authentication code is still part of OBS, but due to the lack of
+    any test cases it is currently not recommended to use it. </para>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>OBS Token Authorization</title>
-  <para>
-   OBS 2.5 provides a mechanism to create tokens for specific operations. This
-   can be used to allow certain operations in the name of a user to others.
-   This is esp. useful when integrating external infrastructure. The create
-   token should be kept secret by default, but it can also be revoked at any
-   time if it became obsolete or leaked.
-  </para>
-  <section>
+  <para> OBS 2.5 provides a mechanism to create tokens for specific operations.
+   This can be used to allow certain operations in the name of a user to
+   others. This is esp. useful when integrating external infrastructure. The
+   create token should be kept secret by default, but it can also be revoked at
+   any time if it became obsolete or leaked. </para>
+  <sect2>
    <title>Manage tokens of a user</title>
-   <para>
-    Tokens belong always to a user. A list of active tokens can received via
-   </para>
-<screen><command>osc token</command></screen>
-<screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
-  </section>
-  <section>
+   <para> Tokens belong always to a user. A list of active tokens can received
+    via </para>
+   <screen><command>osc token</command></screen>
+   <screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
+  </sect2>
+  <sect2>
    <title>Execute a source service</title>
-   <para>
-    A token can be used to execute a source service. The source service has to
-    be setup for the package first, check the source service chapter for this.
-    A typical example is to update sources of a package from git. A source
-    service for that can be setup with
-   </para>
-<screen><command>osc add git://....</command></screen>
-  <para>
-  The best way to create a token is bind it to a specific package. The advantage is that
-  the operation is limited to that package, so less bad things can happen
-  when the token leaks.
-  </para>
-<screen><command>osc token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
-<para>
-  Also, you do not need to specify the package at execution time.
-  But keep in mind that such form only works when you run it on an as
-  checkout of a package. Both commands below do the same thing in a different way:
-</para>
-<screen><command>osc token --trigger &lt;TOKEN&gt;</command></screen>
-<screen><command>osc api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</command></screen>
-   <para>
-    A token can be registered as generic token, means allowing to execute
-    all source services in OBS if the user has permissions. You can create such a
-    token by skipping project/package on creation command:
-   </para>
-<screen><command>osc token --create</command></screen>
-    <para>
-      In this case you forced to specify project/package when using such a token.
-      On other hand you not limited from where two execute it. Again two examples doing same thing:
-    </para>
-<screen><command>osc token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
-<screen><command>curl -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice?project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</command></screen>
-   <para>
-    You can also limit the token to a specific package. The advantage is that
-    the operation is limited to that package, so less bad things can happen
-    when the token leaks. Also you do not need to specify the package on
-    execution time. Create and execute it with
-   </para>
-<screen><command>osc token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</command></screen>
-<screen><command>osc token --trigger &lt;TOKEN&gt;</command></screen>
-<screen><command>curl -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice</command></screen>
-  </section>
-  <section>
+   <para> A token can be used to execute a source service. The source service
+    has to be setup for the package first, check the source service chapter for
+    this. A typical example is to update sources of a package from git. A
+    source service for that can be setup with </para>
+   <screen><command>osc</command> add git://....</screen>
+   <para> The best way to create a token is bind it to a specific package. The
+    advantage is that the operation is limited to that package, so less bad
+    things can happen when the token leaks. </para>
+   <screen><command>osc</command> token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <para> Also, you do not need to specify the package at execution time. But
+    keep in mind that such form only works when you run it on an as checkout of
+    a package. Both commands below do the same thing in a different way: </para>
+   <screen><command>osc</command> token --trigger &lt;TOKEN&gt;</screen>
+   <screen><command>osc</command> api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</screen>
+   <para> A token can be registered as generic token, means allowing to execute
+    all source services in OBS if the user has permissions. You can create such
+    a token by skipping project/package on creation command: </para>
+   <screen><command>osc</command> token --create</screen>
+   <para> In this case you forced to specify project/package when using such a
+    token. On other hand you not limited from where two execute it. Again two
+    examples doing same thing: </para>
+   <screen><command>osc</command> token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice?project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</screen>
+   <para> You can also limit the token to a specific package. The advantage is
+    that the operation is limited to that package, so less bad things can
+    happen when the token leaks. Also you do not need to specify the package on
+    execution time. Create and execute it with </para>
+   <screen><command>osc</command> token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <screen><command>osc</command> token --trigger &lt;TOKEN&gt;</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice</screen>
+  </sect2>
+  <sect2>
    <title>Change Request Review Status</title>
-   <para>
-    NOT YET IMPLEMENTED
-   </para>
-  </section>
- </section>
+   <para> NOT YET IMPLEMENTED </para>
+  </sect2>
+ </sect1>
 </chapter>

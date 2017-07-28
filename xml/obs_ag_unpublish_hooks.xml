@@ -1,94 +1,106 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<section id="_unpublisher_hooks">
+
+
+<sect1 xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+ xml:id="_unpublisher_hooks">
  <title>Unpublisher Hooks</title>
- <simpara>The job of the publisher service is to publish the build packages and/or images
-by creating repositories that are made available through a web server.</simpara>
- <simpara>The OBS Publisher can be configured to use custom scripts to be called whenever already
-published packages get removed. These scripts are called <emphasis role="strong">unpublisher hooks</emphasis>.
-<emphasis role="strong">Unpublisher hooks</emphasis> are run before the <emphasis role="strong">publisher hooks</emphasis>.</simpara>
- <section id="_unpublisher_hooks_configuration">
+ <para>The job of the publisher service is to publish the build packages
+  and/or images by creating repositories that are made available through a web
+  server.</para>
+ <para>The OBS Publisher can be configured to use custom scripts to be
+  called whenever already published packages get removed. These scripts are
+  called <emphasis role="strong">unpublisher hooks</emphasis>. <emphasis
+   role="strong">Unpublisher hooks</emphasis> are run before the <emphasis
+   role="strong">publisher hooks</emphasis>.</para>
+ <sect2 xml:id="_unpublisher_hooks_configuration">
   <title>Unpublisher Hooks configuration</title>
-  <simpara>Hooks are configured via the configuration file
-<emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per project is linked
-to the repository that should be run if the project/repository combination is
-removed. It is possible to use regular expressions here.</simpara>
-  <simpara>The script is called by the <emphasis role="strong">obsrun</emphasis> user with the following parameters:</simpara>
-  <orderedlist numeration="arabic">
+  <para>Hooks are configured via the configuration file
+    <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per
+   project is linked to the repository that should be run if the
+   project/repository combination is removed. It is possible to use regular
+   expressions here.</para>
+  <para>The script is called by the <emphasis role="strong"
+    >obsrun</emphasis> user with the following parameters:</para>
+  <orderedlist>
    <listitem>
-    <simpara>
-information about the project and its repository (e.g. <emphasis>training/SLE11-SP1</emphasis>)
-</simpara>
+    <para> information about the project and its repository (e.g.
+      <emphasis>training/SLE11-SP1</emphasis>) </para>
    </listitem>
    <listitem>
-    <simpara>
-repository path (e.g. <emphasis>/srv/obs/repos/training/SLE11-SP1</emphasis>)
-</simpara>
+    <para> repository path (e.g.
+      <emphasis>/srv/obs/repos/training/SLE11-SP1</emphasis>) </para>
    </listitem>
    <listitem>
-    <simpara>
-removed packages (e.g. <emphasis>x86 64/test.rpm x86 64/utils.rpm</emphasis>)
-</simpara>
+    <para> removed packages (e.g. <emphasis>x86 64/test.rpm x86
+      64/utils.rpm</emphasis>) </para>
    </listitem>
   </orderedlist>
-  <simpara>The hooks are configured by adding a hash reference named <emphasis>$unpublishedhook</emphasis> to
-the <emphasis>BSConfig.pm</emphasis> configuration file. The key contains the project and the
-value references the accompanying script.  If the value is written as an array
-reference, it is possible to call the hook with custom parameters.</simpara>
-  <simpara>The publisher adds the three listed parameters at the end, right behind the custom parameters.</simpara>
-<screen>/usr/lib/obs/server/BSConfig.pm
+  <para>The hooks are configured by adding a hash reference named
+    <emphasis>$unpublishedhook</emphasis> to the
+    <emphasis>BSConfig.pm</emphasis> configuration file. The key contains the
+   project and the value references the accompanying script. If the value is
+   written as an array reference, it is possible to call the hook with custom
+   parameters.</para>
+  <para>The publisher adds the three listed parameters at the end, right
+   behind the custom parameters.</para>
+  <screen>/usr/lib/obs/server/BSConfig.pm
 
     our $unpublishedhook = {
         "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
         "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
         "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
     };</screen>
-  <simpara>Regular expressions or substrings can be used to define a script for more than one repository in one project.
-The use of regular expressions needs to be activated by defining <emphasis>$unpublishedhook use regex = 1;</emphasis>:</simpara>
-<screen>/usr/lib/obs/server/BSConfig.pm
+  <para>Regular expressions or substrings can be used to define a script for
+   more than one repository in one project. The use of regular expressions
+   needs to be activated by defining <emphasis>$unpublishedhook use regex =
+    1;</emphasis>:</para>
+  <screen>/usr/lib/obs/server/BSConfig.pm
 
     our $unpublishedhook_use_regex = 1;
     our $unpublishedhook = {
         "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
         "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
     };</screen>
-  <simpara>With custom parameters:</simpara>
-<screen>    our $unpublishedhook_use_regex = 1;
+  <para>With custom parameters:</para>
+  <screen>    our $unpublishedhook_use_regex = 1;
     our $unpublishedhook = {
         "Product\/SLES11.*" =&gt; [
           "/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"
         ],
     };</screen>
-  <simpara>The configuration is read by the publisher at startup only, so it has to be restarted after configuration changes have been made.
-The hook script’s output is not logged by the publisher and should be written to a log file by the script itself. In case of a broken script, this is logged in the publisher’s log file (/srv/obs/log/publisher.log by default):</simpara>
-<screen>Mon Mar  7 14:34:17 2016 publishing Product/SLES12
+  <para>The configuration is read by the publisher at startup only, so it
+   has to be restarted after configuration changes have been made. The hook
+   script’s output is not logged by the publisher and should be written to a
+   log file by the script itself. In case of a broken script, this is logged in
+   the publisher’s log file (/srv/obs/log/publisher.log by default):</para>
+  <screen>Mon Mar  7 14:34:17 2016 publishing Product/SLES12
     fetched 0 patterns
     running createrepo
     calling unpublished hook /usr/local/bin/script2run_sles12
     /usr/local/bin/script2run_sles12 failed: 65280
     syncing database (6 ops)</screen>
-  <simpara>Interactive scripts are not working and will fail immediately.</simpara>
-  <simpara>If you need to do a lot of work in the hook script and do not want to block the publisher all the time, consider using a separate daemon that does all the work and just
-gets triggered by the configured hook script.</simpara>
-  <simpara>The scripts are called without a timeout.</simpara>
+  <para>Interactive scripts are not working and will fail
+   immediately.</para>
+  <para>If you need to do a lot of work in the hook script and do not want
+   to block the publisher all the time, consider using a separate daemon that
+   does all the work and just gets triggered by the configured hook
+   script.</para>
+  <para>The scripts are called without a timeout.</para>
   <note>
-   <simpara><emphasis role="strong">Reminder:</emphasis> If <emphasis>unpublish hooks</emphasis> and <emphasis>publish hooks</emphasis> are defined, the
-<emphasis>unpublish hook</emphasis> runs before the <emphasis>publish hook</emphasis>.</simpara>
+   <para><emphasis role="strong">Reminder:</emphasis> If <emphasis>unpublish
+     hooks</emphasis> and <emphasis>publish hooks</emphasis> are defined, the
+     <emphasis>unpublish hook</emphasis> runs before the <emphasis>publish
+     hook</emphasis>.</para>
   </note>
- </section>
- <section id="_example_unpublisher_scripts">
+ </sect2>
+ <sect2 xml:id="_example_unpublisher_scripts">
   <title>Example Unpublisher Scripts</title>
-  <section id="_simple_unpublisher_hook">
+  <sect3 xml:id="_simple_unpublisher_hook">
    <title>Simple Unpublisher Hook</title>
-   <simpara>The following example script deletes all packages from the target directory
-that have been removed from the repository.</simpara>
-<screen>#!/bin/bash
+   <para>The following example script deletes all packages from the target
+    directory that have been removed from the repository.</para>
+   <screen>#!/bin/bash
 OBSHOME="/srv/obs"
 LOGFILE="$OBSHOME/log/reposync.log"
 DST_REPO_DIR="/srv/repo-mirror"
@@ -104,19 +116,19 @@ do
   rm -v $DST_REPO_DIR/$PRJ_PATH/$1 &gt;&gt;$LOGFILE 2&gt;&amp;1
   shift
 done</screen>
-   <simpara>For testing purposes, it can be invoked as follows:</simpara>
-<screen>$ sudo -u obsrun /usr/local/bin/unpublish-hook.sh \
+   <para>For testing purposes, it can be invoked as follows:</para>
+   <screen>$ sudo -u obsrun /usr/local/bin/unpublish-hook.sh \
     Product/SLES11-SP1                            \
     /srv/obs/repos/Product/SLE11-SP1              \
     src/icinga-1.13.3-1.3.src.rpm                 \
     x86_64/icinga-1.13.3-1.3.x86_64.rpm           \
     x86_64/icinga-devel-1.13.3-1.3.x86_64.rpm</screen>
-  </section>
-  <section id="_advanced_unpublisher_hook">
+  </sect3>
+  <sect3 xml:id="_advanced_unpublisher_hook">
    <title>Advanced Unpublisher Hook</title>
-   <simpara>The following example script reads the destination path from a parameter that is configured via
-the hook script:</simpara>
-<screen>#!/bin/bash
+   <para>The following example script reads the destination path from a
+    parameter that is configured via the hook script:</para>
+   <screen>#!/bin/bash
 OBSHOME="/srv/obs"
 LOGFILE="$OBSHOME/log/reposync.log"
 DST_REPO_DIR=$1
@@ -132,13 +144,13 @@ do
   rm -v $DST_REPO_DIR/$PRJ_PATH/$1 &gt;&gt;$LOGFILE 2&gt;&amp;1
   shift
 done</screen>
-   <simpara>For testing purposes, it can be invoked as follows:</simpara>
-<screen>$ sudo -u obsrun /usr/local/bin/unpublish-hook.sh \
+   <para>For testing purposes, it can be invoked as follows:</para>
+   <screen>$ sudo -u obsrun /usr/local/bin/unpublish-hook.sh \
     /srv/www/public_mirror/Product/SLES11-SP1     \
     /srv/obs/repos/Product/SLE11SP1               \
     src/icinga-1.13.3-1.3.src.rpm                 \
     x86_64/icinga-1.13.3-1.3.x86_64.rpm           \
     x86_64/icinga-devel-1.13.3-1.3.x86_64.rpm</screen>
-  </section>
- </section>
-</section>
+  </sect3>
+ </sect2>
+</sect1>

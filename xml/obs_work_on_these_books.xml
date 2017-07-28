@@ -1,39 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE appendix PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<appendix id="appendix.work_on_obs_book">
- <title>How to work on this Book</title><indexterm id="idx.help">
- <primary>help</primary></indexterm><indexterm>
- <primary>documentation</primary>
- <see>help</see></indexterm>
- <abstract>
-  <para>
-   These books are written with DocBook and can be converted to HTML or PDF
-   documentation. Use the following command to checkout the official
-   source of this book:
-<screen><command>git clone https://github.com/openSUSE/open-build-service-documentation.git</command></screen>
-   Check the README file for descriptions how to validate and generate
-   them.
-  </para>
-
-  <para>
-   Use the standard GitHub work-flow to work on these books. This means
-   fork your own copy of the repository, commit your changes there and create a
-   pull request. This can be done at
-   <ulink url="https://github.com/openSUSE/open-build-service-documentation">https://github.com/openSUSE/open-build-service-documentation</ulink>
-  </para>
-
-  <para>
-   It is even possible to host instance specific content in the official
-   subversion repository, it is just a matter to tag them correctly. Special
-   parts of this documentation are tagged as <command>&lt;para
-   os="opensuse;meego"&gt;</command> for example. In this case the paragraph
-   will become only visible when creating the openSUSE or MeeGo book.
-  </para>
- </abstract>
+<appendix version="5.0" xml:id="appendix.work_on_obs_book"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>How to work on this Book</title>
+ <para> These books are written with DocBook and can be converted to HTML or
+    PDF documentation. Use the following command to checkout the official
+    source of this book:</para>
+   <screen><command>git clone</command> https://github.com/openSUSE/open-build-service-documentation.git</screen>
+   <para>Check the README file for descriptions how to validate and generate
+    them. </para>
+   <para> Use the standard GitHub work-flow to work on these books. This means
+    fork your own copy of the repository, commit your changes there and create
+    a pull request. This can be done at <link
+     xlink:href="https://github.com/openSUSE/open-build-service-documentation"
+     >https://github.com/openSUSE/open-build-service-documentation</link>
+   </para>
+   <para> It is even possible to host instance specific content in the official
+    subversion repository, it is just a matter to tag them correctly. Special
+    parts of this documentation are tagged as <command>&lt;para
+     os="opensuse;meego"&gt;</command> for example. In this case the paragraph
+    will become only visible when creating the openSUSE or MeeGo book. </para>
 </appendix>

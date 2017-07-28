@@ -1,94 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
-[
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
-]>
-<chapter id="cha.obs.product_building">
+<chapter version="5.0" xml:id="cha.obs.product_building"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Product Building</title>
- <para>
-  OBS is used to build complete product lines. It is employed for openSUSE and
-  also for SUSE Linux Enterprise products.
- </para>
- <section>
+ <info/>
+ <para> OBS is used to build complete product lines. It is employed for
+  openSUSE and also for SUSE Linux Enterprise products. </para>
+ <sect1>
   <title>Requirements of a product</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
+  <para> ... </para>
+ </sect1>
+ <sect1>
   <title>Possible shapes of a product</title>
-  <para>
-   product media, appliance, repository...
-  </para>
- </section>
- <section>
+  <para> product media, appliance, repository... </para>
+ </sect1>
+ <sect1>
   <title>Product Setup in OBS</title>
-  <para>
-   ....
-  </para>
-  <section>
+  <para> .... </para>
+  <sect2>
    <title>Package building</title>
-   <para>
-    A project is configured in the project meta data. This meta data contains
-    ... These projects contain ...
-   </para>
-  </section>
-  <section>
+   <para> A project is configured in the project meta data. This meta data
+    contains ... These projects contain ... </para>
+  </sect2>
+  <sect2>
    <title>Appliance setup with kiwi</title>
-   <para>
-    ...
-   </para>
-  </section>
-  <section>
+   <para> ... </para>
+  </sect2>
+  <sect2>
    <title>Product creation with kiwi</title>
-   <para>
-    ...
-   </para>
-  </section>
-  <section>
+   <para> ... </para>
+  </sect2>
+  <sect2>
    <title>Product Line Setup</title>
-   <para>
-    Bigger products, like openSUSE or SUSE Linux Enterprise usually contain
-    multiple media. These media must be kept in sync in various ways, for
-    example for installation patterns, version numbering and other meta data.
-    To guarantee this, OBS provides the product definition xml. Submitting such
-    a product xml will create all necessary sources for meta packages and also
-    all needed kiwi source files.
-   </para>
-  </section>
- </section>
- <section>
+   <para> Bigger products, like openSUSE or SUSE Linux Enterprise usually
+    contain multiple media. These media must be kept in sync in various ways,
+    for example for installation patterns, version numbering and other meta
+    data. To guarantee this, OBS provides the product definition xml.
+    Submitting such a product xml will create all necessary sources for meta
+    packages and also all needed kiwi source files. </para>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>Release Management</title>
-  <para>
-   Products needs usually multiple approval steps and should only be released
-   on manual approval. OBS is providing a mechanism which allows to copy
-   sources and binaries to another project in this case. To use this the
+  <para> Products needs usually multiple approval steps and should only be
+   released on manual approval. OBS is providing a mechanism which allows to
+   copy sources and binaries to another project in this case. To use this the
    release target must be configured inside of a repository definition of the
-   project meta data:
-<screen><command>&lt;project name="BuildProject"&gt;
+   project meta data:</para>
+   <screen>&lt;project name="BuildProject"&gt;
   ...
   &lt;repository name="BuildRepo"&gt;
     &lt;releasetarget project="ReleaseProject" repository="ReleaseRepo" trigger="manual" /&gt;
     ...
   &lt;/repository&gt;
-&lt;/project&gt;
-    </command></screen>
-   The ReleaseProject must be create before and it should be configured as
+&lt;/project&gt;</screen>
+   <para>The ReleaseProject must be create before and it should be configured as
    build disabled. The release can be triggered then via
-<screen><command>osc release BuildProject</command></screen>
-   All sources and build results will be copied over from BuildProject to the
-   ReleaseProject and the publishing will happen afterwards. The operation will
-   happen in background since it can take quite some time depending on the
-   project size.
+   <command>osc release BuildProject</command> All sources and
+   build results will be copied over from BuildProject to the ReleaseProject
+   and the publishing will happen afterwards. The operation will happen in
+   background since it can take quite some time depending on the project size.
   </para>
- </section>
- <section>
+ </sect1>
+ <sect1>
   <title>Typical Review Process Setup</title>
-  <para>
-   ...
-  </para>
- </section>
+  <para> ... </para>
+ </sect1>
 </chapter>
