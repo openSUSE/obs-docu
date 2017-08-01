@@ -2,12 +2,17 @@
  type="text/xml"
  title="Profiling step"
 ?>
+<!DOCTYPE book
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
 <book version="5.0" xml:lang="en" xml:id="book.obs-reference-guide"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Open Build Service</title>
- <subtitle>Reference Guide</subtitle>
+ <title>Reference Guide</title>
+ <subtitle>&productname;</subtitle>
  <info>
   <authorgroup>
    <author>

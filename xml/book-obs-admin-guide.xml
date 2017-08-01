@@ -11,8 +11,8 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en"
  xml:id="book.obs-admin">
- <title>Open Build Service</title>
- <subtitle>Administrator Guide</subtitle>
+ <title>Administrator Guide</title>
+ <subtitle>&productname;</subtitle>
  <info>
   <authorgroup>
    <author>

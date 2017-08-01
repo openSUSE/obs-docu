@@ -4,14 +4,16 @@
 ?>
 <!DOCTYPE book
 [
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
 ]>
 
 <book xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en"
  xml:id="book.obs-best-practices">
- <title>Open Build Service</title>
- <subtitle>Best Practice Guide</subtitle>
+ <title>Best Practice Guide</title>
+ <subtitle>&productname;</subtitle>
  <info>
   <authorgroup>
    <author>
