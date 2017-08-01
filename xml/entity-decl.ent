@@ -2,47 +2,18 @@
 <!-- General Entities                                                       -->
 <!-- ...................................................................... -->
 
-
 <!ENTITY obsa "OBS" >
 <!ENTITY obs "Open Build Service">
 <!ENTITY OBS "Open Build Service (OBS)">
-
 
 <!ENTITY exampleuser    "tux">
 <!ENTITY exampleuserII  "wilber">
 <!ENTITY examplegroup   "users">
 
-<!-- #######################################################################-->
-<!--             Obsolete entities. Do not use.                             -->
-<!--      See network-decl.ent for Network related entities                 -->
-
-<!ENTITY exampledomainip      "192.168.0">
-<!ENTITY exampledomain1ip     "192.168.1">
-<!ENTITY exampledomain2ip     "192.168.2">
-<!-- ipv6 equivalent to 192.168.2.10 -->
-<!ENTITY exampledomain2ipv6   "2002:c0a8:20a::">
-<!ENTITY exampleserver        "sun">
-<!ENTITY exampleserverip      "&exampledomainip;.20">
-<!ENTITY exampleserverfq      "&exampleserver;.&exampledomain;">
-<!ENTITY exampleclient        "earth">
-<!ENTITY exampleclientip      "&exampledomainip;.1">
-<!ENTITY exampleclientfq      "&exampleclient;.&exampledomain;">
-<!ENTITY exampleclientppp     "ppp&exampleclient;">
-<!ENTITY exampleclientslip    "sl&exampleclient;">
-<!ENTITY exampleclientuucp    "uu&exampleclient;">
-<!ENTITY exampleclientII      "venus">
-<!ENTITY exampleclientIIppp   "ppp&exampleclientII;">
-<!ENTITY exampleclientIIslip  "sl&exampleclientII;">
-<!ENTITY exampleclientIIuucp  "uu&exampleclientII;">
-
-
-<!ENTITY rootuser       '<systemitem class="username">root</systemitem>'>
+<!ENTITY rootuser       '<systemitem xmlns="http://docbook.org/ns/docbook" class="username">root</systemitem>'>
 <!ENTITY grub           "GRUB">
 
-<!-- lilo will become obsolete with code 11 -->
-<!ENTITY lilo           "LILO">
 
-<!ENTITY sax            "SaX2">
 <!ENTITY atomic-update  "Atomic Update">
 <!ENTITY suse           "SUSE">
 <!ENTITY novell         "Novell">
@@ -220,12 +191,7 @@
 <!--                    Miscellaneous                              -->
 <!-- ============================================================= -->
 <!ENTITY kiwi            "KIWI">
-<!ENTITY cdcreator       "CD Creator">
-<!ENTITY addoncreator    "Add-on Creator">
-<!ENTITY imgcreator      "Image Creator">
-<!ENTITY productcreator  "Product Creator">
-<!ENTITY nomad           "Nomad">
-<!ENTITY cpufreq         "CPUfreq">
+
 
 <!ENTITY wypublic          "/srv/www/yast/public/">
 <!ENTITY mac               "<replaceable>MAC</replaceable>">
