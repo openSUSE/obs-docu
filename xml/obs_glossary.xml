@@ -37,8 +37,8 @@
   </glossdef>
  </glossentry>
  <!-- ############## B ############## -->
- <glossentry xml:id="obs.glos.project_binaries">
-  <glossterm>Binaries</glossterm>
+ <glossentry xml:id="obs.glos.project_binary">
+  <glossterm>Binary</glossterm>
   <glossdef>
    <para> Binaries are considered build results of OBS projects. Binaries can
     be reused in an environment to build further binaries. Currently, OBS is
@@ -61,8 +61,8 @@
    <para>TBD</para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.builds">
-  <glossterm>Builds</glossterm>
+ <glossentry xml:id="obs.glos.build">
+  <glossterm>Build</glossterm>
   <glossdef>
    <para>TBD</para>
   </glossdef>
@@ -250,8 +250,8 @@
    <glossseealso otherterm="obs.glos.obs"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.overlay_files">
-  <glossterm>Overlay Files</glossterm>
+ <glossentry xml:id="obs.glos.overlay_file">
+  <glossterm>Overlay File</glossterm>
   <glossdef>
    <para> Files which are created, removed, or modified during your test drive
     are considered <emphasis>overlay files</emphasis>. These files can be added
