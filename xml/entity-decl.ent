@@ -6,6 +6,15 @@
 <!ENTITY obs "Open Build Service">
 <!ENTITY OBS "Open Build Service (OBS)">
 
+<!ENTITY productname "<phrase xmlns='http://docbook.org/ns/docbook'
+                      role='productname'>&obs;</phrase>">
+
+<!ENTITY productnamereg "<phrase xmlns='http://docbook.org/ns/docbook'
+                      role='roductnamereg'>&obs;&reg;</phrase>">
+
+<!ENTITY productnumber "<phrase xmlns='http://docbook.org/ns/docbook' role='productnumber'></phrase>">
+
+
 <!ENTITY exampleuser    "tux">
 <!ENTITY exampleuserII  "wilber">
 <!ENTITY examplegroup   "users">
