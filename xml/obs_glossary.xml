@@ -217,6 +217,12 @@
    <glossseealso otherterm="obs.glos.incident"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.maintenance_request">
+  <glossterm>Maintenance Request</glossterm>
+  <glossdef>
+   <para>TBD</para>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.metadata">
   <glossterm>Metadata</glossterm>
   <glossdef>
