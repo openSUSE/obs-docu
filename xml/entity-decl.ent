@@ -15,6 +15,23 @@
 <!ENTITY productnumber "<phrase xmlns='http://docbook.org/ns/docbook' role='productnumber'></phrase>">
 
 
+<!-- ============================================================= -->
+<!--                    OBS Specific Entities                      -->
+<!-- ============================================================= -->
+
+<!ENTITY obsuser1       "obs_alice">
+<!ENTITY obsuser2       "obs_bob">
+<!ENTITY obshome1        "home:&obsuser1;">
+<!ENTITY obshome2        "home:&obsuser2;">
+<!ENTITY obsbranch1     "home:&obsuser1;:branches">
+<!ENTITY obsbranch2     "home:&obsuser2;:branches">
+<!ENTITY obsurl         "https://build.opensuse.org">
+<!ENTITY obsurlhome1    "&obsurl;/project/show/&obshome1;">
+<!ENTITY obsurlhome2    "&obsurl;/project/show/&obshome2;">
+
+
+<!-- ============================================================= -->
+
 <!ENTITY exampleuser    "tux">
 <!ENTITY exampleuserII  "wilber">
 <!ENTITY examplegroup   "users">
