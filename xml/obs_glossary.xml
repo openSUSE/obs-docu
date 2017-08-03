@@ -58,8 +58,9 @@
   <glossterm>Branch</glossterm>
   <glossdef>
    <para>
-    Parallel line of development that allows you to make changes without
-    affecting the original repository. You can either delete the branch or
+    Personal copy of another repository that lives on your home project.
+    A branch allows allows you to make changes without affecting the original
+    repository. You can either <!-- update,? -->delete the branch or
     merge it into the original repository with a submit request.
    </para>
    <glossseealso otherterm="obs.glos.submitrequest"/>
