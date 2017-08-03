@@ -331,10 +331,18 @@
  <glossentry xml:id="obs.glos.overlay_file">
   <glossterm>Overlay File</glossterm>
   <glossdef>
-   <para> Files which are created, removed, or modified during your test drive
-    are considered <emphasis>overlay files</emphasis>. These files can be added
-    later as a supplement to your appliance. </para>
+   <para>
+    A directory structure with files and subdirectories used by KIWI.
+    This directory structure is packaged as a file
+    (<filename>root.tar.gz</filename>) or stored below a directory
+    (named <filename>root</filename>).
+    The contents of the directory structure is copied over the existing file
+    system (overlayed) of the appliance root. This includes
+    permissions and attributes as a supplement.
+   </para>
+   <glossseealso otherterm="obs.glos.appliance"/>
    <glossseealso otherterm="obs.glos.kiwi"/>
+   <!--   <glossseealso otherterm="obs.glos.imagedescription"/>-->
   </glossdef>
  </glossentry>
  <!-- ############## P ############## -->
