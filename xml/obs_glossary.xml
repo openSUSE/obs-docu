@@ -242,7 +242,9 @@
  <glossentry xml:id="obs.glos.kiwi">
   <glossterm>KIWI</glossterm>
   <glossdef>
-   <para> KIWI provides a complete operating system image solution. It can
+   <para>
+    An appliance builder.
+    KIWI provides a complete operating system image solution. It can
     create images for Linux supported hardware platforms or for virtualization
     systems. </para>
    <glossseealso otherterm="obs.glos.image"/>
