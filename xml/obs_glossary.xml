@@ -217,6 +217,18 @@
    <glossseealso otherterm="obs.glos.kiwi"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.imagedescription">
+  <glossterm>Image Description</glossterm>
+  <glossdef>
+   <para>
+    Specification to define an appliance built by KIWI. The image description
+    is a collection of files directly used by KIWI (<filename>config.xml</filename> and
+    <filename>*.kiwi</filename>), scripts, or configuration data to
+    customize certain parts of the KIWI build process.
+   </para>
+   <glossseealso otherterm="obs.glos.kiwi"/>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.incident">
   <glossterm>Incident</glossterm>
   <glossdef>
@@ -464,6 +476,16 @@
   <glossterm>Source Link</glossterm>
   <glossdef>
    <para>See <xref linkend="obs.glos.link"/></para>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.susepackagehub">
+  <glossterm>&suse; Package Hub</glossterm>
+  <glossdef>
+   <para>
+    An &obsa; project reachable under <uri>openSUSE:Backports</uri>.
+    It is a subset of openSUSE Factory which does not contain version
+    updates and does not conflict with official packages supported by &sle;.
+   </para>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.systemstatus">
