@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+  type="text/xml"
+  title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+
+<!--
+Integrate the following blogs?
+https://www.suse.com/communities/blog/open-build-service-create-image-template/
+https://www.suse.com/communities/blog/suse-studio-integration/
+-->
+
+<article version="5.1" xml:lang="en" xml:id="art.obs.bg"
+ xmlns="http://docbook.org/ns/docbook" xmlns:dm="urn:x-suse:ns:docmanager"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Beginnerʼs Guide</title>
+ <subtitle>&productname; &productnumber;</subtitle>
+ <info>
+  <authorgroup>
+   <author>
+    <personname>
+     <firstname>Stefan</firstname>
+     <surname>Knorr</surname>
+    </personname>
+   </author>
+   <author>
+    <personname>
+     <firstname>Thomas</firstname>
+     <surname>Schraitle</surname>
+    </personname>
+   </author>
+  </authorgroup>
+  <xi:include href="copyright.xml"/>
+  <abstract>
+   <para>
+    The Beginner's Guide describes different workflows to create packages on
+    &obs;. It covers how to create a basic package from an upstream project,
+    create patches, branching a repository, and more.
+   </para>
+  </abstract>
+ </info>
+ <remark>toms 2017-08-08: Generally, describe some/all use cases additionally
+  with the Web UI?</remark>
+
+ <sect1 xml:id="sec.obsbg.targetaudience">
+  <title>Target Audience</title>
+  <para>
+   This document is intented for interested users and developers who want to
+   build packages from source code for different distributions.
+   Basic knowledge of Linux and command line handling<!--, and package building--> is
+   recommended.
+  </para>
+  <remark>toms 2017-08-03: Add some links to basic tutorials etc.?</remark>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.concept">
+  <title>Conceptual Overview</title>
+  <para>
+   Created in 2005, the &obs; (&obsa;) is a generic system to build and
+   distribute packages or images from source code in an automatic, consistent
+   and reproducible way.
+   &obsa; is able to create images and installable packages for a wide range
+   of operating systems
+   (&suse;, Debian, Ubuntu, RedHat, Windows, etc.) and hardware architectures
+   (&x86;, &amd64;, &s390;, &ppc; etc.).
+  </para>
+  <sect2 xml:id="sec.obsbg.concept.pkgspec">
+   <title>Package Specification</title>
+   <para>Creating a package in &obsa; needs a <firstterm>package specification</firstterm>
+    which contains the following information:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <formalpara>
+      <title>Metadata</title>
+      <para>The name of the package, the version, the license, a description,
+       the upstream URL, and some more.</para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Requirements</title>
+      <para>
+       Packages depend on other packages to function properly.
+       Requirements are distinguished between <emphasis>build requirements</emphasis>
+       and <emphasis>install requirements</emphasis>.
+       Build requirements are dependencies which are needed before the
+       build process starts in &obsa;. For example, a C++ program needs
+       a C++ compiler.
+       Install requirements are dependencies which are used later when the
+       package is finished and ready to be installed.
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>A Package List</title>
+      <para>
+       To successfully install and remove a package with all the contents,
+       the system needs to know which files and directories belongs to
+       which package.
+      </para>
+     </formalpara>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For RPM-based systems like &suse;, all the information above is included
+    in a file with the file extension <filename
+     class="extension">.spec</filename>.
+   </para>
+   <remark>toms 2017-08-08: Describe other naming conventions which applies only
+   for certain distributions</remark>
+   <remark>toms 2017-08-08: Describe Debian rule files?</remark>
+  </sect2>
+  <sect2>
+   <title>Build Hosts and Packages</title>
+  <para>
+   The &obs; can communicates either through a Web interface or a command
+   line interface. Both access the OBS API which controls the database,
+   the search engine, and more. The OBS API communicates also indirectly with
+   the backend which provides a storage pool and the build hosts.
+  </para>
+  <para>
+   To build the package, the backend starts a virtual image of the respective
+   distribution on demand. This virtual image operates as a <emphasis>sandbox</emphasis>,
+   an area which is isolated from the rest of the host system.
+   Depending on the package specification (the so called
+   <firstterm>spec file</firstterm> on RPM-based systems), other packages
+   can be downloaded and installed prior to building.
+  </para>
+  <para>
+   The build process itself executes all the instructions inside the spec
+   file. If the build was successful, the files which belongs to the package
+   are installed in the sandbox and the final RPM package is created and
+   moved into a download area (the <quote>download repository</quote>).
+   This makes the package publicly available and can installed with &yast;
+   or zypper.
+  </para>
+  <para>
+   Other services around &obsa; (like Hermes, notification server, mirror
+   interface) has specific purpose which is of less importance for this guide.
+   See <xref linkend="fig.obsbg.concept"/> for a complete picture.
+  </para>
+  <figure xml:id="fig.obsbg.concept">
+   <title>Concept Overview of &obs;</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata width="80%" fileref="obs-concept.svg"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+  </sect2>
+  <sect2>
+   <title>Projects and Packages</title>
+   <remark>toms 2017-08-04: explain obs:// schema?</remark>
+   <para>
+    In &obsa;, packages are organized in <emphasis>projects</emphasis>.
+    A single project can contain several different packages and serves a specific
+    purpose, defines access control, repositories, and build targets
+    (operating systems and architectures).
+    For example, all packages for KDE, GNOME, fonts, or Web servers
+    are collected into a dedicated, separated project.
+   </para>
+   <para>
+    As a normal user, you will build your packages normally in your
+    <firstterm>home project</firstterm>. The home project is your working
+    area in OBS for defining build targets, uploading and building packages.
+   </para>
+   <para>
+    &obsa; uses colons as a separator for projects<!-- and subprojects-->.
+    For example, a user's home project is written as
+    <uri>home:<replaceable>USERNAME</replaceable></uri>.
+    Projects can also contain subprojects, and subprojects other subproject.
+    Each part is separated by colons.
+    For example, all relevant packages for the Python programming language
+    are available in the <uri>devel:languages:python</uri> project.
+   </para>
+   <!-- Explain the differences between home & devel project -->
+
+   <!--<para>The following list is a brief excerpt of popular projects on &obsa;:</para>
+   <variablelist>
+    <varlistentry>
+     <term><uri>devel:languages:python</uri></term>
+     <listitem>
+      <para>TBD</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><uri>M17N:fonts</uri></term>
+     <listitem>
+      <para>TBD</para>
+     </listitem>
+    </varlistentry>
+   </variablelist>-->
+  </sect2>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.req">
+  <title>Requirements</title>
+  <para>
+   Before you work with &obs;, make sure you fullfil the following requirements.
+  </para>
+  <variablelist>
+   <varlistentry xml:id="vl.obsbg.req.software">
+    <term>Software Requirements</term>
+    <listitem>
+     <para> To work with &obs; install the &osccmd; command line tool from your
+      preferred distributions or from the &obsa; project
+       <uri>openSUSE:Tools</uri>. The tool runs on any modern Linux system and
+      is available for different distributions, like CentOS, Debian, SLE,
+      &opensuse;, to name a few. </para>
+     <para> For &suse; related systems, install it with the
+       <command>zypper</command> command (replace
+       <replaceable>DISTRI</replaceable> with your distribution): </para>
+     <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRI</replaceable>/openSUSE:Tools.repo
+&prompt.root;<command>zypper</command> install osc</screen>
+     <para>For other systems, use your preferred package manager.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Hardware Requirements</term>
+    <listitem>
+     <para>
+      Make sure you have plenty of disk space available. The &osccmd; command
+      builds all packages locally under <filename>&oscbuildpath;</filename> and
+      caches downloaded packages under <filename>&oscbuildcache;</filename>.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.obsconfig">
+  <title>Configuring your System for &obsa;</title>
+  <para>
+   Building packages on your systems locally involves some configuration.
+   Although you can start &osccmd; as a normal user, it needs at some point
+   more permissions.
+  </para>
+  <procedure xml:id="pro.obsbg.obsconfig">
+   <title>Configuring &osccmd;</title>
+   <step>
+    <para>
+     If you do not have already an &opensuse; account, create one at
+      <link xlink:href="https://build.opensuse.org"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     Configure <command>sudo</command> to allow normal users to build
+     packages without entering the &rootuser; password all the time.
+    </para>
+    <stepalternatives>
+     <step>
+      <para>
+       If you want to allow <emphasis>all</emphasis> users on your system
+       to build packages, use the following steps:</para>
+      <substeps>
+       <step>
+        <para>Run <command>visudo</command>:</para>
+        <screen>&prompt.user;<command>sudo</command> /usr/sbin/visudo</screen>
+       </step>
+       <step>
+        <para>Add the following lines and replace
+          <replaceable>LOGIN</replaceable> with your login name (in our case it
+         is &exampleuser;):</para>
+        <screen>LOGIN    ALL = NOPASSWD: /usr/bin/build
+LOGIN    ALL = NOPASSWD: /usr/bin/osc</screen>
+       </step>
+      </substeps>
+     </step>
+     <step>
+      <para>
+       If you want to restrict building of packages to specific users on your
+       system, use the following steps:
+      </para>
+      <substeps>
+       <step>
+        <para>Create a new group <systemitem class="groupname"
+         >osc</systemitem>. This group will hold all users which are
+         allowed to build packages:
+        </para>
+        <screen>&prompt.root;<command>groupadd</command> osc</screen>
+       </step>
+       <step>
+        <para>Add users to your newly created group <systemitem class="groupname"
+         >osc</systemitem>:</para>
+        <screen>&prompt.root;<command>usermod</command
+> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
+       </step>
+       <step>
+        <para>Run <command>visudo</command>:</para>
+        <screen>&prompt.user;<command>sudo</command> /usr/sbin/visudo</screen>
+       </step>
+       <step>
+        <para>Create a command alias. Search for the text
+         <literal>Cmd_Alias</literal> and add the following line underneath:
+        </para>
+        <screen>Cmnd_Alias      OSC_CMD = /usr/bin/osc, /usr/bin/build</screen>
+       </step>
+       <step>
+        <para>Scroll down and add the following line to the end:</para>
+        <screen>%osc    ALL = (ALL) NOPASSWD:OSC_CMD</screen>
+       </step>
+       <step>
+        <para>Whenever you want to add additional users to allow building
+         packages, use the <command>usermod</command> command as shown above.
+        </para>
+       </step>
+      </substeps>
+     </step>
+    </stepalternatives>
+   </step>
+   <step>
+    <para>Create a new &obsa; configuration file:</para>
+    <substeps>
+     <step>
+      <para>Generate a new &obsa; configuration file with:</para>
+      <screen>&prompt.user;<command>osc</command> ls &obshome1;</screen>
+      <para>
+       If you run the command for the first time, you will be prompted
+       for your &obsa; password.
+      </para>
+     </step>
+     <step xml:id="st.obsbg.obsconfig.nocolon">
+      <para> Change the following line in the configuration file
+        <filename>~/.oscrc</filename>: </para>
+      <screen>checkout_no_colon = 1</screen>
+      <para>
+       This will use an alternate layout when creating multiple
+       subdirectories. Projects with colons are not created as one single
+       directory, but are created as subdirectories.
+       For example, setting the option above, checking out the home project
+       will lead to a directory structure <filename>home/&obsuser1;</filename>
+       instead of the single directory <filename>&obshome1;</filename>.
+      </para>
+     </step>
+    </substeps>
+   </step>
+  </procedure>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.usagescenarios">
+  <title>Covered Scenarios</title>
+  <para>
+   This guide assumes:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>An &opensuse; account, created at
+     <link xlink:href="https://build.opensuse.org"/>.</para>
+   </listitem>
+   <listitem>
+    <para>A system user &exampleuser; which builds the packages on the
+     machine locally.
+    </para>
+   </listitem>
+   <listitem>
+    <para>A &obsa; user <systemitem class="username"
+     >&obsuser1;</systemitem> and its home <uri>&obshome1;</uri> on the &obs;.
+     This person is the same as the system user &exampleuser;.
+    </para>
+   </listitem>
+   <listitem>
+    <para>A &obsa; user <systemitem class="username"
+     >&obsuser2;</systemitem> and its home <uri>&obshome2;</uri> on &obs;.
+     This person will act as a collaborator.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     An example upstream open source project available at <link
+      xlink:href="&gitupstream1;"/>. This project is used as an example and
+     contains source code in the <link
+      xlink:href="https://en.wikipedia.org/wiki/C%2B%2B"
+      >C++ programming language</link>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>An adapted system as shown in <xref
+     linkend="sec.obsbg.obsconfig"/>.</para>
+   </listitem>
+   <listitem>
+    <para>An RPM-based system like &opensuse;.</para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   The workflow in this guide describes the most common tasks:
+  </para>
+  <remark>toms 2017-08-02: 1) basic project: just source code and some build
+   targets; 2) like (1) but with a patch file; 3) branching a source repo,
+   making changes, submitting back; 4) linking a source repo and making
+   changes; 5) ...?
+  </remark>
+  <variablelist>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.setuphome"/></term>
+    <listitem>
+     <para>
+      Shows which steps are needed in the &obsa; Web gui to set up your
+      home project.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.newprj"/></term>
+    <listitem>
+     <para>
+      Describes how to create packages from a basic project hosted on &gh;.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.patching"/></term>
+    <listitem>
+     <para>Shows how to patch source code without touching the pristine
+      source.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.branchprj"/></term>
+    <listitem>
+     <para>
+      Explains how to branch a project, make changes, and submitting back
+      the changes to the original author.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.install-from-obs"/></term>
+    <listitem>
+     <para>
+      Shows the steps to integrate the download repository into your system
+      and how to install your built package.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.uc.setuphome">
+  <title>Setting Up your Home Project for the First Time</title>
+  <para>
+   This section shows how you you set up your home project after you have
+   created an &opensuse; account.
+  </para>
+  <para>
+   When you log in to your home project for the first time, it will be empty
+   naturally.
+   To build your
+   packages you need to select build targets (distributions) first.
+   Build targets can be definied <emphasis>globally</emphasis> (which
+   appears on all of your projects) or <emphasis>locally</emphasis> (only
+   for a specific package).
+  </para>
+  <para>To setup you home project, do the following:</para>
+  <procedure xml:id="pro.obsbg.uc.setuphome.addrepo">
+   <title>Adding Global Build Targets for Your Home Project</title>
+   <step>
+    <para>
+     Log in to the &obs; at <link xlink:href="https://build.opensuse.org"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     Click the <guimenu>Home Project</guimenu> link in the upper right
+     corner.
+    </para>
+   </step>
+   <step>
+    <para>
+     Click the <guimenu>Repositories</guimenu> tab, then the 
+     <guimenu>Add Repositories</guimenu> link.
+    </para>
+   </step>
+   <step>
+    <para>
+     Select the distributions you want to build for.</para>
+    <para>
+     &obsa; shows a couple of Linux distributions. For &suse; distributions,
+     it is recommended to choose at least <guimenu>openSUSE Tumbleweed</guimenu>
+     and one of the latest &opensuse; releases. 
+     If you like, you can also mark one of the <guimenu>openSUSE Backports for SLE 12</guimenu>
+     which enables package builds for &sle;.
+    </para>
+    <para>
+     Whenever you select one of the distributions, &obsa; gives a short
+     notice that it has successfully added it to your home project.
+    </para>
+   </step>
+   <step>
+    <para>
+     Click the <guimenu>Overview</guimenu> tab to see the the available
+     build targets on the right side.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   If you need more build targets you can repeat the procedure above.
+   It will be added to the list of existing build targets.
+  </para>
+  <para>
+   In case you need to fine tune your build targets, click the
+   <guimenu>Repositories</guimenu> tab, find the respective build target,
+   and click the <guimenu>Edit repository</guimenu> link.
+   This will show the available architectures and additional package
+   repositores you may want to add.
+  </para>
+<!--  <para>
+   After you have definied your build targets you need to create your
+   package area in your home project. Do the following:
+  </para>
+  <procedure xml:id="pro.obsbg.uc.setuphome.createnewpkg">
+   <title>Adding a New Package to Your Home Project</title>
+   <step>
+    <para>
+     In your &obsa; home project page, click the <guimenu>Create package</guimenu>
+     link.
+    </para>
+   </step>
+   <step>
+    <para>
+     Enter the name of your package, the title, and a short description.
+    </para>
+    <para> Take special care of defining a good package name. It is
+     difficult to change a name later when everything is in place.
+     In the simplest form, use the &gh; project name. In our example, it
+     would be &gitproject;.
+    </para>
+   </step>
+   <step>
+    <para>Finish with <guimenu>Save changes</guimenu>. The package name
+     is shown in the list of available packages. You need to fill the
+     directory with the respective files to trigger the build.
+    </para>
+   </step>
+  </procedure>
+-->
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.uc.newprj">
+  <title>Creating a New Project</title>
+  <para>
+   This section covers how to create packages from a simple C++ project
+   hosted on &gh; (the <quote>upstream project</quote>). We assume, this
+   project contains source code which you would like to package for different
+   &suse; distributions. Furthermore, &osccmd; is already installed on your
+   machine.
+  </para>
+  <para>
+   To create a package from the upstream project, do the following:
+  </para>
+  <procedure xml:id="pro.obsbg.uc.basicprj">
+   <step>
+    <para> Go to the upstream project at <link xlink:href="&gitupstream1;"/>
+     and check the license first. You can only <!--build and -->redistribute
+     packages which are available under an open source license.
+     &obsa; checks the license of the source code and will refuse to build
+     packages if the license does not comply with an open source license. 
+    </para>
+    <para>
+     You can find a list of already used licenses in &obsa; at
+     <link xlink:href="https://license.opensuse.org"/>.
+     For more details and a comparison about open source licenses in
+     general, see <link
+      xlink:href="https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses"
+     />.
+    </para>
+   </step>
+   <step>
+    <para>Set up your project as shown in <xref linkend="sec.obsbg.uc.setuphome"/>.</para>
+   </step>
+   <step>
+    <para>
+     Open a shell. Choose or create a directory on your system where you have
+     enough space.
+    </para>
+   </step>
+   <step>
+    <para>
+     Check out your home project:
+    </para>
+    <screen>&prompt.user;<command>osc</command> co &obshome1;</screen>
+    <para>
+      This will create <filename>home/&obsuser1;</filename> in the
+      current directory with the project directory
+     <filename>&gitproject;</filename> if you have configured &osc; as
+     shown in <xref linkend="st.obsbg.obsconfig.nocolon"/> of
+     <xref linkend="pro.obsbg.obsconfig"/>.
+     </para>
+   </step>
+   <step>
+    <para>Create a new package inside your local working directory:</para>
+    <screen>&prompt.user;<command>cd</command> home/&obshome1;
+&prompt.user;<command>osc</command> mkpac example-osc</screen>
+   </step>
+   <step>
+    <para>
+     Get the pristine source code of the upstream project and save it in
+     <filename>home/&obsuser1;/&gitproject;</filename>.
+    </para>
+    <para>
+     Download the sources from <link xlink:href="&gitupstream1;/releases"/>.
+     If the project has not published yet a release, download the latest sources
+     by clicking the <guimenu>Clone or download</guimenu> button and then the
+     <guimenu>Download ZIP</guimenu> link.
+    </para>
+   </step>
+   <step>
+    <para>
+     Create a <firstterm baseform="Spec File">spec file</firstterm> which
+     contains metadata and build instructions. For RPM-based
+     distributions like &opensuse;, the basic structure should look like this:
+    </para>
+    <remark>toms 2017-08-09: Should the spec file be referenced by a GitHub
+     link? How much detail do we need here?</remark>
+    <screen>#
+# spec file for package &gitproject;
+#
+# -- Copyright comitted --
+
+Name:           &gitproject; <co xml:id="co.obsbg.uc.basicprj.metadata"/>
+Version:        0.1.0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Release:        0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+License:        GPL-3.0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Group:          TBD <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Summary:        Example tool for OBS <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Url:            &gitupstream1; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Source:         &gitproject;-%{version}.tar.gz <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+BuildRequires:  gcc <co xml:id="co.obsbg.uc.basicprj.buildreq"/>
+BuildRequires:  cmake <xref linkend="co.obsbg.uc.basicprj.buildreq"/>
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%description <co xml:id="co.obsbg.uc.basicprj.description"/>
+
+%prep <co xml:id="co.obsbg.uc.basicprj.prep"/>
+%setup -q -n %{name}-%{version}
+
+%build <co xml:id="co.obsbg.uc.basicprj.build"/>
+<!--export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+
+cmake . \
+    -DYPREFIX=%{_prefix} \
+    -DDOC_DIR=%{_docdir} \
+    -DLIB_DIR=%{_lib} \
+make
+-->
+
+%install <co xml:id="co.obsbg.uc.basicprj.install"/>
+<!--make install DESTDIR="$RPM_BUILD_ROOT"-->
+
+%files <co xml:id="co.obsbg.uc.basicprj.files"/>
+%defattr(-,root,root,-)
+%doc README LICENSE *.txt
+%{_bindir}/*
+
+%changelog <co xml:id="co.obsbg.uc.basicprj.cl"/></screen>
+    <calloutlist>
+     <callout arearefs="co.obsbg.uc.basicprj.metadata">
+      <para>Metadata like package name, version, release, license, the
+       RPM group, a brief summary, the upstream URL, and the name
+       of the source file.
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.buildreq">
+      <para>Build requirements which are needed by &obsa;. These packages
+       are downloaded and installed before building the package.
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.description">
+      <para>The description section. This section is used to illustrate
+       the purpose of the package and gives a comprehensive explanation.
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.prep">
+      <para>The preparation section. This is used to get the sources
+       ready to build which includes unpacking (using the
+       <literal>setup</literal> macro) or patching (not shown here, would be
+       done with the <literal>%patch</literal> macro).
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.build">
+      <para>The build section. This contains Shell commands or RPM macro
+       on how to build the package.
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.install">
+      <para>The install section. Contains Shell commands or RPM macro which
+       creates directories or copies files to the installation location.
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.files">
+      <para>The content section. This section includes all files and
+       directories which belongs to the package. Documentation related
+       files are marked with <literal>%doc</literal> and are automatically
+       installed in the default documenation directory (for &suse; it is
+       <filename>/usr/share/doc/packages/<replaceable
+        >PACKAGENAME</replaceable></filename>).
+      </para>
+     </callout>
+     <callout arearefs="co.obsbg.uc.basicprj.cl">
+      <para>The changelog section. Usually this is empty and &obsa;
+      searches for a file with the extension <filename class="extension"
+       >.changes</filename>. If such a file exists in the project directory,
+       it will be automatically included as a changelog.
+       The changelog file itself contains the history of the package.
+      </para>
+     </callout>
+    </calloutlist>
+   </step>
+   <step>
+    <para>Create a changelog file with &osccmd;:</para>
+    <screen>&prompt.user;<command>osc</command> vc</screen>
+    <para>The command will open an editor with the following content:</para>
+    <screen>-------------------------------------------------------------------
+Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
+    <para>
+     Add a short summary of your changes.
+     After you save and leave your editor, the &osccmd; commands
+     creates the file <filename>&gitproject;.changes</filename>.
+    </para>
+   </step>
+   <step>
+    <para>Enter your changes in the changelog file.</para>
+    <para>Usually, the changelog entry contains some high-level overview
+     like the version you have downloaded, some patches you applied,
+     or something else that you have changed in your project.
+    </para>
+   </step>
+   <step>
+    <para>Add all the files to your working copy:</para>
+    <screen>&prompt.user;<command>osc</command> add *.spec *.changes *.tar.gz</screen>
+   </step>
+   <step>
+    <para>Build the package for a specific distribution and architecture,
+     for example, Tumbleweed for x86_64:</para>
+    <screen>&prompt.user;<command>osc</command> build --local-package <!-- 
+-->openSUSE_Tumbleweed x86_64 *.spec
+    </screen>
+   </step>
+   <step>
+    <para>
+     Check if your build was successful. If everything was fine, commit the
+     files to your package to your home project on &obsa;:</para>
+    <screen>&prompt.user;<command>osc</command> commit</screen>
+   </step>
+  </procedure>
+  <para>To watch the current build of a specific build target, use the
+   <command>buildlog</command> (alias <command>bl</command>) subcommand
+   inside your working directory:
+  </para>
+  <screen>&prompt.user;<command>osc</command> bl openSUSE_Tumbleweed  x86_64</screen>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.uc.patching">
+  <title>Patching Source Code</title>
+  <para>
+   This section describes how to patch an upstream project. We use the same
+   project as shown in <xref linkend="sec.obsbg.uc.newprj"/>.
+
+  </para>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.uc.branchprj">
+  <title>Branching a Project</title>
+  <para>TBD</para>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.uc.install-from-obs">
+  <title>Installing Packages from &obsa;</title>
+  <para>
+   &obsa; provides a place which contains all the distributions and architectures
+   of your successfully built packages. When you create a package
+   in your &obsa; home project, all successfully built packages will appear
+   under the <uri>&obsdnlurlhome1;</uri> URL.
+  </para>
+  <para>
+   For example, if you have enabled the openSUSE Tumbleweed distribution,
+   all packages for Tumbleweed will appear under the URL
+   <uri>&obsdnlurlhome1;/openSUSE_Tumbleweed</uri>. This <emphasis>download
+   repository</emphasis> is used as a installation source for Zypper or &yast;.
+   <!--for the
+   distributions openSUSE Tumbleweed and 42.2 for the architectures
+   Whenever you have built a package successfully, &obsa; provides a place
+   which contains all the distributions and architectures you have
+   setup for your home project. Use Zypper or &yast; to install your package.
+   The download repository is available at
+   <uri>&obsdnlurlhome1;</uri>.-->
+  </para>
+  <para>To install the <package>&gitproject;</package> from your home project,
+  use the following steps:</para>
+  <procedure>
+   <step xml:id="st.obsbg.uc.install-from-obs.repourls">
+    <para>Inside your working directory, determine the download repository
+     URLs:</para>
+    <screen>&prompt.user;<command>osc</command> repourls
+&obsdnlurlhome1;/openSUSE_Tumbleweed/&obshome1;.repo
+&obsdnlurlhome1;/openSUSE_42.2/&obshome1;.repo</screen>
+   </step>
+   <step>
+    <para>Copy the desired URL of your preferred distribution (in our case it
+     is the line containing <systemitem>openSUSE_Tumbleweed</systemitem>).</para>
+   </step>
+   <step xml:id="st.obsbg.uc.install-from-obs.zypperar">
+    <para>Use <command>zypper</command> and add the copied URL:
+    </para>
+    <screen>&prompt.root;<command>zypper</command> ar <!-- -->&obsdnlurlhome1;/openSUSE_Tumbleweed/&obshome1;.repo</screen>
+    <para>
+     You will be asked to accept the GPG key of the download repository.</para>
+   </step>
+   <step>
+    <para>Install the package:</para>
+    <screen>&prompt.root;<command>zypper</command> install &gitproject;</screen>
+   </step>
+  </procedure>
+  <para>
+   You have to execute <xref linkend="st.obsbg.uc.install-from-obs.repourls"/>
+   to <xref linkend="st.obsbg.uc.install-from-obs.zypperar"/> only once.
+   Next time you want to update the package, run the last step with the
+   <command>zypper install</command> command only.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="sec.obsbg.cheatsheet">
+  <title>Most Useful osc Commands</title>
+  <para>TBD</para>
+ </sect1>
+</article>
