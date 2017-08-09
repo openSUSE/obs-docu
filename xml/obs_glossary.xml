@@ -496,6 +496,14 @@
   </glossdef>
  </glossentry>
  <!-- ############## S ############## -->
+ <glossentry xml:id="obs.glos.sandbox">
+  <glossterm>Sandbox</glossterm>
+  <glossdef>
+   <para>Isolated region of a host system which runs either a virtual machine
+    or a change root environment.
+   </para>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.servicefile">
   <glossterm>Service File</glossterm>
   <glossdef>
