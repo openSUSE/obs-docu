@@ -252,7 +252,7 @@
 <!--                    Miscellaneous                              -->
 <!-- ============================================================= -->
 <!ENTITY kiwi            "KIWI">
-
+<!ENTITY appimg          "AppImage">
 
 <!ENTITY wypublic          "/srv/www/yast/public/">
 <!ENTITY mac               "<replaceable>MAC</replaceable>">

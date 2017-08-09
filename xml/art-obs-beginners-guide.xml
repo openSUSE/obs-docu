@@ -67,7 +67,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    &obsa; is able to create images and installable packages for a wide range
    of operating systems
    (&suse;, Debian, Ubuntu, RedHat, Windows, etc.) and hardware architectures
-   (&x86;, &amd64;, &s390;, &ppc; etc.).
+   (&x86;, &amd64;, &zseries;, &ppc; etc.).
   </para>
   <sect2 xml:id="sec.obsbg.concept.pkgspec">
    <title>Package Specification</title>
@@ -78,8 +78,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     <listitem>
      <formalpara>
       <title>Metadata</title>
-      <para>The name of the package, the version, the license, a description,
-       the upstream URL, and some more.</para>
+      <para>The package name and the description is mandatory. Other data
+       like the version, the license, the upstream URL, and some more.</para>
      </formalpara>
     </listitem>
     <listitem>
@@ -102,7 +102,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       <title>A Package List</title>
       <para>
        To successfully install and remove a package with all the contents,
-       the system needs to know which files and directories belongs to
+       the system needs to know which files and directories belong to
        which package.
       </para>
      </formalpara>
@@ -120,18 +120,18 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   <sect2>
    <title>Build Hosts and Packages</title>
   <para>
-   The &obs; can communicates either through a Web interface or a command
+   The &obs; can communicate either through a Web interface or a command
    line interface. Both access the OBS API which controls the database,
    the search engine, and more. The OBS API communicates also indirectly with
    the backend which provides a storage pool and the build hosts.
   </para>
   <para>
-   To build the package, the backend starts a virtual image of the respective
-   distribution on demand. This virtual image operates as a <emphasis>sandbox</emphasis>,
-   an area which is isolated from the rest of the host system.
+   To build the package, the backend creates a <quote>sandbox</quote> of
+   the respective distribution on demand. This sandbox is isolated from
+   the rest of the host system.
    Depending on the package specification (the so called
    <firstterm>spec file</firstterm> on RPM-based systems), other packages
-   can be downloaded and installed prior to building.
+   are downloaded and installed prior to building.
   </para>
   <para>
    The build process itself executes all the instructions inside the spec
@@ -142,8 +142,9 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    or zypper.
   </para>
   <para>
-   Other services around &obsa; (like Hermes, notification server, mirror
-   interface) has specific purpose which is of less importance for this guide.
+   Other services around &obsa; (like the notification server, mirror
+   interface etc.) has specific purpose which is of less importance for
+   this guide.
    See <xref linkend="fig.obsbg.concept"/> for a complete picture.
   </para>
   <figure xml:id="fig.obsbg.concept">
@@ -181,22 +182,6 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     are available in the <uri>devel:languages:python</uri> project.
    </para>
    <!-- Explain the differences between home & devel project -->
-
-   <!--<para>The following list is a brief excerpt of popular projects on &obsa;:</para>
-   <variablelist>
-    <varlistentry>
-     <term><uri>devel:languages:python</uri></term>
-     <listitem>
-      <para>TBD</para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><uri>M17N:fonts</uri></term>
-     <listitem>
-      <para>TBD</para>
-     </listitem>
-    </varlistentry>
-   </variablelist>-->
   </sect2>
  </sect1>
 
@@ -220,14 +205,19 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRI</replaceable>/openSUSE:Tools.repo
 &prompt.root;<command>zypper</command> install osc</screen>
      <para>For other systems, use your preferred package manager.</para>
+     <para>
+      As an alternative, use the &appimg; file. An &appimg; file
+      is a packaged application which can run on many distributions.
+     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Hardware Requirements</term>
     <listitem>
      <para>
-      Make sure you have plenty of disk space available. The &osccmd; command
-      builds all packages locally under <filename>&oscbuildpath;</filename> and
+      Make sure you have a minimum of 1GB of disk space available. The
+      &osccmd; command builds all packages locally under
+      <filename>&oscbuildpath;</filename> and
       caches downloaded packages under <filename>&oscbuildcache;</filename>.
      </para>
     </listitem>
@@ -246,75 +236,45 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    <title>Configuring &osccmd;</title>
    <step>
     <para>
-     If you do not have already an &opensuse; account, create one at
-      <link xlink:href="https://build.opensuse.org"/>.
+     If you do not have already an instance on your &obs;, create one.
     </para>
    </step>
    <step>
     <para>
-     Configure <command>sudo</command> to allow normal users to build
-     packages without entering the &rootuser; password all the time.
+     Configure <command>sudo</command> to allow all users which belong
+     to the group <systemitem class="groupname">osc</systemitem> to build
+     packages without entering the &rootuser; password all the time:
     </para>
-    <stepalternatives>
+    <substeps>
      <step>
-      <para>
-       If you want to allow <emphasis>all</emphasis> users on your system
-       to build packages, use the following steps:</para>
-      <substeps>
-       <step>
-        <para>Run <command>visudo</command>:</para>
-        <screen>&prompt.user;<command>sudo</command> /usr/sbin/visudo</screen>
-       </step>
-       <step>
-        <para>Add the following lines and replace
-          <replaceable>LOGIN</replaceable> with your login name (in our case it
-         is &exampleuser;):</para>
-        <screen>LOGIN    ALL = NOPASSWD: /usr/bin/build
-LOGIN    ALL = NOPASSWD: /usr/bin/osc</screen>
-       </step>
-      </substeps>
+      <para>Create a new group <systemitem class="groupname">osc</systemitem>.
+       This group will hold all users which are allowed to build packages: </para>
+      <screen>&prompt.root;<command>groupadd</command> osc</screen>
      </step>
      <step>
-      <para>
-       If you want to restrict building of packages to specific users on your
-       system, use the following steps:
+      <para>Add users to your newly created group <systemitem class="groupname"
+        >osc</systemitem>:</para>
+      <screen>&prompt.root;<command>usermod</command> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
+     </step>
+     <step>
+      <para>Run <command>visudo</command>:</para>
+      <screen>&prompt.user;<command>sudo</command> /usr/sbin/visudo</screen>
+     </step>
+     <step>
+      <para>Create a command alias. Search for the text
+        <literal>Cmd_Alias</literal> and add the following line underneath: </para>
+      <screen>Cmnd_Alias      OSC_CMD = /usr/bin/osc, /usr/bin/build</screen>
+     </step>
+     <step>
+      <para>Scroll down and add the following line to the end:</para>
+      <screen>%osc    ALL = (ALL) NOPASSWD:OSC_CMD</screen>
+     </step>
+     <step>
+      <para>Whenever you want to add additional users to allow building
+       packages, use the <command>usermod</command> command as shown above.
       </para>
-      <substeps>
-       <step>
-        <para>Create a new group <systemitem class="groupname"
-         >osc</systemitem>. This group will hold all users which are
-         allowed to build packages:
-        </para>
-        <screen>&prompt.root;<command>groupadd</command> osc</screen>
-       </step>
-       <step>
-        <para>Add users to your newly created group <systemitem class="groupname"
-         >osc</systemitem>:</para>
-        <screen>&prompt.root;<command>usermod</command
-> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
-       </step>
-       <step>
-        <para>Run <command>visudo</command>:</para>
-        <screen>&prompt.user;<command>sudo</command> /usr/sbin/visudo</screen>
-       </step>
-       <step>
-        <para>Create a command alias. Search for the text
-         <literal>Cmd_Alias</literal> and add the following line underneath:
-        </para>
-        <screen>Cmnd_Alias      OSC_CMD = /usr/bin/osc, /usr/bin/build</screen>
-       </step>
-       <step>
-        <para>Scroll down and add the following line to the end:</para>
-        <screen>%osc    ALL = (ALL) NOPASSWD:OSC_CMD</screen>
-       </step>
-       <step>
-        <para>Whenever you want to add additional users to allow building
-         packages, use the <command>usermod</command> command as shown above.
-        </para>
-       </step>
-      </substeps>
      </step>
-    </stepalternatives>
+    </substeps>
    </step>
    <step>
     <para>Create a new &obsa; configuration file:</para>
@@ -352,8 +312,8 @@ LOGIN    ALL = NOPASSWD: /usr/bin/osc</screen>
   </para>
   <itemizedlist>
    <listitem>
-    <para>An &opensuse; account, created at
-     <link xlink:href="https://build.opensuse.org"/>.</para>
+    <para>You must have an account on an &obs; instance (for example, created at
+     <link xlink:href="https://build.opensuse.org"/>).</para>
    </listitem>
    <listitem>
     <para>A system user &exampleuser; which builds the packages on the
@@ -464,7 +424,7 @@ LOGIN    ALL = NOPASSWD: /usr/bin/osc</screen>
    <title>Adding Global Build Targets for Your Home Project</title>
    <step>
     <para>
-     Log in to the &obs; at <link xlink:href="https://build.opensuse.org"/>.
+     Log in to the &obs; instance.
     </para>
    </step>
    <step>
@@ -764,8 +724,52 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
   <para>
    This section describes how to patch an upstream project. We use the same
    project as shown in <xref linkend="sec.obsbg.uc.newprj"/>.
-
   </para>
+  <para>
+   Patching an upstream project can have different reasons:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Usually, you do not have write permissions in the upstream project. Any
+     changes needs to go to the upstream project which will be likely
+     integrated, but could also be rejected for different reasons.
+     To be independant of any release cycle, code styleguide, or personal
+     issues, patch files allows to modify the source code without touching
+     the original source.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You want to fix a bug or other inconveniences.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You want to apply security fixes which are not available yet in the
+     upstream project.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You need to change the source code in way so it builds on &obsa;.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Due to security reasons, a pristine source code is easier to check for
+     any modification. This is usually done with a checksum (MD5 or SHA).
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     From an organisational point of view, it is better if the changes are
+     separated from the source code. With the changes inside the patch file,
+     everybody is able to see <emphasis>what</emphasis> was changed and
+     to which file it applies.
+    </para>
+   </listitem>
+  </itemizedlist>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.branchprj">
