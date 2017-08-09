@@ -140,13 +140,15 @@
 
 <!ENTITY x86           "x86">
 <!ENTITY amd64         "AMD64">
-<!ENTITY s390          "S/390">
-<!ENTITY zseries       "System z">
-<!ENTITY ipf           "Itanium">
+<!ENTITY zseries       "z&nbsp;Systems">
 <!ENTITY ipseries      "POWER">
 <!ENTITY ppc           "POWER">
-<!ENTITY em64t         "Intel EM64T">
-<!ENTITY intel64       "Intel 64">
+<!ENTITY power         "POWER">
+<!ENTITY intel64       "Intel&nbsp;64">
+<!ENTITY x86-64        "&amd64;/&intel64;">
+<!ENTITY arm           "ARM">
+<!ENTITY aarch64       "AArch64">
+<!ENTITY arm64         "&arm;&nbsp;&aarch64;">
 
 
 <!-- ============================================================= -->
@@ -250,7 +252,7 @@
 <!--                    Miscellaneous                              -->
 <!-- ============================================================= -->
 <!ENTITY kiwi            "KIWI">
-
+<!ENTITY appimg          "AppImage">
 
 <!ENTITY wypublic          "/srv/www/yast/public/">
 <!ENTITY mac               "<replaceable>MAC</replaceable>">
@@ -267,6 +269,11 @@
 
 <!ENTITY % phrases-entities SYSTEM "phrases-decl.ent">
 %phrases-entities;
+
+<!ENTITY % sgml.features "IGNORE">
+<!ENTITY % xml.features "INCLUDE">
+<!ENTITY % dbcent PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/dbcentx.mod">
+  %dbcent;
 
 <!--                             End of file                       -->
 <!-- ............................................................. -->
