@@ -312,7 +312,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </para>
   <itemizedlist>
    <listitem>
-    <para>You must have an account on an &obs; instance (for example, created at
+    <para>You must have an account on an &obs; instance (for example, at
      <link xlink:href="https://build.opensuse.org"/>).</para>
    </listitem>
    <listitem>
@@ -586,7 +586,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
 # -- Copyright comitted --
 
 Name:           &gitproject; <co xml:id="co.obsbg.uc.basicprj.metadata"/>
-Version:        0.1.0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Version:        &gitprjvers; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 Release:        0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 License:        GPL-3.0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 Group:          TBD <xref linkend="co.obsbg.uc.basicprj.metadata"/>
@@ -726,14 +726,15 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
    project as shown in <xref linkend="sec.obsbg.uc.newprj"/>.
   </para>
   <para>
-   Patching an upstream project can have different reasons:
+   Patching a project can have different reasons:
   </para>
   <itemizedlist>
    <listitem>
+    <para>Inappropriate write permission in the upstream project.</para>
     <para>
-     Usually, you do not have write permissions in the upstream project. Any
-     changes needs to go to the upstream project which will be likely
-     integrated, but could also be rejected for different reasons.
+     In most cases, you probably cannot commit changes<!--  to the upstream
+     project-->. Any changes needs to go to the upstream project which will
+     be likely integrated, but could also be rejected for different reasons.
      To be independant of any release cycle, code styleguide, or personal
      issues, patch files allows to modify the source code without touching
      the original source.
@@ -741,27 +742,24 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
    </listitem>
    <listitem>
     <para>
-     You want to fix a bug or other inconveniences.
+     Applying security and bug fixes and otherinconveniences which are not
+     yet available in the upstream  project.
     </para>
    </listitem>
    <listitem>
     <para>
-     You want to apply security fixes which are not available yet in the
-     upstream project.
+     Changing the source code in way to make it build on &obsa;.
     </para>
    </listitem>
    <listitem>
+    <para>Improving security and traceability.</para>
     <para>
-     You need to change the source code in way so it builds on &obsa;.
+     A pristine source code in &obsa; is easier to check for changes than a
+     modified one. The check is usually done with a checksum (MD5 or SHA).
     </para>
    </listitem>
    <listitem>
-    <para>
-     Due to security reasons, a pristine source code is easier to check for
-     any modification. This is usually done with a checksum (MD5 or SHA).
-    </para>
-   </listitem>
-   <listitem>
+    <para>Improve structure and consistency.</para>
     <para>
      From an organisational point of view, it is better if the changes are
      separated from the source code. With the changes inside the patch file,
@@ -770,11 +768,275 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
     </para>
    </listitem>
   </itemizedlist>
+  <para>
+   We assume, you already have a project as described in
+  <xref linkend="sec.obsbg.uc.newprj"/>. Your project directory should look
+   like this:
+  </para>
+  <screen>.
+├── &gitproject;-&gitprjvers;.tar.gz
+├── &gitproject;.changes
+└── &gitproject;.spec</screen>
+  <para>In our case, we want to change the source code under
+   <filename>src/main.cpp</filename>. The task is to change the greeting
+   message.
+  </para>
+  <procedure>
+   <title>Patching</title>
+   <step>
+    <para>Open a shell and change to your working directory.</para>
+   </step>
+   <step>
+    <para>Prepare your patch file:</para>
+    <substeps>
+     <step>
+      <para>Unpack the source code:</para>
+      <screen>&prompt.user;<command>tar</command> xvf &gitproject;-*.tar.gz</screen>
+      <para>
+       If you have downloaded the archive from &gh;, the archive contains
+       a directory in the form <filename><replaceable
+        >NAME</replaceable>-<replaceable>VERSION</replaceable></filename>.
+       In our case you will get the directory <filename>&gitproject;-&gitprjvers;/</filename>
+       after unpacking.
+      </para>
+     </step>
+     <step>
+      <para>
+       Change into the directory <filename>&gitproject;-&gitprjvers;/</filename>
+       and make a copy of the original C++ source file:
+      </para>
+      <screen>&prompt.user;<command>cd</command> &gitproject;-&gitprjvers;/
+&prompt.user;<command>cp</command> src/main.cpp src/main.cpp.orig</screen>
+     </step>
+     <step>
+      <para>Make your changes in <filename>src/main.cpp</filename>.</para>
+     </step>
+     <step>
+      <para>Create a diff and carefully inspect your changes:</para>
+      <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp</screen>
+      <para>The output should look like this:</para>
+      <screen language="diff">--- src/main.cpp.orig   2017-08-09 16:28:31.407449707 +0200
++++ src/main.cpp        2017-08-09 16:28:49.131541230 +0200
+@@ -2,7 +2,7 @@
+
+ int main()
+ {
+-    std::cout&lt;&lt;"Hello OBS!\n";
++    std::cout&lt;&lt;"Hello Alice!\n";
+
+     return 0;
+ }</screen>
+     </step>
+     <step>
+      <para>Redirect the diff into a file:</para>
+      <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp <!--
+-->> ../&gitproject;_main.diff</screen>
+      <para>
+       In theory, you can use any name you like for your patch file. However,
+       it is recommended to add your project name and to name the file
+       which is easy to follow. If you have a bug tracker or an issue number,
+       add this to your file as well. You can either use <filename
+        class="extension">.diff</filename> or <filename
+         class="extension">.patch</filename> as file extension, both are common.
+      </para>
+     </step>
+     <step>
+      <para>
+       If you like, you can remove the directory <filename
+        >&gitproject;-&gitprjvers;/</filename> now as it is not needed anymore.
+      </para>
+     </step>
+    </substeps>
+   </step>
+   <step>
+    <para>Open your spec file and add the following line in the header under
+    the <literal>Source</literal> line like this:</para>
+    <screen>Source:         &gitproject;-%{version}.tar.gz
+Patch0:         &gitproject;_main.diff</screen>
+   </step>
+   <step>
+    <para>In the <literal>%prep</literal> section add the <literal>%patch</literal>
+     macro like this:</para>
+    <screen>%prep
+%setup -q -n %{name}-%{version}
+%patch0</screen>
+   </step>
+   <step>
+    <para>
+     Add you patch file to the local repository and rebuild your package
+     with:
+    </para>
+    <screen>&prompt.user;<command>osc</command> add &gitproject;_main.diff
+&prompt.user;<command>osc</command> build openSUSE_Tumbleweed x86_64 *.spec</screen>
+   </step>
+   <step>
+    <para>If everything was successfull, commit your changes by adding
+     your commit message:
+    </para>
+    <screen>&prompt.user;<command>osc</command> commit</screen>
+   </step>
+  </procedure>
+  <para>
+   If you have to deal with many patches, the tool
+   <systemitem>quilt</systemitem> could be useful.
+  </para>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.branchprj">
   <title>Branching a Project</title>
-  <para>TBD</para>
+  <para>
+   This section describe how to collaborate with other projects.
+   A <firstterm baseform="Branch">branch</firstterm> in &obsa; terms is a
+   personal copy of another project that lives on your home project.
+  </para>
+  <para>Branching a project has usually the following reasons:</para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Allows you to make make changes without affecting the original project.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Apply changes in your branch to try out a different path of development.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Modify the source code, build it, try it, and submit back your
+     changes to the original project.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>We assume, you have the <uri>&obshome1;/&gitproject;</uri> project
+   on &obsa; and the user <systemitem class="username">&obsuser2;</systemitem>
+   wants to change the code. The task is to change the welcome message and
+   submit it back to to original project.
+  </para>
+  <para>
+   User <systemitem class="username">&obsuser2;</systemitem> has to do the
+   following steps:
+  </para>
+  <procedure xml:id="pro.obsbg.uc.branchprj">
+   <title>Branching from a Project</title>
+   <step>
+    <para>
+     Open a shell. Choose or create a directory on your system where you
+     have enough space.
+    </para>
+   </step>
+   <step>
+    <para>Create the branch from &exampleuser_plain;'s home project:</para>
+    <screen>&prompt.user2;<command>osc</command> bco &obshome1; &gitproject;</screen>
+    <para>This will create a branched package in &obsa; at <uri>&obsbranch2;/&gitproject;</uri>
+     and will checkout a directory <filename>home/&obsuser2;/branches/home/&obsuser1;/&gitproject;</filename>.</para>
+   </step>
+   <step>
+    <para>Change the working directory to your checked out branch:</para>
+    <screen>&prompt.user2;<command>cd</command> home/&obsuser2;/branches/home/&obsuser1;/&gitproject;</screen>
+   </step>
+   <step>
+    <para>Make your changes as shown in <xref
+     linkend="sec.obsbg.uc.patching"/>.
+    </para>
+   </step>
+   <step>
+    <para>Build your package and check the result:</para>
+    <screen>&prompt.user;<command>osc</command> build openSUSE_Tumbleweed x86_64 *.spec
+&prompt.user;<command>osc</command> bl openSUSE_Tumbleweed x86_64</screen>
+   </step>
+   <step>
+    <para>Commit your changes by adding your commit message: :</para>
+    <screen>&prompt.user2;<command>osc</command> addremove
+&prompt.user2;<command>osc</command> ci</screen>
+   </step>
+   <step>
+    <para>
+     If everything was successful, create a submit request and finish it
+     by adding a comment:
+    </para>
+    <!-- submitpac ... is a shorthand for osc submitreq -cleanup
+
+    osc submitreq [OPTIONS]
+    osc submitreq [OPTIONS] DESTPRJ [DESTPKG]
+    osc submitreq [OPTIONS] SOURCEPRJ SOURCEPKG DESTPRJ [DESTPKG]
+    -->
+    <screen>&prompt.user2;<command>osc</command> submitpac &obshome1;</screen>
+    <para>
+     &obsa; knows where the original project is located, so you do not have
+     to add the project name here.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   User <systemitem class="username">&obsuser2;</systemitem> has
+   finished the task now and the submit request is assigned to <systemitem
+    class="username">&obsuser1;</systemitem> as number <systemitem>246</systemitem>. User <systemitem
+     class="username">&obsuser1;</systemitem> can decide:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Accept the Submit Request</title>
+     <para>The changes from user <systemitem class="username"
+      >&obsuser2;</systemitem> will be integrated into the
+     <uri>&obshome1;</uri> project. The accepted submit request will be
+      closed. Further changes need to create a new submit request.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Decline the Submit Request</title>
+     <para>
+      The changes from user <systemitem class="username"
+       >&obsuser2;</systemitem> are not integrated into the
+      <uri>&obshome1;</uri> project. For example, the reasons to decline a
+      submit request are usually build errors, style issues, or other
+      problems. Usually, the declined submit request contains a message which
+      contains the reason. Corrections has to be done in a new submit request.
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist>
+  <para>
+   User <systemitem class="username">&obsuser1;</systemitem> does the
+   following steps:
+  </para>
+  <procedure xml:id="pro.obsbg.uc.branchprj.sr">
+   <title>Dealing with Submit Requests</title>
+   <step>
+    <para>Show all submit requests that belong to your home project</para>
+    <remark>toms 2017-08-10: Not sure if this is the correct command</remark>
+    <screen>&prompt.user;<command>osc</command> request list -s new -P &obshome1;</screen>
+   </step>
+   <step>
+    <para>
+     Find the correct submit request. If you know the correct number you can
+     use:
+    </para>
+    <screen>&prompt.user;<command>osc</command> request show 246</screen>
+   </step>
+   <step>
+    <para>
+     Review the request and decide:
+    </para>
+    <stepalternatives>
+     <step>
+      <para>Accept the submit request with:</para>
+      <screen>&prompt.user;<command>osc</command> request accept 246 --message="reviewed ok."</screen>
+     </step>
+     <step>
+      <para>Decline the request and give a reason:</para>
+      <screen>&prompt.user;<command>osc</command> request 256 --message="Missing semicolon"</screen>
+     </step>
+    </stepalternatives>
+   </step>
+  </procedure>
+  <para>
+   If the submit request got accepted, the changes wll be integrated in the
+   home project  <uri>&obshome1;</uri>.
+  </para>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.install-from-obs">

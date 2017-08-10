@@ -66,6 +66,7 @@
 <!ENTITY gh             "GitHub">
 <!ENTITY gitorg         "openSUSE">
 <!ENTITY gitproject     "example-obs">
+<!ENTITY gitprjvers     "0.1.0">
 <!ENTITY gitupstream1   "https://github.com/&gitorg;/&gitproject;">
 
 <!-- ============================================================= -->
