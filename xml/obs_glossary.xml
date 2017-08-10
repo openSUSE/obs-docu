@@ -69,7 +69,7 @@
   <glossdef>
    <para>
     Personal copy of another repository that lives on your home project.
-    A branch allows allows you to make changes without affecting the original
+    A branch allows you to make changes without affecting the original
     repository. You can either <!-- update,? -->delete the branch or
     merge it into the original repository with a submit request.
    </para>
