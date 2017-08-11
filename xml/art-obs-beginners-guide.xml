@@ -79,7 +79,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      <formalpara>
       <title>Metadata</title>
       <para>The package name and the description is mandatory. Other data
-       like the version, the license, the upstream URL, and some more.</para>
+       like the version, the license, the upstream URL, and some more
+       are optional.</para>
      </formalpara>
     </listitem>
     <listitem>
@@ -102,7 +103,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       <title>A Package List</title>
       <para>
        To successfully install and remove a package with all the contents,
-       the system needs to know which files and directories belong to
+       the package manager needs to know which files and directories belong to
        which package.
       </para>
      </formalpara>
@@ -158,7 +159,6 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </sect2>
   <sect2>
    <title>Projects and Packages</title>
-   <remark>toms 2017-08-04: explain obs:// schema?</remark>
    <para>
     In &obsa;, packages are organized in <emphasis>projects</emphasis>.
     A single project can contain several different packages and serves a specific
@@ -176,6 +176,10 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     &obsa; uses colons as a separator for projects<!-- and subprojects-->.
     For example, a user's home project is written as
     <uri>home:<replaceable>USERNAME</replaceable></uri>.
+    Sometime you see the <uri>obs://home:<replaceable>USERNAME</replaceable></uri>
+    notation to emphasis an URL schema which relies on an &obsa; instance.
+   </para>
+   <para>
     Projects can also contain subprojects, and subprojects other subproject.
     Each part is separated by colons.
     For example, all relevant packages for the Python programming language
@@ -208,6 +212,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      <para>
       As an alternative, use the &appimg; file. An &appimg; file
       is a packaged application which can run on many distributions.
+      Download the file, save it in your <filename>~/bin</filename> directory,
+      and make the file executable.
      </para>
     </listitem>
    </varlistentry>
@@ -241,55 +247,61 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </step>
    <step>
     <para>
-     Configure <command>sudo</command> to allow all users which belong
-     to the group <systemitem class="groupname">osc</systemitem> to build
-     packages without entering the &rootuser; password all the time:
+     Configure <command>sudo</command>. The following configuration allows
+     all users which belong to the group <systemitem
+      class="groupname">osc</systemitem> to build packages without entering
+     the &rootuser; password all the time:
     </para>
     <substeps>
      <step>
-      <para>Create a new group <systemitem class="groupname">osc</systemitem>.
-       This group will hold all users which are allowed to build packages: </para>
+      <para>Log in as &rootuser; and create a new group <systemitem
+       class="groupname">osc</systemitem>.
+       This group will contain all users which are allowed to build packages: </para>
       <screen>&prompt.root;<command>groupadd</command> osc</screen>
      </step>
      <step>
       <para>Add users to your newly created group <systemitem class="groupname"
-        >osc</systemitem>:</para>
+        >osc</systemitem> which are allowed to run <command>osc</command>:
+      </para>
       <screen>&prompt.root;<command>usermod</command> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
      </step>
      <step>
-      <para>Run <command>visudo</command>:</para>
-      <screen>&prompt.user;<command>sudo</command> /usr/sbin/visudo</screen>
+      <para>Run <command>visudo</command> to create the sudoers file
+       <filename>/etc/sudoers.d/osc</filename>:</para>
+      <screen>&prompt.root;<command>visudo</command> -f /etc/sudoers.d/osc</screen>
      </step>
      <step>
-      <para>Create a command alias. Search for the text
-        <literal>Cmd_Alias</literal> and add the following line underneath: </para>
-      <screen>Cmnd_Alias      OSC_CMD = /usr/bin/osc, /usr/bin/build</screen>
+      <para>Add the following lines:</para>
+      <screen># sudoers file "/etc/sudoers.d/osc" for the osc group
+Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
+%osc  ALL = (ALL) NOPASSWD:OSC_CMD</screen>
      </step>
      <step>
-      <para>Scroll down and add the following line to the end:</para>
-      <screen>%osc    ALL = (ALL) NOPASSWD:OSC_CMD</screen>
-     </step>
-     <step>
-      <para>Whenever you want to add additional users to allow building
-       packages, use the <command>usermod</command> command as shown above.
+      <para>Log out of your system and log in again to make your changes
+       effective.
       </para>
      </step>
     </substeps>
+    <para>Whenever you want to add additional users to allow building
+       packages, use the <command>usermod</command> command as shown before.
+      </para>
    </step>
    <step>
     <para>Create a new &obsa; configuration file:</para>
-    <substeps>
-     <step>
-      <para>Generate a new &obsa; configuration file with:</para>
-      <screen>&prompt.user;<command>osc</command> ls &obshome1;</screen>
-      <para>
+    <screen>&prompt.user;<command>osc</command> ls &obshome1;</screen>
+    <para>
        If you run the command for the first time, you will be prompted
-       for your &obsa; password.
+       for your &obsa; user name and your &obsa; password.
       </para>
-     </step>
-     <step xml:id="st.obsbg.obsconfig.nocolon">
-      <para> Change the following line in the configuration file
-        <filename>~/.oscrc</filename>: </para>
+   </step>
+   <step xml:id="st.obsbg.obsconfig.nocolon">
+      <para>
+       Optionally, if you prefer to separate projects and subprojects
+       in directories and subdirectories, change the following line
+       in your configuration file <filename>~/.oscrc</filename>: 
+       <!--Optionally, change the following line in the configuration file
+        <filename>~/.oscrc</filename>:-->
+      </para>
       <screen>checkout_no_colon = 1</screen>
       <para>
        This will use an alternate layout when creating multiple
@@ -300,8 +312,6 @@ https://www.suse.com/communities/blog/suse-studio-integration/
        instead of the single directory <filename>&obshome1;</filename>.
       </para>
      </step>
-    </substeps>
-   </step>
   </procedure>
  </sect1>
 
@@ -607,7 +617,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 
 cmake . \
-    -DYPREFIX=%{_prefix} \
+    -DPREFIX=%{_prefix} \
     -DDOC_DIR=%{_docdir} \
     -DLIB_DIR=%{_lib} \
 make
@@ -624,8 +634,8 @@ make
 %changelog <co xml:id="co.obsbg.uc.basicprj.cl"/></screen>
     <calloutlist>
      <callout arearefs="co.obsbg.uc.basicprj.metadata">
-      <para>Metadata like package name, version, release, license, the
-       RPM group, a brief summary, the upstream URL, and the name
+      <para>The header with metadata like package name, version, release,
+       license, the RPM group, a brief summary, the upstream URL, and the name
        of the source file.
       </para>
      </callout>
@@ -642,8 +652,9 @@ make
      <callout arearefs="co.obsbg.uc.basicprj.prep">
       <para>The preparation section. This is used to get the sources
        ready to build which includes unpacking (using the
-       <literal>setup</literal> macro) or patching (not shown here, would be
-       done with the <literal>%patch</literal> macro).
+       <literal>setup</literal> macro). This is also the place when you need
+       to patch your source code using the <literal>%patch</literal> macro
+       (not shown here).
       </para>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.build">
@@ -657,10 +668,10 @@ make
       </para>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.files">
-      <para>The content section. This section includes all files and
+      <para>The files section. This section lists all files and
        directories which belongs to the package. Documentation related
        files are marked with <literal>%doc</literal> and are automatically
-       installed in the default documenation directory (for &suse; it is
+       installed in the default documentation directory (for &suse; it is
        <filename>/usr/share/doc/packages/<replaceable
         >PACKAGENAME</replaceable></filename>).
       </para>
@@ -670,7 +681,8 @@ make
       searches for a file with the extension <filename class="extension"
        >.changes</filename>. If such a file exists in the project directory,
        it will be automatically included as a changelog.
-       The changelog file itself contains the history of the package.
+       The changelog file itself contains a high level overview of the
+       history of the package.
       </para>
      </callout>
     </calloutlist>
@@ -903,7 +915,7 @@ Patch0:         &gitproject;_main.diff</screen>
    </listitem>
    <listitem>
     <para>
-     Modify the source code, build it, try it, and submit back your
+     Modify the source code, build it, try it out, and submit back your
      changes to the original project.
     </para>
    </listitem>
