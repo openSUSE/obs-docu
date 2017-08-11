@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+  type="text/xml"
+  title="Profiling step"?>
+<!DOCTYPE set
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<set version="5.1" xml:lang="en" xml:id="art_obs_quickstart"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:dm="urn:x-suse:ns:docmanager"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>OBS Documentation</title>
+  <subtitle>&productname; &productnumber;</subtitle>
+  <info/>
+
+  <book xml:id="book.obs.techpaper">
+   <title>Technical Papers</title>
+   <info/>
+   <xi:include href="art-obs-beginners-guide.xml"/>
+  </book>
+
+  <xi:include href="book-obs-admin-guide.xml"/>
+  <xi:include href="book-obs-reference-guide.xml"/>
+  <xi:include href="book-obs-best-practices.xml"/>
+</set>

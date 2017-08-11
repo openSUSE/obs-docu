@@ -14,7 +14,7 @@
     >man page</link> for more information. For instance to restart the
    repository server use:</para>
    <screen><command>systemctl restart obsrepserver.service</command></screen>
-  <table xml:id="cha.obs.best-practices.upstream.download.params">
+  <table xml:id="tab.obs.service-names">
    <title>Service Names</title>
    <tgroup cols="2" align="left">
     <thead>

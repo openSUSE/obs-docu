@@ -9,7 +9,7 @@
  <sect1>
   <title>Setup a project re-using other projects binaries</title>
   <para>
-   <xref linkend="obs.glos.project_binaries"/> are the </para>
+   <xref linkend="obs.glos.project_binary"/> are the </para>
  </sect1>
  <sect1>
   <title>Setup a project reusing other projects sources</title>
