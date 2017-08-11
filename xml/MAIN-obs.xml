@@ -14,12 +14,12 @@
   xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>OBS Documentation</title>
   <subtitle>&productname; &productnumber;</subtitle>
-  <info></info>
+  <info/>
 
   <book xml:id="book.obs.techpaper">
    <title>Technical Papers</title>
    <info/>
-   <xi:include href="art-obs-quickstart.xml"/>
+   <xi:include href="art-obs-beginners-guide.xml"/>
   </book>
 
   <xi:include href="book-obs-admin-guide.xml"/>
