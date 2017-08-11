@@ -256,7 +256,7 @@
   <glossterm>KIWI</glossterm>
   <glossdef>
    <para>
-    An appliance builder.
+    An OS appliance builder.
     KIWI provides a complete operating system image solution. It can
     create images for Linux supported hardware platforms or for virtualization
     systems. </para>
