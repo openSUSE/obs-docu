@@ -480,36 +480,6 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    This will show the available architectures and additional package
    repositores you may want to add.
   </para>
-<!--  <para>
-   After you have definied your build targets you need to create your
-   package area in your home project. Do the following:
-  </para>
-  <procedure xml:id="pro.obsbg.uc.setuphome.createnewpkg">
-   <title>Adding a New Package to Your Home Project</title>
-   <step>
-    <para>
-     In your &obsa; home project page, click the <guimenu>Create package</guimenu>
-     link.
-    </para>
-   </step>
-   <step>
-    <para>
-     Enter the name of your package, the title, and a short description.
-    </para>
-    <para> Take special care of defining a good package name. It is
-     difficult to change a name later when everything is in place.
-     In the simplest form, use the &gh; project name. In our example, it
-     would be &gitproject;.
-    </para>
-   </step>
-   <step>
-    <para>Finish with <guimenu>Save changes</guimenu>. The package name
-     is shown in the list of available packages. You need to fill the
-     directory with the respective files to trigger the build.
-    </para>
-   </step>
-  </procedure>
--->
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.newprj">
@@ -742,17 +712,18 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
    <listitem>
     <para>Inappropriate write permission in the upstream project.</para>
     <para>
-     In most cases, you probably cannot commit changes<!--  to the upstream
-     project-->. Any changes needs to go to the upstream project which will
-     be likely integrated, but could also be rejected for different reasons.
+     In most cases, you probably cannot commit changes directly<!--
+      to the upstream project-->.
+     If you send your changes to the upstream project, it can be integrated
+     later than you need it or it can be rejected for different reasons.
      To be independant of any release cycle, code styleguide, or personal
-     issues, patch files allows to modify the source code without touching
+     issues, patch files allow to modify the source code without touching
      the original source.
     </para>
    </listitem>
    <listitem>
     <para>
-     Applying security and bug fixes and otherinconveniences which are not
+     Applying security and bug fixes and other inconveniences which are not
      yet available in the upstream  project.
     </para>
    </listitem>
@@ -898,6 +869,8 @@ Patch0:         &gitproject;_main.diff</screen>
    This section describe how to collaborate with other projects.
    A <firstterm baseform="Branch">branch</firstterm> in &obsa; terms is a
    personal copy of another project that lives on your home project.
+   To be precise, all branches will be stored in a subproject of your
+   home and named as <uri>&obsbranch1;</uri>.
   </para>
   <para>Branching a project has usually the following reasons:</para>
   <itemizedlist>
