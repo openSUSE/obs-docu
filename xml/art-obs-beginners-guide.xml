@@ -425,9 +425,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    naturally.
    To build your
    packages you need to select build targets (distributions) first.
-   Build targets can be definied <emphasis>globally</emphasis> (which
-   appears on all of your projects) or <emphasis>locally</emphasis> (only
-   for a specific package).
+   Build targets are definied globally and appears on every package. 
   </para>
   <para>To setup you home project, do the following:</para>
   <procedure xml:id="pro.obsbg.uc.setuphome.addrepo">
