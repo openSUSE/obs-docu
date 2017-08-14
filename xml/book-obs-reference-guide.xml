@@ -36,6 +36,18 @@
      <orgname>B1 Sytems GmbH </orgname>
     </affiliation>-->
    </author>
+   <author>
+    <personname>
+     <firstname>Stefan</firstname>
+     <surname>Knorr</surname>
+    </personname>
+   </author>
+   <author>
+    <personname>
+     <firstname>Thomas</firstname>
+     <surname>Schraitle</surname>
+    </personname>
+   </author>
   </authorgroup>
   <xi:include href="copyright.xml"/>
  </info>
