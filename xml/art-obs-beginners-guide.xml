@@ -235,23 +235,49 @@ https://www.suse.com/communities/blog/suse-studio-integration/
  <sect1 xml:id="sec.obsbg.obsconfig">
   <title>Configuring your System for &obsa;</title>
   <para>
-   Building packages on your systems locally involves some configuration.
-   Although you can start &osccmd; as a normal user, it needs at some point
-   more permissions.
+   You can use the <command>osc</command> command without configuring your
+   system as described in this section. However, we recommend to prepare
+   your system for the following reasons:
   </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Separate Projects in Subdirectories</title>
+     <para>
+      This is an optional configuration and a matter of taste. Whenever you
+      checkout a project from your &obsa; instance, projects with colons are
+      not created as one single directory, but as subdirectories.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Sudo Configuration</title>
+     <para>Although you can use &osccmd; as a normal user, at some point you
+      need to enter the &rootuser; password. This can be annoying if you
+      rebuild packages frequently. Therfore, the configuration below customizes
+      the <command>sudo</command> configuration to allow building packages
+      without entering the &rootuser; password. To maximize security, only
+      specific users are allowed.
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist>
+
+  <para>To use the above customization, execute the following steps:</para>
   <procedure xml:id="pro.obsbg.obsconfig">
-   <title>Configuring &osccmd;</title>
+   <title>Configuring <command>sudo</command> and <command>osc</command></title>
    <step>
     <para>
-     If you do not have already an instance on your &obs;, create one.
+     If you do not have already an account on your &obs; instance, create one.
     </para>
    </step>
    <step>
+    <para>Configure <command>sudo</command>.</para>
     <para>
-     Configure <command>sudo</command>. The following configuration allows
-     all users which belong to the group <systemitem
-      class="groupname">osc</systemitem> to build packages without entering
-     the &rootuser; password all the time:
+     The following configuration allows all users which belong to the group
+     <systemitem class="groupname">osc</systemitem> to build packages without
+     entering the &rootuser; password all the time:
     </para>
     <substeps>
      <step>
@@ -262,7 +288,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      </step>
      <step>
       <para>Add users to your newly created group <systemitem class="groupname"
-        >osc</systemitem> which are allowed to run <command>osc</command>:
+        >osc</systemitem> which are allowed to build packages:
       </para>
       <screen>&prompt.root;<command>usermod</command> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
      </step>
@@ -272,7 +298,11 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       <screen>&prompt.root;<command>visudo</command> -f /etc/sudoers.d/osc</screen>
      </step>
      <step>
-      <para>Add the following lines:</para>
+      <para>
+       Add the following lines to create a command alias which only the
+       group <systemitem class="groupname">osc</systemitem> is allowed
+       to execute:
+      </para>
       <screen># sudoers file "/etc/sudoers.d/osc" for the osc group
 Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
 %osc  ALL = (ALL) NOPASSWD:OSC_CMD</screen>
@@ -283,9 +313,10 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       </para>
      </step>
     </substeps>
-    <para>Whenever you want to add additional users to allow building
-       packages, use the <command>usermod</command> command as shown before.
-      </para>
+    <para>
+     Whenever you want to add additional users later, use the
+     <command>usermod</command> command as shown before.
+    </para>
    </step>
    <step>
     <para>Create a new &obsa; configuration file:</para>
@@ -305,10 +336,8 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       </para>
       <screen>checkout_no_colon = 1</screen>
       <para>
-       This will use an alternate layout when creating multiple
-       subdirectories. Projects with colons are not created as one single
-       directory, but are created as subdirectories.
-       For example, setting the option above, checking out the home project
+       This will use an alternate layout when checking out a project.
+       For example, setting the option above and checking out the home project
        will lead to a directory structure <filename>home/&obsuser1;</filename>
        instead of the single directory <filename>&obshome1;</filename>.
       </para>
