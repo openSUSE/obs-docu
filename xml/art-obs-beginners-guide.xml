@@ -35,7 +35,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </personname>
    </author>
   </authorgroup>
-  <xi:include href="copyright.xml"/>
+  <xi:include href="common_copyright_opensuse.xml"/>
   <abstract>
    <para>
     The Beginner's Guide describes different workflows to create packages on
