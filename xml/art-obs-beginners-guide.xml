@@ -162,30 +162,31 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    <para>
     In &obsa;, packages are organized in <emphasis>projects</emphasis>.
     A single project can contain several different packages and serves a specific
-    purpose, defines access control, repositories, and build targets
+    purpose, defines access control, other repositories, and build targets
     (operating systems and architectures).
-    For example, all packages for KDE, GNOME, fonts, or Web servers
-    are collected into a dedicated, separated project.
    </para>
    <para>
-    As a normal user, you will build your packages normally in your
-    <firstterm>home project</firstterm>. The home project is your working
-    area in OBS for defining build targets, uploading and building packages.
+    Projects can also contain other projects (subprojects) to structure work.
+    Each project name is separated by colons.
+    For example, all packages for fonts are collected in the project
+    <uri>M17N:fonts</uri> and all relevant packages for the Python programming
+    language are available in the <uri>devel:languages:python</uri> project.
    </para>
    <para>
-    &obsa; uses colons as a separator for projects<!-- and subprojects-->.
-    For example, a user's home project is written as
-    <uri>home:<replaceable>USERNAME</replaceable></uri>.
-    Sometime you see the <uri>obs://home:<replaceable>USERNAME</replaceable></uri>
-    notation to emphasis an URL schema which relies on an &obsa; instance.
+    As a user, you will build your packages normally in your
+    <firstterm baseform="Home Project">home project</firstterm>, available
+    in &obsa; as <uri>home:<replaceable>USERNAME</replaceable></uri>.
+    The home project is your working area in OBS for defining build targets,
+    uploading and building packages, and installing the results with Zypper
+    or &yast;.
    </para>
    <para>
-    Projects can also contain subprojects, and subprojects other subproject.
-    Each part is separated by colons.
-    For example, all relevant packages for the Python programming language
-    are available in the <uri>devel:languages:python</uri> project.
+    Sometimes you see the <uri>obs://<replaceable>PROJECT</replaceable></uri>
+    notation. The <uri>obs://</uri> schema is a shorthand to abbreviate the
+    long URL and needs to be replaced by the real &obsa; instance URL.
    </para>
-   <!-- Explain the differences between home & devel project -->
+   <remark>toms 2017-08-14: Explain the differences between home &amp; devel project?</remark>
+   <!--  -->
   </sect2>
  </sect1>
 
