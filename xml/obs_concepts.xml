@@ -1,3 +1,8 @@
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
 <!-- note: this is just a collection file atm, bigger parts should be moved to own files & chapters -->
 <chapter version="5.1" xml:id="cha.obs.concepts"
  xmlns="http://docbook.org/ns/docbook"

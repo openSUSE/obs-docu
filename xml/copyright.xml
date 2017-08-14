@@ -1,3 +1,8 @@
+<!DOCTYPE legalnotice
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
 <!--
      Please keep this document neatly formatted, because a text version
      for LICENSE.txt is created form this source. That means only the
