@@ -4,7 +4,8 @@
     %entities;
 ]>
 
-<preface version="5.1" xml:id="pref.admin"
+<!-- HINT: Currently no ID as it is used by different books -->
+<preface version="5.1"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
