@@ -949,12 +949,20 @@ Patch0:         &gitproject;_main.diff</screen>
      &obsa; knows where the original project is located, so you do not have
      to add the project name here.
     </para>
+    <para>
+     Note, with the <command>submitpac</command> subcommand, the branch will
+     be automatically deleted once the submit request has been accepted.
+     If you do not want this, use either the <command>submitreq</command>
+     subcommand, or the option <option>--no-cleanup</option> for
+     <command>submitpac</command>.
+    </para>
    </step>
   </procedure>
   <para>
    User <systemitem class="username">&obsuser2;</systemitem> has
    finished the task now and the submit request is assigned to <systemitem
-    class="username">&obsuser1;</systemitem> as number <systemitem>246</systemitem>. User <systemitem
+    class="username">&obsuser1;</systemitem> as a number (for example,
+   <systemitem>246</systemitem>). User <systemitem
      class="username">&obsuser1;</systemitem> can decide:
   </para>
   <itemizedlist>
@@ -977,7 +985,8 @@ Patch0:         &gitproject;_main.diff</screen>
       <uri>&obshome1;</uri> project. For example, the reasons to decline a
       submit request are usually build errors, style issues, or other
       problems. Usually, the declined submit request contains a message which
-      contains the reason. Corrections has to be done in a new submit request.
+      contains the reason. Corrections has to be done in a new submit request
+      by superseding the old one.
      </para>
     </formalpara>
    </listitem>
@@ -1016,6 +1025,8 @@ Patch0:         &gitproject;_main.diff</screen>
     </stepalternatives>
    </step>
   </procedure>
+  <remark>toms 2017-08-14: Maybe add a procedure about should be done when
+  a SR was declined (superseding the old SR).</remark>
   <para>
    If the submit request got accepted, the changes wll be integrated in the
    home project  <uri>&obshome1;</uri>.
