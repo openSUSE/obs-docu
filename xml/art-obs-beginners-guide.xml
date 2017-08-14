@@ -338,7 +338,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       <para>
        This will use an alternate layout when checking out a project.
        For example, setting the option above and checking out the home project
-       will lead to a directory structure <filename>home/&obsuser1;</filename>
+       will lead to a directory structure <filename>&obsworkdir1;</filename>
        instead of the single directory <filename>&obshome1;</filename>.
       </para>
      </step>
@@ -556,7 +556,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     </para>
     <screen>&prompt.user;<command>osc</command> co &obshome1;</screen>
     <para>
-      This will create <filename>home/&obsuser1;</filename> in the
+     This will create <filename>&obsworkdir1;</filename> in the
       current directory with the project directory
      <filename>&gitproject;</filename> if you have configured &osc; as
      shown in <xref linkend="st.obsbg.obsconfig.nocolon"/> of
@@ -564,14 +564,16 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      </para>
    </step>
    <step>
-    <para>Create a new package inside your local working directory:</para>
-    <screen>&prompt.user;<command>cd</command> home/&obshome1;
+    <para>Create a new package inside your local <firstterm
+      baseform="Working Directory">working directory</firstterm>:
+    </para>
+    <screen>&prompt.user;<command>cd</command> &obsworkdir1;
 &prompt.user;<command>osc</command> mkpac example-osc</screen>
    </step>
    <step>
     <para>
      Get the pristine source code of the upstream project and save it in
-     <filename>home/&obsuser1;/&gitproject;</filename>.
+     <filename>&obsworkdir1;/&gitproject;</filename>.
     </para>
     <para>
      Download the sources from <link xlink:href="&gitupstream1;/releases"/>.
@@ -942,11 +944,11 @@ Patch0:         &gitproject;_main.diff</screen>
     <para>Create the branch from &exampleuser_plain;'s home project:</para>
     <screen>&prompt.user2;<command>osc</command> bco &obshome1; &gitproject;</screen>
     <para>This will create a branched package in &obsa; at <uri>&obsbranch2;/&gitproject;</uri>
-     and will checkout a directory <filename>home/&obsuser2;/branches/home/&obsuser1;/&gitproject;</filename>.</para>
+     and will checkout a directory <filename>&obsworkdir2;/branches/home/&obsuser1;/&gitproject;</filename>.</para>
    </step>
    <step>
     <para>Change the working directory to your checked out branch:</para>
-    <screen>&prompt.user2;<command>cd</command> home/&obsuser2;/branches/home/&obsuser1;/&gitproject;</screen>
+    <screen>&prompt.user2;<command>cd</command> &obsworkdir2;/branches/home/&obsuser1;/&gitproject;</screen>
    </step>
    <step>
     <para>Make your changes as shown in <xref
