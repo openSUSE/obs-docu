@@ -4,7 +4,9 @@
 ## ----------------------------
 ##
 ## Basics
-MAIN="book-obs-best-practices.xml"
+#MAIN="book-obs-best-practices.xml"
+MAIN="MAIN-obs.xml"
+ROOTID="book.obs-best-practices"
 
 ## Profiling
 PROFOS="opensuse;novell"

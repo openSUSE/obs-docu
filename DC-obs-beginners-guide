@@ -4,7 +4,9 @@
 ## ----------------------------
 ##
 ## Basics
-MAIN="art-obs-beginners-guide.xml"
+MAIN="MAIN-obs.xml"
+# See "art-obs-beginners-guide.xml"
+ROOTID="art.obs.bg"
 
 ## Profiling
 PROFOS="opensuse;novell"

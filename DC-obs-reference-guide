@@ -4,7 +4,9 @@
 ## ----------------------------
 ##
 ## Basics
-MAIN="book-obs-reference-guide.xml"
+MAIN="MAIN-obs.xml"
+# See "book-obs-reference-guide.xml"
+ROOTID="book.obs-reference-guide"
 
 ## Profiling
 PROFOS="opensuse;novell"
