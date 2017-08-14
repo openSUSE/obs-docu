@@ -27,4 +27,8 @@
   and administrators to join and to contribute to these books. It is not
   required to be a very good or even native English speaker, because we rely on
   community editors to improve the language. </para>
+
+ <xi:include href="common_intro_available_doc_i.xml"/>
+ <xi:include href="common_intro_feedback_i.xml"/>
+ <xi:include href="common_intro_typografie_i.xml"/>
 </preface>
