@@ -1,6 +1,6 @@
 
 
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0" xml:id="cha.obs.best-practices.distribution-setup"><title>Distribution Setup</title><info/>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.distribution-setup"><title>Distribution Setup</title><info/>
  
  <para>
   This document describes ways to setup an entire distribution, including

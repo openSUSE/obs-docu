@@ -2,7 +2,7 @@
 
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
- xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
  xml:id="_user_and_group_management">
  <title>User and group management</title>
  <para>The OBS has an integrated user and group management with a role based
