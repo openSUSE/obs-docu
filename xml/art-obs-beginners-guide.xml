@@ -1142,6 +1142,37 @@ Patch0:         &gitproject;_main.diff</screen>
 
  <sect1 xml:id="sec.obsbg.cheatsheet">
   <title>Most Useful osc Commands</title>
-  <para>TBD</para>
+  <para>
+   The following list gives you a short overview of some of the most used
+   commands. To get an overview of the syntax, use <command>osc <replaceable>SUBCOMMAND</replaceable>
+    --help</command>.
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term><command>osc diff</command></term>
+    <listitem>
+     <para>Generates a diff, comparing local changes against the remote
+      &obsa; project.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><command>osc list</command></term>
+    <listitem>
+     <para>Shows source or binaries on a &obsa; server.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><command>osc prjresults</command></term>
+    <listitem>
+     <para>Shows project-wide build results.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><command>osc status</command></term>
+    <listitem>
+     <para>Shows the status of files in your working directory</para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
  </sect1>
 </article>
