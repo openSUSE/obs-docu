@@ -1,18 +1,27 @@
+<!DOCTYPE preface
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
 
-
-<preface xmlns="http://docbook.org/ns/docbook"
+<preface version="5.1" xml:id="pref.admin"
+ xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
- xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1">
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>About this Guide</title>
  <info/>
- <para> This book is part of the official Open Build Service documentation.
+ <para> This book is part of the official &obs; documentation.
+  <remark>toms 2017-08-14: Shouldn't the following sentence be clear (because
+   it's "official" and thus can be removed?</remark>
   These books are considered to contain only reviewed content, establishing the
-  reference documentation of OBS. </para>
- <para> These books are not considered to be focused on a special OBS version.
-  They are also not a replacement of the documentation inside of the openSUSE
-  wiki. But content from the wiki may get consolidated and included in these
-  books. </para>
- <para> Furthermore these books are written by the OBS community. Check the
+  reference documentation of OBS.
+ </para>
+ <para> These books does not focus on a special &obsa; version.
+  They are also not a replacement of the documentation inside of the <link
+   xlink:href="https://en.opensuse.org/Category:Build_Service"
+   >&opensuse; Wiki</link>. But content from the wiki may get consolidated
+  and included in these books. </para>
+ <para> Furthermore these books are written by the &obsa; community. Check the
   chapter how to work on these books. We request especially experienced users
   and administrators to join and to contribute to these books. It is not
   required to be a very good or even native English speaker, because we rely on
