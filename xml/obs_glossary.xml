@@ -625,6 +625,20 @@
    </para>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.workingcopy">
+  <glossterm>Working Copy</glossterm>
+  <glosssee otherterm="obs.glos.workingdirectory"/>
+ </glossentry>
+ <glossentry xml:id="obs.glos.workingdirectory">
+  <glossterm>Working Directory</glossterm>
+  <glossdef>
+   <para>
+    A directory on your local machine as a result from a <command>osc checkout</command>
+    call for working and building before submitting your changes to an
+    &obsa; instance. 
+   </para>
+  </glossdef>
+ </glossentry>
  <!-- ############## Z ############## -->
  <glossentry xml:id="obs.glos.zypper">
   <glossterm>Zypper</glossterm>
