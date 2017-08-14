@@ -382,21 +382,16 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     </para>
    </listitem>
    <listitem>
-    <para>An adapted system as shown in <xref
+    <para>A customized system as shown in <xref
      linkend="sec.obsbg.obsconfig"/>.</para>
    </listitem>
    <listitem>
-    <para>An RPM-based system like &opensuse;.</para>
+    <para>An RPM-based system like &opensuse; or &sle;.</para>
    </listitem>
   </itemizedlist>
   <para>
-   The workflow in this guide describes the most common tasks:
+   This guide describes the following, most common tasks:
   </para>
-  <remark>toms 2017-08-02: 1) basic project: just source code and some build
-   targets; 2) like (1) but with a patch file; 3) branching a source repo,
-   making changes, submitting back; 4) linking a source repo and making
-   changes; 5) ...?
-  </remark>
   <variablelist>
    <varlistentry>
     <term><xref linkend="sec.obsbg.uc.setuphome"/></term>
@@ -428,7 +423,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     <listitem>
      <para>
       Explains how to branch a project, make changes, and submitting back
-      the changes to the original author.
+      the changes to the original project.
      </para>
     </listitem>
    </varlistentry>
@@ -455,11 +450,12 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    naturally.
    To build your
    packages you need to select build targets (distributions) first.
-   Build targets are definied globally and appear on every package. 
+   Build targets are definied globally and appear on every package, however,
+   you can disable some build targets for a specific package.
   </para>
   <para>To setup you home project, do the following:</para>
   <procedure xml:id="pro.obsbg.uc.setuphome.addrepo">
-   <title>Adding Global Build Targets for Your Home Project</title>
+   <title>Adding Global Build Targets to Your Home Project</title>
    <step>
     <para>
      Log in to the &obs; instance.
@@ -510,6 +506,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    This will show the available architectures and additional package
    repositores you may want to add.
   </para>
+  <remark>toms 2017-08-14: Maybe add a screenshot of the Web UI?</remark>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.newprj">
@@ -634,56 +631,79 @@ make
 %changelog <co xml:id="co.obsbg.uc.basicprj.cl"/></screen>
     <calloutlist>
      <callout arearefs="co.obsbg.uc.basicprj.metadata">
-      <para>The header with metadata like package name, version, release,
+      <formalpara>
+       <title>The Header</title>
+       <para>Metadata like package name, version, release,
        license, the RPM group, a brief summary, the upstream URL, and the name
        of the source file.
-      </para>
+       </para>
+      </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.buildreq">
-      <para>Build requirements which are needed by &obsa;. These packages
-       are downloaded and installed before building the package.
+      <formalpara>
+       <title>Build Requirements</title>
+       <para>Lists dependencies to other packages which are needed for building.
+        The listed packages are downloaded and installed before building
+        the package.</para>
+      </formalpara>
+      <para>
       </para>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.description">
-      <para>The description section. This section is used to illustrate
-       the purpose of the package and gives a comprehensive explanation.
-      </para>
+      <formalpara>
+       <title>The Description Section</title>
+       <para>Illustrate the purpose of the package and gives a comprehensive
+        explanation.</para>
+      </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.prep">
-      <para>The preparation section. This is used to get the sources
-       ready to build which includes unpacking (using the
-       <literal>setup</literal> macro). This is also the place when you need
-       to patch your source code using the <literal>%patch</literal> macro
-       (not shown here).
-      </para>
+      <formalpara>
+       <title>The Preparation Section</title>
+       <para>Get the sources ready to build which includes unpacking
+        (using the <literal>%setup</literal> macro) and patching (using
+        the <literal>%patch</literal> macro, not shown here; see <xref
+         linkend="sec.obsbg.uc.patching"/>).</para>
+      </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.build">
-      <para>The build section. This contains Shell commands or RPM macro
-       on how to build the package.
+      <formalpara>
+       <title>The Build Section</title>
+       <para>Contains Shell commands or RPM macro on how to build the
+        package.</para>
+      </formalpara>
+      <para>
       </para>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.install">
-      <para>The install section. Contains Shell commands or RPM macro which
+      <formalpara>
+       <title>The Install Section</title>
+       <para>Contains Shell commands or RPM macro which
        creates directories or copies files to the installation location.
-      </para>
+       </para>
+      </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.files">
-      <para>The files section. This section lists all files and
-       directories which belongs to the package. Documentation related
-       files are marked with <literal>%doc</literal> and are automatically
-       installed in the default documentation directory (for &suse; it is
-       <filename>/usr/share/doc/packages/<replaceable
+      <formalpara>
+       <title>The Files Section</title>
+       <para>Lists all files and directories which belongs to
+        the package. Documentation related files are marked with
+        <literal>%doc</literal> and are automatically installed in the
+        default documentation directory (for &suse; systems it is
+        <filename>/usr/share/doc/packages/<replaceable
         >PACKAGENAME</replaceable></filename>).
-      </para>
+       </para>
+      </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.cl">
-      <para>The changelog section. Usually this is empty and &obsa;
-      searches for a file with the extension <filename class="extension"
+      <formalpara>
+       <title>The Changelog Section</title>
+       <para>Usually this is empty and &obsa; searches for a file with the
+        extension <filename class="extension"
        >.changes</filename>. If such a file exists in the project directory,
        it will be automatically included as a changelog.
        The changelog file itself contains a high level overview of the
-       history of the package.
-      </para>
+       history of the package.</para>
+      </formalpara>
      </callout>
     </calloutlist>
    </step>
@@ -707,7 +727,7 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
     </para>
    </step>
    <step>
-    <para>Add all the files to your working copy:</para>
+    <para>Add all the files to your working directory:</para>
     <screen>&prompt.user;<command>osc</command> add *.spec *.changes *.tar.gz</screen>
    </step>
    <step>
