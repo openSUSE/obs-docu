@@ -47,12 +47,12 @@
     </imageobject>
    </mediaobject>
   </figure>
-  <para> Add the 'KIWI image build' repository to your project. This repository
-   is needed to build KIWI images in your project. Go to the 'Repositories'
-   tab, click on 'Add repositories' and click on the 'KIWI image build' check
+  <para> Add the '&kiwi; image build' repository to your project. This repository
+   is needed to build &kiwi; images in your project. Go to the 'Repositories'
+   tab, click on 'Add repositories' and click on the '&kiwi; image build' check
    box. </para>
   <figure>
-   <title>Enabling the KIWI image build repository</title>
+   <title>Enabling the &kiwi; image build repository</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="image_templates_enable_image_repository.png"/>
@@ -68,16 +68,16 @@
     </imageobject>
    </mediaobject>
   </figure>
-  <para> KIWI configurations usually consists of an xml configuration root
+  <para> &kiwi; configurations usually consists of an xml configuration root
    tarball. </para>
   <!--<xi:include href="obs_image_templates.xml"
    xpointer="image_template_icon_paragraph"/>-->
   &image_template_icon_paragraph;
   <para> For a full list of image descriptions and general information about
    building images with KIWI, see the <link
-    xlink:href="http://opensuse.github.io/kiwi/"> KIWI project page</link> and
+    xlink:href="http://opensuse.github.io/kiwi/"> &kiwi; project page</link> and
    the <link xlink:href="https://doc.opensuse.org/projects/kiwi/doc/">KIWI
-    cookbook</link>. <remark> Refer to new (Python) KIWI page instead? -
+    cookbook</link>. <remark> Refer to new (Python) &kiwi; page instead? -
     sknorr, 2017-07-14 </remark>
   </para>
  </sect2>

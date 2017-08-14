@@ -19,8 +19,8 @@
   <title>Structure of image templates</title>
   <para> As mentioned image templates are essentially pre-configured <link
     xlink:href="http://opensuse.github.io/kiwi/">KIWI</link> image
-   configurations. As any KIWI configuration they usually contain a tarball
-   containing image sources, a config.sh file and the KIWI configuration XML
+   configurations. As any &kiwi; configuration they usually contain a tarball
+   containing image sources, a config.sh file and the &kiwi; configuration XML
    file. </para>
   &image_template_icon_paragraph;
   <!--<para xml:id="image_template_icon_paragraph"> In addition you can define an
@@ -29,7 +29,7 @@
    file exists, it will be used as icon for your image on the image templates
    page. </para>-->
   <note>
-   <para> For more information about KIWI images, see <xref
+   <para> For more information about &kiwi; images, see <xref
      linkend="_kiwi_appliance"/>. </para>
   </note>
  </sect1>

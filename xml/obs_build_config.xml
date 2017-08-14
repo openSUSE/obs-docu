@@ -142,7 +142,7 @@
     <listitem>
     <para>
      <parameter>kiwiprofile:</parameter> builds the selected profile
-      in kiwi appliance builds. 
+      in &kiwi; appliance builds. 
     </para>
      </listitem>
    </itemizedlist>
@@ -183,7 +183,7 @@ Keep: debbuild</screen>
    <title>BinaryType: &lt;TYPE&gt;</title>
    <para> Binary type. This is the format of the files which will be the result
     of the build jobs. This gets usually set depending on the build recipe
-    type. In some situations, for example a kiwi build job result gets
+    type. In some situations, for example a &kiwi; build job result gets
     converted into an rpm, it can be used to overwrite it. Possible values are:
     rpm, deb or none </para>
   </sect2>

@@ -81,14 +81,14 @@
     packages without subpackage. They are no *-dev or *-devel packages. </para>
   </sect2>
   <sect2 xml:id="_kiwi_appliance">
-   <title>kiwi appliance</title>
+   <title>&kiwi; appliance</title>
    <para>
     <link xlink:href="http://opensuse.github.io/kiwi/">KIWI</link> is an image
     producing platform that builds images for various formats, starting from
     hardware images, virtualization systems like QEMU, Xen and VMware and many
     more. It supports a wide range of architectures, which are x86, x86_64,
     s390 and ppc. </para>
-   <para> Build instructions for KIWI usually consists of: </para>
+   <para> Build instructions for &kiwi; usually consists of: </para>
     <itemizedlist>
      <listitem>
       <para>
@@ -112,8 +112,8 @@
     </itemizedlist>
    <note>
     <para> OBS only accepts files with a <filename class="extension"
-      >.kiwi</filename> suffix as a KIWI configuration file. Other naming
-     schemes KIWI supports, like the <filename>config.xml</filename>, are
+      >.kiwi</filename> suffix as a &kiwi; configuration file. Other naming
+     schemes &kiwi; supports, like the <filename>config.xml</filename>, are
      getting ignored in OBS. </para>
    </note>
    <para> For more information about building images with KIWI, see the <link
@@ -121,7 +121,7 @@
      cookbook</link> . </para>
   </sect2>
   <sect2>
-   <title>KIWI product</title>
+   <title>&kiwi; product</title>
    <para> ... </para>
   </sect2>
   <sect2>

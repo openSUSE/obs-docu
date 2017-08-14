@@ -62,8 +62,8 @@
     scripts inside of the packages are working in general. </para>
   </sect2>
   <sect2>
-   <title>KIWI specific post build root checks</title>
-   <para> The file /usr/lib/build/kiwi_post_run is executed after kiwi jobs
+   <title>&kiwi; specific post build root checks</title>
+   <para> The file /usr/lib/build/kiwi_post_run is executed after &kiwi; jobs
     have finished. It can be used to run the appliance or to modify it. For
     example to package an appliance into an rpm. </para>
   </sect2>

@@ -25,7 +25,7 @@
   </sect2>
   <sect2>
    <title>Docker</title>
-   <para> Docker images are currently only supported via the kiwi tool. </para>
+   <para> Docker images are currently only supported via the &kiwi; tool. </para>
   </sect2>
   <sect2>
    <title>AppImage</title>
@@ -54,11 +54,11 @@
    <para> Livebuild is the Debian livebuild support for ISO images. </para>
   </sect2>
   <sect2>
-   <title>KIWI appliance formats</title>
+   <title>&kiwi; appliance formats</title>
    <para> </para>
   </sect2>
   <sect2>
-   <title>KIWI product builds</title>
+   <title>&kiwi; product builds</title>
    <para> </para>
   </sect2>
  </sect1>

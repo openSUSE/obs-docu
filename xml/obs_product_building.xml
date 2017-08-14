@@ -37,7 +37,7 @@
     for example for installation patterns, version numbering and other meta
     data. To guarantee this, OBS provides the product definition xml.
     Submitting such a product xml will create all necessary sources for meta
-    packages and also all needed kiwi source files. </para>
+    packages and also all needed &kiwi; source files. </para>
   </sect2>
  </sect1>
  <sect1>

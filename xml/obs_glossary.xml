@@ -226,7 +226,7 @@
  <glossentry xml:id="obs.glos.image">
   <glossterm>Image</glossterm>
   <glossdef>
-   <para>The result of a KIWI build process.</para>
+   <para>The result of a &kiwi; build process.</para>
    <glossseealso otherterm="obs.glos.kiwi"/>
   </glossdef>
  </glossentry>
@@ -235,9 +235,9 @@
   <glossdef>
    <para>
     Specification to define an appliance built by KIWI. The image description
-    is a collection of files directly used by KIWI (<filename>config.xml</filename> and
+    is a collection of files directly used by &kiwi; (<filename>config.xml</filename> and
     <filename>*.kiwi</filename>), scripts, or configuration data to
-    customize certain parts of the KIWI build process.
+    customize certain parts of the &kiwi; build process.
    </para>
    <glossseealso otherterm="obs.glos.kiwi"/>
   </glossdef>
@@ -257,7 +257,7 @@
   <glossdef>
    <para>
     An OS appliance builder.
-    KIWI provides a complete operating system image solution. It can
+    &kiwi; provides a complete operating system image solution. It can
     create images for Linux supported hardware platforms or for virtualization
     systems. </para>
    <glossseealso otherterm="obs.glos.image"/>

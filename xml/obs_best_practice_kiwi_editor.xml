@@ -2,17 +2,18 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>KIWI Editor</title>
- <para> You can edit the KIWI file associated to your project. It is only
+ <title>&kiwi; Editor</title>
+ <para> You can edit the &kiwi; file associated to your project. It is only
   possible, at the moment, to edit the repository list. If you are running your
   own instance of OBS be sure you have the kiwi_image_editor feature enabled in
   your config/feature.yml file. </para>
  <sect2>
-  <title>Accessing the KIWI Editor</title>
-  <para> Go to your package, and upload a file with the .kiwi extension (i.e.
-   "test.kiwi"), with a valid KIWI content. </para>
+  <title>Accessing the &kiwi; Editor</title>
+  <para> Go to your package, and upload a file with the <filename
+    class="extension">.kiwi</filename> extension (for example,
+   <filename>test.kiwi</filename>), with a valid &kiwi; content. </para>
   <figure>
-   <title>Example of a package with a KIWI xml file</title>
+   <title>Example of a package with a &kiwi; xml file</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="edit_kiwi_package_overview.png"/>
@@ -25,7 +26,7 @@
   </note>
   <para> Click on the "Edit KIWI" link. </para>
   <figure>
-   <title>KIWI Editor. Show screen</title>
+   <title>&kiwi; Editor. Show screen</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="edit_kiwi_show.png"/>
@@ -34,14 +35,14 @@
   </figure>
   <para> Click on the "Edit" button. </para>
   <figure>
-   <title>KIWI Editor. Edit screen</title>
+   <title>&kiwi; Editor. Edit screen</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="edit_kiwi_edit.png"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para> Modify the KIWI configuration as you want, and click the "Save" button
+  <para> Modify the &kiwi; configuration as you want, and click the "Save" button
    when you finish. </para>
  </sect2>
 </sect1>
