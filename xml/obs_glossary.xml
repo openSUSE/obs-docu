@@ -465,7 +465,13 @@
  <glossentry xml:id="obs.glos.repofile">
   <glossterm>Repo File</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para>
+    A file with the name <filename><replaceable>PROJECT</replaceable>.repo</filename>.
+    inside the download repository. The file contains information about the
+    name of the repository, the repository type, and references to the download
+    repository and the GPG key.
+   </para>
+   <glossseealso otherterm="obs.glos.downloadrepository"/>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.request">
