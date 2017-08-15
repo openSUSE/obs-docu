@@ -35,7 +35,7 @@
     </personname>
    </author>
   </authorgroup>
-  <xi:include href="copyright.xml"/>
+  <xi:include href="common_copyright_opensuse.xml"/>
  </info>
 
  <xi:include href="obs_preface.xml"/>
