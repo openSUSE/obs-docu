@@ -389,11 +389,11 @@
  <glossentry xml:id="obs.glos.packagespecification">
   <glossterm>Package Specification</glossterm>
   <glossdef>
-   <para>Generic term for a <quote>receipe</quote> for creating a package.
+   <para>Generic term for a recipe file for creating a package.
     A package specification includes
     metadata, instructions, requirements, and changelogs.
     For RPM-based systems like &suse;, a <filename>.spec</filename> file is
-    used and contains all the previous points. Debian-based systems uses
+    used and contains all the previous points. Debian-based systems use
     a <filename>debian</filename> directory which splits all the information.
    </para>
    <glossseealso otherterm="obs.glos.spec"/>

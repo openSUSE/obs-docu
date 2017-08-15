@@ -25,7 +25,7 @@
   <sect2>
    <title>Preinstall phase</title>
    <para> The step of this phase depends on the type of the buildroot (building
-    environment). OBS supports three different types buildroot: </para>
+    environment). OBS supports three types of buildroot: </para>
     <itemizedlist>
      <listitem>
       <para> chroot </para>

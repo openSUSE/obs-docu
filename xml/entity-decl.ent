@@ -10,7 +10,7 @@
                       role='productname'>&obs;</phrase>">
 
 <!ENTITY productnamereg "<phrase xmlns='http://docbook.org/ns/docbook'
-                      role='roductnamereg'>&obs;&reg;</phrase>">
+                      role='productnamereg'>&obs;&reg;</phrase>">
 
 <!ENTITY productnumber "<phrase xmlns='http://docbook.org/ns/docbook' role='productnumber'></phrase>">
 
@@ -161,6 +161,8 @@
 <!-- please change product to anything that makes sense in your current release -->
 
 <!ENTITY opensuse      "openSUSE">
+<!ENTITY tw            "&opensuse; Tumbleweed">
+<!ENTITY leap          "&opensuse; Leap">
 <!ENTITY opensusereg   "openSUSE&reg;">
 <!ENTITY sle           "SUSE Linux Enterprise">
 <!ENTITY sas           "&sle; Advanced Server">
@@ -200,6 +202,8 @@
 <!ENTITY wyservice     "&yast;2 Webservice">
 <!ENTITY slms          "SUSE Lifecycle Management Server">
 <!ENTITY slmsreg       "SUSE&reg; Lifecycle Management Server">
+
+<!ENTITY rhel           "Red Hat Enterprise Linux">
 
 <!-- ============================================================= -->
 <!--                    Applications                               -->
@@ -251,12 +255,19 @@
 
 <!ENTITY ycc_runlevel  "System Services (Runlevel)">
 
+
 <!-- ============================================================= -->
-<!--                    Miscellaneous                              -->
+<!--                        OBS-specific                           -->
 <!-- ============================================================= -->
 <!ENTITY kiwi            "KIWI">
 <!ENTITY appimg          "AppImage">
+<!ENTITY packspec        "package specification">
 
+
+
+<!-- ============================================================= -->
+<!--                    Miscellaneous                              -->
+<!-- ============================================================= -->
 <!ENTITY wypublic          "/srv/www/yast/public/">
 <!ENTITY mac               "<replaceable>MAC</replaceable>">
 <!ENTITY hwmac             "hwtype.<replaceable>MAC</replaceable>">

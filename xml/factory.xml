@@ -15,7 +15,7 @@
   <title>openSUSE:Factory project</title>
   <para> The main project is openSUSE:Factory. This project is controlled by a
    small group which does review all submissions according to the policies.
-   Submissions are possible via submit requests, which get reviewed by default
+   Submissions are possible via submit requests, which are reviewed by default
    by two groups: The Legal team and the code review team. ... </para>
  </sect1>
  <sect1 xml:id="cha.obs.factory.develprojects">

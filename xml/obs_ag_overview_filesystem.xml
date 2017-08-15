@@ -14,7 +14,7 @@
   <title>Configuration files</title>
   <sect2 xml:id="_frontend_configuration">
    <title>Front-end Configuration</title>
-   <para>The Front-end is configured with 4 files:</para>
+   <para>The front-end is configured with 4 files:</para>
    <itemizedlist>
     <listitem>
      <para>/srv/www/obs/api/config/database.yml</para>

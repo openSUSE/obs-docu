@@ -23,7 +23,7 @@
    are stored and will not be deleted. This guarantees the ability to get the
    source for every delivered binary package. </para>
   <para> Each OBS installation has one Source Server only. It maintains the
-   "sources", "trees" and "projects" directories. </para>
+   <quote>sources</quote>, <quote>trees</quote> and <quote>projects</quote> directories. </para>
  </sect2>
  <sect2 xml:id="_repository_server">
   <title>Repository server</title>
