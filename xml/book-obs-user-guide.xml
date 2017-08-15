@@ -1,0 +1,24 @@
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"
+?>
+<!DOCTYPE book
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<book version="5.1" xml:lang="en" xml:id="book.obs.user"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>User Guide</title>
+ <info>
+  <xi:include href="common_copyright_opensuse.xml"/>
+ </info>
+
+ <xi:include href="obs_preface.xml"/>
+
+<!--
+  Things to describe:
+ -->
+</book>
