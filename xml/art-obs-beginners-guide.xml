@@ -124,12 +124,13 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    - sknorr, 2017-08-15
   </remark>
   <para>
-   The &obs; can communicate either through a Web interface or a command
+   The &obs; is accessible either through a Web interface or a command
    line interface. Both access the OBS API which controls the database,
    <remark>
     "Controls" seems like the wrong word. Not sure about a better on right
     now. - sknorr, 2017-08-15
    </remark>
+   <remark>toms 2017-08-16: maybe "communicates" instead of "controls"?</remark>
    the search engine, and more. The OBS API also indirectly communicates with
    the back-end which provides a storage pool and the build hosts.
   </para>
@@ -157,6 +158,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    Other services around &obsa; (like the notification server, mirror
    interface etc.) are relatively specific in purpose and are of lesser
    importance for this guide.
+   <remark>toms 2017-08-16: Hmn, I think the picture does not reveal
+   "more information". </remark>
    For more information on them, see <xref linkend="fig.obsbg.concept"/>.
   </para>
   <figure xml:id="fig.obsbg.concept">
@@ -192,15 +195,11 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     or &yast;.
    </para>
    <para>
-    Sometimes, you will see the <uri>obs://<replaceable>PROJECT</replaceable></uri>
+    Sometimes, you will see the <uri>obs://<replaceable
+     >DOMAIN</replaceable>/<replaceable>PROJECT</replaceable></uri>
     notation. The <uri>obs://</uri> schema is a shorthand to abbreviate the
     long URL and needs to be replaced by the real &obsa; instance URL.
    </para>
-   <remark>toms 2017-08-14: Explain the differences between home &amp; devel project?</remark>
-   <remark>
-    Devel projects are very SUSE-specific, therefore should not be mentioned
-    here. - sknorr, 2017-08-15
-   </remark>
   </sect2>
  </sect1>
 
@@ -229,6 +228,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       built. However, you always need the right kind of package specification
       file before anything can be built. - sknorr, 2017-08-15
      </remark>
+     <remark>toms 2017-08-16: I don't understand your sentence. Please clarify. :)</remark>
      <para>
       As an alternative, use the &appimg; file. An &appimg; file
       is a packaged application which can run on many distributions.
@@ -239,6 +239,10 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       Why put them there? ~/bin is just a convention and imo not in PATH by
       default and you can run that AppImage file from any directory anyway. -
       sknorr, 2017-08-15
+     </remark>
+     <remark>toms 2017-08-16: No, ~/bin IS in PATH by default. It is even
+      created when you add a new user. IMHO this is the perfect place to
+      add it. :)
      </remark>
     </listitem>
    </varlistentry>
@@ -270,6 +274,10 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      setting is important enough to be mentioned here... (I am not using it,
      for example). - sknorr, 2017-08-15
     </remark>
+    <remark>toms 2017-08-16: my consideration was that with subdirs enabled,
+     the user can't mix it up with a repo/project notation. Without the subdirs
+     enabled, the user could be confused by "cd into home:bla" instead of
+     "cd into home/bla".</remark>
     <formalpara>
      <title>Separate Projects in Subdirectories</title>
      <para>
@@ -1111,7 +1119,7 @@ Patch0:         &gitproject;_main.diff</screen>
     </stepalternatives>
    </step>
   </procedure>
-  <remark>toms 2017-08-14: Maybe add a procedure about should be done when
+  <remark>toms 2017-08-14: Maybe add a procedure about what should be done when
   a SR was declined (superseding the old SR).</remark>
   <para>
    If the submit request got accepted, the changes wll be integrated in the
