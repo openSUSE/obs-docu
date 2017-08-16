@@ -53,15 +53,15 @@
  </info>
 
  <xi:include href="obs_preface.xml"/>
- <xi:include href="obs_motivation.xml"/>
+ <!--<xi:include href="obs_motivation.xml"/>-->
  <!-- basic parts -->
- <xi:include href="obs_architecture.xml"/>
+ <!--<xi:include href="obs_architecture.xml"/>-->
  <xi:include href="obs_concepts.xml"/>
  <xi:include href="obs_build_process.xml"/>
- <xi:include href="obs_build_containers.xml"/>
+ <!-- <xi:include href="obs_build_containers.xml"/>-->
  <xi:include href="obs_source_management.xml"/>
  <xi:include href="obs_request_and_review_system.xml"/>
- <xi:include href="obs_package_formats.xml"/>
+ <!--<xi:include href="obs_package_formats.xml"/>-->
  <xi:include href="obs_image_templates.xml"/>
  <xi:include href="obs_build_config.xml"/>
  <!-- advanced parts -->

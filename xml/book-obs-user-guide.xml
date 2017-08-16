@@ -36,4 +36,26 @@
   From Best Practice Guide:
   *
  -->
+
+ <part xml:id="par.concepts">
+  <title>Concepts</title>
+  <info>
+   <abstract>
+    <para>TBD</para>
+   </abstract>
+  </info>
+  <xi:include href="obs_motivation.xml"/>
+  <xi:include href="obs_architecture.xml"/>
+  <xi:include href="obs_build_containers.xml"/>
+  <xi:include href="obs_package_formats.xml"/>
+ </part>
+
+ <part xml:id="par.working">
+  <title>Working with &obs;</title>
+  <info>
+   <abstract>
+    <para>TBD</para>
+   </abstract>
+  </info>
+ </part>
 </book>
