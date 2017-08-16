@@ -526,65 +526,6 @@ refer to the openldap ldap.conf man page.</simpara>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>ldap_update_support</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Update password or other user setting on the LDAP server</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>:on <literal>:off</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>do not use</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_object_class</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Object class for user</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara><literal>inetOrgPerson</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>only for ldap_update_support: :on</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_entry_base</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Base dn for the new added entry</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>only for ldap_update_support: :on</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>ldap_sn_attr_required</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Does sn attribute required</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>:off <literal>:on</literal>
-        </simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>only for ldap_update_support: :on</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
         <simpara>ldap_group_support</simpara>
        </entry>
        <entry align="left" valign="top">
@@ -733,19 +674,6 @@ ldap_authenticate: :ldap
 ldap_auth_mech: :md5
 # This is a string
 ldap_auth_attr: userPassword
-
-# Whether to update the user info to LDAP server, it does not take effect
-# when ldap_mode is not set.
-# Since adding new entry operation are more depend on your slapd db define, it might not
-# compatiable with all LDAP server settings, you can use other LDAP client tools for your specific usage
-ldap_update_support: :off
-# ObjectClass, used for adding new entry
-ldap_object_class: inetOrgPerson
-# Base dn for the new added entry
-ldap_entry_base: ou=OBSUSERS,dc=EXAMPLE,dc=COM
-# Does sn attribute required, it is a necessary attribute for most of people objectclass,
-# used for adding new entry
-ldap_sn_attr_required: :on
 
 # Whether to search group info from ldap, it does not take effect it is not set
 # Please also set below ldap_group_* configs correctly to ensure the operation works properly
