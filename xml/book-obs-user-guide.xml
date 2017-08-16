@@ -17,6 +17,7 @@
  </info>
 
  <xi:include href="obs_preface.xml"/>
+ <xi:include href="obs_motivation.xml"/>
 
 <!--
   Things to describe:
@@ -44,7 +45,6 @@
     <para>TBD</para>
    </abstract>
   </info>
-  <xi:include href="obs_motivation.xml"/>
   <xi:include href="obs_architecture.xml"/>
   <xi:include href="obs_build_containers.xml"/>
   <xi:include href="obs_package_formats.xml"/>

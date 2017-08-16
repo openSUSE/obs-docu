@@ -1,17 +1,17 @@
-<!DOCTYPE chapter
+<!DOCTYPE preface
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.motivation"
+<preface version="5.1" xml:id="cha.obs.motivation"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Distributing Free Software: Herding Cats</title>
  <info>
-  <abstract>
+  <!--<abstract>
    <para>TBD</para>
-  </abstract>
+  </abstract>-->
  </info>
 
  <sect1 xml:id="sec.obs.motivation">
@@ -141,4 +141,4 @@
    very interesting future. </para>
  </sect1>
 -->
-</chapter>
+</preface>
