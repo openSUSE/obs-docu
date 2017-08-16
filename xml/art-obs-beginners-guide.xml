@@ -1114,7 +1114,7 @@ Patch0:         &gitproject;_main.diff</screen>
      </step>
      <step>
       <para>Decline the request and give a reason:</para>
-      <screen>&prompt.user;<command>osc</command> request 256 --message="Missing semicolon"</screen>
+      <screen>&prompt.user;<command>osc</command> request decline 256 --message="Declined, because of missing semicolon"</screen>
      </step>
     </stepalternatives>
    </step>
