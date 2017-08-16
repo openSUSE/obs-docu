@@ -8,63 +8,99 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Distributing Free Software: Herding Cats</title>
- <info/>
+ <info>
+  <abstract>
+   <para>TBD</para>
+  </abstract>
+ </info>
 
- <para> The basic challenge when distributing Free and Open Source Software
-   (FOSS) is compiling into machine code all of the source
-  code that the awesome community produces. It may sound simple, but it is not.
-  A typical GNU/Linux distribution consists of thousands of individual software
-  projects. They build on top of each other, have functional dependencies, some
-  projects are interdependent, conflict with each other and what not. In short,
-  it is like herding cats. Another challenge of distributing software is that,
-  sadly, software is sometimes defective and people, even developers, make
-  mistakes. One has to master the art of exchanging pieces without breaking the
-  whole: in other words, software updates. The Open Build Service
-   (OBS) is a tool that makes this possible. It is a generic
-  system to build and distribute binary packages from sources in an
-   <emphasis>automatic</emphasis>, <emphasis>consistent</emphasis> and
-   <emphasis>reproducible</emphasis> way. The OBS is free software itself; you
-  can run, copy, distribute, study, change and improve it. The source code and
-  the developers are on <link
-   xlink:href="https://github.com/openSUSE/open-build-service">GitHub</link>. </para>
- <sect1>
-  <title>Goals of the OBS</title>
+ <sect1 xml:id="sec.obs.motivation">
+  <title>Motivation</title>
+  <para>
+   The basic challenge when distributing Free and Open Source Software
+   (FOSS) is compiling into machine code all of the source code that the
+   awesome community produces. It may sound simple, but it is not. A typical
+   GNU/Linux distribution consists of thousands of individual software
+   projects. They build on top of each other, have functional dependencies,
+   some projects are interdependent, or conflict with each other. In short, it
+   is like herding cats. Another challenge of distributing software is that,
+   sadly, software is sometimes defective and people&mdash;even
+   developers&mdash;make mistakes. One has to master the art of exchanging
+   pieces without breaking the whole: in other words, software updates.
+  </para>
+  <para>
+  The &OBS; is a tool that makes this possible. It is a generic system to
+  build and distribute binary packages from sources in an
+  <emphasis>automatic</emphasis>, <emphasis>consistent</emphasis> and
+  <emphasis>reproducible</emphasis> way. &obsa; itself is free software;
+  you can run, copy, distribute, study, change and improve it. The source
+  code and the developers are on GitHub at <link
+    xlink:href="https://github.com/openSUSE/open-build-service"/>.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="sec.obs.goals">
+  <title>Goals and Target Groups for &obsa;</title>
   <para> The goals of the OBS are oriented towards the three groups of people
-   that use it: People who contribute to the Free Software community by
-   building binary packages of software, so called
-    <emphasis>packagers</emphasis>. <emphasis>Free Software projects and
-    Independent Software Vendors (ISV)</emphasis> who
-   provide complete software stacks and distributions to their users. And, of
-   course, <emphasis>users</emphasis> who are looking to install software on
-   their GNU/Linux distribution. </para>
-  <sect2>
-   <title>Automated software builds for packagers</title>
-   <para> For people who contribute to the Free Software community by packaging
-    software, so called packagers, the OBS tries to automate that task as much
-    as possible. Especially the need to maintain a lot of different operating
-    system (OS) installations, of different
-     OS versions, on a lot of different hardware
-    architectures is something the OBS makes easier. </para>
+   that use it: </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>Packagers</title>
+     <para>People who contribute to the Free Software community by
+     building binary packages of software</para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Users</title>
+     <para>People who are looking to install software on their distribution.</para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Free Software projects and Independent Software Vendors (ISV)</title>
+     <para>People who provide complete software stacks and distributions to
+      their users.</para>
+    </formalpara>
+    <para></para>
+   </listitem>
+  </itemizedlist>
+
+  <sect2 xml:id="sec.obs.goals.packagers">
+   <title>Automated Software Builds for Packagers</title>
+   <para>
+    For people who contribute to the Free Software community by packaging
+    software (packagers), &obsa; tries to automate that task as much as
+    possible. Especially the need to maintain a lot of different operating
+    system (OS) installations, different OS versions, and different hardware
+    architectures, is something &obsa; makes easier.
+   </para>
   </sect2>
-  <sect2>
-   <title>Reproducibility for Free Software projects and Independent Software
-    Vendors (ISV)</title>
-   <para> The OBS emphasizes making builds reproducible. It builds packages in
-    a jailed environment that the OBS sets up from scratch each time. When the
-    build succeeds it also rebuilds all the dependent software. This ensures
+
+  <sect2 xml:id="sec.obs.goals.isv">
+   <title>Reproducibility for Free Software projects and Independent Software Vendors (ISV)</title>
+   <para> &obsa; emphasizes on making builds reproducible. It builds packages in
+    a jailed environment that &obsa; sets up from scratch each time. When the
+    build succeeds, it also rebuilds all the dependent software. This ensures
     that changes propagate throughout the entire stack and that users get a
-    consistent product to install. Reproducibility is especially needed if the
+    consistent product to install.</para>
+   <para>
+    Reproducibility is especially needed if the
     delivered software stack consists of a lot of parts that have functional
-    dependencies. Because if something is reproducible, it is predictable, and
-    that is what projects and ISVs aim for. If you can predict how each of the
+    dependencies. Because of something is reproducible, it is predictable.
+    This is what projects and ISVs aim for. If you can predict how each of the
     software packages within your GNU/Linux distribution influences the other,
     you can make sure that if you change one of them, the whole thing still
-    works as expected. The OBS also has collaboration among developers baked-in
-    to its structure and workflows, which helps projects and ISVs to harness
-    the power of the open source development model. </para>
+    works as expected.</para>
+   <para>&obsa; features also collaboration among developers. This baked-in
+    structure and workflow helps projects and ISVs to use the power of the
+    open source development model.
+   </para>
   </sect2>
-  <sect2>
-   <title>Easy access to software for users</title>
+
+  <sect2 xml:id="sec.obs.goals.users">
+   <title>Easy Access to Software for Users</title>
    <para> The OBS aims to make it easy for users to download the latest version
     of software as binary packages for their operating system. They do not have
     to know about tarballs, make install, package formats or other stuff from
