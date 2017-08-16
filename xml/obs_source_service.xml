@@ -203,7 +203,17 @@
  <section>
   <title>How to write a source service</title>
   <para>
-   ..
+    The logic behind it is an XML formated recipe which describes command and its parameters, like:
+    <screen><command>
+    &lt;services&gt;
+      &lt;service name="my_script_to_execute"&gt;
+      &lt;param name="param1"&gt;argument_value&lt;/param&gt;
+      &lt;/service&gt;
+      &lt;/services&gt;
+      the above example will execute <command>/usr/lib/obs/service/my_script_to_execute --param1 argument_value --outdir curr_dir</command>
+
+      It is important to mention that --outdir argument is a mandatory one and should be handled in each service which should
+      point to directory where the result will be picked from later by osc(localrun) or sourceserver(remoterun)
   </para>
  </section>
  <section>
