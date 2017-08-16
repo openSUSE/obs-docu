@@ -118,19 +118,10 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </sect2>
   <sect2 xml:id="sec.obsbg.buildhost">
    <title>Build Hosts and Packages</title>
-  <remark>
-   Maybe "You can communicate with OBS either through..."? Hesitant to apply
-   this because while more correct it sounds about as weird as the original.
-   - sknorr, 2017-08-15
-  </remark>
   <para>
-   The &obs; is accessible either through a Web interface or a command
-   line interface. Both access the OBS API which controls the database,
-   <remark>
-    "Controls" seems like the wrong word. Not sure about a better on right
-    now. - sknorr, 2017-08-15
-   </remark>
-   <remark>toms 2017-08-16: maybe "communicates" instead of "controls"?</remark>
+   The &obs; is accessible either through a Web interface or a command line
+   interface (&osccmd;). Both are clients for the &obsa; API which provides
+   access to the database,
    the search engine, and more. The OBS API also indirectly communicates with
    the back-end which provides a storage pool and the build hosts.
   </para>
@@ -156,14 +147,15 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </para>
   <para>
    Other services around &obsa; (like the notification server, mirror
-   interface etc.) are relatively specific in purpose and are of lesser
+   interface etc.) are relatively specific in purpose and therefore of lesser
    importance for this guide.
-   <remark>toms 2017-08-16: Hmn, I think the picture does not reveal
-   "more information". </remark>
-   For more information on them, see <xref linkend="fig.obsbg.concept"/>.
+  </para>
+  <para>
+   The schematic in <xref linkend="fig.obsbg.concept"/> shows the components
+   in context.
   </para>
   <figure xml:id="fig.obsbg.concept">
-   <title>Concept Overview of &obs;</title>
+   <title>Conceptual Overview of &obs;</title>
    <mediaobject>
     <imageobject>
      <imagedata width="80%" fileref="obs-concept.svg"/>
@@ -175,24 +167,28 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    <title>Projects and Packages</title>
    <para>
     In &obsa;, packages are organized in <emphasis>projects</emphasis>.
-    A single project can contain several packages and serves a specific
-    purpose, defines access control, other repositories, and build targets
-    (operating systems and architectures).
+    A single project can contain several packages and usually serves a specific
+    organizational purpose. Generic access control, related repositories, and
+    build targets (operating systems and architectures) are all defined at
+    the project level.
    </para>
    <para>
     Projects can also contain other projects (subprojects) to structure work.
     Each project name is separated by colons.
-    For example, all packages for fonts are collected in the project
-    <uri>M17N:fonts</uri> and all relevant packages for the Python programming
-    language are available in the <uri>devel:languages:python</uri> project.
+    For example, in the &opensuse; Build Service, packages for fonts are
+    collected in the project
+    <uri>M17N:fonts</uri> which is a subproject of <uri>M17N</uri>.
+    Packages for the Python programming
+    language are available in the <uri>devel:languages:python</uri> project
+    which is a subproject of <uri>devel:languages</uri> which itself is a
+    subproject of <uri>devel</uri>.
    </para>
    <para>
-    As a user, you will build your packages normally in your
+    As a user, you will normally build packages in your
     <firstterm baseform="Home Project">home project</firstterm>, available
     in &obsa; as <uri>home:<replaceable>USERNAME</replaceable></uri>.
-    The home project is your working area in &obsa; for defining build targets,
-    uploading and building packages, and installing the results with Zypper
-    or &yast;.
+    Home projects serve as a personal working area in &obsa; to define build
+    targets, upload, build, and download packages.
    </para>
    <para>
     Sometimes, you will see the <uri>obs://<replaceable
@@ -204,7 +200,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
  </sect1>
 
  <sect1 xml:id="sec.obsbg.req">
-  <title>Requirements</title>
+  <title>Requirements for Working with &osccmd; on the Command Line</title>
   <para>
    Before you work with &obs;, make sure you fullfil the following requirements.
   </para>
@@ -212,38 +208,37 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    <varlistentry xml:id="vle.obsbg.req.software">
     <term>Software Requirements</term>
     <listitem>
-     <para> To work with &obs; install the &osccmd; command line tool from your
+     <para>
+      To work with &obs;, install the &osccmd; command line tool from your
       preferred distributions or from the &obsa; project
        <uri>openSUSE:Tools</uri>. The tool runs on any modern Linux system and
       is available for different distributions, such as CentOS, Debian, &sle;,
-      &opensuse;, to name a few. </para>
-     <para> For &suse; related systems, install it with the
-       <command>zypper</command> command (replace
-       <replaceable>DISTRI</replaceable> with your distribution): </para>
-     <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRI</replaceable>/openSUSE:Tools.repo
-&prompt.root;<command>zypper</command> install osc</screen>
-     <para>For other systems, use your preferred package manager.</para>
-     <remark>
-      Following paragraph makes it sound like all package formats are always
-      built. However, you always need the right kind of package specification
-      file before anything can be built. - sknorr, 2017-08-15
-     </remark>
-     <remark>toms 2017-08-16: I don't understand your sentence. Please clarify. :)</remark>
-     <para>
-      As an alternative, use the &appimg; file. An &appimg; file
-      is a packaged application which can run on many distributions.
-      Download the file, save it in your <filename>~/bin</filename> directory,
-      and make the file executable.
+      &opensuse;.
      </para>
-     <remark>
-      Why put them there? ~/bin is just a convention and imo not in PATH by
-      default and you can run that AppImage file from any directory anyway. -
-      sknorr, 2017-08-15
-     </remark>
-     <remark>toms 2017-08-16: No, ~/bin IS in PATH by default. It is even
-      created when you add a new user. IMHO this is the perfect place to
-      add it. :)
-     </remark>
+     <itemizedlist>
+      <listitem>
+       <para>
+        For &suse; related systems, install it with the
+        <command>zypper</command> command (replace
+        <replaceable>DISTRIBUTION</replaceable> with your distribution):
+       </para>
+       <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRIBUTION</replaceable>/openSUSE:Tools.repo
+&prompt.root;<command>zypper</command> install osc</screen>
+      </listitem>
+      <listitem>
+       <para>
+        For other systems, use your preferred package manager.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        As an alternative, use the &appimg; file. An &appimg; file
+        is a packaged application which can run on many distributions.
+        Download the file, save it in your <filename>~/bin</filename> directory,
+        and make the file executable.
+       </para>
+      </listitem>
+     </itemizedlist>
     </listitem>
    </varlistentry>
    <varlistentry>
@@ -397,14 +392,16 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      <link xlink:href="https://build.opensuse.org"/>).</para>
    </listitem>
    <listitem>
-    <para>A system user &exampleuser; which builds the packages on the
-     machine locally.
+    <para>
+     A user on a local machine (you) who will be called &exampleuser; who
+     builds packages on their own machine.
     </para>
    </listitem>
    <listitem>
-    <para>An &obsa; user <systemitem class="username"
+    <para>
+     An &obsa; user who will be called <systemitem class="username"
      >&obsuser1;</systemitem> and their home <uri>&obshome1;</uri> on the &obs;.
-     This person is the same as the system user &exampleuser;.
+     This person is the same as the system user &exampleuser;, that is, you.
     </para>
    </listitem>
    <listitem>
@@ -427,7 +424,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      linkend="sec.obsbg.obsconfig"/>.</para>
    </listitem>
    <listitem>
-    <para>An RPM-based system like &opensuse; or &sle;.</para>
+    <para>An RPM-based operating system like &opensuse; or &sle;.</para>
    </listitem>
   </itemizedlist>
   <para>
@@ -523,7 +520,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     </remark>
     <para>
      &obsa; shows a couple of Linux distributions. For &suse; distributions,
-     it is recommended to choose at least &tw;
+     we recommended to activate at least &tw;
      and the latest &leap; release.
      If you like, you can also mark one of the <guimenu>openSUSE Backports for SLE 12</guimenu>
      which enables package builds for &sle;.
@@ -558,26 +555,32 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   <title>Creating a New Project</title>
   <para>
    This section covers how to create packages from a simple C++ project
-   hosted on &gh; (the <quote>upstream project</quote>). We assume, this
+   hosted on &gh; (the <quote>upstream project</quote>). We assume that this
    project contains source code which you want to package for different
-   &suse; distributions. Furthermore, &osccmd; is already installed on your
-   machine.
+   &suse; distributions.
   </para>
   <para>
    To create a package from the upstream project, do the following:
   </para>
   <procedure xml:id="pro.obsbg.uc.basicprj">
    <step>
+    <remark>
+     Again, this is very specific to the openSUSE Build Service! Also, iirc
+     refusal to build is not a thing. OBS itself is totally agnostic to that,
+     but when you submit something to openSUSE (so again openSUSE BS-specific),
+     the license will be checked by some totally optional extra web service.
+     - sknorr, 2017-08-16
+    </remark>
     <para> Go to the upstream project at <link xlink:href="&gitupstream1;"/>
-     and check the license first. You can only <!--build and -->redistribute
+     and check the license first. You must only <!--build and -->redistribute
      packages which are available under an open source license.
      &obsa; checks the license of the source code and will refuse to build
-     packages if the license does not comply with an open source license. 
+     packages if the license is not an open source license.
     </para>
     <para>
      You can find a list of already used licenses in &obsa; at
      <link xlink:href="https://license.opensuse.org"/>.
-     For more details and a comparison about open source licenses in
+     For more details and a comparison of open source licenses in
      general, see <link
       xlink:href="https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses"
      />.
@@ -588,8 +591,8 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    </step>
    <step>
     <para>
-     Open a shell. Choose or create a directory on your system where you have
-     enough space.
+     Open a shell. Choose or create a directory on your system in a partition
+     that has enough space to hold the package sources.
     </para>
    </step>
    <step>
@@ -618,24 +621,32 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      <filename>&obsworkdir1;/&gitproject;</filename>.
     </para>
     <para>
-     Download the sources from <link xlink:href="&gitupstream1;/releases"/>.
-     If the project has not published yet a release, download the latest sources
+     Download a TAR archive of the sources.
+    </para>
+    <para>
+     In our example, the project is hosted on &gh; and this URL can be used:
+     <link xlink:href="&gitupstream1;/releases"/>.
+     If there is no published release of a project yet, download the latest sources
      by clicking the <guimenu>Clone or download</guimenu> button and then the
      <guimenu>Download ZIP</guimenu> link.
     </para>
    </step>
    <step>
     <para>
-     Create a <firstterm baseform="Spec File">spec file</firstterm> which
-     contains metadata and build instructions. For RPM-based
-     distributions like &opensuse;, the basic structure should look like this:
+     Create the &packspec;. This file contains metadata and build
+     instructions.
+    </para>
+    <para>
+     As in this example we are building an RPM which can later be installed
+     on distributions like &opensuse;, create a <firstterm baseform="Spec
+     File">spec file</firstterm>. The basic structure should look like this:
     </para>
     <remark>toms 2017-08-09: Should the spec file be referenced by a GitHub
      link? How much detail do we need here?</remark>
     <screen>#
 # spec file for package &gitproject;
 #
-# -- Copyright comitted --
+# -- Copyright committed --
 
 Name:           &gitproject; <co xml:id="co.obsbg.uc.basicprj.metadata"/>
 Version:        &gitprjvers; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
@@ -687,7 +698,7 @@ make
      <callout arearefs="co.obsbg.uc.basicprj.buildreq">
       <formalpara>
        <title>Build Requirements</title>
-       <para>Lists dependencies to other packages which are needed for building.
+       <para>Lists dependencies on other packages which are needed for building.
         The listed packages are downloaded and installed before building
         the package.</para>
       </formalpara>
@@ -697,24 +708,28 @@ make
      <callout arearefs="co.obsbg.uc.basicprj.description">
       <formalpara>
        <title>The Description Section</title>
-       <para>Illustrate the purpose of the package and gives a comprehensive
+       <para>Illustrates the purpose of the package and gives a comprehensive
         explanation.</para>
       </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.prep">
       <formalpara>
        <title>The Preparation Section</title>
-       <para>Get the sources ready to build which includes unpacking
-        (using the <literal>%setup</literal> macro) and patching (using
-        the <literal>%patch</literal> macro, not shown here; see <xref
-         linkend="sec.obsbg.uc.patching"/>).</para>
+       <para>
+        Prepare the sources for building. This usually includes unpacking
+        them with the <literal>%setup</literal> macro and patching them using
+        the <literal>%patch</literal> macro. However, atching is not shown
+        here, for more information, see
+        <xref linkend="sec.obsbg.uc.patching"/>.
+       </para>
       </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.build">
       <formalpara>
        <title>The Build Section</title>
-       <para>Contains Shell commands or RPM macro on how to build the
-        package.</para>
+       <para>
+        Contains Shell commands or RPM macros for building the package.
+       </para>
       </formalpara>
       <para>
       </para>
@@ -722,27 +737,33 @@ make
      <callout arearefs="co.obsbg.uc.basicprj.install">
       <formalpara>
        <title>The Install Section</title>
-       <para>Contains Shell commands or RPM macro which
-       creates directories or copies files to the installation location.
+       <para>Contains Shell commands or RPM macros which
+       create directories or copy files to the installation location.
        </para>
       </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.files">
       <formalpara>
        <title>The Files Section</title>
-       <para>Lists all files and directories which belongs to
-        the package. Documentation related files are marked with
+       <para>Lists all files and directories which belong to
+        the package. Documentation-related files are marked with
         <literal>%doc</literal> and are automatically installed in the
-        default documentation directory (for &suse; systems it is
+        default documentation directory. <!-- On &suse; systems, this is
         <filename>/usr/share/doc/packages/<replaceable
-        >PACKAGENAME</replaceable></filename>).
+        >PACKAGENAME</replaceable></filename>. -->
+        <remark>
+         The directory information really leads too far, especially since
+         you're not explaining the arguably more important LSB-standard dirs
+         like /bin, /sbin, /etc either. - sknorr, 2017-08-16
+        </remark>
        </para>
       </formalpara>
      </callout>
      <callout arearefs="co.obsbg.uc.basicprj.cl">
       <formalpara>
        <title>The Changelog Section</title>
-       <para>Usually this is empty and &obsa; searches for a file with the
+       <para>This section is usually empty. Instead, &obsa; searches for a
+       file with the
         extension <filename class="extension"
        >.changes</filename>. If such a file exists in the project directory,
        it will be automatically included as a changelog.
@@ -784,13 +805,17 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
      Check if your build was successful. If everything was fine, commit the
      files to your package to your home project on &obsa;:</para>
     <screen>&prompt.user;<command>osc</command> commit</screen>
+    <remark>
+     If the build was not fine ... check the User Guide for troubleshooting
+     information? - sknorr, 2017-08-16
+    </remark>
    </step>
   </procedure>
   <para>To watch the current build of a specific build target, use the
    <command>buildlog</command> (alias <command>bl</command>) subcommand
    inside your working directory:
   </para>
-  <screen>&prompt.user;<command>osc</command> bl openSUSE_Tumbleweed  x86_64</screen>
+  <screen>&prompt.user;<command>osc</command> bl openSUSE_Tumbleweed x86_64</screen>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.patching">
@@ -800,41 +825,51 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
    project as shown in <xref linkend="sec.obsbg.uc.newprj"/>.
   </para>
   <para>
-   Patching a project can have different reasons:
+   There are different reasons to patch a package:
   </para>
   <itemizedlist>
    <listitem>
-    <para>Inappropriate write permission in the upstream project.</para>
     <para>
-     Usually, you cannot commit changes directly<!--
-      to the upstream project-->.
-     If you send your changes to the upstream project, it can be integrated
-     later than you need it or it can be rejected for different reasons.
-     To be independant of any release cycle, code styleguide, or personal
-     issues, patch files allow to modify the source code without touching
-     the original source.
+     <!-- FIXME: formatting is not semantic. - sknorr, 2017-08-16 -->
+     <emphasis role="strong">No permission to commit to the upstream
+     repository</emphasis>
+    </para>
+    <para>
+     Often, you cannot commit changes directly to the upstream project.
+     If you send changes to the upstream project, they may be integrated
+     late or even be rejected.
+    </para>
+    <para>
+     Patch files allow making changes while keeping source code pristine also
+     allow independence from an upstream project's release cycle, coding
+     style, and internal workings.
     </para>
    </listitem>
    <listitem>
     <para>
-     Applying security and bug fixes and other inconveniences which are not
-     yet available in the upstream  project.
+     <emphasis role="strong">Applying security and bug fixes or
+     distribution-specific fixes</emphasis>
     </para>
    </listitem>
    <listitem>
     <para>
-     Changing the source code in way to make it build on &obsa;.
+     <emphasis role="strong">Changing the source code so it builds on
+     &obsa;</emphasis>
     </para>
    </listitem>
    <listitem>
-    <para>Improving security and traceability.</para>
+    <para>
+     <emphasis role="strong">Improving security and traceability</emphasis>
+    </para>
     <para>
      A pristine source code in &obsa; is easier to check for changes than a
      modified one. The check is usually done with a checksum (MD5 or SHA).
     </para>
    </listitem>
    <listitem>
-    <para>Improve structure and consistency.</para>
+    <para>
+     <emphasis role="strong">Improving structure and consistency</emphasis>
+    </para>
     <para>
      From an organizational point of view, it is better when changes are
      separated from the source code. With the changes inside the patch file,
@@ -844,17 +879,16 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
    </listitem>
   </itemizedlist>
   <para>
-   We assume, you already have a project as described in
-  <xref linkend="sec.obsbg.uc.newprj"/>. Your project directory should look
-   like this:
+   We assume that you already have a project as described in
+  <xref linkend="sec.obsbg.uc.newprj"/>. The project directory should look
+   similat to this:
   </para>
-  <screen>.
+  <screen><emphasis>project directory</emphasis>
 ├── &gitproject;-&gitprjvers;.tar.gz
 ├── &gitproject;.changes
 └── &gitproject;.spec</screen>
   <para>In our case, we want to change the source code under
-   <filename>src/main.cpp</filename>. The task is to change the greeting
-   message.
+   <filename>src/main.cpp</filename> to change the greeting message.
   </para>
   <procedure>
    <title>Patching</title>
@@ -862,7 +896,7 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
     <para>Open a shell and change to your working directory.</para>
    </step>
    <step>
-    <para>Prepare your patch file:</para>
+    <para>Prepare a patch file:</para>
     <substeps>
      <step>
       <para>Unpack the source code:</para>
@@ -871,7 +905,7 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
        If you have downloaded the archive from &gh;, the archive contains
        a directory in the form <filename><replaceable
         >NAME</replaceable>-<replaceable>VERSION</replaceable></filename>.
-       In our case you will get the directory <filename>&gitproject;-&gitprjvers;/</filename>
+       In our case, there will be a directory <filename>&gitproject;-&gitprjvers;/</filename>
        after unpacking.
       </para>
      </step>
@@ -904,21 +938,22 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
      </step>
      <step>
       <para>Redirect the diff into a file:</para>
-      <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp <!--
--->> ../&gitproject;_main.diff</screen>
+      <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp \
+  > ../&gitproject;_main.diff</screen>
       <para>
-       In theory, you can use any name you like for your patch file. However,
-       it is recommended to add your project name and to name the file
-       which is easy to follow. If you have a bug tracker or an issue number,
-       add this to your file as well. You can either use <filename
+       You can use an arbitrary name for the patch file. However,
+       we recommend adding your project name and to give the file a speaking
+       name. If there is a bug or issue number associated with the patch, add
+       it to the file name as well. You can either use <filename
         class="extension">.diff</filename> or <filename
-         class="extension">.patch</filename> as file extension, both are common.
+         class="extension">.patch</filename> as the file extension, both are
+         common.
       </para>
      </step>
      <step>
       <para>
-       If you like, you can remove the directory <filename
-        >&gitproject;-&gitprjvers;/</filename> now as it is not needed anymore.
+       You can remove the directory <filename
+        >&gitproject;-&gitprjvers;/</filename>, it is not needed anymore.
       </para>
      </step>
     </substeps>
@@ -930,68 +965,83 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
 Patch0:         &gitproject;_main.diff</screen>
    </step>
    <step>
-    <para>In the <literal>%prep</literal> section add the <literal>%patch</literal>
-     macro like this:</para>
+    <para>In the <literal>%prep</literal> section, add the <literal>%patch</literal>
+     macro:</para>
     <screen>%prep
 %setup -q -n %{name}-%{version}
 %patch0</screen>
    </step>
    <step>
     <para>
-     Add you patch file to the local repository and rebuild your package
-     with:
+     Add your patch file to the local repository and rebuild your package:
     </para>
     <screen>&prompt.user;<command>osc</command> add &gitproject;_main.diff
 &prompt.user;<command>osc</command> build openSUSE_Tumbleweed x86_64 *.spec</screen>
    </step>
    <step>
-    <para>If everything was successfull, commit your changes by adding
-     your commit message:
+    <para>
+     If everything was successful, commit your changes:
     </para>
     <screen>&prompt.user;<command>osc</command> commit</screen>
+    <para>
+     An editor will open, so you can specify and save a commit message.
+    </para>
    </step>
   </procedure>
   <para>
    If you have to deal with many patches, the tool
-   <systemitem>quilt</systemitem> could be useful.
+   <command>quilt</command> can be useful. For more information about
+   <command>quilt</command>, see
+   <link xlink:href="https://savannah.nongnu.org/projects/quilt"/>.
   </para>
+  <remark>
+   Homepage is admittedly not great, but did not want to link to Wikipedia. -
+   sknorr, 2017-08-16
+  </remark>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.uc.branchprj">
-  <title>Branching a Project</title>
+  <title>Branching a Package</title>
+  <remark>
+   Is the OBS definition of branch really so narrow? (i.e. just for home
+   project copies?) - sknorr, 2017-08-16
+  </remark>
   <para>
-   This section describe how to collaborate with other projects.
+   This section describes how to collaborate between projects.
    A <firstterm baseform="Branch">branch</firstterm> in &obsa; terms is a
-   personal copy of another project that lives on your home project.
-   To be precise, all branches will be stored in a subproject of your
-   home and named as <uri>&obsbranch1;</uri>.
+   personal copy of another project as a subproject your home project.
+   Their names begin with <uri>&obsbranch1;</uri>.
   </para>
-  <para>Branching a project has usually the following reasons:</para>
+  <para>
+   There are different reasons to branch a package:
+  </para>
   <itemizedlist>
    <listitem>
     <para>
-     Allows you to make changes without affecting the original project.
+     Making changes without affecting the original project
     </para>
    </listitem>
    <listitem>
     <para>
-     Apply changes in your branch to try out a different path of development.
+     Applying changes in a branch to try out a different path of development
     </para>
    </listitem>
    <listitem>
     <para>
-     Modify the source code, build it, try it out, and submit back your
-     changes to the original project.
+     Modifying the source code, building it, trying the effect of the
+     changes, and submitting back changes to the original project.
     </para>
    </listitem>
   </itemizedlist>
-  <para>We assume, you have the <uri>&obshome1;/&gitproject;</uri> project
+  <para>
+   We assume that you have checked out the project
+   <uri>&obshome1;/&gitproject;</uri>
    on &obsa; and the user <systemitem class="username">&obsuser2;</systemitem>
-   wants to change the code. The task is to change the welcome message and
-   submit it back to the original project.
+   wants to change the code to change the welcome message. The code should
+   then be submitted to the original project.
   </para>
   <para>
-   User <systemitem class="username">&obsuser2;</systemitem> has to do the
+   User <systemitem class="username">&obsuser2;</systemitem> has to perform the
    following steps:
   </para>
   <procedure xml:id="pro.obsbg.uc.branchprj">
@@ -1006,30 +1056,56 @@ Patch0:         &gitproject;_main.diff</screen>
     <para>Create the branch from &exampleuser_plain;'s home project:</para>
     <screen>&prompt.user2;<command>osc</command> bco &obshome1; &gitproject;</screen>
     <para>This will create a branched package in &obsa; at <uri>&obsbranch2;/&gitproject;</uri>
-     and will checkout a directory <filename>&obsworkdir2;/branches/home/&obsuser1;/&gitproject;</filename>.</para>
+     and will check out a directory
+     <filename>&obsworkdir2;/branches/home/&obsuser1;/&gitproject;</filename>.
+    </para>
    </step>
    <step>
     <para>Change the working directory to your checked out branch:</para>
     <screen>&prompt.user2;<command>cd</command> &obsworkdir2;/branches/home/&obsuser1;/&gitproject;</screen>
    </step>
    <step>
-    <para>Make your changes as shown in <xref
+    <para>Make changes as shown in <xref
      linkend="sec.obsbg.uc.patching"/>.
     </para>
    </step>
    <step>
-    <para>Build your package and check the result:</para>
+    <para>Build the package and check the result:</para>
+    <remark>
+     Why not just build for the default OS with all the default options, i.e.
+     just "osc build"? That would be way more generic. - sknorr, 2017-08-16
+    </remark>
+    <remark>
+     Also shouldn't these be two steps? - sknorr, 2017-08-16
+    </remark>
     <screen>&prompt.user;<command>osc</command> build openSUSE_Tumbleweed x86_64 *.spec
 &prompt.user;<command>osc</command> bl openSUSE_Tumbleweed x86_64</screen>
    </step>
    <step>
-    <para>Commit your changes by adding your commit message: :</para>
-    <screen>&prompt.user2;<command>osc</command> addremove
-&prompt.user2;<command>osc</command> ci</screen>
+    <para>
+     Make sure all added and removed files are added to the OBS repository:
+    </para>
+    <remark>
+     Consistency question: Why are you using the short subcommands in so many
+     places but not here? addremove = ar. Though, personally, I think using
+     short commands in an introductory document is not a good idea. The long
+     names are way more descriptive and stuff like osc ci v/ osc co is just
+     not logical and can easily lead to errors. - sknorr, 2017-08-16
+    </remark>
+    <screen>&prompt.user2;<command>osc</command> addremove</screen>
    </step>
    <step>
     <para>
-     If everything was successful, create a submit request and finish it
+     If everything was successful, commit your changes:
+    </para>
+    <screen>&prompt.user;<command>osc</command> commit</screen>
+    <para>
+     An editor will open, so you can specify and save a commit message.
+    </para>
+   </step>
+   <step>
+    <para>
+     Create a submit request and finish it
      by adding a comment:
     </para>
     <!-- submitpac ... is a shorthand for osc submitreq -cleanup
@@ -1038,26 +1114,34 @@ Patch0:         &gitproject;_main.diff</screen>
     osc submitreq [OPTIONS] DESTPRJ [DESTPKG]
     osc submitreq [OPTIONS] SOURCEPRJ SOURCEPKG DESTPRJ [DESTPKG]
     -->
-    <screen>&prompt.user2;<command>osc</command> submitpac &obshome1;</screen>
+    <screen>&prompt.user2;<command>osc</command> submitpac</screen>
     <para>
-     &obsa; knows where the original project is located, so you do not have
-     to add the project name here.
+     &obsa; usually knows where the original project is located, so you do
+     not have to add the project or package names here.
     </para>
     <para>
-     Note, with the <command>submitpac</command> subcommand, the branch will
-     be automatically deleted when the submit request has been accepted.
-     If you do not want this, use either the <command>submitreq</command>
-     subcommand, or the option <option>--no-cleanup</option> for
-     <command>submitpac</command>.
+     However, if there are multiple packages in a branch, all packages will
+     be submitted together. To avoid that, add the names of the source and
+     destination projects and the package name to the command line:
     </para>
+    <screen>&prompt.user2;<command>osc</command> submitpac &obsbranch2;:&obshome1; &gitproject; &obshome1;</screen>
+    <note>
+     <title><command>osc submitrequest</command> and <command>osc submitpac</command></title>
+     <para>
+      With the <command>osc submitpac</command> subcommand, the branch will
+      be automatically deleted when the submit request has been accepted.
+      To avoid this, use the <command>osc submitrequest</command>
+      subcommand, or add the option <option>--no-cleanup</option> to
+      <command>osc submitpac</command>.
+     </para>
+    </note>
    </step>
   </procedure>
   <para>
    User <systemitem class="username">&obsuser2;</systemitem> has
    finished the task now and the submit request is assigned to <systemitem
-    class="username">&obsuser1;</systemitem> as a number (for example,
-   <systemitem>246</systemitem>). User <systemitem
-     class="username">&obsuser1;</systemitem> can decide:
+    class="username">&obsuser1;</systemitem>. User <systemitem
+     class="username">&obsuser1;</systemitem> can decide whether to:
   </para>
   <itemizedlist>
    <listitem>
@@ -1066,7 +1150,8 @@ Patch0:         &gitproject;_main.diff</screen>
      <para>The changes from user <systemitem class="username"
       >&obsuser2;</systemitem> will be integrated into the
      <uri>&obshome1;</uri> project. The accepted submit request will be
-      closed. Further changes need to create a new submit request.
+      closed. To make further changes, &obsuser2; needs to create a new submit
+      request.
      </para>
     </formalpara>
    </listitem>
@@ -1076,11 +1161,14 @@ Patch0:         &gitproject;_main.diff</screen>
      <para>
       The changes from user <systemitem class="username"
        >&obsuser2;</systemitem> are not integrated into the
-      <uri>&obshome1;</uri> project. For example, the reasons to decline a
-      submit request are usually build errors, style issues, or other
-      problems. Usually, the declined submit request contains a message which
-      contains the reason. Corrections has to be done in a new submit request
-      by superseding the old one.
+      <uri>&obshome1;</uri> project.
+     </para>
+     <para>
+      For example, reasons to decline a
+      submit request are build errors, style issues.
+      When declining submit request, the reviewer will usually give a
+      reason. &obsuser2; can then correct their submission using a new submit
+      request that supersedes the previous one.
      </para>
     </formalpara>
    </listitem>
@@ -1130,23 +1218,22 @@ Patch0:         &gitproject;_main.diff</screen>
  <sect1 xml:id="sec.obsbg.uc.install-from-obs">
   <title>Installing Packages from &obsa;</title>
   <para>
-   &obsa; provides a place which contains all the distributions and architectures
-   of your successfully built packages. When you create a package
+   &obsa; provides a place which contains all the distribution-specific and
+   architecture-specific versions
+   of successfully built packages. When you create a package
    in your &obsa; home project, all successfully built packages will appear
    under the <uri>&obsdnlurlhome1;</uri> URL.
+  </para>
+  <para>
+   However, this only true for the home project itself and manually created
+   subprojects but not for subprojects created as a result of branching a
+   package. Branched projects are not published by default.
   </para>
   <para>
    For example, if you have enabled the &tw; distribution,
    all packages for Tumbleweed will appear under the URL
    <uri>&obsdnlurlhome1;/openSUSE_Tumbleweed</uri>. This <emphasis>download
    repository</emphasis> is used as an installation source for Zypper or &yast;.
-   <!--for the
-   distributions openSUSE Tumbleweed and 42.2 for the architectures
-   Whenever you have built a package successfully, &obsa; provides a place
-   which contains all the distributions and architectures you have
-   setup for your home project. Use Zypper or &yast; to install your package.
-   The download repository is available at
-   <uri>&obsdnlurlhome1;</uri>.-->
   </para>
   <para>To install the <package>&gitproject;</package> package from your home project,
   use the following steps:</para>
@@ -1159,7 +1246,7 @@ Patch0:         &gitproject;_main.diff</screen>
 &obsdnlurlhome1;/openSUSE_42.2/&obshome1;.repo</screen>
    </step>
    <step>
-    <para>Copy the desired URL of your preferred distribution (in our case it
+    <para>Copy the desired URL of your preferred distribution (in our case, that
      is the line containing <systemitem>openSUSE_Tumbleweed</systemitem>).</para>
    </step>
    <step xml:id="st.obsbg.uc.install-from-obs.zypperar">
@@ -1169,21 +1256,20 @@ Patch0:         &gitproject;_main.diff</screen>
     <para>
      You will be asked to accept the GPG key of the download repository.</para>
    </step>
-   <step>
+   <step xml:id="st.obsbg.install">
     <para>Install the package:</para>
     <screen>&prompt.root;<command>zypper</command> install &gitproject;</screen>
    </step>
   </procedure>
   <para>
-   You have to execute <xref linkend="st.obsbg.uc.install-from-obs.repourls"/>
+   You need to execute <xref linkend="st.obsbg.uc.install-from-obs.repourls"/>
    to <xref linkend="st.obsbg.uc.install-from-obs.zypperar"/> only once.
-   Next time you want to update the package, run the last step with the
-   <command>zypper install</command> command only.
+   To update the package again, only run <xref linkend="st.obsbg.install"/>.
   </para>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.cheatsheet">
-  <title>Most Useful osc Commands</title>
+  <title>Most Useful &osccmd; Commands</title>
   <para>
    The following list gives you a short overview of some of the most used
    commands. To get an overview of the syntax, use <command>osc <replaceable>SUBCOMMAND</replaceable>
