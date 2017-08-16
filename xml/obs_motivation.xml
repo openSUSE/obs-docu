@@ -76,10 +76,13 @@
     add-ons for their software. </para>
   </sect2>
  </sect1>
+
+<!--
  <sect1>
   <title>History of the OBS</title>
   <para> From building packages on workstations over autobuild to OBS. </para>
  </sect1>
+
  <sect1>
   <title>Future of the OBS</title>
   <para> With the advent of test-driven development and similar agile methods
@@ -101,4 +104,5 @@
    constantly supports new hardware, software, standards and tools makes for a
    very interesting future. </para>
  </sect1>
+-->
 </chapter>
