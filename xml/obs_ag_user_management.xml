@@ -780,7 +780,7 @@ privilege user.</simpara>
      </tbody>
     </tgroup>
    </table>
-   <simpara>Example LDAP section of the <emphasis>options.yml</emphasis> file:</simpara>
+   <simpara>Example Kerberos section of the <emphasis>options.yml</emphasis> file:</simpara>
 <screen>...
 
 ##################
