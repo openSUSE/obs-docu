@@ -35,13 +35,23 @@
 
   From Best Practice Guide:
   *
- -->
 
-<!-- <part xml:id="par.concepts">
-  <title>Concepts</title>-->
+  Other ideas:
+  * More indepth knowledge about osc
+  * linkpac vs. aggregate
+  * Building AppImages
+  * Handling dependencies: directly, layering (editing additional repos to
+    your project config), linking (link or aggregate)
+    see https://en.opensuse.org/openSUSE:Build_Service_Tutorial
+
+-->
+
+ <part xml:id="par.concepts">
+  <title>Concepts</title>
 <!--  <xi:include href="obs_user_concept.xml"/>-->
   <xi:include href="obs_package_formats.xml"/>
-<!--</part>-->
+  <xi:include href="obs_osc.xml"/>
+</part>
 
 <!-- <part xml:id="par.working">
   <title>Working with &obs;</title>-->
