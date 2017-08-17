@@ -164,8 +164,23 @@
     <command>osc service merge</command>. </para>
  </sect1>
  <sect1>
-  <title>How to write a source service</title>
-  <para> .. </para>
+  <title>How to Define a Source Service</title>
+  <para>
+   To define a source service add a <tag>service</tag> section to the
+    <filename>_service</filename> file of the project. Within this section,
+   define a script and its arguments that will be called by the source service.
+   The script needs to reside in <filename>/usr/lib/obs/service</filename>.
+  </para>
+ <screen>&lt;services&gt;
+ &lt;service name="<replaceable>MY_SCRIPT</replaceable>"&gt;
+  &lt;param name="<replaceable>PARAMETER1</replaceable>"&gt;<replaceable>PARAMETER1_VALUE</replaceable>&lt;/param&gt;
+ &lt;/service&gt;
+&lt;/services&gt;</screen>
+  <para>
+   The example above will execute the following command:
+  </para>
+  <screen>/usr/lib/obs/service/ <replaceable>MY_SCRIPT</replaceable> \
+--<replaceable>PARAMETER1</replaceable> <replaceable>PARAMETER1_VALUE</replaceable> --outdir <replaceable>DIR</replaceable></screen>
  </sect1>
  <sect1>
   <title>Interfaces for using source services</title>
