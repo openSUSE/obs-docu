@@ -257,7 +257,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    your system with <command>sudo</command>.
   </para>
   <para>
-   At some point, you need to enter the &rootuser; password. This can be
+   After all dependencies are downloaded and before the actual build process
+   can start, you need to enter the &rootuser; password. This can be
    annoying if you rebuild packages frequently. Therefore, the configuration
    below customizes
    the <command>sudo</command> configuration to allow building packages
@@ -350,7 +351,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    <listitem>
     <para>
      At least a passing familiarity with version control systems such as Git
-     and Subversion (SVN). Not only will Git be used for some aspects of this
+     and Subversion (SVN). Not only will Git be used for parts of this
      guide, many &obsa; concepts are modeled after their Subversion (SVN)
      equivalents.
     </para>
