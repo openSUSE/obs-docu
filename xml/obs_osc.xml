@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.osc"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Knowing &osc;, the Command Line Tool</title>
+ <info>
+  <abstract>
+   <para>TBD</para>
+  </abstract>
+ </info>
+ <remark>toms 2017-08-16:  http://docserv.suse.de/documents/Open_Build_Service/obs-best-practices/html/cha.obs.best-practices.oscexamples.html#id17157
+ osc, the Python command line client</remark>
+
+ <sect1 xml:id="sec.obs.osc.install">
+  <title>Installing and Configuring<!-- the &osc; CLI Tool--></title>
+  <para> To work with &obs; install the &osccmd; command line tool from your
+   preferred distributions or from the &obsa; project
+   <uri>openSUSE:Tools</uri>. The tool runs on any modern Linux system and is
+   available for different distributions, like CentOS, Debian, Fedora, SLE,
+   &opensuse;, to name a few. </para>
+  <para> For &suse; related systems, install it with the
+    <command>zypper</command> command (replace
+    <replaceable>DISTRI</replaceable> with your distribution): </para>
+  <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRI</replaceable>/openSUSE:Tools.repo
+&prompt.root;<command>zypper</command> install osc</screen>
+  <remark>toms 2017-08-16: Maybe add more information about installing
+  osc on other distributions?</remark>
+  <para>For other systems, use your preferred package manager.</para>
+  <para>As an alternative, use the &appimg; file. An &appimg; file is a
+   packaged application and its dependencies which can run on many
+   distributions. Download the file, save it in your
+   <filename>~/bin</filename> directory, and make the file executable.</para>
+ </sect1>
+
+ <sect1>
+  <title>Configuring &osc;</title>
+  <para>Usually, the default configuration is appropriate in most cases.
+   There are some special configuration option which might be helpful
+   if you have special needs.
+  </para>
+  <remark>toms 2017-08-16: Mention different incarnations of osc?
+  If a developer has to work with different OBS instances, it is recommended
+  to create an alias (like with iosc): osc -A http://...
+  </remark>
+  <remark>toms 2017-08-16: keyring? extra-pkgs? build-root?
+   checkout_no_colon? packagecachedir?</remark>
+ </sect1>
+
+ <sect1>
+  <title>Getting Help</title>
+  <para>TBD</para>
+  <screen>osc help <remark>COMMAND</remark></screen>
+ </sect1>
+
+ <sect1>
+  <title>Usage</title>
+  <para>TBD</para>
+ </sect1>
+</chapter>
