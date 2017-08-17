@@ -128,7 +128,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    <emphasis>download repository</emphasis>).
   </para>
   <para>
-   The package is then publically available and can be installed. In the case
+   The package is then publicly available and can be installed. In the case
    of an RPM package for a &suse;-based system, you would use &yast; or
    Zypper as the installation tool.
   </para>
@@ -196,7 +196,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
  <sect1 xml:id="sec.obsbg.req">
   <title>Requirements for Working with &osccmd; on the Command Line</title>
   <para>
-   Before you work with &obs;, make sure you fullfil the following requirements.
+   Before you work with &obs;, make sure you fulfill the following requirements.
   </para>
   <variablelist>
    <varlistentry xml:id="vle.obsbg.req.software">
@@ -286,6 +286,11 @@ https://www.suse.com/communities/blog/suse-studio-integration/
         >osc</systemitem> which are allowed to build packages:
       </para>
       <screen>&prompt.root;<command>usermod</command> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
+      <remark>
+       Does not work with two users. If you want two users (bob and alice),
+       you also need two commands (afaict after just trying this). - sknorr,
+       2017-08-17
+      </remark>
      </step>
      <step>
       <para>Run <command>visudo</command> to create the sudoers file
@@ -316,7 +321,9 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       </para>
    </step>
   </procedure>
-  
+
+  <note>
+   <title>Alternative Directory Structure</title>
   <para>
    Optionally, if you prefer to separate projects and subprojects in
    directories and subdirectories, change the following line in your
@@ -329,8 +336,9 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    instead of the single directory <filename>&obshome1;</filename>. 
   </para>
   <para>
-   In this guide, the default configuration with colons is used.
+   However, in this guide, the default configuration with colons is used.
   </para>
+  </note>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.usagescenarios">
@@ -339,6 +347,14 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    This guide assumes:
   </para>
   <itemizedlist>
+   <listitem>
+    <para>
+     At least a passing familiarity with version control systems such as Git
+     and Subversion (SVN). Not only will Git be used for some aspects of this
+     guide, many &obsa; concepts are modeled after their Subversion (SVN)
+     equivalents.
+    </para>
+   </listitem>
    <listitem>
     <para>
      You are using the &osbs; at <link xlink:href="https://build.opensuse.org"/>.
@@ -444,7 +460,8 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   <para>
    When you log in to your home project for the first time, it will be empty.
    To build
-   packages, you need to select build targets (distributions) first.
+   packages, you need to select build targets (operating systems and
+   architectures) first.
    Build targets are defined project-wide and every package in a project is
    built for each build target. However, you can disable build targets for a
    specific package.
@@ -473,15 +490,15 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     <para>
      Select the distributions you want to build for.</para>
     <para>
-     &obsa; shows a couple of Linux distributions. For &suse; distributions,
+     &obsa; shows several Linux distributions. For &suse; distributions,
      we recommended to activate at least &tw;
      and the latest &leap; release.
      If you like, you can also mark one of the <guimenu>openSUSE Backports for SLE 12</guimenu>
      which enables package builds for &sle;.
     </para>
     <para>
-     When you select a distributions, &obsa; gives a short
-     notice that it has successfully added it to your home project.
+     When you select a distribution, &obsa; will show a message
+     that it has successfully added it to your home project.
     </para>
    </step>
    <step>
@@ -500,7 +517,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    <guimenu>Repositories</guimenu> tab, find the respective build target,
    and click the <guimenu>Edit repository</guimenu> link.
    This will show the available architectures and additional package
-   repositores you can add.
+   repositories you can add.
   </para>
   <remark>toms 2017-08-14: Maybe add a screenshot of the Web UI?</remark>
  </sect1>
@@ -516,12 +533,15 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   <note>
    <title>Check the License First</title>
    <para>
-    Before building, go to the upstream project and check the license first.
-    In the &osbs;, you must only redistribute packages which are available
-    under an open source license.
+    Before building, go to the homepage of the upstream project and check the
+    license first. 
+   </para>
+   <para>
+    For example, in the &osbs;, you must only redistribute packages which are
+    available under an open source license.
     If you are submitting to &opensuse;, the source code will be checked
-    for license compliance. Your package will be rejected if it does not
-    abide by an open source license.
+    for license compliance. If your package does not abide by an open source
+    license, it will be rejected.
    </para>
    <para>
     You can find a list of already used licenses in &obsa; at
@@ -663,11 +683,11 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
       <formalpara>
        <title>The Preparation Section</title>
        <para>
-        Prepare the sources for building. This usually includes unpacking
+        Prepares the sources for building. This usually includes unpacking
         them with the <literal>%setup</literal> macro and patching them using
-        the <literal>%patch</literal> macro. However, patching is not shown
-        here, for more information, see
-        <xref linkend="sec.obsbg.uc.patching"/>.
+        the <literal>%patch</literal> macro. (However, patching is not shown
+        here. For more information, see
+        <xref linkend="sec.obsbg.uc.patching"/>.)
        </para>
       </formalpara>
      </callout>
@@ -705,7 +725,7 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
        <para>This section is usually empty. Instead, &obsa; searches for a
        file with the extension <filename class="extension"
        >.changes</filename>. If such a file exists in the project directory,
-       it will be automatically included as a changelog.
+       it will automatically be included as a changelog.
        The changelog file itself contains a high level overview of the
        history of the package.</para>
       </formalpara>
@@ -719,16 +739,17 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
    <step>
     <para>Create a changelog file:</para>
     <screen>&prompt.user;<command>osc</command> vc</screen>
-    <para>The command will open an editor with the following content:</para>
+    <para>This command will open an editor with the following content:</para>
     <screen>-------------------------------------------------------------------
 Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
-   </step>
-   <step>
-    <para>Add a short summary of your changes.</para>
-    <para>Usually, the changelog entry contains some high-level overview
-     like the version you have downloaded, some patches you applied,
+    <para>
+     In the editor, add a short summary of your changes.
+     Usually, a changelog entry contains a high-level overview such as the
+     version of the software in the package, which patches you applied,
      or something else that you have changed in your project.
-     After you save and leave your editor, the &osccmd; commands
+    </para>
+    <para>
+     Afterwards, save the file and leave the editor. &osccmd; then
      creates the file <filename>&gitproject;.changes</filename>.
     </para>
    </step>
@@ -748,9 +769,9 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     <para>
      The default build target is set in the &osc; configuration
      file <filename>~/.oscrc</filename> in the variable
-     <option>build_repository</option>. Usually, it refers to &tw;.
+     <option>build_repository</option>. On &osbs; this is usually &tw;.
     </para>
-    <para>If you want to build the package for another build target,
+    <para>To build the package for another build target,
      use the following command:</para>
     <screen>&prompt.user;<command>osc</command> build --local-package openSUSE_Tumbleweed x86_64 *.spec</screen>
    </step>
@@ -763,7 +784,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     section with chroot and buildlog specialities?</remark>
     <para>
      If you encounter build errors, use the <command>osc buildlog</command>
-     command to review it, see the next step.
+     command to review it, as described below.
     </para>
    </step>
   </procedure>
@@ -781,12 +802,12 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
    project as shown in <xref linkend="sec.obsbg.uc.newprj"/>.
   </para>
   <para>
-   There are different reasons to patch a package:
+   There are different reasons for patching a package:
   </para>
   <itemizedlist>
    <listitem>
     <formalpara>
-     <title>No Permission to Commit to the Upstream Repository</title>    
+     <title>You Do Not Have Permission to Commit Upstream</title>
     <para>
      Often, you cannot commit changes directly to the upstream project.
      If you send changes to the upstream project, they may be integrated
@@ -794,26 +815,26 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     </para>
     </formalpara>
     <para>
-     Patch files allow making changes while keeping source code pristine also
+     Patch files allow making changes while keeping source code pristine and also
      allow independence from an upstream project's release cycle, coding
      style, and internal workings.
     </para>
    </listitem>
    <listitem>
     <formalpara>
-     <title>Applying Security and Bug Fixes or Distribution-specific Fixes</title>
+     <title>To Apply Security and Bug Fixes or Distribution-specific Fixes</title>
      <para></para>
     </formalpara>
    </listitem>
    <listitem>
     <formalpara>
-     <title>Changing the Source Code so it Builds on &obsa;</title>
+     <title>To Change the Source Code, So It Builds on &obsa;</title>
      <para></para>
     </formalpara>
    </listitem>
    <listitem>
     <formalpara>
-     <title>Improving Security and Traceability</title>  
+     <title>To Improve Security and Traceability</title>  
     <para>
      A pristine source code in &obsa; is easier to check for changes than a
      modified one. The check is usually done with a checksum (MD5 or SHA).
@@ -822,7 +843,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
    </listitem>
    <listitem>
     <formalpara>
-     <title>Improving Structure and Consistency</title>
+     <title>To Improve Structure and Consistency</title>
     <para>
      From an organizational point of view, it is better when changes are
      separated from the source code. With the changes inside the patch file,
@@ -895,9 +916,10 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
       <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp \
   > ../&gitproject;_main.diff</screen>
       <para>
-       You can use an arbitrary name for the patch file. However,
-       we recommend adding your project name and to give the file a speaking
-       name. If there is a bug or issue number associated with the patch, add
+       You can use an arbitrary name for the patch file. However, we
+       recommend giving the file a speaking name and adding the name of the
+       upstream project. If there is a bug or issue number associated with
+       the patch, add
        it to the file name as well. You can either use <filename
         class="extension">.diff</filename> or <filename
          class="extension">.patch</filename> as the file extension, both are
@@ -956,8 +978,8 @@ Patch0:         &gitproject;_main.diff</screen>
    This section describes how to collaborate between projects.
    You can <firstterm baseform="Branch">branch</firstterm> any package in
    &obsa; into any project that you have write permission for. By default,
-   new branches will be created as subproject of your home project.
-   Default branches have names beginning with <uri>&obsbranch1;</uri>.
+   new branches will be created as a subproject of your home project.
+   Such default branches have names beginning with <uri>&obsbranch1;</uri>.
   </para>
   <para>
    There are different reasons to branch a package:
@@ -965,7 +987,7 @@ Patch0:         &gitproject;_main.diff</screen>
   <itemizedlist>
    <listitem>
     <para>
-     Modifying the source code, building it, trying the effect of the
+     To modify the source code, building it, trying the effect of the
      changes, and submitting back changes to the original project.
      Usually, you use this workflow when you do not have write permissions of
      a project.
@@ -973,12 +995,12 @@ Patch0:         &gitproject;_main.diff</screen>
    </listitem>
    <listitem>
     <para>
-     Making changes without affecting the original project.
+     To make changes without affecting the original project.
     </para>
    </listitem>
    <listitem>
     <para>
-     Applying changes in a branch to try out a different path of development.
+     To apply temporary changes to try out a different path of development.
     </para>
    </listitem>
    
@@ -1147,8 +1169,8 @@ Patch0:         &gitproject;_main.diff</screen>
    home project <uri>&obshome1;</uri>.
   </para>
   <para>
-   If your submit request was declined, fix the issues and resubmit the
-   package. When creating the new submit request, &osc; will ask whether to
+   If the submit request was declined, you can fix the issues and resubmit the
+   package. When creating a new submit request, &osc; will ask whether to
    supersede the previous request.
   </para>
  </sect1>
@@ -1163,7 +1185,7 @@ Patch0:         &gitproject;_main.diff</screen>
    under the <uri>&obsdnlurlhome1;</uri> URL.
   </para>
   <para>
-   However, this only true for the home project itself and manually created
+   However, this is only true for the home project itself and manually created
    subprojects but not for subprojects created as a result of branching a
    package. Branched projects are not published by default.
    If you need the build results though, download the binaries manually with
@@ -1186,8 +1208,8 @@ Patch0:         &gitproject;_main.diff</screen>
 &obsdnlurlhome1;/openSUSE_42.2/&obshome1;.repo</screen>
    </step>
    <step>
-    <para>Copy the desired URL of your preferred distribution (in our case, that
-     is the line containing <systemitem>openSUSE_Tumbleweed</systemitem>).</para>
+    <para>Copy the desired URL of your preferred distribution. In our case, that
+     is the line containing <systemitem>openSUSE_Tumbleweed</systemitem>.</para>
    </step>
    <step xml:id="st.obsbg.uc.install-from-obs.zypperar">
     <para>Use <command>zypper</command> and add the copied URL:
@@ -1202,18 +1224,20 @@ Patch0:         &gitproject;_main.diff</screen>
    </step>
   </procedure>
   <para>
-   You need to execute <xref linkend="st.obsbg.uc.install-from-obs.repourls"/>
-   to <xref linkend="st.obsbg.uc.install-from-obs.zypperar"/> only once.
    To update the package again, only run <xref linkend="st.obsbg.install"/>.
+   You do not need to execute
+   <xref linkend="st.obsbg.uc.install-from-obs.repourls"/> again, as the
+   repository is already configured in your system.
   </para>
  </sect1>
 
  <sect1 xml:id="sec.obsbg.cheatsheet">
-  <title>Most Useful &osccmd; Commands</title>
+  <title>Other Useful &osccmd; Commands</title>
   <para>
-   The following list gives you a short overview of some of the most used
-   commands. To get an overview of the syntax, use <command>osc <replaceable>SUBCOMMAND</replaceable>
-    --help</command>.
+   The following list gives you a short overview of frequently used &osccmd;
+   subcommands that were not mentioned in this guide so far. For an
+   overview of their syntax, use
+   <command>osc <replaceable>SUBCOMMAND</replaceable> --help</command>.
   </para>
   <variablelist>
    <varlistentry>
