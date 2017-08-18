@@ -100,7 +100,7 @@
  </sect1>
 
  <sect1>
-  <title>Debian: Deb</title>
+  <title>Debian: Dsc</title>
   <para>
    Deb packages are used on all Debian or Ubuntu based distributions.
    For building <filename class="extension">.deb</filename> files you need:
@@ -156,6 +156,12 @@
     </listitem>
    </varlistentry>
   </variablelist>
+ </sect1>
+
+ <sect1>
+  <title>Snap</title>
+  <remark>toms 2017-08-18: see obs_build_containers.xml</remark>
+  <para>TBD</para>
  </sect1>
 
  <sect1 xml:id="_kiwi_appliance">
