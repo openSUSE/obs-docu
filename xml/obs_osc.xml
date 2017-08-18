@@ -8,7 +8,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Knowing &osc;, the Command Line Tool</title>
+ <title>&osc;, the Command Line Tool</title>
  <info>
   <abstract>
    <para>TBD</para>
@@ -52,6 +52,7 @@
   </remark>
   <remark>toms 2017-08-16: keyring? extra-pkgs? build-root?
    checkout_no_colon? packagecachedir?</remark>
+  <remark>toms 2017-08-18: describe/list osc plugins and what they are for?</remark>
  </sect1>
 
  <sect1>
