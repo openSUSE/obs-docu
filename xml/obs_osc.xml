@@ -19,6 +19,8 @@
 
  <sect1 xml:id="sec.obs.osc.install">
   <title>Installing and Configuring<!-- the &osc; CLI Tool--></title>
+  <remark>toms 2017-08-17: Integrate some sections/text from here http://docserv.suse.de/documents/Open_Build_Service/obs-best-practices/html/cha.obs.best-practices.localsetup.html
+  </remark>
   <para> To work with &obs; install the &osccmd; command line tool from your
    preferred distributions or from the &obsa; project
    <uri>openSUSE:Tools</uri>. The tool runs on any modern Linux system and is
