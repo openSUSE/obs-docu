@@ -48,7 +48,7 @@
 
  <part xml:id="par.concepts">
   <title>Concepts</title>
-<!--  <xi:include href="obs_user_concept.xml"/>-->
+  <xi:include href="obs_user_concept.xml"/>
   <xi:include href="obs_package_formats.xml"/>
 </part>
 
