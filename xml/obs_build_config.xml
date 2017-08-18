@@ -9,13 +9,61 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Project Configuration</title>
  <info/>
- <para> The build configuration is needed at least in each base project to
-  define the setup of the build system. In addition to that it can be used to
-  handle compatibility layers or to switch on or off certain features during
-  the build. </para>
- <para> The build config is reachable via API /source/PROJECT/_config, via
-   <command>osc meta prjconf</command> or via the Web UI via the
-   <guimenu>Project Config</guimenu> tab. </para>
+
+ <sect1>
+  <title>About the Project Configuration</title>
+  <para>
+   Each project has a <firstterm>project configuration</firstterm> which
+   defines the setup of the build system. Usually it is empty and you do
+   not need to change anything. However, when you change it, it can be
+   used for the following reasons:
+  </para>
+  <remark>toms 2017-08-18: Add more reasons why it is needed</remark>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Handle compatibility layers. <remark>toms 2017-08-18: more info needed!</remark>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Switch on or off certain features during the build.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Decide which package is installed during build if there are circular
+     dependencies.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   To view the project configuration, use one of the following methods
+  </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>With &osccmd;</title>
+     <para>Use <command>osc meta prjconf</command> in your working directory
+     of your project.</para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>In the &obsa; Web UI</title>
+     <para>Via the <guimenu>Project Config</guimenu> tab.</para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>With the &obsa; API</title>
+     <para>Reachable via the <uri>/source/PROJECT/_config</uri> path.</para>
+    </formalpara>
+    <para></para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+
  <sect1>
   <title>Configuration File Syntax</title>
   <para> The build configuration is parsed by OBS in rpm style independent of
