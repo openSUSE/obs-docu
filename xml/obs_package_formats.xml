@@ -9,53 +9,54 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Supported Build Recipes and Package Formats</title>
  <info/>
- <para> &obsa; differentiates between the format of the build recipes and the
-  format of the installed packages. For example, the spec receipe format is
-  used to build RPM packages by calling <command>rpmbuild</command>.
- </para>
- <para>
-  In most cases, the build result format is the same as the package format
-  used for setting up the build environment, but
-  sometimes the format is different. An example is the &kiwi;
-  recipe format, which can build <!--products and--> ISOs, but uses RPM
-  packages to setup the build process.
- </para>
- <para> OBS currently supports the following recipe formats and packages: </para>
- <itemizedlist>
-  <title>Supported Package Formats</title>
-  <listitem>
-   <para>RPM package format, used for all RPM-based distributions like
-    &opensuse;, &sle;, Fedora, and others.</para>
-  </listitem>
-  <listitem>
-   <para>DEB package format, used in Debian, Ubuntu, and derived distributions</para>
-  </listitem>
-  <listitem>
-   <para>Arch package format, used by Arch Linux</para>
-  </listitem>
- </itemizedlist>
-
- <itemizedlist>
-  <title>Supported Recipe Formats</title>
-  <listitem>
-   <para>Spec format for RPM packages</para>
-  </listitem>
-  <listitem>
-   <para>Dsc format</para>
-  </listitem>
-  <listitem>
-   <para>&kiwi; format, both product and appliances</para>
-  </listitem>
-  <listitem>
-   <para>preinstallimage</para>
-  </listitem>
-  <listitem>
-   <para>SimpleImage format</para>
-  </listitem>
- </itemizedlist>
+ <remark>toms 2017-08-18: list advantages/disadvantages/benefits for each format</remark>
 
  <sect1>
-  <title>Setup a Format</title>
+  <title>About Formats</title>
+  <para> &obsa; differentiates between the format of the build recipes and the
+   format of the installed packages. For example, the spec receipe format is
+   used to build RPM packages by calling <command>rpmbuild</command>. </para>
+  <para> In most cases, the build result format is the same as the package
+   format used for setting up the build environment, but sometimes the format
+   is different. An example is the &kiwi; recipe format, which can build
+   <!--products and--> ISOs, but uses RPM packages to setup the build process.
+  </para>
+  <para> OBS currently supports the following recipe formats and packages:
+  </para>
+  <itemizedlist>
+   <title>Supported Package Formats</title>
+   <listitem>
+    <para>RPM package format, used for all RPM-based distributions like
+     &opensuse;, &sle;, Fedora, and others.</para>
+   </listitem>
+   <listitem>
+    <para>DEB package format, used in Debian, Ubuntu, and derived
+     distributions</para>
+   </listitem>
+   <listitem>
+    <para>Arch package format, used by Arch Linux</para>
+   </listitem>
+  </itemizedlist>
+
+  <itemizedlist>
+   <title>Supported Recipe Formats</title>
+   <listitem>
+    <para>Spec format for RPM packages</para>
+   </listitem>
+   <listitem>
+    <para>Dsc format</para>
+   </listitem>
+   <listitem>
+    <para>&kiwi; format, both product and appliances</para>
+   </listitem>
+   <listitem>
+    <para>preinstallimage</para>
+   </listitem>
+   <listitem>
+    <para>SimpleImage format</para>
+   </listitem>
+  </itemizedlist>
+
   <para> If no recipe format and binary format is specified in the project
    configuration, &obsa; tries to deduce them from the preinstall list, which
    includes the name of the used package manager.
@@ -64,136 +65,185 @@
     <literal>spec</literal> builds as default. This configuration is done by
    adding a <literal>Type</literal> line to the project configuration. </para>
  </sect1>
+
  <sect1>
-  <title>Recipe Specials</title>
+  <title>RPM: Spec</title>
   <para>
-   Each format has some special conditions or limitations which you should
-   be aware of.
+   RPM (RPM Package Manager) is used on &opensuse;, &sle;, RedHat, Fedora,
+   and other distributions. For building RPMs you need:
   </para>
+  <variablelist>
+   <varlistentry>
+    <term><filename class="extension">.spec</filename></term>
+    <listitem>
+     <para>
+      the <firstterm>spec file</firstterm> for each package containing
+      metadata and build instructions. &obsa; parses the spec file's
+      BuildRequires lines to get a list of package dependencies. OBS uses this
+      information to both build the packages in the correct order and also for
+      setting up the build environment. The parser understands most of RPMs
+      macro handling, so it is possible to use architecture specific
+      BuildRequires, conditional builds and other advanced RPM features.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename class="extension">.changes</filename></term>
+    <listitem>
+     <para>the file which contains the changelog.</para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
 
-  <sect2>
-   <title>RPM: Spec</title>
-   <para> For building RPMs you need a <filename
-    class="extension">.spec</filename> file for each package, containing
-    its build description. &obsa; parses the spec file's BuildRequires lines to
-    get a list of package dependencies. OBS uses this information to both build
-    the packages in the correct order and also for setting up the build
-    environment. The parser understands most of RPMs macro handling, so it is
-    possible to use architecture specific BuildRequires, conditional builds and
-    other advanced RPM features. </para>
-  </sect2>
+ <sect1>
+  <title>Debian: Deb</title>
+  <para>
+   Deb packages are used on all Debian or Ubuntu based distributions.
+   For building <filename class="extension">.deb</filename> files you need:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term><filename>debian.control</filename></term>
+    <listitem>
+     <para>The file contains the meta information for the package like the
+      build dependencies or some description. </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename>debian.rules</filename></term>
+    <listitem>
+     <para>This file describes the build section of the deb building process.
+      There are the configure and make compile commands including other deb
+      building sections.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename><replaceable>PACKAGE</replaceable>.dsc</filename></term>
+    <listitem>
+     <para>In this file you describe the package names of each subpackage and
+      their dependency level. Unlike rpm, the release numbers are not increased
+      automatically during build unless the keyword DEBTRANSFORM-RELEASE is
+      added to the file.</para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
 
-  <sect2>
-   <title>Debian: Deb</title>
-   <para> To build <filename class="extension">.deb</filename> files, which
-    are used on Debian-based distributions, you need the following files:
+ <sect1>
+  <title>Arch: pkg</title>
+  <para>
+   &obs.arch; files is used on Arch Linux and its derivates. For building
+   &obs.arch; you need:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term><filename>PKGBUILD</filename></term>
+    <listitem>
+     <para>
+      It contains the build description and the source tarball. The file
+       <filename>PKGBUILD</filename> does not have macros like
+       <literal>%{buildroot}</literal>. It contains variables, for example,
+        <literal>makedepends=(<replaceable>PACKAGE1</replaceable>,
+        <replaceable>PACKAGE2</replaceable>)</literal>. These variables are
+      parsed by OBS and uses them as dependencies. On Arch Linux you typically
+      build packages without subpackage. They are no <package>*-dev</package>
+      or <package>*-devel</package> packages.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
+
+ <sect1 xml:id="_kiwi_appliance">
+  <title>&kiwi; Appliance</title>
+  <para>
+   <link xlink:href="https://suse.github.io/kiwi/">KIWI</link> is an OS
+   appliance builder that builds images for various formats, starting from
+   hardware images, virtualization systems like QEMU/KVM, Xen and VMware,
+   and more. It supports a wide range of architectures, which are x86, x86_64,
+   s390 and ppc. </para>
+  <para> For building an image in &kiwi; you need:</para>
+
+  <variablelist>
+   <varlistentry>
+    <term><filename>my_image.kiwi</filename></term>
+    <listitem>
+     <para>
+      Contains the image configuration in XML format. Full XML schema
+      documentation can be found <link
+      xlink:href="https://suse.github.io/kiwi/development/schema.html"/>.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename>config.sh</filename> (optional)</term>
+    <listitem>
+     <para>configuration script that runs
+     at the end of the installation, but before package scripts have run.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename>root/</filename></term>
+    <listitem>
+     <para>
+      directory that contains files that will be applied to the built
+      image after package installation. This can also be an archived and
+      compressed directory.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+
+  <note>
+   <para> &obsa; only accepts &kiwi; configuration files with a <filename
+    class="extension">.kiwi</filename> suffix. Other naming schemes &kiwi;
+    supports like <filename>config.xml</filename>, are ignored in &obsa;.
    </para>
-   <variablelist>
-    <varlistentry>
-     <term><filename>debian.control</filename></term>
-     <listitem>
-      <para>The file contains the meta information for the package like the
-       build dependencies or some description. </para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><filename>debian.rules</filename></term>
-     <listitem>
-      <para>This file describes the build section of the deb building
-    process. There are the configure and make compile commands including other
-    deb building sections.</para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><filename><replaceable>PACKAGE</replaceable>.dsc</filename></term>
-     <listitem>
-      <para>In this file you describe the package names of each
-    subpackage and their dependency level. Unlike rpm, the release numbers are
-    not increased automatically during build unless the keyword
-    DEBTRANSFORM-RELEASE is added to the file.</para>
-     </listitem>
-    </varlistentry>
-   </variablelist>
-  </sect2>
+  </note>
+  <para> For more information about building images with KIWI, see the <link
+   xlink:href="https://suse.github.io/kiwi/building.html"/>.
+  </para>
+ </sect1>
 
-  <sect2>
-   <title>Arch: pkg</title>
-   <para> This package format is for Arch Linux and its derivatives. To build
-    an Arch Linux package, you need a <filename>PKGBUILD</filename> file
-    containing the build description and the source tarball.
-   </para>
-   <para>
-    The file <filename>PKGBUILD</filename> does not have macros like
-    <literal>%{buildroot}</literal>. It contains variables, for example,
-      <literal>makedepends=(<replaceable>PACKAGE1</replaceable>,
-      <replaceable>PACKAGE2</replaceable>)</literal>.
-    These variables are parsed by OBS and uses them as dependencies. On
-    Arch Linux you typically build packages without subpackage.
-    They are no <package>*-dev</package> or <package>*-devel</package>
-    packages. </para>
-  </sect2>
+ <sect1>
+  <title>&obs.si;</title>
+  <para>
+   <remark>toms 2017-08-18: This should be explained better</remark>
+   This format can be used to get simple rootfs tarball or squashfs
+   image. It does not neither contain a bootloader nor a kernel.
+   For advanced features, use &kiwi;.
+   Use &obs.si; for simple rootfs tarball/squashfs image of any
+   distribution that is supported by &obsa; but does not have anything
+   fancier than that. </para>
 
-  <sect2 xml:id="_kiwi_appliance">
-   <title>&kiwi; Appliance</title>
-   <para>
-    <link xlink:href="http://opensuse.github.io/kiwi/">KIWI</link> is an image
-    producing platform that builds images for various formats, starting from
-    hardware images, virtualization systems like QEMU, Xen and VMware and many
-    more. It supports a wide range of architectures, which are x86, x86_64,
-    s390 and ppc. </para>
-   <para> Build instructions for &kiwi; usually consists of: </para>
-    <itemizedlist>
-     <listitem>
-      <para>
-       <filename>my_image.kiwi</filename> contains the image configuration in xml
-       format. Full XML schema documentation can be found <link
-        xlink:href="https://doc.opensuse.org/projects/kiwi/schema-doc/"
-        >here</link>. </para>
-     </listitem>
-     <listitem>
-      <para>
-       <filename>config.sh (optional)</filename> configuration script that runs
-       at the end of the installation, but before package scripts have run.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       <filename>root/</filename> directory that contains files that will be
-       applied to the built image after package installation. This can also be
-       an archived and compressed directory. </para>
-     </listitem>
-    </itemizedlist>
-   <note>
-    <para> &obsa; only accepts &kiwi; configuration files with a <filename
-     class="extension">.kiwi</filename> suffix. Other naming schemes &kiwi;
-     supports like <filename>config.xml</filename>, are ignored in &obsa;.
+  <para>For building a &obs.si;, you need a <filename>simpleimage</filename>
+   file. Be aware of the following points:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>&obs.si; uses a similar syntax than a spec file.</para>
+   </listitem>
+   <listitem>
+    <para>
+     Supported tags include <literal>Name</literal>,
+     <literal>Version</literal>, <literal>BuildRequires</literal>, and
+    <literal>#!BuildIgnore</literal>.
     </para>
-   </note>
-   <para> For more information about building images with KIWI, see the <link
-     xlink:href="https://doc.opensuse.org/projects/kiwi/doc/">KIWI
-     cookbook</link>.
-   </para>
-  </sect2>
-<!--  <sect2>
-   <title>&kiwi; product</title>
-   <para> ... </para>
-  </sect2>-->
-  <sect2>
-   <title>SimpleImage</title>
-   <para> This format can be used to get simple rootfs tarball or squashfs
-    image. It does not contain bootloader nor kernel. For advanced features,
-    use KIWI. Use simpleimage for simple rootfs tarball/squashfs image of any
-    distribution that is supported by OBS but does not have anything fancier
-    than that. </para>
-   <para> Simple image uses similar syntax as spec file. Supported tags include
-    Name, Version and BuildRequires which is the way how to specify list of
-    packages to include. #!BuildIgnore can be also used. For additional
-    customization %build phase is supported - run via bash. RPM macros are not
-    supported, but $SRCDIR shell variable is available. </para>
-
-   <example>
-    <title>SimpleImage File</title>
-    <screen>Name:           example-image
+   </listitem>
+   <listitem>
+    <para>Additional customization with <literal>%build</literal> phase
+     is supported.</para>
+   </listitem>
+   <listitem>
+    <para>RPM macros are not supported, but <varname>$SRCDIR</varname> shell
+     variable is available.</para>
+   </listitem>
+  </itemizedlist>
+  <remark>toms 2017-08-18: what's the filename for &obs.si;, simpleimage?</remark>
+  <example>
+   <title>&obs.si; File (<filename>simpleimage</filename>)</title>
+   <screen>Name:           example-image
 Version:        1.0
 BuildRequire:   emacs
 #!BuildIgnore:  gcc-c++
@@ -207,7 +257,11 @@ EOF
 
 # Enable ssh
 systemctl enable sshd</screen>
-   </example>
-  </sect2>
+  </example>
+ </sect1>
+
+ <sect1>
+  <title>&obs.ai;</title>
+  <remark>toms 2017-08-18: What is it and what is needed</remark>
  </sect1>
 </chapter>
