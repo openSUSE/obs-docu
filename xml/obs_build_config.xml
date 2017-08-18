@@ -3,11 +3,11 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.build_config"
+<chapter version="5.1" xml:id="cha.obs.prjconfig"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Build Configuration</title>
+ <title>Project Configuration</title>
  <info/>
  <para> The build configuration is needed at least in each base project to
   define the setup of the build system. In addition to that it can be used to
