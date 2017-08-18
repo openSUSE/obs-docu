@@ -10,9 +10,12 @@
  <title>Supported Build Recipes and Package Formats</title>
  <info/>
  <remark>toms 2017-08-18: list advantages/disadvantages/benefits for each format</remark>
+ <remark>toms 2017-08-18: comparison of these formats?</remark>
 
  <sect1>
   <title>About Formats</title>
+  <remark>toms 2017-08-18: classification between distribution-dependand and
+   independant</remark>
   <para> &obsa; differentiates between the format of the build recipes and the
    format of the installed packages. For example, the spec receipe format is
    used to build RPM packages by calling <command>rpmbuild</command>. </para>
