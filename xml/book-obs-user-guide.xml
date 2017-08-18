@@ -56,6 +56,7 @@
 
  <part xml:id="par.working">
   <title>Working with &obs;</title>
+  <xi:include href="obs_signing.xml"/>
   <xi:include href="osc_building.xml"/>
  </part>
 

@@ -67,7 +67,7 @@
  <!-- advanced parts -->
  <xi:include href="obs_source_service.xml"/>
  <xi:include href="obs_multibuild.xml"/>
- <xi:include href="obs_signing.xml"/>
+<!-- <xi:include href="obs_signing.xml"/>-->
  <xi:include href="obs_product_building.xml"/>
  <xi:include href="obs_maintenance_setup.xml"/>
  <xi:include href="obs_binary_tracking.xml"/>
