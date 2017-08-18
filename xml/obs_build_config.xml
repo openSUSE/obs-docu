@@ -66,11 +66,21 @@
 
  <sect1>
   <title>Configuration File Syntax</title>
-  <para> The build configuration is parsed by OBS in rpm style independent of
-   the used packaging format. This means that you can use rpm features like
-   macros or conditions in the configuration. All lines consist of the form
-   'keyword: arguments'. </para>
-  <para> &lt;PACKAGES&gt; mean binary package provides, but not the full file
+  <para>
+   The project configuration is parsed by &obsa; similar to RPM.
+   However, it is independent of the used packaging format.
+   This means, you can use RPM features like macros or conditions in the
+   configuration. All lines have the form:</para>
+  <screen>keyword: arguments</screen>
+  <para>
+   In the following list, the placeholder <replaceable>PACKAGES</replaceable>
+   indicates <remark>toms 2017-08-18: a list of package names, separated
+   by colons(?) or spaces(?)</remark> a package base name.
+   For example, as a package name you need the base name like
+   <package>gcc</package> but not the full name as in
+   <package>gcc-1.2.3.i386.rpm</package>.
+   <remark>toms 2017-08-18: What does the following sentence mean?
+   "&lt;PACKAGES&gt; mean binary package provides, but not the full file
    name. For example gcc, but not gcc-1.2.3.i386.rpm. Provides of a package can
    not be used either."</remark>
   </para>
