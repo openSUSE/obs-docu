@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Product Building</title>
+ <title>Building Products</title>
  <info/>
  <para> OBS is used to build complete product lines. It is employed for
   openSUSE and also for SUSE Linux Enterprise products. </para>
