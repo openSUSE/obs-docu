@@ -218,6 +218,19 @@ Ruby LDAP implementation. This configfile is usually located at
 <emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional TLS/SSL directives
 like <emphasis role="strong">TLS_CACERT</emphasis>, <emphasis role="strong">TLS_CACERTDIR</emphasis> and <emphasis role="strong">TLS_REQCERT</emphasis>. For more information
 refer to the openldap ldap.conf man page.</simpara>
+<note>
+  <para>
+    Once LDAP more is activated users can only log in via LDAP. This also includes existing admin accounts.
+    To make a LDAP user, eg. user tux, an admin we provided a rake task which can be run on the OBS instance:
+  </para>
+  <para>
+    <screen>
+    <command>
+      bundle exec rake user:give_admin_rights tux RAILS_ENV=production
+    </command>
+    </screen>
+  </para>
+</note>
    <table frame="all" rowsep="1" colsep="1">
     <title>LDAP configuration options</title>
     <tgroup cols="4">
