@@ -946,10 +946,14 @@ Patch0:         &gitproject;_main.diff</screen>
    </step>
    <step>
     <para>
-     Add your patch file to the local repository and rebuild your package:
+     Add your patch file to the local repository:
     </para>
     <screen>&prompt.user;<command>osc</command> add &gitproject;_main.diff
-&prompt.user;<command>osc</command> build openSUSE_Tumbleweed x86_64 *.spec</screen>
+</screen>
+   </step>
+   <step>
+    <para>Rebuild your package:</para>
+    <screen>&prompt.user;<command>osc</command> build</screen>
    </step>
    <step>
     <para>
@@ -1026,7 +1030,7 @@ Patch0:         &gitproject;_main.diff</screen>
     <screen>&prompt.user2;<command>osc</command> branchco &obshome1; &gitproject;</screen>
     <para>This will create a branched package in &obsa; at <uri>&obsbranch2;/&gitproject;</uri>
      and will check out a directory
-     <filename>&obsworkdir2;/branches/home/&obsuser1;/&gitproject;</filename>.
+     <filename>&obsworkdir2;:branches:home:&obsuser1;:&gitproject;</filename>.
     </para>
    </step>
    <step>
