@@ -32,7 +32,7 @@
   <remark>toms 2017-08-16: Maybe add more information about installing
   osc on other distributions?</remark>
   <para>For other systems, use your preferred package manager.</para>
-  <para>As an alternative, use the &appimg; file. An &appimg; file is a
+  <para>As an alternative, use the &obs.ai; file. An &obs.ai; file is a
    packaged application and its dependencies which can run on many
    distributions. Download the file, save it in your
    <filename>~/bin</filename> directory, and make the file executable.</para>

@@ -209,6 +209,18 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       is available for different distributions, such as CentOS, Debian, &sle;,
       &opensuse;.
      </para>
+     <para> For &suse; related systems, install it with the
+       <command>zypper</command> command (replace
+       <replaceable>DISTRI</replaceable> with your distribution): </para>
+     <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRI</replaceable>/openSUSE:Tools.repo
+&prompt.root;<command>zypper</command> install osc</screen>
+     <para>For other systems, use your preferred package manager.</para>
+     <para>
+      As an alternative, use the &obs.ai; file. An &obs.ai; file
+      is a packaged application which can run on many distributions.
+      Download the file, save it in your <filename>~/bin</filename> directory,
+      and make the file executable.
+     </para>
      <itemizedlist>
       <listitem>
        <para>
