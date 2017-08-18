@@ -51,6 +51,7 @@
 <!--  <xi:include href="obs_user_concept.xml"/>-->
   <xi:include href="obs_package_formats.xml"/>
   <xi:include href="obs_osc.xml"/>
+  <xi:include href="obs_build_config.xml"/>
 </part>
 
 <!-- <part xml:id="par.working">
