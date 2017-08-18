@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Building Package Formats</title>
+ <info>
+  <abstract>
+   <para>TBD</para>
+  </abstract>
+ </info>
+ 
+ <sect1>
+  <title>From Spec Files (RPM)</title>
+  <para>TBD</para>
+ </sect1>
+
+ <sect1>
+  <title>From Deb Files (Debian)</title>
+  <para>TBD</para>
+ </sect1>
+
+ <sect1>
+  <title>From Pkg Files (Arch)</title>
+  <para>TBD</para>
+ </sect1>
+
+ <sect1>
+  <title>From Kiwi Files (&kiwi;)</title>
+  <para>TBD</para>
+ </sect1>
+
+ <sect1>
+  <title>From Spec Files (RPM)</title>
+  <para>TBD</para>
+ </sect1>
+ 
+</chapter>
