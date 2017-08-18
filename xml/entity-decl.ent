@@ -72,6 +72,21 @@
 <!ENTITY gitprjvers     "0.1.0">
 <!ENTITY gitupstream1   "https://github.com/&gitorg;/&gitproject;">
 
+
+<!-- ============================================================= -->
+<!--                    OBS Package Formats                        -->
+<!-- ============================================================= -->
+<!ENTITY obs.spec       "Spec">
+<!ENTITY obs.spec.ext   ".spec">
+<!ENTITY obs.deb        "Dsc">
+<!ENTITY obs.arch       "Pkg">
+<!ENTITY obs.kiwi       "&kiwi;">
+<!ENTITY obs.si         "SimpleImage">
+<!ENTITY obs.ai         "AppImage">
+<!ENTITY obs.pimg       "PreinstallImage">
+<!ENTITY appimg         "AppImage">
+
+
 <!-- ============================================================= -->
 <!--                    Prompts                                    -->
 <!-- ============================================================= -->
@@ -263,7 +278,6 @@
 <!ENTITY kiwi            "KIWI">
 <!ENTITY appimg          "AppImage">
 <!ENTITY packspec        "package specification">
-
 
 
 <!-- ============================================================= -->
