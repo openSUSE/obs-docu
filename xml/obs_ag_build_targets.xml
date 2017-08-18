@@ -136,7 +136,7 @@ Options help:
     </para>
    </warning>
    <para>You need to import the project configuration as well, you can get
-    them for example from the openSUSE buildserver.</para>
+    them for example from the openSUSE Build Service.</para>
    <screen>osc -A https://api.opensuse.org meta prjconf openSUSE:13.2 &gt;/tmp/13.2.prjconf
 osc meta prjconf -m 'Original version from openSUSE' SUSE:13.2 -F /tmp/13.2.prjconf</screen>
    <para>Now you need to create the directory <emphasis>':full'</emphasis>

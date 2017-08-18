@@ -26,7 +26,7 @@
     >obsrun</emphasis> user with the following parameters:</para>
   <orderedlist>
    <listitem>
-    <para> information about the project and its repository (e.g.
+    <para> information about the project and its repository (for example,
       <emphasis>training/SLE11-SP1</emphasis>) </para>
    </listitem>
    <listitem>
@@ -92,10 +92,9 @@
   <sect3 xml:id="_simple_publisher_hook">
    <title>Simple Publisher Hook</title>
    <para>The following example script ignores the packages that have changed
-    and copies all RPMs from the repository di
-    rectory to a target
+    and copies all RPMs from the repository directory to a target
     directory:</para>
-   <programlisting language="bash">#!/bin/bash
+   <screen language="bash">#!/bin/bash
 OBSHOME="/srv/obs"
 SRC_REPO_DIR="$OBSHOME/repos"
 LOGFILE="$OBSHOME/log/reposync.log"
@@ -104,7 +103,7 @@ $DST_REPO_DIR="/srv/repo-mirror"
 #+double-colons!
 PRJ_PATH=${1//:/:\/}
 PATH_TO_REPO=$2
-rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</programlisting>
+rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
    <para>For testing purposes, it can be invoked as follows:</para>
    <screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh Product/SLES11-SP1 \
     /srv/obs/repos/Product/SLE11-SP1</screen>
@@ -113,7 +112,7 @@ rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</programlis
    <title>Advanced Publisher Hook</title>
    <para>The following example script reads the destination path from a
     parameter that is configured with the hook script:</para>
-   <screen>#!/bin/bash
+   <screen language="bash">#!/bin/bash
 LOGFILE="/srv/obs/log/reposync.log"
 DST_REPO_DIR=$1
 # Global substion! To handle strings like Foo:Bar:testing - two
@@ -128,7 +127,7 @@ rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
     /srv/obs/repos/Product/SLE11SP1</screen>
    <para>The following example script only copies packages that have
     changed, but does not delete packages that have been removed:</para>
-   <screen>#!/bin/bash
+   <screen language="bash">#!/bin/bash
 
 DST_REPO_DIR=$1
 PRJ_PATH=${2//:/:\/}
