@@ -286,12 +286,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       <para>Add users to your newly created group <systemitem class="groupname"
         >osc</systemitem> which are allowed to build packages:
       </para>
-      <screen>&prompt.root;<command>usermod</command> -a -G osc &exampleuser_plain; &exampleuserII_plain;</screen>
-      <remark>
-       Does not work with two users. If you want two users (bob and alice),
-       you also need two commands (afaict after just trying this). - sknorr,
-       2017-08-17
-      </remark>
+      <screen>&prompt.root;<command>usermod</command> -a -G osc &exampleuser_plain;</screen>
+      <para>Repeat this step if you have more users to add.</para>
      </step>
      <step>
       <para>Run <command>visudo</command> to create the sudoers file
