@@ -60,5 +60,10 @@
   <xi:include href="osc_building.xml"/>
  </part>
 
+ <part>
+  <title>Advanced Usage</title>
+  <xi:include href="obs_product_building.xml"/>
+ </part>
+
  <!-- Appendices -->
 </book>
