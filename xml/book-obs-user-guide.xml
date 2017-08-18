@@ -50,14 +50,41 @@
   <title>Concepts</title>
 <!--  <xi:include href="obs_user_concept.xml"/>-->
   <xi:include href="obs_package_formats.xml"/>
-  <xi:include href="obs_osc.xml"/>
-  <xi:include href="obs_build_config.xml"/>
 </part>
 
+ <part>
+  <title>Setup</title>
+  <xi:include href="obs_osc.xml"/>
+  <xi:include href="obs_build_config.xml"/>
+ </part>
+
  <part xml:id="par.working">
-  <title>Working with &obs;</title>
+  <title>Usage</title>
+  <chapter>
+   <title>Knowing the Basic Workflow</title>
+   <para>TBD</para>
+   <sect1>
+    <title>Handling Dependencies</title>
+    <para>TBD</para>
+   </sect1>
+   <sect1>
+    <title>Creating a New Package</title>
+    <para>TBD</para>
+   </sect1>
+   <sect1>
+    <title>Linking and Aggregating Packages</title>
+    <para>TBD</para>
+   </sect1>
+  </chapter>
+
+  <chapter>
+   <title>Using Source Services</title>
+   <para>TBD</para>
+  </chapter>
+
   <xi:include href="obs_signing.xml"/>
   <xi:include href="osc_building.xml"/>
+
  </part>
 
  <part>
