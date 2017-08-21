@@ -40,7 +40,7 @@
    <filename>~/bin</filename> directory, and make the file executable.</para>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.osc.config">
   <title>Configuring &osc;</title>
   <para>Usually, the default configuration is appropriate in most cases.
    There are some special configuration option which might be helpful
@@ -110,11 +110,11 @@
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><option>use_keyring</option></term>
+    <term><option>use_keyring</option> (bool)</term>
     <listitem>
      <para>
       Use the default keyring instead of saving the password in the &obsa;
-      configuration file. For KDE the KWallet keyring is used, for GNOME
+      configuration file. For KDE the KWallet is used, for GNOME
       it is Seahorse.
      </para>
     </listitem>
@@ -123,13 +123,253 @@
  </sect1>
 
  <sect1>
-  <title>Getting Help</title>
-  <para>TBD</para>
-  <screen>osc help <remark>COMMAND</remark></screen>
- </sect1>
-
- <sect1>
   <title>Usage</title>
-  <para>TBD</para>
+  <para></para>
+  <sect2>
+   <title>Getting Help</title>
+   <para>
+    <!--Before you work with &osccmd; it is useful to know how to get help.-->
+    To get a general help about this command, use <command>osc --help</command>.
+    For help of specific subcommands, use <command>osc help <replaceable
+    >SUBCOMMAND</replaceable></command>.
+   </para>
+   <para>
+    Most commands can be called by a long name (like <command>status</command>)
+    or by one or more aliases (as <command>st</command>).
+  </para>
+  </sect2>
+  <!-- From obs_best_practice_osc_examples.xml -->
+  <sect2>
+   <title>Using &osccmd; for the First Time</title>
+   <para>
+    When you use the &osccmd; command for the first time, the command will
+    ask you for your credentials of your &obsa; instance.
+    The credentials are store in the configuration file <filename>~/.oscrc</filename>.
+   </para>
+   <para>
+    By default, the password is stored as plain text. If you do not like this,
+    use one of the following methods:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <formalpara>
+      <title>Use your Password Manager</title>
+      <para>
+       Set the option <option>use_keyring</option> to
+        <literal>1</literal> after you have created a configuration file
+       for the first time. Remove your credentials sections from your
+       configuration file. The next time &osccmd; asks for your username
+       and password, it will store it in the password manager instead of
+       the configuration file.
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Obfuscate your Password</title>
+      <para>
+       Set <option>plaintext_passwd</option> to <literal>0</literal>.
+       This is not a real security feature, but it obfuscate the password
+       in the configuration file.
+      </para>
+     </formalpara>
+    </listitem>
+   </itemizedlist>
+   <para>
+    If you prefer your current password manager, set the option
+    <option>use_keyring</option> to <literal>1</literal> after you have
+    authenticated it.
+   </para>
+  </sect2>
+  <sect2>
+   <title>Overview of Brief Examples</title>
+  <para>
+   The &osccmd; command is similar than <command>git</command>:
+   a main command (&osccmd;) which can be called with different subcommands.
+   It serves as client and it is used to build packages locally, submit
+   file to a remote &obsa; instance, edit metadata, or query about build
+   results.
+  </para>
+   <!--
+   <para>
+   Introductory usage examples are shown below.
+   Note the Build Service Tutorial, which gives a more systematic
+   introduction. osc is extensible. You can modify the behavior or write your
+   own commands. osc
+   </para>
+   -->
+  <remark>toms 2017-08-21: TODO: The list entries should be better grouped</remark>
+  <remark>toms 2017-08-21: Taken from obs_best_practice_osc_examples.xml</remark>
+  <variablelist>
+   <varlistentry>
+    <term>List Existing Content on the Server</term>
+    <listitem>
+     <screen><command>osc</command> ls                    #list projects
+<command>osc</command> ls Apache             #list packages in a project
+<command>osc</command> ls Apache flood       #list files of package of a project</screen>
+     <para>
+   <command>osc ls</command> shows you a list of projects on &obsa;.
+      Which &obsa; instance it shows depends on the option <option>apiurl</option>
+      in the configuration file. By default, the &opensuse; Build Server
+      is used. If you need another server, use the <option>-A</option>
+      option as shown in <xref linkend="sec.osc.config"/>.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Checkout Content</term>
+    <listitem>
+     <screen><command>osc</command> co Apache                   # entire project
+<command>osc</command> co Apache flood             # a package
+<command>osc</command> co Apache flood flood.spec  # single file</screen>
+     <para></para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Update a Working Ddirectory</term>
+    <listitem>
+     <screen><command>osc</command> up
+<command>osc</command> up [directory]
+<command>osc</command> up *            # from within a project dir, update all packages
+<command>osc</command> up              # from within a project dir, update all packages AND check out all newly added packages</screen>
+     <para></para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Upload Changed Content</term>
+    <listitem>
+     <screen><command>osc</command> ci                          # current dir
+osc ci [file1] [file2]          # only specific files
+<command>osc</command> ci [dir1] [dir2] ...        # multiple packages
+<command>osc</command> ci -m "updated foobar"      # specify a commit message
+</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Check the Commit Log</term>
+    <listitem>
+     <screen><command>osc</command> log</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show the status (which files have been changed locally)</term>
+    <listitem>
+     <screen><command>osc</command> st
+<command>osc</command> st [directory]</screen>
+      <para>
+       If an update cannot be merged automatically, a file is in 'C'
+       (conflict) state, and conflicts are marked with special lines. After
+       manually resolving the problem, use <command>osc resolved <replaceable>FILE</replaceable></command>.
+      </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Mark files to be Added or Removed on the Next Checkin</term>
+    <listitem>
+     <screen><command>osc</command> add foo
+<command>osc</command> rm foo</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Add all New Files in Local Copy and Removes all Disappeared files</term>
+    <listitem>
+     <screen><command>osc</command> addremove</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Generate a diff to view the changes</term>
+    <listitem>
+     <screen><command>osc</command> diff [file]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show the Build Results of the Package</term>
+    <listitem>
+     <screen><command>osc</command> results
+<command>osc</command> results [platform]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show the Log File of a Package </term>
+    <listitem>
+     <para>(you need to be inside a package directory)</para>
+     <screen><command>osc</command> buildlog [platform] [arch]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show the URLs of <filename class="extension">.repo</filename>
+     Files which are Packages Sources for Package Managers</term>
+    <listitem>
+     <screen><command>osc</command> repourls [dir]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Trigger a Package Rebuild for all Repositories/Architectures of a
+   Package</term>
+    <listitem>
+     <screen>osc rebuildpac [dir]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Build a Package on Your Local Platform</term>
+    <listitem>
+     <screen>osc build [platform] [arch] [specfile] [--clean|--noinit|...]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show the Configured Platforms/Build Targets</term>
+    <listitem>
+     <screen><command>osc</command> platforms [project]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show the Possible Build Targets for Your Project</term>
+    <listitem>
+     <screen><command>osc</command> repos</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Show Meta Information</term>
+    <listitem>
+     <screen><command>osc</command> meta prj [project]
+<command>osc</command> meta pkg [project] [package]
+<command>osc</command> meta user [username]
+<command>osc</command> meta prjconf [project]</screen>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Edit Meta Information</term>
+    <listitem>
+      <para>
+       Creates new package/project if it doesn't exist. It will open an
+       Editor with the raw XML metadata. If unsure about XML, you can use the
+       web client instead.
+      </para>
+      <screen><command>osc</command> meta prj -e [project]
+<command>osc</command> meta pkg -e [project] [package]
+<command>osc</command> meta prjconf -e [project]</screen>
+     <para> (The project configuration may well be empty. It is needed
+      in special cases only.)  </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Update Package Meta Data on &obsa; with Meta Data Taken
+     From Spec File</term>
+    <listitem>
+     <screen><command>osc</command> updatepacmetafromspec [dir]</screen>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+
+  <!--<para> Let OBS create a tar ball out of an SCM repository. This just creates
+   or extend a _service file with some rules how to download and package
+   sources. The actual work happens on a local build or on a service side
+   build. You need at least the following packages installed for local runs:
+   obs-service-tar_scm, obs-service-set_version, obs-service-recompress. </para>
+  <screen>
+osc add git://....
+</screen>
+  -->
+  </sect2>
  </sect1>
 </chapter>
