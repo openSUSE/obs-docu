@@ -47,7 +47,7 @@
     <para>Spec format for RPM packages</para>
    </listitem>
    <listitem>
-    <para>Dsc format</para>
+    <para>Dsc format for DEB packages</para>
    </listitem>
    <listitem>
     <para>&kiwi; format, both product and appliances</para>
@@ -102,7 +102,7 @@
  <sect1>
   <title>Debian: Dsc</title>
   <para>
-   Deb packages are used on all Debian or Ubuntu based distributions.
+   DEB packages are used on all Debian or Ubuntu based distributions.
    For building <filename class="extension">.deb</filename> files you need:
   </para>
   <variablelist>
@@ -116,8 +116,8 @@
    <varlistentry>
     <term><filename>debian.rules</filename></term>
     <listitem>
-     <para>This file describes the build section of the deb building process.
-      There are the configure and make compile commands including other deb
+     <para>This file describes the build section of the DEB building process.
+      There are the configure and make compile commands including other DEB
       building sections.</para>
     </listitem>
    </varlistentry>
