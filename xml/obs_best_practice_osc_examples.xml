@@ -42,78 +42,9 @@ do_package_tracking = 1
    [message]). The status command also displays the state of the packages </para>
   <screen><command>osc st</command></screen>
  </sect1>
- <sect1>
-  <title>.oscrc cheatsheet</title>
-  <para> The [general] section Storage: </para>
-  <screen> 
-# Downloaded packages are cached here. Must be writable by you.
-# default:
-packagecachedir = /var/tmp/osbuild-packagecache 
-</screen>
-  <screen> 
-# rootdir to setup the chroot environment
-# can contain %(repo)s and/or %(arch)s for replacement
-# /[path]/%(repo)s-%(arch)s-%(project)s-%(package)s
-# default:
-build-root = /var/tmp/build-root/ 
-</screen>
-  <para> API communication: </para>
-  <screen>
-# use this API server (hostname[:port])
-# (it needs a section [api.opensuse.org] with the credentials)
-# default:
-apiurl = api.opensuse.org 
-</screen>
-  <screen>
-# use this protocol to access the API server (http or https)
-# default:
-scheme = https
-</screen>
-  <para> API host: </para>
-  <screen>
-# API hosts can be referenced by aliases, e.g. 'osc -A alias ...'
-# List aliases for API hosts under the API host section.
-# https://api.opensuse.org
-# user=jdoe
-# aliases=
-</screen>
-  <para> Local build: </para>
-  <screen> 
-# Wrapper to call build as root (sudo, su -, ...)
-# default: 
-su-wrapper = su -c
-# no password required with:
-#su-wrapper = sudo
-#with entry in sudoers file:
-# [username] ALL = NOPASSWD: /usr/bin/build
-</screen>
-  <screen> 
-# For convenience/debugging, osc adds internally vim gdb strace to 
-# the packages installed in the build chroot if extra-pkgs is not set to:
-#extra-pkgs=
-</screen>
-  <screen> 
-# build type - possibe values:
-#  * empty -&gt; chroot
-#  * xen -&gt; xen VM
-#  * kvm -&gt; kvm VM (testing needed) 
-# default: not set/chroot
-#build-type=xen
-</screen>
-  <screen> 
-# build-device - root filesystem to use for VM
-# default: not set
-#build-device=/tmp/FILE.root
-</screen>
-  <screen> 
-# build-swap - swap filesystem to use for VM
-# default: not set
-#build-swap=/tmp/FILE.swap
-</screen>
-  <screen> 
-# build-memory - amount of memory for VM
-# default: not set
-#build-memory=512
-</screen>
- </sect1>
+ 
+ <!--
+  Title ".oscrc cheatsheet" is moved and adapted into
+  User Guide, see file obs_osc.xml
+ -->
 </chapter>
