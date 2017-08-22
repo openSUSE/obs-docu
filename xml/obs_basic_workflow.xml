@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.basicworkflow"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Knowing the Basic Workflow</title>
+ <para>TBD</para>
+ <sect1>
+  <title>Handling Dependencies</title>
+  <para>TBD</para>
+ </sect1>
+
+ <sect1>
+  <title>Creating a New Package</title>
+  <para>
+   This section covers how to create packages from a project hosted on &gh;
+   (the <quote>upstream project</quote>). We assume that this project contains source code
+   which you want to package for different &suse; distributions.
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>First time setup of your home project is already done.
+     <remark>toms 2017-08-22: TODO: Add link</remark>
+    </para>
+   </listitem>
+   <listitem>
+    <para>Check out of your home project is </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   To create a package from the upstream project, do the following:
+  </para>
+  <procedure>
+   <title>General Procedure to Build a RPM Package</title>
+   <step>
+    <para>
+     Open a shell. Choose or create a directory on your system in a partition
+     that has enough space to hold the package sources.
+    </para>
+   </step>
+   <step>
+    <para>
+     Prepare your <firstterm
+      baseform="Working Directory">working directory</firstterm>:
+    </para>
+    <substeps>
+     <step>
+    <para>
+     Check out your home project:
+    </para>
+    <screen>&prompt.user;<command>osc</command> checkout &obshome1;</screen>
+    <para>
+     This will create <filename>&obsworkdir1;</filename> in the
+     current directory.
+    </para>
+   </step>
+   <step>
+    <para>Create a new package inside your local working directory:
+    </para>
+    <screen>&prompt.user;<command>cd</command> &obsworkdir1;
+&prompt.user;<command>osc</command> mkpac <replaceable>YOUR_PROJECT</replaceable></screen>
+   </step>
+   </substeps>
+   </step>
+   <step>
+    <para>
+     Get the pristine source code of the upstream project and save it in
+     <filename>&obsworkdir1;/<replaceable>YOUR_PROJECT</replaceable></filename>.
+    </para>
+    <para>
+     Download the sources from your upstream project.
+    </para>
+   </step>
+   <step>
+    <para>
+     Create a <firstterm baseform="Spec File">spec file</firstterm> which
+     contains metadata and build instructions.
+     If you need more information about RPM spec files, see
+     <link xlink:href="http://rpm-guide.readthedocs.io/en/latest/"/>.
+    </para>
+   </step>
+   <step>
+    <para>Create a new changelog and add your changes:</para>
+    <substeps>
+     <step>
+      <para>Create a new changelog file with &osccmd;:</para>
+      <screen>&prompt.user;<command>osc</command> vc</screen>
+      <para>The command will open an editor with the following content:</para>
+      <screen>-------------------------------------------------------------------
+Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
+     </step>
+     <step>
+      <para>Enter your changes in the changelog file.</para>
+      <para>
+       Usually, the changelog entry contains some high-level overview like:
+      </para>
+      <itemizedlist>
+       <listitem>
+        <formalpara>
+         <title>Version Updates</title>
+         <para>
+          Provide a general overview of new features or changes in behavior
+          of the package.
+         </para>
+        </formalpara>
+       </listitem>
+       <listitem>
+        <formalpara>
+         <title>Bug Fixes</title>
+         <para>
+          Anytime a bug was fixed, mention the bug number. It is highly
+          recommended to add a prefix before the number so people can identify
+          the bug tracker. For example, <literal>bsc</literal> for
+           <uri>bugzilla.suse.com</uri>, <literal>fate</literal>
+           (<uri>fate.suse.com</uri>), <literal>kde</literal>
+           (<uri>bugs.kde.org</uri>) etc.
+         </para>
+        </formalpara>
+       </listitem>
+       <listitem>
+        <formalpara>
+         <title>API Changes</title>
+         <para>
+          Whenever the user or developer needs to be aware of
+          incompatible changes the requires the user to adapt their
+          configurations.
+         </para>
+        </formalpara>
+       </listitem>
+       <listitem>
+        <formalpara>
+         <title>Distribution Related Changes</title>
+         <para>
+          Like any changes in the package structure, renaming of package
+          names, adding or removing patch files, or specific
+           <quote>hacks</quote>.
+         </para>
+        </formalpara>
+       </listitem>
+      </itemizedlist>
+      <para>
+       Find more information about the changelog at <link
+        xlink:href="https://en.opensuse.org/openSUSE:Creating_a_changes_file_(RPM)"
+       />.
+      </para>
+     </step>
+    </substeps>
+   </step>
+   <step>
+    <para>Add all the files to your working directory:</para>
+    <screen>&prompt.user;<command>osc</command> add *.spec *.changes *.tar.gz</screen>
+   </step>
+   <step>
+    <para>Build the package for a specific distribution and architecture,
+     for example, Tumbleweed for x86_64:</para>
+    <screen>&prompt.user;<command>osc</command> build --local-package <!--
+-->openSUSE_Tumbleweed x86_64 *.spec
+    </screen>
+   </step>
+   <step>
+    <para>
+     Check if your build was successful. If everything was fine, commit the
+     files to your package to your home project on &obsa;:</para>
+    <screen>&prompt.user;<command>osc</command> commit</screen>
+   </step>
+  </procedure>
+ </sect1>
+ <sect1>
+  <title>Linking and Aggregating Packages</title>
+  <para>TBD</para>
+ </sect1>
+</chapter>

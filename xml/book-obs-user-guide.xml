@@ -60,22 +60,7 @@
 
  <part xml:id="par.working">
   <title>Usage</title>
-  <chapter>
-   <title>Knowing the Basic Workflow</title>
-   <para>TBD</para>
-   <sect1>
-    <title>Handling Dependencies</title>
-    <para>TBD</para>
-   </sect1>
-   <sect1>
-    <title>Creating a New Package</title>
-    <para>TBD</para>
-   </sect1>
-   <sect1>
-    <title>Linking and Aggregating Packages</title>
-    <para>TBD</para>
-   </sect1>
-  </chapter>
+  <xi:include href="obs_basic_workflow.xml"/>
 
   <chapter>
    <title>Using Source Services</title>
