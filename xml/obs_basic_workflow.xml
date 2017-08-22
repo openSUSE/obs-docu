@@ -107,6 +107,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
       <para>
        Usually, the changelog entry contains some high-level overview like:
       </para>
+      <remark>toms 2017-08-22: TODO: Move content into concept part?</remark>
       <itemizedlist>
        <listitem>
         <formalpara>
@@ -183,22 +184,26 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
  </sect1>
 
  <sect1 xml:id="sec.obs.basicworkflow.builderrors">
-  <title>Correcting Errors in the Local Build Process</title>
+  <title>Investigating the Local Build Process</title>
   <remark>toms 2017-08-22: https://en.opensuse.org/openSUSE:Build_Service_Tutorial#Correct_Errors_in_the_Local_Build_Process</remark>
   <para>
-   If you encounter errors in your build, you have the following options:
+   It is hard to describe a general procedure when you encounter a build
+   error. Most build errors are very specific to the package being built.
+   However, once you are hit by one, you can try the following options:
   </para>
   <itemizedlist>
    <listitem>
-    <para>Investigate the build log</para>
+    <para><xref linkend="sec.obs.basicworkflow.builderrors.buildlog"/></para>
    </listitem>
    <listitem>
-    <para>Investigate the local build root</para>
+    <para><xref linkend="sec.obs.basicworkflow.builderrors.buildroot"/></para>
    </listitem>
   </itemizedlist>
 
-  <sect2>
-   <title>Investigate the Build Log</title>
+  <remark>toms 2017-08-22: Troubleshooting?</remark>
+
+  <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildlog">
+   <title>Build Log</title>
    <para>
     Each build produces a log file on &obsa;. This log file can be viewed by
     the <command>buildlog</command> (or <command>bl</command>) subcommand.
@@ -218,8 +223,8 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    <screen>&prompt.user;<command>osc</command> buildlogtail openSUSE_Tumbleweed x86_64</screen>
   </sect2>
 
-  <sect2>
-   <title>Investigate the Local Build Root Directory</title>
+  <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildroot">
+   <title>Local Build Root Directory</title>
    <para>
     If you build a package locally and you get a build error, investigate
     the problems in the build root directory directly. This is sometimes
@@ -264,7 +269,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
     <calloutlist>
      <callout arearefs="co.workflow.buildroot.build">
       <para>
-       Contains varous directories named after the package name.
+       Contains directory named after the package name.
        In spec files, the name of the package directory is referenced
        as the <systemitem class="macro">%buildroot</systemitem> macro.
       </para>
@@ -277,8 +282,8 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
        section of the spec file.
       </para>
       <para>
-       If the package was built, this directory will be empty after the
-       cleanup process.
+       If the package has been successfully built, this directory will be
+       emptied.
       </para>
      </callout>
      <callout arearefs="co.workflow.buildroot.other">
@@ -288,8 +293,9 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      </callout>
      <callout arearefs="co.workflow.buildroot.rpms">
       <para>
-       Stores binary RPMs into subdirectories of achitecture, for example
-       <filename>noarch</filename> or <filename>x86_64</filename>.
+       Stores binary RPMs into subdirectories of achitecture
+       (for example <filename>noarch</filename> or
+       <filename>x86_64</filename>) if the build was successful.
       </para>
      </callout>
      <callout arearefs="co.workflow.buildroot.sources">
