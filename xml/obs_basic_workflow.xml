@@ -221,8 +221,94 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   <sect2>
    <title>Investigate the Local Build Root Directory</title>
    <para>
-    TBD
+    If you build a package locally and you get a build error, investigate
+    the problems in the build root directory directly. This is sometimes
+    easier and more effective than just looking at the build log.
    </para>
+   <para>
+    By default, the directory <filename>/var/tmp/build-root/</filename>
+    is used as the <emphasis>build root</emphasis>. It is definied in
+    the configuration file <filename>~/.oscrc</filename>, search for the
+    key <option>build-root</option>.
+    Each combination of distribution and architecture has its own build
+    root. To change into the build root for &opensuse; Tumbleweed on a
+    64bit architecture, use the following command
+    (you have to entered the &rootuser; password):
+   </para>
+   <screen>&prompt.user;<command>osc</command> chroot openSUSE_Tumbleweed x86_64</screen>
+   <para>
+    After you have entered the &rootuser; password, your current directory
+    is changed to <filename>/home/abuild</filename> belonging to user
+    <systemitem class="username">abuild</systemitem> in group <systemitem
+     class="groupname">abuild</systemitem>.
+   </para>
+   <remark>toms 2017-08-22: This should be moved into the concepts part</remark>
+   <para>
+    The build root contains the following structure:
+   </para>
+   <example xml:id="exa.workflow.buildroot">
+    <title>Directory Structure of a Build Root (<filename>/var/tmp/build-root/</filename>)</title>
+    <screen>/home/abuild/
+└── rpmbuild
+    ├── BUILD <co xml:id="co.workflow.buildroot.build"/>
+    ├── BUILDROOT  <co xml:id="co.workflow.buildroot.buildroot"/>
+    ├── OTHER  <co xml:id="co.workflow.buildroot.other"/>
+    ├── RPMS  <co xml:id="co.workflow.buildroot.rpms"/>
+    │   ├── i386
+    │   ├── noarch
+    │   └── x86_64
+    ├── SOURCES  <co xml:id="co.workflow.buildroot.sources"/>
+    ├── SPECS  <co xml:id="co.workflow.buildroot.specs"/>
+    └── SRPMS  <co xml:id="co.workflow.buildroot.srpms"/></screen>
+    <remark>toms 2017-08-22: http://rpm-guide.readthedocs.io/en/latest/rpm-guide.html#rpm-packaging-workspace</remark>
+    <calloutlist>
+     <callout arearefs="co.workflow.buildroot.build">
+      <para>
+       Contains varous directories named after the package name.
+       In spec files, the name of the package directory is referenced
+       as the <systemitem class="macro">%buildroot</systemitem> macro.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.buildroot">
+      <para>
+       If the build process was unable to create a package, this directory
+       contains all files and directories which are installed in the target
+       system through the <systemitem class="macro">%install</systemitem>
+       section of the spec file.
+      </para>
+      <para>
+       If the package was built, this directory will be empty after the
+       cleanup process.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.other">
+      <para>
+       Contains usually the file <filename>rpmlint.log</filename>.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.rpms">
+      <para>
+       Stores binary RPMs into subdirectories of achitecture, for example
+       <filename>noarch</filename> or <filename>x86_64</filename>.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.sources">
+      <para>
+       All source files from the working copy will be copied here.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.specs">
+      <para>
+      <remark>toms 2017-08-22: empty?</remark>
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.srpms">
+      <para>
+       Stores source RPMs into this directory.
+      </para>
+     </callout>
+    </calloutlist>
+   </example>
   </sect2>
  </sect1>
 
