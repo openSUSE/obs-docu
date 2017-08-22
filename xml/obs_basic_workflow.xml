@@ -10,9 +10,17 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Knowing the Basic Workflow</title>
  <para>TBD</para>
+<!--
  <sect1>
   <title>Handling Dependencies</title>
   <para>TBD</para>
+ </sect1>
+-->
+ <sect1 xml:id="sec.obs.basicworkflow.setuphome">
+  <title>Setting Up Your Home Project for the First Time</title>
+  <para>TBD</para>
+  <remark>toms 2017-08-22: explain:
+   1) osc ls / 2) osc prj -e home:OBS_USER  3) </remark>
  </sect1>
 
  <sect1>
@@ -161,6 +169,9 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
     <screen>&prompt.user;<command>osc</command> build --local-package <!--
 -->openSUSE_Tumbleweed x86_64 *.spec
     </screen>
+    <para>
+     If you encounter problems, see <xref linkend="sec.obs.basicworkflow.builderrors"/>.
+    </para>
    </step>
    <step>
     <para>
@@ -170,6 +181,51 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    </step>
   </procedure>
  </sect1>
+
+ <sect1 xml:id="sec.obs.basicworkflow.builderrors">
+  <title>Correcting Errors in the Local Build Process</title>
+  <remark>toms 2017-08-22: https://en.opensuse.org/openSUSE:Build_Service_Tutorial#Correct_Errors_in_the_Local_Build_Process</remark>
+  <para>
+   If you encounter errors in your build, you have the following options:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>Investigate the build log</para>
+   </listitem>
+   <listitem>
+    <para>Investigate the local build root</para>
+   </listitem>
+  </itemizedlist>
+
+  <sect2>
+   <title>Investigate the Build Log</title>
+   <para>
+    Each build produces a log file on &obsa;. This log file can be viewed by
+    the <command>buildlog</command> (or <command>bl</command>) subcommand.
+    It needs a build target which is the distribution and the architecture.
+   </para>
+   <para>
+    For example, to view the build log of your current project
+    for &opensuse; Tumbleweed on a 64bit architecture, use:
+    use:
+   </para>
+   <screen>&prompt.user;<command>osc</command> buildlog openSUSE_Tumbleweed x86_64</screen>
+   <para>
+    However, this command will print the complete build log which could be
+    difficult to spot the errors. Use the <command>buildlogtail</command>
+    subcommand to show only the end of the logfile:
+   </para>
+   <screen>&prompt.user;<command>osc</command> buildlogtail openSUSE_Tumbleweed x86_64</screen>
+  </sect2>
+
+  <sect2>
+   <title>Investigate the Local Build Root Directory</title>
+   <para>
+    TBD
+   </para>
+  </sect2>
+ </sect1>
+
  <sect1>
   <title>Linking and Aggregating Packages</title>
   <para>TBD</para>
