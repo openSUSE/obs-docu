@@ -401,7 +401,7 @@ Keep: debbuild</screen>
  </sect1>
  <sect1>
   <title>Macro Section</title>
-  <remark>toms 2017-08-18: TODO: Extend this section</remark>
+  <remark>toms 2017-08-18: TODO: Extend this section from https://en.opensuse.org/openSUSE:Build_Service_prjconf#Macros</remark>
   <para> The macro section of the build configuration starts behind a Macros:
    line and is only used on rpm builds. The content gets exported to be used by
    rpmbuild during the build. It can be used to export a define using "%key
