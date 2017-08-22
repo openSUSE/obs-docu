@@ -57,7 +57,7 @@
    <listitem>
     <formalpara>
      <title>With the &obsa; API</title>
-     <para>Reachable via the <uri>/source/PROJECT/_config</uri> path.</para>
+     <para>Reachable via the <uri>/source/<replaceable>PROJECT</replaceable>/_config</uri> path.</para>
     </formalpara>
     <para></para>
    </listitem>
