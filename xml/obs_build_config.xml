@@ -36,6 +36,12 @@
      dependencies.
     </para>
    </listitem>
+   <listitem>
+    <para>
+     Handle user decisions like package providing the same or special
+     macros, packages, or flags in the build environment.
+    </para>
+   </listitem>
   </itemizedlist>
   <para>
    To view the project configuration, use one of the following methods
@@ -47,6 +53,8 @@
      <para>Use <command>osc meta prjconf</command> in your working directory
      of your project.</para>
     </formalpara>
+    <remark>toms 2017-08-22: FIXME what's the difference between
+     "osc meta prjconf PROJECT" and "osc buildconfig PROJECT PACKAGE"?</remark>
    </listitem>
    <listitem>
     <formalpara>
@@ -56,10 +64,17 @@
    </listitem>
    <listitem>
     <formalpara>
+     <title>From the Local Build System</title>
+     <para>Open one of the files in <filename>/usr/lib/build/configs/*.conf</filename>
+     to see one of the default configurations that is being used.</para>
+    </formalpara>
+    <remark>toms 2017-08-22: should that be mentioned?</remark>
+   </listitem>
+   <listitem>
+    <formalpara>
      <title>With the &obsa; API</title>
      <para>Reachable via the <uri>/source/<replaceable>PROJECT</replaceable>/_config</uri> path.</para>
     </formalpara>
-    <para></para>
    </listitem>
   </itemizedlist>
  </sect1>
@@ -67,8 +82,9 @@
  <sect1>
   <title>Configuration File Syntax</title>
   <para>
-   The project configuration is parsed by &obsa; similar to RPM.
+   The syntax is basically the same than in RPM spec files.
    However, it is independent of the used packaging format.
+   The project configuration is parsed by &obsa;.
    This means, you can use RPM features like macros or conditions in the
    configuration. All lines have the form:</para>
   <screen>keyword: arguments</screen>
