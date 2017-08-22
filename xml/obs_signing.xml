@@ -10,6 +10,13 @@
  <title>Signing</title>
  <info/>
  <para> OBS can sign build results. </para>
+ <remark>toms 2017-08-22: osc signkey </remark>
+ <!--
+ https://en.opensuse.org/openSUSE:Build_Service_Tutorial#Perform_the_local_build
+ sudo rpm -/-import - <<_END_KEY
+  $(osc signkey offending-project)
+_END_KEY
+ -->
  <sect1>
   <title>Package signing</title>
   <para> Each package is signed with a PGP key to allow checking its integrity
