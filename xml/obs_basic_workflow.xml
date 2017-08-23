@@ -89,8 +89,21 @@
     <para>
      Add more <tag>repository</tag> elements as needed.  Insert the information
      from <xref linkend="st.basicworkflow.setuphome.oscls"/> into the
-     <tag class="attribute">project</tag> attribute.
+     <tag class="attribute">project</tag> attribute. For the <tag
+      class="attribute">repository</tag> use <tag class="attvalue"
+       >standard</tag> if you refer to &opensuse; related projects.
+     For example, if you want to add &opensuse; Leap as a build target
+     your entry will look like this:
     </para>
+    <remark>toms 2017-08-23: how do you get the "standard" value in the
+    repository attribute? Is there any command to retrieve this information?
+    "osc ls" doesn't show that...
+    </remark>
+    <screen language="xml">&lt;repository name="openSUSE_Leap_42.3">
+    &lt;path project="openSUSE:Leap:42.3" repository="standard"/>
+    &lt;arch>i586&lt;/arch>
+    &lt;arch>x86_64&lt;/arch>
+&lt;/repository></screen>
    </step>
    <step>
     <para>
@@ -100,7 +113,7 @@
    </step>
   </procedure>
   <para>
-   After a while, the definied build targets show up in your home project.
+   After a short while, the definied build targets show up in your home project.
   </para>
  </sect1>
 
