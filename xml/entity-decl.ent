@@ -84,8 +84,12 @@
 <!ENTITY obs.si         "SimpleImage">
 <!ENTITY obs.ai         "AppImage">
 <!ENTITY obs.pimg       "PreinstallImage">
-<!ENTITY appimg         "AppImage">
-
+<!ENTITY appimg         "&obs.ai;">
+<!ENTITY snap           "Snap">
+<!ENTITY flatpak        "Flatpak">
+<!ENTITY docker         "Docker">
+<!ENTITY rpmf           "RPM">
+<!ENTITY debf           "DEB">
 
 <!-- ============================================================= -->
 <!--                    Prompts                                    -->
@@ -114,6 +118,7 @@
 <!ENTITY yast           "YaST">
 <!ENTITY yastcc         "&yast; Control Center">
 <!ENTITY ay             "AutoYaST">
+<!ENTITY zypper         "Zypper">
 <!ENTITY nm             "NetworkManager">
 
 

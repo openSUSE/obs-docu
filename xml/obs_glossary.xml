@@ -159,7 +159,7 @@
   <glossdef>
    <para>
     An area containing built packages available for download and installation
-    through zypper or &yast;. The download repository belongs to a project and
+    through &zypper; or &yast;. The download repository belongs to a project and
     is specific to a distribution.
     An example of a download repository could be
     <uri>http://download.opensuse.org/repositories/<replaceable>PROJECT</replaceable>/openSUSE_Tumbleweed/</uri>.
@@ -170,8 +170,10 @@
  <glossentry xml:id="obs.glos.eula">
   <glossterm>EULA</glossterm>
   <glossdef>
-   <para> End User License Agreement. For software that needs a special license
-    (usually non-open source) which the user has to agree to before installing.
+   <para>
+    End User License Agreement. For software that needs a special license
+    (usually non-open source) which the user needs to agree to before
+    installing.
    </para>
   </glossdef>
  </glossentry>
@@ -316,7 +318,7 @@
  <glossentry xml:id="obs.glos.obs" sortas="Open Build Service">
   <glossterm>Open Build Service (OBS)</glossterm>
   <glossdef>
-   <para>A web service to build package or images from source.
+   <para>A Web service to build package or images from source.
     The Open Build Service (OBS) is used to speak about the
     server part of the build service. When speaking about OBS all possible
     instances are affected. </para>
@@ -325,7 +327,7 @@
  <glossentry xml:id="obs.glos.build.o.o">
   <glossterm>openSUSE Build Service</glossterm>
   <glossdef>
-   <para> A specific web service instance of <xref
+   <para> A specific Web service instance of <xref
      linkend="obs.glos.obs"/> from the openSUSE project at
     <link xlink:href="http://build.opensuse.org"/>. </para>
   </glossdef>
@@ -347,7 +349,7 @@
   <glossterm>Overlay File</glossterm>
   <glossdef>
    <para>
-    A directory structure with files and subdirectories used by KIWI.
+    A directory structure with files and subdirectories used by &kiwi;.
     This directory structure is packaged as a file
     (<filename>root.tar.gz</filename>) or stored below a directory
     (named <filename>root</filename>).
@@ -364,9 +366,72 @@
  <glossentry xml:id="obs.glos.package">
   <glossterm>Package</glossterm>
   <glossdef>
+   <remark>
+    This is a four-in-one glossary entry. Probably not ideal, but seemed like
+    a good idea to keep the definitions together. Discuss with toms. FIXME. -
+    sknorr, 2017-08-24
+   </remark>
    <para>
-    Installable version of software, consisting of metadata, possible
-    configuration files, and documentation.
+    &obsa; handles multiple types of packages:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <remark>
+      "Binary package" poses a bit of a question: It is a bit unclear when a
+      package can be considered binary: 1) all archive formats are pretty
+      much always binary-based; 2) interpreted languages actually aren't
+      binary. The term "installable package" comes to mind, however, but it
+      is definitely not in common usage yet, unlike binary package.
+      - sknorr, 2017-08-23
+     </remark>
+     <para>
+      Binary Packages (such as &rpmf; packages or &debf; packages) contain an
+      installable version of software and metadata, and can also include, for
+      example, configuration files and documentation.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Containers, similarly to binary packages, contain a usable version of
+      software and metadata, and can also include, for example, configuration
+      files and documentation. However, they cannot be installed, they can
+      only be deployed. That is, they are copied onto the target system. They
+      can then be run directly in that state. Container formats include
+      &docker;, &appimg;, &snap;, &flatpak;.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      &obsa; packages contain the sources that are necessary to build one or
+      more binary packages or containers. The content of &obsa; packages
+      varies. In general, there is always a source file (such as a TAR
+      archive of the upstream sources) and a recipe file.
+     </para>
+     <para>
+      To build an &rpmf; package in &obsa;, you need a spec file as your
+      recipe file, for example. An &obsa; package can also contain other
+      files, such as a change log and patches.
+     </para>
+     <para>
+      &obsa; packages, unlike the name <quote>package</quote> suggests, do
+      not consist of a single file. Instead, they are directories of a
+      version-controlled repository. However, unlike most directories, they
+      cannot contain subdirectories. (You can use subdirectories to simplify
+      your work with the checked-out package but you cannot submit these
+      directories.)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Source packages, for example, SRPMs, contain content similar to an
+      &obsa; package but they use an archive format (such as CPIO for SRPMs)
+      and are meant to allow outputting a single binary package or container
+      format only. Source packages allow rebuilding a binary package or
+      container outside of an &obs; context.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
    </para>
    <glossseealso otherterm="obs.glos.source"/>
   </glossdef>
@@ -447,7 +512,7 @@
   <glossterm>Release Project</glossterm>
   <glossdef>
    <para> A release project is hosting a release repository which is not
-    building any packages ever. It is just used to copy sources and binaries to
+    building any packages ever. It is only used to copy sources and binaries to
     this project on a release event.
    </para>
   </glossdef>
@@ -526,7 +591,7 @@
   <glossterm>Service File</glossterm>
   <glossdef>
    <para>
-    A XML file that contains metadata required for building a package.
+    An XML file that contains metadata required for building a package.
     This includes version information, upstream source repository, and
     actions.
    </para>
@@ -537,7 +602,7 @@
   <glossdef>
    <para>
     A file that contains metadata and build instructions. Metadata includes
-    a general package description as well as dependencies required for
+    a general package description and dependencies required for
     building and installing the package.
    </para>
    <glossseealso otherterm="obs.glos.patch"/>
@@ -603,8 +668,9 @@
   <glossterm>Target</glossterm>
   <glossdef>
    <para>
-    A specific distribution and architecture, for example, openSUSE Tumbleweed
-    for 64bit. Also referenced as <emphasis>build target</emphasis>.
+    A specific distribution and architecture, for example, openSUSE
+    Tumbleweed for AMD64/Intel 64 (x86-64). Also referenced as
+    <emphasis>build target</emphasis>.
    </para>
   </glossdef>
  </glossentry>
@@ -627,7 +693,7 @@
   <glossdef>
    <para>
     A list of repositories that the user is interested in, available in the
-    OBS web version.
+    &obsa; Web UI.
    </para>
   </glossdef>
  </glossentry>
@@ -647,7 +713,7 @@
  </glossentry>
  <!-- ############## Z ############## -->
  <glossentry xml:id="obs.glos.zypper">
-  <glossterm>Zypper</glossterm>
+  <glossterm>&zypper;</glossterm>
   <glossdef>
    <para>
     A command line package manager to access repositories, solve dependencies,
