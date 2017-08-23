@@ -29,19 +29,11 @@
    This section covers how to create packages from a project hosted on &gh;
    (the <quote>upstream project</quote>). We assume that this project contains source code
    which you want to package for different &suse; distributions.
+   We assume the setup of your home project in your &obsa; instance is
+   already done. If not, refer to <xref linkend="sec.obs.basicworkflow.setuphome"/>.
   </para>
-  <itemizedlist>
-   <listitem>
-    <para>First time setup of your home project is already done.
-     <remark>toms 2017-08-22: TODO: Add link</remark>
-    </para>
-   </listitem>
-   <listitem>
-    <para>Check out of your home project is </para>
-   </listitem>
-  </itemizedlist>
   <para>
-   To create a package from the upstream project, do the following:
+   To create a package from an upstream project, do the following:
   </para>
   <procedure>
    <title>General Procedure to Build a RPM Package</title>
@@ -54,7 +46,8 @@
    <step>
     <para>
      Prepare your <firstterm
-      baseform="Working Directory">working directory</firstterm>:
+      baseform="Working Directory">working directory</firstterm>.
+     These steps has to be done only once:
     </para>
     <substeps>
      <step>
@@ -103,7 +96,7 @@
 Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      </step>
      <step>
-      <para>Enter your changes in the changelog file.</para>
+      <para>Enter your changes in the editor.</para>
       <para>
        Usually, the changelog entry contains some high-level overview like:
       </para>
@@ -120,7 +113,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
        </listitem>
        <listitem>
         <formalpara>
-         <title>Bug Fixes</title>
+         <title>Bug and Security Fixes</title>
          <para>
           Anytime a bug was fixed, mention the bug number. It is highly
           recommended to add a prefix before the number so people can identify
