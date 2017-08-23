@@ -10,7 +10,7 @@
  <title>Project Configuration</title>
  <info/>
 
- <sect1>
+ <sect1 xml:id="sec.prjconfig.about">
   <title>About the Project Configuration</title>
   <para>
    Each project has a <firstterm>project configuration</firstterm> which
@@ -79,7 +79,7 @@
   </itemizedlist>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.prjconfig.syntax">
   <title>Configuration File Syntax</title>
   <para>
    The syntax is basically the same than in RPM spec files.
@@ -106,7 +106,7 @@
    configuration:
   </para>
   <remark>toms 2017-08-18: TODO: Sort it alphabetically</remark>
-  <variablelist>
+  <variablelist xml:id="vl.prjconfig.keywords">
    <title>Available Keywords in Project Configuration</title>
    <varlistentry>
     <term><parameter>Required: <replaceable>PACKAGES</replaceable></parameter></term>
@@ -415,12 +415,85 @@ Keep: debbuild</screen>
    </varlistentry>
   </variablelist>
  </sect1>
- <sect1>
+
+ <sect1 xml:id="sec.prjconfig.macros">
   <title>Macro Section</title>
   <remark>toms 2017-08-18: TODO: Extend this section from https://en.opensuse.org/openSUSE:Build_Service_prjconf#Macros</remark>
-  <para> The macro section of the build configuration starts behind a Macros:
-   line and is only used on rpm builds. The content gets exported to be used by
-   rpmbuild during the build. It can be used to export a define using "%key
-   value" lines. </para>
+  <para>
+   Macros are definied at the end of the project configuration.
+   The macro section is only used on RPM builds.
+   <!--
+    The content gets exported to be used by <command>rpmbuild</command>
+   command during the build.
+   It can be used to export a define using "%key value" lines.
+   -->
+  </para>
+  <para>
+   The project configuration knows two possible definitions:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>%define Macro Definitions</title>
+     <para>
+      Starting with a <systemitem class="macro">%define</systemitem> line and
+      are used in the project configuration only. These definitions are
+      <emphasis>not</emphasis> available inside the build root.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Other Macro Definitions</title>
+     <para>
+      Starting after the <systemitem class="macro">Macros:</systemitem> line
+      and are exported into the <filename>.rpmmacros</filename> file of the
+      build root. As such, these macro definitions can be used in a spec
+      file.
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist>
+
+  <sect2 xml:id="sec.prjconfig.macros.define">
+   <title>Macros Used in Project Configuration Only</title>
+   <para>
+    Inside the project configuration use <systemitem class="macro">%define</systemitem>
+    to define your macros. You can use all the features that RPM supports
+    except you cannot define functions or call external commands.
+   </para>
+   <remark>toms 2017-08-23: the example in https://en.opensuse.org/openSUSE:Build_Service_prjconf#Macros
+   is misleading. On the one side the Wiki says %define macros are only used
+   inside the prj config, but on the other side it is used in the spec file.
+   Confusing!
+   </remark>
+   <para>
+    For example, you can define
+   </para>
+   <screen>%define _with_pulseaudio 1</screen>
+  </sect2>
+  <sect2 xml:id="sec.prjconfig.macros.macrosection">
+   <title>Macros Used in Spec Files Only</title>
+   <para>
+    The macro definition in the project configuration is located at the end
+    and has the following structure:
+   </para>
+   <example>
+    <title>Structure of a Macro Definition</title>
+    <screen>Macros:
+  # add your macro definitions
+:Macros</screen>
+   </example>
+   <para>
+    Everything that starts with a hash mark (<literal>#</literal>) is
+    considered a comment.
+   </para>
+   <para>
+    The macro definition itself are defined without a <literal>%define</literal>
+    keyword. Start with <literal>%macroname</literal>, for example:
+   </para>
+   <remark>toms 2017-08-23: find a good/better example than %_with_pulseaudio</remark>
+   <screen>%</screen>
+  </sect2>
  </sect1>
 </chapter>
