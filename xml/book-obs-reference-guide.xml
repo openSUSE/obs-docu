@@ -81,6 +81,5 @@
  <xi:include href="factory.xml"/>
  <!-- Appendices -->
  <xi:include href="obs_glossary.xml"/>
-<!-- <xi:include href="obs_work_on_these_books.xml"/>-->
  <xi:include href="legal.xml"/>
 </book>

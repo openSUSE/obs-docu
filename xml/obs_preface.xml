@@ -11,24 +11,78 @@
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>About this Guide</title>
  <info/>
- <para> This book is part of the official &obs; documentation.
-  <remark>toms 2017-08-14: Shouldn't the following sentence be clear (because
-   it's "official" and thus can be removed?</remark>
+ <para> This guide is part of the &obs; documentation.
   These books are considered to contain only reviewed content, establishing the
-  reference documentation of OBS.
+  reference documentation of &obsa;.
  </para>
- <para> These books does not focus on a special &obsa; version.
-  They are also not a replacement of the documentation inside of the <link
+ <para>
+  This guide does not focus on a specific &obsa; version.
+  <remark>
+   That is hogwash: It just documents whatever was available at the time of
+   writing. - sknorr, 2017-08-23
+  </remark>
+  It is also not a replacement of the documentation inside of the <link
    xlink:href="https://en.opensuse.org/Portal:Build_Service"
-   >&opensuse; Wiki</link>. But content from the wiki may get consolidated
-  and included in these books. </para>
- <para> Furthermore these books are written by the &obsa; community. Check the
-  chapter how to work on these books. We request especially experienced users
-  and administrators to join and to contribute to these books. It is not
-  required to be a very good or even native English speaker, because we rely on
-  community editors to improve the language. </para>
+  >&opensuse; Wiki</link>. However, content from the wiki may be included in
+  these books in a consolidated form.
+ </para>
 
  <xi:include href="common_intro_available_doc_i.xml"/>
  <xi:include href="common_intro_feedback_i.xml"/>
  <xi:include href="common_intro_typografie_i.xml"/>
+
+ <sect1>
+  <title>Lend a Hand?</title>
+  <para>
+   The &obsa; documentation is written by the community. In other words: You
+   can help!
+  </para>
+  <para>
+   Especially as an advanced user or an adminstrator of
+   &obsa;, there will be many topics where you can pitch in even if your
+   English is not the most polished. Conversely, if you are not very
+   experienced with &obsa; but your English is good: We rely on community
+   editors to improve the language.
+  </para>
+  <para>
+   This guide is written in DocBook XML which can be converted to HTML or PDF
+   documentation.
+  </para>
+  <para>
+   To clone the source of this guide, use Git:
+  </para>
+  <screen><command>git clone</command> https://github.com/openSUSE/obs-docu.git</screen>
+  <para>
+   To learn how to validate and generate the &obsa; documentation, see the
+   file <filename>README</filename>.
+  </para>
+  <para>
+   To submit changes, use GitHub pull requests:
+  </para>
+  <procedure>
+   <step>
+    <para>
+     Fork your own copy of the repository.
+    </para>
+   </step>
+   <step>
+    <para>
+     Commit your changes into the forked repository.
+    </para>
+   </step>
+   <step>
+    <para>
+     Create a pull request. This can be done at
+     <link xlink:href="https://github.com/openSUSE/obs-docu"/>.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   It is even possible to host instance-specific content in the official
+   Git repository, but it needs to be tagged correctly. Special
+   parts of this documentation are tagged as <command>&lt;para
+    os="opensuse"&gt;</command> for example. In this case, the paragraph
+   will become only visible when creating the &opensuse; version of a guide.
+  </para>
+ </sect1>
 </preface>
