@@ -122,10 +122,10 @@
   </variablelist>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.osc.usage">
   <title>Usage</title>
   <para></para>
-  <sect2>
+  <sect2 xml:id="sec.osc.help">
    <title>Getting Help</title>
    <para>
     <!--Before you work with &osccmd; it is useful to know how to get help.-->
@@ -139,7 +139,7 @@
   </para>
   </sect2>
   <!-- From obs_best_practice_osc_examples.xml -->
-  <sect2>
+  <sect2 xml:id="sec.osc.firsttime">
    <title>Using &osccmd; for the First Time</title>
    <para>
     When you use the &osccmd; command for the first time, the command will
@@ -181,7 +181,7 @@
     authenticated it.
    </para>
   </sect2>
-  <sect2>
+  <sect2 xml:id="sec.osc.examples">
    <title>Overview of Brief Examples</title>
   <para>
    The &osccmd; command is similar than <command>git</command>:
