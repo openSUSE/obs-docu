@@ -18,9 +18,90 @@
 -->
  <sect1 xml:id="sec.obs.basicworkflow.setuphome">
   <title>Setting Up Your Home Project for the First Time</title>
-  <para>TBD</para>
-  <remark>toms 2017-08-22: explain:
-   1) osc ls / 2) osc prj -e home:OBS_USER  3) </remark>
+  <para>
+   This section shows how to set up your home project with the command line
+   tool &osccmd;<!-- after creating an &obsa; account-->. If you are searching
+   for a way to setup your home project with the Web UI, refer to
+   <xref linkend="sec.obsbg.uc.setuphome"/>.
+  </para>
+  <para>
+   This chapter is based on the following assumptions:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     You have installed &osccmd; as described in <xref linkend="sec.obs.osc.install"/>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You have configured &osccmd; as described in <xref linkend="sec.osc.firsttime"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+
+  <procedure>
+   <title>Setting Up the Home Project</title>
+   <step xml:id="st.basicworkflow.setuphome.oscls">
+    <para>
+     Get a list of all available build targets of your &obsa; instance:
+    </para>
+    <screen>&prompt.user;<command>osc</command> ls /</screen>
+    <para>
+     For the &opensuse; &obs; you will receive a list of project names like
+     <uri>openSUSE:Tumbleweed</uri>, <uri>openSUSE:Leap:42.3</uri>,
+     <uri>openSUSE:Tools</uri>, <uri>openSUSE:Templates</uri>, and others.
+    </para>
+   </step>
+   <step>
+    <para>
+     Configure your build targets with:
+    </para>
+    <screen>&prompt.user;<command>osc</command> meta prj -e &obshome1;</screen>
+    <para>The previous command shows a XML structure like this:</para>
+    <remark>toms 2017-08-23: TODO: Move it to the concept part and add a xref here.</remark>
+    <example>
+     <title>XML Structure of Build Service Metadata</title>
+     <screen language="xml">&lt;project name="&obshome1;">
+  &lt;title>&obsuser1;'s Home Project&lt;/title>
+  &lt;description>Some description about the project.&lt;/description>
+  &lt;person userid="&obsuser1;" role="bugowner"/>
+  &lt;!-- contains other OBS users -->
+  &lt;debuginfo>
+    &lt;enable repository="openSUSE_Factory"/>
+  &lt;/debuginfo>
+  &lt;!-- add &lt;repository> elements here -->
+&lt;/project></screen>
+    </example>
+   </step>
+   <step>
+    <para>
+     Add a <tag>repository</tag> element that refers to &opensuse; Tumbleweed
+     like this:
+    </para>
+    <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
+    &lt;path project="openSUSE:Factory" repository="snapshot"/>
+    &lt;arch>i586&lt;/arch>
+    &lt;arch>x86_64&lt;/arch>
+&lt;/repository></screen>
+   </step>
+   <step>
+    <para>
+     Add more <tag>repository</tag> elements as needed.  Insert the information
+     from <xref linkend="st.basicworkflow.setuphome.oscls"/> into the
+     <tag class="attribute">project</tag> attribute.
+    </para>
+   </step>
+   <step>
+    <para>
+      Save the structure with <keycombo><keycap>:</keycap><keycap>x</keycap></keycombo>
+     or leave it unchanged with <keycombo><keycap>:</keycap><keycap>q</keycap><keycap>!</keycap></keycombo>.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   After a while, the definied build targets show up in your home project.
+  </para>
  </sect1>
 
  <sect1>
