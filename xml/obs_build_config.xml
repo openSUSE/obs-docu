@@ -120,7 +120,7 @@
      <para>Sets the binary format used to setup the build
       environment. For example a package with spec build description may use
       and generate deb packages instead of rpms. If no binary type is
-      specified, OBS deduces it from the recipe type. If the recipe type is
+      specified, OBS deduces it from the build recipe type. If the recipe type is
       also not set, OBS looks at the Preinstall package list for a hint.
      </para>
     </listitem>
@@ -398,7 +398,7 @@ Keep: debbuild</screen>
       it can be set here to either one of these: spec, dsc, kiwi, livebuild,
       arch, preinstallimage.
      </para>
-     <para>Defines the recipe format. Valid values are currently: none, spec,
+     <para>Defines the build recipe format. Valid values are currently: none, spec,
       dsc, arch, kiwi, preinstallimage. If no type is specified, OBS deduces a
       type from the binary type. </para>
     </listitem>

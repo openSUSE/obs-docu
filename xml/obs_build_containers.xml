@@ -50,8 +50,8 @@
     side effect of an rpm build. Open Build Service (OBS) supports signing and
     publishing the .AppImage files, the rest is handled via wrapper packages
     which converts an rpm (or deb package) into an AppImage file. Own build
-    rules can provided via a "Recipe" file, fallback code will be used if no
-    "Recipe" file is available.</para>
+    rules can provided via a <filename>Recipe</filename> file, fallback code
+    will be used if no <filename>Recipe</filename> file is available.</para>
     </listitem>
    </varlistentry>
    <varlistentry>

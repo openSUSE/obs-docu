@@ -21,10 +21,10 @@
    used to build RPM packages by calling <command>rpmbuild</command>. </para>
   <para> In most cases, the build result format is the same as the package
    format used for setting up the build environment, but sometimes the format
-   is different. An example is the &kiwi; recipe format, which can build
+   is different. An example is the &kiwi; build recipe format, which can build
    <!--products and--> ISOs, but uses RPM packages to setup the build process.
   </para>
-  <para> OBS currently supports the following recipe formats and packages:
+  <para> OBS currently supports the following build recipe formats and packages:
   </para>
   <itemizedlist>
    <title>Supported Package Formats</title>
@@ -42,7 +42,7 @@
   </itemizedlist>
 
   <itemizedlist>
-   <title>Supported Recipe Formats</title>
+   <title>Supported Build Recipe Formats</title>
    <listitem>
     <para>Spec format for RPM packages</para>
    </listitem>
@@ -60,11 +60,11 @@
    </listitem>
   </itemizedlist>
 
-  <para> If no recipe format and binary format is specified in the project
+  <para> If no build recipe format and binary format are specified in the project
    configuration, &obsa; tries to deduce them from the preinstall list, which
    includes the name of the used package manager.
    This means that you need to manually configure the
-    <literal>kiwi</literal> recipe config, as an RPM package format will select
+    <literal>kiwi</literal> build recipe, as an RPM package format will select
     <literal>spec</literal> builds as default. This configuration is done by
    adding a <literal>Type</literal> line to the project configuration. </para>
  </sect1>

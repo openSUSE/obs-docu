@@ -16,7 +16,7 @@
    <para>
     OBS is open source project and therefore you can setup your own instance
     and run it by your own. The main advantage of this approach is that you can
-    keep all your sources and recipes unpublished if you need to (for example
+    keep all your sources and build recipes unpublished if you need to (for example
     because of NDA). Obvious downside of this approach is that you need to
     maintain your own server/servers for running builds, publishing and
     mirroring. Also making your project public may attract some potential

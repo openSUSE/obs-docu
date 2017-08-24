@@ -60,7 +60,7 @@
     virtual machine or enters the build root. If this was successful, the
     install phase reinstalls all base packages from above and additionally all
     packages you have defined in your build recipe. After this phase the
-    environment is ready to process the recipe.
+    environment is ready to process the build recipe.
    </para>
   </sect2>
   <sect2>

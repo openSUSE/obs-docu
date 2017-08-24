@@ -106,6 +106,20 @@
    <glossseealso otherterm="obs.glos.build"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.buildrecipe">
+  <glossterm>Build Recipe</glossterm>
+  <glossdef>
+   <para>Generic term for a recipe file for creating a package.
+    A package specification includes
+    metadata, instructions, requirements, and changelogs.
+    For RPM-based systems like &suse;, a <filename>.spec</filename> file is
+    used and contains all the previous points. Debian-based systems use
+    a <filename>debian</filename> directory which splits all the information.
+   </para>
+   <glossseealso otherterm="obs.glos.spec"/>
+<!--   <glossseealso otherterm=""obs.glos.debianrulefile"/>-->
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.buildresult">
   <glossterm>Build Result</glossterm>
   <glossdef>
@@ -405,11 +419,11 @@
       &obsa; packages contain the sources that are necessary to build one or
       more binary packages or containers. The content of &obsa; packages
       varies. In general, there is always a source file (such as a TAR
-      archive of the upstream sources) and a recipe file.
+      archive of the upstream sources) and a build recipe.
      </para>
      <para>
       To build an &rpmf; package in &obsa;, you need a spec file as your
-      recipe file, for example. An &obsa; package can also contain other
+      build recipe, for example. An &obsa; package can also contain other
       files, such as a change log and patches.
      </para>
      <para>
@@ -449,20 +463,6 @@
     other. non-open source licenses). Additionally, there are update
     source, and debug repositories as well.
    </para>
-  </glossdef>
- </glossentry>
- <glossentry xml:id="obs.glos.packagespecification">
-  <glossterm>Package Specification</glossterm>
-  <glossdef>
-   <para>Generic term for a recipe file for creating a package.
-    A package specification includes
-    metadata, instructions, requirements, and changelogs.
-    For RPM-based systems like &suse;, a <filename>.spec</filename> file is
-    used and contains all the previous points. Debian-based systems use
-    a <filename>debian</filename> directory which splits all the information.
-   </para>
-   <glossseealso otherterm="obs.glos.spec"/>
-<!--   <glossseealso otherterm=""obs.glos.debianrulefile"/>-->
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.patch">

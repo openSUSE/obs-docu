@@ -117,17 +117,17 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    To build the package, the back end creates a sandbox with
    the respective distribution. This sandbox is isolated from
    the rest of the host system.
-   Depending on the &packspec; (on RPM-based systems, this is a
+   Depending on the build recipe (on RPM-based systems, this is a
    <firstterm>spec file</firstterm>), other packages
    are downloaded and installed prior to building.
   </para>
   <para>
-   The build process itself executes all the instructions inside the &packspec;.
-   If the build is successful, the files that belong to the package
-   are installed into the sandbox. The final RPM package is created using the
-   sandboxed files. The resulting package is then moved into a download area (the
-   <emphasis>download repository</emphasis>) to make it public and available
-   for installation.
+   The build process executes all the instructions that it finds in the build
+   recipe.
+   If the build is successful, the files which belong to the package
+   are installed into the sandbox. From those sandboxed files, the final RPM
+   package is created and moved into a download area, the
+   <emphasis>download repository</emphasis>.
   </para>
   <para>
     End users can install the package using their preferred package management
@@ -604,7 +604,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    </step>
    <step>
     <para>
-     Create the &packspec;. This file contains metadata and build
+     Create the build recipe. This file contains metadata and build
      instructions.
     </para>
     <para>
