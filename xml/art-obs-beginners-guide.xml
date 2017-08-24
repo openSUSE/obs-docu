@@ -55,8 +55,9 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    (&x86;, &amd64;, &zseries;, &ppc; etc.).
   </para>
   <sect2 xml:id="sec.obsbg.concept.pkgspec">
-   <title>Package Specification</title>
-   <para>To create a package in &obsa;, you need a <firstterm>package specification</firstterm>
+   <title>Build Recipe</title>
+   <para>
+    To create a package in &obsa;, you need a <firstterm>build recipe</firstterm>
     which contains the following information:
    </para>
    <itemizedlist>
