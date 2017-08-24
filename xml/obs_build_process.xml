@@ -8,33 +8,43 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Process</title>
- <info/>
- <para> Each package build is done in a fresh environment. This is done to
-  ensure that no dependencies are missing and every later build produces
-  identical results. </para>
+ <para>
+  Each package build is created in a fresh environment. This is done to
+  ensure that all dependencies are available and that every later build
+  produces identical results.
+ </para>
  <sect1>
-  <title>How is a build process defined</title>
+  <title>Definition of a Build Process</title>
   <para> ... </para>
  </sect1>
  <sect1>
   <title>How does a build process work</title>
-  <para> All sources and binaries which are hosted inside of OBS are organized
-   in projects. Projects do host in sources inside of package containers again.
-   The sources get build according to the repository configuration inside of
-   the project. </para>
+  <para>
+   All sources and binaries which are hosted inside &obs; are organized in
+   projects. Projects host sources inside of &obsa; packages. The sources are
+   build according to the repository configuration inside of the project.
+  </para>
   <sect2>
-   <title>Preinstall phase</title>
-   <para> The step of this phase depends on the type of the buildroot (building
-    environment). OBS supports three types of buildroot: </para>
+   <title>Preinstall Phase</title>
+   <para>
+    This phase depends on the type of the buildroot (building
+    environment). &obsa; supports three different types of buildroots:
+   </para>
     <itemizedlist>
      <listitem>
-      <para> chroot </para>
+      <para>
+       chroot
+      </para>
      </listitem>
      <listitem>
-      <para> XEN </para>
+      <para>
+       XEN
+      </para>
      </listitem>
      <listitem>
-      <para> KVM </para>
+      <para>
+       KVM
+      </para>
      </listitem>
     </itemizedlist> 
     <para>
@@ -45,35 +55,70 @@
   </sect2>
   <sect2>
    <title>Install Phase</title>
-   <para> Depending of the chosen build root the worker starts the XEN/KVM
-    virtual machine or enters the build root. If this was successful the
-    install phase reinstalls all base package from above and additionally all
-    packages you have defined in your package recipe. After this phase the
-    environment is ready to process the recipe. </para>
+   <para>
+    Depending of the chosen build root, the worker starts a Xen or KVM
+    virtual machine or enters the build root. If this was successful, the
+    install phase reinstalls all base packages from above and additionally all
+    packages you have defined in your build recipe. After this phase the
+    environment is ready to process the recipe.
+   </para>
   </sect2>
   <sect2>
-   <title>Package build</title>
-   <para> Regarding the package type the buildroot executes different build
-    commands. On RPM-based distributions it is called "rpmbuild". On
-    Debian-based distributions, it is "dpkg-buildpackage" and on Arch Linux you
-    use "pacman". Now everything depends on the quality and the type of your
-    build recipe. In most cases the source code will be compiled now and get
-    packed into the specific package format. On RPM based distributions there
-    are additional security and cleanness checks called rpmlint, which have the
-    goal to improve the quality of the packages. </para>
+   <title>Package Build</title>
+   <remark>
+    FIXME: Terminology: Definition of buildroot? Is buildroot a command? I
+    would have presumed this to be a location not a command or other type of
+    active thingie. - sknorr, 2017-08-24
+   </remark>
+   <para>
+    Depending on the type of package, the buildroot executes different build
+    commands:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      RPM-based distributions: <command>rpmbuild</command>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Debian-based distributions: <command>dpkg-buildpackage</command>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Arch Linux: <command>pacman</command>.
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    How the build continues depends on the quality and the type of your build
+    recipe. In most cases, the source code will be compiled now and then be
+    packed into the chosen package format.
+   </para>
+   <para>
+    To improve package quality, on RPM-based distributions there are
+    additional security checks and a linter called <command>rpmlint</command>.
+   </para>
   </sect2>
   <sect2>
-   <title>Post build steps</title>
-   <para> The generated packages are taken from the Worker get signed by the
-    OBS Signer and are published to the Repository. </para>
+   <title>After the Build</title>
+   <para>
+    The generated packages are taken from the worker, are signed by the
+    &obsa; signer and are published to the Repository.
+   </para>
+   <remark>
+    FIXME: Terminology -- "signing server" instead of "signer"?
+    - sknorr, 2017-08-24
+   </remark>
   </sect2>
  </sect1>
  <sect1>
-  <title>Different ways to build</title>
+  <title>Different Ways of Building</title>
   <para> ... </para>
  </sect1>
  <sect1>
-  <title>Security aspects</title>
+  <title>Security Aspects</title>
   <para> ... </para>
  </sect1>
 </chapter>
