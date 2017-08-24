@@ -79,9 +79,9 @@
   </procedure>
   <para>
    It is even possible to host instance-specific content in the official
-   Git repository, but it needs to be tagged correctly. Special
-   parts of this documentation are tagged as <command>&lt;para
-    os="opensuse"&gt;</command> for example. In this case, the paragraph
+   Git repository, but it needs to be tagged correctly. For example,
+   parts of this documentation are tagged as <tag>&lt;para
+   os="opensuse"&gt;</tag>. In this case, the paragraph
    will become only visible when creating the &opensuse; version of a guide.
   </para>
  </sect1>
