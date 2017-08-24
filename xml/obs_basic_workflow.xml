@@ -8,8 +8,9 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Knowing the Basic Workflow</title>
- <para>TBD</para>
+ <title>Basic &obsa; Workflow</title>
+ <para/>
+ <remark>TBD</remark>
 <!--
  <sect1>
   <title>Handling Dependencies</title>
@@ -17,17 +18,23 @@
  </sect1>
 -->
  <sect1 xml:id="sec.obs.basicworkflow.setuphome">
-  <title>Setting Up Your Home Project for the First Time</title>
+  <title>Setting Up Your Home Project</title>
   <para>
    This section shows how to set up your home project with the command line
-   tool &osccmd;<!-- after creating an &obsa; account-->. If you are searching
-   for a way to setup your home project with the Web UI, refer to
+   tool &osccmd;. For more
+   information about setting up your home project with the Web UI, see
    <xref linkend="sec.obsbg.uc.setuphome"/>.
   </para>
   <para>
    This chapter is based on the following assumptions:
   </para>
   <itemizedlist>
+   <listitem>
+    <para>
+     You have an account on an &obs; instance. To create an account, use the
+     Web UI.
+    </para>
+   </listitem>
    <listitem>
     <para>
      You have installed &osccmd; as described in <xref linkend="sec.obs.osc.install"/>.
@@ -41,24 +48,25 @@
   </itemizedlist>
 
   <procedure>
-   <title>Setting Up the Home Project</title>
+   <title>Setting Up Your Home Project</title>
    <step xml:id="st.basicworkflow.setuphome.oscls">
     <para>
      Get a list of all available build targets of your &obsa; instance:
     </para>
     <screen>&prompt.user;<command>osc</command> ls /</screen>
     <para>
-     On the &opensuse; &obs; you will receive a long list of project names.
-     For example, <uri>openSUSE:Tumbleweed</uri>,
+     For example, on the &osbs;, build targets will include distributions
+     such as
+     <uri>openSUSE:Tumbleweed</uri>,
      <uri>openSUSE:Leap:<replaceable>VERSION</replaceable></uri>,
-     <uri>openSUSE:Tools</uri>, <uri>openSUSE:Templates</uri>, and others.
+     <uri>openSUSE:Tools</uri>, <uri>openSUSE:Templates</uri>.
     </para>
    </step>
-   <step>
+   <step xml:id="st.obs.metaprj">
     <para>
      Configure your build targets with:
     </para>
-    <screen>&prompt.user;<command>osc</command> meta prj -e &obshome1;</screen>
+    <screen>&prompt.user;<command>osc</command> meta prj --edit &obshome1;</screen>
     <para>The previous command shows a XML structure like this:</para>
     <remark>toms 2017-08-23: TODO: Move it to the concept part and add a xref here.</remark>
     <example>
@@ -77,8 +85,9 @@
    </step>
    <step>
     <para>
-     Add a <tag>repository</tag> element that refers to &opensuse; Tumbleweed
-     like this:
+     To add build targets, use the <tag>repository</tag> element. For
+     example, on &osbs;, you can add the build targets &tw; for x86 and
+     x86-64 with:
     </para>
     <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
     &lt;path project="openSUSE:Factory" repository="snapshot"/>
@@ -90,15 +99,29 @@
     <para>
      Add more <tag>repository</tag> elements as needed.  Insert the information
      from <xref linkend="st.basicworkflow.setuphome.oscls"/> into the
-     <tag class="attribute">project</tag> attribute. For the <tag
-      class="attribute">repository</tag> use <tag class="attvalue"
-       >standard</tag> if you refer to &opensuse; related projects.
-     For example, if you want to add &opensuse; Leap as a build target
-     your entry will look like this:
+     <tag class="attribute">project</tag> attribute.
+    </para>
+    <remark>
+     Should we put the &osbs; examples behind phrases, so they can be
+     profiled away? (cf. the "Lend a Hand?" section in the intro.) - sknorr,
+     2017-08-24
+    </remark>
+    <para>
+     On &osbs;, you can normally use the attribute
+     <tag class="attribute">repository</tag> with the value
+     <tag class="attvalue" >standard</tag>.
+     For example, to add &leap; as a build target, create an entry like:
     </para>
     <remark>toms 2017-08-23: how do you get the "standard" value in the
     repository attribute? Is there any command to retrieve this information?
     "osc ls" doesn't show that...
+    </remark>
+    <remark>
+     "osc meta prj openSUSE:Leap:42.3" will show the required information
+     some way or another, I guess. Look for //repository[@name] in that file.
+     However, this is apparently overridden by
+     //repository[@name]/path[@repository] (as in the case of Tw). - sknorr,
+     2017-08-24
     </remark>
     <screen language="xml">&lt;repository name="openSUSE_Leap_42.3">
     &lt;path project="openSUSE:Leap:42.3" repository="standard"/>
@@ -108,13 +131,19 @@
    </step>
    <step>
     <para>
-      Save the structure with <keycombo><keycap>:</keycap><keycap>x</keycap></keycombo>
-     or leave it unchanged with <keycombo><keycap>:</keycap><keycap>q</keycap><keycap>!</keycap></keycombo>.
+     Save the file (or leave it untouched).
+    </para>
+    <para>
+     &osccmd; will check if the new configuration is valid XML. If the file
+     is valid, &osccmd; will save it. Otherwise, it will show an error and
+     prompt you whether to <guimenu>Try again?</guimenu>. In this case, press
+     <keycap>n</keycap>. Your changes will be lost and you will need to start
+     from <xref linkend="st.obs.metaprj"/> again.
     </para>
    </step>
   </procedure>
   <para>
-   After a short while, the definied build targets show up in your home project.
+   After a while, the defined build targets show up in your home project.
   </para>
  </sect1>
 
@@ -165,26 +194,31 @@
    </step>
    <step>
     <para>
-     Get the pristine source code of the upstream project and save it in
+     Download the source of the upstream project and save it in
      <filename>&obsworkdir1;/<replaceable>YOUR_PROJECT</replaceable></filename>.
-    </para>
-    <para>
-     Download the sources from your upstream project.
     </para>
    </step>
    <step>
     <para>
      Create a <firstterm baseform="Spec File">spec file</firstterm> which
      contains metadata and build instructions.
-     If you need more information about RPM spec files, see
-     <link xlink:href="http://rpm-guide.readthedocs.io/en/latest/"/>.
+     For more information about spec files, see
+     <link xlink:href="https://rpm-guide.readthedocs.io/en/latest/"/>.
     </para>
+    <remark>
+     Arguably, allowing people to get to step 4 of a procedure without them
+     knowing what they are doing _at all_ is not fair. Maybe this link could
+     be added earlier? - sknorr, 2017-08-24
+    </remark>
    </step>
    <step>
     <para>Create a new changelog and add your changes:</para>
     <substeps>
      <step>
-      <para>Create a new changelog file with &osccmd;:</para>
+      <para>
+       To create a new changelog file or to update an existing changelog file
+       with &osccmd;, use:
+      </para>
       <screen>&prompt.user;<command>osc</command> vc</screen>
       <para>The command will open an editor with the following content:</para>
       <screen>-------------------------------------------------------------------
@@ -193,7 +227,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      <step>
       <para>Enter your changes in the editor.</para>
       <para>
-       Usually, the changelog entry contains some high-level overview like:
+       Usually, changelog entries contain a high-level overview like:
       </para>
       <remark>toms 2017-08-22: TODO: Move content into concept part?</remark>
       <itemizedlist>
@@ -210,38 +244,43 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
         <formalpara>
          <title>Bug and Security Fixes</title>
          <para>
-          Anytime a bug was fixed, mention the bug number. It is highly
-          recommended to add a prefix before the number so people can identify
-          the bug tracker. For example, <literal>bsc</literal> for
-           <uri>bugzilla.suse.com</uri>, <literal>fate</literal>
-           (<uri>fate.suse.com</uri>), <literal>kde</literal>
-           (<uri>bugs.kde.org</uri>) etc.
+          If a bug was fixed, mention the bug number.
+          Most projects have policies or conventions for abbreviating bug
+          numbers, so there is no need to add a long URL.
          </para>
         </formalpara>
+        <para>
+         For example, in &osbs;, <literal>boo#</literal> is used for bugs
+         on <link xlink:href="https://bugzilla.opensuse.org"/> and
+         <literal>fate#</literal> is used for features on
+         <link xlink:href="https://fate.opensuse.org"/>.
+        </para>
        </listitem>
        <listitem>
         <formalpara>
-         <title>API Changes</title>
+         <title>Incompatible Changes</title>
          <para>
-          Whenever the user or developer needs to be aware of
-          incompatible changes the requires the user to adapt their
-          configurations.
+          Mention incompatible changes, such as API changes, that affect
+          users or other developers creating extensions of your package.
          </para>
         </formalpara>
+        <remark>
+         Not sure if all API changes are necessarily incompatible...
+         - sknorr, 2017-08-24
+        </remark>
        </listitem>
        <listitem>
         <formalpara>
-         <title>Distribution Related Changes</title>
+         <title>Distribution-Related Changes</title>
          <para>
-          Like any changes in the package structure, renaming of package
-          names, adding or removing patch files, or specific
-           <quote>hacks</quote>.
+          Mention any changes in the package structure, renamings of packages,
+          and additions or removals of patch files or <quote>hacks</quote>.
          </para>
         </formalpara>
        </listitem>
       </itemizedlist>
       <para>
-       Find more information about the changelog at <link
+       For more information about changelogs, see <link
         xlink:href="https://en.opensuse.org/openSUSE:Creating_a_changes_file_(RPM)"
        />.
       </para>
@@ -277,7 +316,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   <para>
    It is hard to describe a general procedure when you encounter a build
    error. Most build errors are very specific to the package being built.
-   However, once you are hit by one, you can try the following options:
+   However, there are generic tools that often help:
   </para>
   <itemizedlist>
    <listitem>
@@ -345,22 +384,26 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    <para>
     If you build a package locally and you get a build error, investigate
     the problems in the build root directory directly. This is sometimes
-    easier and more effective than just looking at the build log.
+    easier and more effective than only looking at the build log.
    </para>
    <para>
     By default, the directory <filename>/var/tmp/build-root/</filename>
-    is used as the <emphasis>build root</emphasis>. It is definied in
-    the configuration file <filename>~/.oscrc</filename>, search for the
+    is used as the <emphasis>build root</emphasis>. This is defined in
+    the configuration file <filename>~/.oscrc</filename> using the
     key <option>build-root</option>.
+   </para>
+   <para>
     Each combination of distribution and architecture has its own build
-    root. To change into the build root for &opensuse; Tumbleweed on a
-    64bit architecture, use the following command
-    (you have to entered the &rootuser; password):
+    root. To change into the build root for &tw; on the
+    x86-64 architecture, use the following command:
    </para>
    <screen>&prompt.user;<command>osc</command> chroot openSUSE_Tumbleweed x86_64</screen>
    <para>
-    After you have entered the &rootuser; password, your current directory
-    is changed to <filename>/home/abuild</filename> belonging to user
+    When prompted, enter the &rootuser; password.
+   </para>
+   <para>
+    Your shell will then change to the directory
+    <filename>/home/abuild</filename> belonging to the user
     <systemitem class="username">abuild</systemitem> in group <systemitem
      class="groupname">abuild</systemitem>.
    </para>
@@ -388,7 +431,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
       <para>
        Contains directory named after the package name.
        In spec files, the name of the package directory is referenced
-       as the <systemitem class="macro">%buildroot</systemitem> macro.
+       using the <systemitem class="macro">%buildroot</systemitem> macro.
       </para>
      </callout>
      <callout arearefs="co.workflow.buildroot.buildroot">
@@ -410,9 +453,10 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      </callout>
      <callout arearefs="co.workflow.buildroot.rpms">
       <para>
-       Stores binary RPMs into subdirectories of achitecture
-       (for example <filename>noarch</filename> or
-       <filename>x86_64</filename>) if the build was successful.
+       If the build was successful, stores binary RPMs into subdirectories of
+       achitecture
+       (for example, <filename>noarch</filename> or
+       <filename>x86_64</filename>).
       </para>
      </callout>
      <callout arearefs="co.workflow.buildroot.sources">
@@ -438,14 +482,17 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
  <sect1 xml:id="sec.obs.basicworkflow.dependencies">
   <title>Adding Dependencies to Your Project</title>
   <para>
-   Software usually depends on other software: to run an application some
-   may need other libraries. These dependencies are named
+   Software usually depends on other software: To run an application, you
+   may, for example, need additional libraries. Such dependencies are called
    <emphasis>installation requirements</emphasis>.
   </para>
+  <remark>
+   Firstterm for installation req/build req? - sknorr, 2017-08-24
+  </remark>
   <para>
-   On the other side, you need to define dependencies to build your package.
-   These <emphasis>build requirements</emphasis> are only needed during
-   the build process in &obsa;.
+   Additionally, there are also dependencies that are only necessary for
+   building a package but not when the software it contains is run. Such
+   dependencies are called <emphasis>build requirements</emphasis>.
   </para>
   <para>
    The &obs; provides the following methods to handle both dependencies in
@@ -495,10 +542,10 @@ Requires:         zool >= 1.5.6</screen>
    <para>
     There is no need to duplicate the work of others. If you need a specific
     package which is available in another repository, you can reference this
-    repository in your project meta data. This is called <emphasis>layering</emphasis>.
+    repository in your project metadata. This is called <emphasis>layering</emphasis>.
    </para>
    <para>
-    Once this package is needed, it will be potentially installed from the
+    When a package is needed, it can be installed from another
     other repository (see the note below).
    </para>
    <para>
@@ -513,16 +560,15 @@ Requires:         zool >= 1.5.6</screen>
     </step>
     <step>
      <para>
-      Edit your project's metadata:
+      Edit the project metadata:
      </para>
      <screen>&prompt.user;<command>osc</command> meta prj --edit &obshome1;</screen>
     </step>
     <step xml:id="st.obs.basicworkflow.layering.repository">
      <para>
-      Search for <tag>repository</tag> elements. For example, if you want to
-      include a reference of the <uri>devel:languages:python</uri> in your
-      &opensuse; Tumbleweed project, extend the <tag>repository</tag> element
-      to look like this:
+      Search for <tag>repository</tag> elements. For example, to allow usage
+      packages from <uri>devel:languages:python</uri> in a
+      &tw; project, extend the <tag>repository</tag> element with:
      </para>
      <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
     <emphasis role="strong">&lt;path project="devel:languages:python" repository="openSUSE_Factory"/></emphasis>
@@ -530,41 +576,44 @@ Requires:         zool >= 1.5.6</screen>
     &lt;arch>x86_64&lt;/arch>
 &lt;/repository></screen>
      <note>
-      <title>Order is Important</title>
+      <title>Order Is Important</title>
       <para>
-       The order of the <tag>path</tag> tags is important: it is searched
-       from top to bottom. If a package could not be found in the first
-       repository, the second repository is considered. 
-       Whenever a package is found, it is installed and the search process
-       is finished.
+       The order of the <tag>path</tag> elements is important:
+       <tag>path</tag> elements are searched
+       from top to bottom.
+      </para>
+      <para>
+       If a package cannot be found in the first
+       repository, the second repository is considered.
+       When the first suitable package is found, it is installed and the
+       build preparation can continue.
       </para>
       <para>
        For practical reasons, additional repositories should be added
-       as a first item, before the standard repositories of your
+       before the standard repositories of the specified
        distribution.
       </para>
      </note> 
     </step>
     <step xml:id="st.obs.basicworkflow.layering.path">
      <para>
-      Add more <tag>path</tag> tags under the same
-      <tag>repository</tag> tag.
+      Add more <tag>path</tag> elements under the same
+      <tag>repository</tag> element.
      </para>
     </step>
     <step>
      <para>
       If necessary, repeat <xref linkend="st.obs.basicworkflow.layering.repository"/> and
       <xref linkend="st.obs.basicworkflow.layering.path"/> to add <tag>path</tag>
-      tags to <tag>repository</tag> elements of other distributions or releases.
+      elements to <tag>repository</tag> elements of other distributions or releases.
      </para>
     </step>
    </procedure>
   </sect2>
   <sect2 xml:id="sec.obs.basicworkflow.reuse">
    <title>Reusing Packages in Your Project</title>
-   <para>
-    TBD
-   </para>
+   <para/>
+   <remark>TBD</remark>
   </sect2>
  </sect1>
 
