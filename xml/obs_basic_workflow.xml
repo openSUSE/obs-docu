@@ -48,8 +48,9 @@
     </para>
     <screen>&prompt.user;<command>osc</command> ls /</screen>
     <para>
-     For the &opensuse; &obs; you will receive a list of project names like
-     <uri>openSUSE:Tumbleweed</uri>, <uri>openSUSE:Leap:42.3</uri>,
+     On the &opensuse; &obs; you will receive a long list of project names.
+     For example, <uri>openSUSE:Tumbleweed</uri>,
+     <uri>openSUSE:Leap:<replaceable>VERSION</replaceable></uri>,
      <uri>openSUSE:Tools</uri>, <uri>openSUSE:Templates</uri>, and others.
     </para>
    </step>
@@ -405,8 +406,137 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   </sect2>
  </sect1>
 
- <sect1>
-  <title>Linking and Aggregating Packages</title>
-  <para>TBD</para>
+ <sect1 xml:id="sec.obs.basicworkflow.dependencies">
+  <title>Adding Dependencies to Your Project</title>
+  <para>
+   Software usually depends on other software: to run an application some
+   may need other libraries. These dependencies are named
+   <emphasis>installation requirements</emphasis>.
+  </para>
+  <para>
+   On the other side, you need to define dependencies to build your package.
+   These <emphasis>build requirements</emphasis> are only needed during
+   the build process in &obsa;.
+  </para>
+  <para>
+   The &obs; provides the following methods to handle both dependencies in
+   your projects:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <xref linkend="sec.obs.basicworkflow.deps"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="sec.obs.basicworkflow.layering"/>
+     (<emphasis>layering</emphasis>)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="sec.obs.basicworkflow.reuse"/>
+     (<emphasis>linking</emphasis> and <emphasis>aggregating</emphasis>)
+    </para>
+   </listitem>
+  </itemizedlist>
+
+  <sect2 xml:id="sec.obs.basicworkflow.deps">
+   <title>Adding Dependencies to Your Build Recipes</title>
+   <remark>toms 2017-08-24: Should probably go into the concept part?</remark>
+   <remark>toms 2017-08-24: should we explain hard and soft requirements?</remark>
+   <para>
+    In a spec file, dependencies are expressed with the keywords <literal>Requires</literal>
+    (installation requirements) and <literal>BuildRequires</literal> (installation
+    requirements). Both belong to the header of the spec file<!-- (see <xref
+     linkend=""/>)-->.
+   </para>
+   <example xml:id="ex.obs.basicworkflow.excerpt">
+    <title>Excerpt of Build and Installation Requirements</title>
+    <screen language="rpm">Name:             foo-example
+Version:          1.0.0
+BuildRequires:    bar
+Requires:         zool >= 1.5.6</screen>
+   </example>
+   <remark>toms 2017-08-24: Version compare with zypper vcmp?</remark>
+  </sect2>
+  <sect2 xml:id="sec.obs.basicworkflow.layering">
+   <title>Associating Other Repositores with Your Repository</title>
+   <para>
+    There is no need to duplicate the work of others. If you need a specific
+    package which is available in another repository, you can reference this
+    repository in your project meta data. This is called <emphasis>layering</emphasis>.
+   </para>
+   <para>
+    Once this package is needed, it will be potentially installed from the
+    other repository (see the note below).
+   </para>
+   <para>
+    To add another repository that can be used as build or installation
+    requirements, do the following:
+   </para>
+   <procedure>
+    <step>
+     <para>
+      Open a terminal<!-- and change the directory to your working copy-->.
+     </para>
+    </step>
+    <step>
+     <para>
+      Edit your project's metadata:
+     </para>
+     <screen>&prompt.user;<command>osc</command> meta prj --edit &obshome1;</screen>
+    </step>
+    <step xml:id="st.obs.basicworkflow.layering.repository">
+     <para>
+      Search for <tag>repository</tag> elements. For example, if you want to
+      include a reference of the <uri>devel:languages:python</uri> in your
+      &opensuse; Tumbleweed project, extend the <tag>repository</tag> element
+      to look like this:
+     </para>
+     <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
+    <emphasis role="strong">&lt;path project="devel:languages:python" repository="openSUSE_Factory"/></emphasis>
+    &lt;path project="openSUSE:Factory" repository="standard"/>
+    &lt;arch>x86_64&lt;/arch>
+&lt;/repository></screen>
+     <note>
+      <title>Order is Important</title>
+      <para>
+       The order of the <tag>path</tag> tags is important: it is searched
+       from top to bottom. If a package could not be found in the first
+       repository, the second repository is considered. 
+       Whenever a package is found, it is installed and the search process
+       is finished.
+      </para>
+      <para>
+       For practical reasons, additional repositories should be added
+       as a first item, before the standard repositories of your
+       distribution.
+      </para>
+     </note> 
+    </step>
+    <step xml:id="st.obs.basicworkflow.layering.path">
+     <para>
+      Add more <tag>path</tag> tags under the same
+      <tag>repository</tag> tag.
+     </para>
+    </step>
+    <step>
+     <para>
+      If necessary, repeat <xref linkend="st.obs.basicworkflow.layering.repository"/> and
+      <xref linkend="st.obs.basicworkflow.layering.path"/> to add <tag>path</tag>
+      tags to <tag>repository</tag> elements of other distributions or releases.
+     </para>
+    </step>
+   </procedure>
+  </sect2>
+  <sect2 xml:id="sec.obs.basicworkflow.reuse">
+   <title>Reusing Packages in Your Project</title>
+   <para>
+    TBD
+   </para>
+  </sect2>
  </sect1>
+
 </chapter>
