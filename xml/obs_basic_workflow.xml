@@ -309,6 +309,35 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
     subcommand to show only the end of the logfile:
    </para>
    <screen>&prompt.user;<command>osc</command> buildlogtail openSUSE_Tumbleweed x86_64</screen>
+   <para>
+    Additionally, the &osccmd; creates some build log files in the build
+    directory <filename>/var/tmp/build-root/</filename>:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term><filename>.build.log</filename></term>
+     <listitem>
+      <para>Contains the log.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><filename>.build.command</filename></term>
+     <listitem>
+      <para>
+       Contains the command which is used to build the package. For RPM-like
+       systems it is <command>rpmbuild</command> <option>-ba pacakge.spec</option>.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><filename>.build.packages</filename></term>
+     <listitem>
+      <para>
+       Contains the path to all object files.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
   </sect2>
 
   <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildroot">
