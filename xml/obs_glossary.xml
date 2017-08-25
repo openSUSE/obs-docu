@@ -127,6 +127,17 @@
    succeeded, failed, blocked, etc.</para>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.buildroot">
+  <glossterm>Build Root</glossterm>
+  <glossdef>
+   <para>
+    Directory (by default <filename>/var/tmp/build-root/</filename>)
+    that contains subdirectories of the specific build targets.
+    The &osccmd; command copies, patches, builds, and install packages
+    in this directory.
+   </para>
+  </glossdef>
+ </glossentry>
  <!-- ############## C ############## -->
  <glossentry xml:id="obs.glos.commit">
   <glossterm>Commit</glossterm>
