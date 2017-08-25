@@ -2801,31 +2801,31 @@ if (-r $hostconfig) {
    <para>Example build directory tree of a binary imported distribution
     (OpenSUSE:13.2) and a small test project with 3 packages:</para>
    <screen>├── openSUSE:13.2
-│   └── standard
-│       ├── i586
-│       │   └── :full
-│       └── x86_64
-│           └── :full
+│   └── standard
+│       ├── i586
+│       │   └── :full
+│       └── x86_64
+│           └── :full
 ├── Test1
-│   └── os13.2
-│       ├── i586
-│       │   ├── :full
-│       │   ├── :logfiles.fail
-│       │   ├── :logfiles.success
-│       │   ├── :meta
-│       │   ├── :repo
-│       │   └── rsync
-│       │   └── srtp
-│       │   └── wget
-│       └── x86_64
-│           ├── :full
-│           ├── :logfiles.fail
-│           ├── :logfiles.success
-│           ├── :meta
-│           ├── :repo
-│           └── rsync
-│           └── srtp
-│           └── wget</screen>
+│   └── os13.2
+│       ├── i586
+│       │   ├── :full
+│       │   ├── :logfiles.fail
+│       │   ├── :logfiles.success
+│       │   ├── :meta
+│       │   ├── :repo
+│       │   ├── rsync
+│       │   ├── srtp
+│       │   └── wget
+│       └── x86_64
+│           ├── :full
+│           ├── :logfiles.fail
+│           ├── :logfiles.success
+│           ├── :meta
+│           ├── :repo
+│           ├── rsync
+│           ├── srtp
+│           └── wget</screen>
   </sect2>
   <sect2 xml:id="_db_directory">
    <title>db directory</title>
@@ -2854,7 +2854,7 @@ if (-r $hostconfig) {
 ├── i586
 ├── load
 └── x86_64
-    └── Release:Stable::SLE-12_GA::CI-demo-36db80552b735e193dced13f058f866f</screen>
+    └── Release:Stable::SLE-12_GA::CI-demo-36db80552b735e193dced13f058f866f</screen>
    <para>The jobs/load file contains statistical data about the build
     jobs.</para>
   </sect2>
@@ -2899,12 +2899,12 @@ if (-r $hostconfig) {
    <para>Example sources directory structure:</para>
    <screen>sources/
 ├── CI-demo
-...
+[...]
 ├── srtp
 ├── test1
 ├── _project
 ├── :service
-├── :upload</screen>
+└── :upload</screen>
   </sect2>
   <sect2 xml:id="_trees_directory">
    <title>trees directory</title>
@@ -3416,7 +3416,7 @@ reposerver="http://obs.b1-systems.de:5252"&gt;
   &lt;bdep name="libbz2-1" preinstall="1" notmeta="1" /&gt;
   &lt;bdep name="libgcc_s1" preinstall="1" notmeta="1" /&gt;
   &lt;bdep name="m4" preinstall="1" notmeta="1" /&gt;
-...
+[...]
   &lt;path project="Release:Stable" repository="SLE-12_GA"
  server="http://obs.b1-systems.de:5252" /&gt;
   &lt;path project="SUSE:SLE-12:GA" repository="standard"

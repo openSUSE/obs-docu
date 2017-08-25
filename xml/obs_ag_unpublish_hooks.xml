@@ -45,33 +45,34 @@
    project and the value references the accompanying script. If the value is
    written as an array reference, it is possible to call the hook with custom
    parameters.</para>
-  <para>The publisher adds the three listed parameters at the end, right
-   behind the custom parameters.</para>
-  <screen>/usr/lib/obs/server/BSConfig.pm
-
-    our $unpublishedhook = {
-        "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
-        "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
-        "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
-    };</screen>
+  <para>The publisher adds the three listed parameters at the end, directly after
+   the custom parameters
+   (in <filename>/usr/lib/obs/server/BSConfig.pm</filename>):
+  </para>
+  <screen language="perl">our $unpublishedhook = {
+    "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
+    "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
+    "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
+};</screen>
   <para>Regular expressions or substrings can be used to define a script for
    more than one repository in one project. The use of regular expressions
-   needs to be activated by defining <emphasis>$unpublishedhook use regex =
-    1;</emphasis>:</para>
-  <screen>/usr/lib/obs/server/BSConfig.pm
-
-    our $unpublishedhook_use_regex = 1;
-    our $unpublishedhook = {
-        "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
-        "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
-    };</screen>
+   needs to be activated by defining
+   <literal>$unpublishedhook use regex = 1;</literal>
+   (in <filename>/usr/lib/obs/server/BSConfig.pm</filename>):
+   </para>
+  <screen language="perl">
+our $unpublishedhook_use_regex = 1;
+our $unpublishedhook = {
+    "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
+    "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
+};</screen>
   <para>With custom parameters:</para>
-  <screen>    our $unpublishedhook_use_regex = 1;
-    our $unpublishedhook = {
-        "Product\/SLES11.*" =&gt; [
-          "/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"
-        ],
-    };</screen>
+  <screen language="perl">our $unpublishedhook_use_regex = 1;
+our $unpublishedhook = {
+    "Product\/SLES11.*" =&gt; [
+      "/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"
+    ],
+};</screen>
   <para>The configuration is read by the publisher at startup only, so it
    has to be restarted after configuration changes have been made. The hook
    script’s output is not logged by the publisher and should be written to a
@@ -103,7 +104,7 @@
    <title>Simple Unpublisher Hook</title>
    <para>The following example script deletes all packages from the target
     directory that have been removed from the repository.</para>
-   <screen>#!/bin/bash
+   <screen language="bash">#!/bin/bash
 OBSHOME="/srv/obs"
 LOGFILE="$OBSHOME/log/reposync.log"
 DST_REPO_DIR="/srv/repo-mirror"
@@ -131,7 +132,7 @@ done</screen>
    <title>Advanced Unpublisher Hook</title>
    <para>The following example script reads the destination path from a
     parameter that is configured via the hook script:</para>
-   <screen>#!/bin/bash
+   <screen language="bash">#!/bin/bash
 OBSHOME="/srv/obs"
 LOGFILE="$OBSHOME/log/reposync.log"
 DST_REPO_DIR=$1

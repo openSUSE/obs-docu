@@ -114,7 +114,7 @@
    <screen>
 &lt;project name="My::SuSE::CD"&gt;
 
-  ...
+  [...]
 
   &lt;repository name="standard"&gt;
     &lt;download arch="x86_64" url="http://mirror.example.org/path/to/iso" repotype="susetags" /&gt;
@@ -133,7 +133,7 @@
    <screen>
 &lt;project name="Fedora:Rawhide"&gt;
 
-  ...
+  [...]
 
   &lt;repository name="standard"&gt;
     &lt;download arch="x86_64" url="http://mirror.example.org/fedora/rawhide/x86_64/os" repotype="rpmmd"&gt;
@@ -146,7 +146,7 @@
     &lt;arch&gt;i586&lt;/arch&gt;
   &lt;/repository&gt;
 &lt;/project&gt;</screen>
-   
+
   </sect3>
   <sect3>
    <title>Apt Repository (deb)</title>
@@ -169,7 +169,7 @@
    <screen>
 &lt;project name="Debian:8"&gt;
 
-  ...
+  [...]
 
   &lt;repository name="ga"&gt;
     &lt;download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb"&gt;
@@ -177,7 +177,7 @@
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.12 (GNU/Linux)
 
-...
+[...]
 
       &lt;/pubkey&gt;
     &lt;/download&gt;
@@ -186,7 +186,7 @@ Version: GnuPG v1.4.12 (GNU/Linux)
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.12 (GNU/Linux)
 
-...
+[...]
 
       &lt;/pubkey&gt;
     &lt;/download&gt;
@@ -205,9 +205,9 @@ Version: GnuPG v1.4.12 (GNU/Linux)
    </para>
    <screen>
 &lt;project name="Arch:Core"&gt;
-  
-  ...
-  
+
+  [...]
+
   &lt;repository name="standard"&gt;
     &lt;download arch="x86_64" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/x86_64" repotype="arch"/&gt;
     &lt;download arch="i586" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/i686" repotype="arch"/&gt;
@@ -225,7 +225,7 @@ Version: GnuPG v1.4.12 (GNU/Linux)
    <screen>
 &lt;project name="Mageia:5"&gt;
 
-  ...
+  [...]
 
   &lt;repository name="standard"&gt;
     &lt;download arch="x86_64" url="http://mirror.example.org/Mageia/distrib/5/x86_64/media/core/release" repotype="mdk"/&gt;

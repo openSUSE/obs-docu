@@ -420,9 +420,9 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
     ├── BUILDROOT  <co xml:id="co.workflow.buildroot.buildroot"/>
     ├── OTHER  <co xml:id="co.workflow.buildroot.other"/>
     ├── RPMS  <co xml:id="co.workflow.buildroot.rpms"/>
-    │   ├── i386
-    │   ├── noarch
-    │   └── x86_64
+    │   ├── i386
+    │   ├── noarch
+    │   └── x86_64
     ├── SOURCES  <co xml:id="co.workflow.buildroot.sources"/>
     ├── SPECS  <co xml:id="co.workflow.buildroot.specs"/>
     └── SRPMS  <co xml:id="co.workflow.buildroot.srpms"/></screen>

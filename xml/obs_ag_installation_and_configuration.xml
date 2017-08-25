@@ -310,11 +310,13 @@ sudo chown -R wwwrun.www log tmp</screen>
       <emphasis>/etc/apache2/vhosts.d/obs.conf</emphasis>
     </para>
     <para>Install the required packages via</para>
-    <screen>  zypper in obs-api apache2 apache2-mod_xforward rubygem-passenger-apache2 memcached</screen>
-    <para>Add the following Apache modules in /etc/sysconfig/apache2:</para>
-    <screen>  APACHE_MODULES="... passenger rewrite proxy proxy_http xforward headers socache_shmcb"</screen>
+    <screen>zypper in obs-api apache2 apache2-mod_xforward rubygem-passenger-apache2 memcached</screen>
+    <para>
+     Add the following Apache modules in <filename>/etc/sysconfig/apache2</filename>:
+    </para>
+    <screen>APACHE_MODULES="... passenger rewrite proxy proxy_http xforward headers socache_shmcb"</screen>
     <para>Enable SSL in /etc/sysconfig/apache2 via</para>
-    <screen>  APACHE_SERVER_FLAGS="SSL"</screen>
+    <screen>APACHE_SERVER_FLAGS="SSL"</screen>
     <para>For production systems you should order official SSL certificates.
      For testing follow the instructions to create a self signed SSL
      certificate:</para>
@@ -446,7 +448,7 @@ cat /tmp/obs.config
   &lt;title&gt;openSUSE.org Project&lt;/title&gt;
   &lt;description&gt;
  This project refers to projects hosted on the Build Service
-...
+[...]
 
 Use openSUSE.org:openSUSE:12.3 for example to build against the
 openSUSE:12.3 project as specified on the opensuse.org Build Service.
@@ -569,7 +571,7 @@ systemctl start obsworker</screen>
    file can be shared between the back-ends.</para>
   <para>Here the important parts of the mainbackend of out testobs.org
    installation:</para>
-  <screen>...
+  <screen>[...]
 my $hostname = Net::Domain::hostfqdn() || 'localhost';
 # IP corresponding to hostname (only used for $ipaccess); fallback to localhost since inet_aton may fail to resolve at shutdown.
 my $ip = quotemeta inet_ntoa(inet_aton($hostname) || inet_aton("localhost"));
@@ -607,7 +609,7 @@ our @reposervers = ("
 # you can use different ports for worker connections
 our $workersrcserver = "http://w-srcsrv.testobs.org:5353";
 our $workerreposerver = "http://w-mainbackend.testobs.org:5253";
-...
+[...]
 our $partition = 'main';
 #
 # this defines how the projects are split. All home: projects are hosted
@@ -622,7 +624,7 @@ our $partitionservers = {
     'release' =&gt; 'http://releasebackend.testobs.org:5252',
     'main' =&gt; 'http://mainbackend.testobs.org:5252',
 };
-...</screen>
+[...]</screen>
   <para>On the other partition server you need to change <emphasis
     role="strong"><emphasis>"our $reposerver"</emphasis></emphasis>, <emphasis
     role="strong"><emphasis>"our $workerreposerver"</emphasis></emphasis> and

@@ -119,14 +119,14 @@ Options help:
     /srv/obs/build directory should have a tree for SUSE:13.2:</para>
    <screen>/srv/obs/
 ├── build
-│   └── SUSE:13.2
-│       └── standard
-│           ├── i586
-│           │   ├── :bininfo
-│           │   └── :schedulerstate
-│           └── x86_64
-│               ├── :bininfo
-│               └── :schedulerstate</screen>
+│   └── SUSE:13.2
+│       └── standard
+│           ├── i586
+│           │   ├── :bininfo
+│           │   └── :schedulerstate
+│           └── x86_64
+│               ├── :bininfo
+│               └── :schedulerstate</screen>
    <warning>
     <para>All the directories under /srv/obs/build have to be owned by the
       <emphasis role="strong">obsrun</emphasis> user and group. The <emphasis

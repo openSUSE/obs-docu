@@ -72,12 +72,12 @@
    use the debug feature of the tools to find more information about what
    happened.</para>
   <para>osc debug options</para>
-  <screen>     --debugger         jump into the debugger before executing anything
-     --post-mortem      jump into the debugger in case of errors
-     -t, --traceback    print call trace in case of errors
-     -H, --http-debug   debug HTTP traffic (filters some headers)
-     --http-full-debug  debug HTTP traffic (filters no headers)
-     -d, --debug        print info useful for debugging</screen>
+  <screen>--debugger         jump into the debugger before executing anything
+--post-mortem      jump into the debugger in case of errors
+-t, --traceback    print call trace in case of errors
+-H, --http-debug   debug HTTP traffic (filters some headers)
+--http-full-debug  debug HTTP traffic (filters no headers)
+-d, --debug        print info useful for debugging</screen>
   <para>The <emphasis role="strong"
     ><emphasis>--debugger</emphasis></emphasis> and <emphasis role="strong"
      ><emphasis>--post-mortem</emphasis></emphasis> are only suitable for

@@ -43,31 +43,31 @@
    configuration file. The key contains the project, and the value references
    the accompanying script. If the value is written as an array reference it is
    possible to call the hook with self-defined parameters.</para>
-  <para>The publisher will add the 3 listed parameters at the end (after the
-   self defined parameters).</para>
-  <screen>/usr/lib/obs/server/BSConfig.pm
-
-    our $publishedhook = {
-     "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
-     "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
-     "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
-    };</screen>
+  <para>The publisher will add the 3 listed parameters at the end, after the
+   self-defined parameters
+   (in <filename>/usr/lib/obs/server/BSConfig.pm</filename>):
+  </para>
+  <screen language="perl">our $publishedhook = {
+ "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
+ "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
+ "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
+};</screen>
   <para>Regular expressions or substrings can be used to define a script for
    more than one repository in one project. The use of regular expressions has
-   to be activated by defining <emphasis>$publishedhook use regex =
-    1;</emphasis> as follows:</para>
-  <screen>/usr/lib/obs/server/BSConfig.pm
-
-    our $publishedhook_use_regex = 1;
-    our $publishedhook = {
-        "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
-        "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
-    };</screen>
+   to be activated by defining
+   <literal>$publishedhook use regex = 1;</literal> as follows
+   (in <filename>/usr/lib/obs/server/BSConfig.pm</filename>):
+  </para>
+  <screen language="perl">our $publishedhook_use_regex = 1;
+our $publishedhook = {
+    "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
+    "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
+};</screen>
   <para>With self defined parameters:</para>
-  <screen>    our $publishedhook_use_regex = 1;
-    our $publishedhook = {
-        "Product\/SLES11.*" =&gt; ["/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"],
-    };</screen>
+  <screen language="perl">our $publishedhook_use_regex = 1;
+our $publishedhook = {
+    "Product\/SLES11.*" =&gt; ["/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"],
+};</screen>
   <para>The configuration is read by the publisher at startup only, so it
    has to be restarted after configuration changes have been made. The hook
    script’s output is not logged by the publisher and should be written to a

@@ -60,10 +60,10 @@
    release target must be configured inside of a repository definition of the
    project meta data:</para>
    <screen>&lt;project name="BuildProject"&gt;
-  ...
+  [...]
   &lt;repository name="BuildRepo"&gt;
     &lt;releasetarget project="ReleaseProject" repository="ReleaseRepo" trigger="manual" /&gt;
-    ...
+    [...]
   &lt;/repository&gt;
 &lt;/project&gt;</screen>
    <para>The ReleaseProject must be create before and it should be configured as

@@ -58,7 +58,7 @@
   <para>A repository is configured as following by default, however only the
    name attribute is required to be set.</para>
   <screen># Example &lt;repository
-    name="standard" rebuild="transitive" block="all" linkedbuild="off"&gt; ...
+    name="standard" rebuild="transitive" block="all" linkedbuild="off"&gt; [...]
     &lt;/repository&gt; </screen>
 
   <sect2>

@@ -234,9 +234,9 @@
    priority of the repository. The default priority is 0, higher values cause
    the matching projects to get more build time.</para>
   <para>Each entry in the dispatch_adjust array has the format</para>
-  <screen>      'regex string'  =&gt; priority adjustment</screen>
+  <screen>'regex string'  =&gt; priority adjustment</screen>
   <para>The full name of a build repository looks like</para>
-  <screen>      Project:Subproject/Repository/Architecture
+  <screen>Project:Subproject/Repository/Architecture
 
 Examples:
    Devel:Science/SLES-11/i586
