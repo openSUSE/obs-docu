@@ -62,6 +62,7 @@
  <part xml:id="par.working">
   <title>Usage</title>
   <xi:include href="obs_basic_workflow.xml"/>
+  <xi:include href="osc_building.xml"/>
 
   <chapter>
    <title>Using Source Services</title>
@@ -70,7 +71,6 @@
   </chapter>
 
   <xi:include href="obs_signing.xml"/>
-  <xi:include href="osc_building.xml"/>
 
  </part>
 
