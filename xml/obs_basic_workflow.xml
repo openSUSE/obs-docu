@@ -339,7 +339,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    </para>
    <para>
     For example, to view the build log of your current project
-    for &opensuse; Tumbleweed on a 64bit architecture, use:
+    for &tw; on a x86-64 architecture, use:
     use:
    </para>
    <screen>&prompt.user;<command>osc</command> buildlog openSUSE_Tumbleweed x86_64</screen>
