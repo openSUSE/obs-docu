@@ -20,6 +20,9 @@
 -->
  <sect1 xml:id="sec.obs.basicworkflow.setuphome">
   <title>Setting Up Your Home Project</title>
+  <remark>toms 2017-08-25: Suggestion by sknorr:
+   generic section plus home project (cross refs only)
+  </remark>
   <para>
    This section shows how to set up your home project with the command line
    tool &osccmd;. For more
