@@ -131,10 +131,9 @@
   <glossterm>Build Root</glossterm>
   <glossdef>
    <para>
-    Directory (by default <filename>/var/tmp/build-root/</filename>)
-    that contains subdirectories of the specific build targets.
-    The &osccmd; command copies, patches, builds, and install packages
-    in this directory.
+    Directory where the &osccmd; command copies, patches, builds, and create
+    packages. By default, the build root is located in
+    <filename>/var/tmp/build-root/<replaceable>BUILD_TARGET</replaceable></filename>.
    </para>
   </glossdef>
  </glossentry>
