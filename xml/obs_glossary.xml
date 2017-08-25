@@ -135,6 +135,15 @@
     packages. By default, the build root is located in
     <filename>/var/tmp/build-root/<replaceable>BUILD_TARGET</replaceable></filename>.
    </para>
+   <glossseealso otherterm="obs.glos.buildtarget"/>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.buildtarget">
+  <glossterm>Build Target</glossterm>
+  <glossdef>
+   <para>
+    Specific operating systems and architecture to build for.
+   </para>
   </glossdef>
  </glossentry>
  <!-- ############## C ############## -->
