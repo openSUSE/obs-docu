@@ -613,6 +613,7 @@
    <para>Isolated region of a host system which runs either a virtual machine
     or a change root environment.
    </para>
+   <glossseealso otherterm="obs.glos.buildroot"/>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.servicefile">
@@ -633,6 +634,7 @@
     a general package description and dependencies required for
     building and installing the package.
    </para>
+   <glossseealso otherterm="obs.glos.buildrecipe"/>
    <glossseealso otherterm="obs.glos.patch"/>
    <glossseealso otherterm="obs.glos.source"/>
   </glossdef>
