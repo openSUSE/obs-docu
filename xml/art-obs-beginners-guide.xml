@@ -623,7 +623,7 @@ Version:        &gitprjvers; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 Release:        0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 License:        GPL-3.0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 Group:          TBD <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-Summary:        Example tool for OBS <xref linkend="co.obsbg.uc.basicprj.metadata"/>
+Summary:        Frobnication Tool <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 Url:            &gitupstream1; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 Source:         &gitproject;-%{version}.tar.gz <xref linkend="co.obsbg.uc.basicprj.metadata"/>
 BuildRequires:  gcc <co xml:id="co.obsbg.uc.basicprj.buildreq"/>
@@ -631,6 +631,7 @@ BuildRequires:  cmake <xref linkend="co.obsbg.uc.basicprj.buildreq"/>
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description <co xml:id="co.obsbg.uc.basicprj.description"/>
+This tool frobnicates the bar with the foo when choosing the baz.
 
 %prep <co xml:id="co.obsbg.uc.basicprj.prep"/>
 %setup -q -n %{name}-%{version}
