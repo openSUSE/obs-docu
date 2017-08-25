@@ -94,7 +94,7 @@
      x86-64 with:
     </para>
     <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
-    &lt;path project="openSUSE:Factory" repository="snapshot"/>
+    &lt;path project="openSUSE:Tumbleweed" repository="standard"/>
     &lt;arch>i586&lt;/arch>
     &lt;arch>x86_64&lt;/arch>
 &lt;/repository></screen>
@@ -534,7 +534,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    </para>
    <example xml:id="ex.obs.basicworkflow.excerpt">
     <title>Excerpt of Build and Installation Requirements</title>
-    <screen language="rpm">Name:             foo-example
+    <screen>Name:             foo-example
 Version:          1.0.0
 BuildRequires:    bar
 Requires:         zool >= 1.5.6</screen>
@@ -542,7 +542,7 @@ Requires:         zool >= 1.5.6</screen>
    <remark>toms 2017-08-24: Version compare with zypper vcmp?</remark>
   </sect2>
   <sect2 xml:id="sec.obs.basicworkflow.layering">
-   <title>Associating Other Repositores with Your Repository</title>
+   <title>Associating Other Repositories with Your Repository</title>
    <para>
     There is no need to duplicate the work of others. If you need a specific
     package which is available in another repository, you can reference this
