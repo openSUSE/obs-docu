@@ -22,16 +22,13 @@
 
 <!ENTITY rootuser       "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>root</systemitem>">
 
-<!ENTITY exampleuser_plain    "alice">
+<!ENTITY exampleuser_plain    "geeko">
 <!ENTITY exampleuser_mail     "&exampleuser;@example.com">
 
 <!ENTITY exampleuser    "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>&exampleuser_plain;</systemitem>">
 
-<!ENTITY exampleuserII_plain    "bob">
+<!ENTITY exampleuserII_plain    "tux">
 <!ENTITY exampleuserII  "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>&exampleuserII_plain;</systemitem>">
-
-<!ENTITY exampleuserIII_plain    "charlie">
-<!ENTITY exampleuserIII "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>exampleuserIII_plain</systemitem>">
 
 
 <!-- ============================================================= -->
