@@ -7,7 +7,7 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
  xml:id="obs.cha.installation_and_configuration">
- <title>Installation and configuration</title>
+ <title>Installation and Configuration</title>
  <info/>
 
  <sect1 xml:id="_planning">
@@ -29,7 +29,7 @@
   <para>For flexibility and if you want some kind of high availability it is
    recommended to use virtualization for the different components.</para>
   <sect2 xml:id="_resource_planning">
-   <title>Resource planning</title>
+   <title>Resource Planning</title>
    <para>Normally for a small to middle installation a setup with everything
     except workers on one host is sufficient. You should have separate /srv
     volume for the back-end data, XFS as file system is best choice.</para>
@@ -73,7 +73,7 @@
   </sect2>
  </sect1>
  <sect1 xml:id="_simple_installation">
-  <title>Simple installation</title>
+  <title>Simple Installation</title>
   <para>Simple installation means, all OBS services running on the same
    machine.</para>
   <important>
@@ -85,7 +85,7 @@
    your hosts have the correct fully qualified hostname and DNS is working and
    can resolve all names.</para>
   <sect2 xml:id="_backend_installation">
-   <title>Back-end installation</title>
+   <title>Back-end Installation</title>
    <para>The back-end hosts all sources and built packages. It also schedules
     the jobs. You need to install the "obs-server" package for this. You need
     to check the <emphasis role="strong"
@@ -99,7 +99,7 @@
     server use</para>
    <screen>systemctl restart obsrepserver.service</screen>
    <table frame="all" rowsep="1" colsep="1">
-    <title>Service names</title>
+    <title>Service Names</title>
     <?dbhtml table-width="75%"?>
     <?dbfo table-width="75%"?>
     <?dblatex table-width="75%"?>
@@ -249,11 +249,11 @@ systemctl start obswarden.service</screen>
    </warning>
   </sect2>
   <sect2 xml:id="_frontend_installation">
-   <title>Front-end installation</title>
+   <title>Front-end Installation</title>
    <para>You need to install the "obs-api" package for this and a MySQL
     server.</para>
    <sect3 xml:id="_mysql_setup">
-    <title>MySQL setup</title>
+    <title>MySQL Setup</title>
     <para>Make sure that the mysql server is started on every system reboot
      (use "insserv mysql" for permanent start). You should run
      mysql_secure_installation and follow the instructions.</para>
@@ -299,7 +299,7 @@ sudo chown -R wwwrun.www log tmp</screen>
     <para>Now you are done with the database setup.</para>
    </sect3>
    <sect3 xml:id="_apache_setup">
-    <title>Apache setup</title>
+    <title>Apache Setup</title>
     <para>Now we need to configure the Web server. By default, you can reach
      the familiar web user interface and also api both on port 443 speaking
      https. Repositories can be accessed via http on port 82 (once some
@@ -334,7 +334,7 @@ cat /srv/obs/certs/server.key /srv/obs/certs/server.crt \
 c_rehash /etc/ssl/certs/</screen>
    </sect3>
    <sect3 xml:id="_api_configuration">
-    <title>API configuration</title>
+    <title>API Configuration</title>
     <para>Check and edit <emphasis role="strong"
        ><emphasis>/srv/www/obs/api/config/options.yml</emphasis></emphasis>
     </para>
@@ -362,7 +362,7 @@ systemctl start memcached.service</screen>
    </sect3>
   </sect2>
   <sect2 xml:id="_online_configuration">
-   <title>Online configuration</title>
+   <title>Online Configuration</title>
    <para>To customize the OBS instance you may need to configure some settings
     via the OBS API and Web user interface.</para>
    <para>First you should change the password of the Admin account, for this
@@ -484,7 +484,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
   </sect2>
  </sect1>
  <sect1 xml:id="_worker_farm">
-  <title>Worker farm</title>
+  <title>Worker Farm</title>
   <para>To not burden your OBS back-end daemons with the unpredictable load
    package builds can produce (think someone builds a monstrous package like
    LibreOffice) you should not run OBS workers on the same host as the rest of
@@ -510,7 +510,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
 systemctl start obsworker</screen>
  </sect1>
  <sect1 xml:id="_distributed_setup">
-  <title>Distributed setup</title>
+  <title>Distributed Setup</title>
   <para>All OBS back-end daemons can also be started on individual machines in
    your network. Also the front-end Web server and the MySQL server can run on
    different machines. Especially for large scale OBS installations this is the
@@ -649,7 +649,7 @@ systemctl start obswarden.service</screen>
   <sect2 xml:id="_endpoint_checks">
    <title>Endpoint Checks</title>
    <sect3 xml:id="_http_checks_check_if_the_http_server_responds">
-    <title>HTTP Checks - Check if the HTTP server responds</title>
+    <title>HTTP Checks: Checking Whether the HTTP Server Responds</title>
     <para>This check will output a critical if the HTTP server with ip address
      172.19.19.19 (-I 172.19.19.19) listening on port 80 (-p 80) does not
      answer and output a warning if the HTTP return code is not 200. The server
@@ -688,7 +688,7 @@ systemctl start obswarden.service</screen>
    <para>This is a list of common checks that should be run on each individual
     server.</para>
    <sect3 xml:id="_disk_space_check_for_available_disk_space">
-    <title>Disk Space - Check for available disk space</title>
+    <title>Disk Space: Checking Available Disk Space</title>
     <para>This check will output a warning if less than 10 percent disk space
      is available (-w 10) and output a critical if less than 5 percent disk
      space are available (-c 5). It will check all file systems except file
@@ -696,7 +696,7 @@ systemctl start obswarden.service</screen>
     <screen>check_disk -w 10 -c 5 -x none</screen>
    </sect3>
    <sect3 xml:id="_memory_usage_check_for_available_memory">
-    <title>Memory Usage - Check for available memory</title>
+    <title>Memory Usage: Checking Available Memory</title>
     <para>This check will output a warning if less than 10 percent memory is
      available (-w 10) and output a critical if less than 5 percent memory is
      available (-c 5). OS caches will be counted as free memory (-C) and it
@@ -707,7 +707,7 @@ systemctl start obswarden.service</screen>
     <screen>check_mem.pl -f -C -w 10 -c 5</screen>
    </sect3>
    <sect3 xml:id="_ntp_check_date_and_time">
-    <title>NTP - Check Date and Time</title>
+    <title>NTP: Checking Date and Time</title>
     <para>This check will compare the local time with the time provided by the
      NTP server pool.ntp.org (-H pool.ntp.org). It will output a warning if the
      time differs by 0.5 seconds (-w 0.5) and output a critical if the time
@@ -715,7 +715,7 @@ systemctl start obswarden.service</screen>
     <screen>check_ntp_time -H pool.ntp.org -w 0.5 -c 1</screen>
    </sect3>
    <sect3 xml:id="_ping_check_that_the_server_is_alive">
-    <title>Ping - Check that the server is alive</title>
+    <title>Ping: Checking That the Server Is Alive</title>
     <para>This plugin checks if the server responds to a ping request and it
      will output a warning if the respond time exceeds 200ms or 30 percent
      package loss (-w 200.0,30%) and output a critical if the respond time
@@ -723,7 +723,7 @@ systemctl start obswarden.service</screen>
     <screen>check_icmp -H server -w 200.0,30% -c 500.0,60%</screen>
    </sect3>
    <sect3 xml:id="_load_check_the_load_on_the_server">
-    <title>Load - Check the load on the server</title>
+    <title>Load: Checking the Load on the Server</title>
     <para>This check will output a warning if the load value exceeded 7.0 in
      the last minute, 6.0 in the last 5 minutes or 5.0 in the last 15 minutes
      (-w 7.0,6.0,5.0). It will output a critical if the load value exceeded
@@ -732,7 +732,7 @@ systemctl start obswarden.service</screen>
     <screen>check_load -w 7.0,6.0,5.0 -c 12.0,8.0,6.0</screen>
    </sect3>
    <sect3 xml:id="_disk_health_check_the_health_of_local_hard_disks">
-    <title>Disk Health - Check the health of local hard disks</title>
+    <title>Disk Health: Checking the Health of Local Hard Disks</title>
     <para>This check is only relevant on physical systems with local storage
      attached to it. It will check the disk status utilizing the S.M.A.R.T
      interface and it will output a critical if any of the S.M.A.R.T values
@@ -745,7 +745,7 @@ systemctl start obswarden.service</screen>
   <sect2 xml:id="_other_checks">
    <title>Other Checks</title>
    <sect3 xml:id="_mysql_check_that_the_mysql_database_is_responding">
-    <title>MySQL - Check that the MySQL database is responding</title>
+    <title>MySQL: Checking That the MySQL Database Is Responding</title>
     <para>This check will check that the MySQL database server is running and
      that the database <emphasis>api_production</emphasis> is available.</para>
     <screen>check_mysql -H localhost -u nagios -p xxxxxx -d api_production</screen>
@@ -760,7 +760,7 @@ systemctl start obswarden.service</screen>
     </orderedlist>
    </sect3>
    <sect3 xml:id="_backup_status_check_that_a_valid_backup_is_avilable">
-    <title>Backup Status - Check that a valid backup is available</title>
+    <title>Backup Status: Checking That a Valid Backup Is Available</title>
     <para>It is always advisable to check that the last backup run was
      successful and a recent backup is available. The check itself depends on
      the Backup solution that is used.</para>

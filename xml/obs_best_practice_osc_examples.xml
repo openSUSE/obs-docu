@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" os="opensuse;novell">
- <title>OSC commands examples</title>
+ <title>&osccmd; Example Commands</title>
  <info/>
  <para> This chapter explains and shows OSC commands examples. You could use
   OBS much more efficiently with OSC commands. $man OSC will show you
@@ -23,7 +23,7 @@
  -->
 
  <sect1>
-  <title>Package tracking</title>
+  <title>Package Tracking</title>
   <para> With osc it is also possible to manage packages in a SVN like way.
    This feature is called package tracking and has to be enabled in ~/.oscrc's
    [general] section </para>

@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" os="opensuse;novell">
- <title>Boot Strapping</title>
+ <title>Bootstrapping</title>
  <info/>
  <para> This chapter explains Boot strapping. In this chapter, You would learn
   how you could have other OBS projects and packages to your local OBS instance
@@ -18,7 +18,7 @@
    xlink:href="https://en.opensuse.org/openSUSE:Build_Service_private_instance_boot_strapping"
   />. </para>
  <sect1>
-  <title>The issue</title>
+  <title>The Issue</title>
   <para> If you create a private instance of an OBS it is likely to be be fully
    independent. This means that your OBS needs to build its full reference
    tools chain. This process - called Bootstrap - presents the same problem as
@@ -26,9 +26,9 @@
    create a tool chain with the tool chain that you want to create. </para>
  </sect1>
  <sect1>
-  <title>A cheat sheet</title>
+  <title>A Cheat Sheet</title>
   <sect2>
-   <title>Create your first project</title>
+   <title>Creating Your First Project</title>
    <para> Log on to the Web API. The default user Admin, with the password
      <literal>opensuse</literal> is available. Create your own login and
     password and set yourself as Admin. Log on to the Web UI as Admin and click
@@ -44,7 +44,7 @@
     administration. </para>
   </sect2>
   <sect2>
-   <title>Import your base Linux project</title>
+   <title>Importing Your Base Linux Project</title>
    <para> We are now going to import the base project. I will describe two
     methods, one where you have a login on a remote OBS instance, one where you
     have only access to the rpm repository. In both cases you will need access
@@ -70,7 +70,7 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
 </screen>
    </sect3>
    <sect3>
-    <title>Without a Login on a remote OBS</title>
+    <title>Without a Login on a Remote &obsa;</title>
     <para> If you have access only to the repositories of your source reference
      target, then your life will be a bit more difficult. My advice would be to
      recheck if you find you cannot get a login on a public OBS service - such
@@ -160,7 +160,7 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
   </sect2>
  </sect1>
  <sect1>
-  <title>Creating a first project</title>
+  <title>Creating a First Project</title>
   <para> After creating a dedicated user via the Web API, log onto the Web UI
    again with your new login. Open your home project and create a sub project
    called "MyTest". To add a package in your new Home project, simply create a

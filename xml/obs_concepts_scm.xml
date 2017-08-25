@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Integrate External Source Repositories</title>
+ <title>Integrating External Source Repositories</title>
  <sect2>
   <title>Motivation</title>
   <para> This chapter makes some recommendations how upstream resources can be
@@ -37,7 +37,7 @@
   </itemizedlist>
  </sect2>
  <sect2>
-  <title>Creating an external SCM reference</title>
+  <title>Creating an Reference to an External SCM</title>
   <para> External references are defined in _service files. The file can look
    like this: </para>
   <screen>
@@ -88,7 +88,7 @@
   </para>
  </sect2>
  <sect2>
-  <title>Working with local checkouts</title>
+  <title>Working with Local Checkouts</title>
   <para> Using <command>osc build</command> in any package with such a
    definition will do the same process locally. The only difference is that you
    get a local subdirectory with the SCM content. You can go inside and work as
@@ -100,10 +100,10 @@
    local archive. </para>
  </sect2>
  <sect2>
-  <title>Manage your build description in SCM</title>
+  <title>Managing Build Recipes in a SCM</title>
   <para> The <systemitem>obs_scm</systemitem> service allows you to export
    files next to the archive. You can specify one or more files using the
-    <literal>extract</literal> parameter. Use it for your build description
+    <literal>extract</literal> parameter. Use it for your build recipe
    files. </para>
  </sect2>
 </sect1>

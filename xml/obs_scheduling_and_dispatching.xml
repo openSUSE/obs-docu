@@ -16,7 +16,7 @@
   The assignment of a build job to a concrete build host (aka worker) is called
   dispatching. </para>
  <sect1>
-  <title>How is a build process defined</title>
+  <title>Definition of a Build Process</title>
   <para> A build process is calculated and executed based on the following </para>
   <itemizedlist>
    <listitem>
@@ -43,7 +43,7 @@
   </itemizedlist>
  </sect1>
  <sect1>
-  <title>Scheduling strategies</title>
+  <title>Scheduling Strategies</title>
   <para> The defaults have the goal of creating an always reproducible state.
    This may lead to more builds than practically necessary, but ensures that no
    hidden incompatibilities exist between packages and also that the same state

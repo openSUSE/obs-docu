@@ -64,12 +64,12 @@
   </itemizedlist>
  </sect1>
  <sect1>
-  <title>How to use the maintenance process</title>
+  <title>Using the Maintenance Process</title>
   <para> This describes all required steps by all involved persons from
    preparing to releasing a maintenance update. </para>
   <sect2>
-   <title>Way A: A maintainer builds an entire update incident for
-    submission</title>
+   <title>Workflow A: A Maintainer Builds an Entire Update Incident for
+    Submission</title>
    <para> A user is usually starting to prepare an update by creating a
     maintenance branch. This is typically done by creating an own maintenance
     project. Usually multiple released products are affected, so the server can
@@ -103,7 +103,7 @@
     usually removed (based on the request cleanup options). </para>
   </sect2>
   <sect2>
-   <title>Way B: Submitting a package without branching</title>
+   <title>Workflow B: Submitting a Package Without Branching</title>
    <para> You may submit a package source from a project which is not prepared
     as maintenance project. That works via the maintenancerequest mechanism by
     specifying one or more packages from one project. As a consequence it means
@@ -122,7 +122,7 @@
    </note>
   </sect2>
   <sect2>
-   <title>Way C: Process gets initiated by the maintenance team</title>
+   <title>Workflow C: Process Gets Initiated By the Maintenance Team</title>
    <para> The maintenance team may start the process (for example because a
     security issue was reported and the maintenance team decided that a fix is
     required). In this case the incident gets created via the Web UI or via the
@@ -174,7 +174,7 @@
     repository definitions. </para>
   </sect2>
   <sect2>
-   <title>Incident gets released</title>
+   <title>Incident Gets Released</title>
    <para> The release process gets usually started via creating a release
     request. This sets all affected packages to the locked state, which means
     that all commands for editing the source or triggering rebuilds are not
@@ -196,7 +196,7 @@
     incident id with the release id. </para>
   </sect2>
   <sect2>
-   <title>Incident gets reopened and re-released</title>
+   <title>Incident Gets Reopened and Re-Released</title>
    <para> An update should not, but may have an undetected regression. In this
     case the update needs a re-release. (If another problem shall be fixed a
     new incident should be created instead.) </para>
@@ -214,7 +214,7 @@
     incident again. </para>
   </sect2>
   <sect2>
-   <title>Using custom update IDs</title>
+   <title>Using Custom Update IDs</title>
    <para> The used string of update IDs can be defined via the
     OBS:MaintenanceIdTemplate attribute value of the master maintenance
     project. </para>
@@ -225,7 +225,7 @@
   <para> OBS is tracking maintenance work and can be used as a database for
    future and past updates. </para>
   <sect2>
-   <title>The workflow step by step</title>
+   <title>Maintenance Incident Workflow</title>
    <para> A maintenance incident is started by creating the incident project,
     either via a developer request or by the maintenance team. </para>
    <orderedlist>
@@ -417,14 +417,14 @@
    packages in a central place, but defining to published binaries with an
    independent workflow which requires an approval for each binary. </para>
   <sect2>
-   <title>Defining a channel</title>
+   <title>Defining a Channel</title>
    <para> Channels get defined and maintained in an xml file inside of a
     package source. The file name of these lists must be _channel. </para>
    <para> The file may contain a list of targets where binaries gets released
     to. </para>
   </sect2>
   <sect2>
-   <title>Using channels in maintenance workflow.</title>
+   <title>Using Channels in Maintenance Workflow</title>
    <para> Channel definitions for existing packages do affect incident
     projects. Matching channel packages get automatically branched inside and
     additional repositories for the channels are created. The server will build

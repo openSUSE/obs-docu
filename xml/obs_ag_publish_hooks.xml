@@ -16,7 +16,7 @@
   scripts are called <emphasis role="strong"><emphasis>publisher
     hooks</emphasis></emphasis>.</para>
  <sect2 xml:id="_publisher_hooks_configuration">
-  <title>Publisher Hooks configuration</title>
+  <title>Configuring Publisher Hooks</title>
   <para>Hooks are configured via the configuration file
     <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per
    project is linked to the repository that should be run if the

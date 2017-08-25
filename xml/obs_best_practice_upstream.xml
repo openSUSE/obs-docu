@@ -3,7 +3,9 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.upstream" os="opensuse;novell"><title>Publishing upstream binaries</title><info/>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.upstream" os="opensuse;novell">
+ <title>Publishing Upstream Binaries</title>
+ <info/>
  
  <para>
   This chapter covers main step of using OBS to publish binaries of your
@@ -12,7 +14,7 @@
  <sect1>
   <title>Which instance to use?</title>
   <sect2>
-   <title>Private OBS instance</title>
+   <title>Private OBS Instance</title>
    <para>
     OBS is open source project and therefore you can setup your own instance
     and run it by your own. The main advantage of this approach is that you can
@@ -28,7 +30,7 @@
    </para>
   </sect2>
   <sect2>
-   <title>openSUSE Build Service</title>
+   <title>&osbs;</title>
    <para>
     Other option is to use some publicly available instance of OBS. One good
     example is openSUSE Build Service -
@@ -42,7 +44,7 @@
   </sect2>
  </sect1>
  <sect1>
-  <title>Where to place your project?</title>
+  <title>Where to Place Your Project</title>
   <para>
    This part helps you to decide on how to name and where to place your project
    and what project structure to create. This is more important if you are
@@ -50,7 +52,7 @@
    <link xlink:href="http://build.opensuse.org">openSUSE Build Service</link>.
   </para>
   <sect2>
-   <title>Base project</title>
+   <title>Base Project</title>
    <para>
     If there are more packages in OBS, like for example in
     <link xlink:href="http://build.opensuse.org">openSUSE Build
@@ -82,14 +84,14 @@
    </para>
   </sect2>
   <sect2>
-   <title>More supported versions?</title>
+   <title>Supporting Additional Versions</title>
    <para>
     If you want to support more than one version of your program, you
     need to use several projects. The same package cannot be contained in the
     same project multiple times.
    </para>
    <sect3>
-    <title>Stable and development version</title>
+    <title>Stable and Development Versions</title>
     <para>
      Let's assume that you have found project suitable for your program. Some
      projects already have something like <emphasis>STABLE</emphasis> and
@@ -102,7 +104,7 @@
     </para>
    </sect3>
    <sect3>
-    <title>Multiple stable versions</title>
+    <title>Multiple Stable Versions</title>
     <para>
      If you want to support multiple version, you would need more projects then
      just two as suggested in previous section. These special project should
@@ -120,7 +122,7 @@
   </sect2>
  </sect1>
  <sect1>
-  <title>Creating a package</title>
+  <title>Creating a Package</title>
   <para>
    Packaging is quite a complex topic. Instead of trying to cover it in this
    book, it is a good idea to start with available internet documentation. One
@@ -131,7 +133,7 @@
   </para>
  </sect1>
  <sect1>
-  <title>Getting binaries?</title>
+  <title>Getting Binaries</title>
   <note>
    <para>
     This sections discuss feature available only in openSUSE Build Service -
@@ -168,7 +170,7 @@
    <xref linkend="cha.obs.best-practices.upstream.download.params"/>.
   </para>
   <table xml:id="cha.obs.best-practices.upstream.download.params">
-   <title>Possible parameters for download page</title>
+   <title>Parameters for Download Page</title>
    <tgroup cols="2" align="left">
     <thead>
      <row>

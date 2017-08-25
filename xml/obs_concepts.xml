@@ -13,12 +13,12 @@
  <para> We describe here the high-level concepts: how Open Build Service is
   designed, manages its content and is supposed to work. </para>
  <sect1>
-  <title>Project organization</title>
+  <title>Project Organization</title>
   <para> All sources and binaries which are hosted inside of OBS are organized
    into projects. A project is the container defining a larger task. It defines
    who is working there. </para>
   <sect2>
-   <title>Project metadata</title>
+   <title>Project Metadata</title>
    <para> A project is configured in the project
      <command>/source/$PROJECT/_meta</command> path. It can be edited in the
     web interface using the <command>RAW Config</command> tab or via command
@@ -105,7 +105,7 @@
    </itemizedlist>
   </sect2>
   <sect2>
-   <title>Project build configuration.</title>
+   <title>Project Build Configuration</title>
    <para> A project is configured in the project
      <command>/source/$PROJECT/_config</command> path. It can be edited in web
     interface in the <command>Project Config</command> tab or via one of the
@@ -115,7 +115,7 @@
     <para>This file contains information on how to setup a build environment. </para>
   </sect2>
   <sect2>
-   <title>Project build macro configuration</title>
+   <title>Project Build Macro Configuration</title>
    <para> The macro configuration is part of the build configuration in
      <command>/source/$PROJECT/_config</command>. It can be added at the end
     after a <command>Macros:</command> line. </para>
@@ -156,7 +156,7 @@
   <remark>TBD</remark>
  </sect1>
  <sect1>
-  <title>Automatic source processing</title>
+  <title>Automatic Source Processing</title>
   <para/>
   <remark>TBD</remark>
  </sect1>

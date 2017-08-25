@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Managing build targets</title>
+ <title>Managing Build Targets</title>
  <sect2 xml:id="_interconnect">
   <title>Interconnect</title>
   <para>Using another Open Build Service as source for build targets is the
@@ -39,7 +39,7 @@ This project refers to projects hosted on the &osbs;
   <screen>osc meta prj -m "add openSUSE.org remote" -F /tmp/openSUSE.org.prj</screen>
  </sect2>
  <sect2 xml:id="_importing_distributions">
-  <title>Importing distributions</title>
+  <title>Importing Distributions</title>
   <para>With local hosted distributions packages you are independent from
    other parties. On sides with no or bad internet connections, this is the
    only way to go. You do not need to build the distribution packages on your
@@ -65,7 +65,7 @@ This project refers to projects hosted on the &osbs;
    you need to run it on the partition which would the owner for the
    project.</para>
   <sect3 xml:id="_mirror_from_a_remote_obs_instance">
-   <title>Mirror from a remote OBS instance</title>
+   <title>Mirroring from a Remote &obsa; Instance</title>
    <para>Mirroring a project from a remote OBS instance can be done with the
      <emphasis role="strong">obs_mirror_project</emphasis> script which is
     supplied with the obs sources and via the obs-utils package. You can get
@@ -90,7 +90,7 @@ Options help:
     -h, --help                 Display this screen</screen>
   </sect3>
   <sect3 xml:id="_import_binary_packages">
-   <title>Import binary packages</title>
+   <title>Import Binary Packages</title>
    <para>This is the same procedure for all local sources. If you have a
     local copy of a distribution, you can either use symbolic links to the
     binary packages or copy them in a directory on the back-end repo server

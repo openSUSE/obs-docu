@@ -103,7 +103,7 @@
   <title>Debian: Dsc</title>
   <para>
    DEB packages are used on all Debian or Ubuntu based distributions.
-   For building <filename class="extension">.deb</filename> files you need:
+   For building <filename class="extension">.deb</filename> files, you need:
   </para>
   <variablelist>
    <varlistentry>

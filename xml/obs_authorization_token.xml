@@ -11,7 +11,7 @@
  <info/>
 
  <sect1>
-  <title>OBS Authorization Methods</title>
+  <title>&obsa; Authorization Methods</title>
   <para> Each package is signed with a PGP key to allow checking its integrity
    on user's machines. </para>
   <sect2>
@@ -36,21 +36,21 @@
   </sect2>
  </sect1>
  <sect1>
-  <title>OBS Token Authorization</title>
-  <para> OBS 2.5 provides a mechanism to create tokens for specific operations.
+  <title>&obsa; Token Authorization</title>
+  <para> &obsa; provides a mechanism to create tokens for specific operations.
    This can be used to allow certain operations in the name of a user to
    others. This is esp. useful when integrating external infrastructure. The
    create token should be kept secret by default, but it can also be revoked at
    any time if it became obsolete or leaked. </para>
   <sect2>
-   <title>Manage tokens of a user</title>
-   <para> Tokens belong always to a user. A list of active tokens can received
-    via </para>
+   <title>Managing User Tokens</title>
+   <para> Tokens always belong to a user. A list of active tokens can be viewed
+    using </para>
    <screen><command>osc token</command></screen>
    <screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
   </sect2>
   <sect2>
-   <title>Execute a source service</title>
+   <title>Executing a Source Service</title>
    <para> A token can be used to execute a source service. The source service
     has to be setup for the package first, check the source service chapter for
     this. A typical example is to update sources of a package from git. A
@@ -82,9 +82,10 @@
    <screen><command>osc</command> token --trigger &lt;TOKEN&gt;</screen>
    <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice</screen>
   </sect2>
-  <sect2>
-   <title>Change Request Review Status</title>
-   <para> NOT YET IMPLEMENTED </para>
-  </sect2>
+  <!-- <sect2>
+   <title>Changing Request Review Status</title>
+   <para/>
+   <remark>TBD: not yet implemented. (?)</remark>
+  </sect2>-->
  </sect1>
 </chapter>

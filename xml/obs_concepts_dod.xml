@@ -57,7 +57,7 @@
    <screen>systemctl start obsdodup.service</screen>
  </sect2>
  <sect2>
-  <title>The &lt;download&gt; element</title>
+  <title>The <tag>download</tag> Element</title>
   <para>mandatory attributes:</para>
   <itemizedlist>
    <listitem>
@@ -72,7 +72,7 @@
   </itemizedlist>
  </sect2>
  <sect2>
-  <title>The &lt;master&gt; subelement</title>
+  <title>The <tag>master</tag> Subelement</title>
   <para> The <command>&lt;master&gt;</command> tag as shown in the rpmmd
    example below is optional but strongly recommended for security reasons. </para>
   <para> Verification is supported in the following repotypes</para> 
@@ -98,7 +98,7 @@
    <screen>openssl s_client -connect &lt;host&gt;:&lt;port&gt; &lt; /dev/null 2&gt;/dev/null | openssl x509 -fingerprint -noout</screen>
  </sect2>
  <sect2>
-  <title>The &lt;pubkey&gt; subelement</title>
+  <title>The <tag>pubkey</tag> Subelement</title>
   <para> The pubkey element contains one or more GPG public keys in order to
    verify repository information but not packages. For an example, look at the
    repotype "deb" documentation below. </para>
@@ -107,7 +107,7 @@
   <title>Repository Types</title>
   <para/>
   <sect3>
-   <title>YAST sources (susetags)</title>
+   <title>YAST Sources (susetags)</title>
    <para>
     <command>Example:</command>
    </para>
@@ -126,7 +126,7 @@
         </screen>
   </sect3>
   <sect3>
-   <title>RPM sources (rpmmd)</title>
+   <title>RPM Sources (rpmmd)</title>
    <para>
     <command>Example:</command>
    </para>

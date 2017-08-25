@@ -10,8 +10,7 @@
  <title>Troubleshooting</title>
  <info/>
 
- <para>Here are two major classes of problems regarding the <emphasis
-   role="strong">Open Build Service</emphasis>
+ <para>Here are two major classes of problems regarding the &obs;:
  </para>
  <orderedlist>
   <listitem>
@@ -27,7 +26,7 @@
   test the build locally before committing it to the OBS. This type of problems
   is not covered by this chapter.</para>
  <sect1 xml:id="_general_hints">
-  <title>General hints</title>
+  <title>General Hints</title>
   <para>If you detect unexpected behavior of the open build service, you
    should follow some rules to locate the problem:</para>
   <orderedlist>
@@ -66,7 +65,7 @@
   </orderedlist>
  </sect1>
  <sect1 xml:id="_debug_frontend_problems">
-  <title>Debug front-end problems</title>
+  <title>Debugging Front-end Problems</title>
   <para>If you get unexpected results from submitting commands with the
     <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool, you can
    use the debug feature of the tools to find more information about what

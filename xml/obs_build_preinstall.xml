@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Build Preinstall Images</title>
+ <title>Building Preinstall Images</title>
  <info/>
  <para> Preinstall images can optionally be used to install a set of packages
   in one fast step instead via single package installations. Depending on the

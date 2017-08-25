@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Image templates</title>
+ <title>Image Templates</title>
  <info/>
  &image_template_introduction_paragraph;
  <!--<para xml:id="image_template_introduction_paragraph"> Image templates are
@@ -16,7 +16,7 @@
   </link> provides a list of these templates. Users can clone these templates
   and further configure them as they like. </para>-->
  <sect1>
-  <title>Structure of image templates</title>
+  <title>Structure of Image Templates</title>
   <para> As mentioned image templates are essentially pre-configured <link
     xlink:href="http://opensuse.github.io/kiwi/">KIWI</link> image
    configurations. As any &kiwi; configuration they usually contain a tarball
@@ -34,8 +34,7 @@
   </note>
  </sect1>
  <sect1>
-  <title>Adding / removing image templates to the official image template
-   page</title>
+  <title>Adding Image Templates to/Removing Image Templates from the Official Image Template Page</title>
   <para> The image templates page lists templates per project. New templates
    get added by setting the <command>OBS:ImageTemplates</command> attribute to
    a project. Any package container belonging to a project with that attribute
@@ -44,7 +43,7 @@
    project. </para>
  </sect1>
  <sect1>
-  <title>Receiving image templates via interconnect</title>
+  <title>Receiving Image Templates via Interconnect</title>
   <para> If your OBS instance is connected to a remote instance via
    interconnect, OBS will fetch image templates from the remote instance and
    present it on the image templates page. They appear below the local

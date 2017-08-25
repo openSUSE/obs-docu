@@ -7,16 +7,16 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Integrate OBS into your environment</title>
+ <title>Integrating &obsa; into Your Environment</title>
  <para/>
  <remark>TBD</remark>
  <sect2>
-  <title>Integrate Notifications</title>
+  <title>Integrating Notifications</title>
   <para/>
   <remark>TBD</remark>
  </sect2>
  <sect2>
-  <title>Integrate your user management in OBS</title>
+  <title>Integrating Your User Management in &obsa;</title>
   <para/>
   <remark>TBD</remark>
  </sect2>

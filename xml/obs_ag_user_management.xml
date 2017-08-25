@@ -7,7 +7,7 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
  xml:id="_user_and_group_management">
- <title>User and group management</title>
+ <title>Managing Users and Groups</title>
  <para>The OBS has an integrated user and group management with a role based
   access rights model. In every OBS instance, at least one user need to exist
   and have the global Admin role assigned. Groups can be defined by the Admin
@@ -15,7 +15,7 @@
   be added to a group and the group will be added to a project or package
   role.</para>
  <sect2 xml:id="_user_and_group_roles">
-  <title>User and group roles</title>
+  <title>User and Group Roles</title>
   <para>The OBS role model has one global role: Admin, which can be granted
    to users. Am OBS admin has access to all projects and packages via the API
    interface and the web user interface. Some menus in the Web UI do not allow
@@ -24,7 +24,7 @@
    editing the meta data directly. The other roles are specific to projects and
    packages and can be assigned to a user or a group.</para>
   <table frame="all" rowsep="1" colsep="1">
-   <title>OBS roles</title>
+   <title>Roles in &obsa;</title>
    <tgroup cols="3">
     <colspec colname="col_1" colwidth="14*"/>
     <colspec colname="col_2" colwidth="42*"/>
@@ -97,7 +97,7 @@
   </table>
  </sect2>
  <sect2 xml:id="_standalone_user_and_group_database">
-  <title>Standalone user and group database</title>
+  <title>Standalone User and Group Database</title>
   <para>OBS provides its own user database which can also store a password.
    The authentication to the API happens via HTTP BASIC AUTH. See the API
    documentation to find out how to create, modify or delete user data. Also a
@@ -108,7 +108,7 @@
    login.</para>
  </sect2>
  <sect2 xml:id="_proxy_mode">
-  <title>Proxy mode</title>
+  <title>Proxy Mode</title>
   <para>The proxy mode can be used for specially secured instances, where
    the OBS web server shall not get connected to the network directly. There
    are authentication proxy products out there which do the authentication and
@@ -127,11 +127,11 @@
   <para>With the proxy mode the user still need to be registered in the OBS
    and all OBS roles and user properties are managed inside the OBS.</para>
   <sect3 xml:id="_obs_proxy_mode_configuration">
-   <title>OBS proxy mode configuration</title>
+   <title>&obsa; Proxy Mode Configuration</title>
    <para>Currently the LDAP configuration is in the
      <emphasis>options.yml</emphasis> file.</para>
    <table frame="all" rowsep="1" colsep="1">
-    <title>Proxy mode configuration option</title>
+    <title>Options for Proxy Mode Configuration</title>
     <tgroup cols="4">
      <colspec colname="col_1" colwidth="29*"/>
      <colspec colname="col_2" colwidth="26*"/>
@@ -214,7 +214,7 @@
     current users which are in the local database become members.</para>
   </note>
   <sect3 xml:id="_obs_ldap_configuration">
-   <title>OBS LDAP configuration</title>
+   <title>OBS LDAP Configuration</title>
    <para>Currently the main OBS LDAP configuration is in the
      <emphasis>options.yml</emphasis> file. Beside the settings here also the
     openldap config file is evaluated by the Ruby LDAP implementation. This
@@ -225,7 +225,7 @@
      role="strong">TLS_REQCERT</emphasis>. For more information refer to the
     openldap ldap.conf man page.</para>
    <table frame="all" rowsep="1" colsep="1">
-    <title>LDAP configuration options</title>
+    <title>LDAP Configuration Options</title>
     <tgroup cols="4">
      <colspec colname="col_1" colwidth="29*"/>
      <colspec colname="col_2" colwidth="26*"/>
@@ -782,9 +782,9 @@ ldap_obs_admin_group: obsadmins</screen>
   </sect3>
  </sect2>
  <sect2 xml:id="_authentication_methods">
-  <title>Authentication methods</title>
+  <title>Authentication Methods</title>
   <sect3 xml:id="_ldap_methods">
-   <title>LDAP methods</title>
+   <title>LDAP Methods</title>
    <para>The LDAP mode has 2 methods implemented to check
     authorization:</para>
    <orderedlist>
@@ -810,7 +810,7 @@ ldap_obs_admin_group: obsadmins</screen>
    <para>OBS Kerberos configuration resides in the
      <emphasis>options.yml</emphasis> file.</para>
    <table frame="all" rowsep="1" colsep="1">
-    <title>Kerberos configuration options</title>
+    <title>Kerberos Configuration Options</title>
     <tgroup cols="3">
      <colspec colname="col_1" colwidth="30*"/>
      <colspec colname="col_2" colwidth="40*"/>
@@ -891,14 +891,14 @@ kerberos_realm: "EXAMPLE.COM"
     infrastructure. The create token should be kept secret by default, but it
     can also be revoked at any time if it became obsolete or leaked. </para>
    <sect4>
-    <title>Manage tokens of a user</title>
+    <title>Managing Tokens of a User</title>
     <para> Tokens belong always to a user. A list of active tokens can received
      via </para>
     <screen><command>osc token</command></screen>
     <screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
    </sect4>
    <sect4>
-    <title>Execute a source service</title>
+    <title>Executing a Source Service</title>
     <para> A token can be used to execute a source service. The source service
      has to be setup for the package first, check the source service chapter
      for this. A typical example is to update sources of a package from git. A

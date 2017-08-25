@@ -18,7 +18,7 @@
     class="extension">.kiwi</filename> extension (for example,
    <filename>test.kiwi</filename>), with a valid &kiwi; content. </para>
   <figure>
-   <title>Example of a package with a &kiwi; xml file</title>
+   <title>Example of a Package with a &kiwi; XML File</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="edit_kiwi_package_overview.png"/>

@@ -59,7 +59,7 @@
    </listitem>
    <listitem>
     <formalpara>
-     <title>Free Software projects and Independent Software Vendors (ISV)</title>
+     <title>Free Software Projects and Independent Software Vendors (ISV)</title>
      <para>People who provide complete software stacks and distributions to
       their users.</para>
     </formalpara>
@@ -79,7 +79,7 @@
   </sect2>
 
   <sect2 xml:id="sec.obs.goals.isv">
-   <title>Reproducibility for Free Software projects and Independent Software Vendors (ISV)</title>
+   <title>Reproducibility for Free Software Projects and Independent Software Vendors (ISV)</title>
    <para> &obsa; emphasizes on making builds reproducible. It builds packages in
     a jailed environment that &obsa; sets up from scratch each time. When the
     build succeeds, it also rebuilds all the dependent software. This ensures

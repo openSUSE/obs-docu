@@ -18,22 +18,22 @@
 _END_KEY
  -->
  <sect1>
-  <title>Package signing</title>
+  <title>Signing Packages</title>
   <para> Each package is signed with a PGP key to allow checking its integrity
    on user's machines. </para>
  </sect1>
  <sect1>
-  <title>Repository signing</title>
+  <title>Signing Repositories</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
  <sect1>
-  <title>Product signing</title>
+  <title>Signing Products</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
  <sect1>
-  <title>Configure sign key</title>
+  <title>Configuring the Signing Key</title>
   <para/>
   <remark>TBD</remark>
  </sect1>

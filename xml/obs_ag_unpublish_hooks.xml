@@ -17,7 +17,7 @@
    role="strong">Unpublisher hooks</emphasis> are run before the <emphasis
    role="strong">publisher hooks</emphasis>.</para>
  <sect2 xml:id="_unpublisher_hooks_configuration">
-  <title>Unpublisher Hooks configuration</title>
+  <title>Configuring Unpublisher Hooks</title>
   <para>Hooks are configured via the configuration file
     <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per
    project is linked to the repository that should be run if the

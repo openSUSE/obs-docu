@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" os="opensuse;novell">
- <title>OBS Local Setup</title>
+ <title>Setting Up a Local &obsa; Instance</title>
  <info/>
 
  <para> This chapter explains how you could setup/Install/test OBS in your
@@ -57,7 +57,7 @@
   </itemizedlist>
 
  <sect1>
-  <title>OBS test run on Microsoft Windows using VMware player</title>
+  <title>Testing &obsa; on Microsoft Windows Using VMware Player</title>
   <para> Those who are not familiar with Linux can run and test OBS. To run and
    test OBS in Windows, you could use a virtual machine program such as VMware
    or VirtualBox, etc. This chapter explains, how you can run OBS using VMware
@@ -105,7 +105,7 @@
   </para>
  </sect1>
  <sect1>
-  <title>OBS 1 click install on openSUSE 13.1</title>
+  <title>OBS 1-Click Install on &opensuse; 13.1</title>
   <para> This section explains, how you can install OBS on top of openSUSE
    13.1. Open your web browser and go to that URL <link
     xlink:href="http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_13.1/OBS_Server.ymp"
@@ -170,7 +170,7 @@
    instance on your system successfully. </para>
  </sect1>
  <sect1>
-  <title>OBS 1 click install on SLES (SUSE Linux Enterprise Server) 12</title>
+  <title>OBS 1-Click Install on &sls; 12</title>
   <para> 1 click install for OBS in SLES12. This section explains how you
    install OBS in SLES12. Installation of OBS in SLES12 is quite similar to OBS
    install method on openSUSE. I would skip same contents so you might need to
@@ -198,7 +198,7 @@
    on your SLES12. </para>
  </sect1>
  <sect1>
-  <title>Installing a readymade OBS appliance in a VirtualBox</title>
+  <title>Installing a Readymade &obsa; Appliance in a VirtualBox</title>
   <para> This method is slightly less easy than the method using the readymade
    vmdk VMware disk, but it enables you to determine the size of your virtual
    disks to your convenience. It could also work with a real computer with two
@@ -267,7 +267,7 @@
   </procedure>
  </sect1>
  <sect1>
-  <title>First steps with your new OBS server</title>
+  <title>First Steps with Your New &obsa; Server</title>
   <para> At this point, one of the methods above should have provided you with
    a running OBS instance. Let us get our first package building. </para>
   <procedure>

@@ -56,7 +56,7 @@
   </listitem>
  </itemizedlist>
  <sect1>
-  <title>Using services for validation</title>
+  <title>Using Services for Validation</title>
   <para> Source Services may be used to validate sources. This can happen per
    package, which is useful when the packager wants to validate that downloaded
    sources are really from the original maintainer. Or validation can happen
@@ -71,7 +71,7 @@
    one during build. </para>
  </sect1>
  <sect1>
-  <title>Different Modes when using services</title>
+  <title>Different Modes of Services</title>
   <para> Each service can be used in a special mode defining when it should run
    and how to use the result. This can be done per package or globally for an
    entire project. </para>
@@ -81,7 +81,7 @@
     the server side and locally before every local build. </para>
   </sect2>
   <sect2>
-   <title>trylocal Mode</title>
+   <title><literal>trylocal</literal> Mode</title>
    <para> The trylocal mode is running the service locally when using current
     osc versions. The result gets committed as standard files and not named
     with _service: prefix. Additionally the service runs on the server by
@@ -91,20 +91,20 @@
     the server. </para>
   </sect2>
   <sect2>
-   <title>localonly Mode</title>
+   <title><literal>localonly</literal> Mode</title>
    <para> The localonly mode is running the service locally when using current
     osc versions. The result gets committed as standard files and not named
     with _service: prefix. The service is never running on the server side. It
     is also not possible to trigger it manually. </para>
   </sect2>
   <sect2>
-   <title>serveronly Mode</title>
+   <title><literal>serveronly</literal> Mode</title>
    <para> The serviceonly mode is running the service on the service only. This
     can be useful, when the service is not available or can not work on
     developer workstations. </para>
   </sect2>
   <sect2>
-   <title>buildtime Mode</title>
+   <title><literal>buildtime</literal> Mode</title>
    <para> The service is running inside of the build job, for local and server
     side builds. A side effect is that the service package is becoming a build
     dependency and must be available. Every user can provide and use a service
@@ -116,7 +116,7 @@
       xlink:href="https://build.opensuse.org"/>)</phrase>. </para>
   </sect2>
   <sect2>
-   <title>disabled Mode</title>
+   <title><literal>disabled</literal> Mode</title>
    <para> The disabled mode is neither running the service locally or on the
     server side. It can be used to temporarily disable the service but keeping
     the definition as part of the service definition. Or it can be used to
@@ -126,7 +126,7 @@
   </sect2>
  </sect1>
  <sect1>
-  <title>How are source service definitions stored</title>
+  <title>Storage of Source Service Definitions</title>
   <para> The called services are always defined in a
     <command>_service</command> file. It is either part of the package sources
    or used project-wide when stored inside the <command>_project</command>
@@ -156,7 +156,7 @@
    online. </para>
  </sect1>
  <sect1>
-  <title>Dropping a source service again</title>
+  <title>Dropping a Source Service Again</title>
   <para> Sometimes it is useful to continued to work on generated files
    manually. In this situation the _service file needs to be dropped, but all
    generated files need to be committed as standard files. The OBS provides the
@@ -164,7 +164,7 @@
     <command>osc service merge</command>. </para>
  </sect1>
  <sect1>
-  <title>How to Define a Source Service</title>
+  <title>Defining a Source Service</title>
   <para>
    To define a source service add a <tag>service</tag> section to the
     <filename>_service</filename> file of the project. Within this section,
@@ -183,7 +183,7 @@
 --<replaceable>PARAMETER1</replaceable> <replaceable>PARAMETER1_VALUE</replaceable> --outdir <replaceable>DIR</replaceable></screen>
  </sect1>
  <sect1>
-  <title>Interfaces for using source services</title>
+  <title>Interfaces for Using Source Services</title>
   <para> .. </para>
  </sect1>
 </chapter>

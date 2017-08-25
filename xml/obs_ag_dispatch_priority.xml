@@ -23,7 +23,7 @@
    <emphasis>BSConfig.pm</emphasis><xref linkend="_bsconfig_pm"/> configuration
   file.</para>
  <sect2 xml:id="_build__dispatchprios_api_call">
-  <title>/build/_dispatchprios API call</title>
+  <title>The <literal>/build/_dispatchprios</literal> API Call</title>
   <para>The <emphasis>/build/_dispatchprios</emphasis> API call allows an
    Admin to set a priority for defined projects and repositories using the HTML
    put method. With the HTML get method the current XML priority file can be
@@ -47,7 +47,7 @@
    &lt;prio project="Test11" repository="openSUSE_13.2" arch="i586" adjust="-10"/&gt;
 &lt;/dispatchprios&gt;</screen>
   <table frame="all" rowsep="1" colsep="1">
-   <title>Rounded scale factors resulting from a priority</title>
+   <title>Rounded Scale Factors Resulting from a Priority</title>
    <?dbhtml table-width="70%"?>
    <?dbfo table-width="70%"?>
    <?dblatex table-width="70%"?>
@@ -225,7 +225,7 @@
   </table>
  </sect2>
  <sect2 xml:id="_dispatch_adjust_array">
-  <title>dispatch_adjust array</title>
+  <title><literal>dispatch_adjust</literal> Array</title>
   <para>With the <emphasis role="strong"
      ><emphasis>dispatch_adjust</emphasis></emphasis> array in the
     <emphasis>BSConfig.pm</emphasis> file the dispatch priorities of project

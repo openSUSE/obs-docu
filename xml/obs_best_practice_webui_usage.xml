@@ -8,14 +8,14 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink"
  os="opensuse;novell">
- <title>How to use the OBS Web UI</title>
+ <title>Using the OBS Web UI</title>
  <info/>
  <para> This chapter explains and shows how you could use OBS Web UI. We will
   show and use OBS Web UI based on <link xlink:href="http://build.opensuse.org"
   />. You need to make an account first to follow this chapter contents. </para>
  <sect1>
-  <title>Start page and Login</title>
-  <para> Open your favorite browser and navigate to <link
+  <title>Homepage and Login</title>
+  <para> Open a browser and navigate to <link
     xlink:href="https://build.opensuse.org"/>
   </para>
   <figure>
@@ -50,20 +50,20 @@
   </figure>
  </sect1>
  <sect1>
-  <title>Home project</title>
+  <title>Home Project</title>
   <para> Every user has a home project (home:[userid]) where they have write
    access by default. This is a personal workspace where you can experiment and
    play. Click on the link "Home Project" at the upper right to get to your
    home project. </para>
   <sect2>
-   <title>The project page</title>
+   <title>The Project Page</title>
    <para> Your home project will be empty for now, but you can add packages
     containing sources/build recipes and projects which are containers for the
     build targets. As you can see, you're the default maintainer which grants
     you full write access to this project. You're also the bug owner of your
     project. </para>
    <figure>
-    <title>project page</title>
+    <title>Project Page</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="user_home_page.png" width="800"/>
@@ -87,7 +87,7 @@
    </figure>
   </sect2>
   <sect2>
-   <title>Creating subprojects to a project</title>
+   <title>Creating Subprojects to a Project</title>
    <para> Subprojects are projects that are part of another projects namespace.
     Subprojects are an easy way to organize multiple projects. On the
     "Subprojects" tab you can find a list subprojects that belong to a project.
@@ -99,7 +99,7 @@
      other. </para>
    </note>
    <figure>
-    <title>Creating subprojects</title>
+    <title>Creating Subprojects</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="create_subprojects.png" width="800"/>
@@ -110,7 +110,8 @@
  </sect1>
  <sect1>
   <title>My Projects, Server Status</title>
-  <para> Let's leave for now your home: for a bit and explore the build
+  <para>
+   For now, let's leave your home for a bit and explore the build
    service. Click on "My Projects" on the left at the bottom. This opens a page
    listing your watched projects and your involvements in projects or packages. </para>
   <figure>
@@ -168,7 +169,7 @@
    </orderedlist>
   
   <sect2>
-   <title>Add link to existing package</title>
+   <title>Add Link to Existing Package</title>
    <para> Right below packages, there's "Branch Package from other Project" . </para>
    <figure>
     <title>Branch Package</title>
@@ -213,7 +214,7 @@ flood</screen>
      linkend="cha.obs.best-practices.webuiusage.add-repository"/>. </para>
   </sect2>
   <sect2>
-   <title>Package page, build log and project monitor page</title>
+   <title>Package Page, Build Log and Project Monitor Page</title>
    <para> Next, it is time to explore the Monitor page, the package detail page
     and the build log. Just click on the links and explore the web interface. I
     recommend starting with your home project's top level 'overview' page -
@@ -275,7 +276,7 @@ flood</screen>
    repository might take a while. Until then you will get a 404 error. When the
    binaries are there, you'll see something like this: </para>
   <figure>
-   <title>Repository_structure</title>
+   <title>Repository Structure</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="download_rpm_directories.png" width="800"/>
@@ -296,7 +297,7 @@ flood</screen>
     distributions you can built packages for, see <xref
      linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot"/>. </para>
    <figure xml:id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
-    <title>Add Repository to project</title>
+    <title>Adding a Repository to a Project</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="adding_opensuse_factory.png" width="800"/>
@@ -322,7 +323,7 @@ flood</screen>
     on Demand repositories to your project. To do so, click on the "Add DoD
     repository" link and enter your DoD repository data into the form. </para>
    <figure>
-    <title>Add Download on Demand repository</title>
+    <title>Adding a Download on Demand Repository</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="repository_tab.png"/>
@@ -335,7 +336,7 @@ flood</screen>
      xlink:href="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod"
      >DoD concept section</link>. Press "Save" to create the repository. </para>
    <figure>
-    <title>Download on Demand repository form</title>
+    <title>Download on Demand Repository Form</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="add_dod_repository.png"/>
@@ -346,7 +347,7 @@ flood</screen>
     additional DoD repository sources. </para>
   </sect2>
   <sect2>
-   <title>Add additional DoD repository sources to a repository</title>
+   <title>Adding DoD Repository Sources to a Repository</title>
    <figure>
     <title>Adding Download on Demand repository sources</title>
     <mediaobject>
@@ -359,7 +360,7 @@ flood</screen>
     you can enter your additional DoD repository source. Click the "Add
     Download on Demand" button. </para>
    <figure>
-    <title>Form for adding DoD repository sources</title>
+    <title>Form for Adding DoD Repository Sources</title>
     <mediaobject>
      <imageobject>
       <imagedata fileref="add_dod_repository_source.png"/>
@@ -368,7 +369,7 @@ flood</screen>
    </figure>
   </sect2>
   <sect2>
-   <title>Edit DoD repository sources</title>
+   <title>Editing DoD Repository Sources</title>
    <para> To edit DoD repository sources after they got added click on the
     "Edit" link that you find right to each DoD repository source. </para>
    <figure>
@@ -381,7 +382,7 @@ flood</screen>
    </figure>
   </sect2>
   <sect2>
-   <title>Edit DoD repository sources</title>
+   <title>Editing DoD Repository Sources</title>
    <para> To delete a repository or repository source, click on the "Delete"
     link and accept the confirmation dialog. </para>
   </sect2>

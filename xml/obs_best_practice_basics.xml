@@ -12,7 +12,7 @@
  <para> These best practices should be known by every OBS user. They describe
   how to setup projects, working with own or foreign sources. </para>
  <sect1>
-  <title>Setup a project re-using other projects binaries</title>
+  <title>Setting Up a Project Re-Using Other Project's Binaries</title>
   <para>
    <xref linkend="obs.glos.project_binary"/> are the </para>
  </sect1>
@@ -27,7 +27,7 @@
    dependencies. </para>
  </sect1>
  <sect1>
-  <title>Contribute Directly to External Projects</title>
+  <title>Contributing to External Projects Directly</title>
   <para> In case a user does not have commit permissions for a project, they
    can request maintainership permissions for this project. This makes sense if
    the user is already known to the project owners and they trust them as a
@@ -36,7 +36,7 @@
    <screen># osc createrequest -a add_me maintainer PROJECT</screen>
  </sect1>
  <sect1>
-  <title>Contribute Indirectly to Foreign Projects</title>
+  <title>Contributing to Foreign Projects Indirectly</title>
   <para> Users who are new to a given project, either because they are new
    users with Open Build Service or packaging or do not have any deeper
    knowledge about a certain project will not have direct commit permissions.

@@ -7,16 +7,16 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>HOW TO -- a list of common questions and solutions</title>
+ <title>Common Questions and Solutions</title>
  <info/>
  <para> This currently an unsorted list of asked questions. </para>
  <sect1>
-  <title>How to work best with limited bandwidth</title>
+  <title>Working with Limited Bandwidth</title>
   <para> Packages can contain large files, esp. some tar balls can become quite
    large, in some real life examples several hundred mega bytes. This can be a
    problem when you need to work on the package via a slow connection. </para>
   <sect2>
-   <title>Use the web interface</title>
+   <title>Using the Web Interface</title>
    <para> The web interface is the easiest way to edit simple things without
     the need of the checkout. </para>
    <para> Disadvantages are</para>
@@ -34,7 +34,7 @@
    </itemizedlist>
   </sect2>
   <sect2>
-   <title>Use osc with size limit</title>
+   <title>Using &osccmd; with Size Limit</title>
    <para>
     <command>osc</command> offers to skip files with a certain size (specified
     with <command>-l</command> switch) on checkout. The limit is stored locally
@@ -51,7 +51,7 @@
     </itemizedlist>
   </sect2>
   <sect2>
-   <title>Use <command>download_url</command></title>
+   <title>Using <command>download_url</command></title>
    <para> Manage your large files via source services. The easiest way is to
     use <command>osc add $URL</command> which just stores a
     small <command>_service</command> file. The check will not contain the
@@ -69,7 +69,7 @@
     </itemizedlist>
   </sect2>
   <sect2>
-   <title>Use source service in trylocal mode</title>
+   <title>Using Source Services in <literal>trylocal</literal> Mode</title>
    <para> Manage your large files via source services in try local mode for
     example with <command>download_url</command> or
      <command>download_files</command> service. This means you can be flexible

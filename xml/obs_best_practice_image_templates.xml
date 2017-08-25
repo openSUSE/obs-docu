@@ -14,7 +14,7 @@
   xpointer="image_template_introduction_paragraph"/>-->
  <para> How you can create your own image templates will be shown here. </para>
  <figure>
-  <title>OBS Templates Page</title>
+  <title>&obsa; Templates Page</title>
   <mediaobject>
    <imageobject>
     <imagedata fileref="image_templates_template_page.png"/>
@@ -22,7 +22,7 @@
   </mediaobject>
  </figure>
  <sect2>
-  <title>Creating Your Own Image Templates</title>
+  <title>Creating Own Image Templates</title>
   <para> Create a subproject of your home project. </para>
   <figure>
    <title>Form for creating image template subproject</title>
@@ -40,7 +40,7 @@
   <para> Within that project create a new package. That will be your actual
    image template. </para>
   <figure>
-   <title>New image template</title>
+   <title>New Image Template</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="image_templates_package.png"/>
@@ -52,7 +52,7 @@
    tab, click on 'Add repositories' and click on the '&kiwi; image build' check
    box. </para>
   <figure>
-   <title>Enabling the &kiwi; image build repository</title>
+   <title>Enabling the &kiwi; Image Build Repository</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="image_templates_enable_image_repository.png"/>
@@ -61,7 +61,7 @@
   </figure>
   <para> Add sources for your image configuration. </para>
   <figure>
-   <title>Overview of sources of custom image template</title>
+   <title>Overview of Sources of a Custom Image Template</title>
    <mediaobject>
     <imageobject>
      <imagedata fileref="image_templates_overview.png"/>

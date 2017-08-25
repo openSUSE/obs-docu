@@ -10,7 +10,7 @@
   release management, update stack and service pack generation support.
  </para>
  <section>
-  <title>General Project setup for a maintained distribution</title>
+  <title>General Project Setup for a Maintained Distribution</title>
   <para>
    <xref linkend="obs.glos.project_binary"/> are the
   </para>
@@ -21,7 +21,7 @@
   <remark>TBD</remark>
  </section>
  <section>
-  <title>Contribute directly to foreign projects</title>
+  <title>Contributing to Foreign Projects Directly</title>
   <para>
    In case a user does not have commit permissions to a project, they can request
    maintainership permissions to this project. This makes sense if the
@@ -32,7 +32,7 @@
   </para>
  </section>
  <section>
-  <title>Contribute indirect to foreign projects</title>
+  <title>Contributing to Foreign Projects Indirectly</title>
   <para>
    Users who are new to a certain project, either because they are new users at
    all or don't have any deeper knowledge about this certain project do not have

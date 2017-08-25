@@ -7,11 +7,11 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>OBS Components</title>
+ <title>&obsa; Components</title>
  <para> The OBS is not a monolithic server: it consists of multiple daemons
   that perform different tasks. </para>
  <figure>
-  <title>Simplified OBS Component Overview</title>
+  <title>Simplified &obsa; Component Overview</title>
   <mediaobject>
    <imageobject>
     <imagedata fileref="obs_components.png" width="800"/>

@@ -22,7 +22,7 @@
  <para> NOTE: If no build host meets the constraints, the package will stay in
   state "scheduled" and never be dispatched. </para>
  <sect1>
-  <title>hostlabel</title>
+  <title><literal>hostlabel</literal></title>
   <para> The hostlabel is any string which can be assigned to build hosts when
    starting the bs_worker process. It can be used to run on specific hosts,
    which may be used for running benchmarks in a reproducible way. This
@@ -39,7 +39,7 @@
    <screen>Constraint: hostlabel benchmark_runner</screen>
  </sect1>
  <sect1>
-  <title>sandbox</title>
+  <title><literal>sandbox</literal></title>
   <para> Defines the sandbox which is used for the build job. Sandboxes are
    chroot, Xen or KVM environments. There is also the virtual secure sandbox,
    which allows building on Xen or KVM. This constraints may also be defined as
@@ -52,7 +52,7 @@
    <screen>Constraint: sandbox secure</screen>
  </sect1>
  <sect1>
-  <title>linux</title>
+  <title><literal>linux</literal></title>
   <para> The Linux kernel specific part. </para>
   <sect2>
    <title>version</title>
@@ -68,16 +68,16 @@
     <screen>Constraint: linux:version:min 3.0
 Constraint: linux:version:max 4.0</screen>
    <sect3>
-    <title>min</title>
+    <title><literal>min</literal></title>
     <para> Minimal kernel version. </para>
    </sect3>
    <sect3>
-    <title>max</title>
+    <title><literal>max</literal></title>
     <para> Maximal kernel version. </para>
    </sect3>
   </sect2>
   <sect2>
-   <title>flavor</title>
+   <title><literal>flavor</literal></title>
    <para> A specific kernel flavor like default or smp (from kernel packages
     kernel-default or kernel-smp). </para>
    <para> Example for _constraints file:</para>
@@ -91,13 +91,13 @@ Constraint: linux:version:max 4.0</screen>
   </sect2>
  </sect1>
  <sect1>
-  <title>hardware</title>
+  <title><literal>hardware</literal></title>
   <para> To require hardware or build instance features. </para>
   <sect2>
-   <title>cpu</title>
+   <title><literal>cpu</literal></title>
    <para> To require a specific Linux kernel version. </para>
    <sect3>
-    <title>flag</title>
+    <title><literal>flag</literal></title>
     <para> CPU features which are provided by the hardware. On Linux they can
      be found in /proc/cpuinfo. The flag element may be used multiple times to
      require multiple CPU features. </para>
@@ -114,7 +114,7 @@ Constraint: hardware:cpu:flag sse2</screen>
    </sect3>
   </sect2>
   <sect2>
-   <title>processors</title>
+   <title><literal>processors</literal></title>
    <para> To require a minimal number of processors for the build job. </para>
    <para> Example for _constraints file:</para>
     <screen>&lt;constraints&gt;
@@ -126,10 +126,10 @@ Constraint: hardware:cpu:flag sse2</screen>
     <screen>Constraint: hardware:processors 4</screen>
   </sect2>
   <sect2>
-   <title>disk</title>
+   <title><literal>disk</literal></title>
    <para> Hard disk specific. </para>
    <sect3>
-    <title>size</title>
+    <title><literal>size</literal></title>
     <para> To require a minimal size of the disk. </para>
     <para> Example for _constraints file:</para>
      <screen>&lt;constraints&gt;
@@ -144,10 +144,10 @@ Constraint: hardware:cpu:flag sse2</screen>
    </sect3>
   </sect2>
   <sect2>
-   <title>memory</title>
+   <title><literal>memory</literal></title>
    <para> Memory specific. </para>
    <sect3>
-    <title>size</title>
+    <title><literal>size</literal></title>
     <para> To require a minimal memory size including swap space. </para>
     <para> Example for _constraints file:</para>
      <screen>&lt;constraints&gt;
@@ -162,10 +162,10 @@ Constraint: hardware:cpu:flag sse2</screen>
    </sect3>
   </sect2>
   <sect2>
-   <title>physicalmemory</title>
+   <title><literal>physicalmemory</literal></title>
    <para> Memory specific. </para>
    <sect3>
-    <title>size</title>
+    <title><literal>size</literal></title>
     <para> To require a minimal memory size. Swap space is not taken into
      account here. </para>
     <para> Example for _constraints file:</para>
@@ -191,7 +191,7 @@ Constraint: hardware:cpu:flag sse2</screen>
     is set. </para>
   </sect2>
   <sect2>
-   <title>Less than half of the workers satisfy the constraints</title>
+   <title>Less than Half of the Workers Satisfy the Constraints</title>
    <para> The job will stay in state scheduled and the dispatch details are set
     to tell the user that this job can take a long time to be built. This will
     be shown in the Web UI on mouse over and the scheduled state will be
@@ -202,7 +202,7 @@ Constraint: hardware:cpu:flag sse2</screen>
     someone should have a look. </para>
   </sect2>
   <sect2>
-   <title>No workers satisfy the constraints</title>
+   <title>No Workers Satisfy the Constraints</title>
    <para> If no worker can handle the constraints defined by the package or
     project the build job fails. There is also a hint in the build log what has
     failed.</para>
@@ -214,7 +214,7 @@ Please adapt your constraints.</screen>
   </sect2>
  </sect1>
  <sect1>
-  <title>Checking constraints with osc</title>
+  <title>Checking Constraints with &osccmd;</title>
   <para> You can check the constraints of a project / package with the osc
    tool. You have to be in an osc working directory.</para>
    

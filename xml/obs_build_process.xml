@@ -19,7 +19,7 @@
   <remark>TBD</remark>
  </sect1>
  <sect1>
-  <title>How does a build process work</title>
+  <title>Phases of a Build Process</title>
   <para>
    All sources and binaries which are hosted inside &obs; are organized in
    projects. Projects host sources inside of &obsa; packages. The sources are
@@ -27,6 +27,12 @@
   </para>
   <sect2>
    <title>Preinstall Phase</title>
+   <remark>
+    Sounds like bad English: Preinstallation Phase, Installation Phase,
+    Packaging Phase would imo sound better. Not sure whether I can do that,
+    or whether this is already part of the terminology canon. - sknorr,
+    2017-08-25
+   </remark>
    <para>
     This phase depends on the type of the buildroot (building
     environment). &obsa; supports three different types of buildroots:
@@ -39,7 +45,7 @@
      </listitem>
      <listitem>
       <para>
-       XEN
+       Xen
       </para>
      </listitem>
      <listitem>

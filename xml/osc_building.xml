@@ -25,26 +25,26 @@
  </sect1>
 
  <sect1>
-  <title>From Deb Files (Debian)</title>
+  <title>From CONTROL/RULES/DSC Files (Debian)</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
  <sect1>
-  <title>From Pkg Files (Arch)</title>
+  <title>From <filename>PKGBUILD</filename> Files (Arch)</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
  <sect1>
-  <title>As Snap Files</title>
+  <title>As Snap Containers</title>
   <remark>toms 2017-08-18: see https://snapcraft.io/docs/build-snaps/ci-integration</remark>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
  <sect1>
-  <title>As Livebuild Image</title>
+  <title>As Livebuild Images</title>
   <remark>toms 2017-08-18: see https://www.debian.org/devel/debian-live/</remark>
   <para/>
   <remark>TBD</remark>

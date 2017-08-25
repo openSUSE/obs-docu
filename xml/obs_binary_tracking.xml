@@ -15,14 +15,14 @@
   released. OBS server can track these binaries and offers a database to search
   them. </para>
  <sect1>
-  <title>Which binaries get tracked?</title>
+  <title>Which Binaries Are Tracked?</title>
   <para> All binaries which get released in to projects providing
    kind=maintenance_release get tracked. In addition to that the OBS
    administrator may configure addition projects via the packtrack setting in
    BSConfig.pm </para>
  </sect1>
  <sect1>
-  <title>What data is tracked?</title>
+  <title>What Data Is Tracked?</title>
   <para> In short the information to identify a binary, its building place and
    timestamps are tracked. In addition to that also information about possible
    successor versions or if the binary got removed in the meantime. If products
@@ -59,7 +59,7 @@
    </itemizedlist>
   </sect2>
   <sect2>
-   <title>Binary information</title>
+   <title>Binary Information</title>
    <para> Additional information about a binary is information which gets
     updated when a binary gets added or replaced. </para>
    <itemizedlist>
@@ -110,15 +110,15 @@
   </sect2>
  </sect1>
  <sect1>
-  <title>osc search interface</title>
+  <title>&osccmd; Search Interface</title>
   <para> not yet implemented </para>
  </sect1>
  <sect1>
-  <title>Web UI search interface</title>
+  <title>Web UI Search Interface</title>
   <para> not yet implemented </para>
  </sect1>
  <sect1>
-  <title>API search interface</title>
+  <title>API Search Interface</title>
   <para> The search is provided via the generic XPath search interface. It is
    provided below the paths:</para>
   <itemizedlist>
