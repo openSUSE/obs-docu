@@ -168,7 +168,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </para>
    <para>
     Each project name is separated by colon.
-    For example, in the &opensuse; Build Service, packages for fonts are
+    For example, in the &osbs;, packages for fonts are
     collected in the project
     <uri>M17N:fonts</uri> which is a subproject of <uri>M17N</uri>.
     Packages for the Python programming
@@ -1200,7 +1200,7 @@ Patch0:         &gitproject;_main.diff</screen>
   </para>
   <para>
    For example, if you have enabled the &tw; distribution,
-   all packages for Tumbleweed can be found under the URL
+   all packages for &tw; will be published at
    <uri>&obsdnlurlhome1;/openSUSE_Tumbleweed</uri>. This <emphasis>download
    repository</emphasis> is used as an installation source for Zypper or &yast;.
   </para>

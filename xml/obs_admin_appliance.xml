@@ -12,21 +12,21 @@
   how to deploy them for production use. </para>
  <sect2>
   <title>Server Appliance</title>
-  <para> The OBS server appliance contains a recent openSUSE distribution with
+  <para> The &obsa; server appliance contains a recent &opensuse; distribution with
    a pre-installed and pre-configured OBS front-end, back-end and worker. The
    operating system on this appliance adapts to the hardware on first boot and
    defaults to automatic IP and DNS configuration via DHCP. </para>
  </sect2>
  <sect2>
   <title>Worker Appliance</title>
-  <para> The OBS worker appliance includes a recent openSUSE distribution and
-   the OBS worker component. The operating system on this appliance adapts to
+  <para> The &obsa; worker appliance includes a recent &opensuse; distribution and
+   the &obsa; worker component. The operating system on this appliance adapts to
    the hardware on first boot, defaults to automatic IP and DNS configuration
-   via DHCP and OBS server discovery via SLP. </para>
+   via DHCP and &obsa; server discovery via SLP. </para>
  </sect2>
  <sect2>
   <title>Image Types</title>
-  <para> There are different types of OBS appliance images.</para>
+  <para> There are different types of &obsa; appliance images.</para>
    <table
     xml:id="cha.obs.best-practices.appliance_types">
     <title>Appliance Types</title>

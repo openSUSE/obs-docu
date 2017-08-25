@@ -32,7 +32,7 @@
    <para> Log on to the Web API. The default user Admin, with the password
      <literal>opensuse</literal> is available. Create your own login and
     password and set yourself as Admin. Log on to the Web UI as Admin and click
-    on the Icon "Configuration" and add the openSUSE Build Service as remote
+    on the icon <guimenu>Configuration</guimenu> and add the &osbs; as the remote
     instance. Select from under <menuchoice>
      <guimenu>Locations</guimenu>
      <guimenu>Projects</guimenu>
@@ -74,7 +74,7 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
     <para> If you have access only to the repositories of your source reference
      target, then your life will be a bit more difficult. My advice would be to
      recheck if you find you cannot get a login on a public OBS service - such
-     as provided by openSUSE or MeeGo - before proceeding this way. You will
+     as provided by &opensuse; or MeeGo - before proceeding this way. You will
      not be able to import the project config and you will have to create it by
      hand. This is too long to be covered in this HowTo. For more explanation
      about Build Service project config, see <link

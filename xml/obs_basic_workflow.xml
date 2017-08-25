@@ -294,7 +294,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    </step>
    <step>
     <para>Build the package for a specific distribution and architecture,
-     for example, Tumbleweed for x86_64:</para>
+     for example, &tw; for x86-64:</para>
     <screen>&prompt.user;<command>osc</command> build --local-package <!--
 -->openSUSE_Tumbleweed x86_64 *.spec
     </screen>

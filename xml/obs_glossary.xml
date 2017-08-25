@@ -698,8 +698,8 @@
   <glossterm>Target</glossterm>
   <glossdef>
    <para>
-    A specific distribution and architecture, for example, openSUSE
-    Tumbleweed for AMD64/Intel 64 (x86-64). Also referenced as
+    A specific distribution and architecture, for example,
+    &tw; for x86-64. Also referenced as
     <emphasis>build target</emphasis>.
    </para>
   </glossdef>
