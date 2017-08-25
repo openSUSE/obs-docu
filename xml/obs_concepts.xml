@@ -129,7 +129,8 @@
  </sect1>
  <sect1>
   <title>The API</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>The OBS Interconnect</title>
@@ -151,10 +152,12 @@
  <xi:include href="obs_concepts_scm.xml"/>
  <sect1>
   <title>Attribute System</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Automatic source processing</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
 </chapter>

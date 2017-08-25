@@ -20,7 +20,8 @@
  <glossentry xml:id="obs.glos.announcement">
   <glossterm>Announcement</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.appimage">
@@ -48,7 +49,8 @@
  <glossentry xml:id="obs.glos.attribute">
   <glossterm>Attribute</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <!-- ############## B ############## -->
@@ -80,14 +82,16 @@
  <glossentry xml:id="obs.glos.bugowner">
   <glossterm>Bugowner</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
    <glossseealso otherterm="obs.glos.maintainer"/>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.bugreporting">
   <glossterm>Bug Reporting</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.build">
@@ -172,7 +176,8 @@
  <glossentry xml:id="obs.glos.description">
   <glossterm>Description</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.develproject">
@@ -251,9 +256,8 @@
  <glossentry xml:id="obs.glos.homerepository">
   <glossterm>Home Repository</glossterm>
   <glossdef>
-   <para>
-     TBD
-   </para>
+   <para/>
+   <remark>TBD</remark>
    <glossseealso otherterm="obs.glos.project"/>
   </glossdef>
  </glossentry>
@@ -322,7 +326,8 @@
  <glossentry xml:id="obs.glos.maintainer">
   <glossterm>Maintainer</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
    <glossseealso otherterm="obs.glos.bugowner"/>
   </glossdef>
  </glossentry>
@@ -338,13 +343,15 @@
  <glossentry xml:id="obs.glos.maintenance_request">
   <glossterm>Maintenance Request</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.metadata">
   <glossterm>Metadata</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <!-- ############## O ############## -->
@@ -495,7 +502,8 @@
  <glossentry xml:id="obs.glos.patchinfo">
   <glossterm>Patchinfo</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.project">
@@ -561,7 +569,8 @@
  <glossentry xml:id="obs.glos.request">
   <glossterm>Request</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.requirements">
@@ -631,7 +640,8 @@
  <glossentry xml:id="obs.glos.statusmonitor">
   <glossterm>Status Monitor</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.source">
@@ -662,7 +672,8 @@
  <glossentry xml:id="obs.glos.systemstatus">
   <glossterm>System Status</glossterm>
   <glossdef>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.submitrequest">

@@ -10,7 +10,8 @@
  <title>OBS Architecture</title>
  <info>
   <abstract>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </abstract>
  </info>
 
@@ -269,7 +270,7 @@
    if here are more dependent packages to build. If not it informs the
     <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis> to
    publish the new build results and create an updated version of the
-   repository. Th <emphasis role="strong"
+   repository. The <emphasis role="strong"
     ><emphasis>Publisher</emphasis></emphasis> will also request signing of the
    repository meta data.</para>
  </sect1>

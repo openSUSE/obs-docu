@@ -16,13 +16,17 @@
   <para> The main project is openSUSE:Factory. This project is controlled by a
    small group which does review all submissions according to the policies.
    Submissions are possible via submit requests, which are reviewed by default
-   by two groups: The Legal team and the code review team. ... </para>
+   by two groups: The Legal team and the code review team.
+  </para>
+  <remark>TBD</remark>
  </sect1>
  <sect1 xml:id="cha.obs.factory.develprojects">
   <title>Devel Projects</title>
   <para> The goal of openSUSE:Factory is to always have a working state. This
    is needed to allow all developer groups to use it as a base for testing
-   their own, possibly experimental work in their own projects. To have a
-   complete test of ... </para>
+   their own, possibly experimental work in their own projects.
+   <!-- To have a complete test of ...-->
+  </para>
+  <remark>TBD</remark>
  </sect1>
 </chapter>

@@ -160,14 +160,16 @@
 
  <sect1>
   <title>Snap</title>
+  <para/>
+  <remark>TBD</remark>
   <remark>toms 2017-08-18: see obs_build_containers.xml</remark>
-  <para>TBD</para>
  </sect1>
 
 <!--
  <sect1>
   <title>Livebuild</title>
-  <para>TBD</para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
 -->
 

@@ -13,14 +13,17 @@
   rebuild an entire stack with minimal effort. </para>
  <sect1>
   <title>Rebuild an entire project with changes</title>
-  <para> To be written... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Integrate Source Handling</title>
-  <para> To be written... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Use OBS for automated QA</title>
-  <para> To be written... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
 </chapter>

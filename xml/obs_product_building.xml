@@ -13,7 +13,8 @@
   openSUSE and also for SUSE Linux Enterprise products. </para>
  <sect1>
   <title>Requirements of a product</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Possible shapes of a product</title>
@@ -21,19 +22,25 @@
  </sect1>
  <sect1>
   <title>Product Setup in OBS</title>
-  <para> .... </para>
+  <para/>
+  <remark>TBD</remark>
   <sect2>
    <title>Package building</title>
-   <para> A project is configured in the project meta data. This meta data
-    contains ... These projects contain ... </para>
+   <para>
+    A project is configured in the project meta data.
+    <!-- This meta data contains ... These projects contain ...-->
+   </para>
+   <remark>TBD</remark>
   </sect2>
   <sect2>
    <title>Appliance setup with kiwi</title>
-   <para> ... </para>
+   <para/>
+   <remark>TBD</remark>
   </sect2>
   <sect2>
    <title>Product creation with kiwi</title>
-   <para> ... </para>
+   <para/>
+   <remark>TBD</remark>
   </sect2>
   <sect2>
    <title>Product Line Setup</title>
@@ -69,6 +76,7 @@
  </sect1>
  <sect1>
   <title>Typical Review Process Setup</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
 </chapter>

@@ -15,7 +15,8 @@
  </para>
  <sect1>
   <title>Definition of a Build Process</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>How does a build process work</title>
@@ -115,10 +116,12 @@
  </sect1>
  <sect1>
   <title>Different Ways of Building</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Security Aspects</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
 </chapter>

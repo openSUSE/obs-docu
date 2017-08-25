@@ -24,14 +24,17 @@ _END_KEY
  </sect1>
  <sect1>
   <title>Repository signing</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Product signing</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Configure sign key</title>
-  <para> ... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
 </chapter>

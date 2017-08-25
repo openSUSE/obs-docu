@@ -8,13 +8,16 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Integrate OBS into your environment</title>
- <para> To be written... </para>
+ <para/>
+ <remark>TBD</remark>
  <sect2>
   <title>Integrate Notifications</title>
-  <para> To be written... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect2>
  <sect2>
   <title>Integrate your user management in OBS</title>
-  <para> To be written... </para>
+  <para/>
+  <remark>TBD</remark>
  </sect2>
 </sect1>

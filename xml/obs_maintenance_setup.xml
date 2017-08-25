@@ -244,8 +244,11 @@
          is extended by the source project name to allow multiple instances of
          same package in one project. Source revision links are using the
          xsrcmd5 to avoid that other releases will affect this package
-         instance. TBD: how to raise the source revision to current version
-         manually ? </para>
+         instance.
+        </para>
+        <remark>
+         TBD: how to raise the source revision to current version manually?
+        </remark>
        </listitem>
        <listitem>
         <para> Build repositories are added if missing. All repositories

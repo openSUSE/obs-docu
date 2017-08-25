@@ -65,7 +65,8 @@
 
   <chapter>
    <title>Using Source Services</title>
-   <para>TBD</para>
+   <para/>
+   <remark>TBD</remark>
   </chapter>
 
   <xi:include href="obs_signing.xml"/>

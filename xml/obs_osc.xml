@@ -11,7 +11,9 @@
  <title>&osc;, the Command Line Tool</title>
  <info>
   <abstract>
-   <para>TBD</para>
+   <para>
+    <remark>TBD</remark>
+   </para>
   </abstract>
  </info>
  <remark>toms 2017-08-16:  http://docserv.suse.de/documents/Open_Build_Service/obs-best-practices/html/cha.obs.best-practices.oscexamples.html#id17157

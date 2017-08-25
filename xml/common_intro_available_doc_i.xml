@@ -15,25 +15,29 @@
   <varlistentry>
    <term><xref linkend="book.obs-reference-guide"/></term>
    <listitem>
-    <para>TBD</para>
+    <para/>
+    <remark>TBD</remark>
    </listitem>
   </varlistentry>
   <varlistentry>
    <term><xref linkend="book.obs-admin"/></term>
    <listitem>
-    <para>TBD</para>
+    <para/>
+    <remark>TBD</remark>
    </listitem>
   </varlistentry>
   <varlistentry>
    <term><xref linkend="book.obs-best-practices"/></term>
    <listitem>
-    <para>TBD</para>
+    <para/>
+    <remark>TBD</remark>
    </listitem>
   </varlistentry>
   <varlistentry>
    <term><xref linkend="art.obs.bg"/></term>
    <listitem>
-    <para>TBD</para>
+    <para/>
+    <remark>TBD</remark>
    </listitem>
   </varlistentry>
  </variablelist>
