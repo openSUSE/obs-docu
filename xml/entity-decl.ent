@@ -40,8 +40,8 @@
 <!ENTITY obsrepoviewfile "https://build.opensuse.org/package/view_file/">
 <!--https://build.suse.de/package/view_file/home:tux/xep/xep.spec?expand=1-->
 
-<!ENTITY obsuser1       "obs_&exampleuser_plain;">
-<!ENTITY obsuser2       "obs_&exampleuserII_plain;">
+<!ENTITY obsuser1       "obs&exampleuser_plain;">
+<!ENTITY obsuser2       "obs&exampleuserII_plain;">
 <!ENTITY obshome1       "home:&obsuser1;">
 <!ENTITY obshome2       "home:&obsuser2;">
 <!ENTITY obsbranch1     "home:&obsuser1;:branches">
