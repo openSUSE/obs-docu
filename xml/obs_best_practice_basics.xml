@@ -30,7 +30,7 @@
   <title>Contribute Directly to External Projects</title>
   <para> In case a user does not have commit permissions for a project, they
    can request maintainership permissions for this project. This makes sense if
-   the user is already known to the project owners and they trust him as a
+   the user is already known to the project owners and they trust them as a
    maintainer. There is a way to do this via the request system of OBS, but
    only via osc so far:</para>
    <screen># osc createrequest -a add_me maintainer PROJECT</screen>

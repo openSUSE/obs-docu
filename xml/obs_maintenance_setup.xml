@@ -350,7 +350,7 @@
     incidents via the api: </para>
    <itemizedlist>
     <listitem>
-     <para> A developer can see the work to be done by him via searching for
+     <para> A developer can see the work to be done by them via searching for
       patchinfos with open Bugzilla entries:</para>
       <screen>/search/package?match=([kind='patchinfo' and issue/[@state='OPEN' and owner/@login='$USER_LOGIN']])</screen>
     </listitem>

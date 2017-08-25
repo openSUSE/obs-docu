@@ -26,7 +26,7 @@
   <para>
    In case a user does not have commit permissions to a project, they can request
    maintainership permissions to this project. This makes sense if the
-   user is already known to the project owners and they trust him as a
+   user is already known to the project owners and they trust them as a
    maintainer. There is a way to do this via the request system of OBS, but
    only via osc so far:
 <screen><command># osc createrequest -a add_me maintainer PROJECT</command></screen>
