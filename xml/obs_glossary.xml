@@ -657,9 +657,7 @@
  </glossentry>
  <glossentry xml:id="obs.glos.sourcelink">
   <glossterm>Source Link</glossterm>
-  <glossdef>
-   <para>See <xref linkend="obs.glos.link"/></para>
-  </glossdef>
+  <glosssee otherterm="obs.glos.link"/>
  </glossentry>
  <glossentry xml:id="obs.glos.susepackagehub">
   <glossterm>&suse; Package Hub</glossterm>
