@@ -12,12 +12,12 @@
  <sect2>
   <title>Services</title>
   <para> You can control the different back-end components via
-    <command>systemctl</command>. Basically you can enable/disable the service
+    <command>systemctl</command>. You can enable/disable the service
    during booting the system and start/stop/restart it in a running system.
-   Have a look at the <link
+   For more information, see <link
     xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands"
-    >man page</link> for more information. For instance to restart the
-   repository server use:</para>
+    >man page</link>. For example, to restart the
+   repository server, use:</para>
    <screen><command>systemctl restart obsrepserver.service</command></screen>
   <table xml:id="tab.obs.service-names">
    <title>Service Names</title>
