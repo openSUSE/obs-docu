@@ -62,8 +62,12 @@
  <glossentry xml:id="obs.glos.attribute" condition="tbd">
   <glossterm>Attribute</glossterm>
   <glossdef>
-   <para/>
-   <remark>TBD</remark>
+   <para>
+    Attributes can be added to projects or packages to add meta information
+    or to trigger actions. For example, you can use the attribute
+    <literal>OBS:AutoCleanup</literal> to delete a project after a certain
+    amount of time.
+   </para>
   </glossdef>
  </glossentry>
  <!-- ############## B ############## -->
@@ -117,8 +121,18 @@
  <glossentry xml:id="obs.glos.bugowner" condition="tbd">
   <glossterm>Bugowner</glossterm>
   <glossdef>
-   <para/>
-   <remark>TBD</remark>
+   <!-- Helpful: https://en.opensuse.org/openSUSE:Package_maintainership_guide
+   - sknorr, 2017-08-29 -->
+   <para>
+    In &obsa;, <emphasis>Bugowner</emphasis> is a user role which can be
+    set for a project or a package. However, ideally, set this role for
+    individual packages only. Users with this role can only read data but
+    they are responsible for reacting to bug reports.
+   </para>
+   <para>
+    For more information about roles, see
+    <xref linkend="_user_and_group_roles"/>.
+   </para>
    <glossseealso otherterm="obs.glos.maintainer"/>
   </glossdef>
  </glossentry>
@@ -362,7 +376,7 @@
   <glossdef>
    <para>
     Working area in OBS for uploading and building packages. Each
-    home project starts with <uri>home:USERNAME</uri>.
+    home project starts with <uri>home:<replaceable>USERNAME</replaceable></uri>.
    </para>
    <glossseealso otherterm="obs.glos.project"/>
   </glossdef>
@@ -464,8 +478,16 @@
  <glossentry xml:id="obs.glos.maintainer" condition="tbd">
   <glossterm>Maintainer</glossterm>
   <glossdef>
-   <para/>
-   <remark>TBD</remark>
+   <para>
+    In &obsa;, <emphasis>Maintainer</emphasis> is a user role which can be
+    set for a project or a package. Users that have this role in a project can
+    add, modify, and remove packages and subprojects, accept submit requests,
+    and change metadata.
+   </para>
+   <para>
+    For more information about roles, see
+    <xref linkend="_user_and_group_roles"/>.
+   </para>
    <glossseealso otherterm="obs.glos.bugowner"/>
   </glossdef>
  </glossentry>
@@ -518,29 +540,33 @@
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.obs" sortas="Open Build Service">
-  <glossterm>Open Build Service (OBS)</glossterm>
+  <glossterm>&OBS;</glossterm>
   <glossdef>
-   <para>A Web service to build package or images from source.
-    The Open Build Service (OBS) is used to speak about the
-    server part of the build service. When speaking about OBS all possible
-    instances are affected. </para>
+   <para>
+    A Web service to build packages or images from source.
+   </para>
+   <para>
+    The term <quote>&obs;</quote> is used to speak about the server part of
+    the build service. Unlike the term &osbs;, the term &obs; refers to all
+    instances.
+   </para>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.build.o.o">
-  <glossterm>openSUSE Build Service</glossterm>
+  <glossterm>&osbs;</glossterm>
   <glossdef>
    <para> A specific Web service instance of <xref
-     linkend="obs.glos.obs"/> from the openSUSE project at
+     linkend="obs.glos.obs"/> from the &opensuse; project at
     <link xlink:href="http://build.opensuse.org"/>. </para>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.osc">
-  <glossterm>osc</glossterm>
+  <glossterm>&osccmd;</glossterm>
   <glossdef>
-   <para> A command line tool to work with an OBS instance. The acronym
-    for the <command>osc</command> command is called <emphasis>openSUSE
-     commander</emphasis>. The command line tool has a similar handling like
-    SVN or Git.
+   <para>
+    A command line tool to work with &obsa; instances. The acronym &osccmd;
+    stands for <emphasis>openSUSE commander</emphasis>. &osccmd; works
+    similarly to SVN or Git.
    </para>
    <glossseealso otherterm="obs.glos.obs"/>
    <glossseealso><link xlink:href="https://github.com/openSUSE/osc"
