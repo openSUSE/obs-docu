@@ -32,7 +32,8 @@
     </imageobject>
    </mediaobject>
   </figure>
-  <para> This figure is giving a basic overview about the project setup and
+  <para>
+   This figure gives an overview about the project setup and
    general workflow for a single package and single maintained distribution. It
    shows the "openSUSE:11.4" project, which is considered to be frozen and not
    changing at all anymore. The "openSUSE:11.4:Update" projects hosts all
@@ -340,7 +341,7 @@
     instead. </para>
   </sect2>
   <sect2>
-   <title>Search for incidents</title>
+   <title>Searching for Incidents</title>
    <para> The Web UI shows the running and past incidents when going to the
     maintenance project (openSUSE:Maintenance in our example). It shows the
     open requests either for creating or release an incident. Also the open

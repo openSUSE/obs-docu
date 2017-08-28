@@ -8,18 +8,25 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Binary Package Tracking</title>
- <info/>
- <para> Official products and their updates are often claimed to be supported.
-  Multiple parties, like release managers, maintenance engineers, QA and
-  support need to be able to check which exact versions of a package got
-  released. OBS server can track these binaries and offers a database to search
-  them. </para>
+ <para>
+  Products and updates to them are often officially supported by a company.
+  To allow giving such support, there is binary package tracking. This
+  feature allows checking which exact version of a package was shipped at
+  what time. This feature is often important for release managers,
+  maintenance engineers, QA engineers and supporters.
+ </para>
+ <para>
+  &obsa; can track these binary packages and offer a database to search
+  them.
+ </para>
  <sect1>
   <title>Which Binaries Are Tracked?</title>
-  <para> All binaries which get released in to projects providing
-   kind=maintenance_release get tracked. In addition to that the OBS
-   administrator may configure addition projects via the packtrack setting in
-   BSConfig.pm </para>
+  <para>
+   All binaries which are released into projects providing
+   <literal>kind=maintenance_release</literal> are tracked. In addition to
+   that, the &obsa; administrator can configure additional projects via the
+   <literal>packtrack</literal> setting in <filename>BSConfig.pm</filename>.
+  </para>
  </sect1>
  <sect1>
   <title>What Data Is Tracked?</title>
@@ -31,30 +38,68 @@
    itself or in one of its update repositories. </para>
   <sect2>
    <title>Binary Identifier</title>
-   <para> A binary is identified by the following information—this is the
-    components of the storage path and File Name of the binary:</para>
+   <para>
+    A binary is identified by the following information which is extracted from
+    components of the file path of the binary:
+   </para>
    <itemizedlist>
     <listitem>
-     <para> repository: where is the binary hosted </para>
-    </listitem>
-    <listitem>
-     <para> name: the name of the binary file </para>
-    </listitem>
-    <listitem>
-     <para> epoch: the epoch version (optional, usually not used) </para>
-    </listitem>
-    <listitem>
-     <para> version: the version </para>
-    </listitem>
-    <listitem>
-     <para> release: the release number </para>
-    </listitem>
-    <listitem>
-     <para> architecture: the architecture </para>
-    </listitem>
-    <listitem>
-     <para> medium: the medium name, this exists only for product builds
+     <formalpara>
+      <title>Repository:</title>
+      <para>
+       Where is the binary hosted?
+      </para>
+     </formalpara>
+     <para>
      </para>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Name:</title>
+      <para>
+       Name of the binary file
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Epoch:</title>
+      <para>
+       The epoch version (optional, usually not used)
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Version:</title>
+      <para>
+       The version
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Release:</title>
+      <para>
+       The release number
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Architecture:</title>
+      <para>
+       The hardware architecture
+      </para>
+     </formalpara>
+    </listitem>
+    <listitem>
+     <formalpara>
+      <title>Medium:</title>
+      <para>
+       Name of the medium (exists only for product builds)
+      </para>
+     </formalpara>
     </listitem>
    </itemizedlist>
   </sect2>
@@ -111,11 +156,13 @@
  </sect1>
  <sect1>
   <title>&osccmd; Search Interface</title>
-  <para> not yet implemented </para>
+  <para/>
+  <remark>TBD: not yet implemented (?) </remark>
  </sect1>
  <sect1>
   <title>Web UI Search Interface</title>
-  <para> not yet implemented </para>
+  <para/>
+  <remark>TBD: not yet implemented (?) </remark>
  </sect1>
  <sect1>
   <title>API Search Interface</title>
