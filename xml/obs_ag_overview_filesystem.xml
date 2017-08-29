@@ -3327,7 +3327,7 @@ if (-r $hostconfig) {
      </tbody>
     </tgroup>
    </table>
-   <para>Example project meta data:</para>
+   <para>Example project metadata:</para>
    <screen>&lt;project name="Test11"&gt;
   &lt;title&gt;Test project 11&lt;/title&gt;
   &lt;description&gt;Project for demo&lt;/description&gt;
@@ -3341,7 +3341,7 @@ if (-r $hostconfig) {
 &lt;/project&gt;</screen>
   </sect2>
   <sect2 xml:id="_package_meta_data">
-   <title>Package meta data</title>
+   <title>Package Metadata</title>
    <para>XML file about package meta information, like Title, description,
     related user and groups with roles, build settings, publish settings, debug
     settings and more. Most XML tags are the same as for projects.</para>
@@ -3364,7 +3364,7 @@ if (-r $hostconfig) {
 &lt;/package&gt;</screen>
   </sect2>
   <sect2 xml:id="_attribute_meta_data">
-   <title>Attribute meta data</title>
+   <title>Attribute Metadata</title>
    <para>Attributes can be used to add special information to packages.
     Attributes can be used to trigger special actions.</para>
    <para>Example attribute data:</para>
