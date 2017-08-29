@@ -23,20 +23,29 @@
    project is linked to the repository that should be run if the
    project/repository combination is removed. It is possible to use regular
    expressions here.</para>
-  <para>The script is called by the <emphasis role="strong"
-    >obsrun</emphasis> user with the following parameters:</para>
+  <para>
+   The script is called by the user
+   <systemitem class="username">obsrun</systemitem> with the following
+   parameters:
+  </para>
   <orderedlist>
    <listitem>
-    <para> information about the project and its repository (e.g.
-      <emphasis>training/SLE11-SP1</emphasis>) </para>
+    <para>
+     information about the project and its repository (for example,
+     <emphasis>training/SLE11-SP1</emphasis>)
+     </para>
    </listitem>
    <listitem>
-    <para> repository path (e.g.
-      <emphasis>/srv/obs/repos/training/SLE11-SP1</emphasis>) </para>
+    <para>
+     repository path (for example,
+     <filename>/srv/obs/repos/training/SLE11-SP1</filename>)
+     </para>
    </listitem>
    <listitem>
-    <para> removed packages (e.g. <emphasis>x86 64/test.rpm x86
-      64/utils.rpm</emphasis>) </para>
+    <para>
+     removed packages (for example, <literal>x86 64/test.rpm x86
+     64/utils.rpm</literal>)
+    </para>
    </listitem>
   </orderedlist>
   <para>The hooks are configured by adding a hash reference named

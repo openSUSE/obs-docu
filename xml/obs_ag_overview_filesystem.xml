@@ -3083,9 +3083,11 @@ if (-r $hostconfig) {
       </tbody>
      </tgroup>
     </table>
-    <para>Depending for what kind of target (package, project or meta data)
-     is used, fields can be empty or have special values e.g. <emphasis
-      role="strong">unknown</emphasis> for the version.</para>
+    <para>
+     Depending on the target (package, project or meta data)
+     used, fields can be empty or have special values, for example,
+     <literal>unknown</literal> for the version.
+    </para>
     <para>Example MD5SUMS file</para>
     <screen>/srv/obs # cat trees/Test1/package1/56cdd3adb778089d1fcc49b92bb93e5b-MD5SUMS
 0a17daaa913df9e50ee65e83a1898363  package1.spec
@@ -3094,10 +3096,10 @@ if (-r $hostconfig) {
    <sect3 xml:id="_obs_revision_api">
     <title>&obsa; Revision API</title>
     <para>The revision info can be retrieved via API calls for the specific
-     package, e.g using
+     package, for example, using
       <literal>/source/&lt;project&gt;/&lt;package&gt;/_history</literal>.</para>
     <para>Specific revisions of files can be retrieved with the optional
-     "rev=N" parameter e.g.
+     "rev=N" parameter, for example,
       <emphasis>/source/&lt;project&gt;/&lt;package&gt;/&lt;file&gt;?rev=N</emphasis>.</para>
     <para>On PUT and POST methods for files the optional
      "comment=some+comment" can be used to set a commit message.</para>
@@ -3379,8 +3381,8 @@ if (-r $hostconfig) {
   <sect2 xml:id="_job_files">
    <title>Job Files</title>
    <para>Jobs are stored by the scheduler in the
-     <emphasis>/srv/obs/jobs</emphasis> directory and contain the build setup
-    information for the package, e.g. reference to the exact source version,
+     <filename>/srv/obs/jobs</filename> directory and contain the build setup
+    information for the package, for example, a reference to the exact source version,
     build dependencies, build repository information, timestamps.</para>
    <para>Sample job file:</para>
    <screen>&lt;buildinfo project="Release:Stable" repository="SLE-12_GA" package="CI-demo"

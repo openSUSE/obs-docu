@@ -11,7 +11,7 @@
  <para>The OBS has an integrated user and group management with a role based
   access rights model. In every OBS instance, at least one user need to exist
   and have the global Admin role assigned. Groups can be defined by the Admin
-  and and instead of adding a list of users to a project/package role user can
+  and instead of adding a list of users to a project/package role user can
   be added to a group and the group will be added to a project or package
   role.</para>
  <sect2 xml:id="_user_and_group_roles">
@@ -19,7 +19,7 @@
   <para>The OBS role model has one global role: Admin, which can be granted
    to users. Am OBS admin has access to all projects and packages via the API
    interface and the web user interface. Some menus in the Web UI do not allow
-   changes by an Admin (e.g. the Repository Menu) as long the Admin is not a
+   changes by an Admin (for example, the Repository menu) as long the Admin is not a
    Maintainer for the project as well. But the same change can be done via
    editing the meta data directly. The other roles are specific to projects and
    packages and can be assigned to a user or a group.</para>
@@ -119,7 +119,7 @@
    only for authentication.</para>
   <important>
    <para>With enabled proxy mode the OBS trust the username in the http
-    header. Since this was verified by the Web server and the the Web server
+    header. Since this was verified by the Web server and the Web server
     only forward requests for a verified and authenticated session, this is
     safe, as long you make sure that the direct web/API interface of the OBS is
     not reachable from the outside.</para>
@@ -193,7 +193,7 @@
    groups are also added transparently, if an existing group on the LDAP server
    is added to a project or package.</para>
   <para>On bigger installations this mode can result in many search requests
-   to the LDAP server and slow down the the access to projects and packages,
+   to the LDAP server and slow down access to projects and packages,
    because on every role check an LDAP search operation will contact the LDAP
    server. As alternative method group mirroring was implemented. This allows
    that the internal OBS group database is updated with the group membership
@@ -457,7 +457,7 @@
         <para/>
        </entry>
        <entry align="left" valign="top">
-        <para>e.g. cn=ldapbind, ou=system, dc=mycompany, dc=com</para>
+        <para>for example, cn=ldapbind, ou=system, dc=mycompany, dc=com</para>
        </entry>
       </row>
       <row>
@@ -485,7 +485,7 @@
         <para/>
        </entry>
        <entry align="left" valign="top">
-        <para>e.g. a group membership, empty all users allowed</para>
+        <para>for example, a group membership, empty all users allowed</para>
        </entry>
       </row>
       <row>
@@ -785,7 +785,7 @@ ldap_obs_admin_group: obsadmins</screen>
   <title>Authentication Methods</title>
   <sect3 xml:id="_ldap_methods">
    <title>LDAP Methods</title>
-   <para>The LDAP mode has 2 methods implemented to check
+   <para>The LDAP mode has 2 methods to check
     authorization:</para>
    <orderedlist>
     <listitem>
@@ -794,7 +794,7 @@ ldap_obs_admin_group: obsadmins</screen>
     </listitem>
     <listitem>
      <para> Local method.<?asciidoc-br?> The provided credentials checked
-      locally against the content of the of the
+      locally against the content of the
        <emphasis>userPassword</emphasis> attribute. </para>
     </listitem>
    </orderedlist>

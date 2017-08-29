@@ -54,8 +54,10 @@ This project refers to projects hosted on the &osbs;
      binaries </para>
    </listitem>
    <listitem>
-    <para> use already existing local install repositories (e.g. from an
-     SMT) </para>
+    <para>
+     use already existing local install repositories (for example, from an
+     SMT instance)
+    </para>
    </listitem>
    <listitem>
     <para> use the install media to import the binaries </para>
@@ -94,11 +96,11 @@ Options help:
    <para>This is the same procedure for all local sources. If you have a
     local copy of a distribution, you can either use symbolic links to the
     binary packages or copy them in a directory on the back-end repo server
-    under the <emphasis>'/srv/obs/build'</emphasis> directory. You should
+    under the <filename>/srv/obs/build</filename> directory. You should
     follow the common name schema for build repository here. As first step you
     should create an empty project for the distribution, you can use the Web UI
-    or the <emphasis role="strong">osc</emphasis> command-line tool. Then you
-    add a repository with name <emphasis>standard</emphasis> and the build
+    or the &osccmd; command-line tool. Then you
+    add a repository with the name <literal>standard</literal> and the build
     architectures you want. Here an example project meta file:</para>
    <screen>&lt;project name="SUSE:13.2"&gt;
   &lt;title&gt;openSUSE 13.2 build repositories&lt;/title&gt;

@@ -261,8 +261,10 @@ systemctl start obswarden.service</screen>
     <screen># mysql -u root -p
 mysql&gt; create database api_production;
 mysql&gt; quit</screen>
-    <para>You should use an own MySQL user (e.g. "obs") for the OBS
-     access:</para>
+    <para>
+     Use a separate MySQL user (for example,
+     <systemitem class="username">obs</systemitem>) for the &obsa; access:
+    </para>
     <screen># mysql -u root -p
 mysql&gt; create user 'obs'@'%' identified by 'TopSecretPassword';
 mysql&gt; create user 'obs'@'localhost' identified by 'TopSecretPassword';
@@ -530,7 +532,7 @@ systemctl start obsworker</screen>
   </important>
   <para>The binary back-end can be split on project level, this is called
    partitioning.</para>
-  <para>One one partition following services needs to be configured and
+  <para>On one partition following services needs to be configured and
    run:</para>
   <orderedlist>
    <listitem>

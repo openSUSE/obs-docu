@@ -22,20 +22,32 @@
    project is linked to the repository that should be run if the
    project/repository combination is published. It is possible to use regular
    expressions here.</para>
-  <para>The script is called by the <emphasis role="strong"
-    >obsrun</emphasis> user with the following parameters:</para>
+  <para>
+   The script is called by the user
+   <systemitem class="username">obsrun</systemitem> with the following
+   parameters:
+  </para>
   <orderedlist>
    <listitem>
-    <para> information about the project and its repository (for example,
-      <emphasis>training/SLE11-SP1</emphasis>) </para>
+    <para>
+     information about the project and its repository (for example,
+     <literal>training/SLE11-SP1</literal>)
+    </para>
    </listitem>
    <listitem>
-    <para> path to published repository (e.g.
-      <emphasis>/srv/obs/repos/training/SLE11-SP1</emphasis>) </para>
+    <para>
+     path to published repository (for example,
+     <filename>/srv/obs/repos/training/SLE11-SP1</filename>)
+    </para>
    </listitem>
    <listitem>
-    <para> changed packages (e.g. <emphasis>x86 64/test.rpm x86
-      64/utils.rpm</emphasis>) </para>
+    <para>
+     changed packages (for example, <literal>x86 64/test.rpm x86
+     64/utils.rpm</literal>)
+    </para>
+    <remark>
+     "x86 64" really with space in the middle? - sknorr, 2017-08-29
+    </remark>
    </listitem>
   </orderedlist>
   <para>The hooks are configured by adding a hash reference named
@@ -81,7 +93,7 @@ our $publishedhook = {
     syncing database (6 ops)</screen>
   <para>Interactive scripts are not working and will fail
    immediately.</para>
-  <para>If you need to do a lot of work in the hook script and don't want to
+  <para>If you need to do a lot of work in the hook script and do not want to
    block the publisher all the time, you should consider using a separate
    daemon that does all the work and just gets triggered by the configured hook
    script.</para>
