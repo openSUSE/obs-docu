@@ -124,6 +124,19 @@
 <!--   <glossseealso otherterm=""obs.glos.debianrulefile"/>-->
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.buildrequirement">
+  <glossterm>Build Requirement</glossterm>
+  <glossdef>
+   <para>
+    Package requirements that are needed to create or build a specific
+    package.
+    <remark>For example, a C++ program needs the C++ compiler included in the
+    <package>gcc</package> package.</remark>
+   </para>
+   <glossseealso otherterm="obs.glos.installrequirement"/>
+   <glossseealso otherterm="obs.glos.buildrecipe"/>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.buildresult">
   <glossterm>Build Result</glossterm>
   <glossdef>
@@ -180,6 +193,10 @@
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.dependency">
+  <glossterm>Dependency</glossterm>
+  <glosssee otherterm="obs.glos.requirement"/>
+ </glossentry>
  <glossentry xml:id="obs.glos.develproject">
   <glossterm>Devel Project</glossterm>
   <glossdef>
@@ -204,6 +221,10 @@
    </para>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.diff">
+  <glossterm>Diff</glossterm>
+  <glosssee otherterm="obs.glos.patch"/>
+ </glossentry>
  <!-- ############## E ############## -->
  <glossentry xml:id="obs.glos.eula">
   <glossterm>EULA</glossterm>
@@ -214,6 +235,11 @@
     installing.
    </para>
   </glossdef>
+ </glossentry>
+ <!-- ############## F ############## -->
+ <glossentry xml:id="obs.glos.fix">
+  <glossterm>Fix</glossterm>
+  <glosssee otherterm="obs.glos.patch"/>
  </glossentry>
  <glossentry xml:id="obs.glos.flag">
   <glossterm>Flags</glossterm>
@@ -289,6 +315,14 @@
     required updates. If the problem exists for multiple code streams, one
     incident covers all of them. An incident is started by creating a
     maintenance incident project and the update get built here. </para>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.installrequirement">
+  <glossterm>Installation Requirement</glossterm>
+  <glossdef>
+   <para>
+    Package requirements that are needed when the package is installed.
+   </para>
   </glossdef>
  </glossentry>
  <!-- ############## K ############## -->
@@ -477,6 +511,10 @@
    <glossseealso otherterm="obs.glos.source"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.packagerequirement">
+  <glossterm>Package Requirement</glossterm>
+  <glosssee otherterm="obs.glos.requirement"/>
+ </glossentry>
  <glossentry xml:id="obs.glos.packagerepository">
   <glossterm>Package Repository</glossterm>
   <glossdef>
@@ -500,7 +538,18 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.patchinfo">
+ <glossentry xml:id="obs.glos.patchfile">
+  <glossterm>Patch File</glossterm>
+  <glossdef>
+   <para>
+    A file that contains a patch with the file extension <filename
+     class="extension">.diff</filename> or <filename class="extension"
+      >.patch</filename>.
+   </para>
+   <glossseealso otherterm="obs.glos.patch"/>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.patchinfo" condition="tbd">
   <glossterm>Patchinfo</glossterm>
   <glossdef>
    <para/>
@@ -574,19 +623,15 @@
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.requirements">
-  <glossterm>Requirements</glossterm>
+ <glossentry xml:id="obs.glos.requirement">
+  <glossterm>Requirement</glossterm>
   <glossdef>
-   <para>Package dependencies. Requirements are distinguished between:
+   <para>
+    In the &obsa; context, package requirements that are needed to
+    create, build, or install a package.
    </para>
-   <simplelist>
-    <member>Build Requirements: these are dependencies that are needed
-    to create or build a specific package. For example, a C++ program
-    needs the C++ compiler included in the <package>gcc</package> package.
-    </member>
-    <member>Install Requirements: dependencies that are needed when the
-    package is installed.</member>
-   </simplelist>
+   <glossseealso otherterm="obs.glos.buildrequirement"/>
+   <glossseealso otherterm="obs.glos.installrequirement"/>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.revision">
