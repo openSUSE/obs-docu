@@ -226,6 +226,7 @@ refer to the openldap ldap.conf man page.</simpara>
   <para>
     <screen>
     <command>
+      cd /srv/www/obs/api
       bundle exec rake user:give_admin_rights tux RAILS_ENV=production
     </command>
     </screen>
