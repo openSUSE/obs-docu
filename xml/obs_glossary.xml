@@ -164,6 +164,28 @@
   </glossdef>
  </glossentry>
  <!-- ############## C ############## -->
+ <glossentry xml:id="obs.glos.changelog">
+  <glossterm>Changelog</glossterm>
+  <glossdef>
+   <para>
+    Listing of a high-level overview sorted by date. An entry of a changelog
+    can contain information about version updates, bug and security fixes,
+    incompatible changes, or changes related to the distribution.
+   </para>
+   <glossseealso otherterm="obs.glos.changesfile"/>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.changesfile">
+  <glossterm baseform="changesfile"><filename class="extension"
+   >.changes</filename> File</glossterm>
+  <glossdef>
+   <para>
+    In &obsa;, a file with the file extension <filename class="extension"
+     >.changes</filename> to store changelog information.
+   </para>
+   <glossseealso otherterm="obs.glos.changelog"/>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.commit">
   <glossterm>Commit</glossterm>
   <glossdef>
