@@ -17,7 +17,7 @@
  <title>Glossary</title>
 
  <!-- ############## A ############## -->
- <glossentry xml:id="obs.glos.announcement">
+ <glossentry xml:id="obs.glos.announcement" condition="tbd">
   <glossterm>Announcement</glossterm>
   <glossdef>
    <para/>
@@ -46,7 +46,7 @@
    <glossseealso otherterm="obs.glos.kiwi"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.attribute">
+ <glossentry xml:id="obs.glos.attribute" condition="tbd">
   <glossterm>Attribute</glossterm>
   <glossdef>
    <para/>
@@ -79,7 +79,7 @@
    <glossseealso otherterm="obs.glos.submitrequest"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.bugowner">
+ <glossentry xml:id="obs.glos.bugowner" condition="tbd">
   <glossterm>Bugowner</glossterm>
   <glossdef>
    <para/>
@@ -87,7 +87,7 @@
    <glossseealso otherterm="obs.glos.maintainer"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.bugreporting">
+ <glossentry xml:id="obs.glos.bugreporting" condition="tbd">
   <glossterm>Bug Reporting</glossterm>
   <glossdef>
    <para/>
@@ -173,7 +173,7 @@
    <glossseealso otherterm="obs.glos.rpm"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.description">
+ <glossentry xml:id="obs.glos.description" condition="tbd">
   <glossterm>Description</glossterm>
   <glossdef>
    <para/>
@@ -253,12 +253,13 @@
    <glossseealso otherterm="obs.glos.project"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.homerepository">
+ <glossentry xml:id="obs.glos.homerepository" condition="tbd">
   <glossterm>Home Repository</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
    <glossseealso otherterm="obs.glos.project"/>
+   <glossseealso otherterm="obs.glos.repository"/>
   </glossdef>
  </glossentry>
  <!-- ############## I ############## -->
@@ -323,7 +324,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## M ############## -->
- <glossentry xml:id="obs.glos.maintainer">
+ <glossentry xml:id="obs.glos.maintainer" condition="tbd">
   <glossterm>Maintainer</glossterm>
   <glossdef>
    <para/>
@@ -340,14 +341,14 @@
    <glossseealso otherterm="obs.glos.incident"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.maintenance_request">
+ <glossentry xml:id="obs.glos.maintenance_request" condition="tbd">
   <glossterm>Maintenance Request</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.metadata">
+ <glossentry xml:id="obs.glos.metadata" condition="tbd">
   <glossterm>Metadata</glossterm>
   <glossdef>
    <para/>
@@ -566,7 +567,7 @@
    <glossseealso otherterm="obs.glos.downloadrepository"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.request">
+ <glossentry xml:id="obs.glos.request" condition="tbd">
   <glossterm>Request</glossterm>
   <glossdef>
    <para/>
@@ -639,7 +640,7 @@
    <glossseealso otherterm="obs.glos.source"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.statusmonitor">
+ <glossentry xml:id="obs.glos.statusmonitor" condition="tbd">
   <glossterm>Status Monitor</glossterm>
   <glossdef>
    <para/>
@@ -669,7 +670,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.systemstatus">
+ <glossentry xml:id="obs.glos.systemstatus" condition="tbd">
   <glossterm>System Status</glossterm>
   <glossdef>
    <para/>
