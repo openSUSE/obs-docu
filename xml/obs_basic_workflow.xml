@@ -627,6 +627,9 @@ Requires:         zool >= 1.5.6</screen>
    <sect3 xml:id="sec.obs.basicworkflow.reuse.aggregating">
     <title>Aggregating a Package</title>
     <para>
+     Basically, an aggregated package is a pointer to the build results
+     (binaries) of a package, copying the build results into another
+     project.
      Aggregating is used in the following situations:
     </para>
     <itemizedlist>
@@ -673,7 +676,8 @@ Requires:         zool >= 1.5.6</screen>
    <sect3 xml:id="sec.obs.basicworkflow.reuse.linking">
     <title>Linking a Package</title>
     <para>
-     Linking is used in the following situations:
+     Basically, a linked package is a clone of another package with some
+     additional modifications. Linking is used in the following situations:
     </para>
     <itemizedlist>
      <listitem>
@@ -684,7 +688,7 @@ Requires:         zool >= 1.5.6</screen>
      </listitem>
      <listitem>
       <para>
-       Separate the original source from patches.
+       Separate the original source from own patches.
       </para>
      </listitem>
     </itemizedlist>
