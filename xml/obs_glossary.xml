@@ -635,26 +635,14 @@
   <glossterm>Package</glossterm>
   <glossdef>
    <para>
-    &obsa; handles multiple types of package:
+    General term of a preassembled unit of software.
+    &obsa; handles multiple types of package as
+    binary package, &obsa; package, and source package.
    </para>
-   <itemizedlist>
-    <listitem>
-     <para>
-      <xref linkend="obs.gloss.source_package"/>
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.obs_package"/>
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.project_binary"/>
-     </para>
-    </listitem>
-   </itemizedlist>
    <glossseealso otherterm="obs.glos.container"/>
+   <glossseealso otherterm="obs.gloss.source_package"/>
+   <glossseealso otherterm="obs.glos.obs_package"/>
+   <glossseealso otherterm="obs.glos.project_binary"/>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.packagerequirement">
