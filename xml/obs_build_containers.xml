@@ -1,82 +1,91 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.build_containers">
+<chapter version="5.1" xml:id="cha.obs.build_containers"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Containers</title>
- <para>
-  Containers are workloads which container all necessary files to make the workload
-  independend of the running host OS. This includes (but is not limited to) libraries,
-  executables and shared resource files.
- </para>
- <section>
-   <title>Supported Containers</title>
-   <para>
-     A container that is providing its own kernel is called virtual machine in this book.
-     &OBS; supports container builds either by supporting the native build format or as
-     side product of a different format. The range is from very simple chroot containers via 
-     server format (eg Docker) or desktop format (eg. AppImage or Snap) up to full
-     VM builds (OpenStack, kvm or LiveCD via kiwi).
-    </para>
-   <section>
-     <title>SimpleImage</title>
-     <para>
-      SimpleImage is a special format which is using rpm spec file syntax and just packages
-      the resulting install root as tar ball or squashfs image. The format is just using
-      the BuildRequires tags inside of a file called "simpleimage", it supports also
-      rpm macro handling to allow to define exceptions depending on the build environment.
-     </para>
-   </section>
-   <section>
-      <title>Docker</title>
-      <para>
-       Docker images are currently only supported via the kiwi tool.
-      </para>
-    </section>
-    <section>
-      <title>AppImage</title>
-      <para>
-       The Desktop oriented AppImage format is currently only formated as side effect of an rpm build. &OBS;
-       supports signing and publishing the .AppImage files, the rest is handled via wrapper
-       packages which converts a rpm (or deb package) into an AppImage file. 
-       Own build rules can provided via a "Recipe" file, fallback code will be used if no 
-       "Recipe" file is available.
-      </para>
-    </section>
-    <section>
-      <title>Snap</title>
-      <para>
-       Snap format is supported natively. However, external resources are only supported 
-       via source services and therefore not all build types are supported. Snapcraft 
-       works also only with a ubuntu based base system (code for supporting rpm distros
-       exists as well but got not merged upstream yet).
-      </para>
-    </section>
-    <section>
-      <title>Flatpack</title>
-      <para>
-        Flatpack is currently not supported due to the lacking ability of reproducable builds.
-      </para>
-    </section>
-    <section>
-      <title>Livebuild</title>
-      <para>
-       Livebuild is the debian livebuild support for iso images.
-      </para>
-    </section>
-    <section>
-      <title>Kiwi appliance formats</title>
-      <para>
-      </para>
-    </section>
-    <section>
-      <title>Kiwi product builds</title>
-      <para>
-      </para>
-    </section>
-  </section>
+ <info>
+  <abstract>
+   <para/>
+   <remark>TBD</remark>
+  </abstract>
+ </info>
+ <para> Containers are workloads which container all necessary files to make
+  the workload independent of the running host OS. This includes (but is not
+  limited to) libraries, executables and shared resource files. </para>
+
+ <sect1>
+  <title>Supported Containers</title>
+  <para> A container that is providing its own kernel is called virtual machine
+   in this book. Open Build Service (OBS) supports container builds either by
+   supporting the native build format or as side product of a different format.
+   The range is from very simple chroot containers via server format (eg
+   Docker) or desktop format (eg. AppImage or Snap) up to full VM builds
+   (OpenStack, kvm or LiveCD via kiwi). </para>
+
+  <variablelist>
+   <varlistentry>
+    <term>SimpleImage</term>
+    <listitem>
+     <para> SimpleImage is a special format which is using rpm spec file syntax
+    and just packages the resulting install root as tar ball or squashfs image.
+    The format is just using the BuildRequires tags inside of a file called
+    "simpleimage", it supports also rpm macro handling to allow to define
+    exceptions depending on the build environment. </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Docker</term>
+    <listitem>
+     <para>Docker images are currently only supported via the &kiwi; tool.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>AppImage</term>
+    <listitem>
+     <para>The Desktop oriented AppImage format is currently only formatted as
+    side effect of an rpm build. Open Build Service (OBS) supports signing and
+    publishing the .AppImage files, the rest is handled via wrapper packages
+    which converts an rpm (or deb package) into an AppImage file. Own build
+    rules can provided via a <filename>Recipe</filename> file, fallback code
+    will be used if no <filename>Recipe</filename> file is available.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Snap</term>
+    <listitem>
+     <para>Snap format is supported natively. However, external resources are
+    only supported via source services and therefore not all build types are
+    supported. Snapcraft works also only with an Ubuntu-based base system (code
+    for supporting rpm distros exists as well but got not merged upstream yet).</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Flatpack</term>
+    <listitem>
+     <para>Flatpack is currently not supported due to the lacking ability of
+    reproducible builds.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Livebuild</term>
+    <listitem>
+     <para>Livebuild is the Debian livebuild support for ISO images.</para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+
+<!--  <sect2>
+   <title>&kiwi; Appliance Formats</title>
+   <para> </para>
+  </sect2>
+  <sect2>
+   <title>&kiwi; Product Builds</title>
+   <para> </para>
+  </sect2>-->
+ </sect1>
 </chapter>

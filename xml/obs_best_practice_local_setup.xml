@@ -1,107 +1,95 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.best-practices.localsetup" os="opensuse;novell">
- <title id="cha.obs.best-practices.localsetup.title">OBS Local Setup</title>
- <para>
-  This chapter explains how you could setup/Install/test OBS in your system.
-  This chapter is written for those who are not so familiar with Linux and OBS.
-  So in case you are confident to setup OBS, please skip this chapter.
-  Following would be explained in this chapter.
-  <itemizedlist>
-   <listitem>
-    <para>
-     OBS 1 click install, then manual setup in openSUSE 13.1;
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     OBS 1 click install, then manual setup in SLES11;
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     OBS test run on Microsoft Windows using VMware player;
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     OBS appliance installed manually in a VirtualBox.
-    </para>
-   </listitem>
-  </itemizedlist>
-  Unfortunately, didn't have a chance to install OBS in other Linux
-  distribution yet. The last section will explain your first steps with the new
-  OBS server.
- </para>
- <para>
-  How you could install and purchase openSUSE 13.1 and SLES12 will not be
-  explained in this chapter. VMware player install and purchase also won't be
-  explained. For these topics, you could visit for help:
-  <itemizedlist>
-   <listitem>
-    <para>
-     <ulink url="http://software.opensuse.org/131/en">http://software.opensuse.org/131/en</ulink>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     <ulink url="http://www.suse.com/products/server/">http://www.suse.com/products/server/</ulink>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     <ulink url="http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0">http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0</ulink>
-    </para>
-   </listitem>
-  </itemizedlist>
- </para>
- <section>
-  <title>OBS test run on Microsoft Windows using VMware player</title>
-  <para>
-   Those who are not familiar with Linux can run and test OBS. To run and test
-   OBS in Windows, you could use a virtual machine program such as VMware or
-   VirtualBox, etc. This chapter explains, how you can run OBS using VMware
-   player. To check and test with VirtualBox or another virtual machine, please
-   check in below.
-  </para>
-  <para>
-   After you are done installing VMware player on Windows, you need to download
-   the OBS appliance program. You could get OBS appliance file by visiting
-   <ulink url="http://openbuildservice.org/download/other/">http://openbuildservice.org/download/other/</ulink>
-   and clicking on <guibutton>Virtualbox/VMWare Image</guibutton>. After
-   downloading, uncompress with some Windows archiving program that understands
-   the <filename>.tar.bz2</filename> file format.
-  </para>
-  <para>
-   Now, open <application>VMware Player</application> application and select
-   <menuchoice> <guimenu>File</guimenu> <guimenuitem>Open a Virtual
-   Machine</guimenuitem> </menuchoice>, or you could press
-   <keycombo action="simul"> <keycap>Ctrl</keycap> <keycap>O</keycap>
-   </keycombo> directly. Open the decompressed virtual machine in
-   <guilabel>Open Virtual Machine</guilabel> dialog box. Click on
-   <guibutton>Play virtual machine</guibutton> icon or hyper link in VMware
-   player.
-  </para>
-  <para>
-   At the Linux prompt, you can login using "root" as a login name and
-   "opensuse" as a password. Now, OBS local instance should be already loaded
-   and running in your system. To make sure OBS webui is successfully up and
-   running, you probably want to see OBS web ui.
-  </para>
-  <para>
-   To access OBS web user interface, open your web browser and try the address
-   http://vm.ip.address You can check the virtual machine's IP address by using
-   <command>ifconfig</command> Linux command. Now, you probably could see a
-   screen like the one below in your Windows:
-  </para>
-<!-- fs 2011-10-13: Image missing
+<chapter version="5.1" xml:id="cha.obs.best-practices.localsetup"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" os="opensuse;novell">
+ <title>Setting Up a Local &obsa; Instance</title>
+ <info/>
 
+ <para> This chapter explains how you could setup/Install/test OBS in your
+  system. This chapter is written for those who are not so familiar with Linux
+  and OBS. So in case you are confident to setup OBS, skip this chapter.
+  Following would be explained in this chapter.</para>
+ <itemizedlist>
+  <listitem>
+   <para> OBS 1 click install, then manual setup in openSUSE 13.1; </para>
+  </listitem>
+  <listitem>
+   <para> OBS 1 click install, then manual setup in SLES11; </para>
+  </listitem>
+  <listitem>
+   <para> OBS test run on Microsoft Windows using VMware player; </para>
+  </listitem>
+  <listitem>
+   <para> OBS appliance installed manually in a VirtualBox. </para>
+  </listitem>
+ </itemizedlist>
+ <para>Unfortunately, didn't have a chance to install OBS in other Linux
+  distribution yet. The last section will explain your first steps with the new
+  OBS server. </para>
+ <para> How you could install and purchase openSUSE 13.1 and SLES12 will not be
+  explained in this chapter. VMware player install and purchase also will not
+  be explained. For these topics, you could visit for help:</para> 
+  <itemizedlist>
+   <listitem>
+    <para>
+     <link xlink:href="http://software.opensuse.org/131/en"
+      >http://software.opensuse.org/131/en</link>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link xlink:href="http://www.suse.com/products/server/"
+      >http://www.suse.com/products/server/</link>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link
+      xlink:href="http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0"
+      >http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0</link>
+    </para>
+   </listitem>
+  </itemizedlist>
+
+ <sect1>
+  <title>Testing &obsa; on Microsoft Windows Using VMware Player</title>
+  <para> Those who are not familiar with Linux can run and test OBS. To run and
+   test OBS in Windows, you could use a virtual machine program such as VMware
+   or VirtualBox, etc. This chapter explains, how you can run OBS using VMware
+   player. To check and test with VirtualBox or another virtual machine, check
+   in below. </para>
+  <para> After you are done installing VMware player on Windows, you need to
+   download the OBS appliance program. You could get OBS appliance file by
+   visiting <link xlink:href="http://openbuildservice.org/download/other/"
+    /> and clicking on
+    <guimenu>VirtualBox/VMware Image</guimenu>. After downloading,
+   uncompress with some Windows archiving program that understands the
+    <filename>.tar.bz2</filename> file format. </para>
+  <para> Now, open VMware Player application and
+   select <menuchoice>
+    <guimenu>File</guimenu>
+    <guimenu>Open a Virtual Machine</guimenu>
+   </menuchoice>, or you could press <keycombo action="simul">
+    <keycap>Ctrl</keycap>
+    <keycap>O</keycap>
+   </keycombo> directly. Open the decompressed virtual machine in
+    <guimenu>Open Virtual Machine</guimenu> dialog box. Click on
+    <guimenu>Play virtual machine</guimenu> icon or hyper link in VMware
+   player. </para>
+  <para> At the Linux prompt, you can login using "root" as a login name and
+   "opensuse" as a password. Now, OBS local instance should be already loaded
+   and running in your system. To make sure that the OBS Web UI is successfully
+   up and running, open the OBS Web UI. </para>
+  <para> To access OBS Web user interface, open your web browser and try the
+   address <uri>http://vm.ip.address</uri>. You can check the virtual
+   machine's IP address by using <command>ifconfig</command> Linux command.
+   Now, you probably could see a screen like the one below in your window: </para>
+  <!-- fs 2011-10-13: Image missing
     <figure>
       <title>OBS_Run_On_Windows</title>
       <mediaobject>
@@ -111,329 +99,237 @@
       </mediaobject>
     </figure>
     -->
-  <para>
-   To login your local OBS instance, you could use default login name as
+  <para> To login your local OBS instance, you could use default login name as
    "Admin" and password as "opensuse". Check if you could login properly by
-   clicking <guibutton>Login</guibutton> on your local OBS instance web UI.
-   Welcome to the Open Build Service ;-)
+   clicking <guimenu>Login</guimenu> on your local OBS instance Web UI.
   </para>
- </section>
- <section>
-  <title>OBS 1 click install on openSUSE 13.1</title>
-  <para>
-   This section explains, how you can install OBS on top of openSUSE 13.1. Open
-   your web browser and go to that URL
-   <ulink url="http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_13.1/OBS_Server.ymp">http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_13.1/OBS_Server.ymp</ulink>
+ </sect1>
+ <sect1>
+  <title>OBS 1-Click Install on &opensuse; 13.1</title>
+  <para> This section explains, how you can install OBS on top of openSUSE
+   13.1. Open your web browser and go to that URL <link
+    xlink:href="http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_13.1/OBS_Server.ymp"
+    >http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_13.1/OBS_Server.ymp</link>
   </para>
-  <para>
-   This YaST Meta Package file lets you install OBS by 1 click. In case you are
-   using openSUSE 11.2 or below version, please check if you could find 1 click
-   install file in this URL
-   <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE">http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE</ulink>
+  <para> This YaST Meta Package file lets you install OBS by 1 click. In case
+   you are using openSUSE 11.2 or below version, check if you could find 1
+   click install file in this URL <link
+    xlink:href="http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE"
+    >http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE</link>
   </para>
-  <para>
-   After you click on the above URL, you would see <guilabel>Opening
-   OBS_Server.ymp</guilabel> window, Select default selection which is
-   <guilabel>Open with YaST Meta Package Handler</guilabel> and press
-   <guibutton>OK</guibutton> button. Then <guilabel>OBS_Server Installation -
-   YaST</guilabel> window will appear. Select <guibutton>Next</guibutton>
-   button after that till you get successful OBS setup message.
-  </para>
-  <para>
-   TIPS : In case you didn't install libMagickCore.so.2 in openSUSE, you might
-   face dependency warning. In that case, stop the OBS install by pressing
-   <guibutton>Abort</guibutton> button in <guilabel>OBS_Server Installation -
-   YaST</guilabel> window. Then search and install libMagickCore using a search
-   engine like Google or others and repeat above processes. Then you will get
-   an OBS setup message.
-  </para>
-  <para>
-   Now, OBS Server is installed in your openSUSE. To run OBS server, you need
-   to work on several further steps. Open
+  <para> After you click on the above URL, you would see <guimenu>Opening
+    OBS_Server.ymp</guimenu> window, Select default selection which is
+    <guimenu>Open with YaST Meta Package Handler</guimenu> and press
+    <guimenu>OK</guimenu> button. Then <guimenu>OBS_Server Installation -
+    YaST</guimenu> window will appear. Select <guimenu>Next</guimenu>
+   button after that till you get successful OBS setup message. </para>
+  <para> TIPS : In case you didn't install libMagickCore.so.2 in openSUSE, you
+   might face dependency warning. In that case, stop the OBS install by
+   pressing <guimenu>Abort</guimenu> button in <guimenu>OBS_Server
+    Installation - YaST</guimenu> window. Then search and install
+   libMagickCore using a search engine like Google or others and repeat above
+   processes. Then you will get an OBS setup message. </para>
+  <para> Now, OBS Server is installed in your openSUSE. To run OBS server, you
+   need to work on several further steps. Open
    /usr/share/doc/packages/obs-api/README.SETUP file. To run OBS server, you
    need to follow each step of README.SETUP carefully based on your system
    situation. You can also find this <filename>README.SETUP</filename> file in
-   our public
-   <ulink url="https://github.com/openSUSE/open-build-service/blob/master/dist/README.SETUP.md">git
-   repository</ulink>. If you are using our stable release, you might want to
-   switch to the corresponding branch, eg.
-   <ulink url="https://github.com/openSUSE/open-build-service/blob/2.7/dist/README.SETUP">2.7</ulink>.
-  </para>
-  <para>
-   If you follow instructions from README.SETUP file, you should be able to run
-   OBS server in your system. There are several tips that I would like to
-   comment regarding README.SETUP file.
-  </para>
-  <para>
-   TIP #1 : Check <guilabel>3.1 Initialize fresh Database</guilabel>. It might
-   be described as
-  </para>
-<screen>
-              <command>
-                  # cd /srv/www/obs/api/
-                  # sudo RAILS_ENV="production" rake db:setup
-                  # sudo chown lighttpd.lighttpd log/*
+   our public <link
+    xlink:href="https://github.com/openSUSE/open-build-service/blob/master/dist/README.SETUP.md"
+    >git repository</link>. If you are using our stable release, you might want
+   to switch to the corresponding branch, eg. <link
+    xlink:href="https://github.com/openSUSE/open-build-service/blob/2.7/dist/README.SETUP"
+    >2.7</link>. </para>
+  <para> If you follow instructions from README.SETUP file, you should be able
+   to run OBS server in your system. There are several tips that I would like
+   to comment regarding README.SETUP file. </para>
+  <para> TIP #1 : Check <citetitle>3.1 Initialize fresh Database</citetitle>. It
+   might be described as </para>
+  <screen># cd /srv/www/obs/api/
+# sudo RAILS_ENV="production" rake db:setup
+# sudo chown lighttpd.lighttpd log/*
 
-                  # cd /srv/www/obs/webui/
-                  # sudo RAILS_ENV="production" rake db:setup
-                  # sudo chown lighttpd.lighttpd log/*
-               </command>
-              </screen>
-  <para>
-   but it should be
-  </para>
-<screen>
-                <command>  
-                  # cd /srv/www/obs/api/
-                  # sudo RAILS_ENV="production" rake db:migrate
-                  # sudo chown lighttpd.lighttpd log/*
+# cd /srv/www/obs/webui/
+# sudo RAILS_ENV="production" rake db:setup
+# sudo chown lighttpd.lighttpd log/*</screen>
+  <para> but it should be </para>
+  <screen># cd /srv/www/obs/api/
+# sudo RAILS_ENV="production" rake db:migrate
+# sudo chown lighttpd.lighttpd log/*
 
-                  # cd /srv/www/obs/webui/
-                  # sudo RAILS_ENV="production" rake db:migrate
-                  # sudo chown lighttpd.lighttpd log/*
-                </command>
-              </screen>
-  <para>
-   You could check this Tip in below URL also.
-  </para>
-<screen>
-          <command>
-             http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE            
-          </command>
-        </screen>
-  <para>
-   You would find same description in above URL for this TIP #1.
-  </para>
-  <para>
-   TIP #2 : If you get fail message because of "apisrv" in "6. Using osc with
-   your local build service:", please try apiurl instead.
-  </para>
-  <para>
-   You might face some issues during process to follow README.SETUP file. If
-   you read and follow instructions carefully, you could run OBS local instance
-   on your system successfully.
-  </para>
- </section>
- <section>
-  <title>OBS 1 click install on SLES (SUSE Linux Enterprise Server) 12</title>
-  <para>
-   1 click install for OBS in SLES12. This section explains how you install OBS
-   in SLES12. Installation of OBS in SLES12 is quite similar to OBS install
-   method on openSUSE. I would skip same contents so you might need to have a
-   look for prior section "OBS 1 click install on openSUSE 13.1".
-  </para>
-  <para>
-   Before you install OBS on SLES12, you need to download and install SLES12
-   SDK first. you could download SLES12 SDK in here
-   <ulink url="http://download.novell.com">http://download.novell.com</ulink>.
-  </para>
-  <para>
-   After you download and install SLES12 SDK, We could use YMP file for OBS 1
-   click install like openSUSE 13.1. Open your web browser and go to this URL
-   <ulink url="http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp">http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp</ulink>.
-  </para>
-  <para>
-   Like for openSUSE 11.3, I have referenced the previous from
-   <ulink url="http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE">http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE</ulink>.
-  </para>
-  <para>
-   After you clicked on that URL, you would see <guilabel>Opening
-   OBS_Server.ymp</guilabel> window as described in the previous openSUSE 13.1
-   section. Press <guibutton>OK</guibutton> button and
-   <guibutton>Next</guibutton> button after YaST2 window pops up. If YaST lets
+# cd /srv/www/obs/webui/
+# sudo RAILS_ENV="production" rake db:migrate
+# sudo chown lighttpd.lighttpd log/*</screen>
+  <para> For more information, see <link
+    xlink:href="https://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE"
+   />. </para>
+  <para> TIP #2 : If you get fail message because of "apisrv" in "6. Using osc
+   with your local build service:", try apiurl instead. </para>
+  <para> You might face some issues during process to follow README.SETUP file.
+   If you read and follow instructions carefully, you could run OBS local
+   instance on your system successfully. </para>
+ </sect1>
+ <sect1>
+  <title>OBS 1-Click Install on &sls; 12</title>
+  <para> 1 click install for OBS in SLES12. This section explains how you
+   install OBS in SLES12. Installation of OBS in SLES12 is quite similar to OBS
+   install method on openSUSE. I would skip same contents so you might need to
+   have a look for prior section "OBS 1 click install on openSUSE 13.1". </para>
+  <para> Before you install OBS on SLES12, you need to download and install
+   SLES12 SDK first. you could download SLES12 SDK in here <link
+    xlink:href="http://download.novell.com">http://download.novell.com</link>. </para>
+  <para> After you download and install SLES12 SDK, We could use YMP file for
+   OBS 1 click install like openSUSE 13.1. Open your web browser and go to this
+   URL <link
+    xlink:href="http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp"
+    >http://download.opensuse.org/repositories/openSUSE:/Tools/SLE_11/OBS_Server.ymp</link>. </para>
+  <para> Like for openSUSE 11.3, I have referenced the previous from <link
+    xlink:href="http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE"
+    >http://en.opensuse.org/openSUSE:Build_Service_Installation_SUSE</link>. </para>
+  <para> After you clicked on that URL, you would see <guimenu>Opening
+    OBS_Server.ymp</guimenu> window as described in the previous openSUSE 13.1
+   section. Press <guimenu>OK</guimenu> button and
+    <guimenu>Next</guimenu> button after YaST2 window pops up. If YaST lets
    you know successful install of OBS server, then you are ready to activate
-   and run OBS on SLES12.
-  </para>
-  <para>
-   To run OBS server on SLES12, you need to follow instructions based on
+   and run OBS on SLES12. </para>
+  <para> To run OBS server on SLES12, you need to follow instructions based on
    /usr/share/doc/packages/obs-api/README.SETUP file as described in prior
    section. From here, you could refer to prior section for successful OBS run
-   on your SLES12.
-  </para>
- </section>
- <section>
-  <title>Installing a readymade OBS appliance in a VirtualBox</title>
-  <para>
-   This method is slightly less easy than the method using the readymade vmdk
-   VMWare disk, but it enables you to determine the size of your virtual disks
-   to your convenience. It could also work with a real computer with two disks.
-   It requires some knowledge of command line and partitioning.
-  </para>
+   on your SLES12. </para>
+ </sect1>
+ <sect1>
+  <title>Installing a Readymade &obsa; Appliance in a VirtualBox</title>
+  <para> This method is slightly less easy than the method using the readymade
+   vmdk VMware disk, but it enables you to determine the size of your virtual
+   disks to your convenience. It could also work with a real computer with two
+   disks. It requires some knowledge of command line and partitioning. </para>
   <procedure>
    <step>
-    <para>
-     Download the OBS appliance installer. Visit:
-     <ulink url="http://www.openbuildservice.org/download">http://www.openbuildservice.org/download</ulink>
-     and press the <guibutton>Download the OBS Appliance Installer</guibutton>
-     button. It will start downloading an ISO image.
-    </para>
+    <para> Download the OBS appliance installer. Visit: <link
+      xlink:href="http://www.openbuildservice.org/download"
+      >http://www.openbuildservice.org/download</link> and press the
+      <guimenu>Download the OBS Appliance Installer</guimenu> button. It
+     will start downloading an ISO image. </para>
    </step>
    <step>
-    <para>
-     In VirtualBox, create a virtual machine with:
+    <para> In VirtualBox, create a virtual machine with:</para> 
      <itemizedlist>
       <listitem>
-       <para>
-        4 GB memory
+       <para> 4 GB memory </para>
+      </listitem>
+      <listitem>
+       <para> 1 virtual hard disk of 20 G for <filename>/</filename> and
+         <filename>/var/cache/obs</filename>
        </para>
       </listitem>
       <listitem>
-       <para>
-        1 virtual hard disk of 20 G for <filename>/</filename> and
-        <filename>/var/cache/obs</filename>
+       <para> 1 virtual hard disk of 50 G for <filename>/srv/obs</filename>
        </para>
       </listitem>
       <listitem>
-       <para>
-        1 virtual hard disk of 50 G for <filename>/srv/obs</filename>
+       <para> a virtual CD-ROM driver pointing to the downloaded ISO image
        </para>
       </listitem>
       <listitem>
-       <para>
-        a virtual CD-ROM driver pointing to the downloaded ISO image
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        network bridging with real Ethernet card
-       </para>
+       <para> network bridging with real Ethernet card </para>
       </listitem>
      </itemizedlist>
-    </para>
    </step>
    <step>
-    <para>
-     Boot the virtual machine and choose to install the OBS server on the
-     smaller virtual hard disk.
-    </para>
+    <para> Boot the virtual machine and choose to install the OBS server on the
+     smaller virtual hard disk. </para>
    </step>
    <step>
-    <para>
-     Log into the virtual machine with Login: root and Password: opensuse. If
-     needed, switch to German/French/whatever keyboard: <command># loadkeys
-     de</command>. Inspect partitioning: <command># df -h</command>. It shows
-     you that the root partition is small and already almost full (1.6 GB used
-     out of 1.8). Let's prepare the other partitions to get a bit more working
-     space. First, <command># fdisk /dev/sda</command> and prepare
-     <filename>/dev/sda2</filename> to use the remaining space. Second,
-     <command># fdisk /dev/sdb</command> and prepare
-     <filename>/dev/sdb1</filename> to use all the space, with type 8e (Linux
-     LVM):
-<screen>
-              <command>
-                 # pvcreate /dev/sdb1
-                 # vgcreate OBS /dev/sdb1
-                 # lvcreate -n server -L 48G OBS
-                 # mkfs.ext4 /dev/OBS/server
-              </command>
-            </screen>
-    </para>
+    <para> Log into the virtual machine with Login: root and Password:
+     opensuse. If needed, switch to German/French/whatever keyboard: <command>#
+      loadkeys de</command>. Inspect partitioning: <command># df -h</command>.
+     It shows you that the root partition is small and already almost full (1.6
+     GB used out of 1.8). Let's prepare the other partitions to get a bit more
+     working space. First, <command># fdisk /dev/sda</command> and prepare
+      <filename>/dev/sda2</filename> to use the remaining space. Second,
+      <command># fdisk /dev/sdb</command> and prepare
+      <filename>/dev/sdb1</filename> to use all the space, with type 8e (Linux
+     LVM): </para>
+     <screen> # pvcreate /dev/sdb1
+ # vgcreate OBS /dev/sdb1
+ # lvcreate -n server -L 48G OBS
+ # mkfs.ext4 /dev/OBS/server</screen>
    </step>
    <step>
-    <para>
-     Reboot, this time onto the hard disk. The CD-ROM might be disconnected, we
-     won't need it anymore. Log in as root user, change keyboardi if needed,
-     and format <filename>/dev/sda2</filename>: <command># mkfs.ext4
-     /dev/sda2</command>. Add following entry to /etc/fstab:
-<screen>
-              <command>
-                 /dev/sda2  /var/cache/obs  ext4  defaults  2 1
-              </command>
-            </screen>
-     Mount the new partition: <command># mount /dev/sda2</command>. Get your IP
-     address: <command># ifconfig</command>.
-    </para>
+    <para> Reboot, this time onto the hard disk. The CD-ROM might be
+     disconnected, we will not need it anymore. Log in as root user, change
+     keyboard if needed, and format <filename>/dev/sda2</filename>: <command>#
+      mkfs.ext4 /dev/sda2</command>. Add following entry to /etc/fstab:</para>
+     <screen>/dev/sda2  /var/cache/obs  ext4  defaults  2 1</screen> 
+     <para>Mount the new partition: <command># mount /dev/sda2</command>. Get your IP
+     address: <command># ifconfig</command>. </para>
    </step>
   </procedure>
- </section>
- <section>
-  <title>First steps with your new OBS server</title>
-  <para>
-   At this point, one of the methods above should have provided you with a
-   running OBS instance. Let's get our first package building.
-  </para>
+ </sect1>
+ <sect1>
+  <title>First Steps with Your New &obsa; Server</title>
+  <para> At this point, one of the methods above should have provided you with
+   a running OBS instance. Let us get our first package building. </para>
   <procedure>
    <step>
-    <para>
-     From a web browser, access the web interface: https://vm.ip.address/.
-     Accept the self-signed certificate.
-    </para>
+    <para> From a web browser, access the web interface:
+     https://vm.ip.address/. Accept the self-signed certificate. </para>
    </step>
    <step>
-    <para>
-     In the top right corner of the web interface, there is a <guibutton>Log
-     In</guibutton> option. Use it to log in as: Admin opensuse.
-    </para>
+    <para> In the top right corner of the web interface, there is a
+      <guimenu>Log In</guimenu> option. Use it to log in as: Admin
+     opensuse. </para>
    </step>
    <step>
-    <para>
-     Click on the <guibutton>Configuration</guibutton> button to give your
-     server a name and a description. Click on the
-     <guibutton>Interconnect</guibutton> option. Choose
-     <guilabel>openSUSE</guilabel> as the remote repository where we will pick
+    <para> Click on the <guimenu>Configuration</guimenu> button to give
+     your server a name and a description. Click on the
+      <guimenu>Interconnect</guimenu> option. Choose
+      <guimenu>openSUSE</guimenu> as the remote repository where we will pick
      up the packages of the build environment. Log out of the web interface.
     </para>
    </step>
    <step>
-    <para>
-     Use <guibutton>Sign Up</guibutton> option to create a regular user account
-     (for example: hmustermann).
+    <para> Use <guimenu>Sign Up</guimenu> option to create a regular user
+     account (for example: hmustermann). </para>
+   </step>
+   <step>
+    <para> As this normal user, click on the <guimenu>Home
+      Project</guimenu> option and create your home project (that would be:
+     "home:hmustermann"). </para>
+   </step>
+   <step>
+    <para> Go to this home project, and click on <guimenu>Create
+      package</guimenu> to create your first package (let's say:
+     "mypackage"). </para>
+   </step>
+   <step>
+    <para> Go back to your home project, and click the
+      <guimenu>Repositories</guimenu> button. Choose to add a new
+     repository and pick <guimenu>openSUSE 13.1</guimenu> (for example).
     </para>
    </step>
    <step>
-    <para>
-     As this normal user, click on the <guibutton>Home Project</guibutton>
-     option and create your home project (that would be: "home:hmustermann").
+    <para> Reboot the virtual machine to ensure all projects are rescanned.
     </para>
    </step>
    <step>
-    <para>
-     Go to this home project, and click on <guibutton>Create
-     package</guibutton> to create your first package (let's say: "mypackage").
-    </para>
+    <para> From outside the virtual machine and as a normal user, declare in
+      <filename>~/.oscrc</filename> your new OBS user:</para>
+     <screen>[https://vm.ip.address]
+user=hmustermann
+pass=bond007</screen>
+     <para>then checkout your new package: <command>$ osc -A https://vm.ip.address co
+      home:hmustermann</command>. go to your first package: <command>$ cd
+      home:hmustermann/mypackage</command>. and add some sources there
+     (tarball, spec file, changelog, patches). Check them in, then trigger a
+     remote build:</para>
+     <screen>$ osc add *
+$ osc commit
+$ osc rebuild</screen>
    </step>
    <step>
-    <para>
-     Go back to your home project, and click the
-     <guibutton>Repositories</guibutton> button. Choose to add a new repository
-     and pick <guilabel>openSUSE 13.1</guilabel> (for example).
-    </para>
-   </step>
-   <step>
-    <para>
-     Reboot the virtual machine to ensure all projects are rescanned.
-    </para>
-   </step>
-   <step>
-    <para>
-     From outside the virtual machine and as a normal user, declare in
-     <filename>~/.oscrc</filename> your new OBS user:
-<screen>
-                <command>
-                    [https://vm.ip.address]
-                    user=hmustermann
-                    pass=bond007
-                </command>
-             </screen>
-     then checkout your new package: <command>$ osc -A https://vm.ip.address co
-     home:hmustermann</command>. go to your first package: <command>$ cd
-     home:hmustermann/mypackage</command>. and add some sources there (tarball,
-     spec file, changelog, patches). Check them in, then trigger a remote
-     build:
-<screen>
-                <command>
-                $ osc add *
-                $ osc commit
-                $ osc rebuild
-                </command>
-             </screen>
-    </para>
-   </step>
-   <step>
-    <para>
-     The built packages can be seen at: http://vm.ip.address:82/
-    </para>
+    <para> The built packages can be seen at: http://vm.ip.address:82/ </para>
    </step>
   </procedure>
- </section>
+ </sect1>
 </chapter>

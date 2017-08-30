@@ -1,102 +1,102 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="obs.cha.troubleshooting">
+<chapter xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
+ xml:id="obs.cha.troubleshooting">
  <title>Troubleshooting</title>
- <simpara>Here are two major classes of problems regarding the <emphasis role="strong">Open Build Service</emphasis>
- </simpara>
- <orderedlist numeration="arabic">
+ <info/>
+
+ <para>Here are two major classes of problems regarding the &obs;:
+ </para>
+ <orderedlist>
   <listitem>
-   <simpara>
-Normal package build errors
-</simpara>
+   <para> Normal package build errors </para>
   </listitem>
   <listitem>
-   <simpara>
-Bugs, resource shortage or config issues caused issues
-</simpara>
+   <para> Bugs, resource shortage or config issues caused issues </para>
   </listitem>
  </orderedlist>
- <simpara>The first category are errors like missing dependend packages in the build
-environment, errors during compiling or linking, errors in the buid
-description and so on. Most of them should not happen if the packager does
-test the build locally before committing it to the OBS. This type of
-problems is not covered by this chapter.</simpara>
- <section id="_general_hints">
-  <title>General hints</title>
-  <simpara>If you detect unexpected behavior of the open build service, you should
-follow some rules to locate the problem:</simpara>
-  <orderedlist numeration="arabic">
+ <para>The first category are errors like missing dependent packages in the
+  build environment, errors during compiling or linking, errors in the build
+  description and so on. Most of them should not happen if the packager does
+  test the build locally before committing it to the OBS. This type of problems
+  is not covered by this chapter.</para>
+ <sect1 xml:id="_general_hints">
+  <title>General Hints</title>
+  <para>If you detect unexpected behavior of the open build service, you
+   should follow some rules to locate the problem:</para>
+  <orderedlist>
    <listitem>
-    <simpara>
-Consult the logfiles, for the backend look at <emphasis>/srv/obs/log</emphasis> for the
-backend log files and <emphasis>/srv/www/obs/api/log</emphasis> for the frontend log files. See
-the Log files <xref linkend="_log_files"/> for more details.
-</simpara>
+    <para> Consult the log files, for the back-end look at
+      <emphasis>/srv/obs/log</emphasis> for the back-end log files and
+      <emphasis>/srv/www/obs/api/log</emphasis> for the front-end log files.
+     See the Log files <xref linkend="_log_files"/> for more details.
+    </para>
    </listitem>
    <listitem>
-    <simpara>
-Consult the normal OS system logs and the kernel log (dmesg) if here are
-reported system or HW problems.
-</simpara>
+    <para> Consult the normal OS system logs and the kernel log (dmesg) if
+     here are reported system or HW problems. </para>
    </listitem>
    <listitem>
-    <simpara>
-Check if all services are running on the backend and frontend. See the
-OBS Architecture in reference book for details.
-</simpara>
+    <para> Check if all services are running on the back-end and front-end.
+     See the OBS Architecture in reference book for details. </para>
    </listitem>
    <listitem>
-    <simpara>
-Try to find an easy way to reproduce the problem.
-</simpara>
+    <para> Try to find an easy way to reproduce the problem. </para>
    </listitem>
    <listitem>
-    <simpara>
-Look on <ulink url="https://github.com/openSUSE/open-build-service">https://github.com/openSUSE/open-build-service</ulink>
-  if this issue was already reported.
-</simpara>
+    <para> To check whether this issue was already reported, see <link
+      xlink:href="https://github.com/openSUSE/open-build-service"/>. </para>
    </listitem>
    <listitem>
-    <simpara>
-Use search machines (Google) to find out if others did also run into this problem. If you are lucky, you will find a fix or workaround as well.
-</simpara>
+    <para> Use search machines (Google) to find out if others did also run
+     into this problem. If you are lucky, you will find a fix or workaround as
+     well. </para>
    </listitem>
    <listitem>
-    <simpara>
-If you create a new bug report, include all information to reproduce the
-problem and the complete error message/error log if here are any.
-</simpara>
+    <para> If you create a new bug report, include all information to
+     reproduce the problem and the complete error message/error log if here are
+     any. </para>
    </listitem>
   </orderedlist>
- </section>
- <section id="_debug_frontend_problems">
-  <title>Debug frontend problems</title>
-  <simpara>If you get unexpected results from submitting comands with the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool,
-you can use the debug feature of the tools to get some more informations
-what happen.</simpara>
-  <simpara>osc debug options</simpara>
-<screen>     --debugger         jump into the debugger before executing anything
-     --post-mortem      jump into the debugger in case of errors
-     -t, --traceback    print call trace in case of errors
-     -H, --http-debug   debug HTTP traffic (filters some headers)
-     --http-full-debug  debug HTTP traffic (filters no headers)
-     -d, --debug        print info useful for debugging</screen>
-  <simpara>The <emphasis role="strong"><emphasis>--debugger</emphasis></emphasis> and <emphasis role="strong"><emphasis>--post-mortem</emphasis></emphasis> are only suitable for <emphasis>osc</emphasis>
-developers. If you get a error message from osc the <emphasis role="strong"><emphasis>-t, --traceback</emphasis></emphasis> can
-give the developer some more information about the problem. The <emphasis role="strong"><emphasis>-H, --http-debug</emphasis></emphasis> and
-<emphasis role="strong"><emphasis>--http-full-debug</emphasis></emphasis> options are useful to see the raw answers of OBS API, often this gives a hint what maybe
-wrong. If you report a problem regarding the <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool, it may help to include the osc output with
-<emphasis role="strong">additional *<emphasis>--http-debug --traceback</emphasis></emphasis> options.</simpara>
+ </sect1>
+ <sect1 xml:id="_debug_frontend_problems">
+  <title>Debugging Front-end Problems</title>
+  <para>If you get unexpected results from submitting commands with the
+    <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool, you can
+   use the debug feature of the tools to find more information about what
+   happened.</para>
+  <para>osc debug options</para>
+  <screen>--debugger         jump into the debugger before executing anything
+--post-mortem      jump into the debugger in case of errors
+-t, --traceback    print call trace in case of errors
+-H, --http-debug   debug HTTP traffic (filters some headers)
+--http-full-debug  debug HTTP traffic (filters no headers)
+-d, --debug        print info useful for debugging</screen>
+  <para>The <emphasis role="strong"
+    ><emphasis>--debugger</emphasis></emphasis> and <emphasis role="strong"
+     ><emphasis>--post-mortem</emphasis></emphasis> are only suitable for
+    <emphasis>osc</emphasis> developers. If you get an error message from osc,
+   the <emphasis role="strong"><emphasis>-t, --traceback</emphasis></emphasis>
+   can give the developer some more information about the problem. The
+    <emphasis role="strong"><emphasis>-H, --http-debug</emphasis></emphasis>
+   and <emphasis role="strong"
+    ><emphasis>--http-full-debug</emphasis></emphasis> options are useful to
+   see the raw answers of OBS API, often this gives a hint what maybe wrong. If
+   you report a problem regarding the <emphasis role="strong"
+     ><emphasis>osc</emphasis></emphasis> tool, it may help to include the osc
+   output with <emphasis role="strong">additional *<emphasis>--http-debug
+     --traceback</emphasis></emphasis> options.</para>
   <warning>
-   <simpara>With <emphasis role="strong"><emphasis>--http-full-debug</emphasis></emphasis> all http headers are included, this may include
-user data and authentication stuff so review and replace such data with
-XXXXXXXX or so before you post it on the internet.</simpara>
+   <para>With <emphasis role="strong"
+     ><emphasis>--http-full-debug</emphasis></emphasis> all http headers are
+    included, this may include user data and authentication stuff so review and
+    replace such data with XXXXXXXX or so before you post it on the
+    internet.</para>
   </warning>
- </section>
+ </sect1>
 </chapter>

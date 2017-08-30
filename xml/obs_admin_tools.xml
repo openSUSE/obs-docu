@@ -1,20 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE sect1
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<section id="cha.obs.admin.tools">
- <title>Tools for the admin</title>
- <para>
-  To be written...
- </para>
- <section>
+<sect1 version="5.1" xml:id="cha.obs.admin.tools"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Tools for Administrators</title>
+ <para/>
+ <remark>TBD</remark>
+ <sect2>
   <title>obs_admin</title>
-  <para>
-   To be written...
-  </para>
- </section>
-</section>
+  <para/>
+  <remark>TBD</remark>
+ </sect2>
+</sect1>

@@ -1,218 +1,180 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.best-practices.bootstrapping" os="opensuse;novell">
- <title>Boot Strapping</title>
- <para>
-  This chapter explains Boot strapping. In this chapter, You would learn how
-  you could have other OBS projects and packages to your local OBS instance
+<chapter version="5.1" xml:id="cha.obs.best-practices.bootstrapping"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" os="opensuse;novell">
+ <title>Bootstrapping</title>
+ <info/>
+ <para> This chapter explains Boot strapping. In this chapter, You would learn
+  how you could have other OBS projects and packages to your local OBS instance
   after your OBS install. There are some useful OSC commands examples and OBS
   working mechanism explanation in this chapter also. Basically this chapter is
-  a copy from Build Service portal. please check below for OBS bootstrap from
-  Build Service portal.
- </para>
-<screen> <command>  http://en.opensuse.org/openSUSE:Build_Service_private_instance_boot_strapping </command> </screen>
- <section>
-  <title>The issue</title>
-  <para>
-   If you create a private instance of an OBS it is likely to be be fully
+  a copy from Build Service portal. For information about OBS bootstrapping on
+  the Build Service portal, see <link
+   xlink:href="https://en.opensuse.org/openSUSE:Build_Service_private_instance_boot_strapping"
+  />. </para>
+ <sect1>
+  <title>The Issue</title>
+  <para> If you create a private instance of an OBS it is likely to be be fully
    independent. This means that your OBS needs to build its full reference
    tools chain. This process - called Bootstrap - presents the same problem as
    the Chicken and the Egg, which one came first ! In other words, you need to
-   create a tool chain with the tool chain that you want to create.
-  </para>
- </section>
- <section>
-  <title>A cheat sheet</title>
-  <section>
-   <title>Create your first project</title>
-   <para>
-    Log on to the Web API. The default user Admin, with the password opensuse
-    is available. Create your own login and password and set yourself as Admin.
-    Log on to the Web UI as Admin and click on the Icon "Configuration" and add
-    the openSUSE Build Service as remote instance. Select from under
-    'Locations' -> 'Projects'. At the end of the list click on 'Add_Project'.
-    Give it a name (e.g. Meego-test) Select your new project and create a
-    sub-project 0.1. You have now a project Meego-test:1.0 Sub projects are
-    handy to propagate Access Control Lists (acl) and for creating the version
-    as a sub project simplifies the user and project administration.
-   </para>
-  </section>
-  <section>
-   <title>Import your base Linux project</title>
-   <para>
-    We are now going to import the base project. I will describe two methods,
-    one where you have a login on a remote OBS instance, one where you have
-    only access to the rpm repository. In both cases you will need access to
-    binary and source rpm.
-   </para>
-   <section>
+   create a tool chain with the tool chain that you want to create. </para>
+ </sect1>
+ <sect1>
+  <title>A Cheat Sheet</title>
+  <sect2>
+   <title>Creating Your First Project</title>
+   <para> Log on to the Web API. The default user Admin, with the password
+     <literal>opensuse</literal> is available. Create your own login and
+    password and set yourself as Admin. Log on to the Web UI as Admin and click
+    on the icon <guimenu>Configuration</guimenu> and add the &osbs; as the remote
+    instance. Select from under <menuchoice>
+     <guimenu>Locations</guimenu>
+     <guimenu>Projects</guimenu>
+    </menuchoice>. At the end of the list, click <guimenu>Add
+    Project</guimenu>. Give it a name (e.g. Meego-test) Select your new project
+    and create a sub-project 0.1. You have now a project Meego-test:1.0 Sub
+    projects are handy to propagate Access Control Lists (acl) and for creating
+    the version as a sub project simplifies the user and project
+    administration. </para>
+  </sect2>
+  <sect2>
+   <title>Importing Your Base Linux Project</title>
+   <para> We are now going to import the base project. I will describe two
+    methods, one where you have a login on a remote OBS instance, one where you
+    have only access to the rpm repository. In both cases you will need access
+    to binary and source rpm. </para>
+   <sect3>
     <title>With a login on a remote OBS</title>
-    <para>
-     The osc copypac (I assume that you have installed the osc package on your
-     workstation) has an option -t which enables copying towards a remote
+    <para> The osc copypac (I assume that you have installed the osc package on
+     your workstation) has an option -t which enables copying towards a remote
      target OBS instance. osc help and osc help command will advise on how to
-     use these. First you need to import the project configuration.
-    </para>
-<screen> 
-           <command> 
-            $ export PROJECT=MeeGo-test:0.1
-            $ osc -A http://api-url-source-obs meta prjconf $PROJECT > my_project.conf
-            $ osc -A http://api-url-target-obs meta prjconf -F my_project.conf $PROJECT
-           </command> 
-         </screen>
-    <para>
-     Then import the project. As you might have some Links in the project that
-     you import, it is a good idea to keep the source and target project names
-     identical.
-    </para>
-<screen> 
-           <command> 
-        $ PRJ=ProjectToCopy; for i in `osc -A http://api.source.obs.domain ls $PRJ`; do \\
+     use these. First you need to import the project configuration. </para>
+    <screen> 
+$ export PROJECT=MeeGo-test:0.1
+$ osc -A http://api-url-source-obs meta prjconf $PROJECT &gt; my_project.conf
+$ osc -A http://api-url-target-obs meta prjconf -F my_project.conf $PROJECT
+</screen>
+    <para> Then import the project. As you might have some Links in the project
+     that you import, it is a good idea to keep the source and target project
+     names identical. </para>
+    <screen> 
+$ PRJ=ProjectToCopy; for i in `osc -A http://api.source.obs.domain ls $PRJ`; do \\
 osc -A http://api.source.obs.domain \\
 copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done 
-           </command> 
-         </screen>
-   </section>
-   <section>
-    <title>Without a Login on a remote OBS</title>
-    <para>
-     If you have access only to the repositories of your source reference
+</screen>
+   </sect3>
+   <sect3>
+    <title>Without a Login on a Remote &obsa;</title>
+    <para> If you have access only to the repositories of your source reference
      target, then your life will be a bit more difficult. My advice would be to
      recheck if you find you cannot get a login on a public OBS service - such
-     as provided by openSUSE or MeeGo - before proceeding this way. You will
+     as provided by &opensuse; or MeeGo - before proceeding this way. You will
      not be able to import the project config and you will have to create it by
      hand. This is too long to be covered in this HowTo. For more explanation
-     about Build Service project config, please visit below.
-    </para>
-<screen> <command> http://en.opensuse.org/openSUSE:Build_Service_prjconf </command> </screen>
-    <para>
-     Then you need to download all your rpm source on to a local machine and
-     import it into your project with the command.
-    </para>
-<screen> <command> $ osc importsrcpkg  </command> </screen>
-   </section>
-   <section>
+     about Build Service project config, see <link
+      xlink:href="http://en.opensuse.org/openSUSE:Build_Service_prjconf"/>. </para>
+    <para> Then you need to download all your rpm source on to a local machine
+     and import it into your project with the command. </para>
+    <screen><command>$ osc importsrcpkg</command></screen>
+   </sect3>
+   <sect3>
     <title>Bootstrapping</title>
-    <para>
-     To initiate the build process, we will copy the rpm binary from the source
-     OBS of the source project. These binary rpms, from which we will remove
-     any reference to release and version, will be used to trigger the first
-     build. The OBS appliance will recompile all the rpms until all rpms in the
-     project have been compiled only with packages compiled from their source
-     code. Some base packages (e.g. tool chains) will be compiled several times
-     during that process. Alternative You can build a first time against a
-     target which is similar to the base that you need to boot strap in lieu of
-     building against your own base and change the build reference to your
-     bootstrap base once that the first build has been successful. Remember
-     that you can also build against remote baseline. Double check that the
-     preliminary step have been executed correctly. You must have already :
-     copied a Linux base distribution in an OBS project defined a build target
-     for that base project. Note : If you have not defined a build target the
-     need directory structure will not exist. It's a preliminary mandatory
-     step. stop the scheduler as it will create a mess if the system is not
-     stable
-    </para>
-<screen> <command> # rcobsscheduler stop  </command> </screen>
-    <para>
-     * Add binaries to the :full directory of the Project ssh onto the OBS
-     server. Now go to the project’s build directory, and create a directory
-     called “:full”. Note : standard is the default name of your Build
-     repository as defined in your project. It might change depending of who
-     created the initial build repo.
-    </para>
-<screen> <command> # cd /obs/build/$PROJECT/standard/i586 </command> </screen>
-    <para>
-     This directory structure should already exist. If not, there is a problem
-     (note that /obs is link and the target may vary with your implementation).
-     Now create the “:full” directory. $ mkdir :full Copy over all the
-     binary rpms of the project you are trying to build from scratch. These
-     rpms should have the release and version numbers stripped from them. e.g.
-     alsa-utils-1.0.22-2.7.i586.rpm -- should be – alsa-utils.rpm Note : If
-     the original project has a :full directory you can copy from there to
+    <para> To initiate the build process, we will copy the rpm binary from the
+     source OBS of the source project. These binary rpms, from which we will
+     remove any reference to release and version, will be used to trigger the
+     first build. The OBS appliance will recompile all the rpms until all rpms
+     in the project have been compiled only with packages compiled from their
+     source code. Some base packages (e.g. tool chains) will be compiled
+     several times during that process. Alternative You can build a first time
+     against a target which is similar to the base that you need to boot strap
+     in lieu of building against your own base and change the build reference
+     to your bootstrap base once that the first build has been successful.
+     Remember that you can also build against remote baseline. Double check
+     that the preliminary step have been executed correctly. You must have
+     already : copied a Linux base distribution in an OBS project defined a
+     build target for that base project. </para>
+    <para> If you have not defined a build target, the necessary directory
+     structure will not exist. This is a mandatory step of preparation. Stop
+     the scheduler as it will create a mess if the system is not stable: </para>
+    <screen><command># rcobsscheduler stop</command></screen>
+    <para> * Add binaries to the :full directory of the Project ssh onto the
+     OBS server. Now go to the project’s build directory, and create a
+     directory called “:full”. Note : standard is the default name of your
+     Build repository as defined in your project. It might change depending of
+     who created the initial build repo. </para>
+    <screen><command># cd /obs/build/$PROJECT/standard/i586</command></screen>
+    <para> This directory structure should already exist. If not, there is a
+     problem (note that /obs is link and the target may vary with your
+     implementation). Now create the “:full” directory. $ mkdir :full Copy over
+     all the binary rpms of the project you are trying to build from scratch.
+     These rpms should have the release and version numbers stripped from them.
+     e.g. alsa-utils-1.0.22-2.7.i586.rpm -- should be – alsa-utils.rpm Note :
+     If the original project has a :full directory you can copy from there to
      avoid the issue of stripping version and release numbers. * Add binaries
      to the :full directory of the Project. Change all user/group privileges
-     under /srv/obs/build/ to “obsrun”
-    </para>
-<screen> <command> # chown -R obsrun:obsrun /srv/obs/build </command> </screen>
-    <para>
-     If you leave root as owner of :full, it will still build but the scheduler
-     will fail (almost silently) to upgrade :full with the latest built
-     packages. Except in very special cases, it is very unlikely that you want
-     to do so. * Start the OBS scheduler
-    </para>
-<screen> <command> # rcobsscheduler start </command> </screen>
-    <para>
-     * Force the obs to reindex your new :full directory. It will send an event
-     to the scheduler which will create a file named :full.solv
-    </para>
-<screen> 
-             <command> # obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH 
-             </command> 
-           </screen>
-    <section>
+     under /srv/obs/build/ to “obsrun” </para>
+    <screen><command># chown -R obsrun:obsrun /srv/obs/build</command></screen>
+    <para> If you leave root as owner of :full, it will still build but the
+     scheduler will fail (almost silently) to upgrade :full with the latest
+     built packages. Except in very special cases, it is very unlikely that you
+     want to do so. * Start the OBS scheduler </para>
+    <screen><command># rcobsscheduler start</command></screen>
+    <para> * Force the obs to reindex your new :full directory. It will send an
+     event to the scheduler which will create a file named :full.solv </para>
+    <screen> 
+<command># obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH</command>
+</screen>
+    <sect4>
      <title>Troubleshooting</title>
-     <para>
-      At that time you should see your project restarting to build. If that
-      would not be the case. * check that your files in your target :full
+     <para> At that time you should see your project restarting to build. If
+      that would not be the case. * check that your files in your target :full
       directory are all own by the user obsrun. The following command should
-      not return any file name.
-     </para>
-<screen> 
-           <command> 
-             #find /obs/build ! -user obsrun
-             #chown -R obsrun:obsrun  /obs/build   (will correct ownership issue)
-           </command> 
-         </screen>
-     <para>
-      * Force the obs to reindex your new :full directory. It will create a
-      file named :full.solv
-     </para>
-<screen> <command> $obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH  </command> </screen>
-     <para>
-      * Check that your rpm are valid (e.g. not damaged during transfer)
-     </para>
-<screen> 
-            <command> 
-              #cd /obs/build/$PROJECT/standard/i586:full
-              #for I in `ls *.rpm` ; do rpm -qlp $I >/dev/null; if [ $? -ne 0 ] ;then echo $I >>../error.lst ; fi ; done
-              #cat ../error.lst (must be empty, all rpm in error needs re-installation) 
-            </command> 
-         </screen>
-     <para>
-      * Still not working, get a look in the log files in the directory
+      not return any file name. </para>
+     <screen> 
+#find /obs/build ! -user obsrun
+#chown -R obsrun:obsrun  /obs/build   (will correct ownership issue)
+</screen>
+     <para> * Force the obs to reindex your new :full directory. It will create
+      a file named :full.solv </para>
+     <screen><command>$obs_admin --rescan-repository $OBS-PROJECT $REPO $ARCH</command></screen>
+     <para> * Check that your rpm are valid (e.g. not damaged during transfer) </para>
+     <screen> 
+#cd /obs/build/$PROJECT/standard/i586:full
+#for I in `ls *.rpm` ; do rpm -qlp $I &gt;/dev/null; if [ $? -ne 0 ] ;then echo $I &gt;&gt;../error.lst ; fi ; done
+#cat ../error.lst (must be empty, all rpm in error needs re-installation) 
+</screen>
+     <para> * Still not working, get a look in the log files in the directory
       /obs/log. You can start by having a look at
       /obs/log/scheduler_TARGET_ARCH.log and search from the end for the string
       "expanding dependencies". You will find from there why the scheduler
-      fails.
-     </para>
-<screen> <command> #tail -f /obs/log/scheduler_i586.log  </command> </screen>
-    </section>
-   </section>
-  </section>
- </section>
- <section>
-  <title>Creating my first project</title>
-  <para>
-   After creating a dedicated user via the web API, relog onto the web UI with
-   your new login. Open your home project and create a sub project called
-   "MyTest". To add a package in your new Home project, simply create a link
-   [link Package from other Project] with one of the packages recently copied
-   in your new OBS instance (see previous chapter Import your base project).
-   Pick up a small one to speed compilation time. Click on the "+" near Build
-   Repositories to add a repository. Move to the end of the page where all the
-   standard Linux distributions are listed and click on [Advance]. Give a name
-   to your repo, e.g. my-test and pick fom the list the project/repo that you
-   have just imported and rebuilt. This will request the OBS to build your new
-   Home project against that repository. You can now check out your Home
-   project with the ocs command, modify a file or two and at your next
-   check-in, the OBS will rebuild your Home project. If your reference project
-   changes, the OBS will also rebuild your Home project.
+      fails. </para>
+     <screen><command>#tail -f /obs/log/scheduler_i586.log</command></screen>
+    </sect4>
+   </sect3>
+  </sect2>
+ </sect1>
+ <sect1>
+  <title>Creating a First Project</title>
+  <para> After creating a dedicated user via the Web API, log onto the Web UI
+   again with your new login. Open your home project and create a sub project
+   called "MyTest". To add a package in your new Home project, simply create a
+   link [link Package from other Project] with one of the packages recently
+   copied in your new OBS instance (see previous chapter Import your base
+   project). Pick up a small one to speed compilation time. Click on the "+"
+   near Build Repositories to add a repository. Move to the end of the page
+   where all the standard Linux distributions are listed and click on
+   [Advance]. Give a name to your repo, e.g. my-test and pick from the list the
+   project/repo that you have just imported and rebuilt. This will request the
+   OBS to build your new Home project against that repository. You can now
+   check out your Home project with the osc command, modify a file or two and
+   at your next check-in, the OBS will rebuild your Home project. If your
+   reference project changes, the OBS will also rebuild your Home project.
   </para>
- </section>
+ </sect1>
 </chapter>

@@ -1,0 +1,83 @@
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"
+?>
+<!DOCTYPE book
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<book version="5.1" xml:lang="en" xml:id="book.obs.user"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>User Guide</title>
+ <subtitle>&obs;</subtitle>
+ <info>
+  <xi:include href="common_copyright_opensuse.xml"/>
+ </info>
+
+ <xi:include href="obs_preface.xml"/>
+
+<!--
+  Things to describe:
+
+  From Blogs:
+  * Open Build Service and SUSE Studio Integration
+    https://www.suse.com/communities/blog/suse-studio-integration/
+  * Open Build Service – Create Your Own Image Template!
+    https://www.suse.com/communities/blog/open-build-service-create-image-template/
+
+  From Reference Guide:
+  * Source Services
+  * Signing?
+  * Cross Architectures Build
+  * Build Formats
+
+  From Best Practice Guide:
+  *
+
+  Other ideas:
+  * More indepth knowledge about osc
+  * linkpac vs. aggregate
+  * Building AppImages
+  * Handling dependencies: directly, layering (editing additional repos to
+    your project config), linking (link or aggregate)
+    see https://en.opensuse.org/openSUSE:Build_Service_Tutorial
+  * Use CI services
+-->
+
+ <part xml:id="par.concepts">
+  <title>Concepts</title>
+  <xi:include href="obs_user_concept.xml"/>
+  <xi:include href="obs_package_formats.xml"/>
+</part>
+
+ <part>
+  <title>Setup</title>
+  <xi:include href="obs_osc.xml"/>
+  <xi:include href="obs_build_config.xml"/>
+ </part>
+
+ <part xml:id="par.working">
+  <title>Usage</title>
+  <xi:include href="obs_basic_workflow.xml"/>
+  <xi:include href="osc_building.xml"/>
+
+  <chapter>
+   <title>Using Source Services</title>
+   <para/>
+   <remark>TBD</remark>
+  </chapter>
+
+  <xi:include href="obs_signing.xml"/>
+
+ </part>
+
+ <part>
+  <title>Advanced Usage</title>
+  <xi:include href="obs_product_building.xml"/>
+ </part>
+
+ <!-- Appendices -->
+</book>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Building Package Formats</title>
+ <info>
+  <abstract>
+   <para>
+    <remark>TBD</remark>
+   </para>
+  </abstract>
+ </info>
+ <remark>toms 2017-08-18: Also integrate content from obs_build_containers.xml</remark>
+ 
+ <sect1>
+  <title>From Spec Files (RPM)</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+ <sect1>
+  <title>From CONTROL/RULES/DSC Files (Debian)</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+ <sect1>
+  <title>From <filename>PKGBUILD</filename> Files (Arch)</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+ <sect1>
+  <title>As Snap Containers</title>
+  <remark>toms 2017-08-18: see https://snapcraft.io/docs/build-snaps/ci-integration</remark>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+ <sect1>
+  <title>As Livebuild Images</title>
+  <remark>toms 2017-08-18: see https://www.debian.org/devel/debian-live/</remark>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+
+ <sect1>
+  <title>From Kiwi Files (&kiwi;)</title>
+   <!--
+    1. Create a repository in a project
+       - enable all architectures
+       - no other repo needed as definied in KIWI's XML config file
+    2. Create project config, setting repo to
+       - Type: kiwi
+       - Repotype: none
+    3. Create a package
+    4. Submit adapted KIWI config files
+    
+    Things to watch for:
+    * config.xml needs to have a .kiwi suffix
+    * Repos needs to be specified as obs://$PROJECT/$REPO
+    * Content of root directory as root.tar.bz2
+    * If you get the error "have choice", select a package and add it to
+      the package list
+    * 
+   -->
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+ <sect1>
+  <title>From Spec Files (RPM)</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+
+ <sect1>
+  <title>As &obs.pimg;</title>
+  <remark>toms 2017-08-18: integrate content from  obs_build_preinstall.xml;
+  using a _preinstallimage file</remark>
+ </sect1>
+ 
+</chapter>

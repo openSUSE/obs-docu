@@ -1,63 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+   <!ENTITY % entities SYSTEM "entity-decl.ent">
+   %entities;
 ]>
-<chapter id="cha.obs.image_templates">
- <title>Image templates</title>
- <para id="image_template_introduction_paragraph">
-  Image templates are pre-configured image configurations. The
-  <ulink url="https://build.opensuse.org/image_templates">image templates page
-  </ulink> provides a list of these templates. Users can clone these templates
-  and further configure them as they like.
- </para>
- <section>
-  <title>Structure of image templates</title>
-  <para>
-   As mentioned image templates are essentially pre-configured
-   <ulink url="http://opensuse.github.io/kiwi/">KIWI</ulink> image configurations.
-   As any KIWI configuration they usually contain a tarball containing image
-   sources, a config.sh file and the KIWI configuration xml file.
-  </para>
-  <para id="image_template_icon_paragraph">
-   In addition you can define an icon for your image templates by adding graphical
-   image (eg. png, jpg) to your template sources and name it <command>_icon</command>.
-   If that file exists, it will be used as icon for your image on the image
-   templates page.
-  </para>
+<chapter version="5.1" xml:id="cha.obs.image_templates"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Image Templates</title>
+ <info/>
+ &image_template_introduction_paragraph;
+ <!--<para xml:id="image_template_introduction_paragraph"> Image templates are
+  pre-configured image configurations. The <link
+   xlink:href="https://build.opensuse.org/image_templates">image templates page
+  </link> provides a list of these templates. Users can clone these templates
+  and further configure them as they like. </para>-->
+ <sect1>
+  <title>Structure of Image Templates</title>
+  <para> As mentioned image templates are essentially pre-configured <link
+    xlink:href="http://opensuse.github.io/kiwi/">KIWI</link> image
+   configurations. As any &kiwi; configuration they usually contain a tarball
+   containing image sources, a config.sh file and the &kiwi; configuration XML
+   file. </para>
+  &image_template_icon_paragraph;
+  <!--<para xml:id="image_template_icon_paragraph"> In addition you can define an
+   icon for your image templates by adding graphical image (for example, PNG,
+   JPG) to your template sources and name it <command>_icon</command>. If that
+   file exists, it will be used as icon for your image on the image templates
+   page. </para>-->
   <note>
-   <para>
-    If you want to know more about KIWI images, please refer to
-    <xref linkend="_kiwi_appliance"/>.
-   </para>
+   <para> For more information about &kiwi; images, see <xref
+     linkend="_kiwi_appliance"/>. </para>
   </note>
- </section>
- <section>
-  <title>Adding / removing image templates to the official image template page</title>
+ </sect1>
+ <sect1>
+  <title>Adding Image Templates to/Removing Image Templates from the Official Image Template Page</title>
+  <para> The image templates page lists templates per project. New templates
+   get added by setting the <command>OBS:ImageTemplates</command> attribute to
+   a project. Any package container belonging to a project with that attribute
+   will be shown on the template page. </para>
+  <para> Only admins can add / remove the OBS:ImageTemplates attribute from a
+   project. </para>
+ </sect1>
+ <sect1>
+  <title>Receiving Image Templates via Interconnect</title>
+  <para> If your OBS instance is connected to a remote instance via
+   interconnect, OBS will fetch image templates from the remote instance and
+   present it on the image templates page. They appear below the local
+   templates. </para>
   <para>
-   The image templates page lists templates per project. New templates get added
-   by setting the <command>OBS:ImageTemplates</command> attribute to a project.
-   Any package container belonging to a project with that attribute will be
-   shown on the template page.
+   For more information about interconnects, see
+   <xref linkend="_managing_build_targets"/>.
   </para>
-  <para>
-   Only admins can add / remove the OBS:ImageTemplates attribute from a
-   project.
-  </para>
- </section>
- <section>
-  <title>Receiving image templates via interconnect</title>
-  <para>
-   If your OBS instance is connected to a remote instance via interconnect, OBS
-   will fetch image templates from the remote instance and present it on the
-   image templates page. They appear below the local templates.
-  </para>
-  <para>
-   Have a look at the Managing build targets - Interconnect chapter of the OBS
-   Administator Guide to learn more about interconnects.
-  </para>
- </section>
-</chapter> 
+ </sect1>
+</chapter>

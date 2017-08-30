@@ -2,47 +2,105 @@
 <!-- General Entities                                                       -->
 <!-- ...................................................................... -->
 
-
 <!ENTITY obsa "OBS" >
 <!ENTITY obs "Open Build Service">
 <!ENTITY OBS "Open Build Service (OBS)">
+<!ENTITY osbs  "&opensuse; Build Service">
+
+<!ENTITY productname "<phrase xmlns='http://docbook.org/ns/docbook'
+                      role='productname'>&obs;</phrase>">
+
+<!ENTITY productnamereg "<phrase xmlns='http://docbook.org/ns/docbook'
+                      role='productnamereg'>&obs;&reg;</phrase>">
+
+<!ENTITY productnumber "<phrase xmlns='http://docbook.org/ns/docbook' role='productnumber'></phrase>">
 
 
-<!ENTITY exampleuser    "tux">
-<!ENTITY exampleuserII  "wilber">
-<!ENTITY examplegroup   "users">
+<!-- ============================================================= -->
+<!--                    User names                                 -->
+<!-- ============================================================= -->
 
-<!-- #######################################################################-->
-<!--             Obsolete entities. Do not use.                             -->
-<!--      See network-decl.ent for Network related entities                 -->
+<!ENTITY rootuser       "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>root</systemitem>">
 
-<!ENTITY exampledomainip      "192.168.0">
-<!ENTITY exampledomain1ip     "192.168.1">
-<!ENTITY exampledomain2ip     "192.168.2">
-<!-- ipv6 equivalent to 192.168.2.10 -->
-<!ENTITY exampledomain2ipv6   "2002:c0a8:20a::">
-<!ENTITY exampleserver        "sun">
-<!ENTITY exampleserverip      "&exampledomainip;.20">
-<!ENTITY exampleserverfq      "&exampleserver;.&exampledomain;">
-<!ENTITY exampleclient        "earth">
-<!ENTITY exampleclientip      "&exampledomainip;.1">
-<!ENTITY exampleclientfq      "&exampleclient;.&exampledomain;">
-<!ENTITY exampleclientppp     "ppp&exampleclient;">
-<!ENTITY exampleclientslip    "sl&exampleclient;">
-<!ENTITY exampleclientuucp    "uu&exampleclient;">
-<!ENTITY exampleclientII      "venus">
-<!ENTITY exampleclientIIppp   "ppp&exampleclientII;">
-<!ENTITY exampleclientIIslip  "sl&exampleclientII;">
-<!ENTITY exampleclientIIuucp  "uu&exampleclientII;">
+<!ENTITY exampleuser_plain    "geeko">
+<!ENTITY exampleuser_mail     "&exampleuser;@example.com">
+
+<!ENTITY exampleuser    "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>&exampleuser_plain;</systemitem>">
+
+<!ENTITY exampleuserII_plain    "tux">
+<!ENTITY exampleuserII  "<systemitem xmlns='http://docbook.org/ns/docbook' class='username'>&exampleuserII_plain;</systemitem>">
 
 
-<!ENTITY rootuser       '<systemitem class="username">root</systemitem>'>
+<!-- ============================================================= -->
+<!--                    OBS Specific Entities                      -->
+<!-- ============================================================= -->
+
+<!ENTITY obsurl         "https://build.opensuse.org">
+<!ENTITY obsrepourl     "https://download.opensuse.org/repositories">
+<!ENTITY obsrepoviewfile "https://build.opensuse.org/package/view_file/">
+<!--https://build.suse.de/package/view_file/home:tux/xep/xep.spec?expand=1-->
+
+<!ENTITY obsuser1       "obs&exampleuser_plain;">
+<!ENTITY obsuser2       "obs&exampleuserII_plain;">
+<!ENTITY obshome1       "home:&obsuser1;">
+<!ENTITY obshome2       "home:&obsuser2;">
+<!ENTITY obsbranch1     "home:&obsuser1;:branches">
+<!ENTITY obsbranch2     "home:&obsuser2;:branches">
+<!ENTITY obsworkdir1    "home:&obsuser1;">
+<!ENTITY obsworkdir2    "home:&obsuser2;">
+<!ENTITY obsurlhome1    "&obsurl;/project/show/&obshome1;">
+<!ENTITY obsurlhome2    "&obsurl;/project/show/&obshome2;">
+
+<!ENTITY obsdnlhome1    "home:/&obsuser1;">
+<!ENTITY obsdnlhome2    "home:/&obsuser2;">
+
+<!ENTITY obsdnlurlhome1  "&obsrepourl;/&obsdnlhome1;">
+<!ENTITY obsdnlurlhome2  "&obsrepourl;/&obsdnlhome2;">
+
+
+<!ENTITY osc            "osc">
+<!ENTITY osccmd         "<command xmlns='http://docbook.org/ns/docbook'>&osc;</command>">
+<!ENTITY oscbuildpath   "/var/tmp/oscbuild">
+<!ENTITY oscbuildcache  "/var/tmp/osbuild-packagecache">
+
+<!ENTITY gh             "GitHub">
+<!ENTITY gitorg         "openSUSE">
+<!ENTITY gitproject     "example-obs">
+<!ENTITY gitprjvers     "0.1.0">
+<!ENTITY gitupstream1   "https://github.com/&gitorg;/&gitproject;">
+
+
+<!-- ============================================================= -->
+<!--                    OBS Package Formats                        -->
+<!-- ============================================================= -->
+<!ENTITY obs.spec       "Spec">
+<!ENTITY obs.spec.ext   ".spec">
+<!ENTITY obs.deb        "Dsc">
+<!ENTITY obs.arch       "Pkg">
+<!ENTITY obs.kiwi       "&kiwi;">
+<!ENTITY obs.si         "SimpleImage">
+<!ENTITY obs.ai         "AppImage">
+<!ENTITY obs.pimg       "PreinstallImage">
+<!ENTITY appimg         "&obs.ai;">
+<!ENTITY snap           "Snap">
+<!ENTITY flatpak        "Flatpak">
+<!ENTITY docker         "Docker">
+<!ENTITY rpmf           "RPM">
+<!ENTITY debf           "DEB">
+<!ENTITY kiwi           "KIWI">
+
+<!-- ============================================================= -->
+<!--                    Prompts                                    -->
+<!-- ============================================================= -->
+
+<!ENTITY prompt.root     "<prompt xmlns='http://docbook.org/ns/docbook' role='root'>root # </prompt>">
+<!ENTITY prompt.user     "<prompt xmlns='http://docbook.org/ns/docbook'>&exampleuser_plain; &gt; </prompt>">
+<!ENTITY prompt.user2    "<prompt xmlns='http://docbook.org/ns/docbook'>&exampleuserII_plain; &gt; </prompt>">
+
+
+<!-- ============================================================= -->
+
 <!ENTITY grub           "GRUB">
-
-<!-- lilo will become obsolete with code 11 -->
-<!ENTITY lilo           "LILO">
-
-<!ENTITY sax            "SaX2">
 <!ENTITY atomic-update  "Atomic Update">
 <!ENTITY suse           "SUSE">
 <!ENTITY novell         "Novell">
@@ -55,18 +113,12 @@
 
 <!-- suse studio service as different from the Onsite product -->
 <!ENTITY susestudio     "&suse; Studio">
-<!ENTITY xvendor        "X.Org">
 <!ENTITY yast           "YaST">
 <!ENTITY yastcc         "&yast; Control Center">
 <!ENTITY ay             "AutoYaST">
+<!ENTITY zypper         "Zypper">
 <!ENTITY nm             "NetworkManager">
-<!ENTITY fspot          "f-spot">
-<!ENTITY digikam        "digiKam">
-<!ENTITY yelp           "Help">
-<!ENTITY khc            "KDE help center">
-<!ENTITY umtsmon        "UMTSmon">
-<!ENTITY ooo            "OpenOffice.org">
-<!ENTITY aide		"AIDE">
+
 
 <!-- ============================================================= -->
 <!--                    Books                                      -->
@@ -110,13 +162,15 @@
 
 <!ENTITY x86           "x86">
 <!ENTITY amd64         "AMD64">
-<!ENTITY s390          "S/390">
-<!ENTITY zseries       "System z">
-<!ENTITY ipf           "Itanium">
+<!ENTITY zseries       "z&nbsp;Systems">
 <!ENTITY ipseries      "POWER">
 <!ENTITY ppc           "POWER">
-<!ENTITY em64t         "Intel EM64T">
-<!ENTITY intel64       "Intel 64">
+<!ENTITY power         "POWER">
+<!ENTITY intel64       "Intel&nbsp;64">
+<!ENTITY x86-64        "&amd64;/&intel64;">
+<!ENTITY arm           "ARM">
+<!ENTITY aarch64       "AArch64">
+<!ENTITY arm64         "&arm;&nbsp;&aarch64;">
 
 
 <!-- ============================================================= -->
@@ -126,6 +180,8 @@
 <!-- please change product to anything that makes sense in your current release -->
 
 <!ENTITY opensuse      "openSUSE">
+<!ENTITY tw            "&opensuse; Tumbleweed">
+<!ENTITY leap          "&opensuse; Leap">
 <!ENTITY opensusereg   "openSUSE&reg;">
 <!ENTITY sle           "SUSE Linux Enterprise">
 <!ENTITY sas           "&sle; Advanced Server">
@@ -165,6 +221,8 @@
 <!ENTITY wyservice     "&yast;2 Webservice">
 <!ENTITY slms          "SUSE Lifecycle Management Server">
 <!ENTITY slmsreg       "SUSE&reg; Lifecycle Management Server">
+
+<!ENTITY rhel           "Red Hat Enterprise Linux">
 
 <!-- ============================================================= -->
 <!--                    Applications                               -->
@@ -216,22 +274,10 @@
 
 <!ENTITY ycc_runlevel  "System Services (Runlevel)">
 
+
 <!-- ============================================================= -->
 <!--                    Miscellaneous                              -->
 <!-- ============================================================= -->
-<!ENTITY kiwi            "KIWI">
-<!ENTITY cdcreator       "CD Creator">
-<!ENTITY addoncreator    "Add-on Creator">
-<!ENTITY imgcreator      "Image Creator">
-<!ENTITY productcreator  "Product Creator">
-<!ENTITY nomad           "Nomad">
-<!ENTITY cpufreq         "CPUfreq">
-
-
-
-
-
-
 <!ENTITY wypublic          "/srv/www/yast/public/">
 <!ENTITY mac               "<replaceable>MAC</replaceable>">
 <!ENTITY hwmac             "hwtype.<replaceable>MAC</replaceable>">
@@ -245,6 +291,13 @@
 <!ENTITY % network-entities SYSTEM "network-decl.ent">
 %network-entities;
 
+<!ENTITY % phrases-entities SYSTEM "phrases-decl.ent">
+%phrases-entities;
+
+<!ENTITY % sgml.features "IGNORE">
+<!ENTITY % xml.features "INCLUDE">
+<!ENTITY % dbcent PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/dbcentx.mod">
+  %dbcent;
 
 <!--                             End of file                       -->
 <!-- ............................................................. -->

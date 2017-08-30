@@ -1,110 +1,109 @@
-<section id="concept_scm_integration">
- <title>Integrate External Source Repositories</title>
- <section>
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<sect1 version="5.1" xml:id="concept_scm_integration"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Integrating External Source Repositories</title>
+ <sect2>
   <title>Motivation</title>
-  <para>
-   This chapter makes some recommendations how upstream resources can be
+  <para> This chapter makes some recommendations how upstream resources can be
    integrated into the build process. SCM stands for source control management.
-   git, subversion or CVS are concrete implementations of a SCM. The OBS itself
-   comes also with an own SCM, but this is only intended to manage the files
-   needed for packaging. However, you can add references to external SCM
+   git, subversion or CVS are concrete implementations of an SCM. The OBS
+   itself comes also with an own SCM, but this is only intended to manage the
+   files needed for packaging. However, you can add references to external SCM
    systems. The source service system will mirror the sources and provide it to
    the build systems. OBS makes sure that you can access the sources of all
    builds also in the future, even when the upstream server delivers different
    or no content at all anymore. Using external SCM references has the
-   following advantages:
-  </para>
+   following advantages: </para>
   <itemizedlist>
    <listitem>
-    <simpara>
-        It is documented where a source comes from and how to create the archive.
-      </simpara>
+    <para> It is documented where a source comes from and how to create the
+     archive. </para>
    </listitem>
    <listitem>
-    <simpara>
-        Working on the upstream sources can be done directly in local checkouts and changes can be 
-        tested via local builds before pushing to the SCM server.
-      </simpara>
+    <para> Working on the upstream sources can be done directly in local
+     checkouts and changes can be tested via local builds before pushing to the
+     SCM server. </para>
    </listitem>
    <listitem>
-    <simpara>
-        The sources can be stored incrementally and need less storage on the server.
-      </simpara>
+    <para> The sources can be stored incrementally and need less storage on the
+     server. </para>
    </listitem>
   </itemizedlist>
- </section>
- <section>
-  <title>Creating a external SCM reference</title>
-  <para>
-   External refernces are defined in _service files. The file can look like
-   this:
-<screen>
-<![CDATA[
-<services>
-  <service name="obs_scm">
-    <param name="url">git://...</param>
-    <param name="scm">git</param>
-  </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
-  </service>
-  <service name="set_version" mode="buildtime" />
-</services>
-      ]]>
+ </sect2>
+ <sect2>
+  <title>Creating an Reference to an External SCM</title>
+  <para> External references are defined in _service files. The file can look
+   like this: </para>
+  <screen>
+
+&lt;services&gt;
+  &lt;service name="obs_scm"&gt;
+    &lt;param name="url"&gt;git://...&lt;/param&gt;
+    &lt;param name="scm"&gt;git&lt;/param&gt;
+  &lt;/service&gt;
+  &lt;service name="tar" mode="buildtime"/&gt;
+  &lt;service name="recompress" mode="buildtime"&gt;
+    &lt;param name="file"&gt;*.tar&lt;/param&gt;
+    &lt;param name="compression"&gt;xz&lt;/param&gt;
+  &lt;/service&gt;
+  &lt;service name="set_version" mode="buildtime" /&gt;
+&lt;/services&gt;
+      
 </screen>
-   The services do the following:
-   <itemizedlist>
-    <listitem>
-     <simpara>
-      obs_scm: mirrors the source. It stores it as a cpio archive, but for the build process this looks like a directory. It also stores additional information from the metadata to a file with obsinfo suffix.
-    </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      tar: creates a tar file from the directory
-    </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      recompress: applies a compression on the tar file
-    </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      set_version: reads the version from the obsinfo file and adapts the build descriptions to it.
-    </simpara>
-    </listitem>
-   </itemizedlist>
-   Please note that only the first service (obs_scm) runs on the OBS
-   server. The other services run during the build process. They can
-   also be replaced by any user by providing alternative implementations of
-   them, or by writing their own service from scratch.
+  <para> The services do the following: </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <systemitem>obs_scm</systemitem>: mirrors the source. It stores it as a
+     cpio archive, but for the build process this looks like a directory. It
+     also stores additional information from the metadata to a file with
+     obsinfo suffix. </para>
+   </listitem>
+   <listitem>
+    <para>
+     <systemitem>tar</systemitem>: creates a tar file from the directory
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <systemitem>recompress</systemitem>: applies a compression on the tar file
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <systemitem>set_version</systemitem>: reads the version from the obsinfo
+     file and adapts the build descriptions to it. </para>
+   </listitem>
+  </itemizedlist>
+  <para> Note that only the first service (<systemitem>obs_scm</systemitem>)
+   runs on the OBS server. The other services run during the build process.
+   They can also be replaced by any user by providing alternative
+   implementations of them, or by writing their own service from scratch.
   </para>
- </section>
- <section>
-  <title>Working with local checkouts</title>
-  <para>
-   Using
-<screen>
-            osc build
-          </screen>
-   in any package with such a defintion will do the same process locally. The
-   only difference is that you get a local subdirectory with the SCM content.
-   You can go inside and work as you are used to. Any changes inside will be
-   used for your next local build, whether they were pushed to the upstream
-   server or not. However, you need to push it upstream when you let the OBS
-   server re-fetch the changes from upstream. The only way out would be to set
-   the "obs_scm" service to mode disabled and upload your local archive.
-  </para>
- </section>
- <section>
-  <title>Manage your build description in SCM</title>
-  <para>
-   The "obs_scm" service allows you to export files next to the archive. You
-   can specify one or more files using the "extract" parameter. Use it for your
-   build description files.
-  </para>
- </section>
-</section>
+ </sect2>
+ <sect2>
+  <title>Working with Local Checkouts</title>
+  <para> Using <command>osc build</command> in any package with such a
+   definition will do the same process locally. The only difference is that you
+   get a local subdirectory with the SCM content. You can go inside and work as
+   you are used to. Any changes inside will be used for your next local build,
+   whether they were pushed to the upstream server or not. However, you need to
+   push it upstream when you let the OBS server re-fetch the changes from
+   upstream. The only way out would be to set the
+    <systemitem>obs_scm</systemitem> service to mode disabled and upload your
+   local archive. </para>
+ </sect2>
+ <sect2>
+  <title>Managing Build Recipes in a SCM</title>
+  <para> The <systemitem>obs_scm</systemitem> service allows you to export
+   files next to the archive. You can specify one or more files using the
+    <literal>extract</literal> parameter. Use it for your build recipe
+   files. </para>
+ </sect2>
+</sect1>

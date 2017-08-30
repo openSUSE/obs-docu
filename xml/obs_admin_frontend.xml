@@ -1,37 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE sect1
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<section id="cha.obs.admin.frontend">
- <title>Frontend Administration</title>
- <para>
-  The Ruby on Rails application is run through the apache web server with
-  <ulink url="https://www.phusionpassenger.com/">mod_passenger</ulink>. You can
-  control it via <command>systemctl</command>
-<screen><command>systemctl {start, stop, restart} apache2</command></screen>
- </para>
- <section>
+<sect1 version="5.1" xml:id="cha.obs.admin.frontend"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Front-end Administration</title>
+ <para> The Ruby on Rails application is run through the Apache web server with
+   <link xlink:href="https://www.phusionpassenger.com/">mod_passenger</link>.
+  You can control it via <command>systemctl</command></para>
+  <screen><command>systemctl {start, stop, restart} apache2</command></screen>
+ <sect2>
   <title>Delayed Jobs</title>
-  <para>
-   Another component of the OBS frontend are delayed jobs for asynchronously
-   executing longer tasks in the background. You can control this service also
-   via <command>systemctl</command>.
-<screen><command>systemctl {start, stop, restart} obsapidelayed</command></screen>
-  </para>
- </section>
- <section>
+  <para> Another component of the OBS front-end are delayed jobs for
+   asynchronously executing longer tasks in the background. You can control
+   this service also via <command>systemctl</command>.</para>
+   <screen><command>systemctl {start, stop, restart} obsapidelayed</command></screen>
+ </sect2>
+ <sect2>
   <title>Full Text Search</title>
-  <para>
-   The full-text search for packages and projects is handled by
-   <ulink url="http://freelancing-gods.com/thinking-sphinx/">Thinking
-   Sphinx</ulink>. The delayed job daemon will take care of starting this
+  <para> The full-text search for packages and projects is handled by <link
+    xlink:href="http://freelancing-gods.com/thinking-sphinx/">Thinking
+    Sphinx</link>. The delayed job daemon will take care of starting this
    service. If you want to control it after boot you should use the
-   <command>rake</command> tasks it provides.
-<screen><command>rake ts:{start, stop, rebuild, index}</command></screen>
-  </para>
- </section>
-</section>
+    <command>rake</command> tasks it provides.</para>
+   <screen><command>rake ts:{start, stop, rebuild, index}</command></screen>
+ </sect2>
+</sect1>

@@ -1,466 +1,392 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.best-practices.webuiusage" os="opensuse;novell">
- <title>How to use OBS web UI</title>
- <para>
-  This chapter explains and shows how you could use OBS web UI. We will show
-  and use OBS web UI based on <ulink url="http://build.opensuse.org"/>. You
-  need to make an account first to follow this chapter contents.
- </para>
- <section>
-  <title>Start page and Login</title>
-  <para>
-   Open your favorite browser and navigate to
-   <ulink url="https://build.opensuse.org"/>
+<chapter version="5.1" xml:id="cha.obs.best-practices.webuiusage"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ os="opensuse;novell">
+ <title>Using the OBS Web UI</title>
+ <info/>
+ <para> This chapter explains and shows how you could use OBS Web UI. We will
+  show and use OBS Web UI based on <link xlink:href="http://build.opensuse.org"
+  />. You need to make an account first to follow this chapter contents. </para>
+ <sect1>
+  <title>Homepage and Login</title>
+  <para> Open a browser and navigate to <link
+    xlink:href="https://build.opensuse.org"/>
   </para>
   <figure>
    <title>Start page</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="start_page_login.png" width="800" />
+     <imagedata fileref="start_page_login.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   To proceed, you'll need to log in and authenticate with your username and
-   your password. Click on Login and enter the data in the upper right corner.
-  </para>
+  <para> To proceed, you'll need to log in and authenticate with your username
+   and your password. Click on Login and enter the data in the upper right
+   corner. </para>
   <figure>
    <title>Login</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="login_prompt.png" width="800" />
+     <imagedata fileref="login_prompt.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   After successful authentication, you'll end up on the start page again -
-   with new options visible. We'll go through most of them in detail, but first
-   lets create your home: in the next step.
-  </para>
+  <para> After successful authentication, you'll end up on the start page again
+   - with new options visible. We'll go through most of them in detail, but
+   first lets create your home: in the next step. </para>
   <figure>
    <title>Logged in</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="logged_in.png" width="800" />
+     <imagedata fileref="logged_in.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
- </section>
- <section>
-  <title>Home project</title>
-  <para>
-   Every user has a home project (home:[userid]) where he/she has write access
-   by default. This is your personal workspace where you can experiment and
+ </sect1>
+ <sect1>
+  <title>Home Project</title>
+  <para> Every user has a home project (home:[userid]) where they have write
+   access by default. This is a personal workspace where you can experiment and
    play. Click on the link "Home Project" at the upper right to get to your
-   home project.
-  </para>
-  <section>
-   <title>The project page</title>
-   <para>
-    Your home project will be empty for now, but you can add packages
+   home project. </para>
+  <sect2>
+   <title>The Project Page</title>
+   <para> Your home project will be empty for now, but you can add packages
     containing sources/build recipes and projects which are containers for the
     build targets. As you can see, you're the default maintainer which grants
     you full write access to this project. You're also the bug owner of your
-    project.
-   </para>
+    project. </para>
    <figure>
-    <title>project page</title>
+    <title>Project Page</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="user_home_page.png" width="800" />
+      <imagedata fileref="user_home_page.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-  </section>
-  <section>
+  </sect2>
+  <sect2>
    <title>Changing a project's title and description</title>
-   <para>
-    On every project page you will find a "Edit description" link. This link
-    will lead you to a place were you can review and change your project's
-    title and description. Click on the "Update project" button to save.
-   </para>
+   <para> On every project page you will find a "Edit description" link. This
+    link will lead you to a place were you can review and change your project's
+    title and description. Click on the "Update project" button to save. </para>
    <figure>
     <title>Updating project description</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="change_project_title_and_description.png" width="800" />
+      <imagedata fileref="change_project_title_and_description.png" width="800"
+      />
      </imageobject>
     </mediaobject>
    </figure>
-  </section>
-  <section>
-   <title>Creating subprojects to a project</title>
-   <para>
-    Subprojects are projects that are part of another projects namespace.
+  </sect2>
+  <sect2>
+   <title>Creating Subprojects to a Project</title>
+   <para> Subprojects are projects that are part of another projects namespace.
     Subprojects are an easy way to organize multiple projects. On the
     "Subprojects" tab you can find a list subprojects that belong to a project.
     To create a new subproject click on the "New subproject" link, fill in the
-    form and press the "Create project" button.
-   </para>
+    form and press the "Create project" button. </para>
    <note>
-    <para>
-     Please note that maintainer of upper projects always can modify the sub
-     projects. Apart from that all projects are separated and have no influence
-     to each other.
-    </para>
+    <para> Maintainers of upper projects can always modify the subprojects.
+     Apart from that all projects are separated and have no influence on each
+     other. </para>
    </note>
    <figure>
-    <title>Creating subprojects</title>
+    <title>Creating Subprojects</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="create_subprojects.png" width="800" />
+      <imagedata fileref="create_subprojects.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-  </section>
- </section>
- <section>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>My Projects, Server Status</title>
   <para>
-   Let's leave for now your home: for a bit and explore the build service.
-   Click on "My Projects" on the left at the bottom. This opens a page listing
-   your watched projects and your involvements in projects or packages.
-  </para>
+   For now, let's leave your home for a bit and explore the build
+   service. Click on "My Projects" on the left at the bottom. This opens a page
+   listing your watched projects and your involvements in projects or packages. </para>
   <figure>
    <title>My Projects</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="obswebui_my_projects.png" width="800" />
+     <imagedata fileref="obswebui_my_projects.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   Now, let's visit the main monitor page by clicking on "Status Monitor". You
-   see here the status of the services, some graphs and graphics are showing
-   the currently running and completed jobs an the overall load.
-  </para>
+  <para> Now, let's visit the main monitor page by clicking on "Status
+   Monitor". You see here the status of the services, some graphs and graphics
+   are showing the currently running and completed jobs an the overall load. </para>
   <figure>
    <title>Status Monitor</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="status_monitor.png" width="800" />
+     <imagedata fileref="status_monitor.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
- </section>
- <section>
+ </sect1>
+ <sect1>
   <title>Create a link to a package in your home:</title>
-  <para>
-   We'll show you how you can log in and use the web interface hosted at
+  <para> We'll show you how you can log in and use the web interface hosted at
    build.opensuse.org. This includes login, adding a link to a package in your
    personal workspace (home:) and how to build that package by adding a
    repository. First, let's enter "My Projects" by clicking on the link at the
-   bottom left.
-  </para>
+   bottom left. </para>
   <figure>
    <title>My Projects</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="obswebui_my_projects.png" width="800" />
+     <imagedata fileref="obswebui_my_projects.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   Now let's create a link to a package and add a repository to build against.
-   A link is basically a pointer to sources of an already existing package. By
-   "repository" we mean container of built binary packages like Debian_8 or
-   openSUSE_13.2. Let's follow these steps:
+  <para> Now let's create a link to a package and add a repository to build
+   against. A link is basically a pointer to sources of an already existing
+   package. By "repository" we mean container of built binary packages like
+   Debian_8 or openSUSE_13.2. Let's follow these steps:</para>
    <orderedlist>
     <listitem>
-     <para>
-      Add link to the existing package.
-     </para>
+     <para> Add link to the existing package. </para>
     </listitem>
     <listitem>
-     <para>
-      Add repository.
-     </para>
+     <para> Add repository. </para>
     </listitem>
     <listitem>
-     <para>
-      Observe the build on the monitor page.
-     </para>
+     <para> Observe the build on the monitor page. </para>
     </listitem>
     <listitem>
-     <para>
-      Look at package's page.
-     </para>
+     <para> Look at package's page. </para>
     </listitem>
    </orderedlist>
-  </para>
-  <section>
-   <title>Add link to existing package</title>
-   <para>
-    Right below packages, there's "Branch Package from other Project" .
-   </para>
+  
+  <sect2>
+   <title>Add Link to Existing Package</title>
+   <para> Right below packages, there's "Branch Package from other Project" . </para>
    <figure>
     <title>Branch Package</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="branch_package.png" width="800" />
+      <imagedata fileref="branch_package.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    Open that page and enter for
-   </para>
-<screen>
-            <command>
-               Name of original project:
-               Apache
-            </command>
-         </screen>
-   <para>
-    and for
-   </para>
-<screen>
-            <command>
-                Name of package in original project:
-                flood
-            </command>
-         </screen>
-   <para>
-    - we'll leave "Name of linked package in target project" empty. This is
-    shown on the next picture:
-   </para>
+   <para> Open that page and enter for </para>
+   <screen>
+Name of original project:
+Apache
+</screen>
+   <para> and for </para>
+   <screen>Name of package in original project:
+flood</screen>
+   <para> - we'll leave "Name of linked package in target project" empty. This
+    is shown on the next picture: </para>
    <figure>
     <title>Apache Flood Branch</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="apache_flood_branch.png" width="800" />
+      <imagedata fileref="apache_flood_branch.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    Proceed with "Create Branch" and you'll be redirected to your home again.
-    You'll see a new package "flood" and a notice about the branch being added.
-   </para>
+   <para> Proceed with "Create Branch" and you'll be redirected to your home
+    again. You'll see a new package "flood" and a notice about the branch being
+    added. </para>
    <figure>
     <title>Branched Package</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_branched.png" width="800" />
+      <imagedata fileref="flood_branched.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    Wonderful, we've added a pointer to the sources! Now we need to add a
+   <para> Wonderful, we've added a pointer to the sources! Now we need to add a
     repository, so the builder knows the target-distribution to build packages
-    for. How to add a repository to a project is documented at
-    <xref linkend="cha.obs.best-practices.webuiusage.add-repository" />.
-   </para>
-  </section>
-  <section>
-   <title>Package page, build log and project monitor page</title>
-   <para>
-    Next, it is time to explore the Monitor page, the package detail page and
-    the build log. Just click on the links and explore the web interface. I
+    for. How to add a repository to a project is documented at <xref
+     linkend="cha.obs.best-practices.webuiusage.add-repository"/>. </para>
+  </sect2>
+  <sect2>
+   <title>Package Page, Build Log and Project Monitor Page</title>
+   <para> Next, it is time to explore the Monitor page, the package detail page
+    and the build log. Just click on the links and explore the web interface. I
     recommend starting with your home project's top level 'overview' page -
-    click on the Overview tab and you may see something like this:
-   </para>
+    click on the Overview tab and you may see something like this: </para>
    <figure>
     <title>flood_succeeded_finished</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_succeeded_finished.png" width="800" />
+      <imagedata fileref="flood_succeeded_finished.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    If you wait a bit, you would see the below building suceess screen
-   </para>
+   <para> If you wait a bit, you would see the below building success screen </para>
    <figure>
     <title>flood_build_success</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_build_sucess.png" width="800" />
+      <imagedata fileref="flood_build_sucess.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    please try to click blue "succeeded" message, then you could see the build
-    log as below.
-   </para>
+   <para> Click the <quote>succeeded</quote> message, then you will see the
+    build log as below. </para>
    <figure>
     <title>flood_build_log</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_build_log.png" width="800" />
+      <imagedata fileref="flood_build_log.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
-  </section>
- </section>
- <section>
+  </sect2>
+ </sect1>
+ <sect1>
   <title>Repository Output: Built Packages</title>
-  <para>
-   To find the RPMs you built, go to your home project page and click
+  <para> To find the RPMs you built, go to your home project page and click
    Repositories. From there click on the blue repository name. For example,
-   openSUSE_Factory:
-  </para>
+   openSUSE_Factory: </para>
   <figure>
    <title>My_Repository</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="my_repository.png" width="800" />
+     <imagedata fileref="my_repository.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
   <note>
-   <para>
-    Published repositories are marked with the OBS LKW <inlineequation>
-    <inlinemediaobject>
-    <imageobject>
-     <imagedata fileref="obs_lkw.png" />
-    </imageobject>
-    </inlinemediaobject> </inlineequation>
-   </para>
+   <para> Published repositories are marked with the OBS truck</para> 
+    <!--<inlineequation>
+     <inlinemediaobject>
+      <imageobject>
+       <imagedata fileref="obs_lkw.png"/>
+      </imageobject>
+     </inlinemediaobject>
+    </inlineequation>-->
+   
   </note>
-  <para>
-   Now click on Go to download repository. Note that publishing the repository
-   might take a while. Until then you will get a 404 error. Once the binaries
-   are there, you'll see something like this:
-  </para>
+  <para> Now click on Go to download repository. Note that publishing the
+   repository might take a while. Until then you will get a 404 error. When the
+   binaries are there, you'll see something like this: </para>
   <figure>
-   <title>Repository_structure</title>
+   <title>Repository Structure</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="download_rpm_directories.png" width="800" />
+     <imagedata fileref="download_rpm_directories.png" width="800"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   Your rpms can be found in the subdirectories, and the .repo file is suitable
-   for use with zypper, yum or other repository-friendly package management
-   tools.
-  </para>
- </section>
- <section>
+  <para> Your rpms can be found in the subdirectories, and the .repo file is
+   suitable for use with zypper, yum or other repository-friendly package
+   management tools. </para>
+ </sect1>
+ <sect1>
   <title>Managing Repositories</title>
-  <para>
-   This section will show how you can manage your project's repositories.
-  </para>
-  <section id="cha.obs.best-practices.webuiusage.add-repository">
+  <para> This section will show how you can manage your project's repositories. </para>
+  <sect2 xml:id="cha.obs.best-practices.webuiusage.add-repository">
    <title>Adding a repository</title>
-   <para>
-    To add a repository to your project, click on "Add Repositories" on the
-    project's repository tab. This will direct you to a list of possible
-    distributions you can built packages for, see
-    <xref linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot" />.
-   </para>
-   <figure id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
-    <title>Add Repository to project</title>
+   <para> To add a repository to your project, click on "Add Repositories" on
+    the project's repository tab. This will direct you to a list of possible
+    distributions you can built packages for, see <xref
+     linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot"/>. </para>
+   <figure xml:id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
+    <title>Adding a Repository to a Project</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="adding_opensuse_factory.png" width="800" />
+      <imagedata fileref="adding_opensuse_factory.png" width="800"/>
      </imageobject>
     </mediaobject>
    </figure>
    <note>
-    <para>
-     If you could not find a repository that fits your needs, you might want to
-     switch to the expert mode. Click on the "Expert mode" link right to the
-     button. This page allows you to search and select a repository of any
-     project available in OBS and add it to your projects repository list.
+    <para> If you could not find a repository that fits your needs, you might
+     want to switch to the expert mode. Click on the "Expert mode" link right
+     to the button. This page allows you to search and select a repository of
+     any project available in OBS and add it to your projects repository list.
     </para>
    </note>
-   <para>
-    This will take you back to your home: project. The build repository might
-    be disabled: if so, klick on the cogwheel to enable it. Congratulations, it
-    is configured. On a heavily loaded server, it can sometimes take a few
-    minutes for your changes to become effective, but your linked package will
-    automatically begin building.
-   </para>
-  </section>
-  <section>
+   <para> This will take you back to your home: project. The build repository
+    might be disabled: if so, click on the cogwheel to enable it.
+    Congratulations, it is configured. On a heavily loaded server, it can
+    sometimes take a few minutes for your changes to become effective, but your
+    linked package will automatically begin building. </para>
+  </sect2>
+  <sect2>
    <title>Add Download on Demand repositories to a project</title>
-   <para>
-    When you have administrator rights you will be able to add Download on
-    Demand repositories to your project. To do so, click on the "Add DoD
-    repository" link and enter your DoD repository data into the form.
-   </para>
+   <para> When you have administrator rights you will be able to add Download
+    on Demand repositories to your project. To do so, click on the "Add DoD
+    repository" link and enter your DoD repository data into the form. </para>
    <figure>
-    <title>Add Download on Demand repository</title>
+    <title>Adding a Download on Demand Repository</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="repository_tab.png" />
+      <imagedata fileref="repository_tab.png"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    The minimal set of fields you have to enter are architecture, repository
-    type and the url that provides the binary packages. Detailed information
-    about the data you can enter here you can find at the
-    <ulink url="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod">DoD
-    concept section</ulink>. Press "Save" to create the repository.
-   </para>
+   <para> The minimal set of fields you have to enter are architecture,
+    repository type and the URL that provides the binary packages. Detailed
+    information about the data you can enter here you can find at the <link
+     xlink:href="http://openbuildservice.org/help/manuals/obs-reference-guide/cha.obs.concepts.html#concept_dod"
+     >DoD concept section</link>. Press "Save" to create the repository. </para>
    <figure>
-    <title>Download on Demand repository form</title>
+    <title>Download on Demand Repository Form</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="add_dod_repository.png" />
+      <imagedata fileref="add_dod_repository.png"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    Once the repository got added you are able to edit, delete or add
-    additional DoD repository sources.
-   </para>
-  </section>
-  <section>
-   <title>Add additional DoD repository sources to a repository</title>
+   <para> When the repository got added you are able to edit, delete or add
+    additional DoD repository sources. </para>
+  </sect2>
+  <sect2>
+   <title>Adding DoD Repository Sources to a Repository</title>
    <figure>
     <title>Adding Download on Demand repository sources</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="dod_repositories.png" />
+      <imagedata fileref="dod_repositories.png"/>
      </imageobject>
     </mediaobject>
    </figure>
-   <para>
-    Open the DoD repository sources form by clicking the "Add" link. Here you
-    can enter your additional DoD repository source. Click the "Add Download on
-    Demand" button.
-   </para>
+   <para> Open the DoD repository sources form by clicking the "Add" link. Here
+    you can enter your additional DoD repository source. Click the "Add
+    Download on Demand" button. </para>
    <figure>
-    <title>Form for adding DoD repository sources</title>
+    <title>Form for Adding DoD Repository Sources</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="add_dod_repository_source.png" />
+      <imagedata fileref="add_dod_repository_source.png"/>
      </imageobject>
     </mediaobject>
    </figure>
-  </section>
-  <section>
-   <title>Edit DoD repository sources</title>
-   <para>
-    To edit DoD repository sources after they got added click on the "Edit"
-    link that you find right to each DoD repository source.
-   </para>
+  </sect2>
+  <sect2>
+   <title>Editing DoD Repository Sources</title>
+   <para> To edit DoD repository sources after they got added click on the
+    "Edit" link that you find right to each DoD repository source. </para>
    <figure>
     <title>Form for editing DoD repository sources</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="edit_dod_repository_source.png" />
+      <imagedata fileref="edit_dod_repository_source.png"/>
      </imageobject>
     </mediaobject>
    </figure>
-  </section>
-  <section>
-   <title>Edit DoD repository sources</title>
-   <para>
-    To delete a repository or repository source, click on the "Delete" link and
-    accept the confirmation dialog.
-   </para>
-  </section>
- </section>
- <xi:include href="obs_best_practice_image_templates.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_kiwi_editor.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  </sect2>
+  <sect2>
+   <title>Editing DoD Repository Sources</title>
+   <para> To delete a repository or repository source, click on the "Delete"
+    link and accept the confirmation dialog. </para>
+  </sect2>
+ </sect1>
+ <xi:include href="obs_best_practice_image_templates.xml"/>
+ <xi:include href="obs_best_practice_kiwi_editor.xml"/>
 </chapter>

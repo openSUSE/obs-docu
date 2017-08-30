@@ -1,101 +1,93 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+   <!ENTITY % entities SYSTEM "entity-decl.ent">
+   %entities;
 ]>
 
-<section id="image_templates_how_to">
+<sect1 version="5.1" xml:id="image_templates_how_to"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Image Templates</title>
- <xi:include href="obs_image_templates.xml" xpointer="image_template_introduction_paragraph" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <para>
-  How you can create your own image templates will be shown here.
- </para>
+ &image_template_introduction_paragraph;
+ <!--<xi:include href="obs_image_templates.xml"
+  xpointer="image_template_introduction_paragraph"/>-->
+ <para> How you can create your own image templates will be shown here. </para>
  <figure>
-  <title>OBS Templates Page</title>
+  <title>&obsa; Templates Page</title>
   <mediaobject>
    <imageobject>
-    <imagedata fileref="image_templates_template_page.png" />
+    <imagedata fileref="image_templates_template_page.png"/>
    </imageobject>
   </mediaobject>
  </figure>
- <section>
-  <title>Creating Your Own Image Templates</title>
-  <para>
-   Create a subproject of your home project.
-  </para>
+ <sect2>
+  <title>Creating Own Image Templates</title>
+  <para> Create a subproject of your home project. </para>
   <figure>
    <title>Form for creating image template subproject</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="image_templates_project.png" />
+     <imagedata fileref="image_templates_project.png"/>
     </imageobject>
    </mediaobject>
   </figure>
   <note>
-   <para>
-    Published image templates are fetched via a project's attribute. Any package
-    container living in a published project will be visible on the image
-    templates page.
-   </para>
+   <para> Published image templates are fetched via a project's attribute. Any
+    package container living in a published project will be visible on the
+    image templates page. </para>
   </note>
-  <para>
-   Within that project create a new package. That will be your actual image template.
-  </para>
+  <para> Within that project create a new package. That will be your actual
+   image template. </para>
   <figure>
-   <title>New image template</title>
+   <title>New Image Template</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="image_templates_package.png" />
+     <imagedata fileref="image_templates_package.png"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   Add the 'KIWI image build' repository to your project. This repository is
-   needed to build KIWI images in your project.
-   Go to the 'Repositories' tab, click on 'Add repositories' and chlick on the
-   'KIWI image build' checkbox.
-  </para>
+  <para> Add the '&kiwi; image build' repository to your project. This repository
+   is needed to build &kiwi; images in your project. Go to the 'Repositories'
+   tab, click on 'Add repositories' and click on the '&kiwi; image build' check
+   box. </para>
   <figure>
-   <title>Enabling the kIWI image build repository</title>
+   <title>Enabling the &kiwi; Image Build Repository</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="image_templates_enable_image_repository.png" />
+     <imagedata fileref="image_templates_enable_image_repository.png"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   Add sources for your image configuration.
-  </para>
+  <para> Add sources for your image configuration. </para>
   <figure>
-   <title>Overview of sources of custom image template</title>
+   <title>Overview of Sources of a Custom Image Template</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="image_templates_overview.png" />
+     <imagedata fileref="image_templates_overview.png"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
-   KIWI configurations usually consists of an xml configuration root tarball.
+  <para> &kiwi; configurations usually consists of an xml configuration root
+   tarball. </para>
+  <!--<xi:include href="obs_image_templates.xml"
+   xpointer="image_template_icon_paragraph"/>-->
+  &image_template_icon_paragraph;
+  <para> For a full list of image descriptions and general information about
+   building images with KIWI, see the <link
+    xlink:href="http://opensuse.github.io/kiwi/"> &kiwi; project page</link> and
+   the <link xlink:href="https://doc.opensuse.org/projects/kiwi/doc/">KIWI
+    cookbook</link>. <remark> Refer to new (Python) &kiwi; page instead? -
+    sknorr, 2017-07-14 </remark>
   </para>
-  <xi:include href="obs_image_templates.xml" xpointer="image_template_icon_paragraph" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-  <para>
-   For a full list of image descriptions and general information about building
-   images with KIWI please refer to the <ulink url="http://opensuse.github.io/kiwi/">
-   KIWI project page</ulink> and the
-   <ulink url="https://doc.opensuse.org/projects/kiwi/doc/">KIWI cookbook</ulink>.
-  </para>
- </section>
- <section>
-  <title>Publishing Image Templates on the Official Image Templates Page</title>
-  <para>
-   Once everything is set up and your templates are building, you might want to
-   publish them. In that case contact the admin of the OBS instance you are using
-   and ask them kindly to do so.
-   If you happen to use the <ulink url="https://build.opensuse.org/">official OBS</ulink>,
-   that would be admin@opensuse.org.
-  </para>
- </section>
-</section>
+ </sect2>
+ <sect2>
+  <title>Publishing Image Templates on the Official Image Templates
+   Page</title>
+  <para> Once everything is set up and your templates are building, you might
+   want to publish them. In that case contact the admin of the OBS instance you
+   are using and ask them kindly to do so. If you happen to use the <link
+    xlink:href="https://build.opensuse.org/">official OBS</link>, that would be
+   admin@opensuse.org. </para>
+ </sect2>
+</sect1>

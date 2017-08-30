@@ -1,26 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.admin">
+<chapter version="5.1" xml:id="cha.obs.admin"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Administration</title>
- <para>
-  This chapter describes the components of an OBS installation and the typical
-  administration tasks for an OBS administrator.
- </para>
- <para>
-  This chapter is not intended to describe special installation hints for a
-  certain OBS version; please refer to the
-  <ulink url="http://mirrorbrain.org/">OBS download page</ulink> for that.
- </para>
- <xi:include href="obs_admin_components.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_admin_appliance.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_admin_backend.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_admin_frontend.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_admin_tools.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_admin_integration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ <info/>
+ <para> This chapter describes the components of an OBS installation and the
+  typical administration tasks for an OBS administrator. </para>
+ <para> This chapter is not intended to describe special installation hints for
+  a certain OBS version. Refer to the <link
+   xlink:href="http://openbuildservice.org/download/">OBS download page</link>
+  for that. </para>
+ <xi:include href="obs_admin_components.xml"/>
+ <xi:include href="obs_admin_appliance.xml"/>
+ <xi:include href="obs_admin_backend.xml"/>
+ <xi:include href="obs_admin_frontend.xml"/>
+ <xi:include href="obs_admin_tools.xml"/>
+ <xi:include href="obs_admin_integration.xml"/>
 </chapter>

@@ -1,14 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.best-practices.kmp" os="opensuse;novell">
- <title>Kernel Module Building</title>
- <para>
-  Ann Davis wants to write this ...
- </para>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.kmp" os="opensuse;novell"><title>Building Kernel Modules</title><info/>
+
+   <para/>
+   <remark>TBD: via Ann Davis?</remark>
 </chapter>

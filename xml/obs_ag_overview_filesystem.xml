@@ -1,42 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="obs.cha.overview_filesystem">
- <title>Overview filesystem</title>
- <section id="_configuration_files">
-  <title>Configuration files</title>
-  <section id="_frontend_configuration">
-   <title>Frontend Configuration</title>
-   <simpara>The Frontend is configured with 4 files:</simpara>
+<chapter xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
+ xml:id="obs.cha.overview_filesystem">
+ <title>File System Overview</title>
+ <info/>
+
+ <sect1 xml:id="_configuration_files">
+  <title>Configuration Files</title>
+  <sect2 xml:id="_frontend_configuration">
+   <title>Front-end Configuration</title>
+   <para>The front-end is configured with 4 files:</para>
    <itemizedlist>
     <listitem>
-     <simpara>/srv/www/obs/api/config/database.yml</simpara>
+     <para>/srv/www/obs/api/config/database.yml</para>
     </listitem>
     <listitem>
-     <simpara>/srv/www/obs/api/config/options.yml</simpara>
+     <para>/srv/www/obs/api/config/options.yml</para>
     </listitem>
     <listitem>
-     <simpara>/srv/www/obs/api/config/feature.yml</simpara>
+     <para>/srv/www/obs/api/config/feature.yml</para>
     </listitem>
     <listitem>
-     <simpara>/etc/apache2/vhosts.d/obs.conf</simpara>
+     <para>/etc/apache2/vhosts.d/obs.conf</para>
     </listitem>
    </itemizedlist>
-   <section id="_database_yml">
-    <title>database.yml</title>
-    <simpara>This file has the information needed to access the database. It contain
-credentials for the database access and should be only readable by root and
-the group running the webserver (www).</simpara>
-    <simpara>The file has settings for the production, development and test ruby
-environment, for production systems only the production section is
-important.</simpara>
-    <simpara>Example production section</simpara>
-<screen>production:
+   <sect3 xml:id="_database_yml">
+    <title><filename>database.yml</filename></title>
+    <para>This file has the information needed to access the database. It
+     contain credentials for the database access and should be only readable by
+     root and the group running the Web server (www).</para>
+    <para>The file has settings for the production, development and test
+     ruby environment, for production systems only the production section is
+     important.</para>
+    <para>Example production section</para>
+    <screen>production:
   adapter: mysql2
   database: api_production
   username: obsapiuser
@@ -45,7 +47,7 @@ important.</simpara>
   timeout: 15
   pool: 30</screen>
     <table frame="all" rowsep="1" colsep="1">
-     <title>Database configuration keywords</title>
+     <title>Database Configuration Keywords</title>
      <tgroup cols="3">
       <colspec colname="col_1" colwidth="22*"/>
       <colspec colname="col_2" colwidth="33*"/>
@@ -60,132 +62,133 @@ important.</simpara>
       <tbody>
        <row>
         <entry align="left" valign="top">
-         <simpara>adapter</simpara>
+         <para>adapter</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Database driver</simpara>
+         <para>Database driver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>only mysql databases are supported</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>database</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Database name</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>do not change !</simpara>
+         <para>only mysql databases are supported</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>username</simpara>
+         <para>database</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>mysql user name</simpara>
+         <para>Database name</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>database user, not a system user</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>password</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>password for this user</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>clear text</simpara>
+         <para>do not change !</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>encoding</simpara>
+         <para>username</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>codetable</simpara>
+         <para>mysql user name</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>timeout</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>wait time in milliseconds</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>database user, not a system user</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>pool</simpara>
+         <para>password</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>number of open connections per thread</simpara>
+         <para>password for this user</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>socket</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>path to the mysql socket</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>same host only</simpara>
+         <para>clear text</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>host</simpara>
+         <para>encoding</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Ip address or hostname of the mysql server</simpara>
+         <para>codetable</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>for remote servers</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>port</simpara>
+         <para>timeout</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>port number of the mysql server</simpara>
+         <para>wait time in milliseconds</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>for remote servers</simpara>
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>pool</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>number of open connections per thread</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>socket</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>path to the mysql socket</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>same host only</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>host</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>IP address or hostname of the mysql server</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>for remote servers</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>port</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>port number of the mysql server</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>for remote servers</para>
         </entry>
        </row>
       </tbody>
      </tgroup>
     </table>
-   </section>
-   <section id="_options_yml">
-    <title>options.yml</title>
-    <simpara>The configuration file /srv/www/obs/api/config/options.yml is the default
-configuration file for the Open Build Service WebUI and API. It contains
-configuration parameters for example for backend connections and connection to the
-API. Important are the configurations for source and frontend hosts
-The configuration for LDAP authentication is also located in this file.</simpara>
+   </sect3>
+   <sect3 xml:id="_options_yml">
+    <title><filename>options.yml</filename></title>
+    <para>The configuration file /srv/www/obs/api/config/options.yml is the
+     default configuration file for the Open Build Service Web UI and API. It
+     contains configuration parameters for example for back-end connections and
+     connection to the API. Important are the configurations for source and
+     front-end hosts The configuration for LDAP authentication is also located
+     in this file.</para>
     <note>
-     <simpara>More and more configurations will be moved to the database and do not longer
-exist in this file. The database configuration can be accessed via the API
-<emphasis>/configuration</emphasis> path.</simpara>
+     <para>More and more configurations will be moved to the database and do
+      not longer exist in this file. The database configuration can be accessed
+      via the API <emphasis>/configuration</emphasis> path.</para>
     </note>
     <table frame="all" rowsep="1" colsep="1">
-     <title>options.yml configuration items</title>
+     <title><filename>options.yml</filename> Configuration Items</title>
      <tgroup cols="4">
       <colspec colname="col_1" colwidth="28*"/>
       <colspec colname="col_2" colwidth="25*"/>
@@ -203,344 +206,347 @@ exist in this file. The database configuration can be accessed via the API
       <tbody>
        <row>
         <entry align="left" valign="top">
-         <simpara>use_xforward</simpara>
+         <para>use_xforward</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Use mod_xforward module</simpara>
+         <para>Use mod_xforward module</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>true</literal> false</simpara>
+         <para><literal>true</literal> false</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>apache only, should be true</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>use_nginx_redirect</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Use X-Accel-Redirect</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>/internal_redirect</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Nginx only</simpara>
+         <para>Apache only, should be true</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>min_votes_for_rating</simpara>
+         <para>use_nginx_redirect</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Minimum votes for a rating</simpara>
+         <para>Use X-Accel-Redirect</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>integer <literal>3</literal>
-         </simpara>
+         <para><literal>/internal_redirect</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>response_schema_validation</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Set to true to verify XML reponses comply to the schema</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>true <literal>false</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
+         <para>Nginx only</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>source_host</simpara>
+         <para>min_votes_for_rating</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>backend source server host</simpara>
+         <para>Minimum votes for a rating</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>localhost</literal>
-         </simpara>
+         <para>integer <literal>3</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>source_port</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>backend source server port</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>integer <literal>5352</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>source_protocol</simpara>
+         <para>response_schema_validation</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>backend source server protocol</simpara>
+         <para>Set to true to verify XML responses comply to the
+          schema</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>http</literal>, https</simpara>
+         <para>true <literal>false</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>frontend_host</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Frontend host</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>localhost</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>test/debug option</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>frontend_port</simpara>
+         <para>source_host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Frontend port</simpara>
+         <para>back-end source server host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>integer <literal>443</literal>
-         </simpara>
+         <para><literal>localhost</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>frontend_protocol</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Frontend protocol</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>http <literal>https</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>external_frontend_host</simpara>
+         <para>source_port</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>External Frontend host</simpara>
+         <para>back-end source server port</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para>integer <literal>5352</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>if your users access the hosts through a proxy or different name</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>external_frontend_port</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>External Frontend port</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>integer <literal>443</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>external_frontend_protocol</simpara>
+         <para>source_protocol</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>External Frontend protocol</simpara>
+         <para>back-end source server protocol</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>http <literal>https</literal>
-         </simpara>
+         <para><literal>http</literal>, https</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>extended_backend_log</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Extended backen log</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>true</literal> false</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>proxy_auth_mode:</simpara>
+         <para>front end_host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>turn proxy mode on/off</simpara>
+         <para>Front-end host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>:off</literal> :on</simpara>
+         <para><literal>localhost</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see LDAP section</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>proxy_auth_test_user</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Test user</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>coolguy</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>proxy_auth_test_email</simpara>
+         <para>frontend_port</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Email of Test user</simpara>
+         <para>Front-end port</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>coolguy@ example.com</literal>
-         </simpara>
+         <para>integer <literal>443</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>global_write_through</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>if set to false, the API will only fake writes to backend</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>true</literal> false</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>auto_cleanup_after_days</simpara>
+         <para>frontend_protocol</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>not longer used</simpara>
+         <para>Front-end protocol</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>30</literal>
-         </simpara>
+         <para>http <literal>https</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>moved to /configuration API</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>errbit_api_key</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>API key of the application</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>errbit_host</simpara>
+         <para>external_frontend_host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>installation  of errbit.com a Ruby error catcher</simpara>
+         <para>External Front-end host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>errbit_api_key</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>API key of the application</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>test/debug option</simpara>
+         <para>if your users access the hosts through a proxy or different
+          name</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>ldap_mode:</simpara>
+         <para>external_frontend_port</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>OBS LDAP mode on/off</simpara>
+         <para>External Front-end port</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>:off</literal> :on</simpara>
+         <para>integer <literal>443</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see LDAP setion</simpara>
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>external_frontend_protocol</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>External Front-end protocol</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>http <literal>https</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>extended_backend_log</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Extended back-end log</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>true</literal> false</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>proxy_auth_mode:</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>turn proxy mode on/off</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>:off</literal> :on</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see LDAP section</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>proxy_auth_test_user</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Test user</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>coolguy</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>proxy_auth_test_email</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Email of Test user</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>coolguy@ example.com</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>global_write_through</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>if set to false, the API will only fake writes to
+          back-end</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>true</literal> false</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>auto_cleanup_after_days</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>not longer used</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>30</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>moved to /configuration API</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>errbit_api_key</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>API key of the application</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>errbit_host</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>installation of errbit.com a Ruby error catcher</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>errbit_api_key</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>API key of the application</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>test/debug option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>ldap_mode:</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>OBS LDAP mode on/off</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>:off</literal> :on</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see LDAP section</para>
         </entry>
        </row>
       </tbody>
      </tgroup>
     </table>
-    <simpara>Example options.yml</simpara>
-<screen>#
+    <para>Example options.yml</para>
+    <screen>#
 # This file contains the default configuration of the Open Build Service
 # API.
 #
@@ -604,13 +610,14 @@ auto_cleanup_after_days: 30
 # http://colszowka.heroku.com/2011/02/22/setting-up-your-custom-hoptoad-notifier-endpoint-for-free-using-errbit-on-heroku
 #errbit_api_key: api_key_of_your_app
 #errbit_host: installation.of.errbit.com</screen>
-   </section>
-   <section id="_feature_yml">
-    <title>feature.yml</title>
-    <simpara>The configuration file /srv/www/obs/api/config/feature.yml contains the default configuration
-      about features that can be enabled or disabled in Open Build Service.</simpara>
+   </sect3>
+   <sect3 xml:id="_feature_yml">
+    <title><filename>feature.yml</filename></title>
+    <para>The configuration file /srv/www/obs/api/config/feature.yml
+     contains the default configuration about features that can be enabled or
+     disabled in Open Build Service.</para>
     <table frame="all" rowsep="1" colsep="1">
-     <title>feature.yml configuration items</title>
+     <title><filename>feature.yml</filename> Configuration Items</title>
      <tgroup cols="4">
       <colspec colname="col_1" colwidth="28*"/>
       <colspec colname="col_2" colwidth="25*"/>
@@ -628,35 +635,35 @@ auto_cleanup_after_days: 30
       <tbody>
        <row>
         <entry align="left" valign="top">
-         <simpara>image_templates</simpara>
+         <para>image_templates</para>
         </entry>
         <entry align="left" valign="top">
-          <simpara>enable/disable image template feature</simpara>
+         <para>enable/disable image template feature</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>true</literal> false</simpara>
+         <para><literal>true</literal> false</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see Reference Guide for more information</simpara>
+         <para>see Reference Guide for more information</para>
         </entry>
        </row>
       </tbody>
      </tgroup>
     </table>
-    <simpara>Example feature.yml</simpara>
+    <para>Example feature.yml</para>
     <screen>
 features:
   image_templates: true
     </screen>
-   </section>
-   <section id="_apache_vhost_obs_conf">
-    <title>Apache vhost obs.conf</title>
-    <simpara>The apache configuration depends on the apache version and what extra
-options are used, so please use the documentation of the apache version you
-are using.</simpara>
-    <simpara>Here as example the standard configuration used by the appliance:
-Apache vhost example</simpara>
-<screen>Listen 82
+   </sect3>
+   <sect3 xml:id="_apache_vhost_obs_conf">
+    <title>Apache Virtual Host <filename>obs.conf</filename></title>
+    <para>The Apache configuration depends on the Apache version and which
+     extra options are used, so use the documentation of the Apache version you
+     are using.</para>
+    <para>Here as example the standard configuration used by the appliance:
+     Apache vhost example</para>
+    <screen>Listen 82
 # May needed on old distributions or after an update from them.
 #Listen 443
 
@@ -693,7 +700,7 @@ LimitRequestFieldsize 20000
 &lt;/VirtualHost&gt;
 
 
-# OBS WEBUI &amp; API
+# OBS WEB UI &amp; API
 &lt;VirtualHost *:443&gt;
         ServerName api
 
@@ -757,30 +764,30 @@ LimitRequestFieldsize 20000
         Header append Cache-Control "public"
 
 &lt;/VirtualHost&gt;</screen>
-   </section>
-  </section>
-  <section id="_backend_configuration">
-   <title>Backend Configuration</title>
-   <simpara>The Backend is configured with 2 files:</simpara>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="_backend_configuration">
+   <title>Back-end Configuration</title>
+   <para>The Back-end is configured with 2 files:</para>
    <itemizedlist>
     <listitem>
-     <simpara>
-/etc/sysconfig/obs-server - a shell script used for workers and the OBS start scripts
-</simpara>
+     <para> /etc/sysconfig/obs-server - a shell script used for workers and
+      the OBS start scripts </para>
     </listitem>
     <listitem>
-     <simpara>
-/usr/lib/obs/server/BSConfig.pm - a perl script defining some global variables
-</simpara>
+     <para> /usr/lib/obs/server/BSConfig.pm - a perl script defining some
+      global variables </para>
     </listitem>
    </itemizedlist>
-   <section id="_etc_sysconfig_obs_server">
-    <title>/etc/sysconfig/obs-server</title>
-    <simpara>This script is used to setup the basic pathes and the worker.
-the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emphasis> and <emphasis role="strong">OBS_REPO_SERVERS</emphasis> and the
-<emphasis role="strong">OBS_WORKER_INSTANCES</emphasis>.</simpara>
+   <sect3 xml:id="_etc_sysconfig_obs_server">
+    <title><filename>/etc/sysconfig/obs-server</filename></title>
+    <para>This script is used to setup the basic paths and the worker. the
+     most important settings are the <emphasis role="strong"
+      >OBS_SRC_SERVER</emphasis> and <emphasis role="strong"
+      >OBS_REPO_SERVERS</emphasis> and the <emphasis role="strong"
+      >OBS_WORKER_INSTANCES</emphasis>.</para>
     <table frame="all" rowsep="1" colsep="1">
-     <title>obs-server variables</title>
+     <title><filename>obs-server</filename> Variables</title>
      <tgroup cols="4">
       <colspec colname="col_1" colwidth="32*"/>
       <colspec colname="col_2" colwidth="22*"/>
@@ -798,512 +805,513 @@ the most important settings are the <emphasis role="strong">OBS_SRC_SERVER</emph
       <tbody>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_BACKENDCODE_DIR</simpara>
+         <para>OBS_BACKENDCODE_DIR</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Path to the backend scripts</simpara>
+         <para>Path to the back-end scripts</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>/usr/lib/obs/server/</simpara>
+         <para>/usr/lib/obs/server/</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_RUN_DIR</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>communication directory base</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>/srv/obs/run</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_LOG_DIR</simpara>
+         <para>OBS_RUN_DIR</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>logging directory</simpara>
+         <para>communication directory base</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>/srv/obs/log</simpara>
+         <para>/srv/obs/run</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_BASE_DIR</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>base directory</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>/srv/obs</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_API_AUTOSETUP</simpara>
+         <para>OBS_LOG_DIR</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Automatically setup api and webui</simpara>
+         <para>logging directory</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>yes <literal>no</literal>
-         </simpara>
+         <para>/srv/obs/log</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>appliance only, will overwrite config files</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_SRC_SERVER</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>source server host</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>localhost:5352</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>only one</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_REPO_SERVERS</simpara>
+         <para>OBS_BASE_DIR</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>repository server host</simpara>
+         <para>base directory</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>localhost:5252</simpara>
+         <para>/srv/obs</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>maybe a list</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_INSTANCES</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>number of build instances</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>integer <literal>0</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_WORKER_INSTANCE _NAMES</simpara>
+         <para>OBS_API_AUTOSETUP</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>names of the workers</simpara>
+         <para>Automatically setup API and Web UI</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para>yes <literal>no</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>space-separated list</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_DIRECTORY</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>worker base directory</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>appliance only, will overwrite config files</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_WORKER_PORTBASE</simpara>
+         <para>OBS_SRC_SERVER</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>The base for port numbers used by worker</simpara>
+         <para>source server host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>integer <literal>0</literal>
-         </simpara>
+         <para>localhost:5352</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>0 OS assign number</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_JOBS</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Number of parallel compile jobs</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>integer <literal>1</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>only one</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_WORKER_TEST_MODE</simpara>
+         <para>OBS_REPO_SERVERS</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Run in test mode</simpara>
+         <para>repository server host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>yes <literal>no</literal>
-         </simpara>
+         <para>localhost:5252</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_HOST LABELS</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>one or more labels for the build host</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>may used by constraints</simpara>
+         <para>maybe a list</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_USE_SLP</simpara>
+         <para>OBS_WORKER_INSTANCES</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Register in SLP server</simpara>
+         <para>number of build instances</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>yes</literal> no</simpara>
+         <para>integer <literal>0</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_CACHE_DIR</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>cache directory for downloaded packages</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_CACHE_SIZE</simpara>
+         <para>OBS_WORKER_INSTANCE _NAMES</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>package cache size</simpara>
+         <para>names of the workers</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>in MB</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_NICE _LEVEL</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>nice level of running workers</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>18</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>space-separated list</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_VM_TYPE</simpara>
+         <para>OBS_WORKER_DIRECTORY</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>VM type</simpara>
+         <para>worker base directory</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><emphasis role="strong">auto</emphasis> xen kvm lxc zvm emulator:$arch none</simpara>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_VM_KERNEL</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Set kernel used by worker</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>none</literal> (/boot/vmlinuz)</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>KVM option</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_VM_INITRD</simpara>
+         <para>OBS_WORKER_PORTBASE</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>initrd used by worker</simpara>
+         <para>The base for port numbers used by worker</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>none</literal> (/boot/vmlinuz)</simpara>
+         <para>integer <literal>0</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>KVM option</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_VM_DISK_AUTOSETUP _ROOT_FILESIZE</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Autosetup disk size</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>4096</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>in MB</simpara>
+         <para>0 OS assign number</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_VM_DISK_AUTOSETUP _SWAP_FILESIZE</simpara>
+         <para>OBS_WORKER_JOBS</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Autosetup swap size</simpara>
+         <para>Number of parallel compile jobs</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>1024</literal>
-         </simpara>
+         <para>integer <literal>1</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>on MB</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_VM_DISK_AUTOSETUP _FILESYSTEM</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Filesystem used with autosetup</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>ext3</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_VM_DISK_AUTOSETUP _MOUNT_OPTIONS</simpara>
+         <para>OBS_WORKER_TEST_MODE</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Special mountoptions</simpara>
+         <para>Run in test mode</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para>yes <literal>no</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_VM_USE_TMPFS</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Enable build in memory</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>yes <literal>no</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>requires much memory</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_INSTANCE_MEMORY</simpara>
+         <para>OBS_WORKER_HOST LABELS</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Memory allocated for a VM</simpara>
+         <para>one or more labels for the build host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>512</literal>
-         </simpara>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_STORAGE_AUTOSETUP</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>storage auto configuration</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>yes <literal>no</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>may destroy disk content</simpara>
+         <para>may used by constraints</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_SETUP_WORKER _PARTITIONS</simpara>
+         <para>OBS_USE_SLP</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>LVM via obsstoragesetup</simpara>
+         <para>Register in SLP server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>take_all <literal>use_obs_vg</literal> none</simpara>
+         <para><literal>yes</literal> no</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>may destroy disk content</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_CACHE_SIZE</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>LVM partition for cache size</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_WORKER_ROOT_SIZE</simpara>
+         <para>OBS_CACHE_DIR</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>LVM partition for root size</simpara>
+         <para>cache directory for downloaded packages</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_WORKER_SWAP_SIZE</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>LVM partition for swap size</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_WORKER_BINARIES _PROXY</simpara>
+         <para>OBS_CACHE_SIZE</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>proxy service for caching binaries</simpara>
+         <para>package cache size</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>OBS_ROOT_SSHD_KEY_URL</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>ssh pub key to allow root user login</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>for mass deployment</simpara>
+         <para>in MB</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>OBS_WORKER_SCRIPT_URL</simpara>
+         <para>OBS_WORKER_NICE _LEVEL</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>URL to the initial script</simpara>
+         <para>nice level of running workers</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para><literal>18</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_TYPE</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>VM type</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><emphasis role="strong">auto</emphasis> xen kvm lxc zvm
+          emulator:$arch none</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_KERNEL</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Set kernel used by worker</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>none</literal> (/boot/vmlinuz)</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>KVM option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_INITRD</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>initrd used by worker</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>none</literal> (/boot/vmlinuz)</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>KVM option</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_DISK_AUTOSETUP _ROOT_FILESIZE</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Autosetup disk size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>4096</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>in MB</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_DISK_AUTOSETUP _SWAP_FILESIZE</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Autosetup swap size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>1024</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>on MB</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_DISK_AUTOSETUP _FILESYSTEM</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>File System used with autosetup</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>ext3</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_DISK_AUTOSETUP _MOUNT_OPTIONS</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Special mount options</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_VM_USE_TMPFS</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Enable build in memory</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>yes <literal>no</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>requires much memory</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_INSTANCE_MEMORY</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Memory allocated for a VM</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>512</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_STORAGE_AUTOSETUP</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>storage auto configuration</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>yes <literal>no</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>may destroy disk content</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_SETUP_WORKER _PARTITIONS</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>LVM via obsstoragesetup</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>take_all <literal>use_obs_vg</literal> none</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>may destroy disk content</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_WORKER_CACHE_SIZE</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>LVM partition for cache size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_WORKER_ROOT_SIZE</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>LVM partition for root size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_WORKER_SWAP_SIZE</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>LVM partition for swap size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_WORKER_BINARIES _PROXY</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>proxy service for caching binaries</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_ROOT_SSHD_KEY_URL</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>ssh pub key to allow root user login</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>for mass deployment</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>OBS_WORKER_SCRIPT_URL</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>URL to the initial script</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
         </entry>
        </row>
       </tbody>
      </tgroup>
     </table>
-    <simpara>For workers the settings could be declared in the <emphasis>/etc/buildhost.config</emphasis>
-file as well.</simpara>
-<screen>#
+    <para>For workers the settings could be declared in the
+      <emphasis>/etc/buildhost.config</emphasis> file as well.</para>
+    <screen>#
 # NOTE: all these options can be also declared in /etc/buildhost.config on each worker differently.
 #
 
@@ -1348,7 +1356,7 @@ OBS_LOG_DIR="/srv/obs/log"
 OBS_BASE_DIR=""
 
 ## Path:        Applications/OBS
-## Description: Automatically setup api and webui for OBS server, be warned, this will replace config files !
+## Description: Automatically set up API and Web UI for OBS server, be warned, this will replace config files!
 ## Type:        ("yes" | "no")
 ## Default:     "no"
 ## Config:      OBS
@@ -1665,18 +1673,20 @@ OBS_ROOT_SSHD_KEY_URL=""
 # This is a hook for doing special things in your setup at boot time
 #
 OBS_WORKER_SCRIPT_URL=""</screen>
-   </section>
-   <section id="_bsconfig_pm">
+   </sect3>
+   <sect3 xml:id="_bsconfig_pm">
     <title>BSConfig.pm</title>
-    <simpara>This file is a perl module used by most backend scripts, it mainly defines global
-variables. Since it is a perl module, after changes the backend servers need
-to be restarted to become aware of the changes.</simpara>
-    <caution>
-     <simpara>If you have an perl syntax error in this file, the services won’t start.
-Most likely you forgot the semicolon on the end of a statement.</simpara>
-    </caution>
+    <para>This file is a perl module used by most back-end scripts, it
+     mainly defines global variables. Since it is a perl module, after changes
+     the back-end servers need to be restarted to become aware of the
+     changes.</para>
+    <warning>
+     <para>If there is a Perl syntax error in this file, the services will
+      not start. Most likely you forgot the semicolon on the end of a
+      statement.</para>
+    </warning>
     <table frame="all" rowsep="1" colsep="1">
-     <title>BSConfig.pm variables</title>
+     <title><filename>BSConfig.pm</filename> Variables</title>
      <tgroup cols="4">
       <colspec colname="col_1" colwidth="25*"/>
       <colspec colname="col_2" colwidth="25*"/>
@@ -1694,792 +1704,797 @@ Most likely you forgot the semicolon on the end of a statement.</simpara>
       <tbody>
        <row>
         <entry align="left" valign="top">
-         <simpara>$hostname</simpara>
+         <para>$hostname</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>FQDN of the backend host</simpara>
+         <para>FQDN of the back-end host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>leave as it is</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$ip</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>IP address of the backen host</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>leave as it is</simpara>
+         <para>leave as it is</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$frontend</simpara>
+         <para>$ip</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>FQDN of the frontend host</simpara>
+         <para>IP address of the back-end host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>undef</literal>
-         </simpara>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>set only if the frontend runs on another host</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$ipaccess</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Map of IP access rules</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Add all hosts if partition are used</simpara>
+         <para>leave as it is</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$srcserver</simpara>
+         <para>$frontend</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>URL of the source server</simpara>
+         <para>FQDN of the front-end host</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>'http://$hostname: 5352'</literal>
-         </simpara>
+         <para><literal>undef</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$reposerver</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>URL of the repo server</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>'http://$hostname: 5252'</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>partition specific</simpara>
+         <para>set only if the front-end runs on another host</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$serviceserver</simpara>
+         <para>$ipaccess</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>URL of the service server</simpara>
+         <para>Map of IP access rules</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>'http://$hostname: 5152'</literal>
-         </simpara>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$workersrcserver</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>URL of the source server</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>optional for worker access</simpara>
+         <para>Add all hosts if partition are used</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$workerreposerver</simpara>
+         <para>$srcserver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>URL of the repo server</simpara>
+         <para>URL of the source server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para><literal>'http://$hostname: 5352'</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>optional for worker access</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$servicedir</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Path to the service scripts</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>/usr/lib/obs/service/</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$servicetempdir</simpara>
+         <para>$reposerver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Path to service temp dir</simpara>
+         <para>URL of the repo server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>/var/tmp/</literal>
-         </simpara>
+         <para><literal>'http://$hostname: 5252'</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>optional</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$serviceroot</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Prefix to servicedir</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>optional</simpara>
+         <para>partition specific</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$service_maxchild</simpara>
+         <para>$serviceserver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Maximum number of concurrent jobs for source service</simpara>
+         <para>URL of the service server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>integer</simpara>
+         <para><literal>'http://$hostname: 5152'</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>unlimited if not set</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$gpg_standard_key</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Path to the standard sign key</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$hermesserver</simpara>
+         <para>$workersrcserver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>URL of the notification server</simpara>
+         <para>URL of the source server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>optional</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$hermesnamespace</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Namespace for the notifications</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>optional</simpara>
+         <para>optional for worker access</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$notification _plugin</simpara>
+         <para>$workerreposerver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>notification plugins</simpara>
+         <para>URL of the repo server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>optional</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>@reposervers</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>List of reposervers</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>("http://$hostname: 5252")</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>optional for worker access</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$bsdir</simpara>
+         <para>$servicedir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Path to the backend directory</simpara>
+         <para>Path to the service scripts</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>/srv/obs</literal>
-         </simpara>
+         <para><literal>/usr/lib/obs/service/</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$bsuser</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>OS user running the backend</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>obsrun</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$bsgroup</simpara>
+         <para>$servicetempdir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>OS group running the backend</simpara>
+         <para>Path to service temp dir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>obsrun</literal>
-         </simpara>
+         <para><literal>/var/tmp/</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$bsquotafile</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Package quota for projects</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>optional</simpara>
+         <para>optional</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$sched_asyncmode</simpara>
+         <para>$serviceroot</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Use asynchronus scheduler</simpara>
+         <para>Prefix to servicedir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Avoid issues with remote projects on slow networks</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$sched_startupmode</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Cold start mode</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>0</literal> 1 2</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>optional</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$disable_data_sync</simpara>
+         <para>$service_maxchild</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>fdatasync</simpara>
+         <para>Maximum number of concurrent jobs for source
+          service</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para>integer</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>may cause data corruption</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$rundir</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>backend communication</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>$bsdir/run</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>unlimited if not set</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$logdir</simpara>
+         <para>$gpg_standard_key</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>log directory</simpara>
+         <para>Path to the standard sign key</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>$bsdir/log</literal>
-         </simpara>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$nosharedtrees</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Shared trees 0=shared 1=not shared 2=not shared with fallback</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>0 1 <literal>2</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>optional for non-acl systems, should be set for access control</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$packtrack</simpara>
+         <para>$hermesserver</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>enable binary release tracking</simpara>
+         <para>URL of the notification server</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>[]</literal>
-         </simpara>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$limit_projects</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>limit visibility of projects for some architectures</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>optional</simpara>
+         <para>optional</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$relsync_pool</simpara>
+         <para>$hermesnamespace</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>allow seperation of releasenumber syncing per architecture</simpara>
+         <para>Namespace for the notifications</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$stageserver</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>stage server</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>rsync URI</simpara>
+         <para>optional</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$stageserver_sync</simpara>
+         <para>$notification _plugin</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Extra stage sync server</simpara>
+         <para>notification plugins</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>rsync URI</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$sign</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Path to sign script</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>optional</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$sign_project</simpara>
+         <para>@reposervers</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>call sign with --project &lt;project&gt;</simpara>
+         <para>List of reposervers</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>0 <literal>1</literal>
-         </simpara>
+         <para><literal>("http://$hostname: 5252")</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$keyfile</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Global sign key</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$localarch</simpara>
+         <para>$bsdir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Local architecture for product building</simpara>
+         <para>Path to the back-end directory</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para><literal>/srv/obs</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$buildlog_maxsize</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>worker max buildlog size</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>'500 * 1000000'</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>in bytes</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$buildlog_maxidle</simpara>
+         <para>$bsuser</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Time with no changes in the buildlog will kill the job</simpara>
+         <para>OS user running the back-end</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>'8 * 3600'</literal>
-         </simpara>
+         <para><literal>obsrun</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>in sec</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$xenstore_maxsize</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>xenstore size</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>'20 * 1000000'</literal>
-         </simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>current XEN has no xenstore anymore</simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$gettimeout</simpara>
+         <para>$bsgroup</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Max timeout for get</simpara>
+         <para>OS group running the back-end</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>'1 * 3600'</literal>
-         </simpara>
+         <para><literal>obsrun</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>in sec</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$workerhostcheck</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>check script for worker</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$powerhosts</simpara>
+         <para>$bsquotafile</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Worker with more resources</simpara>
+         <para>Package quota for projects</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>obsolete use contraints</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$powerpkgs</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>packages which need workers with more resources</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>obsolete use contraints</simpara>
+         <para>optional</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$norootexceptions</simpara>
+         <para>$sched_asyncmode</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>List of packages need to build as root</simpara>
+         <para>Use asynchronous scheduler</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$old_style_services</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Use old style source service handling</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara><literal>0</literal> 1</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
+         <para>Avoid issues with remote projects on slow networks</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$partition</simpara>
+         <para>$sched_startupmode</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Current partition</simpara>
+         <para>Cold start mode</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para><literal>0</literal> 1 2</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see <xref linkend="_distributed_setup"/>
-         </simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$partitioning</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Partition project mapping</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>see <xref linkend="_distributed_setup"/>
-         </simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$partitionservers</simpara>
+         <para>$disable_data_sync</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Partition server mapping</simpara>
+         <para>fdatasync</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para/>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see <xref linkend="_distributed_setup"/>
-         </simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$dispatch_adjust</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Adjust dispatch priority</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>see <xref linkend="_dispatch_adjust_array"/>
-         </simpara>
+         <para>may cause data corruption</para>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$publishedhook_use _regex</simpara>
+         <para>$rundir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Use regular expressions in publish hook map</simpara>
+         <para>back-end communication</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>0</literal> 1</simpara>
+         <para><literal>$bsdir/run</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see  <xref linkend="_publisher_hooks"/>
-         </simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="left" valign="top">
-         <simpara>$publishedhook</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>Publish hook map</simpara>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara/>
-        </entry>
-        <entry align="left" valign="top">
-         <simpara>see  <xref linkend="_publisher_hooks"/>
-         </simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$unpublishedhook_use _regex</simpara>
+         <para>$logdir</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Use regular expressions in unpublish hook map</simpara>
+         <para>log directory</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara><literal>0</literal> 1</simpara>
+         <para><literal>$bsdir/log</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see  <xref linkend="_unpublisher_hooks"/>
-         </simpara>
+         <para/>
         </entry>
        </row>
        <row>
         <entry align="left" valign="top">
-         <simpara>$unpublishedhook</simpara>
+         <para>$nosharedtrees</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>Unpublish hook map</simpara>
+         <para>Shared trees 0=shared 1=not shared 2=not shared with
+          fallback</para>
         </entry>
         <entry align="left" valign="top">
-         <simpara/>
+         <para>0 1 <literal>2</literal>
+         </para>
         </entry>
         <entry align="left" valign="top">
-         <simpara>see  <xref linkend="_unpublisher_hooks"/>
-         </simpara>
+         <para>optional for non-ACL systems, should be set for access
+          control</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$packtrack</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>enable binary release tracking</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>[]</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$limit_projects</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>limit visibility of projects for some architectures</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>optional</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$relsync_pool</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>allow separation of releasenumber syncing per
+          architecture</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$stageserver</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>stage server</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>rsync URI</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$stageserver_sync</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Extra stage sync server</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>rsync URI</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$sign</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Path to sign script</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$sign_project</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>call sign with --project &lt;project&gt;</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>0 <literal>1</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$keyfile</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Global sign key</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$localarch</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Local architecture for product building</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$buildlog_maxsize</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>worker max buildlog size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>'500 * 1000000'</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>in bytes</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$buildlog_maxidle</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Time with no changes in the buildlog will kill the
+          job</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>'8 * 3600'</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>in sec</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$xenstore_maxsize</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>xenstore size</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>'20 * 1000000'</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>current XEN has no xenstore anymore</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$gettimeout</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Max timeout for get</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>'1 * 3600'</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>in sec</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$workerhostcheck</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>check script for worker</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$powerhosts</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Worker with more resources</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>obsolete use constraints</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$powerpkgs</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>packages which need workers with more resources</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>obsolete use constraints</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$norootexceptions</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>List of packages need to build as root</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$old_style_services</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Use old style source service handling</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>0</literal> 1</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$partition</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Current partition</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_distributed_setup"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$partitioning</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Partition project mapping</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_distributed_setup"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$partitionservers</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Partition server mapping</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_distributed_setup"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$dispatch_adjust</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Adjust dispatch priority</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_dispatch_adjust_array"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$publishedhook_use _regex</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Use regular expressions in publish hook map</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>0</literal> 1</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_publisher_hooks"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$publishedhook</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Publish hook map</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_publisher_hooks"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$unpublishedhook_use _regex</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Use regular expressions in unpublish hook map</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>0</literal> 1</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_unpublisher_hooks"/>
+         </para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>$unpublishedhook</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>Unpublish hook map</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+        <entry align="left" valign="top">
+         <para>see <xref linkend="_unpublisher_hooks"/>
+         </para>
         </entry>
        </row>
       </tbody>
      </tgroup>
     </table>
-    <simpara>Example BSConfig.pm</simpara>
-<screen>#
+    <para>Example BSConfig.pm</para>
+    <screen>#
 # Copyright (c) 2006, 2007 Michael Schroeder, Novell Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -2510,7 +2525,7 @@ my $hostname = Net::Domain::hostfqdn() || 'localhost';
 # IP corresponding to hostname (only used for $ipaccess); fallback to localhost since inet_aton may fail to resolve at shutdown.
 my $ip = quotemeta inet_ntoa(inet_aton($hostname) || inet_aton("localhost"));
 
-my $frontend = undef; # FQDN of the WebUI/API server if it's not $hostname
+my $frontend = undef; # FQDN of the Web UI/API server if it's not $hostname
 
 # If defined, restrict access to the backend servers (bs_repserver, bs_srcserver, bs_service)
 our $ipaccess = {
@@ -2519,7 +2534,7 @@ our $ipaccess = {
    '.*' =&gt; 'worker',  # build results can be delivered from any client in the network
 };
 
-# IP of the WebUI/API Server (only used for $ipaccess)
+# IP of the Web UI/API Server (only used for $ipaccess)
 if ($frontend) {
   my $frontendip = quotemeta inet_ntoa(inet_aton($frontend) || inet_aton("localhost"));
   $ipaccess-&gt;{$frontendip} = 'rw' ; # in dotted.quad format
@@ -2694,270 +2709,251 @@ if (-r $hostconfig) {
 }
 
 1;</screen>
-   </section>
-  </section>
- </section>
- <section id="_log_files">
-  <title>Log files</title>
-  <section id="_frontend">
-   <title>Frontend</title>
-   <simpara>The frontend log files are foound under <emphasis>/srv/www/obs/api/log</emphasis>.</simpara>
-   <simpara>The following frontend logfiles exist:</simpara>
+   </sect3>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_log_files">
+  <title>Log Files</title>
+  <sect2 xml:id="_frontend">
+   <title>Front-end</title>
+   <para>The front-end log files are found under
+     <emphasis>/srv/www/obs/api/log</emphasis>.</para>
+   <para>The following front-end log files exist:</para>
    <itemizedlist>
     <listitem>
-     <simpara>
-apache_access.log - apache reqests
-</simpara>
+     <para> apache_access.log - apache requests </para>
     </listitem>
     <listitem>
-     <simpara>
-apache_error.log - errors from apache
-</simpara>
+     <para> apache_error.log - errors from apache </para>
     </listitem>
     <listitem>
-     <simpara>
-backend_access.log - API → backend requests
-</simpara>
+     <para> backend_access.log - API → backend requests </para>
     </listitem>
     <listitem>
-     <simpara>
-clockworkd.clock.output → timer event log
-</simpara>
+     <para> clockworkd.clock.output → timer event log </para>
     </listitem>
     <listitem>
-     <simpara>
-delayed_job.log → delayed job log
-</simpara>
+     <para> delayed_job.log → delayed job log </para>
     </listitem>
     <listitem>
-     <simpara>
-production.log→ main ruby log
-</simpara>
+     <para> production.log→ main ruby log </para>
     </listitem>
     <listitem>
-     <simpara>
-production.searchd.log - search daemon log
-</simpara>
+     <para> production.searchd.log - search daemon log </para>
     </listitem>
     <listitem>
-     <simpara>
-production.searchd.query.log - search request logs
-</simpara>
+     <para> production.searchd.query.log - search request logs </para>
     </listitem>
    </itemizedlist>
-  </section>
-  <section id="_backend">
-   <title>Backend</title>
-   <simpara>The backend logfiles are found by default under <emphasis>/srv/obs/log/</emphasis>.</simpara>
-   <simpara>The following backend logfiles exist:</simpara>
+  </sect2>
+  <sect2 xml:id="_backend">
+   <title>Back-end</title>
+   <para>The back-end log files are found by default under
+     <emphasis>/srv/obs/log/</emphasis>.</para>
+   <para>The following back-end log files exist:</para>
    <itemizedlist>
     <listitem>
-     <simpara>
-dispatcher.log - dispatcher log
-</simpara>
+     <para> dispatcher.log - dispatcher log </para>
     </listitem>
     <listitem>
-     <simpara>
-dodup.log - download on demand log (since 2.7)
-</simpara>
+     <para> dodup.log - download on demand log (since 2.7) </para>
     </listitem>
     <listitem>
-     <simpara>
-publisher.log - publisher log
-</simpara>
+     <para> publisher.log - publisher log </para>
     </listitem>
     <listitem>
-     <simpara>
-rep_server.log - repo server log
-</simpara>
+     <para> rep_server.log - repo server log </para>
     </listitem>
     <listitem>
-     <simpara>
-scheduler_&lt;arch&gt;.log - scheduler log for each architecture
-</simpara>
+     <para> scheduler_&lt;arch&gt;.log - scheduler log for each architecture
+     </para>
     </listitem>
     <listitem>
-     <simpara>
-signer.log - sign service log
-</simpara>
+     <para> signer.log - sign service log </para>
     </listitem>
     <listitem>
-     <simpara>
-src_server.log - source server log
-</simpara>
+     <para> src_server.log - source server log </para>
     </listitem>
     <listitem>
-     <simpara>
-src_service.log - source service daemon log
-</simpara>
+     <para> src_service.log - source service daemon log </para>
     </listitem>
     <listitem>
-     <simpara>
-warden.log - warden log
-</simpara>
+     <para> warden.log - warden log </para>
     </listitem>
    </itemizedlist>
-  </section>
- </section>
- <section id="_src_obs_tree">
-  <title>/srv/obs tree</title>
-  <simpara>The default backend data directory is located under
-<emphasis>/srv/obs/</emphasis>. Here are a bunch of subdirectories used for communication
-between the different server, to store data, status information und logs.
-Here is one file <emphasis role="strong"><emphasis>configuration.xml</emphasis></emphasis> in the top directory, which stores
-the global OBS configuration for the backend. You should not modify this
-file directely, but use the API /configuration interface instead, since this
-information needs to kept in sync with the frontend.</simpara>
-  <section id="_build_directory">
-   <title>build directory</title>
-   <simpara>In this subdirectory managed by the repo server daemon, all repository data,
-meta data and build results are stored in a hierachical tree.</simpara>
-   <simpara>Example build directory tree of a binary imported distribution (OpenSuSE:13.2)
-and a small test project with 3 packages:</simpara>
-<screen>├── openSUSE:13.2
-│   └── standard
-│       ├── i586
-│       │   └── :full
-│       └── x86_64
-│           └── :full
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_src_obs_tree">
+  <title><filename>/srv/obs</filename> Tree</title>
+  <para>The default back-end data directory is located under
+    <emphasis>/srv/obs/</emphasis>. Here are a bunch of subdirectories used for
+   communication between the different server, to store data, status
+   information and logs. Here is one file <emphasis role="strong"
+     ><emphasis>configuration.xml</emphasis></emphasis> in the top directory,
+   which stores the global OBS configuration for the back-end. You should not
+   modify this file directly, but use the API /configuration interface instead,
+   since this information needs to kept in sync with the front-end.</para>
+  <sect2 xml:id="_build_directory">
+   <title><filename>build</filename> Directory</title>
+   <para>In this subdirectory managed by the repo server daemon, all
+    repository data, meta data and build results are stored in a hierarchical
+    tree.</para>
+   <para>Example build directory tree of a binary imported distribution
+    (OpenSUSE:13.2) and a small test project with 3 packages:</para>
+   <screen>├── openSUSE:13.2
+│   └── standard
+│       ├── i586
+│       │   └── :full
+│       └── x86_64
+│           └── :full
 ├── Test1
-│   └── os13.2
-│       ├── i586
-│       │   ├── :full
-│       │   ├── :logfiles.fail
-│       │   ├── :logfiles.success
-│       │   ├── :meta
-│       │   ├── :repo
-│       │   └── rsync
-│       │   └── srtp
-│       │   └── wget
-│       └── x86_64
-│           ├── :full
-│           ├── :logfiles.fail
-│           ├── :logfiles.success
-│           ├── :meta
-│           ├── :repo
-│           └── rsync
-│           └── srtp
-│           └── wget</screen>
-  </section>
-  <section id="_db_directory">
-   <title>db directory</title>
-   <simpara>Backend database root directory use by the source server, repo server
-scheduler and publisher. Nobody should touch this.</simpara>
-  </section>
-  <section id="_diffcache_directory">
-   <title>diffcache directory</title>
-   <simpara>Cache for source server compare operations.</simpara>
-  </section>
-  <section id="_events_directory">
-   <title>events directory</title>
-   <simpara>Communication between services.</simpara>
-  </section>
-  <section id="_info_directory">
-   <title>info directory</title>
-   <simpara>Scheduler information managed by the scheduler and used by the repo server.</simpara>
-  </section>
-  <section id="_jobs_directory">
-   <title>jobs directory</title>
-   <simpara>The build jobs are stored in the /srv/obs/jobs directory. They are organized
-bybuild architecture:</simpara>
-<screen>jobs
+│   └── os13.2
+│       ├── i586
+│       │   ├── :full
+│       │   ├── :logfiles.fail
+│       │   ├── :logfiles.success
+│       │   ├── :meta
+│       │   ├── :repo
+│       │   ├── rsync
+│       │   ├── srtp
+│       │   └── wget
+│       └── x86_64
+│           ├── :full
+│           ├── :logfiles.fail
+│           ├── :logfiles.success
+│           ├── :meta
+│           ├── :repo
+│           ├── rsync
+│           ├── srtp
+│           └── wget</screen>
+  </sect2>
+  <sect2 xml:id="_db_directory">
+   <title><filename>db</filename> Directory</title>
+   <para>Back-end database root directory use by the source server, repo
+    server scheduler and publisher. Nobody should touch this.</para>
+  </sect2>
+  <sect2 xml:id="_diffcache_directory">
+   <title><filename>diffcache</filename> Directory</title>
+   <para>Cache for source server compare operations.</para>
+  </sect2>
+  <sect2 xml:id="_events_directory">
+   <title><filename>events</filename> Directory</title>
+   <para>Communication between services.</para>
+  </sect2>
+  <sect2 xml:id="_info_directory">
+   <title><filename>info</filename> Directory</title>
+   <para>Scheduler information managed by the scheduler and used by the repo
+    server.</para>
+  </sect2>
+  <sect2 xml:id="_jobs_directory">
+   <title><filename>jobs</filename> Directory</title>
+   <para>The build jobs are stored in the /srv/obs/jobs directory. They are
+    organized bybuild architecture:</para>
+   <screen>jobs
 ├── armv7l
 ├── i586
 ├── load
 └── x86_64
-    └── Release:Stable::SLE-12_GA::CI-demo-36db80552b735e193dced13f058f866f</screen>
-   <simpara>The jobs/load file contains statistical data about the build jobs.</simpara>
-  </section>
-  <section id="_log_directory">
-   <title>log directory</title>
-   <simpara>Contains the log files of the backend daemons.</simpara>
-  </section>
-  <section id="_projects_directory">
-   <title>projects directory</title>
-   <simpara>Contains the project hierachy and meta data under revision control.</simpara>
-  </section>
-  <section id="_remotecache_directory">
-   <title>remotecache directory</title>
-   <simpara>Cache for remote repository information.</simpara>
-  </section>
-  <section id="_repos_directory">
-   <title>repos directory</title>
-   <simpara>Directory managed by the publisher to collect build results, also used by
-the repo server and scheduler to find build results.</simpara>
-  </section>
-  <section id="_repos_sync_directory">
-   <title>repos_sync directory</title>
-   <simpara>Directory with files pointing to the project root directories, helper for
-publisher rsync.</simpara>
-  </section>
-  <section id="_run_directory">
-   <title>run directory</title>
-   <simpara>State and lock information for the backend daemons</simpara>
-  </section>
-  <section id="_sources_directory">
-   <title>sources directory</title>
-   <simpara>All package sources under revision control in one directory per package, managed by the source server.
-Package sources are by default deduplicated across all projects, as long a source
-file has the same MD5 sum, it is only stored once.
-A pseudo <emphasis role="strong"><emphasis>'_project'</emphasis></emphasis> package exist in the directory containing the
-project meta data revisions. <emphasis role="strong"><emphasis>':service'</emphasis></emphasis> and <emphasis role="strong"><emphasis>':upload'</emphasis></emphasis> are temporary directories used by
-the source server.</simpara>
-   <simpara>Example sources directory structure:</simpara>
-<screen>sources/
+    └── Release:Stable::SLE-12_GA::CI-demo-36db80552b735e193dced13f058f866f</screen>
+   <para>The jobs/load file contains statistical data about the build
+    jobs.</para>
+  </sect2>
+  <sect2 xml:id="_log_directory">
+   <title><filename>log</filename> Directory</title>
+   <para>Contains the log files of the back-end daemons.</para>
+  </sect2>
+  <sect2 xml:id="_projects_directory">
+   <title><filename>projects</filename> Directory</title>
+   <para>Contains the project hierarchy and meta data under revision
+    control.</para>
+  </sect2>
+  <sect2 xml:id="_remotecache_directory">
+   <title><filename>remotecache</filename> Directory</title>
+   <para>Cache for remote repository information.</para>
+  </sect2>
+  <sect2 xml:id="_repos_directory">
+   <title><filename>repos</filename> Directory</title>
+   <para>Directory managed by the publisher to collect build results, also
+    used by the repo server and scheduler to find build results.</para>
+  </sect2>
+  <sect2 xml:id="_repos_sync_directory">
+   <title><filename>repos_sync</filename> Directory</title>
+   <para>Directory with files pointing to the project root directories,
+    helper for publisher rsync.</para>
+  </sect2>
+  <sect2 xml:id="_run_directory">
+   <title><filename>run</filename> Directory</title>
+   <para>State and lock information for the back-end daemons</para>
+  </sect2>
+  <sect2 xml:id="_sources_directory">
+   <title><filename>sources</filename> Directory</title>
+   <para>All package sources under revision control in one directory per
+    package, managed by the source server. Package sources are by default
+    deduplicated across all projects, as long a source file has the same MD5
+    sum, it is only stored once. A pseudo <emphasis role="strong"
+      ><emphasis>'_project'</emphasis></emphasis> package exist in the
+    directory containing the project meta data revisions. <emphasis
+     role="strong"><emphasis>':service'</emphasis></emphasis> and <emphasis
+     role="strong"><emphasis>':upload'</emphasis></emphasis> are temporary
+    directories used by the source server.</para>
+   <para>Example sources directory structure:</para>
+   <screen>sources/
 ├── CI-demo
-...
+[...]
 ├── srtp
 ├── test1
 ├── _project
 ├── :service
-├── :upload</screen>
-  </section>
-  <section id="_trees_directory">
-   <title>trees directory</title>
-   <simpara>Revision control data for project and packages, managed by the source
-server.</simpara>
-  </section>
-  <section id="_upload_directory">
-   <title>upload directory</title>
-   <simpara>Temporary directory for uploading files for other backend components.</simpara>
-  </section>
-  <section id="_workers_directory">
-   <title>workers directory</title>
-   <simpara>Worker information</simpara>
-  </section>
- </section>
- <section id="_meta_data">
-  <title>Meta data</title>
-  <section id="_obs_revision_control">
-   <title>OBS revision control</title>
-   <simpara>This section gives a short generic overview how the revision informations are stored
-in the OBS backend for packages and projects.
-The OBS backend stores all files in a light weight content based hierarchical tree. Each
-file is hashed (with MD5) and stored with the hash as part of the filename
-under the <emphasis>/srv/obs/tree</emphasis> or <emphasis>/srv/obs/sources</emphasis> directories.
-The revision information is stored in separate files by the Source Server int he <emphasis>/srv/obs/projects directory</emphasis>.</simpara>
-   <section id="_obs_revision_control_files">
+└── :upload</screen>
+  </sect2>
+  <sect2 xml:id="_trees_directory">
+   <title><filename>trees</filename> Directory</title>
+   <para>Revision control data for project and packages, managed by the
+    source server.</para>
+  </sect2>
+  <sect2 xml:id="_upload_directory">
+   <title><filename>upload</filename> Directory</title>
+   <para>Temporary directory for uploading files for other back-end
+    components.</para>
+  </sect2>
+  <sect2 xml:id="_workers_directory">
+   <title><filename>workers</filename> Directory</title>
+   <para>Worker information</para>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_meta_data">
+  <title>Metadata</title>
+  <sect2 xml:id="_obs_revision_control">
+   <title>&obsa; Revision Control</title>
+   <para>This section gives a short generic overview how the revision
+    information are stored in the OBS back-end for packages and projects. The
+    OBS back-end stores all files in a light weight content based hierarchical
+    tree. Each file is hashed (with MD5) and stored with the hash as part of
+    the filename under the <emphasis>/srv/obs/tree</emphasis> or
+     <emphasis>/srv/obs/sources</emphasis> directories. The revision
+    information is stored in separate files by the Source Server in the
+     <emphasis>/srv/obs/projects directory</emphasis>.</para>
+   <sect3 xml:id="_obs_revision_control_files">
     <title>OBS revision control files</title>
-    <simpara>The revision information is stored in simple CSV like file format with a bar
-(|) as delimiter between the 8 columns. The files do have the extension
-<emphasis>.rev</emphasis> for package/project revision data  and <emphasis>.mref</emphasis> for meta revision
-data. The hash then points to a &lt;hash&gt;-MD5SUMS file in the <emphasis>/srv/obs/tree/</emphasis>
-directories which have the file list with MD5 hashes of this revision.
-The hashes in this file list are pointing to the source files in the
-<emphasis>/srv/obs/sources</emphasis> tree.</simpara>
-    <simpara>An example revision file:</simpara>
-<screen>1|1|56cdd3adb778089d1fcc49b92bb93e5b|0.9|1464005086|user4|initial version|
+    <para>The revision information is stored in simple CSV like file format
+     with a bar (|) as delimiter between the 8 columns. The files do have the
+     extension <emphasis>.rev</emphasis> for package/project revision data and
+      <emphasis>.mref</emphasis> for meta revision data. The hash then points
+     to a &lt;hash&gt;-MD5SUMS file in the <emphasis>/srv/obs/tree/</emphasis>
+     directories which have the file list with MD5 hashes of this revision. The
+     hashes in this file list are pointing to the source files in the
+      <emphasis>/srv/obs/sources</emphasis> tree.</para>
+    <para>An example revision file:</para>
+    <screen>1|1|56cdd3adb778089d1fcc49b92bb93e5b|0.9|1464005086|user4|initial version|
 2|2|fe7aa1ade5c9d005de738c234c90bc90|0.9|1464005304|user4|fix spec file|
 3|1|72c7986e694f45ab1a62779e64e92a8f|1.0|1464005339|user4|new version|
 4|2|699e9931e6f167d78e65bbe5853f592f|1.0|1464006221|user4|add patch file|
 5|1|0cfc3a2297f38d2aa9d8d0e98fc22a38|1.1|1464007797|user4|new version|</screen>
     <table frame="all" rowsep="1" colsep="1">
-     <title>The 8 columns</title>
-<?dbhtml table-width="80%"?>
-<?dbfo table-width="80%"?>
-<?dblatex table-width="80%"?>
+     <title>The 8 Columns</title>
+     <?dbhtml table-width="80%"?>
+     <?dbfo table-width="80%"?>
+     <?dblatex table-width="80%"?>
      <tgroup cols="4">
       <colspec colname="col_1" colwidth="85*"/>
       <colspec colname="col_2" colwidth="85*"/>
@@ -2974,143 +2970,149 @@ The hashes in this file list are pointing to the source files in the
       <tbody>
        <row>
         <entry align="center" valign="middle">
-         <simpara>1</simpara>
+         <para>1</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>revision number</simpara>
+         <para>revision number</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>ref</simpara>
+         <para>ref</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>no</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="center" valign="middle">
-         <simpara>2</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>version revision number</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>vref</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>yes</simpara>
+         <para>no</para>
         </entry>
        </row>
        <row>
         <entry align="center" valign="middle">
-         <simpara>3</simpara>
+         <para>2</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>hash</simpara>
+         <para>version revision number</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>srcmd5</simpara>
+         <para>vref</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>no</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="center" valign="middle">
-         <simpara>4</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>version</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>version</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>yes</simpara>
+         <para>yes</para>
         </entry>
        </row>
        <row>
         <entry align="center" valign="middle">
-         <simpara>5</simpara>
+         <para>3</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>time stamp</simpara>
+         <para>hash</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>time</simpara>
+         <para>srcmd5</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>no</simpara>
-        </entry>
-       </row>
-       <row>
-        <entry align="center" valign="middle">
-         <simpara>6</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>user</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>user</simpara>
-        </entry>
-        <entry align="center" valign="middle">
-         <simpara>no</simpara>
+         <para>no</para>
         </entry>
        </row>
        <row>
         <entry align="center" valign="middle">
-         <simpara>7</simpara>
+         <para>4</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>commit message</simpara>
+         <para>version</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>comment</simpara>
+         <para>version</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>yes</simpara>
+         <para>yes</para>
         </entry>
        </row>
        <row>
         <entry align="center" valign="middle">
-         <simpara>8</simpara>
+         <para>5</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>request id</simpara>
+         <para>time stamp</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>requestid</simpara>
+         <para>time</para>
         </entry>
         <entry align="center" valign="middle">
-         <simpara>yes</simpara>
+         <para>no</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="center" valign="middle">
+         <para>6</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>user</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>user</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>no</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="center" valign="middle">
+         <para>7</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>commit message</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>comment</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>yes</para>
+        </entry>
+       </row>
+       <row>
+        <entry align="center" valign="middle">
+         <para>8</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>request id</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>requestid</para>
+        </entry>
+        <entry align="center" valign="middle">
+         <para>yes</para>
         </entry>
        </row>
       </tbody>
      </tgroup>
     </table>
-    <simpara>Depending for what kind of target (package, project or meta data) is used,
-fields can be empty or have special values e.g. <emphasis role="strong">unknown</emphasis> for the version.</simpara>
-    <simpara>Example MD5SUMS file</simpara>
-<screen>/srv/obs # cat trees/Test1/package1/56cdd3adb778089d1fcc49b92bb93e5b-MD5SUMS
+    <para>
+     Depending on the target (package, project or meta data)
+     used, fields can be empty or have special values, for example,
+     <literal>unknown</literal> for the version.
+    </para>
+    <para>Example MD5SUMS file</para>
+    <screen>/srv/obs # cat trees/Test1/package1/56cdd3adb778089d1fcc49b92bb93e5b-MD5SUMS
 0a17daaa913df9e50ee65e83a1898363  package1.spec
 1f810b3521242a98333b7bbf6b2b7ef7  test1.sh</screen>
-   </section>
-   <section id="_obs_revision_api">
-    <title>OBS revision API</title>
-    <simpara>The revision info can be retrieved via API calls for the
-specific package, e.g using <literal>/source/&lt;project&gt;/&lt;package&gt;/_history</literal>.</simpara>
-    <simpara>Specific revisions of files can be retrieved with the optional "rev=N"
-parameter e.g. <emphasis>/source/&lt;project&gt;/&lt;package&gt;/&lt;file&gt;?rev=N</emphasis>.</simpara>
-    <simpara>On PUT and POST methods for files the optional "comment=some+comment" can be
-used to set a commit message.</simpara>
-   </section>
-  </section>
-  <section id="_project_meta_data">
-   <title>Project meta data</title>
-   <simpara>Project meta data are XML files containing the meta project infomation, such
-as title, description, related user and groups with roles, build settings, repository
-settings, publish setiings, debug settings and more.</simpara>
+   </sect3>
+   <sect3 xml:id="_obs_revision_api">
+    <title>&obsa; Revision API</title>
+    <para>The revision info can be retrieved via API calls for the specific
+     package, for example, using
+      <literal>/source/&lt;project&gt;/&lt;package&gt;/_history</literal>.</para>
+    <para>Specific revisions of files can be retrieved with the optional
+     "rev=N" parameter, for example,
+      <emphasis>/source/&lt;project&gt;/&lt;package&gt;/&lt;file&gt;?rev=N</emphasis>.</para>
+    <para>On PUT and POST methods for files the optional
+     "comment=some+comment" can be used to set a commit message.</para>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="_project_meta_data">
+   <title>Project Metadata</title>
+   <para>Project metadata are XML files containing the meta project
+    information, such as title, description, related user and groups with
+    roles, build settings, repository settings, publish settings, debug
+    settings and more.</para>
    <table frame="all" rowsep="1" colsep="1">
-    <title>Project meta XML</title>
+    <title>Project Meta XML</title>
     <tgroup cols="3">
      <colspec colname="col_1" colwidth="25*"/>
      <colspec colname="col_2" colwidth="25*"/>
@@ -3125,207 +3127,208 @@ settings, publish setiings, debug settings and more.</simpara>
      <tbody>
       <row>
        <entry align="left" valign="top">
-        <simpara>project</simpara>
+        <para>project</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>name</simpara>
+        <para>name</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>project name</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>title</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>Short description</simpara>
+        <para>project name</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>description</simpara>
+        <para>title</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>Developer information</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>person</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>userid</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>login name</simpara>
+        <para>Short description</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>person</simpara>
+        <para>description</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>role</simpara>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>role (maintainer, bugowner, …)</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>group</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>groupid</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>group name</simpara>
+        <para>Developer information</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>group</simpara>
+        <para>person</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>role</simpara>
+        <para>userid</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>role (maintainer, bugowner, …)</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>devel</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>An optional devel project</simpara>
+        <para>login name</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>build</simpara>
+        <para>person</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para>role</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>optional build flags</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>publish</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>optional publish flags</simpara>
+        <para>role (maintainer, bugowner, …)</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>useforbuild</simpara>
+        <para>group</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para>groupid</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>optional useforbuild flags</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>debuginfo</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara/>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>optional debuginfo flags</simpara>
+        <para>group name</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>binarydownload</simpara>
+        <para>group</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para>role</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>optional binarydownload flags</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>repository</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>name</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>name of the repository for build results</simpara>
+        <para>role (maintainer, bugowner, …)</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>repository path</simpara>
+        <para>devel</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara>project</simpara>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>name of the source project for remaining build requires</simpara>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <simpara>repository path</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>repository</simpara>
-       </entry>
-       <entry align="left" valign="top">
-        <simpara>name of repository in the source project</simpara>
+        <para>An optional devel project</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>repository arch</simpara>
+        <para>build</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>architecture name</simpara>
+        <para>optional build flags</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <simpara>remoteurl</simpara>
+        <para>publish</para>
        </entry>
        <entry align="left" valign="top">
-        <simpara/>
+        <para/>
        </entry>
        <entry align="left" valign="top">
-        <simpara>path to a remote OBS API for interconnect</simpara>
+        <para>optional publish flags</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>useforbuild</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>optional useforbuild flags</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>debuginfo</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>optional debuginfo flags</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>binarydownload</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>optional binarydownload flags</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>repository</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>name</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>name of the repository for build results</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>repository path</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>project</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>name of the source project for remaining build
+         requires</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>repository path</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>repository</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>name of repository in the source project</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>repository arch</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>architecture name</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>remoteurl</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+       <entry align="left" valign="top">
+        <para>path to a remote OBS API for interconnect</para>
        </entry>
       </row>
      </tbody>
     </tgroup>
    </table>
-   <simpara>Example project meta data:</simpara>
-<screen>&lt;project name="Test11"&gt;
+   <para>Example project metadata:</para>
+   <screen>&lt;project name="Test11"&gt;
   &lt;title&gt;Test project 11&lt;/title&gt;
   &lt;description&gt;Project for demo&lt;/description&gt;
   &lt;person userid="Admin" role="maintainer"/&gt;
@@ -3336,16 +3339,16 @@ settings, publish setiings, debug settings and more.</simpara>
     &lt;arch&gt;x86_64&lt;/arch&gt;
   &lt;/repository&gt;
 &lt;/project&gt;</screen>
-  </section>
-  <section id="_package_meta_data">
-   <title>Package meta data</title>
-   <simpara>XML file about package meta informations, like Title, description,
-related user and groups with roles, build settings, publish setiings, debug
-settings and more. Most XML tags are the same as for projects.</simpara>
-   <simpara>Example package meta data:</simpara>
-<screen>&lt;package name="test1" project="Test11"&gt;
+  </sect2>
+  <sect2 xml:id="_package_meta_data">
+   <title>Package Metadata</title>
+   <para>XML file about package meta information, like Title, description,
+    related user and groups with roles, build settings, publish settings, debug
+    settings and more. Most XML tags are the same as for projects.</para>
+   <para>Example package meta data:</para>
+   <screen>&lt;package name="test1" project="Test11"&gt;
   &lt;title&gt;A test package for learning&lt;/title&gt;
-  &lt;description&gt;A example test package for learning.&amp;#13;
+  &lt;description&gt;An example test package for learning.&amp;#13;
 &lt;/description&gt;
   &lt;person userid="user5" role="bugowner"/&gt;
   &lt;person userid="user5" role="maintainer"/&gt;
@@ -3359,13 +3362,13 @@ settings and more. Most XML tags are the same as for projects.</simpara>
     &lt;disable/&gt;
   &lt;/debuginfo&gt;
 &lt;/package&gt;</screen>
-  </section>
-  <section id="_attribute_meta_data">
-   <title>Attribute meta data</title>
-   <simpara>Attributes can be used to add special information to packages. Attributes
-can be used to trigger special actions.</simpara>
-   <simpara>Example atrribute data:</simpara>
-<screen>&lt;attributes&gt;
+  </sect2>
+  <sect2 xml:id="_attribute_meta_data">
+   <title>Attribute Metadata</title>
+   <para>Attributes can be used to add special information to packages.
+    Attributes can be used to trigger special actions.</para>
+   <para>Example attribute data:</para>
+   <screen>&lt;attributes&gt;
   &lt;attribute name="Issues" namespace="OBS"/&gt;
   &lt;attribute name="AutoCleanup" namespace="OBS"&gt;
     &lt;value&gt;2016-06-30 00:00:00&lt;/value&gt;
@@ -3374,15 +3377,15 @@ can be used to trigger special actions.</simpara>
     &lt;value&gt;&lt;/value&gt;
   &lt;/attribute&gt;
 &lt;/attributes&gt;</screen>
-  </section>
-  <section id="_job_files">
-   <title>Job files</title>
-   <simpara>Jobs are stored by the scheduler in the <emphasis>/srv/obs/jobs</emphasis> directory and
-contain the build setup information for the package, e.g. reference to the
-exact source version, build dependencies, build repository information,
-timestamps.</simpara>
-   <simpara>Sample job file:</simpara>
-<screen>&lt;buildinfo project="Release:Stable" repository="SLE-12_GA" package="CI-demo"
+  </sect2>
+  <sect2 xml:id="_job_files">
+   <title>Job Files</title>
+   <para>Jobs are stored by the scheduler in the
+     <filename>/srv/obs/jobs</filename> directory and contain the build setup
+    information for the package, for example, a reference to the exact source version,
+    build dependencies, build repository information, timestamps.</para>
+   <para>Sample job file:</para>
+   <screen>&lt;buildinfo project="Release:Stable" repository="SLE-12_GA" package="CI-demo"
 srcserver="http://obs.b1-systems.de:5352"
 reposerver="http://obs.b1-systems.de:5252"&gt;
   &lt;job&gt;Release:Stable::SLE-12_GA::
@@ -3415,12 +3418,12 @@ reposerver="http://obs.b1-systems.de:5252"&gt;
   &lt;bdep name="libbz2-1" preinstall="1" notmeta="1" /&gt;
   &lt;bdep name="libgcc_s1" preinstall="1" notmeta="1" /&gt;
   &lt;bdep name="m4" preinstall="1" notmeta="1" /&gt;
-...
+[...]
   &lt;path project="Release:Stable" repository="SLE-12_GA"
  server="http://obs.b1-systems.de:5252" /&gt;
   &lt;path project="SUSE:SLE-12:GA" repository="standard"
  server="http://obs.b1-systems.de:5252" /&gt;
 &lt;/buildinfo&gt;</screen>
-  </section>
- </section>
+  </sect2>
+ </sect1>
 </chapter>

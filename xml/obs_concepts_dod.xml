@@ -1,287 +1,240 @@
-<section id="concept_dod">
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<sect1 version="5.1" xml:id="concept_dod"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Download on Demand Repositories (DoD)</title>
- <section>
+ <sect2>
   <title>Motivation</title>
-  <para>
-   In a DoD repository external software repositories can be configured which
-   are used for dependency resolution and where packages will be downloaded at
-   build time. A DoD repository has some main advantages in comparison to
-   binary import projects:
-  </para>
+  <para> In a DoD repository external software repositories can be configured
+   which are used for dependency resolution and where packages will be
+   downloaded at build time. A DoD repository has some main advantages in
+   comparison to binary import projects: </para>
   <itemizedlist>
    <listitem>
-    <simpara>
-        less disk usage as only really required packages will be downloaded
-      </simpara>
+    <para> less disk usage as only really required packages will be downloaded
+    </para>
    </listitem>
    <listitem>
-    <simpara>
-        automatic package updates when new upstream releases are availible
-      </simpara>
+    <para> automatic package updates when new upstream releases are available
+    </para>
    </listitem>
    <listitem>
-    <simpara>
-        simple to configure in project meta with no for shell access to repo servers
-      </simpara>
+    <para> simple to configure in project meta with no for shell access to repo
+     servers </para>
    </listitem>
   </itemizedlist>
-  <para>
-   In download repotypes where package checksums can be verified (e.g.
+  <para> In download repotypes where package checksums can be verified (e.g.
    susetags, rpmmd and deb), we recommend that you use a mirror server URL in
    &lt;download&gt; in order to reduce traffic on the master server and
    configure a &lt;master&gt; with an <command>https</command> url and a
-   <command>sslfinger</command> in order to avoid man in the middle attacks by
-   peer verification.
-  </para>
- </section>
- <section>
+    <command>sslfinger</command> in order to avoid man in the middle attacks by
+   peer verification. </para>
+ </sect2>
+ <sect2>
   <title>XML Document Hierarchy</title>
-<screen><![CDATA[
-<project>
-  <repository>
-    <download>
-      <master/> (optional)
-      <pubkey/> (optional)
-    </download>
-  </repository>
-</project>
-      ]]></screen>
- </section>
- <section>
+  <screen>
+&lt;project&gt;
+  &lt;repository&gt;
+    &lt;download&gt;
+      &lt;master/&gt; (optional)
+      &lt;pubkey/&gt; (optional)
+    &lt;/download&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;
+      </screen>
+ </sect2>
+ <sect2>
   <title>The Daemon</title>
-  <para>
-   The bs_dodup daemon periodically checks for new meta data in remote
-   repositories. This daemon can be enabled for startup with the command
-<screen>
-            systemctl enable obsdodup.service
-          </screen>
-   and can be started with
-<screen>
-            systemctl start obsdodup.service
-          </screen>
-  </para>
- </section>
- <section>
-  <title>The &lt;download&gt; element</title>
-  <para>
-   mandatory attributes:
+  <para> The bs_dodup daemon periodically checks for new meta data in remote
+   repositories. This daemon can be enabled for startup with the command</para>
+   <screen>systemctl enable obsdodup.service</screen>
+   <para> and can be started with</para>
+   <screen>systemctl start obsdodup.service</screen>
+ </sect2>
+ <sect2>
+  <title>The <tag>download</tag> Element</title>
+  <para>mandatory attributes:</para>
+  <itemizedlist>
+   <listitem>
+    <para> arch </para>
+   </listitem>
+   <listitem>
+    <para> url </para>
+   </listitem>
+   <listitem>
+    <para> repotype </para>
+   </listitem>
+  </itemizedlist>
+ </sect2>
+ <sect2>
+  <title>The <tag>master</tag> Subelement</title>
+  <para> The <command>&lt;master&gt;</command> tag as shown in the rpmmd
+   example below is optional but strongly recommended for security reasons. </para>
+  <para> Verification is supported in the following repotypes</para> 
    <itemizedlist>
     <listitem>
-     <simpara>
-              arch
-            </simpara>
+     <para> susetags </para>
     </listitem>
     <listitem>
-     <simpara>
-              url
-            </simpara>
+     <para> rpmmd </para>
     </listitem>
     <listitem>
-     <simpara>
-              repotype
-            </simpara>
+     <para> deb </para>
     </listitem>
    </itemizedlist>
-  </para>
- </section>
- <section>
-  <title>The &lt;master&gt; subelement</title>
-  <para>
-   The <command>&lt;master&gt;</command> tag as shown in the rpmmd example
-   below is optional but strongly recommended for security reasons.
-  </para>
-  <para>
-   Verification is supported in the following repotypes
-   <itemizedlist>
-    <listitem>
-     <simpara>
-              susetags 
-            </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-              rpmmd
-            </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-              deb
-            </simpara>
-    </listitem>
-   </itemizedlist>
-  </para>
-  <para>
-   This option could be defined by any valid URL (HTTP and HTTPS) to the
-   origin of the repository but it's stronly recommended to use
-   <command>https</command> with a <command>sslfingerprint</command> to
+  <para> This option could be defined by any valid URL (HTTP and HTTPS) to the
+   origin of the repository but it is strongly recommended to use
+    <command>https</command> with a <command>sslfingerprint</command> to
    bs_dodup possibility to verify its peer in order to avoid man-in-the-middle
-   attacks. The download URL can be a mirror as we validate package
-   checksums found in repo data.
-  </para>
-  <para>
-   You can easily query the SSL fingerprint of a remote server with the
-   following command:
-<screen><![CDATA[
-openssl s_client -connect <host>:<port> < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout
-        ]]></screen>
-  </para>
- </section>
- <section>
-  <title>The &lt;pubkey&gt; subelement</title>
-  <para>
-   The pubkey element contains one or more GPG public keys in order to verify
-   repository information but not packages. For an example, look at the
-   repotype "deb" documentation below.
-  </para>
- </section>
- <section>
+   attacks. The download URL can be a mirror as we validate package checksums
+   found in repo data. </para>
+  <para> You can easily query the SSL fingerprint of a remote server with the
+   following command:</para>
+   <screen>openssl s_client -connect &lt;host&gt;:&lt;port&gt; &lt; /dev/null 2&gt;/dev/null | openssl x509 -fingerprint -noout</screen>
+ </sect2>
+ <sect2>
+  <title>The <tag>pubkey</tag> Subelement</title>
+  <para> The pubkey element contains one or more GPG public keys in order to
+   verify repository information but not packages. For an example, look at the
+   repotype "deb" documentation below. </para>
+ </sect2>
+ <sect2>
   <title>Repository Types</title>
-  <para></para>
-  <section>
-   <title>YAST sources (susetags)</title>
+  <para/>
+  <sect3>
+   <title>YAST Sources (susetags)</title>
    <para>
     <command>Example:</command>
    </para>
-<screen><![CDATA[
-<project name="My::SuSE::CD">
+   <screen>
+&lt;project name="My::SuSE::CD"&gt;
 
-  ...
+  [...]
 
-  <repository name="standard">
-    <download arch="x86_64" url="http://mirror.example.org/path/to/iso" repotype="susetags" />
-    <download arch="i586" url="http://mirror.example.org/path/to/iso" repotype="susetags" />
-    <arch>x86_64</arch>
-    <arch>i586</arch>
-  </repository>
-</project>
-        ]]></screen>
-  </section>
-  <section>
-   <title>RPM sources (rpmmd)</title>
+  &lt;repository name="standard"&gt;
+    &lt;download arch="x86_64" url="http://mirror.example.org/path/to/iso" repotype="susetags" /&gt;
+    &lt;download arch="i586" url="http://mirror.example.org/path/to/iso" repotype="susetags" /&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;arch&gt;i586&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;
+        </screen>
+  </sect3>
+  <sect3>
+   <title>RPM Sources (rpmmd)</title>
    <para>
     <command>Example:</command>
    </para>
-   <para>
-<screen><![CDATA[
-<project name="Fedora:Rawhide">
+   <screen>
+&lt;project name="Fedora:Rawhide"&gt;
 
-  ...
+  [...]
 
-  <repository name="standard">
-    <download arch="x86_64" url="http://mirror.example.org/fedora/rawhide/x86_64/os" repotype="rpmmd">
-      <master url="https://master.example.org/whereever/fedora/rawhide/x86_64/os" sslfingerprint="sha256:0a64..0303"/>
-    </download>
-    <download arch="i586" url="http://mirror.example.org/fedora/rawhide/i386/os" repotype="rpmmd">
-      <master url="https://master.example.org/whereever/fedora/rawhide/i386/os" sslfingerprint="sha256:0a64..0303"/>
-    </download>
-    <arch>x86_64</arch>
-    <arch>i586</arch>
-  </repository>
-</project>
-          ]]></screen>
-   </para>
-  </section>
-  <section>
+  &lt;repository name="standard"&gt;
+    &lt;download arch="x86_64" url="http://mirror.example.org/fedora/rawhide/x86_64/os" repotype="rpmmd"&gt;
+      &lt;master url="https://master.example.org/whereever/fedora/rawhide/x86_64/os" sslfingerprint="sha256:0a64..0303"/&gt;
+    &lt;/download&gt;
+    &lt;download arch="i586" url="http://mirror.example.org/fedora/rawhide/i386/os" repotype="rpmmd"&gt;
+      &lt;master url="https://master.example.org/whereever/fedora/rawhide/i386/os" sslfingerprint="sha256:0a64..0303"/&gt;
+    &lt;/download&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;arch&gt;i586&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;</screen>
+
+  </sect3>
+  <sect3>
    <title>Apt Repository (deb)</title>
-   <para>
-    Apt supports two repository types, flat repositories and distribution
-    repositories.
-   </para>
-   <para>
-    The download url syntax for them is:
-   </para>
+   <para> Apt supports two repository types, flat repositories and distribution
+    repositories. </para>
+   <para> The download url syntax for them is: </para>
    <itemizedlist>
     <listitem>
-     <simpara>
-          &lt;baseurl&gt;/&lt;distribution&gt;/&lt;components&gt;
-        </simpara>
+     <para> &lt;baseurl&gt;/&lt;distribution&gt;/&lt;components&gt; </para>
     </listitem>
     <listitem>
-     <simpara>
-          &lt;flat_url&gt;/.[/&lt;components&gt;]
-        </simpara>
+     <para> &lt;flat_url&gt;/.[/&lt;components&gt;] </para>
     </listitem>
    </itemizedlist>
-   <para>
-    You can specify multiple components separated by a comma.
-   </para>
-   <para>
-    An empty components string is parsed as "main".
-   </para>
+   <para> You can specify multiple components separated by a comma. </para>
+   <para> An empty components string is parsed as "main". </para>
    <para>
     <command>Example:</command>
    </para>
-<screen><![CDATA[
-<project name="Debian:8">
+   <screen>
+&lt;project name="Debian:8"&gt;
 
-  ...
+  [...]
 
-  <repository name="ga">
-    <download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb">
-      <pubkey>
+  &lt;repository name="ga"&gt;
+    &lt;download arch="x86_64" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb"&gt;
+      &lt;pubkey&gt;
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.12 (GNU/Linux)
 
-...
+[...]
 
-      </pubkey>
-    </download>
-    <download arch="i586" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb">
-      <pubkey>
+      &lt;/pubkey&gt;
+    &lt;/download&gt;
+    &lt;download arch="i586" url="http://ftp.de.debian.org/debian/jessie/main" repotype="deb"&gt;
+      &lt;pubkey&gt;
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.12 (GNU/Linux)
 
-...
+[...]
 
-      </pubkey>
-    </download>
-    <arch>x86_64</arch>
-    <arch>i586</arch>
-  </repository>
-</project>
-        ]]></screen>
-  </section>
-  <section>
+      &lt;/pubkey&gt;
+    &lt;/download&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;arch&gt;i586&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;
+        </screen>
+  </sect3>
+  <sect3>
    <title>Arch Repository (arch)</title>
-   <para>
-    Please be aware that there is currently no way to verify the origin of repository
-    for Arch.
-   </para>
+   <para> Be aware that there is currently no way to verify the origin of
+    repository for Arch. </para>
    <para>
     <command>Example:</command>
    </para>
-<screen><![CDATA[
-<project name="Arch:Core">
-  
-  ...
-  
-  <repository name="standard">
-    <download arch="x86_64" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/x86_64" repotype="arch"/>
-    <download arch="i586" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/i686" repotype="arch"/>
-    <arch>x86_64</arch>
-    <arch>i586</arch>
-  </repository>
-</project>
-        ]]></screen>
-  </section>
-  <section>
+   <screen>
+&lt;project name="Arch:Core"&gt;
+
+  [...]
+
+  &lt;repository name="standard"&gt;
+    &lt;download arch="x86_64" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/x86_64" repotype="arch"/&gt;
+    &lt;download arch="i586" url="http://ftp5.gwdg.de/pub/linux/archlinux/core/os/i686" repotype="arch"/&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;arch&gt;i586&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;
+        </screen>
+  </sect3>
+  <sect3>
    <title>Mandriva Repository (mdk)</title>
    <para>
     <command>Example:</command>
    </para>
-<screen><![CDATA[
-<project name="Mageia:5">
+   <screen>
+&lt;project name="Mageia:5"&gt;
 
-  ...
+  [...]
 
-  <repository name="standard">
-    <download arch="x86_64" url="http://mirror.example.org/Mageia/distrib/5/x86_64/media/core/release" repotype="mdk"/>
-    <download arch="i586" url="http://mirror.example.org/mirrors/Mageia/distrib/5/i586/media/core/release" repotype="mdk"/>
-    <arch>x86_64</arch>
-    <arch>i586</arch>
-  </repository>
-</project>
-        ]]></screen>
-  </section>
- </section>
-</section>
+  &lt;repository name="standard"&gt;
+    &lt;download arch="x86_64" url="http://mirror.example.org/Mageia/distrib/5/x86_64/media/core/release" repotype="mdk"/&gt;
+    &lt;download arch="i586" url="http://mirror.example.org/mirrors/Mageia/distrib/5/i586/media/core/release" repotype="mdk"/&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;arch&gt;i586&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;
+        </screen>
+  </sect3>
+ </sect2>
+</sect1>

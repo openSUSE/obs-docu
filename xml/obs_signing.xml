@@ -1,39 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.signing">
+<chapter version="5.1" xml:id="cha.obs.signing"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Signing</title>
- <para>
-  OBS can sign build results.
- </para>
- <section>
-  <title>Package signing</title>
-  <para>
-   Each package is signed with a PGP key to allow checking its integrity on
-   user's machines.
-  </para>
- </section>
- <section>
-  <title>Repository signing</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
-  <title>Product signing</title>
-  <para>
-   ...
-  </para>
- </section>
- <section>
-  <title>Configure sign key</title>
-  <para>
-   ...
-  </para>
- </section>
+ <info/>
+ <para> OBS can sign build results. </para>
+ <remark>toms 2017-08-22: osc signkey </remark>
+ <!--
+ https://en.opensuse.org/openSUSE:Build_Service_Tutorial#Perform_the_local_build
+ sudo rpm -/-import - <<_END_KEY
+  $(osc signkey offending-project)
+_END_KEY
+ -->
+ <sect1>
+  <title>Signing Packages</title>
+  <para> Each package is signed with a PGP key to allow checking its integrity
+   on user's machines. </para>
+ </sect1>
+ <sect1>
+  <title>Signing Repositories</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+ <sect1>
+  <title>Signing Products</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+ <sect1>
+  <title>Configuring the Signing Key</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
 </chapter>

@@ -1,88 +1,112 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE sect1
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<section id="_publisher_hooks">
+<sect1 xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
+ xml:id="_publisher_hooks">
  <title>Publisher Hooks</title>
- <simpara>The job of the publisher service is to publish the build packages and/or images
-by creating repositories that are made available through a web server.</simpara>
- <simpara>It can be configured to use custom scripts to copy the build results to
-different servers or do anything with them that comes to mind.  These
-scripts are called <emphasis role="strong"><emphasis>publisher hooks</emphasis></emphasis>.</simpara>
- <section id="_publisher_hooks_configuration">
-  <title>Publisher Hooks configuration</title>
-  <simpara>Hooks are configured via the configuration file
-<emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per project is linked
-to the repository that should be run if the project/repository combination is
-published. It is possible to use regular expressions here.</simpara>
-  <simpara>The script is called by the <emphasis role="strong">obsrun</emphasis> user with the following parameters:</simpara>
-  <orderedlist numeration="arabic">
+ <para>The job of the publisher service is to publish the build packages
+  and/or images by creating repositories that are made available through a web
+  server.</para>
+ <para>It can be configured to use custom scripts to copy the build results
+  to different servers or do anything with them that comes to mind. These
+  scripts are called <emphasis role="strong"><emphasis>publisher
+    hooks</emphasis></emphasis>.</para>
+ <sect2 xml:id="_publisher_hooks_configuration">
+  <title>Configuring Publisher Hooks</title>
+  <para>Hooks are configured via the configuration file
+    <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per
+   project is linked to the repository that should be run if the
+   project/repository combination is published. It is possible to use regular
+   expressions here.</para>
+  <para>
+   The script is called by the user
+   <systemitem class="username">obsrun</systemitem> with the following
+   parameters:
+  </para>
+  <orderedlist>
    <listitem>
-    <simpara>
-information about the project and its repository (e.g. <emphasis>training/SLE11-SP1</emphasis>)
-</simpara>
+    <para>
+     information about the project and its repository (for example,
+     <literal>training/SLE11-SP1</literal>)
+    </para>
    </listitem>
    <listitem>
-    <simpara>
-path to published repository (e.g. <emphasis>/srv/obs/repos/training/SLE11-SP1</emphasis>)
-</simpara>
+    <para>
+     path to published repository (for example,
+     <filename>/srv/obs/repos/training/SLE11-SP1</filename>)
+    </para>
    </listitem>
    <listitem>
-    <simpara>
-changed packages (e.g. <emphasis>x86 64/test.rpm x86 64/utils.rpm</emphasis>)
-</simpara>
+    <para>
+     changed packages (for example, <literal>x86 64/test.rpm x86
+     64/utils.rpm</literal>)
+    </para>
+    <remark>
+     "x86 64" really with space in the middle? - sknorr, 2017-08-29
+    </remark>
    </listitem>
   </orderedlist>
-  <simpara>The hooks are configured by adding a hash reference named <emphasis>$publishedhook</emphasis> to
-the <emphasis>BSConfig.pm</emphasis> configuration file. The key contains the project, and the
-value references the accompanying script.  If the value is written as an array
-reference it is possible to call the hook with self-defined parameters.</simpara>
-  <simpara>The publisher will add the 3 listed parameters at the end (after the self
-defined parameters).</simpara>
-<screen>/usr/lib/obs/server/BSConfig.pm
-
-    our $publishedhook = {
-     "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
-     "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
-     "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
-    };</screen>
-  <simpara>Regular expressions or substrings can be used to define a script for more than one repository in one project.
-The use of regular expressions has to be activated by defining <emphasis>$publishedhook use regex = 1;</emphasis> as follows:</simpara>
-<screen>/usr/lib/obs/server/BSConfig.pm
-
-    our $publishedhook_use_regex = 1;
-    our $publishedhook = {
-        "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
-        "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
-    };</screen>
-  <simpara>With self defined parameters:</simpara>
-<screen>    our $publishedhook_use_regex = 1;
-    our $publishedhook = {
-        "Product\/SLES11.*" =&gt; ["/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"],
-    };</screen>
-  <simpara>The configuration is read by the publisher at startup only, so it has to be restarted after cofiguration changes have been made.
-The hook script’s output is not logged by the publisher and should be written to a logfile by the script itself. In case of a broken script,this is logged in the publisher’s logfile (/srv/obs/log/publisher.log by default):</simpara>
-<screen>Mon Mar  7 14:34:17 2016 publishing Product/SLES12
+  <para>The hooks are configured by adding a hash reference named
+    <emphasis>$publishedhook</emphasis> to the <emphasis>BSConfig.pm</emphasis>
+   configuration file. The key contains the project, and the value references
+   the accompanying script. If the value is written as an array reference it is
+   possible to call the hook with self-defined parameters.</para>
+  <para>The publisher will add the 3 listed parameters at the end, after the
+   self-defined parameters
+   (in <filename>/usr/lib/obs/server/BSConfig.pm</filename>):
+  </para>
+  <screen language="perl">our $publishedhook = {
+ "Product/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
+ "Product/SLES11-SP3" =&gt; "/usr/local/bin/script2run_sles11",
+ "Product/SLES11-SP4" =&gt; "/usr/local/bin/script2run_sles11",
+};</screen>
+  <para>Regular expressions or substrings can be used to define a script for
+   more than one repository in one project. The use of regular expressions has
+   to be activated by defining
+   <literal>$publishedhook use regex = 1;</literal> as follows
+   (in <filename>/usr/lib/obs/server/BSConfig.pm</filename>):
+  </para>
+  <screen language="perl">our $publishedhook_use_regex = 1;
+our $publishedhook = {
+    "Product\/SLES12"     =&gt; "/usr/local/bin/script2run_sles12",
+    "Product\/SLES11.*"   =&gt; "/usr/local/bin/script2run_sles11",
+};</screen>
+  <para>With self defined parameters:</para>
+  <screen language="perl">our $publishedhook_use_regex = 1;
+our $publishedhook = {
+    "Product\/SLES11.*" =&gt; ["/usr/local/bin/script2run", "sles11", "/srv/www/public_mirror"],
+};</screen>
+  <para>The configuration is read by the publisher at startup only, so it
+   has to be restarted after configuration changes have been made. The hook
+   script’s output is not logged by the publisher and should be written to a
+   log file by the script itself. In case of a broken script,this is logged in
+   the publisher’s log file (/srv/obs/log/publisher.log by default):</para>
+  <screen>Mon Mar  7 14:34:17 2016 publishing Product/SLES12
     fetched 0 patterns
     running createrepo
     calling published hook /usr/local/bin/script2run_sles12
     /usr/local/bin/script2run_sles12 failed: 65280
     syncing database (6 ops)</screen>
-  <simpara>Interactive scripts are not working and will fail immediately.</simpara>
-  <simpara>If you need to do a lot of work in the hook script and dont want to block the publisher all the time, you should consider using a separate daemon that does all the work and just gets triggered by the configured hook script.</simpara>
-  <simpara>The scripts are called without a timeout.</simpara>
- </section>
- <section id="_example_publisher_scripts">
+  <para>Interactive scripts are not working and will fail
+   immediately.</para>
+  <para>If you need to do a lot of work in the hook script and do not want to
+   block the publisher all the time, you should consider using a separate
+   daemon that does all the work and just gets triggered by the configured hook
+   script.</para>
+  <para>The scripts are called without a timeout.</para>
+ </sect2>
+ <sect2 xml:id="_example_publisher_scripts">
   <title>Example Publisher Scripts</title>
-  <section id="_simple_publisher_hook">
+  <sect3 xml:id="_simple_publisher_hook">
    <title>Simple Publisher Hook</title>
-   <simpara>The following example script ignores the packages that have changed and copies all
-RPMs from the repository directory to a target directory:</simpara>
-<screen>#!/bin/bash
+   <para>The following example script ignores the packages that have changed
+    and copies all RPMs from the repository directory to a target
+    directory:</para>
+   <screen language="bash">#!/bin/bash
 OBSHOME="/srv/obs"
 SRC_REPO_DIR="$OBSHOME/repos"
 LOGFILE="$OBSHOME/log/reposync.log"
@@ -92,15 +116,15 @@ $DST_REPO_DIR="/srv/repo-mirror"
 PRJ_PATH=${1//:/:\/}
 PATH_TO_REPO=$2
 rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
-   <simpara>For testing purposes, it can be invoked as follows:</simpara>
-<screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh Product/SLES11-SP1 \
+   <para>For testing purposes, it can be invoked as follows:</para>
+   <screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh Product/SLES11-SP1 \
     /srv/obs/repos/Product/SLE11-SP1</screen>
-  </section>
-  <section id="_advanced_publisher_hook">
+  </sect3>
+  <sect3 xml:id="_advanced_publisher_hook">
    <title>Advanced Publisher Hook</title>
-   <simpara>The following example script reads the destination path from a parameter that is configured with
-the hook script:</simpara>
-<screen>#!/bin/bash
+   <para>The following example script reads the destination path from a
+    parameter that is configured with the hook script:</para>
+   <screen language="bash">#!/bin/bash
 LOGFILE="/srv/obs/log/reposync.log"
 DST_REPO_DIR=$1
 # Global substion! To handle strings like Foo:Bar:testing - two
@@ -109,12 +133,13 @@ PRJ_PATH=${2//:/:\/}
 PATH_TO_REPO=$3
 mkdir -p $DST_REPO_DIR/$PRJ_PATH
 rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
-   <simpara>For testing purposes, it can be invoked as follows:</simpara>
-<screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh \
+   <para>For testing purposes, it can be invoked as follows:</para>
+   <screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh \
     /srv/www/public_mirror/Product/SLES11-SP1 \
     /srv/obs/repos/Product/SLE11SP1</screen>
-   <simpara>The following example script only copies packages that have changed, but does not delete packages that have been removed:</simpara>
-<screen>#!/bin/bash
+   <para>The following example script only copies packages that have
+    changed, but does not delete packages that have been removed:</para>
+   <screen language="bash">#!/bin/bash
 
 DST_REPO_DIR=$1
 PRJ_PATH=${2//:/:\/}
@@ -134,11 +159,11 @@ do
 done
 
 createrepo $DST_REPO_DIR/$PRJ_PATH/.</screen>
-   <simpara>For testing purposes, it can be invoked as follows:</simpara>
-<screen>$ sudo -o obsrun /usr/local/bin/publish-hook.sh  /srv/www/public_mirror \
+   <para>For testing purposes, it can be invoked as follows:</para>
+   <screen>$ sudo -o obsrun /usr/local/bin/publish-hook.sh  /srv/www/public_mirror \
    Product/SLES11-SP1 /srv/obs/repos/Product/SLE11-SP1 \
    src/icinga-1.13.3-1.3.src.rpm x86_64/icinga-1.13.3-1.3.x86_64.rpm \
    x86_64/icinga-devel-1.13.3-1.3.x86_64.rpm</screen>
-  </section>
- </section>
-</section>
+  </sect3>
+ </sect2>
+</sect1>

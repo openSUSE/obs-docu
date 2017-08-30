@@ -1,42 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet
- href="urn:x-suse:xslt:profiling:docbook45-profile.xsl"
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
  type="text/xml"
  title="Profiling step"
 ?>
-<!DOCTYPE book PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE book
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<book lang="en" id="book.obs-best-practices">
- <title>&obs;</title>
- <subtitle>Best Practice Guide</subtitle>
- <bookinfo>
+
+<book xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:lang="en"
+ xml:id="book.obs-best-practices">
+ <title>Best Practice Guide</title>
+ <subtitle>&productname;</subtitle>
+ <info>
   <authorgroup>
-   <author><firstname>Adrian</firstname><surname>Schröter</surname>
+   <author>
+    <personname>
+     <firstname>Adrian</firstname>
+     <surname>Schröter</surname>
+    </personname>
    </author>
-   <author><firstname>Björn</firstname><surname>Geuken</surname>
+   <author>
+    <personname>
+     <firstname>Björn</firstname>
+     <surname>Geuken</surname>
+    </personname>
    </author>
-   <author><firstname>Moisés</firstname><surname>Déniz Alemán</surname>
+   <author>
+    <personname>
+     <firstname>Moisés</firstname>
+     <surname>Déniz Alemán</surname>
+    </personname>
    </author>
   </authorgroup>
-  <xi:include  href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- </bookinfo>
- <xi:include href="obs_preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_webui_usage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_basics.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_upstream.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_local_setup.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_boot_strapping.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_osc_examples.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_advanced.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_kernel_build.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_best_practice_howto.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-<!-- Appendices -->
- <xi:include href="obs_glossary.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include href="obs_work_on_these_books.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
- <xi:include  href="legal.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+  <xi:include href="common_copyright_opensuse.xml"/>
+ </info>
+
+ <xi:include href="obs_preface.xml"/>
+ <xi:include href="obs_best_practice_webui_usage.xml"/>
+ <xi:include href="obs_best_practice_basics.xml"/>
+ <xi:include href="obs_best_practice_upstream.xml"/>
+ <xi:include href="obs_best_practice_local_setup.xml"/>
+ <xi:include href="obs_best_practice_boot_strapping.xml"/>
+ <xi:include href="obs_best_practice_osc_examples.xml"/>
+ <xi:include href="obs_best_practice_advanced.xml"/>
+ <xi:include href="obs_best_practice_kernel_build.xml"/>
+ <xi:include href="obs_best_practice_howto.xml"/>
+ <!-- Appendices -->
+ <xi:include href="legal.xml"/>
 </book>

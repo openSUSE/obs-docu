@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sect1 PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE sect1
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<sect1 role="legal">
+<sect1 xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" role="legal">
  <title>GNU Free Documentation License</title>
 
  <para>
@@ -27,7 +24,7 @@
   <title>PREAMBLE</title>
   <para>
    The purpose of this License is to make a manual, textbook, or other
-   functional and useful document &ldquo;free&rdquo; in the sense of freedom:
+   functional and useful document “free” in the sense of freedom:
    to assure everyone the effective freedom to copy and redistribute it, with
    or without modifying it, either commercially or noncommercially.
    Secondarily, this License preserves for the author and publisher a way to
@@ -67,12 +64,12 @@
   <para>
    A <quote>Modified Version</quote> of the Document means any work containing
    the Document or a portion of it, either copied verbatim, or with
-   modifications and&sol;or translated into another language.
+   modifications and/or translated into another language.
   </para>
   <para>
    A <quote>Secondary Section</quote> is a named appendix or a front-matter
    section of the Document that deals exclusively with the relationship of the
-   publishers or authors of the Document to the Document&rsquo;s overall
+   publishers or authors of the Document to the Document’s overall
    subject (or to related matters) and contains nothing that could fall
    directly within that overall subject. (Thus, if the Document is in part a
    textbook of mathematics, a Secondary Section may not explain any
@@ -116,7 +113,7 @@
    PDF designed for human modification. Examples of transparent image formats
    include PNG, XCF and JPG. Opaque formats include proprietary formats that
    can be read and edited only by proprietary word processors, SGML or XML for
-   which the DTD and&sol;or processing tools are not generally available, and
+   which the DTD and/or processing tools are not generally available, and
    the machine-generated HTML, PostScript or PDF produced by some word
    processors for output purposes only.
   </para>
@@ -125,7 +122,7 @@
    itself, plus such following pages as are needed to hold, legibly, the
    material this License requires to appear in the title page. For works in
    formats which do not have any title page as such, <quote>Title Page</quote>
-   means the text near the most prominent appearance of the work&rsquo;s title,
+   means the text near the most prominent appearance of the work’s title,
    preceding the beginning of the body of the text.
   </para>
   <para>
@@ -172,7 +169,7 @@
   <title>COPYING IN QUANTITY</title>
   <para>
    If you publish printed copies (or copies in media that commonly have printed
-   covers) of the Document, numbering more than 100, and the Document&rsquo;s
+   covers) of the Document, numbering more than 100, and the Document’s
    license notice requires Cover Texts, you must enclose the copies in covers
    that carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on
    the front cover, and Back-Cover Texts on the back cover. Both covers must
@@ -270,7 +267,7 @@
    <title>G.</title>
    <para>
     Preserve in that license notice the full lists of Invariant Sections and
-    required Cover Texts given in the Document&rsquo;s license notice.
+    required Cover Texts given in the Document’s license notice.
    </para>
   </formalpara>
   <formalpara>
@@ -309,7 +306,7 @@
     For any section Entitled <quote>Acknowledgements</quote> or
     <quote>Dedications</quote>, Preserve the Title of the section, and preserve
     in the section all the substance and tone of each of the contributor
-    acknowledgements and&sol;or dedications given therein.
+    acknowledgements and/or dedications given therein.
    </para>
   </formalpara>
   <formalpara>
@@ -346,7 +343,7 @@
    that qualify as Secondary Sections and contain no material copied from the
    Document, you may at your option designate some or all of these sections as
    invariant. To do this, add their titles to the list of Invariant Sections in
-   the Modified Version&rsquo;s license notice. These titles must be distinct
+   the Modified Version’s license notice. These titles must be distinct
    from any other section titles.
   </para>
   <para>
@@ -425,9 +422,9 @@
   <para>
    A compilation of the Document or its derivatives with other separate and
    independent documents or works, in or on a volume of a storage or
-   distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+   distribution medium, is called an “aggregate” if the copyright
    resulting from the compilation is not used to limit the legal rights of the
-   compilation&rsquo;s users beyond what the individual works permit. When the
+   compilation’s users beyond what the individual works permit. When the
    Document is included in an aggregate, this License does not apply to the
    other works in the aggregate which are not themselves derivative works of
    the Document.
@@ -435,7 +432,7 @@
   <para>
    If the Cover Text requirement of section 3 is applicable to these copies of
    the Document, then if the Document is less than one half of the entire
-   aggregate, the Document&rsquo;s Cover Texts may be placed on covers that
+   aggregate, the Document’s Cover Texts may be placed on covers that
    bracket the Document within the aggregate, or the electronic equivalent of
    covers if the Document is in electronic form. Otherwise they must appear on
    printed covers that bracket the whole aggregate.
@@ -484,7 +481,7 @@
    Free Documentation License from time to time. Such new versions will be
    similar in spirit to the present version, but may differ in detail to
    address new problems or concerns. See
-   http:&sol;&sol;www.gnu.org&sol;copyleft&sol;.
+   http://www.gnu.org/copyleft/.
   </para>
   <para>
    Each version of the License is given a distinguishing version number. If the
@@ -511,12 +508,12 @@
    under the terms of the GNU Free Documentation License, Version 1.2
    or any later version published by the Free Software Foundation;
    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-   A copy of the license is included in the section entitled &ldquo;GNU
-   Free Documentation License&rdquo;.
+   A copy of the license is included in the section entitled “GNU
+   Free Documentation License”.
   </screen>
   <para>
    If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
-   replace the &ldquo;with...Texts.&rdquo; line with this:
+   replace the “with...Texts.” line with this:
   </para>
 <screen>
    with the Invariant Sections being LIST THEIR TITLES, with the

@@ -1,33 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
-<chapter id="cha.obs.best-practices.advanced">
+<chapter version="5.1" xml:id="cha.obs.best-practices.advanced"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Advanced Project Setups</title>
- <para>
-  These best practices describe more complex setups, for example how to rebuild
-  an entire stack with minimal effort.
- </para>
- <section>
-  <title>Rebuild an entire project with changes</title>
-  <para>
-   To be written...
-  </para>
- </section>
- <section>
-  <title>Integrate Source Handling</title>
-  <para>
-   To be written...
-  </para>
- </section>
- <section>
-  <title>Use OBS for automated QA</title>
-  <para>
-   To be written...
-  </para>
- </section>
+ <info/>
+ <para> These best practices describe more complex setups, for example how to
+  rebuild an entire stack with minimal effort. </para>
+ <sect1>
+  <title>Rebuilding an Entire Project with Changes</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+ <sect1>
+  <title>Integrating Source Handling</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+ <sect1>
+  <title>Using &obsa; for Automated QA</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
 </chapter>

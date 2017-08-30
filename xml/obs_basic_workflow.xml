@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.basicworkflow"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Basic &obsa; Workflow</title>
+ <para/>
+ <remark>TBD</remark>
+<!--
+ <sect1>
+  <title>Handling Dependencies</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+-->
+ <sect1 xml:id="sec.obs.basicworkflow.setuphome">
+  <title>Setting Up Your Home Project</title>
+  <remark>toms 2017-08-25: Suggestion by sknorr:
+   generic section plus home project (cross refs only)
+  </remark>
+  <para>
+   This section shows how to set up your home project with the command line
+   tool &osccmd;. For more
+   information about setting up your home project with the Web UI, see
+   <xref linkend="sec.obsbg.uc.setuphome"/>.
+  </para>
+  <para>
+   This chapter is based on the following assumptions:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     You have an account on an &obs; instance. To create an account, use the
+     Web UI.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You have installed &osccmd; as described in <xref linkend="sec.obs.osc.install"/>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You have configured &osccmd; as described in <xref linkend="sec.osc.firsttime"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+
+  <procedure>
+   <title>Setting Up Your Home Project</title>
+   <step xml:id="st.basicworkflow.setuphome.oscls">
+    <para>
+     Get a list of all available build targets of your &obsa; instance:
+    </para>
+    <screen>&prompt.user;<command>osc</command> ls /</screen>
+    <para>
+     For example, on the &osbs;, build targets will include distributions
+     such as
+     <uri>openSUSE:Tumbleweed</uri>,
+     <uri>openSUSE:Leap:<replaceable>VERSION</replaceable></uri>,
+     <uri>openSUSE:Tools</uri>, <uri>openSUSE:Templates</uri>.
+    </para>
+   </step>
+   <step xml:id="st.obs.metaprj">
+    <para>
+     Configure your build targets with:
+    </para>
+    <screen>&prompt.user;<command>osc</command> meta prj --edit &obshome1;</screen>
+    <para>The previous command shows a XML structure like this:</para>
+    <remark>toms 2017-08-23: TODO: Move it to the concept part and add a xref here.</remark>
+    <example>
+     <title>XML Structure of Build Service Metadata</title>
+     <screen language="xml">&lt;project name="&obshome1;">
+  &lt;title>&obsuser1;'s Home Project&lt;/title>
+  &lt;description>Some description about the project.&lt;/description>
+  &lt;person userid="&obsuser1;" role="bugowner"/>
+  &lt;!-- contains other OBS users -->
+  &lt;debuginfo>
+    &lt;enable repository="openSUSE_Factory"/>
+  &lt;/debuginfo>
+  &lt;!-- add &lt;repository> elements here -->
+&lt;/project></screen>
+    </example>
+   </step>
+   <step>
+    <para>
+     To add build targets, use the <tag>repository</tag> element. For
+     example, on &osbs;, you can add the build targets &tw; for x86 and
+     x86-64 with:
+    </para>
+    <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
+    &lt;path project="openSUSE:Tumbleweed" repository="standard"/>
+    &lt;arch>i586&lt;/arch>
+    &lt;arch>x86_64&lt;/arch>
+&lt;/repository></screen>
+   </step>
+   <step>
+    <para>
+     Add more <tag>repository</tag> elements as needed.  Insert the information
+     from <xref linkend="st.basicworkflow.setuphome.oscls"/> into the
+     <tag class="attribute">project</tag> attribute.
+    </para>
+    <remark>
+     Should we put the &osbs; examples behind phrases, so they can be
+     profiled away? (cf. the "Lend a Hand?" section in the intro.) - sknorr,
+     2017-08-24
+    </remark>
+    <para>
+     On &osbs;, you can normally use the attribute
+     <tag class="attribute">repository</tag> with the value
+     <tag class="attvalue" >standard</tag>.
+     For example, to add &leap; as a build target, create an entry like:
+    </para>
+    <remark>toms 2017-08-23: how do you get the "standard" value in the
+    repository attribute? Is there any command to retrieve this information?
+    "osc ls" doesn't show that...
+    </remark>
+    <remark>
+     "osc meta prj openSUSE:Leap:42.3" will show the required information
+     some way or another, I guess. Look for //repository[@name] in that file.
+     However, this is apparently overridden by
+     //repository[@name]/path[@repository] (as in the case of Tw). - sknorr,
+     2017-08-24
+    </remark>
+    <screen language="xml">&lt;repository name="openSUSE_Leap_42.3">
+    &lt;path project="openSUSE:Leap:42.3" repository="standard"/>
+    &lt;arch>i586&lt;/arch>
+    &lt;arch>x86_64&lt;/arch>
+&lt;/repository></screen>
+   </step>
+   <step>
+    <para>
+     Save the file (or leave it untouched).
+    </para>
+    <para>
+     &osccmd; will check if the new configuration is valid XML. If the file
+     is valid, &osccmd; will save it. Otherwise, it will show an error and
+     prompt you whether to <guimenu>Try again?</guimenu>. In this case, press
+     <keycap>n</keycap>. Your changes will be lost and you will need to start
+     from <xref linkend="st.obs.metaprj"/> again.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   After a while, the defined build targets show up in your home project.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="sec.obs.basicworkflow.create-new">
+  <title>Creating a New Package</title>
+  <para>
+   This section covers how to create packages from a project hosted on &gh;
+   (the <quote>upstream project</quote>). We assume that this project contains source code
+   which you want to package for different &suse; distributions.
+   We assume the setup of your home project in your &obsa; instance is
+   already done. If not, refer to <xref linkend="sec.obs.basicworkflow.setuphome"/>.
+  </para>
+  <para>
+   To create a package from an upstream project, do the following:
+  </para>
+  <procedure>
+   <title>General Procedure to Build a RPM Package</title>
+   <step>
+    <para>
+     Open a shell. Choose or create a directory on your system in a partition
+     that has enough space to hold the package sources.
+    </para>
+   </step>
+   <step>
+    <para>
+     Prepare your <firstterm
+      baseform="Working Directory">working directory</firstterm>.
+     These steps only have to be performed once:
+    </para>
+    <substeps>
+     <step>
+    <para>
+     Check out your home project:
+    </para>
+    <screen>&prompt.user;<command>osc</command> checkout &obshome1;</screen>
+    <para>
+     This will create <filename>&obsworkdir1;</filename> in the
+     current directory.
+    </para>
+   </step>
+   <step>
+    <para>Create a new package inside your local working directory:
+    </para>
+    <screen>&prompt.user;<command>cd</command> &obsworkdir1;
+&prompt.user;<command>osc</command> mkpac <replaceable>YOUR_PROJECT</replaceable></screen>
+   </step>
+   </substeps>
+   </step>
+   <step>
+    <para>
+     Download the source of the upstream project and save it in
+     <filename>&obsworkdir1;/<replaceable>YOUR_PROJECT</replaceable></filename>.
+    </para>
+   </step>
+   <step>
+    <para>
+     Create a <firstterm baseform="Spec File">spec file</firstterm> which
+     contains metadata and build instructions.
+     For more information about spec files, see
+     <link xlink:href="https://rpm-guide.readthedocs.io/en/latest/"/>.
+    </para>
+    <remark>
+     Arguably, allowing people to get to step 4 of a procedure without them
+     knowing what they are doing _at all_ is not fair. Maybe this link could
+     be added earlier? - sknorr, 2017-08-24
+    </remark>
+   </step>
+   <step>
+    <para>Create a new changelog and add your changes:</para>
+    <substeps>
+     <step>
+      <para>
+       To create a new changelog file or to update an existing changelog file
+       with &osccmd;, use:
+      </para>
+      <screen>&prompt.user;<command>osc</command> vc</screen>
+      <para>The command will open an editor with the following content:</para>
+      <screen>-------------------------------------------------------------------
+Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
+     </step>
+     <step>
+      <para>Enter your changes in the editor.</para>
+      <para>
+       Usually, changelog entries contain a high-level overview like:
+      </para>
+      <remark>toms 2017-08-22: TODO: Move content into concept part?</remark>
+      <itemizedlist>
+       <listitem>
+        <formalpara>
+         <title>Version Updates</title>
+         <para>
+          Provide a general overview of new features or changes in behavior
+          of the package.
+         </para>
+        </formalpara>
+       </listitem>
+       <listitem>
+        <formalpara>
+         <title>Bug and Security Fixes</title>
+         <para>
+          If a bug was fixed, mention the bug number.
+          Most projects have policies or conventions for abbreviating bug
+          numbers, so there is no need to add a long URL.
+         </para>
+        </formalpara>
+        <para>
+         For example, in &osbs;, <literal>boo#</literal> is used for bugs
+         on <link xlink:href="https://bugzilla.opensuse.org"/> and
+         <literal>fate#</literal> is used for features on
+         <link xlink:href="https://fate.opensuse.org"/>.
+        </para>
+       </listitem>
+       <listitem>
+        <formalpara>
+         <title>Incompatible Changes</title>
+         <para>
+          Mention incompatible changes, such as API changes, that affect
+          users or other developers creating extensions of your package.
+         </para>
+        </formalpara>
+        <remark>
+         Not sure if all API changes are necessarily incompatible...
+         - sknorr, 2017-08-24
+        </remark>
+       </listitem>
+       <listitem>
+        <formalpara>
+         <title>Distribution-Related Changes</title>
+         <para>
+          Mention any changes in the package structure, renamings of packages,
+          and additions or removals of patch files or <quote>hacks</quote>.
+         </para>
+        </formalpara>
+       </listitem>
+      </itemizedlist>
+      <para>
+       For more information about changelogs, see <link
+        xlink:href="https://en.opensuse.org/openSUSE:Creating_a_changes_file_(RPM)"
+       />.
+      </para>
+     </step>
+    </substeps>
+   </step>
+   <step>
+    <para>Add all the files to your working directory:</para>
+    <screen>&prompt.user;<command>osc</command> add *.spec *.changes *.tar.gz</screen>
+   </step>
+   <step>
+    <para>Build the package for a specific distribution and architecture,
+     for example, &tw; for x86-64:</para>
+    <screen>&prompt.user;<command>osc</command> build --local-package <!--
+-->openSUSE_Tumbleweed x86_64 *.spec
+    </screen>
+    <para>
+     If you encounter problems, see <xref linkend="sec.obs.basicworkflow.builderrors"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     Check if your build was successful. If everything was fine, commit the
+     files to your package to your home project on &obsa;:</para>
+    <screen>&prompt.user;<command>osc</command> commit</screen>
+   </step>
+  </procedure>
+ </sect1>
+
+ <sect1 xml:id="sec.obs.basicworkflow.builderrors">
+  <title>Investigating the Local Build Process</title>
+  <remark>toms 2017-08-22: https://en.opensuse.org/openSUSE:Build_Service_Tutorial#Correct_Errors_in_the_Local_Build_Process</remark>
+  <para>
+   It is hard to describe a general procedure when you encounter a build
+   error. Most build errors are very specific to the package being built.
+   However, there are generic tools that often help:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para><xref linkend="sec.obs.basicworkflow.builderrors.buildlog"/></para>
+   </listitem>
+   <listitem>
+    <para><xref linkend="sec.obs.basicworkflow.builderrors.buildroot"/></para>
+   </listitem>
+  </itemizedlist>
+
+  <remark>toms 2017-08-22: Troubleshooting?</remark>
+
+  <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildlog">
+   <title>Build Log</title>
+   <para>
+    Each build produces a log file on &obsa;. This log file can be viewed by
+    the <command>buildlog</command> (or <command>bl</command>) subcommand.
+    It needs a build target which is the distribution and the architecture.
+   </para>
+   <para>
+    For example, to view the build log of your current project
+    for &tw; on a x86-64 architecture, use:
+    use:
+   </para>
+   <screen>&prompt.user;<command>osc</command> buildlog openSUSE_Tumbleweed x86_64</screen>
+   <para>
+    However, this command will print the complete build log which could be
+    difficult to spot the errors. Use the <command>buildlogtail</command>
+    subcommand to show only the end of the logfile:
+   </para>
+   <screen>&prompt.user;<command>osc</command> buildlogtail openSUSE_Tumbleweed x86_64</screen>
+   <para>
+    Additionally, the &osccmd; creates some build log files in the build
+    directory <filename>/var/tmp/build-root/</filename>:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term><filename>.build.log</filename></term>
+     <listitem>
+      <para>Contains the log.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><filename>.build.command</filename></term>
+     <listitem>
+      <para>
+       Contains the command which is used to build the package. For RPM-like
+       systems it is <command>rpmbuild</command> <option>-ba pacakge.spec</option>.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><filename>.build.packages</filename></term>
+     <listitem>
+      <para>
+       Contains the path to all object files.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildroot">
+   <title>Local Build Root Directory</title>
+   <para>
+    If you build a package locally and you get a build error, investigate
+    the problems in the build root directory directly. This is sometimes
+    easier and more effective than only looking at the build log.
+   </para>
+   <para>
+    By default, the directory <filename>/var/tmp/build-root/</filename>
+    is used as the <emphasis>build root</emphasis>. This is defined in
+    the configuration file <filename>~/.oscrc</filename> using the
+    key <option>build-root</option>.
+   </para>
+   <para>
+    Each combination of distribution and architecture has its own build
+    root. To change into the build root for &tw; on the
+    x86-64 architecture, use the following command:
+   </para>
+   <screen>&prompt.user;<command>osc</command> chroot openSUSE_Tumbleweed x86_64</screen>
+   <para>
+    When prompted, enter the &rootuser; password.
+   </para>
+   <para>
+    Your shell will then change to the directory
+    <filename>/home/abuild</filename> belonging to the user
+    <systemitem class="username">abuild</systemitem> in group <systemitem
+     class="groupname">abuild</systemitem>.
+   </para>
+   <remark>toms 2017-08-22: This should be moved into the concepts part</remark>
+   <para>
+    The build root contains the following structure:
+   </para>
+   <example xml:id="exa.workflow.buildroot">
+    <title>Directory Structure of a Build Root (<filename>/var/tmp/build-root/</filename>)</title>
+    <screen>/home/abuild/
+└── rpmbuild
+    ├── BUILD <co xml:id="co.workflow.buildroot.build"/>
+    ├── BUILDROOT  <co xml:id="co.workflow.buildroot.buildroot"/>
+    ├── OTHER  <co xml:id="co.workflow.buildroot.other"/>
+    ├── RPMS  <co xml:id="co.workflow.buildroot.rpms"/>
+    │   ├── i386
+    │   ├── noarch
+    │   └── x86_64
+    ├── SOURCES  <co xml:id="co.workflow.buildroot.sources"/>
+    ├── SPECS  <co xml:id="co.workflow.buildroot.specs"/>
+    └── SRPMS  <co xml:id="co.workflow.buildroot.srpms"/></screen>
+    <remark>toms 2017-08-22: http://rpm-guide.readthedocs.io/en/latest/rpm-guide.html#rpm-packaging-workspace</remark>
+    <calloutlist>
+     <callout arearefs="co.workflow.buildroot.build">
+      <para>
+       Contains directory named after the package name.
+       In spec files, the name of the package directory is referenced
+       using the <systemitem class="macro">%buildroot</systemitem> macro.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.buildroot">
+      <para>
+       If the build process was unable to create a package, this directory
+       contains all files and directories which are installed in the target
+       system through the <systemitem class="macro">%install</systemitem>
+       section of the spec file.
+      </para>
+      <para>
+       If the package has been successfully built, this directory will be
+       emptied.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.other">
+      <para>
+       Contains usually the file <filename>rpmlint.log</filename>.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.rpms">
+      <para>
+       If the build was successful, stores binary RPMs into subdirectories of
+       achitecture
+       (for example, <filename>noarch</filename> or
+       <filename>x86_64</filename>).
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.sources">
+      <para>
+       All source files from the working copy will be copied here.
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.specs">
+      <para>
+      <remark>toms 2017-08-22: empty?</remark>
+      </para>
+     </callout>
+     <callout arearefs="co.workflow.buildroot.srpms">
+      <para>
+       Stores source RPMs into this directory.
+      </para>
+     </callout>
+    </calloutlist>
+   </example>
+  </sect2>
+ </sect1>
+
+ <sect1 xml:id="sec.obs.basicworkflow.add-dependencies">
+  <title>Adding Dependencies to Your Project</title>
+  <para>
+   Software usually depends on other software: To run an application, you
+   may, for example, need additional libraries. Such dependencies are called
+   <emphasis>installation requirements</emphasis>.
+  </para>
+  <remark>
+   Firstterm for installation req/build req? - sknorr, 2017-08-24
+  </remark>
+  <para>
+   Additionally, there are also dependencies that are only necessary for
+   building a package but not when the software it contains is run. Such
+   dependencies are called <emphasis>build requirements</emphasis>.
+  </para>
+  <para>
+   The &obs; provides the following methods to handle both dependencies in
+   your projects:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <xref linkend="sec.obs.basicworkflow.deps"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="sec.obs.basicworkflow.layering"/>
+     (<emphasis>layering</emphasis>)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="sec.obs.basicworkflow.reuse"/>
+     (<emphasis>linking</emphasis> and <emphasis>aggregating</emphasis>)
+    </para>
+   </listitem>
+  </itemizedlist>
+
+  <sect2 xml:id="sec.obs.basicworkflow.deps">
+   <title>Adding Dependencies to Your Build Recipes</title>
+   <remark>toms 2017-08-24: Should probably go into the concept part?</remark>
+   <remark>toms 2017-08-24: should we explain hard and soft requirements?</remark>
+   <para>
+    In a spec file, dependencies are expressed with the keywords <literal>Requires</literal>
+    (installation requirements) and <literal>BuildRequires</literal> (installation
+    requirements). Both belong to the header of the spec file<!-- (see <xref
+     linkend=""/>)-->.
+   </para>
+   <example xml:id="ex.obs.basicworkflow.excerpt">
+    <title>Excerpt of Build and Installation Requirements</title>
+    <screen>Name:             foo-example
+Version:          1.0.0
+BuildRequires:    bar
+Requires:         zool >= 1.5.6</screen>
+   </example>
+   <remark>toms 2017-08-24: Version compare with zypper vcmp?</remark>
+  </sect2>
+  <sect2 xml:id="sec.obs.basicworkflow.layering">
+   <title>Associating Other Repositories with Your Repository</title>
+   <para>
+    There is no need to duplicate the work of others. If you need a specific
+    package which is available in another repository, you can reference this
+    repository in your project metadata. This is called <emphasis>layering</emphasis>.
+   </para>
+   <para>
+    When a package is needed, it can be installed from another
+    other repository (see the note below).
+   </para>
+   <para>
+    To add another repository that can be used as build or installation
+    requirements, do the following:
+   </para>
+   <procedure>
+    <step>
+     <para>
+      Open a terminal<!-- and change the directory to your working copy-->.
+     </para>
+    </step>
+    <step>
+     <para>
+      Edit the project metadata:
+     </para>
+     <screen>&prompt.user;<command>osc</command> meta prj --edit &obshome1;</screen>
+    </step>
+    <step xml:id="st.obs.basicworkflow.layering.repository">
+     <para>
+      Search for <tag>repository</tag> elements. For example, to allow usage
+      packages from <uri>devel:languages:python</uri> in a
+      &tw; project, extend the <tag>repository</tag> element with:
+     </para>
+     <screen language="xml">&lt;repository name="openSUSE_Tumbleweed">
+    <emphasis role="strong">&lt;path project="devel:languages:python" repository="openSUSE_Factory"/></emphasis>
+    &lt;path project="openSUSE:Factory" repository="standard"/>
+    &lt;arch>x86_64&lt;/arch>
+&lt;/repository></screen>
+     <note>
+      <title>Order Is Important</title>
+      <para>
+       The order of the <tag>path</tag> elements is important:
+       <tag>path</tag> elements are searched
+       from top to bottom.
+      </para>
+      <para>
+       If a package cannot be found in the first
+       repository, the second repository is considered.
+       When the first suitable package is found, it is installed and the
+       build preparation can continue.
+      </para>
+      <para>
+       For practical reasons, additional repositories should be added
+       before the standard repositories of the specified
+       distribution.
+      </para>
+     </note> 
+    </step>
+    <step xml:id="st.obs.basicworkflow.layering.path">
+     <para>
+      Add more <tag>path</tag> elements under the same
+      <tag>repository</tag> element.
+     </para>
+    </step>
+    <step>
+     <para>
+      If necessary, repeat <xref linkend="st.obs.basicworkflow.layering.repository"/> and
+      <xref linkend="st.obs.basicworkflow.layering.path"/> to add <tag>path</tag>
+      elements to <tag>repository</tag> elements of other distributions or releases.
+     </para>
+    </step>
+   </procedure>
+  </sect2>
+  <sect2 xml:id="sec.obs.basicworkflow.reuse">
+   <title>Reusing Packages in Your Project</title>
+   <remark>toms 2017-08-30: This part and its subsections needs to be
+   further discussed. "Aggregate" as a word doesn't really fit with the
+   OBS terminology
+   </remark>
+   <para>
+    To reuse existing packages in your package repository, &obsa; offers
+    two methods: <quote>aggregating</quote> and <quote>linking</quote>.
+   </para>
+
+   <remark>toms 2017-08-30: add a notes when NOT to use the two methods.
+   </remark>
+
+   <sect3 xml:id="sec.obs.basicworkflow.reuse.aggregating" condition="tbs">
+    <title>Aggregating a Package</title>
+    <para>
+     An <quote>aggregate</quote> package is a pointer to an &obsa; package.
+     Such package and the result of it are referenced int another project.
+     <quote>Aggregating</quote> is used in the following situations:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       No changes in the source code are needed.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Packages that are needed for building are only available in a
+       different project.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Build results (binaries) of the aggregated package are copied
+       into the target's package repository.
+      </para>
+     </listitem>
+     <listitem>
+      <para>To avoid package rebuilds.</para>
+     </listitem>
+    </itemizedlist>
+
+    <para>
+     The general syntax of the <command>aggregatepac</command> command is:
+    </para>
+    <screen>&prompt.user;&osccmd; aggregatepac <replaceable
+     >SOURCEPRJ</replaceable> <replaceable
+      >SOURCEPAC</replaceable> <replaceable
+       >DESTPRJ</replaceable></screen>
+    <para>
+     For example, to aggregate the package <package>python-lxml</package>
+     from <uri>devel:language:python</uri> into your home project,
+     use the following command:
+    </para>
+    <screen>&prompt.user;&osccmd; aggregatepac devel:language:python python-lxml &obshome1;</screen>
+    <para>
+     The next time you update your working directory, the <filename>python-lxml</filename>
+<!--     directory is downloaded with the <filename>_aggregate</filename> file.-->
+     contains the <filename>_aggregate</filename> file.
+    </para>
+   </sect3>
+   <sect3 xml:id="sec.obs.basicworkflow.reuse.linking">
+    <title>Linking a Package</title>
+    <para>
+     A linked package is a clone of another package with
+     additional modifications. Linking is used in the following situations:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       The source code needs changes, but the source either cannot be changed
+       in the original package or doing so is impractical or inconvenient to
+       change the source.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       To separate the original source from own patches.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     The general syntax of the <command>linkpac</command> command is:
+    </para>
+    <screen>&prompt.user;&osccmd; linkpac <replaceable
+     >SOURCEPRJ</replaceable> <replaceable
+      >SOURCEPAC</replaceable> <replaceable
+       >DESTPRJ</replaceable></screen>
+    <para>
+     For example, to link the package <package>python-lxml</package> from
+     <uri>devel:language:python</uri> into your home project, use the
+     following command:
+    </para>
+    <screen>&prompt.user;&osccmd; linkpac devel:language:python python-lxml &obshome1;</screen>
+    <para>
+     In contrast to aggregating, the checkout contains all the
+     files from the linked repository. To reduce it to a single file (like
+     with aggregating), <quote>unexpand</quote> it in the working
+     directory like this:
+    </para>
+    <screen>&prompt.user;&osccmd; up --unexpand-link
+Unexpanding to rev 1
+A    _link
+D    pytest-3.2.1.tar.gz
+D    python-pytest-doc.changes
+D    python-pytest-doc.spec
+D    python-pytest.changes
+D    python-pytest.spec
+At revision 1.</screen>
+    <para>
+     This gives you a <filename>_link</filename> file similar to the
+     <filename>_aggregate</filename> file. You can use the <option>--expand-link</option>
+     option in the <command>up</command> subcommand to revert to the previous
+     state.
+    </para>
+   </sect3>
+  </sect2>
+ </sect1>
+
+</chapter>
