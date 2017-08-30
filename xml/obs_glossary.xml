@@ -72,30 +72,28 @@
  </glossentry>
  <!-- ############## B ############## -->
  <glossentry xml:id="obs.glos.project_binary">
-  <glossterm>Binary Package</glossterm>
+  <glossterm>Binary Package (Binary)</glossterm>
   <glossdef>
    <para>
-    A binary package (in the &obs; context often called a binary) is
-    an archive file that contains an installable version of software and
-    metadata. Binary packages can also include, for example, configuration
-    files and documentation.
+    An archive file that contains an installable version of software and
+    metadata. The metadata includes references to the dependencies of the
+    main software. Dependencies are packaged as additional binary packages.
    </para>
    <para>
-    Binary packages are one possible result of building on &obsa;.
-    &obsa; supports building multiple types of binary package. Examples
-    include &rpmf; packages and &debf; packages.
-   </para>
-   <para>
-    Alternatively, &obsa; can also build operating system images and
-    containers.
+    Formats of binary packages include &rpmf; and &debf;.
+    In the &obsa; context, binary packages are sometimes also called a
+    <emphasis>binaries</emphasis>.
    </para>
    <remark>
     "Binary package" poses a bit of a question: It is a bit unclear when a
-    package can be considered binary: 1) all archive formats are pretty
-    much always binary-based; 2) interpreted languages actually aren't
-    binary. The term "installable package" comes to mind, however, but it
-    is definitely not in common usage yet, unlike binary package.
-    - sknorr, 2017-08-23
+    package can be considered binary: 1) all archive formats are pretty much
+    always binary-based; 2) interpreted languages actually aren't binary. The
+    terms "installable package"/"distribution package" come to mind.
+    Additionally, the usage of "binary" to mean "binary package" in OBS docs
+    is problematic. Everywhere else, a binary is defined as a single
+    executable file (though whether that file is binary or actually
+    human-readable like a script, usually does not matter). - sknorr,
+    2017-08-30
    </remark>
    <glossseealso otherterm="obs.glos.container"/>
    <glossseealso otherterm="obs.glos.os_image"/>
@@ -128,10 +126,6 @@
     set for a project or a package. However, ideally, set this role for
     individual packages only. Users with this role can only read data but
     they are responsible for reacting to bug reports.
-   </para>
-   <para>
-    For more information about roles, see
-    <xref linkend="_user_and_group_roles"/>.
    </para>
    <glossseealso otherterm="obs.glos.maintainer"/>
   </glossdef>
@@ -250,25 +244,14 @@
   <glossterm>Container</glossterm>
   <glossdef>
    <para>
-    A container is an image file that contains a deployable
-    version of software and metadata. Included with the main software are
-    usually also dependencies of it, such as additional libraries. Containers
-    can also include, for example, configuration files and documentation.
-    However, unlike images, containers do not include an operating system.
+    An image file that contains a deployable version of software and
+    metadata. Dependencies of the main software are also included, such as
+    additional libraries.
    </para>
    <para>
-    Containers cannot be installed. Instead, they are copied as-is onto the
-    target system (<emphasis>deployed</emphasis>). They can then usually be
-    run directly in that state.
-   </para>
-   <para>
-    You can build containers on &obsa;. &obsa; supports
-    building multiple types of container. Container formats include
-    &appimg;, &docker;, and &snap;. <!-- &flatpak; ... later. -->
-   </para>
-   <para>
-    Alternatively, &obsa; can also build binary packages and operating system
-    images.
+    Unlike operating system images, containers do not include an operating
+    system. Unlike binary packages, containers are deployed and not installed.
+    Formats of containers include &appimg;, &docker;, &snap;, and &flatpak;.
    </para>
    <glossseealso otherterm="obs.glos.project_binary"/>
    <glossseealso otherterm="obs.glos.os_image"/>
@@ -398,19 +381,11 @@
     An image file contains a bit-wise representation of the layout of a block
     device. Some types of image files are compressed. &obsa; allows building
     multiple types of image:
+    <simplelist type="inline">
+     <member><xref linkend="obs.glos.os_image"/></member>
+     <member><xref linkend="obs.glos.container"/></member>
+    </simplelist>.
    </para>
-   <itemizedlist>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.os_image"/>
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.container"/>
-     </para>
-    </listitem>
-   </itemizedlist>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.imagedescription">
@@ -484,10 +459,6 @@
     add, modify, and remove packages and subprojects, accept submit requests,
     and change metadata.
    </para>
-   <para>
-    For more information about roles, see
-    <xref linkend="_user_and_group_roles"/>.
-   </para>
    <glossseealso otherterm="obs.glos.bugowner"/>
   </glossdef>
  </glossentry>
@@ -543,7 +514,8 @@
   <glossterm>&OBS;</glossterm>
   <glossdef>
    <para>
-    A Web service to build packages or images from source.
+    A Web service to build binary packages, containers and operating system
+    images from source.
    </para>
    <para>
     The term <quote>&obs;</quote> is used to speak about the server part of
@@ -577,38 +549,20 @@
   <glossterm>Operating System Image</glossterm>
   <glossdef>
    <para>
-    An operating system image is an image file that contains an operating
+    An image file that contains an operating
     system. The operating system can be either installable or deployable.
     Depending on their purpose, operating system images are classified into:
-   </para>
-   <itemizedlist>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.product_image"/>
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.appliance"/>
-     </para>
-    </listitem>
-    <listitem>
-      <para>
-       <xref linkend="obs.glos.vm_image"/>
-      </para>
-    </listitem>
-   </itemizedlist>
-   <para>
-    Operating system images are one possible result of building on &obsa;.
-    The &obsa; supports building multiple types of container. Image formats
-    include ISO, Virtual Disk, PXE Root File System, and &docker; containers.
-    To build images, &obsa; uses &kiwi;.
+    <simplelist type="inline">
+     <member><xref linkend="obs.glos.product_image"/></member>
+     <member><xref linkend="obs.glos.appliance"/></member>
+     <member><xref linkend="obs.glos.vm_image"/></member>
+    </simplelist>.
    </para>
    <para>
-    Alternatively, &obsa; can also build binary packages and containers.
+    Formats of operating system images include ISO, Virtual Disk, and PXE Root
+    File System.
    </para>
    <glossseealso otherterm="obs.glos.project_binary"/>
-   <glossseealso otherterm="obs.glos.appliance"/>
    <glossseealso otherterm="obs.glos.image"/>
    <glossseealso otherterm="obs.glos.kiwi"/>
   </glossdef>
@@ -635,25 +589,13 @@
   <glossterm>Package</glossterm>
   <glossdef>
    <para>
-    &obsa; handles multiple types of package:
+    &obsa; handles very different types of software package:
+    <simplelist type="inline">
+     <member><xref linkend="obs.gloss.source_package"/></member>
+     <member><xref linkend="obs.glos.obs_package"/></member>
+     <member><xref linkend="obs.glos.project_binary"/></member>
+    </simplelist>.
    </para>
-   <itemizedlist>
-    <listitem>
-     <para>
-      <xref linkend="obs.gloss.source_package"/>
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.obs_package"/>
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      <xref linkend="obs.glos.project_binary"/>
-     </para>
-    </listitem>
-   </itemizedlist>
    <glossseealso otherterm="obs.glos.container"/>
   </glossdef>
  </glossentry>
