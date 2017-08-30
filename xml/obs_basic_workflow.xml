@@ -616,6 +616,10 @@ Requires:         zool >= 1.5.6</screen>
   </sect2>
   <sect2 xml:id="sec.obs.basicworkflow.reuse">
    <title>Reusing Packages in Your Project</title>
+   <remark>toms 2017-08-30: This part and its subsections needs to be
+   further discussed. "Aggregate" as a word doesn't really fit with the
+   OBS terminology
+   </remark>
    <para>
     To reuse existing packages in your package repository, &obsa; offers
     two methods: <quote>aggregating</quote> and <quote>linking</quote>.
@@ -624,13 +628,12 @@ Requires:         zool >= 1.5.6</screen>
    <remark>toms 2017-08-30: add a notes when NOT to use the two methods.
    </remark>
 
-   <sect3 xml:id="sec.obs.basicworkflow.reuse.aggregating">
+   <sect3 xml:id="sec.obs.basicworkflow.reuse.aggregating" condition="tbs">
     <title>Aggregating a Package</title>
     <para>
-     Basically, an aggregated package is a pointer to the build results
-     (binaries) of a package, copying the build results into another
-     project.
-     Aggregating is used in the following situations:
+     An <quote>aggregate</quote> package is a pointer to an &obsa; package.
+     Such package and the result of it are referenced int another project.
+     <quote>Aggregating</quote> is used in the following situations:
     </para>
     <itemizedlist>
      <listitem>
@@ -640,8 +643,8 @@ Requires:         zool >= 1.5.6</screen>
      </listitem>
      <listitem>
       <para>
-       Packages are needed as a build requirement but are available
-       only in a different project.
+       Packages that are needed for building are only available in a
+       different project.
       </para>
      </listitem>
      <listitem>
@@ -651,12 +654,12 @@ Requires:         zool >= 1.5.6</screen>
       </para>
      </listitem>
      <listitem>
-      <para>Package rebuilds are avoided.</para>
+      <para>To avoid package rebuilds.</para>
      </listitem>
     </itemizedlist>
 
     <para>
-     The general signature of the <command>aggregatepac</command> command is:
+     The general syntax of the <command>aggregatepac</command> command is:
     </para>
     <screen>&prompt.user;&osccmd; aggregatepac <replaceable
      >SOURCEPRJ</replaceable> <replaceable
@@ -670,30 +673,31 @@ Requires:         zool >= 1.5.6</screen>
     <screen>&prompt.user;&osccmd; aggregatepac devel:language:python python-lxml &obshome1;</screen>
     <para>
      The next time you update your working directory, the <filename>python-lxml</filename>
-     directory is downloaded with the <filename>_aggregate</filename> file.
+<!--     directory is downloaded with the <filename>_aggregate</filename> file.-->
+     contains the <filename>_aggregate</filename> file.
     </para>
    </sect3>
    <sect3 xml:id="sec.obs.basicworkflow.reuse.linking">
     <title>Linking a Package</title>
     <para>
-     Basically, a linked package is a clone of another package with some
+     A linked package is a clone of another package with
      additional modifications. Linking is used in the following situations:
     </para>
     <itemizedlist>
      <listitem>
       <para>
-       Some changes in the source code is needed, but it is impossible,
-       unpractical, or inconvenient to change it.
+       The source code needs changes, but the source either cannot be
+       changed or it is impractical or inconvenient to change the source.
       </para>
      </listitem>
      <listitem>
       <para>
-       Separate the original source from own patches.
+       To separate the original source from own patches.
       </para>
      </listitem>
     </itemizedlist>
     <para>
-     The general signature of the <command>linkpac</command> command is:
+     The general syntax of the <command>linkpac</command> command is:
     </para>
     <screen>&prompt.user;&osccmd; linkpac <replaceable
      >SOURCEPRJ</replaceable> <replaceable
@@ -706,9 +710,9 @@ Requires:         zool >= 1.5.6</screen>
     </para>
     <screen>&prompt.user;&osccmd; linkpac devel:language:python python-lxml &obshome1;</screen>
     <para>
-     In contrast to aggregating, this time the checkout contains all the
+     In contrast to aggregating, the checkout contains all the
      files from the linked repository. To reduce it to a single file (like
-     in aggregating) you need to <quote>unexpand</quote> it in the working
+     with aggregating), <quote>unexpand</quote> it in the working
      directory like this:
     </para>
     <screen>&prompt.user;&osccmd; up --unexpand-link
