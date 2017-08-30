@@ -250,26 +250,13 @@
   <glossterm>Container</glossterm>
   <glossdef>
    <para>
-    A container is an image file that contains a deployable
-    version of software and metadata. Included with the main software are
-    usually also dependencies of it, such as additional libraries. Containers
-    can also include, for example, configuration files and documentation.
-    However, unlike images, containers do not include an operating system.
-   </para>
-   <para>
+    A deployable version of software and metadata, usually with
+    additionaly libraries but without an operating system.
     Containers cannot be installed. Instead, they are copied as-is onto the
     target system (<emphasis>deployed</emphasis>). They can then usually be
     run directly in that state.
    </para>
-   <para>
-    You can build containers on &obsa;. &obsa; supports
-    building multiple types of container. Container formats include
-    &appimg;, &docker;, and &snap;. <!-- &flatpak; ... later. -->
-   </para>
-   <para>
-    Alternatively, &obsa; can also build binary packages and operating system
-    images.
-   </para>
+   <glossseealso otherterm="obs.glos.appimage"/>
    <glossseealso otherterm="obs.glos.project_binary"/>
    <glossseealso otherterm="obs.glos.os_image"/>
    <glossseealso otherterm="obs.glos.image"/>
