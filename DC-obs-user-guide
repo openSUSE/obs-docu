@@ -10,6 +10,9 @@ ROOTID="book.obs.user"
 
 ## Profiling
 PROFOS="opensuse;novell"
+# setting a bogus profcondition means we are profiling with condition and
+# that in turn removes things marked with condition=tbd
+PROFCONDITION="bogus"
 
 ## stylesheet location
 STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2013"
