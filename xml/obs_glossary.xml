@@ -59,7 +59,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.attribute" condition="tbd">
+ <glossentry xml:id="obs.glos.attribute">
   <glossterm>Attribute</glossterm>
   <glossdef>
    <para>
@@ -118,7 +118,7 @@
    <glossseealso otherterm="obs.glos.submitrequest"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.bugowner" condition="tbd">
+ <glossentry xml:id="obs.glos.bugowner">
   <glossterm>Bugowner</glossterm>
   <glossdef>
    <!-- Helpful: https://en.opensuse.org/openSUSE:Package_maintainership_guide
@@ -475,7 +475,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## M ############## -->
- <glossentry xml:id="obs.glos.maintainer" condition="tbd">
+ <glossentry xml:id="obs.glos.maintainer">
   <glossterm>Maintainer</glossterm>
   <glossdef>
    <para>
