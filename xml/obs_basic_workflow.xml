@@ -616,8 +616,113 @@ Requires:         zool >= 1.5.6</screen>
   </sect2>
   <sect2 xml:id="sec.obs.basicworkflow.reuse">
    <title>Reusing Packages in Your Project</title>
-   <para/>
-   <remark>TBD</remark>
+   <para>
+    To reuse existing packages in your package repository, &obsa; offers
+    two methods: <quote>aggregating</quote> and <quote>linking</quote>.
+   </para>
+
+   <remark>toms 2017-08-30: add a notes when NOT to use the two methods.
+   </remark>
+
+   <sect3 xml:id="sec.obs.basicworkflow.reuse.aggregating">
+    <title>Aggregating a Package</title>
+    <para>
+     Aggregating is used in the following situations:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       No changes in the source code are needed.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Packages are needed as a build requirement but are available
+       only in a different project.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Build results (binaries) of the aggregated package are copied
+       into the target's package repository.
+      </para>
+     </listitem>
+     <listitem>
+      <para>Package rebuilds are avoided.</para>
+     </listitem>
+    </itemizedlist>
+
+    <para>
+     The general signature of the <command>aggregatepac</command> command is:
+    </para>
+    <screen>&prompt.user;&osccmd; aggregatepac <replaceable
+     >SOURCEPRJ</replaceable> <replaceable
+      >SOURCEPAC</replaceable> <replaceable
+       >DESTPRJ</replaceable></screen>
+    <para>
+     For example, to aggregate the package <package>python-lxml</package>
+     from <uri>devel:language:python</uri> into your home project,
+     use the following command:
+    </para>
+    <screen>&prompt.user;&osccmd; aggregatepac devel:language:python python-lxml &obshome1;</screen>
+    <para>
+     The next time you update your working directory, the <filename>python-lxml</filename>
+     directory is downloaded with the <filename>_aggregate</filename> file.
+    </para>
+   </sect3>
+   <sect3 xml:id="sec.obs.basicworkflow.reuse.linking">
+    <title>Linking a Package</title>
+    <para>
+     Linking is used in the following situations:
+    </para>
+    <itemizedlist>
+     <listitem>
+      <para>
+       Some changes in the source code is needed, but it is impossible,
+       unpractical, or inconvenient to change it.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       Separate the original source from patches.
+      </para>
+     </listitem>
+    </itemizedlist>
+    <para>
+     The general signature of the <command>linkpac</command> command is:
+    </para>
+    <screen>&prompt.user;&osccmd; linkpac <replaceable
+     >SOURCEPRJ</replaceable> <replaceable
+      >SOURCEPAC</replaceable> <replaceable
+       >DESTPRJ</replaceable></screen>
+    <para>
+     For example, to link the package <package>python-lxml</package> from
+     <uri>devel:language:python</uri> into your home project, use the
+     following command:
+    </para>
+    <screen>&prompt.user;&osccmd; linkpac devel:language:python python-lxml &obshome1;</screen>
+    <para>
+     In contrast to aggregating, this time the checkout contains all the
+     files from the linked repository. To reduce it to a single file (like
+     in aggregating) you need to <quote>unexpand</quote> it in the working
+     directory like this:
+    </para>
+    <screen>&prompt.user;&osccmd; up --unexpand-link
+Unexpanding to rev 1
+A    _link
+D    pytest-3.2.1.tar.gz
+D    python-pytest-doc.changes
+D    python-pytest-doc.spec
+D    python-pytest.changes
+D    python-pytest.spec
+At revision 1.</screen>
+    <para>
+     This gives you a <filename>_link</filename> file similar to the
+     <filename>_aggregate</filename> file. You can use the <option>--expand-link</option>
+     option in the <command>up</command> subcommand to revert to the previous
+     state.
+    </para>
+   </sect3>
   </sect2>
  </sect1>
 
