@@ -64,14 +64,8 @@
   <xi:include href="obs_basic_workflow.xml"/>
   <xi:include href="osc_building.xml"/>
 
-  <chapter condition="tbd">
-   <title>Using Source Services</title>
-   <para/>
-   <remark>TBD</remark>
-  </chapter>
-
-<!--  <xi:include href="obs_signing.xml"/>-->
-
+  <xi:include href="obs_source_service.xml"/>
+  <!-- tbd: <xi:include href="obs_signing.xml"/>-->
  </part>
 
  <part condition="tbd">
