@@ -381,11 +381,11 @@
     An image file contains a bit-wise representation of the layout of a block
     device. Some types of image files are compressed. &obsa; allows building
     multiple types of image:
+   </para>
     <simplelist type="inline">
      <member><xref linkend="obs.glos.os_image"/></member>
      <member><xref linkend="obs.glos.container"/></member>
-    </simplelist>.
-   </para>
+    </simplelist>
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.imagedescription">
@@ -552,12 +552,12 @@
     An image file that contains an operating
     system. The operating system can be either installable or deployable.
     Depending on their purpose, operating system images are classified into:
+   </para>
     <simplelist type="inline">
      <member><xref linkend="obs.glos.product_image"/></member>
      <member><xref linkend="obs.glos.appliance"/></member>
      <member><xref linkend="obs.glos.vm_image"/></member>
-    </simplelist>.
-   </para>
+    </simplelist>
    <para>
     Formats of operating system images include ISO, Virtual Disk, and PXE Root
     File System.
@@ -590,12 +590,12 @@
   <glossdef>
    <para>
     &obsa; handles very different types of software package:
+   </para>
     <simplelist type="inline">
      <member><xref linkend="obs.gloss.source_package"/></member>
      <member><xref linkend="obs.glos.obs_package"/></member>
      <member><xref linkend="obs.glos.project_binary"/></member>
-    </simplelist>.
-   </para>
+    </simplelist>
    <glossseealso otherterm="obs.glos.container"/>
   </glossdef>
  </glossentry>
