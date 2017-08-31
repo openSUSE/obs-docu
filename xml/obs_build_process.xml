@@ -13,7 +13,7 @@
   ensure that all dependencies are available and that every later build
   produces identical results.
  </para>
- <sect1>
+ <sect1 condition="tbd">
   <title>Definition of a Build Process</title>
   <para/>
   <remark>TBD</remark>
@@ -120,12 +120,12 @@
    </remark>
   </sect2>
  </sect1>
- <sect1>
+ <sect1 condition="tbd">
   <title>Different Ways of Building</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
- <sect1>
+ <sect1 condition="tbd">
   <title>Security Aspects</title>
   <para/>
   <remark>TBD</remark>

@@ -19,6 +19,6 @@
  <xi:include href="obs_admin_appliance.xml"/>
  <xi:include href="obs_admin_backend.xml"/>
  <xi:include href="obs_admin_frontend.xml"/>
- <xi:include href="obs_admin_tools.xml"/>
- <xi:include href="obs_admin_integration.xml"/>
+ <!-- tbd: <xi:include href="obs_admin_tools.xml"/>-->
+ <!-- tbd: <xi:include href="obs_admin_integration.xml"/>-->
 </chapter>

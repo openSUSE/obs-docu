@@ -154,12 +154,12 @@
    </itemizedlist>
   </sect2>
  </sect1>
- <sect1>
+ <sect1 condition="tbd">
   <title>&osccmd; Search Interface</title>
   <para/>
   <remark>TBD: not yet implemented (?) </remark>
  </sect1>
- <sect1>
+ <sect1 condition="tbd">
   <title>Web UI Search Interface</title>
   <para/>
   <remark>TBD: not yet implemented (?) </remark>

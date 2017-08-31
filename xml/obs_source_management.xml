@@ -9,7 +9,7 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Source Management</title>
  <info/>
- <para> .. </para>
+
  <sect1>
   <title>Find Package Sources</title>
   <para> OBS is adding information to each created package about the origin of

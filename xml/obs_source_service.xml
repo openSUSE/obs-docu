@@ -182,8 +182,8 @@
   <screen>/usr/lib/obs/service/ <replaceable>MY_SCRIPT</replaceable> \
 --<replaceable>PARAMETER1</replaceable> <replaceable>PARAMETER1_VALUE</replaceable> --outdir <replaceable>DIR</replaceable></screen>
  </sect1>
- <sect1>
+ <sect1 condition="tbd">
   <title>Interfaces for Using Source Services</title>
-  <para> .. </para>
+  <para><remark>tbd</remark></para>
  </sect1>
 </chapter>

@@ -12,6 +12,7 @@
  <info/>
  <para> We describe here the high-level concepts: how Open Build Service is
   designed, manages its content and is supposed to work. </para>
+
  <sect1>
   <title>Project Organization</title>
   <para> All sources and binaries which are hosted inside of OBS are organized
@@ -127,11 +128,13 @@
    </para>
   </sect2>
  </sect1>
- <sect1>
+
+ <sect1 condition="tbd">
   <title>The API</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
+
  <sect1>
   <title>The OBS Interconnect</title>
   <para> The OBS interconnect is a mechanism to connect two OBS instances. All
@@ -148,14 +151,17 @@
 -->
   </para>
  </sect1>
+
  <xi:include href="obs_concepts_dod.xml"/>
  <xi:include href="obs_concepts_scm.xml"/>
- <sect1>
+
+ <sect1 condition="tbd">
   <title>Attribute System</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
- <sect1>
+
+ <sect1 condition="tbd">
   <title>Automatic Source Processing</title>
   <para/>
   <remark>TBD</remark>

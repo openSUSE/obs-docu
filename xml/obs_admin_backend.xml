@@ -104,17 +104,17 @@
     </listitem>
    </orderedlist>
   </sect3>
-  <sect3>
+  <sect3 condition="tbd">
    <title>Distributed Source Services</title>
    <para/>
    <remark>TBD</remark>
   </sect3>
-  <sect3>
+  <sect3 condition="tbd">
    <title>Isolated Signer</title>
    <para/>
    <remark>TBD</remark>
   </sect3>
-  <sect3>
+  <sect3 condition="tbd">
    <title>Repository Partitions</title>
    <para/>
    <remark>TBD</remark>

@@ -4,10 +4,10 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1"
+<chapter version="5.1" xml:id="cha.obs.building"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
- xmlns:xlink="http://www.w3.org/1999/xlink" >
+ xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Building Package Formats</title>
  <info>
   <abstract>
@@ -18,32 +18,32 @@
  </info>
  <remark>toms 2017-08-18: Also integrate content from obs_build_containers.xml</remark>
  
- <sect1>
+ <sect1 xml:id="sec.obs.building.spec2rpm">
   <title>From Spec Files (RPM)</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
- <sect1>
+ <sect1 condition="tbd">
   <title>From CONTROL/RULES/DSC Files (Debian)</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
- <sect1>
+ <sect1 condition="tbd">
   <title>From <filename>PKGBUILD</filename> Files (Arch)</title>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
- <sect1>
+ <sect1 condition="tbd">
   <title>As Snap Containers</title>
   <remark>toms 2017-08-18: see https://snapcraft.io/docs/build-snaps/ci-integration</remark>
   <para/>
   <remark>TBD</remark>
  </sect1>
 
- <sect1>
+ <sect1 condition="tbd">
   <title>As Livebuild Images</title>
   <remark>toms 2017-08-18: see https://www.debian.org/devel/debian-live/</remark>
   <para/>
@@ -51,7 +51,7 @@
  </sect1>
 
 
- <sect1>
+ <sect1 condition="tbd">
   <title>From Kiwi Files (&kiwi;)</title>
    <!--
     1. Create a repository in a project
@@ -75,13 +75,7 @@
   <remark>TBD</remark>
  </sect1>
 
- <sect1>
-  <title>From Spec Files (RPM)</title>
-  <para/>
-  <remark>TBD</remark>
- </sect1>
-
- <sect1>
+ <sect1 condition="tbd">
   <title>As &obs.pimg;</title>
   <remark>toms 2017-08-18: integrate content from  obs_build_preinstall.xml;
   using a _preinstallimage file</remark>

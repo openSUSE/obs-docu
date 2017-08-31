@@ -158,7 +158,7 @@
   </variablelist>
  </sect1>
 
- <sect1>
+ <sect1 condition="tbd">
   <title>Snap</title>
   <para/>
   <remark>TBD</remark>

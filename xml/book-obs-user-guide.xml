@@ -49,7 +49,7 @@
 
  <part xml:id="par.concepts">
   <title>Concepts</title>
-  <xi:include href="obs_user_concept.xml"/>
+<!--  <xi:include href="obs_user_concept.xml"/>-->
   <xi:include href="obs_package_formats.xml"/>
 </part>
 
@@ -64,17 +64,17 @@
   <xi:include href="obs_basic_workflow.xml"/>
   <xi:include href="osc_building.xml"/>
 
-  <chapter>
+  <chapter condition="tbd">
    <title>Using Source Services</title>
    <para/>
    <remark>TBD</remark>
   </chapter>
 
-  <xi:include href="obs_signing.xml"/>
+<!--  <xi:include href="obs_signing.xml"/>-->
 
  </part>
 
- <part>
+ <part condition="tbd">
   <title>Advanced Usage</title>
   <xi:include href="obs_product_building.xml"/>
  </part>
