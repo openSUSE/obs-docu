@@ -10,34 +10,53 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Available Documentation</title>
- <para>The following documentation is available for this product:</para>
+ <para>The following documentation is available for &obsa;:</para>
  <variablelist>
-  <varlistentry>
-   <term><xref linkend="book.obs-reference-guide"/></term>
-   <listitem>
-    <para/>
-    <remark>TBD</remark>
-   </listitem>
-  </varlistentry>
   <varlistentry>
    <term><xref linkend="book.obs-admin"/></term>
    <listitem>
-    <para/>
-    <remark>TBD</remark>
-   </listitem>
-  </varlistentry>
-  <varlistentry>
-   <term><xref linkend="book.obs-best-practices"/></term>
-   <listitem>
-    <para/>
-    <remark>TBD</remark>
+    <para>
+     This guide offers information about the initial setup and maintenance
+     for running &obs; instances.
+    </para>
    </listitem>
   </varlistentry>
   <varlistentry>
    <term><xref linkend="art.obs.bg"/></term>
    <listitem>
-    <para/>
-    <remark>TBD</remark>
+    <para>
+     This guide describes basic workflows for working with packages on &obs;.
+     This includes checking out a package from an upstream project, creating
+     patches, branching a repository, and more.
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><xref linkend="book.obs-best-practices"/></term>
+   <listitem>
+    <para>
+     This guide offers step-by-step instructions for the most common features
+     of the &obs; and the &osbs;.
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><xref linkend="book.obs-reference-guide"/></term>
+   <listitem>
+    <para>
+     This guide covers ideas and motivations, concepts and processes of the
+     &obs; and also covers administration topics.
+    </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry>
+   <term><xref linkend="book.obs.user"/></term>
+   <listitem>
+    <para>
+     This guide is intended for users and developers who want to dig deeper
+     into &obs;. It contains information on backgrounds, setting up your
+     computer for working with &obsa;, and usage scenarios.
+    </para>
    </listitem>
   </varlistentry>
  </variablelist>
