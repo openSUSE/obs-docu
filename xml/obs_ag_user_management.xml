@@ -169,8 +169,8 @@
  <sect2 xml:id="_ldap_active_directory">
   <title>LDAP/Active Directory</title>
   <note>
-   <para> The LDAP support is considered experimental and is not officially
-    supported. </para>
+   <para>The LDAP support was considered experimental and not officially
+    supported. It is officially supported since 2.8.3 release.</para>
   </note>
   <para>Using LDAP or Active Directory as source for user and optional group
    information in environments which already have such a server has the
