@@ -828,6 +828,15 @@
    <glossseealso otherterm="obs.glos.archive"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.sourceservice">
+  <glossterm>Source Service</glossterm>
+  <glossdef>
+   <para>
+    A tool to validate, generate, or modify a source in a trustable way.
+   </para>
+   <glossseealso otherterm="obs.glos.source"/>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.susepackagehub">
   <glossterm>&suse; Package Hub</glossterm>
   <glossdef>
