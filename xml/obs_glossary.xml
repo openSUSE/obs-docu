@@ -49,7 +49,7 @@
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.archive">
-  <glossterm>Archive (Archive File)</glossterm>
+  <glossterm baseform="Archive">Archive (Archive File)</glossterm>
   <glossdef>
    <para>
     An archive file contains a representation of usually multiple files and
@@ -72,7 +72,7 @@
  </glossentry>
  <!-- ############## B ############## -->
  <glossentry xml:id="obs.glos.project_binary">
-  <glossterm>Binary Package (Binary)</glossterm>
+  <glossterm baseform="Binary Package">Binary Package (Binary)</glossterm>
   <glossdef>
    <para>
     An archive file that contains an installable version of software and
@@ -375,7 +375,7 @@
  </glossentry>
  <!-- ############## I ############## -->
  <glossentry xml:id="obs.glos.image">
-  <glossterm>Image (Image File)</glossterm>
+  <glossterm baseform="Image">Image (Image File)</glossterm>
   <glossdef>
    <para>
     An image file contains a bit-wise representation of the layout of a block
@@ -511,7 +511,7 @@
   </glossdef>
  </glossentry>
  <glossentry xml:id="obs.glos.obs" sortas="Open Build Service">
-  <glossterm>&OBS;</glossterm>
+  <glossterm baseform="&obs;">&OBS;</glossterm>
   <glossdef>
    <para>
     A Web service to build binary packages, containers and operating system
