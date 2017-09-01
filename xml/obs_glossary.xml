@@ -294,6 +294,17 @@
    <glossseealso otherterm="obs.glos.project"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.docker">
+  <glossterm>Docker</glossterm>
+  <glossdef>
+   <para>
+    <remark>toms 2017-09-01: taken from Docker Quick Start</remark>
+    Docker is a lightweight virtualization solution to run multiple virtual
+    units (containers) simultaneously on a single control host.
+   </para>
+   <glossseealso otherterm="obs.glos.container"/>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.downloadrepository">
   <glossterm>Download Repository</glossterm>
   <glossdef>
