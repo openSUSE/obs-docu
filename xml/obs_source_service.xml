@@ -355,12 +355,9 @@
   <para>
    Source services are defined in the <filename>_service</filename> file
    and are either part of the package sources or used project-wide.
-   <remark>toms 2017-08-31: Not sure where this _project belongs; where
-   is this _project package?
-   "It is either part of the package sources
-   or used project-wide when stored inside the <filename>_project</filename>
-   package." </remark>
-   For project-wide services, 
+   Project-wide services are stored under the <uri>_project</uri> package
+   in file <filename>_service</filename>.
+   package
   </para>
   <para> The <filename>_service</filename> file contains a list of services
    which get called in the listed order. Each service can define a list of
@@ -381,7 +378,7 @@
   &lt;service name="update_source" mode="disabled" /&gt;
 &lt;/services&gt;</screen>
   <para>
-   With the example above, the following services are executed in the
+   With the example above, the services above are executed in the
    following order:
   </para>
   <orderedlist>
