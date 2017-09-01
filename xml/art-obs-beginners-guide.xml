@@ -599,6 +599,8 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       baseform="Spec File">spec file</firstterm>. 
      The skeleton of such a spec file looks like this:
     </para>
+    <example xml:id="ex.obsbg.uc.basicprj.skeletonspec">
+     <title>Skeleton of a Spec File</title>
     <screen>#
 # spec file for package &gitproject;
 #
@@ -720,6 +722,7 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
       </formalpara>
      </callout>
     </calloutlist>
+    </example>
     <para>
      <remark>toms 2017-08-17: FIXME: Better link to OBS instead of GH?</remark>
      For the complete spec file, see <link xlink:href="&gitupstream1;"/>.
