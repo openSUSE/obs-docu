@@ -409,11 +409,13 @@
  </sect1>
 
  <sect1 xml:id="sec.obs.sserv.remove">
-  <title>Removing a Source Service Again</title>
+  <title>Removing a Source Service</title>
   <para> Sometimes it is useful to continued to work on generated files
-   manually. In this situation the _service file needs to be dropped, but all
-   generated files need to be committed as standard files. The OBS provides the
-   "mergeservice" command for this. It can also be used via osc by calling
+   manually. In this situation the <filename>_service</filename> file needs
+   to be dropped, but all
+   generated files need to be committed as standard files. The &obsa;
+   provides the <command>mergeservice</command> command for this. It can
+   also be used via &osccmd; by calling
     <command>osc service merge</command>. </para>
  </sect1>
 
