@@ -276,5 +276,42 @@ systemctl enable sshd</screen>
  <sect1 xml:id="sec.obs.pkgformats.appimage">
   <title>&obs.ai;</title>
   <remark>toms 2017-08-18: TODO What is it and what is needed</remark>
+  <para>
+   An &obs.ai; is a bundled application including libraries that
+   allows to run on a variety of different distributions without
+   further installation or modification. The &obs.ai; contains all
+   libraries that are not already part of the base system.
+   &obs.ai; keeps the underlying operating system untouched, which means,
+   you do not need root permission nor installation.
+
+  </para>
+  <para> For building an image in &obs.ai; you need:</para>
+  <variablelist>
+   <varlistentry>
+    <term><filename>PACKAGE</filename></term>
+    <listitem>
+     <para>
+      The original, untouched source archive.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename><replaceable>PACKAGE</replaceable>.rpm</filename></term>
+    <listitem>
+     <para>
+      The successfully built RPM package.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename>appimage.yml</filename></term>
+    <listitem>
+     <para>
+      A YAML file which contains a list of dependencies and installation
+      instructions. Dependencies are expressed as RPM package names.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
  </sect1>
 </chapter>
