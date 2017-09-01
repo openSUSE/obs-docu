@@ -20,8 +20,124 @@
  
  <sect1 xml:id="sec.obs.building.spec2rpm">
   <title>From Spec Files (RPM)</title>
-  <para/>
-  <remark>TBD</remark>
+  <para>
+   To create an RPM package, you need:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     the spec file which is the build recipe
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     a file with the extension <filename class="extension">.changes</filename>
+     that can be used to document the package history
+    </para>
+   </listitem>
+   <listitem>
+    <para>the original source archive</para>
+   </listitem>
+   <listitem>
+    <para>
+     optional patches which changes the original source code to fix problems
+     in regards to security, the build process, or other issues
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     other files which do not fall into one of the previous categories
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   For existing packages, this is already the case. To build an
+   existing package, the general procedure is as follows:</para>
+  <procedure>
+   <step>
+    <para>
+     If you have not done so yet, set up your project as shown in
+     <xref linkend="sec.obs.basicworkflow.setuphome"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     In the terminal, choose or create a directory on a local partition that
+     has enough space to hold the package sources.
+    </para>
+   </step>
+   <step>
+    <para>
+     Check out the project that contains the package:
+    </para>
+    <screen>&prompt.user;<command>osc</command> checkout <replaceable
+     >PROJECT</replaceable> <replaceable>PACKAGE</replaceable></screen>
+    <para>
+     This creates a <filename><replaceable
+     >PROJECT</replaceable>:<replaceable>PACKAGE</replaceable></filename>
+     directory in the current directory.
+    </para>
+   </step>
+   <step>
+    <para>
+     Change the directory:
+    </para>
+    <screen>&prompt.user;<command>cd</command> <replaceable
+     >PROJECT</replaceable>:<replaceable>PACKAGE</replaceable></screen>
+   </step>
+   <step>
+    <para>
+     Decide for which build target (for example &opensuse; Tumbleweed for
+     x86_64), you want to create the RPM package and execute:
+    </para>
+    <screen>&prompt.user;<command>osc</command> build openSUSE:Tumbleweed x86_64 *.spec</screen>
+   </step>
+   <step>
+    <para>
+     Inspect the build process.
+    </para>
+    <variablelist>
+     <varlistentry>
+      <term>Successful Build</term>
+      <listitem>
+<!--       <para></para>-->
+       <screen>[   15s] RPMLINT report:
+[   15s] ===============
+[   16s] 2 packages and 0 specfiles checked; 0 errors, 0 warnings.
+[   16s]
+[   16s]
+[   16s] &wsII; finished "build <replaceable>PACKAGE</replaceable>.spec" at Fri Sep  1 11:54:31 UTC 2017.
+[   16s]
+
+/var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/SRPMS/<replaceable
+ >PACKAGE</replaceable>-<replaceable>VERSION</replaceable>-0.src.rpm
+
+/var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/RPMS/noarch/<replaceable>PACKAGE</replaceable>-<replaceable>VERSION</replaceable>-0.noarch.rpm</screen>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Unsuccessful Build</term>
+      <listitem>
+<!--       <para></para>-->
+       <screen>[    8s] &wsII; failed "build <replaceable>PACKAGE</replaceable>.spec" at Fri Sep  1 11:58:55 UTC 2017.
+[    8s]
+
+The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+    <para>
+     A successful build ends always with the creation of the RPM and SRPM
+     files.
+    </para>
+   </step>
+   <step>
+    <para>
+     For a detailed log, see the file
+     <filename>/var/tmp/build-root/openSUSE_Tumbleweed-x86_64/.build.log</filename>.
+    </para>
+   </step>
+  </procedure>
  </sect1>
 
  <sect1 condition="tbd">
