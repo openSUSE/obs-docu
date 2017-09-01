@@ -96,7 +96,7 @@
    </listitem>
    <listitem>
     <para>
-     A <tag>service</tag> element which uses the specific services with
+     A <tag>service</tag> element which uses the specific service with
      optional parameters.
     </para>
    </listitem>
@@ -138,6 +138,8 @@
   </para>
   <screen><command>/usr/lib/obs/service/<replaceable
    >MY_SCRIPT</replaceable></command> --<replaceable>PARAMETER1</replaceable> <replaceable>PARAMETER1_VALUE</replaceable> --outdir <replaceable>DIR</replaceable></screen>
+  <remark>toms 2017-09-01: Maybe we should add a list of available
+  services from /usr/lib/obs/service/?</remark>
  </sect1>
 
  <sect1 xml:id="sec.obs.sserv.mode">
@@ -256,6 +258,7 @@
    <varlistentry>
     <term><literal>serveronly</literal> Mode</term>
     <listitem>
+     <remark>toms 2017-09-01: deprecated according to "osc service -h"?</remark>
      <para>
       The serviceonly mode is running the service on the service only. This
       can be useful, when the service is not available or can not work on
