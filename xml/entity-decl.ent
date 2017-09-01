@@ -64,8 +64,8 @@
 <!ENTITY oscbuildcache  "/var/tmp/osbuild-packagecache">
 
 <!ENTITY gh             "GitHub">
-<!ENTITY gitorg         "openSUSE">
-<!ENTITY gitproject     "example-obs">
+<!ENTITY gitorg         "obs-example">
+<!ENTITY gitproject     "my-first-obs-package">
 <!ENTITY gitprjvers     "0.1.0">
 <!ENTITY gitupstream1   "https://github.com/&gitorg;/&gitproject;">
 
