@@ -145,6 +145,80 @@
   <para> Each service can be used in a mode defining when it should run
    and how to use the result. This can be done per package or globally for an
    entire project. </para>
+<!--
+   toms 2017-09-01:
+   This is the table for the variablelist below. It's a good idea, but
+   this table raises more question than it solves.
+   Commenting for the time being.
+  <table>
+   <title>Service Modes</title>
+   <tgroup cols="4">
+    <colspec colnum="1" colwidth="1*"/>
+    <colspec colnum="2" colwidth="2*"/>
+    <colspec colnum="3" colwidth="2*"/>
+    <colspec colnum="4" colwidth="4*"/>
+    <thead>
+     <row>
+      <entry>Mode</entry>
+      <entry>Runs locally</entry>
+      <entry>Runs remotely</entry>
+      <entry>Added File Handling</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>Default</entry>
+      <entry>Before each build</entry>
+      <entry>After each commit</entry>
+      <entry>Generated file, prefixed with <filename>_service:</filename></entry>
+     </row>
+     <row>
+      <entry><literal>trylocal</literal></entry>
+      <entry>Before each build</entry>
+      <entry>After each commit<remark>toms 2017-09-01: True?</remark>
+      </entry>
+      <entry>Committed as standard files but not named with 
+       a <filename>_service:</filename> prefix</entry>
+     </row>
+     <row>
+      <entry><literal>localonly</literal></entry>
+      <entry>Before each build</entry>
+      <entry>Never</entry>
+      <entry>Committed as standard files but not named with 
+       a <filename>_service:</filename> prefix</entry>
+     </row>
+     <row>
+      <entry><literal>serveronly</literal></entry>
+      <entry>Never</entry>
+      <entry>Before each build</entry>
+      <entry>Generated file, prefixed with <filename>_service:</filename><footnote>
+       <para>
+        This can be useful, when the service is not available or can not
+        work on developer workstations.
+       </para>
+      </footnote><remark>toms 2017-09-01: ???</remark></entry>
+     </row>
+     <row>
+      <entry><literal>buildtime</literal></entry>
+      <entry>Before each build<footnote xml:id="fn.obs.sserv.mode.buildtime">
+       <para>
+        A side effect is that the service package is becoming a build
+        dependency and must be available.
+       </para>
+      </footnote></entry>
+      <entry>Before each build<xref linkend="fn.obs.sserv.mode.buildtime"/></entry>
+      <entry></entry>
+     </row>
+     <row>
+      <entry><literal>disabled</literal></entry>
+      <entry>Never</entry>
+      <entry>Never</entry>
+      <entry><remark>toms 2017-09-01: </remark></entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+-->
   <variablelist>
    <varlistentry>
     <term>Default Mode</term>
@@ -286,6 +360,7 @@
    "It is either part of the package sources
    or used project-wide when stored inside the <filename>_project</filename>
    package." </remark>
+   For project-wide services, 
   </para>
   <para> The <filename>_service</filename> file contains a list of services
    which get called in the listed order. Each service can define a list of
@@ -294,7 +369,7 @@
    services.
    </para>
   <para>
-   The file is in XML format like this example:
+   The <filename>_service</filename> file is in XML format and looks like this:
   </para>
   <screen>&lt;services&gt;
   &lt;service name="download_files" mode="trylocal" /&gt;
