@@ -18,46 +18,65 @@
    combined following the powerful idea of the classic UNIX design.
   </para>
   <para>
-   Design goals of source services were:
+   Source services allow:
   </para>
   <itemizedlist>
    <listitem>
-    <para> server side generated files must be easy to identify and must not be
+    <para>
+     Server side generated files are easy to identify and are not
      modifiable by the user. This way others user can trust them to be
-     generated in the documented way without modifications. </para>
-   </listitem>
-   <listitem>
-    <para> generated files must never create merge conflicts </para>
-   </listitem>
-   <listitem>
-    <para> generated files must be a separate commit to the user change </para>
-   </listitem>
-   <listitem>
-    <para> services must be runnable at any time without user commit </para>
-   </listitem>
-   <listitem>
-    <para> services must be runnable on server and client side in the same way
+     generated in the documented way without modifications.
     </para>
    </listitem>
    <listitem>
-    <para> services must be designed in a safe way. A source checkout and
-     service run must never harm the system of a user. </para>
-   </listitem>
-   <listitem>
-    <para> services shall be designed in a way to avoid unnecessary commits.
-     This means there shall be no time-dependent changes. In case the package
-     already contains the same file, the newly generated file must be dropped.
+    <para>
+     Generated files never create merge conflicts.
     </para>
    </listitem>
    <listitem>
-    <para> local services can be added and used by everybody. </para>
+    <para>
+     Generated files are a separate commit to the user change.
+    </para>
    </listitem>
    <listitem>
-    <para> server side services must be installed by the admin of the OBS
-     server. </para>
+    <para>
+     Services are runnable at any time without user commit.
+    </para>
    </listitem>
    <listitem>
-    <para> service can be defined per package or project wide. </para>
+    <para>
+     Services are runnable on server and client side in the same way.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Services are safe. A source checkout and service run never harms
+     the system of a user.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Services avoid unnecessary commits.
+     This means there are no time-dependent changes. In case the package
+     already contains the same file, the newly generated file are dropped.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Services running local or inside the build environment can get created,
+     added and used by everybody.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Services running in default or server side mode must be installed by
+     the administrator of the &obsa; server.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The use of a service can be defined per package or project wide.
+    </para>
    </listitem>
   </itemizedlist>
   <para>
@@ -67,7 +86,7 @@
   <itemizedlist>
    <listitem>
     <para>
-     An XML file named <filename>_services</filename>.
+     An XML file named <filename>_service</filename>.
     </para>
    </listitem>
    <listitem>
@@ -83,7 +102,7 @@
    </listitem>
   </itemizedlist>
   <example xml:id="ex.obs.sserv.struct">
-   <title>General Structure of a <filename>_service</filename> File</title>
+   <title>Structure of a <filename>_service</filename> File</title>
   <screen language="xml">&lt;services&gt; <co xml:id="co.obs.sserv.struct.services"/>
  &lt;service name="<replaceable>MY_SCRIPT</replaceable>"<co xml:id="co.obs.sserv.struct.name"/> mode="<replaceable>MODE</replaceable>"<co xml:id="co.obs.sserv.struct.mode"/>&gt;
   &lt;param name="<replaceable>PARAMETER1</replaceable>"&gt;<replaceable>PARAMETER1_VALUE</replaceable>&lt;/param&gt;<co xml:id="co.obs.sserv.struct.param"/>
@@ -103,12 +122,12 @@
     </callout>
     <callout arearefs="co.obs.sserv.struct.mode">
      <para>
-      A mode of service, see <xref linkend="sec.obs.sserv.mode"/>.
+      Mode of the service, see <xref linkend="sec.obs.sserv.mode"/>.
      </para>
     </callout>
     <callout arearefs="co.obs.sserv.struct.param">
      <para>
-      One or more parameter which are passed to the script definied in
+      One or more parameters which are passed to the script definied in
       <xref linkend="co.obs.sserv.struct.name"/>.
      </para>
     </callout>
@@ -122,8 +141,8 @@
  </sect1>
 
  <sect1 xml:id="sec.obs.sserv.mode">
-  <title>Different Modes of Services</title>
-  <para> Each service can be used in a special mode defining when it should run
+  <title>Modes of Services</title>
+  <para> Each service can be used in a mode defining when it should run
    and how to use the result. This can be done per package or globally for an
    entire project. </para>
   <variablelist>
@@ -140,7 +159,7 @@
     <term><literal>trylocal</literal> Mode</term>
     <listitem>
      <para>
-      This mode is running the service locally. The result gets committed
+      This mode is running the service locally. The result is committed
       as standard files and not named with a <literal>_service:</literal>
       prefix. Additionally, the service runs on the server by
       default. Usually the service should detect that the result is the same
@@ -154,7 +173,7 @@
     <listitem>
      <para>
       This mode is running the service locally. The result gets committed
-      as standard files and not named  with _service: prefix.
+      as standard files and not named  with <literal>_service:</literal> prefix.
       The service is never running on the server side. It is also not
       possible to trigger it manually.
      </para>
@@ -192,7 +211,7 @@
     <term><literal>disabled</literal> Mode</term>
     <listitem>
      <para>
-      The disabled mode is neither running the service locally or on the
+      The disabled mode is neither running the service locally nor on the
       server side. It can be used to temporarily disable the service but keeping
       the definition as part of the service definition. Or it can be used to
       define the way how to generate the sources and doing so by manually calling
@@ -207,16 +226,16 @@
  <sect1 xml:id="sec.obs.sserv.validate">
   <title>Defining Services for Validation</title>
   <para>
-   Source Services may be used to validate sources. This can be definied
-   as:
+   Source Services can be used to validate sources. This can be defined
+   at different levels:
   </para>
   <itemizedlist>
    <listitem>
     <formalpara>
      <title>Per Package</title>
      <para>
-      Useful when the packager wants to validate the downloaded sources
-      are really from the original maintainer.
+      Useful when the packager wants to validate wheather the downloaded
+      sources are really from the original maintainer.
      </para>
     </formalpara>
    </listitem>
@@ -224,29 +243,43 @@
     <formalpara>
      <title>Per Project</title>
      <para>
-      Useful for applying general policies which cannot get skipped in
+      Useful for applying project-wide policies which cannot be skipped for
       any package.
      </para>
     </formalpara>
    </listitem>
   </itemizedlist>
-  <remark>toms 2017-08-31: Hmn, not sure how to rephrase the following
-  sentence...</remark>
+
   <para>
-   Validation can happen by validating files, for example, using the
-    <systemitem class="service">verify_file</systemitem> or <systemitem
-      class="service">source_validator</systemitem> service.
-   These services just fail in the error case which leads to the build
-   state "broken". Or validation can happen by redoing a certain action and
-   store the result as new file as <command>download_files</command> is doing.
-   In this case the newly generated file will be used instead of the committed
-   one during build. </para>
+   You can validate sources using either of two methods:
+  </para>
+  <remark>toms 2017-09-01: by sknorr regarding the list:
+  however, (based off my interpretation) the use cases seem to be different
+  for those two methods: the first guards against corruptions that happen
+  on the way between maintainer and you (i.e. rogue ISP). the second guards
+  against corruptions between the source project and you (i.e. rogue
+  maintainer). Interestingly, neither guards against both.
+  </remark>
+  <itemizedlist>
+   <listitem>
+    <para>
+     By comparing checksums and metadata of the files in your repository
+     with checksums and metadata as recorded by the maintainer.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Alternatively, you can download the sources from a trusted location
+     again and verify that they did not change.
+    </para>
+   </listitem>
+  </itemizedlist>
  </sect1>
 
  <sect1 xml:id="sec.obs.sserv.create">
   <title>Creating Source Service Definitions</title>
   <para>
-   Source services are definied in the <filename>_service</filename> file
+   Source services are defined in the <filename>_service</filename> file
    and are either part of the package sources or used project-wide.
    <remark>toms 2017-08-31: Not sure where this _project belongs; where
    is this _project package?
@@ -255,7 +288,7 @@
    package." </remark>
   </para>
   <para> The <filename>_service</filename> file contains a list of services
-   which get called in the listed order. Each service may define a list of
+   which get called in the listed order. Each service can define a list of
    parameters and a mode.
    The project wide services get called after the per package defined
    services.
@@ -292,16 +325,16 @@
    </listitem>
    <listitem>
     <para>
-     If enabled, upgrade the source to a newer version available online.
-     This service is usually not executed unless when you run
-     <command>osc service disabledrun</command>.
+     When <command>osc service disabledrun</command> is run manually, update
+     the source archive from an online source. In all other cases, ignore
+     this part of the <filename>_service</filename> file.
     </para>
    </listitem>
   </orderedlist>
  </sect1>
 
- <sect1>
-  <title>Dropping a Source Service Again</title>
+ <sect1 xml:id="sec.obs.sserv.remove">
+  <title>Removing a Source Service Again</title>
   <para> Sometimes it is useful to continued to work on generated files
    manually. In this situation the _service file needs to be dropped, but all
    generated files need to be committed as standard files. The OBS provides the
