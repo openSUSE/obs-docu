@@ -127,7 +127,7 @@
     </callout>
     <callout arearefs="co.obs.sserv.struct.param">
      <para>
-      One or more parameters which are passed to the script definied in
+      One or more parameters which are passed to the script defined in
       <xref linkend="co.obs.sserv.struct.name"/>.
      </para>
     </callout>
@@ -239,7 +239,7 @@
       as standard files and not named with a <literal>_service:</literal>
       prefix. Additionally, the service runs on the server by
       default. Usually the service should detect that the result is the same
-      and skip the generated files. In case they differ, they get generated
+      and skip the generated files. In case they differ, they are generated
       and added on the server.
      </para>
     </listitem>

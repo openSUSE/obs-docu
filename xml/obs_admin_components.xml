@@ -111,7 +111,7 @@
    <title>Delta Store</title>
    <para> The delta store daemon maintains the deltas in the source storage.
     Multiple obscpio archives can be stored in one deltastore to avoid
-    duplication on disk. This services calculates the delta and maintains the
+    duplication on disk. This service calculates the delta and maintains the
     delta store. Each OBS installation can have one delta store process running
     next to the source server. </para>
   </sect3>

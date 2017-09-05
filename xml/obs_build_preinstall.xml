@@ -10,7 +10,7 @@
  <title>Building Preinstall Images</title>
  <info/>
  <para> Preinstall images can optionally be used to install a set of packages
-  in one fast step instead via single package installations. Depending on the
+  in one quick step instead via single package installations. Depending on the
   build host even snapshots with copy-on-write support may be used which avoids
   any IO. </para>
  <para> A preinstall image can be used if it provides a subset of packages
@@ -19,11 +19,15 @@
  <para> To use a preinstall image there needs to be a package container inside
   of the project or in a repository used by the build job. This package needs a
   _preinstallimage file. The syntax of it is spec file like, but just needs a
-  Name: and at least one BuildRequires: line. In addition also #!BuildIgnore:
-  tags may be used to ignore packages despite of dependencies. Also usage of
-  %if cases is possible. </para>
- <para> Preinstall image build jobs get always preferred to allow the best
-  effect of them. It is recommended to define images for often used standard
+  Name: and at least one BuildRequires: line.
+ </para>
+ <para>
+  To ignore packages despite existing dependencies, use
+  <literal>#!BuildIgnore:</literal> tags or <literal>%if</literal>.
+ </para>
+ <para>
+  Preinstall image build jobs are always preferred to allow the best
+  effect of them. We recommend defining images for often used standard
   stacks. </para>
  <para> Example _preinstallimage file for a basic preinstall image: </para>
   <screen>Name: base

@@ -272,6 +272,6 @@
    publish the new build results and create an updated version of the
    repository. The <emphasis role="strong"
     ><emphasis>Publisher</emphasis></emphasis> will also request signing of the
-   repository meta data.</para>
+   repository metadata.</para>
  </sect1>
 </chapter>

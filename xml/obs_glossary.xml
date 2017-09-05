@@ -81,7 +81,7 @@
    </para>
    <para>
     Formats of binary packages include &rpmf; and &debf;.
-    In the &obsa; context, binary packages are sometimes also called a
+    In the &obsa; context, binary packages are sometimes also called
     <emphasis>binaries</emphasis>.
    </para>
    <remark>
@@ -587,7 +587,7 @@
     (<filename>root.tar.gz</filename>) or stored below a directory
     (named <filename>root</filename>).
     The contents of the directory structure is copied over the existing file
-    system (overlayed) of the appliance root. This includes
+    system (overlaid) of the appliance root. This includes
     permissions and attributes as a supplement.
    </para>
    <glossseealso otherterm="obs.glos.appliance"/>
@@ -754,7 +754,7 @@
  <glossentry xml:id="obs.glos.revision">
   <glossterm>Revision</glossterm>
   <glossdef>
-   <para>A unique numberic identifier of a commit.</para>
+   <para>A unique numeric identifier of a commit.</para>
    <glossseealso otherterm="obs.glos.commit"/>
   </glossdef>
  </glossentry>
@@ -763,7 +763,7 @@
   <glossdef>
    <para>
     A package format. It stands for recursive acronym RPM Package Manager.
-    Mainly used by SUSE, RedHat, u.a.
+    Mainly used by &suse;, Red Hat, u.a.
    </para>
    <glossseealso otherterm="obs.glos.deb"/>
    <glossseealso otherterm="obs.glos.package"/>

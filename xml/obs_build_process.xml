@@ -63,7 +63,7 @@
   <sect2>
    <title>Install Phase</title>
    <para>
-    Depending of the chosen build root, the worker starts a Xen or KVM
+    Depending on the chosen build root, the worker starts a Xen or KVM
     virtual machine or enters the build root. If this was successful, the
     install phase reinstalls all base packages from above and additionally all
     packages you have defined in your build recipe. After this phase the

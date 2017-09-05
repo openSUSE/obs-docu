@@ -12,11 +12,11 @@
   project for multiple distributions.
  </para>
  <sect1>
-  <title>Which instance to use?</title>
+  <title>Which Instance to Use?</title>
   <sect2>
    <title>Private OBS Instance</title>
    <para>
-    OBS is open source project and therefore you can setup your own instance
+    OBS is open source project and therefore you can set up your own instance
     and run it by your own. The main advantage of this approach is that you can
     keep all your sources and build recipes unpublished if you need to (for example
     because of NDA). Obvious downside of this approach is that you need to
@@ -33,13 +33,13 @@
    <title>&osbs;</title>
    <para>
     Other option is to use some publicly available instance of OBS. One good
-    example is openSUSE Build Service -
+    example is &osbs; at
     <link xlink:href="http://build.opensuse.org"/>. This OBS instance can be
     used by anybody to freely create binaries for any of the supported
     distributions. Big advantage is that somebody is already taking care of
     all the infrastructure. You can store your sources there, build your
     packages and got them mirrored around the world. You do not need to get your
-    own server a configure it, you can start using it right a way.
+    own server and configure it, you can start using it right away.
    </para>
   </sect2>
  </sect1>
@@ -61,7 +61,7 @@
     one big mess.
    </para>
    <para>
-    In openSUSE Build Service, packages are divided into categories regarding
+    In &osbs;, packages are divided into categories regarding
     their function. MySQL is in <emphasis>server:database</emphasis>
     repository, lighttpd in <emphasis>server:http</emphasis> and for example
     KMyMoney has its own subproject in <emphasis>KDE:Apps</emphasis>. So it is
@@ -106,17 +106,19 @@
    <sect3>
     <title>Multiple Stable Versions</title>
     <para>
-     If you want to support multiple version, you would need more projects then
-     just two as suggested in previous section. These special project should
-     contain version they are supposed to support in their name. If you are
+     If you want to support multiple version, you would need more projects than
+     just two as suggested in previous section. These special projects should
+     contain versions they are supposed to support in their name. If you are
      creating them under some project you are sharing with other packages,
      having you package name in the name of projects is a good idea as well.
-     Good example can be Gnome. It has <emphasis>GNOME</emphasis> project and
-     many subprojects projects. Among them are for example
+    </para>
+    <para>
+     GNOME is a good example: There is the <emphasis>GNOME</emphasis> project and
+     many subprojects. Among them are, for example,
      <emphasis>GNOME:STABLE:2.30</emphasis>,
-     <emphasis>GNOME:STABLE:2.32</emphasis> and
-     <emphasis>GNOME:STABLE:3.0</emphasis>. These projects holds different
-     stable versions of Gnome with latest fixes.
+     <emphasis>GNOME:STABLE:2.32</emphasis>, and
+     <emphasis>GNOME:STABLE:3.0</emphasis>. These projects hold different
+     stable versions of GNOME with latest fixes.
     </para>
    </sect3>
   </sect2>
@@ -136,13 +138,13 @@
   <title>Getting Binaries</title>
   <note>
    <para>
-    This sections discuss feature available only in openSUSE Build Service -
-    one of the freely available instances of OBS.
+    The following sections discuss feature available only in &osbs;&mdash;a
+    freely available instances of &obsa;.
    </para>
   </note>
   <para>
-   If you want a nice download page for your software published on openSUSE
-   Build Service, you can use openSUSE download page. You can include it for
+   For a nice download page for your software published on &osbs;,
+   use the &opensuse; download page. You can include it for
    example using either
    <code>iframe</code>
    or
@@ -234,7 +236,7 @@
    <title>Examples</title>
    <para>
     Now we will take a look at how to include the download page into your
-    project pages. As example we will use <emphasis>osc</emphasis> client from
+    project pages. As an example, we will use the &osccmd; client from the
     <emphasis>openSUSE:Tools</emphasis> project. To demonstrate the colors
     change, we will use theme that would match Midnight Commander.
    </para>

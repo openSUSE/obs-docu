@@ -27,7 +27,7 @@ It should be only used by experienced admins.</para>
  --deep-check-project &lt;project&gt; &lt;architecture&gt;
  --deep-check-project &lt;project&gt; &lt;repository&gt; &lt;architecture&gt;
    Check status of a project and its repositories again
-   This deep check includes also the sources, in case of lost events.
+   This deep check also includes the sources, in case of lost events.
 
  --check-package &lt;project&gt; &lt;package&gt; &lt;architecture&gt;
    Check status of a package in all repositories

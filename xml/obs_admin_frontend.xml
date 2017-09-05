@@ -24,7 +24,7 @@
   <para> The full-text search for packages and projects is handled by <link
     xlink:href="http://freelancing-gods.com/thinking-sphinx/">Thinking
     Sphinx</link>. The delayed job daemon will take care of starting this
-   service. If you want to control it after boot you should use the
+    service. To control it after boot, use the
     <command>rake</command> tasks it provides.</para>
    <screen><command>rake ts:{start, stop, rebuild, index}</command></screen>
  </sect2>

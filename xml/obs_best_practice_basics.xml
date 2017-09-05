@@ -10,11 +10,12 @@
  <title>Basic Concepts and Work Styles</title>
  <info/>
  <para> These best practices should be known by every OBS user. They describe
-  how to setup projects, working with own or foreign sources. </para>
- <sect1>
+  how to set up projects and working with own or foreign sources.
+ </para>
+ <sect1 condition="tbd">
   <title>Setting Up a Project Re-Using Other Project's Binaries</title>
-  <para>
-   <xref linkend="obs.glos.project_binary"/> are the </para>
+  <para/>
+  <remark>TBD</remark>
  </sect1>
  <sect1>
   <title>Setup a project reusing other projects sources</title>

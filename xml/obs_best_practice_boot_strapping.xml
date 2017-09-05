@@ -19,11 +19,13 @@
   />. </para>
  <sect1>
   <title>The Issue</title>
-  <para> If you create a private instance of an OBS it is likely to be be fully
+  <para>
+   If you create a private instance of an OBS it is likely to be fully
    independent. This means that your OBS needs to build its full reference
-   tools chain. This process - called Bootstrap - presents the same problem as
-   the Chicken and the Egg, which one came first ! In other words, you need to
-   create a tool chain with the tool chain that you want to create. </para>
+   tool chain. This process&mdash;called bootstrapping&mdash;presents the same problem as
+   the Chicken and the Egg, which one came first! In other words, you need to
+   create a tool chain with the tool chain that you want to create.
+  </para>
  </sect1>
  <sect1>
   <title>A Cheat Sheet</title>
@@ -106,7 +108,7 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
     <para> * Add binaries to the :full directory of the Project ssh onto the
      OBS server. Now go to the project’s build directory, and create a
      directory called “:full”. Note : standard is the default name of your
-     Build repository as defined in your project. It might change depending of
+     Build repository as defined in your project. It might change depending on
      who created the initial build repo. </para>
     <screen><command># cd /obs/build/$PROJECT/standard/i586</command></screen>
     <para> This directory structure should already exist. If not, there is a

@@ -50,7 +50,7 @@
  </sect2>
  <sect2>
   <title>The Daemon</title>
-  <para> The bs_dodup daemon periodically checks for new meta data in remote
+  <para> The bs_dodup daemon periodically checks for new metadata in remote
    repositories. This daemon can be enabled for startup with the command</para>
    <screen>systemctl enable obsdodup.service</screen>
    <para> and can be started with</para>

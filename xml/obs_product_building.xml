@@ -27,8 +27,8 @@
   <sect2>
    <title>Building Packages</title>
    <para>
-    A project is configured in the project meta data.
-    <!-- This meta data contains ... These projects contain ...-->
+    A project is configured in the project metadata.
+    <!-- This metadata contains ... These projects contain ...-->
    </para>
    <remark>TBD</remark>
   </sect2>
@@ -58,8 +58,9 @@
    released on manual approval. OBS is providing a mechanism which allows to
    copy sources and binaries to another project in this case. To use this the
    release target must be configured inside of a repository definition of the
-   project meta data:</para>
-   <screen>&lt;project name="BuildProject"&gt;
+   project metadata:
+  </para>
+  <screen>&lt;project name="BuildProject"&gt;
   [...]
   &lt;repository name="BuildRepo"&gt;
     &lt;releasetarget project="ReleaseProject" repository="ReleaseRepo" trigger="manual" /&gt;

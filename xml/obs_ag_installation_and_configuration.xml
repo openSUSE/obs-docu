@@ -18,12 +18,14 @@
    images are the easiest way. You can download them from <link
     xlink:href="http://openbuildservice.org/download/"
     >http://openbuildservice.org/download/</link>.</para>
-  <para>If you want to use the OBS for your Linux software development with
-   many packages, projects and users you should build your own installation.
-   Depending on how many users and projects you have and for how many
-   architectures you want to build packages you can split up the back-end
-   (called partitioning) and have separate hosts for the front-end and
-   database.</para>
+  <para>
+   To use the OBS for your Linux software development with
+   many packages, projects and users, consider setting up an own installation.
+   Depending on the number of users, projects, and
+   architectures, you can split up the back-end
+   (called partitioning) and have separate hosts for the front-end and the
+   database.
+  </para>
   <para>But for most installations it is still OK to run everything but workers
    one host with enough resources.</para>
   <para>For flexibility and if you want some kind of high availability it is
@@ -371,7 +373,8 @@ systemctl start memcached.service</screen>
     you need first login as user Admin in the Web UI with the default password
     "opensuse". Click on the Admin link (right top of the page), here you can
     change the password.</para>
-   <para>After you changed the Admin password, you need to setup osc to use the
+   <para>
+    After changing the Admin password, set up &osccmd; to use the
     Admin account for more changes. Here an example:</para>
    <screen>osc -c ~/.obsadmin_osc.rc -A https://api.testobs.org</screen>
    <para>Follow the instructions on the terminal.</para>
@@ -494,7 +497,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
   <important>
    <para>You back-end need to be configured to use the correct hostnames for
     the repo and source server and the ports need to be reachable by the
-    workers. Also the IP addresses of the workers need to be allowed to connect
+    workers. Also, the IP addresses of the workers need to be allowed to connect
     the services. (look at the
      <emphasis>/usr/lib/obs/server/BSConfig.pm::ipaccess</emphasis>
     array).</para>
@@ -514,7 +517,7 @@ systemctl start obsworker</screen>
  <sect1 xml:id="_distributed_setup">
   <title>Distributed Setup</title>
   <para>All OBS back-end daemons can also be started on individual machines in
-   your network. Also the front-end Web server and the MySQL server can run on
+   your network. Also, the front-end Web server and the MySQL server can run on
    different machines. Especially for large scale OBS installations this is the
    recommended setup.</para>
   <para>A setup with partitioning is very similar to the steps of the simple
@@ -597,7 +600,7 @@ if ($frontend) {
   $ipaccess-&gt;{$frontendip} = 'rw' ; # in dotted.quad format
 }
 
-# Change also the SLP reg files in /etc/slp.reg.d/ when you touch hostname or port
+# also change the SLP reg files in /etc/slp.reg.d/ when you touch hostname or port
 our $srcserver = "http://srcsrv.testobs.org:5352";
 our $reposerver = "http://mainbackend.testobs.org:5252";
 our $serviceserver = "http://service.testobs.org:5152";

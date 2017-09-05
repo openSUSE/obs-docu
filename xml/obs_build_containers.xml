@@ -58,16 +58,19 @@
    <varlistentry>
     <term>Snap</term>
     <listitem>
-     <para>Snap format is supported natively. However, external resources are
-    only supported via source services and therefore not all build types are
-    supported. Snapcraft works also only with an Ubuntu-based base system (code
-    for supporting rpm distros exists as well but got not merged upstream yet).</para>
+     <para>
+     The Snap format is supported natively. However, external resources are
+     only supported via source services and therefore not all build types are
+     supported. Snapcraft works also only with an Ubuntu-based base system.
+     (Code to support &rpmf;-based distributions exists as well but has not
+     been merged upstream yet.)
+    </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Flatpack</term>
     <listitem>
-     <para>Flatpack is currently not supported due to the lacking ability of
+     <para>Flatpack is currently not supported due to the lack of
     reproducible builds.</para>
     </listitem>
    </varlistentry>

@@ -51,7 +51,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    and reproducible way.
    &obsa; can create images and installable packages for a wide range
    of operating systems
-   (&suse;, Debian, Ubuntu, RedHat, Windows, etc.) and hardware architectures
+   (&suse;, Debian, Ubuntu, Red Hat, Windows, etc.) and hardware architectures
    (&x86;, &amd64;, &zseries;, &ppc; etc.).
   </para>
   <sect2 xml:id="sec.obsbg.concept.pkgspec">
@@ -136,7 +136,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </para>
   <para>
    Other &obsa;-related services (like the notification server, mirror
-   interface, etc.) are perform very specific tasks and therefore beyond the
+   interface, etc.) perform very specific tasks and therefore beyond the
    scope of this guide.
   </para>
   <para>
@@ -329,7 +329,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    instead of the single <filename>&obshome1;</filename> directory. 
   </para>
   <para>
-   However, this this guide uses the default configuration with colons.
+   However, this guide uses the default configuration with colons.
   </para>
   </note>
  </sect1>
@@ -774,7 +774,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
      files to your package to your home project on &obsa;:</para>
     <screen>&prompt.user;<command>osc</command> commit</screen>
     <remark>toms 2017-08-17: FIXME: Link to User Guide? Troubleshooting
-    section with chroot and buildlog specialities?</remark>
+    section with chroot and buildlog specialties?</remark>
     <para>
      If you encounter build errors, use the <command>osc buildlog</command>
      command to review them, as described below.

@@ -124,7 +124,8 @@
   </figure>
   <para> Now, let's visit the main monitor page by clicking on "Status
    Monitor". You see here the status of the services, some graphs and graphics
-   are showing the currently running and completed jobs an the overall load. </para>
+   are showing the currently running and completed jobs and the overall load.
+  </para>
   <figure>
    <title>Status Monitor</title>
    <mediaobject>
@@ -272,9 +273,12 @@ flood</screen>
     </inlineequation>-->
    
   </note>
-  <para> Now click on Go to download repository. Note that publishing the
-   repository might take a while. Until then you will get a 404 error. When the
-   binaries are there, you'll see something like this: </para>
+  <para>
+   Now click <guimenu>Go to download repository</guimenu>. Note that publishing the
+   repository might take a while. Before the binary repository is published,
+   you will receive a 404 error. When the binaries are available, you will
+   see something like this:
+  </para>
   <figure>
    <title>Repository Structure</title>
    <mediaobject>
@@ -294,7 +298,7 @@ flood</screen>
    <title>Adding a repository</title>
    <para> To add a repository to your project, click on "Add Repositories" on
     the project's repository tab. This will direct you to a list of possible
-    distributions you can built packages for, see <xref
+    distributions you can build packages for, see <xref
      linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot"/>. </para>
    <figure xml:id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
     <title>Adding a Repository to a Project</title>

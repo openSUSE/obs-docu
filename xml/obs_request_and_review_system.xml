@@ -51,19 +51,20 @@
       user are using this. </para>
     </listitem>
    </itemizedlist> 
-   <para>Each request can only be accepted entirely or not at all.
-   Therefore it may make sense to have multiple actions in one request if
-   changes should be applied in one transaction. For example submitting a new
+   <para>
+   Requests can only be accepted or rejected in their entirety.
+   Therefore, it can make sense to have multiple actions in one request if
+   changes should be applied in one transaction. For example, submitting a new
    package and removing an old instance: Do either both or nothing. This
    implies that the person accepting the request must have write access in all
    targets or they will not be allowed to accept the request. </para>
   <sect2>
-   <title>Action types</title>
+   <title>Action Types</title>
    <para> Actions always specify some target. This can be either a project or a
     package. Further information depend on the action type. The following gives
     an overview, for details, see the XML schema for requests. </para>
    <sect3>
-    <title>Submit</title>
+    <title><literal>submit</literal></title>
     <para> A submit action will transfer sources from one package to another
      package. Usually a submit request will refer to a specific revision in the
      source, but it does not have to. If no revision is specified, then the
@@ -76,29 +77,29 @@
      default when submitting from a default user home branch project. </para>
    </sect3>
    <sect3>
-    <title>delete</title>
+    <title><literal>delete</literal></title>
     <para> A delete action can request removal of a project or package
      instance. </para>
    </sect3>
    <sect3>
-    <title>add_role</title>
+    <title><literal>add_role</literal></title>
     <para> An add_role requests a specific role for a given user or group to
      the target. For example, one could use this to ask for maintainer rights,
      or to become a default reviewer. </para>
    </sect3>
    <sect3>
-    <title>set_bugowner</title>
+    <title><literal>set_bugowner</literal></title>
     <para> set_bugowner is similar to add_role, but removes all other bugowner
      roles in the target. This happens to have a unique identifier to be used
      when assigning bug reports in external tools like Bugzilla. </para>
    </sect3>
    <sect3>
-    <title>change_devel</title>
+    <title><literal>change_devel</literal></title>
     <para> can be used to update the devel package information in the target.
     </para>
    </sect3>
    <sect3>
-    <title>maintenance_incident</title>
+    <title><literal>maintenance_incident</literal></title>
     <para> Official request to open a maintenance incident for official support
      products. This create by developers who want to start an official
      maintenance process. Find detail in the maintenance chapter about this. If
@@ -107,13 +108,16 @@
      will be merged into the same maintenance incident. </para>
    </sect3>
    <sect3>
-    <title>maintenance_release</title>
+    <title><literal>maintenance_release</literal></title>
     <para> Is used to release a ready maintenance update. Unlike
      maintenance_incident or submit, sources and binaries are copied without a
      rebuild. Details can be found in maintenance chapter. </para>
    </sect3>
    <sect3>
-    <title>group</title>
+    <title><literal>group</literal></title>
+    <remark>
+     FIXME: Are groups supported not yet or not anymore? - sknorr, 2017-09-05
+    </remark>
     <para> Deprecated. Was never in a released OBS version. It is not allowed
      to be used anymore. </para>
    </sect3>
@@ -133,8 +137,8 @@
     <listitem>
      <para> declined: The request has been reviewed and not (yet) been
       accepted by the target. This is often used to ask for some more
-      information from the submitter, since a declined requests remains an
-      active, returning to the submitter's active request queue (i.e. the
+      information from the submitter, since declined requests remain
+      active, returning to the submitter's active request queue (that is, the
       submitter will need to take action now). </para>
     </listitem>
     <listitem>
@@ -159,7 +163,7 @@
    <para> Reviews can be done by users, groups, projects or packages. Review by
     project or package means that any maintainer of them is asked for reviews.
     This is handy to avoid the need to figure who actually is a maintainer of a
-    certain package. Also new maintainers of a package will see requests in
+    certain package. Also, new maintainers of a package will see requests in
     case the old maintainer did not handle them. </para>
    <sect3>
     <title>Manual added reviews</title>

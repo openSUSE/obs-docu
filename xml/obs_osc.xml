@@ -23,7 +23,8 @@
   <title>Installing and Configuring<!-- the &osc; CLI Tool--></title>
   <remark>toms 2017-08-17: Integrate some sections/text from here http://docserv.suse.de/documents/Open_Build_Service/obs-best-practices/html/cha.obs.best-practices.localsetup.html
   </remark>
-  <para> To work with &obs; install the &osccmd; command line tool from your
+  <para>
+   To work with &obs;, install the &osccmd; command line tool from your
    preferred &opensuse; distributions or from the &obsa; project
    <uri>openSUSE:Tools</uri>. The tool runs on any modern Linux system and is
    available for different distributions, like CentOS, Debian, Fedora, SLE,
@@ -62,7 +63,7 @@
       Used to access the &OBS; API server. This is needed if you work with
       different &obsa; server (for example, a public and a private one).
       If you have to distinguish different servers, you can also use the
-      <option>-A</option> option. Usually, it is good practise to create
+      <option>-A</option> option. Usually, it is good practice to create
       an alias like this:
      </para>
      <screen><command>alias</command> iosc="osc -A https://api.<replaceable>YOURSERVER</replaceable>"</screen>
@@ -76,7 +77,7 @@
     <listitem>
      <para>
       Contains a space-separated list of package.
-      These extra packages are unstalled when you build packages locally.
+      These extra packages are installed when you build packages locally.
       Useful when you need an additional editor inside the build environment,
       for example <package>vim</package>.
      </para>
@@ -168,10 +169,10 @@
     </listitem>
     <listitem>
      <formalpara>
-      <title>Obfuscate the Password</title>
+      <title>Obfuscating the Password</title>
       <para>
        Set <option>plaintext_passwd</option> to <literal>0</literal>.
-       This is not a real security feature, but it obfuscate the password
+       This is not a security feature, but it obfuscates the password
        in the configuration file.
       </para>
      </formalpara>

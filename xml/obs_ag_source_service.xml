@@ -86,7 +86,7 @@
     with _service: prefix. Additionally the service runs on the server by
     default, but usually the service should detect that the result is the same
     and skip the generated files. In case they differ for any reason (because
-    the webui or API was used for example) they get generated and added on the
+    the webui or API was used for example) they be generated and added on the
     server. </para>
   </sect3>
   <sect3>

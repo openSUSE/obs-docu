@@ -113,7 +113,9 @@
     following command lines </para>
     <screen><command>osc meta prjconf -e $PROJECT</command>
 <command>osc co $PROJECT _project</command></screen>
-    <para>This file contains information on how to setup a build environment. </para>
+    <para>
+     This file contains information on how to set up a build environment.
+    </para>
   </sect2>
   <sect2>
    <title>Project Build Macro Configuration</title>

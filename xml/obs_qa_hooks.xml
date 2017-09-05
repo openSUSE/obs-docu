@@ -34,9 +34,9 @@
   <sect2>
    <title>In-Package Checks</title>
    <para> Checks running during the build of a package are usually test cases
-    provided by the author of a package. However, also the packager might add
-    simple checks, esp. for stuff which is known to break on version updates
-    for example and might be forgotten when the package gets touched the next
+    provided by the author of a package. However, the packager can also add
+    simple checks, for example, for code that is known to break on version updates
+    and might be forgotten when the package is touched the next
     time. </para>
    <para> These test are often specific for a concrete package only. So it is
     typically executed in %check section of rpm spec files directly. In case
@@ -45,17 +45,21 @@
     packages. </para>
    <para> rpm calls %check after %install section and before creating the
     actual checks. </para>
-   <para> SUSE distros is also providing build time checks for testing the
+   <para>
+    &suse; distributions also provide build time checks to test the
     installed files inside of the build root. It is to be used for test cases
     which shall run on all packages which are build inside of a distribution.
     This hook can be used by installing a file to /usr/lib/rpm/brp-suse.d/
-    directory. These scripts have also the power to modify the installed files
+    directory. These scripts also have the power to modify installed files
     if needed. </para>
   </sect2>
   <sect2>
    <title>Post Build Checks</title>
-   <para> The standard to test built package binaries is rpmlint for rpm based
-    distros. Debian distributions are using the lintian tool. </para>
+   <para>
+    The standard tool to test binary packages for &rpmf;-based distributions
+    is <command>rpmlint</command>. &debf;-based distributions use the
+    <command>lintian</command> tool instead.
+   </para>
    <para> These checks are executed by the build script after a successful
     build. Note that these are executed as the standard user by default.
    </para>
@@ -88,12 +92,12 @@
    <para> Open requests can be requested in an XML parseable way via the API
     running </para>
    <screen><command>osc api /request?states=review&amp;user=auto-review-user&amp;roles=reviewer&amp;reviewstates=new&amp;view=collection</command></screen>
-   <para> osc can also be used to accept or decline the reviews of these
-    requests after running the automated test. Also a comment can be given to
-    show errors which appeared. It is important that requests, which are not
-    tested, for example because they are of a not matching type (eg. deleting
-    packages) needs to get also a review accept. Otherwise the process would
-    get blocked. </para>
+   <para>
+    &osccmd; can be used to accept or decline requests
+    after running the automated test. It can also add a review comment which you can use to give a reason (for example, error messages) for accepting or declining a request.
+    Requests, which are not
+    tested, for example because they are of a not matching type (for example, deleting
+    packages) needs to get also a review accept. Otherwise, this would block the process. </para>
   </sect2>
  </sect1>
 </chapter>

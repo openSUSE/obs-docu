@@ -17,12 +17,12 @@
   <remark>toms 2017-08-18: classification between distribution-dependand and
    independant</remark>
   <para> &obsa; differentiates between the format of the build recipes and the
-   format of the installed packages. For example, the spec receipe format is
+   format of the installed packages. For example, the spec recipe format is
    used to build RPM packages by calling <command>rpmbuild</command>. </para>
   <para> In most cases, the build result format is the same as the package
    format used for setting up the build environment, but sometimes the format
    is different. An example is the &kiwi; build recipe format, which can build
-   <!--products and--> ISOs, but uses RPM packages to setup the build process.
+   <!--products and--> ISOs, but uses RPM packages to set up the build process.
   </para>
   <para> OBS currently supports the following build recipe formats and packages:
   </para>
@@ -72,7 +72,7 @@
  <sect1>
   <title>RPM: Spec</title>
   <para>
-   RPM (RPM Package Manager) is used on &opensuse;, &sle;, RedHat, Fedora,
+   RPM (RPM Package Manager) is used on &opensuse;, &sle;, Red Hat, Fedora,
    and other distributions. For building RPMs you need:
   </para>
   <variablelist>
@@ -136,7 +136,7 @@
  <sect1>
   <title>Arch: pkg</title>
   <para>
-   &obs.arch; files is used on Arch Linux and its derivates. For building
+   &obs.arch; files is used on Arch Linux and its derivatives. For building
    &obs.arch; you need:
   </para>
   <variablelist>
@@ -229,7 +229,7 @@
   <para>
    <remark>toms 2017-08-18: FIXME This should be explained better</remark>
    This format can be used to get simple rootfs tarball or squashfs
-   image. It does not neither contain a bootloader nor a kernel.
+   image. It does not contain a bootloader or a kernel.
    For advanced features, use &kiwi;.
    Use &obs.si; for simple rootfs tarball/squashfs image of any
    distribution that is supported by &obsa; but does not have anything

@@ -100,9 +100,11 @@
 <command>pvcreate /dev/sdX1</command>
 <command>vgcreate "OBS" /dev/sdX1</command>
 </screen>
-  <para> Additionally if the OBS volume group contains a logical volume named
-   "server", it will be used as the data partition for the server.</para>
-   <screen>
+  <para>
+   Additionally, if the OBS volume group contains a logical volume named
+   <quote>server</quote>, it will be used as the data partition for the server.
+  </para>
+  <screen>
 <command>lvcreate "OBS" -n "server"</command>
 <command>mkfs.xfs /dev/OBS/server</command></screen>
  </sect2>

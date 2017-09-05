@@ -51,7 +51,7 @@
    and configurations). This can also lead to multiple builds of the same
    package in the case of dependency loops. </para>
   <para> In some setups this may not be wanted, so each repository can be
-   configured in a different way. The usual options to modify the project meta
+   configured differently. The usual options to modify the project meta
    configurations can be used to configure different strategies. For example
    using osc:</para>
   <screen>osc meta prj -e YOUR_PROJECT</screen>
@@ -69,15 +69,15 @@
     <varlistentry>
      <term>transitive</term>
      <listitem>
-      <para> The default behavior, do a clean build of all depending packages
+      <para> The default behavior, do a clean build of all dependant packages
       </para>
      </listitem>
     </varlistentry>
     <varlistentry>
      <term>direct</term>
      <listitem>
-      <para> Just build the package with changed sources and direct depending
-       packages. But not indirect depending packages. </para>
+      <para> Just build the package with changed sources and direct dependant
+       packages. But not indirect dependant packages. </para>
      </listitem>
     </varlistentry>
     <varlistentry>
@@ -108,7 +108,7 @@
     <varlistentry>
      <term>all</term>
      <listitem>
-      <para> The default behavior, do not start the build if a depending
+      <para> The default behavior, do not start the build if a dependant
        package is currently building. </para>
      </listitem>
     </varlistentry>

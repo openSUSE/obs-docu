@@ -20,7 +20,7 @@
    <orderedlist>
     <listitem>
      <para> Based on the package build format of the based distributions.
-      Rpm based distros will used spec files for example. </para>
+      &rpmf;-based distributions will use spec files for example. </para>
     </listitem>
     <listitem>
      <para> Based on the file name of the file before the suffix. It is not
@@ -40,10 +40,10 @@
 
  <sect1>
   <title>How Multibuild is Defined</title>
-  <para> Use the _multibuild directive to build the same source in same
-   repository with different flavours. This handy to define all flavours in one
+  <para> Use the _multibuild directive to build the same source in the same
+   repository with different flavors. This handy to define all flavors in one
    place without the need to maintain packages with local links. This allows
-   also to transfer all sources including a possible changed flavour from one
+   also to transfer all sources including a possible changed flavor from one
    project to another with a standard copy or submit request. </para>
   <para> The _multibuild file lists all build container names, each of them
    will be build as usual for each defined repository and each scheduler
@@ -62,7 +62,8 @@
    <para>Build description files are needed for each of them for each package (eg.
    kernel-source.spec or kernel-obs-build.dsc) inside of the sources. There
    will be another build in case there is also a matching file for the source
-   package container name, otherwise it will just turn into "excluded" state.
+   package container name, otherwise it will turn into an
+   <quote>excluded</quote> state.
   </para>
  </sect1>
 </chapter>

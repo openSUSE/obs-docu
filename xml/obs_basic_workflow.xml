@@ -77,7 +77,7 @@
      <title>XML Structure of Build Service Metadata</title>
      <screen language="xml">&lt;project name="&obshome1;">
   &lt;title>&obsuser1;'s Home Project&lt;/title>
-  &lt;description>Some description about the project.&lt;/description>
+  &lt;description>A description of the project.&lt;/description>
   &lt;person userid="&obsuser1;" role="bugowner"/>
   &lt;!-- contains other OBS users -->
   &lt;debuginfo>
@@ -277,7 +277,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
         <formalpara>
          <title>Distribution-Related Changes</title>
          <para>
-          Mention any changes in the package structure, renamings of packages,
+          Mention any changes in the package structure, package names,
           and additions or removals of patch files or <quote>hacks</quote>.
          </para>
         </formalpara>
@@ -349,7 +349,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    <para>
     However, this command will print the complete build log which could be
     difficult to spot the errors. Use the <command>buildlogtail</command>
-    subcommand to show only the end of the logfile:
+    subcommand to show only the end of the log file:
    </para>
    <screen>&prompt.user;<command>osc</command> buildlogtail openSUSE_Tumbleweed x86_64</screen>
    <para>
@@ -368,7 +368,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      <listitem>
       <para>
        Contains the command which is used to build the package. For RPM-like
-       systems it is <command>rpmbuild</command> <option>-ba pacakge.spec</option>.
+       systems it is <command>rpmbuild</command> <option>-ba <replaceable>PACKAGE</replaceable>.spec</option>.
       </para>
      </listitem>
     </varlistentry>
@@ -452,13 +452,13 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      </callout>
      <callout arearefs="co.workflow.buildroot.other">
       <para>
-       Contains usually the file <filename>rpmlint.log</filename>.
+       Usually contains the file <filename>rpmlint.log</filename>.
       </para>
      </callout>
      <callout arearefs="co.workflow.buildroot.rpms">
       <para>
        If the build was successful, stores binary RPMs into subdirectories of
-       achitecture
+       architecture
        (for example, <filename>noarch</filename> or
        <filename>x86_64</filename>).
       </para>

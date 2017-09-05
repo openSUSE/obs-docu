@@ -117,7 +117,8 @@
       gets converted into an rpm, it can be used to overwrite it. Possible
       values are: rpm, deb or none.
      </para>
-     <para>Sets the binary format used to setup the build
+     <para>
+      Sets the binary format used to set up the build
       environment. For example a package with spec build description may use
       and generate deb packages instead of rpms. If no binary type is
       specified, OBS deduces it from the build recipe type. If the recipe type is
@@ -321,7 +322,7 @@ Keep: debbuild</screen>
       that match any <replaceable>REGEXP</replaceable> will not be put into
       the exported repository. There can be only one line of
       PublishFilter for historic reasons. However, multiple
-      <replaceable>REGEXP</replaceable> can be definied.
+      <replaceable>REGEXP</replaceable> can be defined.
      </para>
     </listitem>
    </varlistentry>
@@ -363,7 +364,7 @@ Keep: debbuild</screen>
     <listitem>
      <para>
       It is possible to replace to BuildRequires with other packages.
-      This will have only an affect on directly BuildRequired packages, not on
+      This will have only an effect on directly BuildRequired packages, not on
       indirectly required packages.
      </para>
     </listitem>
@@ -420,7 +421,7 @@ Keep: debbuild</screen>
   <title>Macro Section</title>
   <remark>toms 2017-08-18: TODO: Extend this section from https://en.opensuse.org/openSUSE:Build_Service_prjconf#Macros</remark>
   <para>
-   Macros are definied at the end of the project configuration.
+   Macros are defined at the end of the project configuration.
    The macro section is only used on RPM builds.
    <!--
     The content gets exported to be used by <command>rpmbuild</command>

@@ -26,7 +26,7 @@
    <para> The proxy mode can be used for esp. secured instances, where the OBS
     web server shall not get connected to the network directly. There are
     authentication proxy products out there which do the authentication and
-    send the user name via an HTTP header to OBS. This has also the advantage
+    send the user name via an HTTP header to OBS. This also has the advantage
     that the user password never reaches OBS. </para>
   </sect2>
   <sect2>
@@ -62,7 +62,7 @@
    <screen><command>osc</command> token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
    <para> Also, you do not need to specify the package at execution time. But
     keep in mind that such form only works when you run it on an as checkout of
-    a package. Both commands below do the same thing in a different way: </para>
+    a package. Both commands below do the same thing but in different way: </para>
    <screen><command>osc</command> token --trigger &lt;TOKEN&gt;</screen>
    <screen><command>osc</command> api -X POST /trigger/runservice?token=&lt;TOKEN&gt;</screen>
    <para> A token can be registered as generic token, means allowing to execute

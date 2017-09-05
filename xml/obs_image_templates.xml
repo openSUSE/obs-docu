@@ -23,7 +23,7 @@
    containing image sources, a config.sh file and the &kiwi; configuration XML
    file. </para>
   &image_template_icon_paragraph;
-  <!--<para xml:id="image_template_icon_paragraph"> In addition you can define an
+  <!--<para xml:id="image_template_icon_paragraph"> In addition, you can define an
    icon for your image templates by adding graphical image (for example, PNG,
    JPG) to your template sources and name it <command>_icon</command>. If that
    file exists, it will be used as icon for your image on the image templates

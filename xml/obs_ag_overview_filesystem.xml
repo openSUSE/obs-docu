@@ -661,7 +661,7 @@ features:
     <para>The Apache configuration depends on the Apache version and which
      extra options are used, so use the documentation of the Apache version you
      are using.</para>
-    <para>Here as example the standard configuration used by the appliance:
+    <para>Here, as an example, the standard configuration used by the appliance:
      Apache vhost example</para>
     <screen>Listen 82
 # May needed on old distributions or after an update from them.
@@ -781,7 +781,7 @@ LimitRequestFieldsize 20000
    </itemizedlist>
    <sect3 xml:id="_etc_sysconfig_obs_server">
     <title><filename>/etc/sysconfig/obs-server</filename></title>
-    <para>This script is used to setup the basic paths and the worker. the
+    <para>This script is used to set up the basic paths and the worker. the
      most important settings are the <emphasis role="strong"
       >OBS_SRC_SERVER</emphasis> and <emphasis role="strong"
       >OBS_REPO_SERVERS</emphasis> and the <emphasis role="strong"
@@ -2540,7 +2540,7 @@ if ($frontend) {
   $ipaccess-&gt;{$frontendip} = 'rw' ; # in dotted.quad format
 }
 
-# Change also the SLP reg files in /etc/slp.reg.d/ when you touch hostname or port
+# Also change the SLP reg files in /etc/slp.reg.d/ when you touch hostname or port
 our $srcserver = "http://$hostname:5352";
 our $reposerver = "http://$hostname:5252";
 our $serviceserver = "http://$hostname:5152";
@@ -2796,7 +2796,7 @@ if (-r $hostconfig) {
   <sect2 xml:id="_build_directory">
    <title><filename>build</filename> Directory</title>
    <para>In this subdirectory managed by the repo server daemon, all
-    repository data, meta data and build results are stored in a hierarchical
+    repository data, metadata and build results are stored in a hierarchical
     tree.</para>
    <para>Example build directory tree of a binary imported distribution
     (OpenSUSE:13.2) and a small test project with 3 packages:</para>
@@ -2864,7 +2864,7 @@ if (-r $hostconfig) {
   </sect2>
   <sect2 xml:id="_projects_directory">
    <title><filename>projects</filename> Directory</title>
-   <para>Contains the project hierarchy and meta data under revision
+   <para>Contains the project hierarchy and metadata under revision
     control.</para>
   </sect2>
   <sect2 xml:id="_remotecache_directory">
@@ -2892,7 +2892,7 @@ if (-r $hostconfig) {
     deduplicated across all projects, as long a source file has the same MD5
     sum, it is only stored once. A pseudo <emphasis role="strong"
       ><emphasis>'_project'</emphasis></emphasis> package exist in the
-    directory containing the project meta data revisions. <emphasis
+    directory containing the project metadata revisions. <emphasis
      role="strong"><emphasis>':service'</emphasis></emphasis> and <emphasis
      role="strong"><emphasis>':upload'</emphasis></emphasis> are temporary
     directories used by the source server.</para>
@@ -3084,7 +3084,7 @@ if (-r $hostconfig) {
      </tgroup>
     </table>
     <para>
-     Depending on the target (package, project or meta data)
+     Depending on the target (package, project or metadata)
      used, fields can be empty or have special values, for example,
      <literal>unknown</literal> for the version.
     </para>
@@ -3345,7 +3345,7 @@ if (-r $hostconfig) {
    <para>XML file about package meta information, like Title, description,
     related user and groups with roles, build settings, publish settings, debug
     settings and more. Most XML tags are the same as for projects.</para>
-   <para>Example package meta data:</para>
+   <para>Example package metadata:</para>
    <screen>&lt;package name="test1" project="Test11"&gt;
   &lt;title&gt;A test package for learning&lt;/title&gt;
   &lt;description&gt;An example test package for learning.&amp;#13;

@@ -41,7 +41,7 @@
    <listitem>
     <para>
      optional patches which changes the original source code to fix problems
-     in regards to security, the build process, or other issues
+     regarding security, the build process, or other issues
     </para>
    </listitem>
    <listitem>
@@ -172,7 +172,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    <!--
     1. Create a repository in a project
        - enable all architectures
-       - no other repo needed as definied in KIWI's XML config file
+       - no other repo needed as defined in KIWI's XML config file
     2. Create project config, setting repo to
        - Type: kiwi
        - Repotype: none

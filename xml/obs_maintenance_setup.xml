@@ -19,9 +19,10 @@
   be approved by a maintenance team and the published result must contain
   documentation about the changes and be applicable in the easiest way by the
   users. The result is a package repository with additional information about
-  the solved problems and defined groups of packages to achieve that. Also
-  binary delta data may get generated to reduce the needed download size for
-  the clients. </para>
+  the solved problems and defined groups of packages to achieve that.
+  Binary delta data can also be generated to reduce the needed download size for
+  the clients.
+ </para>
  <sect1>
   <title>Simple Project Setup</title>
   <figure>
@@ -109,7 +110,7 @@
     as maintenance project. That works via the maintenancerequest mechanism by
     specifying one or more packages from one project. As a consequence it means
     also that the first testable build will happen in the maintenance incident
-    project. Also the maintenance team need to write the update information on
+    project. Also, the maintenance team need to write the update information on
     their own. </para>
    <screen><command>osc maintenancerequest [ SOURCEPROJECT [ SOURCEPACKAGES RELEASEPROJECT ] ]</command></screen>
    <para> The following example is submitting two packages (kdelibs4 and
@@ -344,7 +345,7 @@
    <title>Searching for Incidents</title>
    <para> The Web UI shows the running and past incidents when going to the
     maintenance project (openSUSE:Maintenance in our example). It shows the
-    open requests either for creating or release an incident. Also the open
+    open requests either for creating or release an incident. Also, the open
     incidents, which are not yet released are visible. </para>
    <para> All users need usually just to visit their "my work" screen in Web UI
     or osc to see requests or patchinfos where actions of them are expected:
@@ -385,9 +386,9 @@
   </sect2>
  </sect1>
  <sect1>
-  <title>How to setup projects for doing a maintenance cycle</title>
+  <title>Setting Up Projects for a Maintenance Cycle</title>
   <sect2>
-   <title>Defining a maintenance space</title>
+   <title>Defining a Maintenance Space</title>
    <para> An OBS server is using by default a maintenance space defined via the
     OBS:Maintenance attribute. This must get created on a project where
     maintenance incident projects should get created below. This project is
@@ -446,7 +447,7 @@
     released also to a defined channel. The openSUSE:11.4:SecurityChannel
     project contains a _channel definition inside of the channel package. This
     one gets branched as well into the incident in case a matching channel does
-    exist. Also the additional repository gets added. The resulting binaries
+    exist. Also, the additional repository gets added. The resulting binaries
     will be transfer via a release request to the code stream project
     (openSUSE:11.4:Update) and the special channel project. </para>
   </sect2>

@@ -21,7 +21,7 @@
    interface and the web user interface. Some menus in the Web UI do not allow
    changes by an Admin (for example, the Repository menu) as long the Admin is not a
    Maintainer for the project as well. But the same change can be done via
-   editing the meta data directly. The other roles are specific to projects and
+   editing the metadata directly. The other roles are specific to projects and
    packages and can be assigned to a user or a group.</para>
   <table frame="all" rowsep="1" colsep="1">
    <title>Roles in &obsa;</title>
@@ -217,22 +217,22 @@
    <title>OBS LDAP Configuration</title>
    <para>
     Currently the main OBS LDAP configuration is in the
-    <emphasis>options.yml</emphasis> file. Beside the settings here also the
-    openldap config file is evaluated by the Ruby LDAP implementation. This
-    configfile is usually located at
-    <emphasis>/etc/openldap/ldap.conf</emphasis>. You can set here additional
+    file <filename>options.yml</filename>. Beside the settings in that file, the
+    openLDAP configuration file is also evaluated by the Ruby LDAP
+    implementation. This configuration file is usually located at
+    <filename>/etc/openldap/ldap.conf</filename>. You can set here additional
     TLS/SSL directives like
-    <emphasis role="strong">TLS_CACERT</emphasis>, <emphasis role="strong">TLS
-    _CACERTDIR</emphasis> and
-    <emphasis role="strong">TLS_REQCERT</emphasis>. For more information
-    refer to the openldap ldap.conf man page.
+    <literal>TLS_CACERT</literal>, <literal>TLS_CACERTDIR</literal> and
+    <literal>TLS_REQCERT</literal>. For more information
+    refer to the openLDAP man page (<command>man ldap.conf</command>).
    </para>
    <note>
     <para>
-     Once LDAP mode is activated users can only log in via LDAP. This also
-     includes existing admin accounts. To make a LDAP user, for example, user
-     <systemitem class="username">tux</systemitem>, an admin we provided a rake
-     task which can be run on the &obsa; instance:
+     When LDAP mode is activated, users can only log in via LDAP. This also
+     includes existing admin accounts. To make a LDAP user an admin,
+     use a rake task which can be run on the &obsa; instance.
+     For example, to make user <systemitem class="username">tux</systemitem>,
+     use:
     </para>
     <screen>
 cd /srv/www/obs/api
