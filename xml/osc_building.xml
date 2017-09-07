@@ -215,8 +215,8 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    </listitem>
    <listitem>
     <para>
-     a <filename>_service</filename> file
-     <remark>toms 2017-09-04: is this really needed? Or is it optional?</remark>
+     an optional <filename>_service</filename> file if you integrate the
+     source code from a version control system.
     </para>
    </listitem>
    <listitem>
@@ -226,14 +226,17 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    </listitem>
   </itemizedlist>
   <para>
-   There are two ways to build an &obs.ai;:
+   There are three ways to build an &obs.ai;:
   </para>
   <itemizedlist>
    <listitem>
     <para>From RPM packages, or</para>
    </listitem>
    <listitem>
-    <para>directly from source code.</para>
+    <para>directly from source code, or</para>
+   </listitem>
+   <listitem>
+    <para>a combination of the previous two methods.</para>
    </listitem>
   </itemizedlist>
   <para>To build a new &obs.ai; from RPM packages, proceed as follows:</para>
@@ -312,7 +315,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
 
 build: <co xml:id="co.obs.building.ai.build"/>
   packages:
-    - linuxdeployqt
+    - linuxdeployqt <co xml:id="co.obs.building.ai.linuxdeployqt" condition="tbd"/>
 
 ingredients: <co xml:id="co.obs.building.ai.ingredients"/>
   packages:
@@ -331,6 +334,11 @@ script: <co xml:id="co.obs.building.ai.script"/>
       </callout>
       <callout arearefs="co.obs.building.ai.build">
        <para>Defines the build requirements using RPM package names.</para>
+      </callout>
+      <callout arearefs="co.obs.building.ai.linuxdeployqt" condition="tbd">
+       <para>
+        <remark>toms 2017-09-07: is this package always needed? What's it's purpose?</remark>
+       </para>
       </callout>
       <callout arearefs="co.obs.building.ai.ingredients">
        <para>
