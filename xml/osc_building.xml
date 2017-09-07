@@ -209,7 +209,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    </listitem>
    <listitem>
     <para>
-     everything else you need from building a RPM package (see <xref
+     everything else you need to build a RPM package (see <xref
       linkend="sec.obs.building.spec2rpm"/>).
     </para>
    </listitem>
@@ -221,7 +221,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    </listitem>
    <listitem>
     <para>
-     some configurations in your &obsa; project, see below.
+     configuration in your &obsa; project, see <xref linkend="pro.obs.building.appimage"/>.
     </para>
    </listitem>
   </itemizedlist>
@@ -237,12 +237,12 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    </listitem>
   </itemizedlist>
   <para>To build a new &obs.ai; from RPM packages, proceed as follows:</para>
-  <procedure>
+  <procedure xml:id="pro.obs.building.appimage">
    <title>Building &obs.ai; from RPM Packages</title>
    <step>
     <para>
-     Start with building RPM packages as described in <xref
-      linkend="sec.obs.building.spec2rpm"/>. Make sure the packages has
+     Build RPM packages as described in <xref
+      linkend="sec.obs.building.spec2rpm"/>. Make sure the packages have
      been built successfully.
     </para>
    </step>
@@ -260,7 +260,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
       <para>
        <remark>toms 2017-09-05: Maybe this step should be explained in
        a separate section/procedure?</remark>
-       If you want to use the Web interface of your &obsa; instance to do
+       To use the Web interface of your &obsa; instance to do
        the same, go to your home project and click <menuchoice>
         <guimenu>Advanced</guimenu>
         <guimenu>Meta</guimenu>
@@ -277,6 +277,9 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   &lt;arch>x86_64&lt;/arch>
   &lt;!-- &lt;arch>i586&lt;/arch> -->
 &lt;/repository></screen>
+      <para>
+       The <uri>OBS:AppImage</uri> project is specific to &osbs;.
+      </para>
      </step>
      <step>
       <para>
@@ -286,22 +289,22 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
      </step>
      <step>
       <para>
-       To save the new configuration, use <keycombo>
+       Save the configuration<!--, use <keycombo>
         <keycap>:</keycap>
         <keycap>x</keycap>
        </keycombo> or leave the editor with <keycombo>
         <keycap>:</keycap>
         <keycap>q</keycap>
         <keycap>!</keycap>
-       </keycombo>.
+       </keycombo>-->.
       </para>
      </step>
     </substeps>
    </step>
    <step>
     <para>
-     Create a new <filename>appimage.yml</filename> with the following
-     contents:
+     Create a <filename>appimage.yml</filename> with the following
+     content:
     </para>
     <example>
      <title>&obs.ai; from RPM Files (<filename>appimage.yml</filename>)</title>
@@ -322,12 +325,12 @@ script: <co xml:id="co.obs.building.ai.script"/>
       <callout arearefs="co.obs.building.ai.app">
        <para>
         <remark>toms 2017-09-05: any restrictions in naming?</remark>
-        Contains the name of &obs.ai; app. You can use any name you want,
-        but it is recommended to use lowercase names.
+        Contains the name of &obs.ai; application. You can use any name you want,
+        but we recommend using lowercase names.
        </para>
       </callout>
       <callout arearefs="co.obs.building.ai.build">
-       <para>Defines the build requirements as RPM package names.</para>
+       <para>Defines the build requirements using RPM package names.</para>
       </callout>
       <callout arearefs="co.obs.building.ai.ingredients">
        <para>
@@ -361,7 +364,7 @@ script: <co xml:id="co.obs.building.ai.script"/>
    </step>
   </procedure>
   <para>
-   If you want to build &obs.ai;s from source, you need to change the
+   To build &obs.ai;s from source, change the
    <filename>appimage.yml</filename> file as follows:
   </para>
   <example>
