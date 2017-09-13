@@ -116,6 +116,14 @@
    <glossseealso otherterm="obs.glos.submitrequest"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.bug">
+  <glossterm>Bug</glossterm>
+  <glossdef>
+   <para>
+    Issue that documents incorrect or undesirable behaviour
+   </para>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.bugowner">
   <glossterm>Bugowner</glossterm>
   <glossdef>
