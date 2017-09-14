@@ -390,7 +390,145 @@ disabledrun
   </itemizedlist>
  </sect1>
 
-
+ <sect1 xml:id="sec.obs.sserv.run">
+  <title>Running a Source Service</title>
+  <para>
+   Before you run a service locally, make sure you have installed the
+   respective service package. The following service packages are available:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term><package>obs-service-appimage</package></term>
+    <listitem>
+     <para>
+      Packages all resources references in the
+      <filename>appimage.yml</filename> file.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-download_files</package></term>
+    <listitem>
+     <para>
+      Parses all spec files and downloads all source files which are
+      specified via a <systemitem class="protocol">http</systemitem>,
+      <systemitem class="protocol">https</systemitem>, or
+      <systemitem class="protocol">ftp</systemitem> URL.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-download_url</package></term>
+    <listitem>
+     <para>
+      Downloads files from given URLs via the <command>curl</command> command.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-extract_file</package></term>
+    <listitem>
+     <para>
+      Extracts a file from an archive, for example, a spec file from a
+      compressed tar archive.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-format_spec_file</package></term>
+    <listitem>
+     <para>
+      Formats the spec file according to &suse; style. This makes it easier
+      to review spec files from unknown packagers. Use this service in
+      <literal>trylocal</literal> mode to adjust the existing spec file
+      instead of creating a new one.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-obs_scm</package></term>
+    <term><package>obs-service-obs_scm-common</package></term>
+    <listitem>
+     <para>
+      Package a local Git repository as a tar archive during build time.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-recompress</package></term>
+    <listitem>
+     <para>
+      Compress, uncompress, or recompress files from or to other files.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-refresh_patches</package></term>
+    <listitem>
+     <para>
+      Refresh local patches using the <command>quilt</command> command.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-set_version</package></term>
+    <listitem>
+     <para>
+      Updates the version in spec or dsc files according to given version.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry condition="tbd">
+    <term><package>obs-service-snapcraft</package></term>
+    <listitem>
+     <para>
+      Parses <filename>snapcraft.yaml</filename> file for SCM resources and
+      packages them (experimental!).
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-source_validator</package></term>
+    <listitem>
+     <para>
+      Runs all checks as required by the <uri>openSUSE:Factory</uri> project.
+      This can be used to guarantee that all checks succeed also on the
+      server side. This plugin can be used as project wide defined service.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-tar</package></term>
+    <listitem>
+     <para>
+      Creates a tar archive from a local directory.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-tar_scm</package></term>
+    <listitem>
+     <para>
+      Creates a tar archive from a SVN, Mercurial, Git, or a Bazaar
+      repository.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><package>obs-service-verify_file</package></term>
+    <listitem>
+     <para>
+      Verifies a file with a given SHA256 sum.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>
+   To run a service, use the <command>osc service</command> command which
+   provides several subcommands. Mostly you will use
+   <command>osc service localrun</command>.
+  </para>
+ </sect1>
 
  <sect1 xml:id="sec.obs.sserv.remove">
   <title>Removing a Source Service</title>
