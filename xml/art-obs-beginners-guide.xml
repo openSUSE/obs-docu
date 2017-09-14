@@ -225,9 +225,11 @@ https://www.suse.com/communities/blog/suse-studio-integration/
       </listitem>
       <listitem>
        <para>
-        As an alternative, you can use the &appimg; file. An &appimg; file
+        As an alternative, you can use the &appimg; file . An &appimg; file
         is a packaged application which can run on many distributions.
-        Download the file, save it in your <filename>~/bin</filename> directory,
+        Download the file from <link
+         xlink:href="https://download.opensuse.org/repositories/openSUSE:/Tools/AppImage/"/>,
+        save it in your <filename>~/bin</filename> directory,
         and make the file executable.
        </para>
       </listitem>
