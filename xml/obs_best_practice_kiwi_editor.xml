@@ -9,19 +9,20 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>&kiwi; Editor</title>
  <para> You can edit the &kiwi; file associated to your project. It is only
-  possible, at the moment, to edit the repository list. If you are running your
-  own instance of OBS be sure you have the kiwi_image_editor feature enabled in
-  your config/feature.yml file. </para>
+   possible, at the moment, to edit the repository list and packages with type image.
+   If you are running your own instance of OBS be sure you have the kiwi_image_editor feature
+   enabled in your config/feature.yml file. </para>
  <sect2>
   <title>Accessing the &kiwi; Editor</title>
   <para> Go to your package, and upload a file with the <filename
     class="extension">.kiwi</filename> extension (for example,
-   <filename>test.kiwi</filename>), with a valid &kiwi; content. </para>
+    <filename>test.kiwi</filename>), with valid &kiwi; content.
+  </para>
   <figure>
    <title>Example of a Package with a &kiwi; XML File</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="edit_kiwi_package_overview.png"/>
+     <imagedata fileref="kiwi_package_overview.png"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -29,25 +30,143 @@
    <para> You should see now a "Edit KIWI" link (next to "Delete package"
     link). </para>
   </note>
-  <para> Click on the "Edit KIWI" link. </para>
+  <para> Click on the "Edit KIWI" link and you will be redirected to the Editor.</para>
   <figure>
    <title>&kiwi; Editor. Show screen</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="edit_kiwi_show.png"/>
+     <imagedata fileref="kiwi_editor_show.png"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para> Click on the "Edit" button. </para>
+  <para>
+    <itemizedlist>
+     <listitem>
+      <para>
+        <emphasis>Repositories:</emphasis> Displays the repositories set in the Kiwi file.
+      </para>
+      </listitem>
+     <listitem>
+      <para>
+        <emphasis>Packages:</emphasis> Displays the packages of the package group with type <emphasis>image</emphasis>.
+      </para>
+     </listitem>
+    </itemizedlist>
+  </para>
+  </sect2>
+  <sect2>
+  <title>Adding Repositories in the &kiwi; Editor</title>
+  <para> To add a new repository click <emphasis>Add repository</emphasis> link and fill in the dialog.
+    There are two ways to create it:
+    <itemizedlist>
+      <listitem>
+       <para>
+          <emphasis>Basic Mode:</emphasis> Adding the name of a project will provide a list with the repositories from that project.
+       </para>
+      </listitem>
+    </itemizedlist>
+  </para>
   <figure>
-   <title>&kiwi; Editor. Edit screen</title>
+   <title>&kiwi; Adding a new repository - Basic Mode</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="edit_kiwi_edit.png"/>
+     <imagedata fileref="kiwi_editor_repo_basic.png"/>
     </imageobject>
    </mediaobject>
   </figure>
-  <para> Modify the &kiwi; configuration as you want, and click the "Save" button
-   when you finish. </para>
- </sect2>
+  <itemizedlist>
+    <listitem>
+      <para>
+        <emphasis>Expert Mode:</emphasis> This mode provides you with a set of customizable parameters for creating a repository.
+      </para>
+      <itemizedlist>
+        <listitem>
+         <para>
+           <emphasis>Type:</emphasis> Valid options are <emphasis>rpm-md</emphasis> and <emphasis>apt-deb</emphasis>.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Priority:</emphasis> Repository priority for the given repository.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Alias:</emphasis> Alternative name for the configured repository.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Source Path:</emphasis> Define the repository path.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>User:</emphasis> Specifies a user name for the given repository.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Password:</emphasis> Specifies a password for the given repository.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Prefer License:</emphasis> The repository providing this attribute will be used primarily to install
+            the license tarball if found on that repository.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Image Include:</emphasis> Specifies whether the given repository should be configured as a repository in the image.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+            <emphasis>Replaceable:</emphasis> Defines a repository name which may be replaced by the repositories specified in the image description.
+            This attribute should only be applied in the context of a boot image description.
+         </para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </itemizedlist>
+  <figure>
+   <title>&kiwi; Adding a new repository - Expert Mode</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="kiwi_editor_repo_expert.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+
+  <para> To use the configuration of the current project check the <emphasis>Use project repositories</emphasis> checkbox.</para>
+  <figure>
+   <title>&kiwi; Use project configuration</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="kiwi_editor_use_project_repositories.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+  <note> <para> This option will remove the other repositories from your kiwi file. </para></note>
+  </sect2>
+  <sect2>
+  <title>Adding Packages in the &kiwi; Editor</title>
+  <para> Adding a package is practically the same as adding a repository. We offer an autocomplete for the package
+    name that will show you the package available in the repositories added previously.</para>
+  <figure>
+   <title>&kiwi; Adding a new package</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="kiwi_editor_package.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+  <note>
+    <para>
+      The package groups shown in the editor are only those with type <emphasis>image</emphasis> and the packages will be added in this kind of package group.
+      If it did exist previously the &kiwi; Editor creates a package group with type <emphasis>image</emphasis> for you.
+    </para>
+  </note>
+  </sect2>
 </sect1>
