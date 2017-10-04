@@ -1,0 +1,767 @@
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<sect1 xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
+ xml:id="_message_bus">
+ <title>Message Bus for Event Notifications</title>
+ <para>The OBS has an integrated notification subsystem for sending events that are happening in our app through a message bus.
+   We have chosen <link xlink:href="https://www.rabbitmq.com/">RabbitMQ</link> as our message bus server technology based on the
+   <link xlink:href="https://www.amqp.org/">AMQP</link> protocol.
+ </para>
+ <sect2 xml:id="_rabbit_mq">
+  <title>RabbitMQ</title>
+  <para>
+    RabbitMQ claims to be <emphasis>"the most popular open source message broker"</emphasis>. Meaning that it can deliver asynchronous messages in many
+    different exchange ways (one to one, broadcasting, based on topics). It also includes a flexible routing system based on queues.
+  </para>
+  <para>
+    RabbitMQ is lightweight and easy to deploy on premises and in the cloud. It supports multiple messaging protocols too.
+    And can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
+  </para>
+  <sect3 xml:id="_rabbit_mq_configuration">
+   <title>Configuration</title>
+   <para>
+    Currently the RabbitMQ configuration is in the file <filename>options.yml</filename>.
+    All those options there start with the prefix <emphasis>amqp</emphasis>. These configuration items match
+    with some of the calls we do using the <link xlink:href="http://rubybunny.info/">Bunny</link> gem.
+   </para>
+   <table frame="all" rowsep="1" colsep="1">
+    <title>RabbitMQ Configuration Options</title>
+    <tgroup cols="4">
+      <colspec colname="col_1" colwidth="29*"/>
+      <colspec colname="col_2" colwidth="26*"/>
+      <colspec colname="col_3" colwidth="17*"/>
+      <colspec colname="col_4" colwidth="26*"/>
+      <thead>
+        <row>
+          <entry align="left" valign="top">
+            Config item
+          </entry>
+          <entry align="left" valign="top">
+            Description
+          </entry>
+          <entry align="left" valign="top">
+            Values
+            <literal>default</literal>
+          </entry>
+          <entry align="left" valign="top">
+            Remarks</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_namespace</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Namespace for the queues of this instance</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>'opensuse.obs'</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Is a prefix for the queue names</para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_options</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Connection configuration</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>See
+              <link xlink:href="http://rubybunny.info/articles/connecting.html">this guide</link>
+              to know which are the parameters allowed.</para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_options[host]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Server host</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A valid hostname</para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_options[port]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Server port</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>5672</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_options[user]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>User account</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_options[pass]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Account password</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_options[vhost]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Virtual host</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_exchange_name</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Name for the exchange</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_exchange_options</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Exchange configuration</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>See
+              <link xlink:href="http://rubybunny.info/articles/exchanges.html">this guide</link>
+              to know more about exchanges.</para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_exchange_options[type]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Type of comunication for the exchange</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>direct</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_exchange_options[auto_delete]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>If set, the exchange is deleted when all queues have finished using it</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>false</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_exchange_options[arguments]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>More configuration for plugins / extensions</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_queue_options</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Queues configuration</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>See
+              <link xlink:href="http://rubybunny.info/articles/queues.html">this guide</link>
+              to know more about queues.</para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_queue_options[durable]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Should this queue be durable? </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>false</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_queue_options[auto_delete]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Should this queue be automatically deleted when the last consumer disconnects?</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>false</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_queue_options[exclusive]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Should this queue be exclusive (only can be used by this connection, removed when the connection is closed)? </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              <literal>false</literal>
+            </para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para>amqp_queue_options[arguments]</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Additional optional arguments (typically used by RabbitMQ extensions and plugins)</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+   <para>Example of the RabbitMQ section of the <emphasis>options.yml</emphasis>
+    file:</para>
+   <screen>[...]
+# RabbitMQ based message bus
+#
+# Prefix of the message bus rooting key
+
+amqp_namespace: 'opensuse.obs'
+
+# Connection options -> http://rubybunny.info/articles/connecting.html
+
+amqp_options:
+  host: rabbit.example.com
+  port: 5672
+  user: guest
+  pass: guest
+  vhost: /vhost
+
+# Exchange options -> http://rubybunny.info/articles/exchanges.html
+
+amqp_exchange_name: pubsub
+amqp_exchange_options:
+  type: topic
+  auto_delete: false
+  arguments:
+    persistent: true
+    passive: true
+
+# Queue options -> http://rubybunny.info/articles/queues.html
+amqp_queue_options:
+  durable: false
+  auto-delete: false
+  exclusive: false
+  arguments:
+    extension_1: blah
+   </screen>
+
+   <table frame="all" rowsep="1" colsep="1">
+    <title>List of event messages / queues for the message bus</title>
+    <tgroup cols="3">
+      <colspec colname="col_1" colwidth="29*"/>
+      <colspec colname="col_2" colwidth="26*"/>
+      <colspec colname="col_3" colwidth="17*"/>
+      <thead>
+        <row>
+          <entry align="left" valign="top">
+            Queue Name
+          </entry>
+          <entry align="left" valign="top">
+            Description
+          </entry>
+          <entry align="left" valign="top">
+            Payload
+          </entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.build_success</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package build has succeeded</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :repository, :arch, :release, :readytime, :srcmd5,
+              :rev, :reason, :bcnt, :verifymd5, :hostarch, :starttime,
+              :endtime, :workerid, :versrel, :previouslyfailed
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.build_fail</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package build has failed</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :repository, :arch, :release, :readytime, :srcmd5,
+              :rev, :reason, :bcnt, :verifymd5, :hostarch, :starttime,
+              :endtime, :workerid, :versrel, :previouslyfailed, :faillog
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.build_unchanged</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package build has succeeded with unchanged result</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :repository, :arch, :release, :readytime, :srcmd5,
+              :rev, :reason, :bcnt, :verifymd5, :hostarch, :starttime,
+              :endtime, :workerid, :versrel, :previouslyfailed
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.create</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A new package was created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.update</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>The package metada was updated</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.delete</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package was deleted</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :comment
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.undelete</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package was undeleted</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :comment
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.branch</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package was branched</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :targetproject, :targetpackage, :user
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.commit</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package has committed changes</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :comment, :user, :files, :rev, :requestid
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.upload</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Sources of a package were uploaded</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :comment, :filename, :requestid, :target, :user
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.service_success</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Source service succeeded for a package</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :comment, :project, :package, :sender, :rev, :user, :requestid
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.service_fail</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Source service failed for a package</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :comment, :error, :project, :package, :sender, :rev, :user, :requestid
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.version_change</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A package has changed its version</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :comment, :requestid, :files, :rev, :newversion, :user, :oldversion
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.package.comment</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A new comment for the package was created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :package, :sender, :commenters, :commenter, :comment_body, :comment_title
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.project.create</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A new project was created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :sender
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.project.update_project_conf</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>The project configuration was updated</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :sender, :files, :comment
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.project.update</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A project was updated</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :sender
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.project.delete</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A project was deleted</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :comment, :requestid, :sender
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.project.undelete</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A project was undeleted</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :comment, :sender
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.project.comment</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A new comment for the project was created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :commenters, :commenter, :comment_body, :comment_title
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.repo.packtrack</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Binary was published in the repository</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :payload
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.repo.publish_state</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Publish State of Repository has changed</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :state
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.repo.published</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A repository was published</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.create</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A request was created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who,
+              :diff (local projects)
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.change</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A request was changed (admin only)</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.delete</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A request was deleted</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.state_change</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>The state of a request was changed</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who, :oldstate
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.review_wanted</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A request requires a review</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who,
+              :reviewers, :by_user, :by_group, :by_project, :by_package,
+              :diff (local projects)
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.comment</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A new comment for the request was created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who,
+              :commenters, :commenter, :comment_body, :comment_title,
+              :request_number
+            </para>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  </sect3>
+ </sect2>
+</sect1>
