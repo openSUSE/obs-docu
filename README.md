@@ -13,7 +13,7 @@ The documentation is currently split into these books:
 
 To work on this document you need to install the package `daps` in
 version 2.4.0 or later. Install the latest version from the
-`Documentation:Tools` repository.
+[Documentation:Tools](https://build.opensuse.org/project/show/Documentation:Tools) repository.
 
 After editing the document validate your changes via the following
 commands, for example:
