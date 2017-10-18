@@ -10,8 +10,9 @@
  <title>OBS Architecture</title>
  <info>
   <abstract>
-   <para/>
-   <!--<remark>TBD</remark>-->
+   <para>
+     <remark>TBD</remark>
+   </para>
   </abstract>
  </info>
 
