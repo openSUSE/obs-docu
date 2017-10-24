@@ -36,12 +36,6 @@
      <orgname>B1 Sytems GmbH </orgname>
     </affiliation>-->
    </author>
-   <author>
-    <personname>
-     <firstname>Stefan</firstname>
-     <surname>Knorr</surname>
-    </personname>
-   </author>
   </authorgroup>
   <xi:include href="common_copyright_opensuse.xml"/>
  </info>
