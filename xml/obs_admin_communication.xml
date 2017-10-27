@@ -1,0 +1,156 @@
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<sect1 version="5.1" xml:id="sec.obs.communication"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Communication Flow</title>
+ <para>
+  The communication flow can be split into 3 parts:
+ </para>
+ <orderedlist>
+  <listitem>
+   <para>
+    User-to-front-end communication
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Front-end-to-source-server communication
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    Communication between source server and other back-end
+    components, such as the repository servers.
+   </para>
+  </listitem>
+ </orderedlist>
+ <para>
+  Users communicate with the &obsa; front-end:
+ </para>
+ <itemizedlist>
+  <listitem>
+   <para>
+     (via tools like &osccmd;)
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The front-end provides a web interface and also an API.
+   </para>
+  </listitem>
+ </itemizedlist>
+  <para>
+   The front-end is implemented as Ruby on Rails application. All
+   communication happens via either the plain HTTP or the encrypted HTTPS
+   protocol.
+ </para>
+ <para>
+  The communication between the front-end and the back-end also uses
+  the HTTP protocol. The back-end source server operates as a gateway to most
+  other back-end components.
+ </para>
+ <figure xml:id="fig_obs_communication">
+  <title>&obsa; Communication</title>
+  <mediaobject>
+   <imageobject>
+    <imagedata fileref="obs_communication.svg" contentwidth="75%"/>
+   </imageobject>
+   <textobject>
+    <phrase>Flow chart showing the relationships between parts of &obsa;</phrase>
+   </textobject>
+  </mediaobject>
+ </figure>
+ <para>
+  <xref linkend="fig_obs_communication"/> shows the communication flow
+  between the &obsa; components after a package source (for example, a
+  <filename>_service</filename> file) is updated:
+ </para>
+ <orderedlist>
+  <listitem>
+   <para>
+    If a source file of a package was updated, the new source file is
+    uploaded with an HTTP PUT operation to the front-end. The front-end may ask
+    for authentication (if not already done) and check the access rights for the
+    user.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    If everything is OK, the new file will be sent to the back-end
+    <emphasis role="strong"><emphasis>Source server</emphasis></emphasis> via
+    an HTTP PUT request as well. The source server stores the changed source
+    (under revision control) and checks if for this change source service
+    runs are needed.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    If so, the <emphasis role="strong"><emphasis>Source Service
+    server</emphasis></emphasis> is informed via an HTTP PUT request of the
+    <filename>_service</filename> file to run the requested services.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+     The <emphasis role="strong"><emphasis>Source Service
+     server</emphasis></emphasis> runs the different source services, for
+     example, downloads the requested revision from a Git server. After
+     running all services it delivers the final sources back to the
+     <emphasis role="strong"><emphasis>Source server</emphasis></emphasis>, wh
+     ich then store these under revision control as well.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    
+ The <emphasis role="strong"><emphasis>Source
+   server</emphasis></emphasis> then notifies the <emphasis role="strong"
+    ><emphasis>Schedulers</emphasis></emphasis> (for each architecture) about
+  the change of the package via an event.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The <emphasis role="strong"
+    ><emphasis>Scheduler</emphasis></emphasis> recalculates the package and
+    project state and if all build requirements are resolved, a build job is
+    created and put in the
+    <emphasis role="strong"><emphasis>Job pool</emphasis></emphasis>.
+   </para>
+  </listitem>
+  <listitem>
+   <para>
+    The notified <emphasis role="strong"
+    ><emphasis>Dispatcher</emphasis></emphasis> checks for the availability
+    of a free worker that meets the build constraints for the job and sends
+    the job to the
+    <emphasis role="strong"><emphasis>worker</emphasis></emphasis>.
+   </para>
+  </listitem>
+ </orderedlist>
+ <para>The <emphasis role="strong"><emphasis>Worker</emphasis></emphasis>
+  downloads the sources from the <emphasis role="strong"><emphasis>Source
+    server</emphasis></emphasis> and all required binary packages from the
+   <emphasis role="strong"><emphasis>Repo server</emphasis></emphasis>. The
+  package then will be built, the worker is monitored by the <emphasis
+   role="strong"><emphasis>warden</emphasis></emphasis> service to detect any
+  worker crashes.</para>
+ <para>If the build was finished the build results (which are also contain
+  build logs) the results are uploaded to the <emphasis role="strong"
+    ><emphasis>Scheduler</emphasis></emphasis> again and if requested the
+   <emphasis role="strong"><emphasis>Signer</emphasis></emphasis> does sign
+  the packages. The <emphasis role="strong"
+   ><emphasis>Scheduler</emphasis></emphasis> recalculate the project status
+  if here are more dependent packages to build. If not it informs the
+   <emphasis role="strong"><emphasis>Publisher</emphasis></emphasis> to
+  publish the new build results and create an updated version of the
+  repository. The <emphasis role="strong"
+   ><emphasis>Publisher</emphasis></emphasis> will also request signing of the
+  repository metadata.
+  </para>
+</sect1>
