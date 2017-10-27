@@ -15,7 +15,8 @@
   a certain OBS version. Refer to the <link
    xlink:href="http://openbuildservice.org/download/">OBS download page</link>
   for that. </para>
- <xi:include href="obs_admin_components.xml"/>
+<!-- <xi:include href="obs_admin_components.xml"/>-->
+<!-- <xi:include href="obs_admin_communication.xml"/>-->
  <xi:include href="obs_admin_appliance.xml"/>
  <xi:include href="obs_admin_backend.xml"/>
  <xi:include href="obs_admin_frontend.xml"/>
