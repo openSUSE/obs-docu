@@ -57,8 +57,11 @@
  <figure xml:id="fig_obs_communication">
   <title>&obsa; Communication</title>
   <mediaobject>
-   <imageobject>
+   <imageobject role="fo">
     <imagedata fileref="obs_communication.svg" contentwidth="75%"/>
+   </imageobject>
+   <imageobject role="html">
+    <imagedata fileref="obs_communication.png"/>
    </imageobject>
    <textobject>
     <phrase>Flow chart showing the relationships between parts of &obsa;</phrase>
