@@ -2840,6 +2840,21 @@ if (-r $hostconfig) {
     <listitem>
      <para> warden.log - warden log </para>
     </listitem>
+    <listitem>
+     <para> clouduploadserver.log - cloud upload server log </para>
+    </listitem>
+    <listitem>
+     <para> clouduploadworker.log - cloud upload worker log </para>
+    </listitem>
+   </itemizedlist>
+   <para>The following log files for the upload jobs exist inside the <emphasis>/srv/obs/cloudupload</emphasis> directory (also linked in <emphasis>/bs/cloudupload</emphasis>):</para>
+   <itemizedlist>
+    <listitem>
+     <para> &lt;job_id&gt;.log - log files for undone upload jobs</para>
+    </listitem>
+    <listitem>
+     <para> done/&lt;job_id&gt;.log - log files for already finished upload jobs</para>
+    </listitem>
    </itemizedlist>
   </sect2>
  </sect1>
@@ -2886,6 +2901,10 @@ if (-r $hostconfig) {
 │           ├── rsync
 │           ├── srtp
 │           └── wget</screen>
+  </sect2>
+  <sect2 xml:id="_cloudupload_directory">
+   <title><filename>cloudupload</filename> Directory</title>
+   <para>Info for cloud upload jobs is stored here, it has a subdir named <emphasis>done</emphasis> for storing the already finished jobs.</para>
   </sect2>
   <sect2 xml:id="_db_directory">
    <title><filename>db</filename> Directory</title>
