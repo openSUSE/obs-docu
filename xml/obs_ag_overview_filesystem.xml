@@ -1879,6 +1879,21 @@ OBS_WORKER_SCRIPT_URL=""</screen>
        </row>
        <row>
         <entry align="left" valign="top">
+         <para>$clouduploadserver</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>URL of the cloud upload server</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>'http://$hostname: 5452'</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
          <para>$servicedir</para>
         </entry>
         <entry align="left" valign="top">
