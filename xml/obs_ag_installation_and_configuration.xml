@@ -685,6 +685,9 @@ systemctl start obswarden.service</screen>
      <listitem>
       <para> Source Service Server: port 5152 </para>
      </listitem>
+     <listitem>
+      <para> Cloud Upload Server: port 5452 </para>
+     </listitem>
     </orderedlist>
    </sect3>
   </sect2>
