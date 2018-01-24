@@ -249,6 +249,47 @@ systemctl start obswarden.service</screen>
      not do this on a system connected to an untrusted network or make sure to
      block the ports with a firewall.</para>
    </warning>
+   <sect3 xml:id="_cloud_upload_setup">
+    <title>Cloud Upload Setup</title>
+    <para>In order to setup the Cloud Upload feature you will need to configure the tools required per each cloud provider.
+      Right now we only support the AWS Amazon Cloud (<link xlink:href="https://aws.amazon.com"/>) as provider.
+    </para>
+    <sect4 xml:id="_aws_authentication_workflow">
+      <title>How does the AWS's authentication work for uploading images?</title>
+      <para>
+        We are going to use the role based authentication provided by Amazon to enable the OBS instance to upload images to other user's accounts.
+      </para>
+      <para>
+        The users will obtain an external ID (automatically created and unique) and the OBS account ID to create an Identity and Access Management (IAM) role.
+        After the user created the role, he needs to provide the Amazon Resource Name (ARN) of the role to OBS which stores it in Cloud::EC2::Configuration.
+        OBS will use the ARN to obtain temporary credentials for the users account to upload the appliance. The ARN and the external ID are not considered as a secret.
+      </para>
+      <figure xml:id="fig.intallation.aws_authentication_workflow">
+       <title>AWS authentication for role based access</title>
+       <mediaobject>
+        <imageobject>
+         <imagedata fileref="AWS_authentication_workflow.png" width="500"/>
+        </imageobject>
+       </mediaobject>
+      </figure>
+      <para>
+        The whole workflow is described in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</link>.
+      </para>
+    </sect4>
+    <sect4 xml:id="_aws_authentication_setup">
+      <title>AWS authentication credentials setup</title>
+      <para>
+      For uploading images in AWS two tools are needed internally the <link xlink:href="https://aws.amazon.com/cli">aws CLI</link> and the <link xlink:href="https://github.com/SUSE/Enceladus/tree/master/ec2utils/ec2uploadimg">ec2uploadimg</link> (those are installed as dependencies).
+      For setting this up you have to configure both tools in the machine where the cloud upload workers will be running.
+    </para>
+    <para>
+      The configurations are stored in <emphasis>/etc/obs/cloudupload</emphasis> (the clouduploader home directory).
+      In this directory there is a <emphasis>.ec2utils.conf</emphasis> file which contains e.g. the helper instance AMIs (see this <link xlink:href="https://github.com/SUSE/Enceladus/blob/master/ec2utils/ec2utils.conf.example">example</link>).
+      In the <emphasis>/.aws/credentials</emphasis> file the AWS credentials of the OBS account are stored (see this <link xlink:href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">documentation</link>).
+    </para>
+  </sect4>
+
+   </sect3>
   </sect2>
   <sect2 xml:id="_frontend_installation">
    <title>Front-end Installation</title>
