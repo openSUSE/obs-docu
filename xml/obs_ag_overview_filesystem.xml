@@ -647,13 +647,58 @@ auto_cleanup_after_days: 30
          <para>see Reference Guide for more information</para>
         </entry>
        </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>kiwi_image_editor</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>enable/disable Kiwi Image Editor</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>true <literal>false</literal></para>
+        </entry>
+        <entry align="left" valign="top">
+         <para></para>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
+         <para>cloud_upload</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>enable/disable Cloud Upload setup</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>true <literal>false</literal></para>
+        </entry>
+        <entry align="left" valign="top">
+         <para></para>
+        </entry>
+       </row>
       </tbody>
      </tgroup>
     </table>
     <para>Example feature.yml</para>
     <screen>
-features:
-  image_templates: true
+<![CDATA[
+production:
+  features: &default
+    image_templates: true
+    kiwi_image_editor: false
+    cloud_upload: false
+
+development:
+  features:
+    <<: *default
+    kiwi_image_editor: true
+    cloud_upload: true
+
+test:
+  features:
+    <<: *default
+    kiwi_image_editor: true
+    cloud_upload: true
+]]>
     </screen>
    </sect3>
    <sect3 xml:id="_apache_vhost_obs_conf">
@@ -1834,6 +1879,21 @@ OBS_WORKER_SCRIPT_URL=""</screen>
        </row>
        <row>
         <entry align="left" valign="top">
+         <para>$clouduploadserver</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para>URL of the cloud upload server</para>
+        </entry>
+        <entry align="left" valign="top">
+         <para><literal>'http://$hostname: 5452'</literal>
+         </para>
+        </entry>
+        <entry align="left" valign="top">
+         <para/>
+        </entry>
+       </row>
+       <row>
+        <entry align="left" valign="top">
          <para>$servicedir</para>
         </entry>
         <entry align="left" valign="top">
@@ -2780,6 +2840,21 @@ if (-r $hostconfig) {
     <listitem>
      <para> warden.log - warden log </para>
     </listitem>
+    <listitem>
+     <para> clouduploadserver.log - cloud upload server log </para>
+    </listitem>
+    <listitem>
+     <para> clouduploadworker.log - cloud upload worker log </para>
+    </listitem>
+   </itemizedlist>
+   <para>The following log files for the upload jobs exist inside the <emphasis>/srv/obs/cloudupload</emphasis> directory (also linked in <emphasis>/bs/cloudupload</emphasis>):</para>
+   <itemizedlist>
+    <listitem>
+     <para> &lt;job_id&gt;.log - log files for undone upload jobs</para>
+    </listitem>
+    <listitem>
+     <para> done/&lt;job_id&gt;.log - log files for already finished upload jobs</para>
+    </listitem>
    </itemizedlist>
   </sect2>
  </sect1>
@@ -2826,6 +2901,10 @@ if (-r $hostconfig) {
 │           ├── rsync
 │           ├── srtp
 │           └── wget</screen>
+  </sect2>
+  <sect2 xml:id="_cloudupload_directory">
+   <title><filename>cloudupload</filename> Directory</title>
+   <para>Info for cloud upload jobs is stored here, it has a subdir named <emphasis>done</emphasis> for storing the already finished jobs.</para>
   </sect2>
   <sect2 xml:id="_db_directory">
    <title><filename>db</filename> Directory</title>
