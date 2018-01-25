@@ -261,7 +261,8 @@ systemctl start obswarden.service</screen>
       </para>
       <para>
         The users will obtain an external ID (automatically created and unique) and the OBS account ID to create an Identity and Access Management (IAM) role.
-        After the user created the role, he needs to provide the Amazon Resource Name (ARN) of the role to OBS which stores it in Cloud::EC2::Configuration.
+        After the user created the role, he needs to provide the Amazon Resource Name (ARN) of the role to OBS. OBS will use this ARN to obtain temporary credentials,
+        therefore an uploader account is necessary which we need to configure (see AWS authentication credentials setup).
         OBS will use the ARN to obtain temporary credentials for the users account to upload the appliance. The ARN and the external ID are not considered as a secret.
       </para>
       <figure xml:id="fig.intallation.aws_authentication_workflow">
