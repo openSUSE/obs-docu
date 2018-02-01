@@ -56,8 +56,8 @@
     <command>_multibuild</command> directive file in the package sources. </para>
   <para> The <command>_multibuild</command> file is an xml file. For example:</para>
    <screen>&lt;multibuild&gt;
-  &lt;package&gt;kernel-source&lt;/package&gt;
-  &lt;package&gt;kernel-obs-build&lt;/package&gt;
+  &lt;flavor&gt;kernel-source&lt;/flavor&gt;
+  &lt;flavor&gt;kernel-obs-build&lt;/flavor&gt;
 &lt;/multibuild&gt;</screen>
    <para>Build description files are needed for each of them for each package (eg.
    kernel-source.spec or kernel-obs-build.dsc) inside of the sources. There
