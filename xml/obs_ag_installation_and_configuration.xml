@@ -265,14 +265,6 @@ systemctl start obswarden.service</screen>
         therefore an uploader account is necessary which we need to configure (see AWS authentication credentials setup).
         OBS will use the ARN to obtain temporary credentials for the users account to upload the appliance. The ARN and the external ID are not considered as a secret.
       </para>
-      <figure xml:id="fig.intallation.aws_authentication_workflow">
-       <title>AWS authentication for role based access</title>
-       <mediaobject>
-        <imageobject>
-         <imagedata fileref="AWS_authentication_workflow.png" width="500"/>
-        </imageobject>
-       </mediaobject>
-      </figure>
       <para>
         The whole workflow is described in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</link>.
       </para>
