@@ -227,6 +227,28 @@
         <para/>
        </entry>
       </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Cloud upload worker</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obsclouduploadworker.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Only needed for cloud upload feature</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Cloud upload server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obsclouduploadserve.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Only needed for cloud upload feature</para>
+       </entry>
+      </row>
      </tbody>
     </tgroup>
    </table>
@@ -243,7 +265,10 @@ systemctl start obsscheduler.service
 systemctl start obsdispatcher.service
 systemctl start obspublisher.service
 systemctl start obssigner.service
-systemctl start obswarden.service</screen>
+systemctl start obswarden.service
+systemctl start obsclouduploadworker.service
+systemctl start obsclouduploadserver.service
+</screen>
    <warning>
     <para>The commands start services which are accessible from the outside. Do
      not do this on a system connected to an untrusted network or make sure to
