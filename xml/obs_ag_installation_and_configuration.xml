@@ -95,8 +95,8 @@
     but the defaults should be good enough for the simple case.</para>
    <para>You can control the different back-end components via systemctl.
     Basically you can enable/disable the service during booting the system and
-    start/stop/restart it in a running system. For more information, see
-    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands"/>.
+    start/stop/restart it in a running system. For more information, have a look at the 
+    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">systemctl man page</link>.
     For example, to restart the repository
     server use</para>
    <screen>systemctl restart obsrepserver.service</screen>
