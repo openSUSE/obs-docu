@@ -44,7 +44,7 @@
    <para>For bigger installations you can use separate networks for back-end
     communication, workers and front-end.</para>
    <para>The reference installation on <emphasis role="strong"
-      ><emphasis>build.opensuse.org</emphasis></emphasis> with lot of users,
+      >build.opensuse.org</emphasis> with lot of users,
     distributions runs on a partitioned setup with:</para>
    <itemizedlist>
     <listitem>
@@ -90,8 +90,7 @@
    <title>Back-end Installation</title>
    <para>The back-end hosts all sources and built packages. It also schedules
     the jobs. You need to install the "obs-server" package for this. You need
-    to check the <emphasis role="strong"
-      ><emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis></emphasis> file,
+    to check the <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis> file,
     but the defaults should be good enough for the simple case.</para>
    <para>You can control the different back-end components via systemctl.
     Basically you can enable/disable the service during booting the system and
@@ -310,7 +309,7 @@ mysql&gt; FLUSH PRIVILEGES;
 mysql&gt; quit</screen>
     <para>Configure your MySQL user and password in the "production" section of
      the api config: <emphasis role="strong"
-       ><emphasis>/srv/www/obs/api/config/database.yml</emphasis></emphasis>
+       >/srv/www/obs/api/config/database.yml</emphasis>
     </para>
     <para>Example:</para>
     <screen># MySQL (default setup).  Versions 4.1 and 5.0 are recommended.
@@ -374,10 +373,10 @@ c_rehash /etc/ssl/certs/</screen>
    <sect3 xml:id="_api_configuration">
     <title>API Configuration</title>
     <para>Check and edit <emphasis role="strong"
-       ><emphasis>/srv/www/obs/api/config/options.yml</emphasis></emphasis>
+       >/srv/www/obs/api/config/options.yml</emphasis>
     </para>
     <para>If you change the hostnames/ips of the api, you need to adjust
-      <emphasis role="strong"><emphasis>frontend_host</emphasis></emphasis>
+      <emphasis role="strong">frontend_host</emphasis>
      accordingly. If you want to use LDAP, you need to change the LDAP settings
      as well. Look at the <xref linkend="_user_and_group_management"/> for
      details. You will find examples and more details in the <xref
@@ -495,7 +494,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
   &lt;remoteurl&gt;https://api.opensuse.org/public&lt;/remoteurl&gt;
 &lt;/project&gt;</screen>
    <para>You can create the project using a file with the above content with
-     <emphasis role="strong"><emphasis>osc</emphasis></emphasis> like
+     <emphasis role="strong">osc</emphasis> like
     this:</para>
    <screen>osc -c ~/.obsadmin_osc.rc meta prj openSUSE.org -F /tmp/openSUSE.org.meta</screen>
    <para>You also can import binary distribution, see <xref
@@ -539,7 +538,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
   <para>You can deploy workers quite simply using the worker appliance. Or
    install a minimum system plus the obs-worker package on the hardware.</para>
   <para>Edit the <emphasis role="strong"
-     ><emphasis>/etc/sysconfig/obs-server</emphasis></emphasis> file, at least
+     >/etc/sysconfig/obs-server</emphasis> file, at least
     <emphasis role="strong">OBS_SRC_SERVER</emphasis>, <emphasis role="strong"
     >OBS_REPO_SERVERS</emphasis> and <emphasis role="strong"
     >OBS_WORKER_INSTANCES</emphasis> need to be set. More details in the <xref
@@ -665,10 +664,10 @@ our $partitionservers = {
 };
 [...]</screen>
   <para>On the other partition server you need to change <emphasis
-    role="strong"><emphasis>"our $reposerver"</emphasis></emphasis>, <emphasis
-    role="strong"><emphasis>"our $workerreposerver"</emphasis></emphasis> and
-    <emphasis role="strong"><emphasis>"our
-   $partition"</emphasis></emphasis>.</para>
+    role="strong">"our $reposerver"</emphasis>, <emphasis
+    role="strong">"our $workerreposerver"</emphasis> and
+    <emphasis role="strong">"our
+   $partition"</emphasis>.</para>
   <para>On all partition servers you need to start:</para>
   <screen>systemctl start obsrepserver.service
 systemctl start obsscheduler.service
