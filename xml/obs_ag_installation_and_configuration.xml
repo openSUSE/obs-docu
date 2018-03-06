@@ -94,8 +94,8 @@
     but the defaults should be good enough for the simple case.</para>
    <para>You can control the different back-end components via systemctl.
     Basically you can enable/disable the service during booting the system and
-    start/stop/restart it in a running system. For more information, see
-    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands"/>.
+    start/stop/restart it in a running system. For more information, have a look at the 
+    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">systemctl man page</link>.
     For example, to restart the repository
     server use</para>
    <screen>systemctl restart obsrepserver.service</screen>
@@ -226,6 +226,28 @@
         <para/>
        </entry>
       </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Cloud upload worker</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obsclouduploadworker.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Only needed for cloud upload feature</para>
+       </entry>
+      </row>
+      <row>
+       <entry align="left" valign="top">
+        <para>Cloud upload server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>obsclouduploadserve.service</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>Only needed for cloud upload feature</para>
+       </entry>
+      </row>
      </tbody>
     </tgroup>
    </table>
@@ -242,7 +264,10 @@ systemctl start obsscheduler.service
 systemctl start obsdispatcher.service
 systemctl start obspublisher.service
 systemctl start obssigner.service
-systemctl start obswarden.service</screen>
+systemctl start obswarden.service
+systemctl start obsclouduploadworker.service
+systemctl start obsclouduploadserver.service
+</screen>
    <warning>
     <para>The commands start services which are accessible from the outside. Do
      not do this on a system connected to an untrusted network or make sure to
