@@ -294,18 +294,36 @@ systemctl start obsclouduploadserver.service
       </para>
     </sect4>
     <sect4 xml:id="_aws_authentication_setup">
-      <title>AWS authentication credentials setup</title>
+      <title>AWS authentication – Server setup</title>
       <para>
-      For uploading images in AWS two tools are needed internally the <link xlink:href="https://aws.amazon.com/cli">aws CLI</link> and the <link xlink:href="https://github.com/SUSE/Enceladus/tree/master/ec2utils/ec2uploadimg">ec2uploadimg</link> (those are installed as dependencies).
-      For setting this up you have to configure both tools in the machine where the cloud upload workers will be running.
-    </para>
-    <para>
-      The configurations are stored in <emphasis>/etc/obs/cloudupload</emphasis> (the clouduploader home directory).
-      In this directory there is a <emphasis>.ec2utils.conf</emphasis> file which contains e.g. the helper instance AMIs (see this <link xlink:href="https://github.com/SUSE/Enceladus/blob/master/ec2utils/ec2utils.conf.example">example</link>).
-      In the <emphasis>/.aws/credentials</emphasis> file the AWS credentials of the OBS account are stored (see this <link xlink:href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">documentation</link>).
-    </para>
-  </sect4>
-
+        Before you can start uploading images to the Amazon Web Services (AWS) you have to:
+        <orderedlist>
+          <listitem>
+            <para>Install the obs-cloud-uploader package</para>
+            <screen>
+              zypper in obs-cloud-uploader
+            </screen>
+          </listitem>
+          <listitem>
+            <para>Start the cloud upload services</para>
+            <screen>
+              rcobsclouduploadworker start
+              rcobsclouduploadserver start
+            </screen>
+          </listitem>
+        </orderedlist>
+      </para>
+    </sect4>
+    <sect4 xml:id="_aws_authentication_credential_setup">
+      <title>AWS authentication – Credentials setup</title>
+      <para>
+        For uploading images to AWS, OBS is using the <link xlink:href="https://aws.amazon.com/cli">AWS CLI</link> tool.
+        Before you can start uploading your images, you have to enter the AWS credentials to the
+        <emphasis role="strong">/etc/obs/cloudupload/.aws/credentials</emphasis> configuration file.
+        These credentials will then be used by OBS to retrieve the temporary credentials from the ARN provided by users.
+        More information about IAM role base authorization can be found in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">Amazon documentation</link>).
+      </para>
+    </sect4>
    </sect3>
   </sect2>
   <sect2 xml:id="_frontend_installation">
