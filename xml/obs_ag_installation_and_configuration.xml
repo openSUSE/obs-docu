@@ -313,6 +313,13 @@ systemctl start obsclouduploadserver.service
           </listitem>
         </orderedlist>
       </para>
+      <para>
+        At last you have to register the cloud uploader service in <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, eg. by adding following line:
+        <screen>
+          our $clouduploadserver = "http://$hostname:5452";
+        </screen>
+        Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
+      </para>
     </sect4>
     <sect4 xml:id="_aws_authentication_credential_setup">
       <title>AWS authentication – Credentials setup</title>
@@ -680,6 +687,10 @@ if ($frontend) {
 our $srcserver = "http://srcsrv.testobs.org:5352";
 our $reposerver = "http://mainbackend.testobs.org:5252";
 our $serviceserver = "http://service.testobs.org:5152";
+
+# Needed if you want to use the cloud upload feature
+our $clouduploadserver = "http://$hostname:5452";
+
 #
 our @reposervers = ("
     http://mainbackend.testobs.org:5252,
