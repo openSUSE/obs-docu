@@ -320,6 +320,13 @@ systemctl start obsclouduploadserver.service
         </screen>
         Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
       </para>
+      <warning>
+        <para>
+          Ensure that the system time of your cloud uploader instance is correct.
+          AWS is relying on the timestamps of the requests it receives.
+          Having an incorrect system time will cause cloud uploads to fail.
+        </para>
+      </warning>
     </sect4>
     <sect4 xml:id="_aws_authentication_credential_setup">
       <title>AWS authentication – Credentials setup</title>
