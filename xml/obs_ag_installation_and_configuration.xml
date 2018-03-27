@@ -276,67 +276,115 @@ systemctl start obsclouduploadserver.service
    <sect3 xml:id="_cloud_upload_setup">
     <title>Cloud Upload Setup</title>
     <para>In order to setup the Cloud Upload feature you will need to configure the tools required per each cloud provider.
-      Right now we only support the AWS Amazon Cloud (<link xlink:href="https://aws.amazon.com"/>) as provider.
+      Right now we only support the AWS Amazon Cloud (<link xlink:href="https://aws.amazon.com"/>) and Microsoft Azure
+      (<link xlink:href="https://portal.azure.com"/>) as providers.
     </para>
-    <sect4 xml:id="_aws_authentication_workflow">
-      <title>How does the AWS's authentication work for uploading images?</title>
-      <para>
-        We are going to use the role based authentication provided by Amazon to enable the OBS instance to upload images to other user's accounts.
-      </para>
-      <para>
-        The users will obtain an external ID (automatically created and unique) and the OBS account ID to create an Identity and Access Management (IAM) role.
-        After the user created the role, he needs to provide the Amazon Resource Name (ARN) of the role to OBS. OBS will use this ARN to obtain temporary credentials,
-        therefore an uploader account is necessary which we need to configure (see AWS authentication credentials setup).
-        OBS will use the ARN to obtain temporary credentials for the users account to upload the appliance. The ARN and the external ID are not considered as a secret.
-      </para>
-      <para>
-        The whole workflow is described in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</link>.
-      </para>
+    <sect4 xml:id="_cloud_upload_server_setup">
+     <title>Server setup</title>
+     <para>
+       Before you can start uploading images to the Amazon Web Services (AWS) you have to:
+       <orderedlist>
+         <listitem>
+           <para>Install the obs-cloud-uploader package</para>
+           <screen>
+             zypper in obs-cloud-uploader
+           </screen>
+         </listitem>
+         <listitem>
+           <para>Start the cloud upload services</para>
+           <screen>
+             rcobsclouduploadworker start
+             rcobsclouduploadserver start
+           </screen>
+         </listitem>
+       </orderedlist>
+     </para>
+     <para>
+       At last you have to register the cloud uploader service in <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, eg. by adding following line:
+       <screen>
+         our $clouduploadserver = "http://$hostname:5452";
+       </screen>
+       Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
+     </para>
+     <warning>
+       <para>
+         Ensure that the system time of your cloud uploader instance is correct.
+         AWS is relying on the timestamps of the requests it receives.
+         Having an incorrect system time will cause cloud uploads to fail.
+       </para>
+     </warning>
     </sect4>
-    <sect4 xml:id="_aws_authentication_setup">
-      <title>AWS authentication – Server setup</title>
-      <para>
-        Before you can start uploading images to the Amazon Web Services (AWS) you have to:
-        <orderedlist>
-          <listitem>
-            <para>Install the obs-cloud-uploader package</para>
-            <screen>
-              zypper in obs-cloud-uploader
-            </screen>
-          </listitem>
-          <listitem>
-            <para>Start the cloud upload services</para>
-            <screen>
-              rcobsclouduploadworker start
-              rcobsclouduploadserver start
-            </screen>
-          </listitem>
-        </orderedlist>
-      </para>
-      <para>
-        At last you have to register the cloud uploader service in <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, eg. by adding following line:
-        <screen>
-          our $clouduploadserver = "http://$hostname:5452";
-        </screen>
-        Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
-      </para>
-      <warning>
-        <para>
-          Ensure that the system time of your cloud uploader instance is correct.
-          AWS is relying on the timestamps of the requests it receives.
-          Having an incorrect system time will cause cloud uploads to fail.
-        </para>
-      </warning>
+    <sect4 xml:id="_aws">
+     <title>AWS Amazon Cloud</title>
+     <sect5 xml:id="_aws_authentication_workflow">
+       <title>Authentication Workflow</title>
+       <para>
+         We are going to use the role based authentication provided by Amazon to enable the OBS instance to upload images to other user's accounts.
+       </para>
+       <para>
+         The users will obtain an external ID (automatically created and unique) and the OBS account ID to create an Identity and Access Management (IAM) role.
+         After the user created the role, he needs to provide the Amazon Resource Name (ARN) of the role to OBS. OBS will use this ARN to obtain temporary credentials,
+         therefore an uploader account is necessary which we need to configure (see AWS authentication credentials setup).
+         OBS will use the ARN to obtain temporary credentials for the users account to upload the appliance. The ARN and the external ID are not considered as a secret.
+       </para>
+       <para>
+         The whole workflow is described in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</link>.
+       </para>
+     </sect5>
+     <sect5 xml:id="_aws_authentication_credential_setup">
+       <title>Credentials Setup</title>
+       <para>
+         For uploading images to AWS, OBS is using the <link xlink:href="https://aws.amazon.com/cli">AWS CLI</link> tool.
+         Before you can start uploading your images, you have to enter the AWS credentials to the
+         <emphasis role="strong">/etc/obs/cloudupload/.aws/credentials</emphasis> configuration file.
+         These credentials will then be used by OBS to retrieve the temporary credentials from the ARN provided by users.
+         More information about IAM role base authorization can be found in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">Amazon documentation</link>).
+       </para>
+     </sect5>
     </sect4>
-    <sect4 xml:id="_aws_authentication_credential_setup">
-      <title>AWS authentication – Credentials setup</title>
+    <sect4 xml:id="_ms_azure">
+     <title>Microsoft Azure</title>
+     <sect5 xml:id="_ms_azure_authentication_workflow">
+      <title>Authentication Workflow</title>
       <para>
-        For uploading images to AWS, OBS is using the <link xlink:href="https://aws.amazon.com/cli">AWS CLI</link> tool.
-        Before you can start uploading your images, you have to enter the AWS credentials to the
-        <emphasis role="strong">/etc/obs/cloudupload/.aws/credentials</emphasis> configuration file.
-        These credentials will then be used by OBS to retrieve the temporary credentials from the ARN provided by users.
-        More information about IAM role base authorization can be found in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">Amazon documentation</link>).
+       The authentication is done via Microsoft's Active Directory. The user has to create a new application and needs to
+       provide those two credentials to OBS:
+       <orderedlist>
+        <listitem>
+         <para>Application ID</para>
+         <para>The Application ID is a unique ID that represents an Active Directory Application.</para>
+        </listitem>
+        <listitem>
+         <para>Application Key</para>
+         <para>The Application Key can be generated for every application and is the password.</para>
+        </listitem>
+       </orderedlist>
+       OBS communicates with the REST API of Microsoft Azure to authenticate and upload images.
       </para>
+     </sect5>
+     <sect5 xml:id="_ms_azure_setup">
+      <title>Configuration</title>
+      <para>
+       The <emphasis role="strong">Application ID</emphasis> and the <emphasis role="strong">Application Key</emphasis> will be stored encrypted in
+       the database. As for that, it's required to generate an SSL secret and public key that has to be stored on the server where the
+       <emphasis role="strong">obs-cloud-uploader</emphasis> package has been installed.
+      </para>
+      <para>
+       To generate that SSL certificate, execute the following commands:
+       <screen>
+        cd /etc/obs/cloudupload
+        openssl genrsa -out secret.pem
+        openssl rsa -in secret.pem -out _pubkey -outform PEM -pubout
+       </screen>
+      </para>
+     </sect5>
+     <sect5 xml:id="_ms_azure_authentication_credential_setup">
+      <title>Credentials setup</title>
+      <para>
+       It's important that the public key is named <emphasis role="strong">_pubkey</emphasis> and the secret key is named
+       <emphasis role="strong">secret.pem</emphasis> and are kept in <emphasis role="strong">/etc/obs/cloudupload</emphasis>.
+      </para>
+     </sect5>
     </sect4>
    </sect3>
   </sect2>
