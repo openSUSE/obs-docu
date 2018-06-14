@@ -17,7 +17,7 @@
  <sect2 xml:id="_user_and_group_roles">
   <title>User and Group Roles</title>
   <para>The OBS role model has one global role: Admin, which can be granted
-   to users. Am OBS admin has access to all projects and packages via the API
+   to users. An OBS admin has access to all projects and packages via the API
    interface and the web user interface. Some menus in the Web UI do not allow
    changes by an Admin (for example, the Repository menu) as long the Admin is not a
    Maintainer for the project as well. But the same change can be done via

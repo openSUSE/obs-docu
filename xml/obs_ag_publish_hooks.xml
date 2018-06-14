@@ -8,7 +8,7 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
  xml:id="_publisher_hooks">
  <title>Publisher Hooks</title>
- <para>The job of the publisher service is to publish the build packages
+ <para>The job of the publisher service is to publish the built packages
   and/or images by creating repositories that are made available through a web
   server.</para>
  <para>It can be configured to use custom scripts to copy the build results
