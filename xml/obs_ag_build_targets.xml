@@ -24,7 +24,7 @@
    this and select the public side you want.</para>
   <para>If you want to connect to a not listed instance, you can simple
    create a remote project using the <emphasis>osc meta prj</emphasis> command.
-   A remote project differs from a local project the it has a <emphasis
+   A remote project differs from a local project as it has a <emphasis
     role="strong">remoteurl</emphasis> tag (see <xref
     linkend="_project_meta_data"/>).</para>
   <para>Example:</para>

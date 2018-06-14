@@ -410,7 +410,7 @@
 
  <sect1 xml:id="sec.obs.sserv.remove">
   <title>Removing a Source Service</title>
-  <para> Sometimes it is useful to continued to work on generated files
+  <para> Sometimes it is useful to continue working on generated files
    manually. In this situation the <filename>_service</filename> file needs
    to be dropped, but all
    generated files need to be committed as standard files. The &obsa;
