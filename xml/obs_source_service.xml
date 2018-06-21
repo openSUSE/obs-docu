@@ -258,7 +258,6 @@
    <varlistentry>
     <term><literal>serveronly</literal> Mode</term>
     <listitem>
-     <remark>toms 2017-09-01: deprecated according to "osc service -h"?</remark>
      <para>
       The serveronly mode is running the service on the server only. This
       can be useful, when the service is not available or can not work on
