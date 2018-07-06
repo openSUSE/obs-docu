@@ -94,7 +94,7 @@
     but the defaults should be good enough for the simple case.</para>
    <para>You can control the different back-end components via systemctl.
     Basically you can enable/disable the service during booting the system and
-    start/stop/restart it in a running system. For more information, have a look at the 
+    start/stop/restart it in a running system. For more information, have a look at the
     <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">systemctl man page</link>.
     For example, to restart the repository
     server use</para>
@@ -282,28 +282,33 @@ systemctl start obsclouduploadserver.service
     <sect4 xml:id="_cloud_upload_server_setup">
      <title>Server setup</title>
      <para>
-       Before you can start uploading images to the Amazon Web Services (AWS) you have to:
+       Before you can start uploading images to the Amazon Web Services (AWS)
+       you have to:
+     </para>
        <orderedlist>
          <listitem>
            <para>Install the obs-cloud-uploader package</para>
            <screen>
-             zypper in obs-cloud-uploader
+zypper in obs-cloud-uploader
            </screen>
          </listitem>
          <listitem>
            <para>Start the cloud upload services</para>
            <screen>
-             rcobsclouduploadworker start
-             rcobsclouduploadserver start
+rcobsclouduploadworker start
+rcobsclouduploadserver start
            </screen>
          </listitem>
        </orderedlist>
-     </para>
      <para>
-       At last you have to register the cloud uploader service in <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, eg. by adding following line:
+       At last you have to register the cloud uploader service in
+       <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, eg. by adding
+       following line:
+     </para>
        <screen>
-         our $clouduploadserver = "http://$hostname:5452";
+our $clouduploadserver = "http://$hostname:5452";
        </screen>
+     <para>
        Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
      </para>
      <warning>
@@ -349,6 +354,7 @@ systemctl start obsclouduploadserver.service
       <para>
        The authentication is done via Microsoft's Active Directory. The user has to create a new application and needs to
        provide those two credentials to OBS:
+      </para>
        <orderedlist>
         <listitem>
          <para>Application ID</para>
@@ -359,6 +365,7 @@ systemctl start obsclouduploadserver.service
          <para>The Application Key can be generated for every application and is the password.</para>
         </listitem>
        </orderedlist>
+       <para>
        OBS communicates with the REST API of Microsoft Azure to authenticate and upload images.
       </para>
      </sect5>
@@ -371,12 +378,12 @@ systemctl start obsclouduploadserver.service
       </para>
       <para>
        To generate that SSL certificate, execute the following commands:
-       <screen>
-        cd /etc/obs/cloudupload
-        openssl genrsa -out secret.pem
-        openssl rsa -in secret.pem -out _pubkey -outform PEM -pubout
-       </screen>
       </para>
+       <screen>
+cd /etc/obs/cloudupload
+openssl genrsa -out secret.pem
+openssl rsa -in secret.pem -out _pubkey -outform PEM -pubout
+       </screen>
      </sect5>
      <sect5 xml:id="_ms_azure_authentication_credential_setup">
       <title>Credentials setup</title>

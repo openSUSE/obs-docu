@@ -39,7 +39,7 @@
     </imageobject>
    </mediaobject>
   </figure>
-  <para>
+
     <itemizedlist>
      <listitem>
       <para>
@@ -52,12 +52,13 @@
       </para>
      </listitem>
     </itemizedlist>
-  </para>
+
   </sect2>
   <sect2>
   <title>Adding Repositories in the &kiwi; Editor</title>
   <para> To add a new repository click <emphasis>Add repository</emphasis> link and fill in the dialog.
     There are two ways to create it:
+  </para>
     <itemizedlist>
       <listitem>
        <para>
@@ -65,7 +66,7 @@
        </para>
       </listitem>
     </itemizedlist>
-  </para>
+
   <figure>
    <title>&kiwi; Adding a new repository - Basic Mode</title>
    <mediaobject>
