@@ -291,7 +291,7 @@
       server side. It can be used to temporarily disable the service but keeping
       the definition as part of the service definition. Or it can be used to
       define the way how to generate the sources and doing so by manually calling
-      <command>osc service disabledrun</command> The result will
+      <command>osc service runall</command> The result will
       get committed as standard files again.
      </para>
     </listitem>
@@ -399,7 +399,7 @@
    </listitem>
    <listitem>
     <para>
-     When <command>osc service disabledrun</command> is run manually, update
+     When <command>osc service runall</command> is run manually, update
      the source archive from an online source. In all other cases, ignore
      this part of the <filename>_service</filename> file.
     </para>
