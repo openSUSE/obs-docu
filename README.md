@@ -31,6 +31,8 @@ create a PDF with dblatex
 
 This document is hosted on GitHub at https://github.com/openSUSE/obs-docu
 
+For more ideas and TODOs, see the Trello board at https://trello.com/b/DxiucSKw/obs-documentation
+
 So the standard GitHub workflow with forked repositories and pull requests
 can be used to contribute to these books.
 
