@@ -180,8 +180,20 @@
      default configuration file for the Open Build Service Web UI and API. It
      contains configuration parameters for example for back-end connections and
      connection to the API. Important are the configurations for source and
-     front-end hosts The configuration for LDAP authentication is also located
+     front-end hosts. The configuration for LDAP authentication is also located
      in this file.</para>
+      <para>
+        Configuration options can be set per
+        <link xlink:href="https://guides.rubyonrails.org/configuring.html#rails-environment-settings">Rails environment</link>
+        or as generic configuration option defined in <emphasis>default</emphasis>.
+      </para>
+    <note>
+      <para>
+        We've updated the format of the <emphasis>options.yml</emphasis> after
+        the release of OBS 2.9. Old configuration files can be converted via
+        <screen><prompt>(cd /srv/www/obs/api/; rake migrate_options_yml)</prompt></screen>
+      </para>
+    </note>
     <note>
      <para>More and more configurations will be moved to the database and do
       not longer exist in this file. The database configuration can be accessed
@@ -551,65 +563,79 @@
 # API.
 #
 
+default: &#38;default
+  # Make use of mod_xforward module in apache
+  use_xforward: true
 
-# Make use of mod_xforward module in apache
-use_xforward: true
+  # Make use of X-Accel-Redirect for Nginx.
+  # http://kovyrin.net/2010/07/24/nginx-fu-x-accel-redirect-remote
+  #use_nginx_redirect: /internal_redirect
 
-# Make use of X-Accel-Redirect for Nginx.
-# http://kovyrin.net/2010/07/24/nginx-fu-x-accel-redirect-remote
-#use_nginx_redirect: /internal_redirect
+  # Minimum count of rating votes a project/package needs to # be taken in
+  # account
+  # for global statistics:
+  min_votes_for_rating: 3
 
-# Minimum count of rating votes a project/package needs to # be taken in
-# account
-# for global statistics:
-min_votes_for_rating: 3
+  # Set to true to verify XML reponses comply to the schema
+  response_schema_validation: false
 
-# Set to true to verify XML reponses comply to the schema
-response_schema_validation: false
+  # backend source server
+  source_host: localhost
+  source_port: 5352
+  #source_protocol: https
 
-# backend source server
-source_host: localhost
-source_port: 5352
-#source_protocol: https
-
-# api access to this instance
-frontend_host: localhost
-frontend_port: 443
-frontend_protocol: https
-# if your users access the hosts through a proxy (or just a different name,
-# use this to
-# overwrite the settings for users)
-#external_frontend_host: api.opensuse.org
-#external_frontend_port: 443
-#external_frontend_protocol: https
+  # api access to this instance
+  frontend_host: localhost
+  frontend_port: 443
+  frontend_protocol: https
+  # if your users access the hosts through a proxy (or just a different name,
+  # use this to
+  # overwrite the settings for users)
+  #external_frontend_host: api.opensuse.org
+  #external_frontend_port: 443
+  #external_frontend_protocol: https
 
 
-extended_backend_log: true
+  extended_backend_log: true
 
-# proxy_auth_mode can be :off, :on or :simulate
-proxy_auth_mode: :off
+  # proxy_auth_mode can be :off, :on or :simulate
+  proxy_auth_mode: :off
 
-# ATTENTION: If proxy_auth_mode'is :on, the frontend takes the user
-# name that is coming as headervalue X-username as a
-# valid user does no further authentication. So take care...
-proxy_auth_test_user: coolguy
-proxy_auth_test_email: coolguy@example.com
+  # ATTENTION: If proxy_auth_mode'is :on, the frontend takes the user
+  # name that is coming as headervalue X-username as a
+  # valid user does no further authentication. So take care...
+  proxy_auth_test_user: coolguy
+  proxy_auth_test_email: coolguy@example.com
 
-# set this to enable auto cleanup requests after the given days
-auto_cleanup_after_days: 30
+  # set this to enable auto cleanup requests after the given days
+  auto_cleanup_after_days: 30
 
-#schema_location
+  #schema_location
 
-#version
+  #version
 
-# if set to false, the API will only fake writes to backend (useful in
-# testing)
-# global_write_through: true
+  # if set to false, the API will only fake writes to backend (useful in
+  # testing)
+  # global_write_through: true
 
-# see
-# http://colszowka.heroku.com/2011/02/22/setting-up-your-custom-hoptoad-notifier-endpoint-for-free-using-errbit-on-heroku
-#errbit_api_key: api_key_of_your_app
-#errbit_host: installation.of.errbit.com</screen>
+  # see
+  # http://colszowka.heroku.com/2011/02/22/setting-up-your-custom-hoptoad-notifier-endpoint-for-free-using-errbit-on-heroku
+  #errbit_api_key: api_key_of_your_app
+  #errbit_host: installation.of.errbit.com
+
+production:
+  &#60;&#60;: *default
+
+test:
+  &#60;&#60;: *default
+  source_host: backend
+  memcached_host: cache
+
+development:
+  &#60;&#60;: *default
+  source_host: backend
+  memcached_host: cache
+</screen>
    </sect3>
    <sect3 xml:id="_feature_yml">
     <title><filename>feature.yml</filename></title>
