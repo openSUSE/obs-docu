@@ -1,7 +1,6 @@
-# README
-
-This is the official, edited and reviewed documentation for
-the Open Build Service (OBS).
+# Open Build Service Documentation
+This is the official, edited and reviewed documentation for the [Open Build
+Service (OBS)](https://openbuildservice.org/).
 
 The documentation is currently split into these books:
 
@@ -11,9 +10,12 @@ The documentation is currently split into these books:
 * The OBS Reference Guide
 * The OBS Best Practices Guide
 
-To work on this document you need to install the package `daps` in
-version 2.4.0 or later. Install the latest version from the
-[Documentation:Tools](https://build.opensuse.org/project/show/Documentation:Tools) repository.
+For more ideas and TODOs, see the Trello board at https://trello.com/b/DxiucSKw/obs-documentation
+
+## Building the books
+
+To build those documents you need to install openSUSEs DocBook Authoring and
+Publishing Suite ([daps](https://github.com/openSUSE/daps)).
 
 After editing the document validate your changes via the following
 commands, for example:
@@ -24,23 +26,26 @@ Similar for other guides. HTML documentation can get generated via
 
     $ daps -d DC-obs-beginners-guide html
 
-If "daps" is not available on your distribution, you can try to
-create a PDF with dblatex
+## Development Environment
+We are also shipping a [docker/docker-compose](https://www.docker.com/) based
+development environment you can use.
 
-    $ dblatex xml/book-obs-reference-guide.xml
+1. Since we mount the repository into our container we need to map
+   your local user id to the one of the container user:
 
-This document is hosted on GitHub at https://github.com/openSUSE/obs-docu
+```bash
+sed "s/REPLACE_THIS_WITH_YOUR_ID/`id -u`/" docker-compose.override.yml.example > docker-compose.override.yml
+```
 
-For more ideas and TODOs, see the Trello board at https://trello.com/b/DxiucSKw/obs-documentation
+1. Then you can build the development environment with:
 
-So the standard GitHub workflow with forked repositories and pull requests
-can be used to contribute to these books.
+```bash
+docker-compose build
+```
 
-We follow the SUSE docbook XML style. All files can be reformatted to that
-using:
+1. And after it's build you can run any command in it via:
 
-    $ for i in xml/*.xml; do
-       /usr/bin/xmlformat.pl --config /etc/daps/docbook-xmlformat.conf -i "$i"
-      done
+```bash
+docker-compose run --rm obs-docu daps -vv -d DC-obs-all html
+```
 
-Please separate reformat commits from content changes.
