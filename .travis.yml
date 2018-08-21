@@ -1,0 +1,7 @@
+language: ruby
+services:
+  - docker
+script:
+  - 'sed "s/REPLACE_THIS_WITH_YOUR_ID/`id -u`/" docker-compose.override.yml.example > docker-compose.override.yml'
+  - 'docker-compose build'
+  - 'docker-compose run --rm obs-docu daps -d DC-obs-all validate'
