@@ -334,10 +334,12 @@ Keep: debbuild</screen>
       OPTIONS parameter depends on the repository type, for rpm-md the known
       options are 'legacy' to create the old rpm-md format, 'deltainfo' or
       'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable
-      gzip compression. To split the debug packages in an own published
-      repository the option
+      gzip compression. To split the debug packages in an own published repository the option
       <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal>
-      can be used. </para>
+      can be appended, e.g. <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
+      (the repository format may even be omitted to use the default type).
+      This results in a debuginfo package repository being created in parallel to the
+      package repository.</para>
     </listitem>
    </varlistentry>
    <varlistentry>
