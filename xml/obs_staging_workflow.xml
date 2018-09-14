@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.stagingworkflow"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Staging &obsa; Workflow</title>
+ <para>
+   Staging projects can be used to test submissions before they get merged
+   into the target project.
+   Alternatives to staging projects are either <xref linkend="obs.glos.develproject"/>
+   or maintenance <xref linkend="obs.glos.incident"/>.
+   Staging projects are used when the target project is no official maintained
+   project as part of the maintenance workflow, but you still want to group and test
+   submissions from multiple sources together. Or don't trust the setup of the
+   devel projects.
+   The staging projects might be managed by a different group of people then
+   the targeting project. We differe between <xref linkend="obs.glos.release_manager"/>
+   and the <xref linkend="obs.glos.staging_manager" /> here.
+ </para>
+ <remark>TBD</remark>
+
+ <sect1 xml:id="sec.obs.stagingworkflow.staging_kinds">
+  <title>Difference between static and dynamic managed staging projects</title>
+  <remark>
+    static projects are the current "letter projects".
+    dynamic projects are the current "adi:X projects".
+  </remark>
+  <para>
+    Building staging projects may be managed different what is defined by the project kind 
+    of their master project, which is either staging_static or staging_dynamic.
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Static staging projects will always be kept after merging or reverting submissions.
+     They are usually used for the base core of larger projects and usually setup in a way
+     that they do a full bootstrap if the submission makes this necessary.
+     The cleanup will just remove the package sources when a submit request gets a final
+     state (what can be for example accepted, decline, revoked), but keep the project and
+     it's setup. This allows additional test packages inside like product builds. Also
+     specifc configurations like build configuration rules which should not be lost are possible.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Dynamic staging projects will always be created for new submissions and entirely removed
+     when the request becomes a final state.
+     They are usually used for highlevel additional packages which usually don't influence others.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+
+ <sect1 xml:id="sec.obs.stagingworkflow.setup">
+  <title>Setting Up the master staging project</title>
+  <remark>
+  </remark>
+  <para>
+   This section shows how to set up a <xref linkend="obs.glos.staging_master_project" />. This project
+   is just for managing the actual building staging projects and will not build
+   anything itself. It enables the staging workflow by it's existens.
+  </para>
+  <para>
+   To create it do the following steps
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Create the staging master project by creating any new project with specified kind "staging_static"
+     or "staging_dynamic" depending on your needs.
+     It is recommended, but not required to create it as subproject.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You can define <xref linkend="obs.glos.staging_manager" /> by assigning these persons or groups
+     with the maintainer role in the staging project. You may not define anyone if it is the same group
+     of persons who manage the target project and the staging master project is a sub project of it.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Enable the usage of the staging project in your master project by setting the "OBS:StagingProject"
+     attribute with the value of the name <xref linkend="obs.glos.staging_master_project"/>. It can be 
+     possible to define multiple in case you have staging projects with different test strategies like
+     static or dynamic handling.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+
+</chapter>

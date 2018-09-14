@@ -710,6 +710,16 @@
   </glossdef>
  </glossentry>
  <!-- ############## R ############## -->
+ <glossentry xml:id="obs.glos.release_manager">
+  <glossterm>Release Manager</glossterm>
+  <glossdef>
+   <para>
+    A release manager is a person whos is responsible to define products for intial
+    release and has the final decision which sources are taken.
+    He may not be responsible for maintaining it after release.
+   </para>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.release_project">
   <glossterm>Release Project</glossterm>
   <glossdef>
@@ -794,6 +804,25 @@
     An XML file that contains metadata required for building a package.
     This includes version information, upstream source repository, and
     actions.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.staging_manager">
+  <glossterm>Staging Manager</glossterm>
+  <glossdef>
+   <para>
+    A staging manager is a person who is responsible for managing submissions inside of staging projects.
+    He may not be responsible for maintaining the targeted project.
+   </para>
+  </glossdef>
+ </glossentry>
+ <glossentry xml:id="obs.glos.staging_master_project">
+  <glossterm>Staging Master Project</glossterm>
+  <glossdef>
+   <para>
+    This project is just for managing the actual building staging projects and will not build
+    anything itself. It enables the staging workflow by it's existens. All sub projects are automatically
+    the building staging projects.
    </para>
   </glossdef>
  </glossentry>

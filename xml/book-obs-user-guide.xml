@@ -66,6 +66,8 @@
 
   <xi:include href="obs_source_service.xml"/>
   <!-- tbd: <xi:include href="obs_signing.xml"/>-->
+
+  <xi:include href="obs_staging_workflow.xml"/>
  </part>
 
  <part condition="tbd">
