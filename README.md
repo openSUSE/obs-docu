@@ -33,19 +33,18 @@ development environment you can use.
 1. Since we mount the repository into our container we need to map
    your local user id to the one of the container user:
 
-```bash
-sed "s/REPLACE_THIS_WITH_YOUR_ID/`id -u`/" docker-compose.override.yml.example > docker-compose.override.yml
-```
+   ```bash
+   sed "s/REPLACE_THIS_WITH_YOUR_ID/`id -u`/" docker-compose.override.yml.example > docker-compose.override.yml
+   ```
 
 1. Then you can build the development environment with:
 
-```bash
-docker-compose build
-```
+   ```bash
+   docker-compose build
+   ```
 
 1. And after it's build you can run any command in it via:
 
-```bash
-docker-compose run --rm obs-docu daps -vv -d DC-obs-all html
-```
-
+   ```bash
+   docker-compose run --rm obs-docu daps -vv -d DC-obs-all html
+   ```
