@@ -32,8 +32,8 @@
     <listitem>
      <para> Specific files can be created to be built for a specific
       repository. Append the repository name of the build container behind the
-      suffix with a dot. For example
-       <command>hello.spec.openSUSE_13.2</command>. </para>
+      package name with a -. For example
+       <command>hello-openSUSE_13.2.spec</command>. </para>
     </listitem>
    </orderedlist>
  </sect1>
