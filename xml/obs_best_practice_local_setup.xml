@@ -131,7 +131,7 @@
    processes. Then you will get an OBS setup message. </para>
   <para> Now, OBS Server is installed in your openSUSE. To run OBS server, you
    need to work on several further steps. Open
-   /usr/share/doc/packages/obs-api/README.SETUP file. To run OBS server, you
+   /usr/share/doc/packages/obs-server/README.SETUP file. To run OBS server, you
    need to follow each step of README.SETUP carefully based on your system
    situation. You can also find this <filename>README.SETUP</filename> file in
    our public <link
@@ -193,7 +193,7 @@
    you know successful install of OBS server, then you are ready to activate
    and run OBS on SLES12. </para>
   <para> To run OBS server on SLES12, you need to follow instructions based on
-   /usr/share/doc/packages/obs-api/README.SETUP file as described in prior
+   /usr/share/doc/packages/obs-server/README.SETUP file as described in prior
    section. From here, you could refer to prior section for successful OBS run
    on your SLES12. </para>
  </sect1>
