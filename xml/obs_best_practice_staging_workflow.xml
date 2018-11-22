@@ -36,8 +36,8 @@
   <sect2>
     <title>Start using it</title>
     <para>
-      In this view, we could find all the staging projects with a request
-      associated and also if the requests have some problems.
+      In this view, we can find all the staging projects with an associated
+      request and their current state.
     </para>
     <figure>
      <title>Staging Show screen</title>
@@ -121,7 +121,7 @@
       <listitem>
         <para>
           <emphasis>Obsolete Requests:</emphasis>
-          Requests that was declined, revoked or superseded.
+          Requests that were declined, revoked or superseded.
         </para>
       </listitem>
       <listitem>
