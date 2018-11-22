@@ -49,34 +49,70 @@
     </figure>
     <itemizedlist>
       <listitem>
-        <para>
-          <emphasis>Managers:</emphasis>
-          Shows the group that are the Staging Mangers
-        </para>
+      <para>
+        Table content:
+      </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>Staging Project:</emphasis>
+              Shows the staging project name, its overall state (see legend),
+              and the overall build progress of the packages within the project.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Requests:</emphasis>
+              Show the associated requests and their current state.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Problems:</emphasis>
+              Shows build problems of packages within the project and status problems reported to
+              the Build Service's Status API by external services like openQA.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
+    </itemizedlist>
+    <itemizedlist>
       <listitem>
         <para>
-          <emphasis>Empty projects:</emphasis>
-          Staging projects without and requests assigned.
+          Info section:
         </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Backlog:</emphasis>
-          List of requests that can be assigned to a staging project.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Ready:</emphasis>
-          List of requests that were in the backlog and have a review accepted.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Ignored:</emphasis>
-          List of requests excluded from this Staging.
-        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>Managers:</emphasis>
+              Shows the Staging Managers group.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Empty projects:</emphasis>
+              Staging projects without assigned requests.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Backlog:</emphasis>
+              List of requests that can be assigned to a staging project.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Ready:</emphasis>
+              List of requests that were in the backlog and have an accepted review.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Ignored:</emphasis>
+              List of requests excluded from this staging workflow.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </itemizedlist>
   </sect2>
