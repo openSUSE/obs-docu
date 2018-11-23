@@ -81,6 +81,23 @@
     </itemizedlist>
   </sect2>
   <sect2>
+    <title>Delete a Staging</title>
+    <para>
+      By clicking on the delete button on the Staging index page, we are able
+      to delete a Staging. By selecting the associated staging projects
+      in the appearing modal window, we are able to delete them as well. If not selected,
+      they will remain as regular subprojects.
+    </para>
+    <figure>
+     <title>Delete a Staging Workflow</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_delete.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+  </sect2>
+  <sect2>
     <title>Configuration</title>
     <para>
       The configuration of a Staging is very intuitive. We are able to
