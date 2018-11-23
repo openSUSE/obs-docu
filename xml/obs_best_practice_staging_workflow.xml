@@ -1,0 +1,153 @@
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<sect1 version="5.1" xml:id="staging_how_to"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <title>Staging</title>
+  <para></para>
+  <sect2>
+    <title>Creating a Staging</title>
+    <para>
+      At the moment, the Staging page is only accessible by hand.
+      "<emphasis>/staging_workflows/new?project=openSUSE:Factory</emphasis>"
+      The creation of a Staging will automatically create two staging
+      projects as a subproject of the main project. Before create we need to
+      select a group of managers, they will be in charge of assigning requests
+      to the staging projects and also excluding requests from the Staging.
+    </para>
+    <figure>
+     <title>Creating a Staging for openSUSE:Factory</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_create.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    <note>
+      <para>
+        An Admin should previously create the manager groups.
+      </para>
+    </note>
+  </sect2>
+  <sect2>
+    <title>Start using it</title>
+    <para>
+      In this view, we could find all the staging projects with a request
+      associated and also if the requests have some problems.
+    </para>
+    <figure>
+     <title>Staging Show screen</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_show.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>Managers:</emphasis>
+          Shows the group that are the Staging Mangers
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Empty projects:</emphasis>
+          Staging projects without and requests assigned.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Backlog:</emphasis>
+          List of requests that can be assigned to a staging project.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Ready:</emphasis>
+          List of requests that were in the backlog and have a review accepted.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Ignored:</emphasis>
+          List of requests excluded from this Staging.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+  <sect2>
+    <title>Configuration</title>
+    <para>
+      It is possible to create/delete staging projects
+      (openSUSE:Factory:Staging:A, openSUSE:Factory:Staging:B, etc) and change
+      the Managers Group of the Staging.
+    </para>
+    <figure>
+     <title>Configuring a Staging</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_configuration.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    <note>
+      <para>
+        Changing the Managers Group of a Stanging will automatically unassign
+        the old group and assign the new group to the related staging projects.
+      </para>
+    </note>
+  </sect2>
+  <sect2>
+    <title>Staging Project</title>
+    <para>
+      A staging project contains requests assigned by a Staging Manager. An
+      overview page is provided for a staging project where you can find more
+      detailed information about the requests, reviews and checks.
+    </para>
+    <figure>
+     <title>Looking into a Staging Project</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_project_show.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <emphasis>Obsolete Requests:</emphasis>
+          Requests that was declined, revoked or superseded.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Missing Reviews:</emphasis>
+          Requests with pendings reviews.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Building Repositories:</emphasis>
+          List of packages that are still building.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Broken Packages:</emphasis>
+          List of packages with failling builds.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <emphasis>Checks:</emphasis>
+          List of checks of the staging project.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+</sect1>
