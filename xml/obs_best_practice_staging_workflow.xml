@@ -36,8 +36,8 @@
   <sect2>
     <title>Start using it</title>
     <para>
-      In this view, we could find all the staging projects with a request
-      associated and also if the requests have some problems.
+      In this view, we can find all the staging projects with an associated
+      request and their current state.
     </para>
     <figure>
      <title>Staging Show screen</title>
@@ -49,36 +49,89 @@
     </figure>
     <itemizedlist>
       <listitem>
-        <para>
-          <emphasis>Managers:</emphasis>
-          Shows the group that are the Staging Mangers
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Empty projects:</emphasis>
-          Staging projects without and requests assigned.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Backlog:</emphasis>
-          List of requests that can be assigned to a staging project.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Ready:</emphasis>
-          List of requests that were in the backlog and have a review accepted.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <emphasis>Ignored:</emphasis>
-          List of requests excluded from this Staging.
-        </para>
+      <para>
+        Table content:
+      </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>Staging Project:</emphasis>
+              Shows the staging project name, its overall state (see legend),
+              and the overall build progress of the packages within the project.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Requests:</emphasis>
+              Show the associated requests and their current state.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Problems:</emphasis>
+              Shows build problems of packages within the project and status problems reported to
+              the Build Service's Status API by external services like openQA.
+            </para>
+          </listitem>
+        </itemizedlist>
       </listitem>
     </itemizedlist>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Info section:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis>Managers:</emphasis>
+              Shows the Staging Managers group.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Empty projects:</emphasis>
+              Staging projects without assigned requests.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Backlog:</emphasis>
+              List of requests that can be assigned to a staging project.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Ready:</emphasis>
+              List of requests that were in the backlog and have an accepted review.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis>Ignored:</emphasis>
+              List of requests excluded from this staging workflow.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+  </sect2>
+  <sect2>
+    <title>Delete a Staging</title>
+    <para>
+      By clicking on the delete button on the Staging index page, we are able
+      to delete a Staging. By selecting the associated staging projects
+      in the appearing modal window, we are able to delete them as well. If not selected,
+      they will remain as regular subprojects.
+    </para>
+    <figure>
+     <title>Delete a Staging Workflow</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_delete.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
   </sect2>
   <sect2>
     <title>Configuration</title>
@@ -121,7 +174,7 @@
       <listitem>
         <para>
           <emphasis>Obsolete Requests:</emphasis>
-          Requests that was declined, revoked or superseded.
+          Requests that were declined, revoked or superseded.
         </para>
       </listitem>
       <listitem>
