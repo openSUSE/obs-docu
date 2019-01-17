@@ -130,4 +130,41 @@
   <para/>
   <remark>TBD</remark>
  </sect1>
+ <sect1>
+  <title>Identify a build</title>
+  <para>
+    &obsa; is usally tagging each build with an identifier. This can be used to find the building 
+    &obsa; instance, the project, repository and exact source for a binary. This information is
+    stored in some variable called DISTURL and is specified as 
+     <command>obs://$OBS_INSTANCE/$PROJECT/$REPOSITORY/$SOURCE_REVISION-$PACKAGE(:$FLAVOR)</command>
+    . Note that the last $:FLAVOR part is optional and exists only when the package was build using the multibuild feature.
+
+    The source specified via the DISTURL can be accessed by pasting the URL into the search interface
+    of the &obsa; web interface. Or use the command line tool to check it out:
+    <screen>
+     <command># osc checkout $DISTURL</command>
+    </screen>
+    You need to go to the right OBS instance as this is not handled automatically yet.
+  </para>
+  <sect2>
+   <title>Read DISTURL from a rpm</title>
+   <para>
+    Rpm binaries contain the DISTURL as tag. It can be read from the rpm database for installed rpms and
+    also from the rpm binaries itself.
+    <screen>
+     <command># rpm -q --qf '%{DISTRL}\n' $rpm</command>
+    </screen>
+   </para>
+  </sect2>
+  <sect2>
+   <title>Read DISTURL from a container</title>
+   <para>
+    Containers store the DISTURL as label. You will see only the DISTURL from the highest layer via
+    <screen>
+     <command># docker inspect --format '{{.Config.Labels}}' $image_id</command>
+    </screen>
+    The disturl is always set via the key 'org.openbuildservice.disturl'.
+   </para>
+  </sect2>
+ </sect1>
 </chapter>
