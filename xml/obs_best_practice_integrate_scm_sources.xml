@@ -1,17 +1,15 @@
-<!DOCTYPE chapter PUBLIC
-  "-//OASIS//DTD DocBook XML V4.5//EN"
-  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
-  %entities;
+    %entities;
 ]>
+
 <chapter version="5.1" xml:id="cha.obs.best-practices.scm_integration"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
-  <title>How to integrate external SCM sources</title>
+ <title>How to integrate external SCM sources</title>
  <info/>
-
    <para>
      Application development usualy happens in SCM systems like git, subversion, mercurial
      and alike. These external sources can be used directly in OBS via source services.
