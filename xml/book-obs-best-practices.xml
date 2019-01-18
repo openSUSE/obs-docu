@@ -41,6 +41,7 @@
  <xi:include href="obs_preface.xml"/>
  <xi:include href="obs_best_practice_webui_usage.xml"/>
  <xi:include href="obs_best_practice_basics.xml"/>
+ <xi:include href="obs_best_practice_integrate_scm_sources.xml"/>
  <xi:include href="obs_best_practice_upstream.xml"/>
  <xi:include href="obs_best_practice_local_setup.xml"/>
  <xi:include href="obs_best_practice_boot_strapping.xml"/>

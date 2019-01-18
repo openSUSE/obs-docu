@@ -1,0 +1,136 @@
+<!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd"
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+  %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.best-practices.scm_integration"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <title>How to integrate external SCM sources</title>
+ <info/>
+
+   <para>
+     Application development usualy happens in SCM systems like git, subversion, mercurial
+     and alike. These external sources can be used directly in OBS via source services.
+     OBS will always keep a copy of the sources to guarantee that the build sources
+     are still available even when the external SCM server disappears or get altered.
+   </para>
+   <sect1>
+     <title>How to create a source service</title>
+     <para>
+      Let OBS create a tar ball out of an SCM repository. This just creates or
+      extend a _service file with some rules how to download and package sources.
+      The actual work happens on a local build or on a service side build. Please
+      note that you need the obs-service-obs_scm installed for local runs.
+     </para>
+     <screen>
+       <command>
+# osc add https://SOME_URL.git
+       </command>
+     </screen>
+     <para>
+      The web interface is creating as well a _service file when adding an URL
+      to a SCM system.
+     </para>
+     <sect2>
+       <title>Follow upstream branches</title>
+       <para>
+       The created _service file is set up to follow latest source submissions on each
+       run and looks like this:
+       </para>
+        <screen>
+          <command>
+&lt;services&gt;
+  &lt;service name="obs_scm"&gt;
+    &lt;param name="url"&gt;https://github.com/FreeCAD/FreeCAD.git&lt;/param&gt;
+    &lt;param name="scm"&gt;git&lt;/param&gt;
+  &lt;/service&gt;
+
+  &lt;service name="set_version" mode="buildtime"/&gt;
+  &lt;service name="tar" mode="buildtime"/&gt;
+  &lt;service name="recompress" mode="buildtime"&gt;
+    &lt;param name="file"&gt;*.tar&lt;/param&gt;
+    &lt;param name="compression"&gt;xz&lt;/param&gt;
+  &lt;/service&gt;
+&lt;/services&gt;
+          </command>
+        </screen>
+       <para>
+        This will create an obscpio archive via the obs_scm service with the latest sources. 
+        This archive will get extracted at build time and be processed via the other services
+        to build a compressed tar ball for rpmbuild. 
+        To follow a specific branch and additional parameter for "revision" is needed for the
+        obs_scm service.
+       </para>
+     </sect2>
+     <sect2>
+       <title>Fixed versions</title>
+       <para>
+         You may want to build an archive for a fixed version, for example an official release
+         which has been tagged by the upstream project. It is recommend to specify the 
+         mode="disabled" and to submit the archive via the following
+       </para>
+        <screen>
+          <command>
+# osc service runall
+# osc ar
+# osc commit
+          </command>
+        </screen>
+       <para>
+        commands.
+       </para>
+     </sect2>
+     <sect2>
+       <title>Avoid tar balls</title>
+       <para>
+         tar balls are not a requirement by &obsa;, but by the packaging tool, eg. rpmbuild. However,
+         you may want to decide not to ship a tar ball inside of the src.rpm. This makes sense for
+         large sources where the compression time and needed disk space is just considered a waste
+         for short living builds. You can simplify your _service file in that case, but you need to help rpmbuild to work directly in the source.
+         It is also a good practice to package the _service file instead of the tar ball to 
+         give the user a chance to rebuild the src.rpm as long the external SCM server is
+         providing the sources. The simplified _service file looks like this:
+       </para>
+        <screen>
+          <command>
+&lt;services&gt;
+  &lt;service name="obs_scm"&gt;
+    &lt;param name="url"&gt;https://github.com/FreeCAD/FreeCAD.git&lt;/param&gt;
+    &lt;param name="scm"&gt;git&lt;/param&gt;
+  &lt;/service&gt;
+
+  &lt;service name="set_version" mode="buildtime"/&gt;
+&lt;/services&gt;
+          </command>
+        </screen>
+       <para>
+        The spec file needs some hints to build inside the extracted sources directly. The macro
+        can be used to switch to build tar balls or not to keep it working for stable releases where
+        you want to provide a complete source rpm.
+       </para>
+        <screen>
+          <command>
+...
+%define build_tar_ball 0
+...
+%if %{build_tar_ball}
+Source0:        %{name}-%version.tar.xz
+%else
+Source0:        _service
+%endif
+...
+%prep
+%if %{build_tar_ball}
+ %setup -q
+%else
+ %setup -q -n %_sourcedir/%name-%version -T -D
+%endif
+          </command>
+        </screen>
+     </sect2>
+   </sect1>
+</chapter>

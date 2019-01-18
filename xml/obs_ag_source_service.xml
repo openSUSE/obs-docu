@@ -118,7 +118,7 @@
     server side. It can be used to temporarily disable the service but keeping
     the definition as part of the service definition. Or it can be used to
     define the way how to generate the sources and doing so by manually calling
-    <command>osc service disabledrun</command> The result will
+    <command>osc service runall</command> The result will
     get committed as standard files again. </para>
   </sect3>
  </sect2>
@@ -148,7 +148,7 @@
    the commit. Afterwards the krabber-1.0.tar.gz file will always be compared
    with the sha256 checksum. And last but not least there is the
     <command>update_source</command> service mentioned, which is usually not
-   executed. Except when <command>osc service disabledrun</command> is called,
+   executed. Except when <command>osc service runall</command> is called,
    which will try to upgrade the package to a newer source version available
    online. </para>
  </sect2>
