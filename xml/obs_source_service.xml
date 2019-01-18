@@ -418,6 +418,48 @@
     <command>osc service merge</command>. </para>
  </sect1>
 
+ <sect1 xml:id="sec.obs.sserv.token_usage">
+  <title>Trigger a service run via a webhook</title>
+  <para>You may want to update sources in &obs; whenever they change in a SCM
+	system. You can create a token which allows to trigger a specific 
+	package update and use it via a webhook. It is recommended to create
+	a token for a specific package and not a wildcard token.
+	Read <xref linkend="cha.obs.authorization.token"/> to learn how to 
+	create a token.
+  </para>
+  <sect2 xml:id="sec.obs.sserv.gitlab">
+   <title>Using it on gitlab</title>
+   <para>
+	   Go to your repository settings page in your gitlab instance. Select Integrations
+	   there. All what you need to fill is the URL
+	   <screen>
+      <command>https://$your_instance/trigger/runservice</command>
+      <command>https://api.opensuse.org/trigger/runservice</command> as real life example.
+	   </screen>
+	   and the Secret Token. Hit the "Add webhook" button and you are good.
+	   You may specify project and package via CGI parameters in case you created a
+	   wildcard token.
+	   <screen>
+      <command>https://$your_instance/trigger/runservice?project=$PROJECT&amp;package=$PACKAGE</command>
+	   </screen>
+   </para>
+  </sect2>
+  <sect2 xml:id="sec.obs.sserv.github.com">
+   <title>Using it on github.com</title>
+   <para>
+      Go to your repository settings page of your repository on github.com. Select Webhooks
+      settings and create a hook via "Add Webhook" button. Define the payload URL as
+	   <screen>
+      <command>https://$your_instance/trigger/webhook?id=$TOKEN_ID</command>.
+      <command>https://api.opensuse.org/trigger/webhook?id=42</command> as real life example.
+	   </screen>
+      and fill the secret box with your token string. Please not that github requires that you
+      must also define the token id as part of the webhook string. All other settings can stay
+      untouched and just hit the "Add webhook" button.
+   </para>
+  </sect2>
+ </sect1>
+
  <sect1 condition="tbd">
   <title>Interfaces for Using Source Services</title>
   <para><remark>tbd</remark></para>

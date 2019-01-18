@@ -165,6 +165,13 @@ Keep: debbuild</screen>
         <para>builds the selected profile in &kiwi; appliance builds. </para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+       <term><parameter>logidlelimit:</parameter></term>
+       <listitem>
+	       <para>Build jobs which don't create any output get aborted after some time. This flag can be used
+	             to modify the limit. Specify the seconds behind flag. </para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
