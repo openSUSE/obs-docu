@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.stagingworkflow"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Staging Workflow</title>
+ <sect1 xml:id="sec.obs.staging.workflow.projects">
+   <title>Working with Staging Projects</title>
+   <para>
+     This API provides an easy way to get information about a single or all staging projects like
+     state, requests and checks.
+     Note: To use this API, you first need to setup a staging workflow for a project.
+   </para>
+
+   <sect2 xml:id="sec.obs.staging.workflow.projects.index">
+    <title>Overview of All Staging Projects</title>
+    <para>
+      This endpoint provides an overview of all staging projects for a certain project.
+    </para>
+    <screen>
+geeko > <command>osc</command> api '/staging/openSUSE:Factory:Staging/staging_projects/'
+    </screen>
+
+    <para>
+      Which will return the following XML:
+    </para>
+
+    <screen language="xml">
+&lt;staging_projects&gt;
+  &lt;staging_project name="home:Admin:Staging:A" state="empty"&gt;
+    &lt;staged_requests count="0"/&gt;
+    &lt;untracked_requests count="0"/&gt;
+    &lt;requests_to_review count="0"/&gt;
+    &lt;obsolete_requests count="0"/&gt;
+    &lt;missing_reviews count="0"/&gt;
+    &lt;broken_packages count="0"/&gt;
+    &lt;checks count="0"/&gt;
+    &lt;missing_checks count="0"/&gt;
+  &lt;/staging_project&gt;
+  &lt;staging_project name="home:Admin:Staging:B" state="empty"&gt;
+    &lt;staged_requests count="0"/&gt;
+    &lt;untracked_requests count="0"/&gt;
+    &lt;requests_to_review count="0"/&gt;
+    &lt;obsolete_requests count="0"/&gt;
+    &lt;missing_reviews count="0"/&gt;
+    &lt;broken_packages count="0"/&gt;
+    &lt;checks count="0"/&gt;
+    &lt;missing_checks count="0"/&gt;
+  &lt;/staging_project&gt;
+&lt;/staging_projects&gt;
+    </screen>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.staging.workflow.projects.show">
+    <title>Overview of All Staging Projects</title>
+    <para>
+      This endpoint provides an overview of a single staging project.
+    </para>
+    <screen>
+geeko > <command>osc</command> api '/staging/openSUSE:Factory:Staging/staging_projects/openSUSE:Factory:Staging:A'
+    </screen>
+
+    <para>
+      Which will return the following XML:
+    </para>
+
+    <screen language="xml">
+&lt;staging_project name="home:Admin:Staging:A" state="empty"&gt;
+  &lt;staged_requests count="0"/&gt;
+  &lt;untracked_requests count="0"/&gt;
+  &lt;requests_to_review count="0"/&gt;
+  &lt;obsolete_requests count="0"/&gt;
+  &lt;missing_reviews count="0"/&gt;
+  &lt;broken_packages count="0"/&gt;
+  &lt;checks count="0"/&gt;
+  &lt;missing_checks count="0"/&gt;
+&lt;/staging_project&gt;
+    </screen>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.staging.workflow.projects.copy">
+    <title>Copy a Staging Project</title>
+    <para>
+      This endpoint creates a copy of a staging project. It will queue a job which is going to copy the project configuration, repositories, groups and users.
+    </para>
+    <screen>
+geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory:Staging/staging_projects/openSUSE:Factory:Staging:A/copy/openSUSE:Factory:Staging:A-copy'
+    </screen>
+  </sect2>
+ </sect1>
+
+ <sect1 xml:id="sec.obs.staging.workflow.requests">
+  <title>Working with Requests</title>
+  <para>One of the main features of the staging workflow is assigning incoming requests to different staging projects.</para>
+
+  <sect2 xml:id="sec.obs.staging.workflow.assign.request">
+    <title>Assign Requests into a Staging Project</title>
+    <para>
+      Our main project openSUSE:Factory received requests with number 1 and 2. 
+      We would like to group these two requests together and move them into the staging project openSUSE:Factory:Staging:A.
+      This can be done with the following command which will create a link to the package in openSUSE:Factory:Staging:A.
+    </para>
+    <screen>
+geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory:Staging/staging_projects/openSUSE:Factory:Staging:A/staged_requests' -d '&lt;requests&gt;&lt;number&gt;1&lt;/number&gt;&lt;number&gt;2&lt;/number&gt;&lt;/requests&gt;'
+    </screen>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.staging.workflow.remove.request">
+    <title>Remove Requests from a Staging Project</title>
+    <para>
+      When we are done with testing the staging project openSUSE:Factory:Staging:A, we need to remove the requests 1 and 2 again.
+      The following command will remove the package links from openSUSE:Factory:Staging:A. 
+    </para>
+    <screen>
+geeko > <command>osc</command> api -X DELETE '/staging/openSUSE:Factory:Staging/staging_projects/openSUSE:Factory:Staging:A/staged_requests' -d '&lt;requests&gt;&lt;number&gt;1&lt;/number&gt;&lt;number&gt;2&lt;/number&gt;&lt;/requests&gt;'
+    </screen>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.staging.workflow.staging.request">
+    <title>List Requests of a Staging Project</title>
+    <para>Listing all requests which are currently assigned to openSUSE:Factory:Staging:A can be done with the following command.</para>
+    <screen>
+geeko > <command>osc</command> api '/staging/openSUSE:Factory:Staging/staging_projects/openSUSE:Factory:Staging:A/staged_requests'
+    </screen>
+
+    <para>
+      Which will return the following XML:
+    </para>
+
+    <screen language="xml">
+&lt;staged_requests&gt;
+  &lt;request id="6" creator="user_1" state="review" package="ctris"/&gt;
+&lt;/staged_requests&gt;
+    </screen>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.staging.workflow.exclude.request">
+    <title>Exclude Requests for a Staging Workflow</title>
+    <para>
+      Our main project openSUSE:Factory received requests with number 3 and 4.
+      We would like to exclude these two requests for the staging workflow project openSUSE:Factory.
+    </para>
+    <screen>
+geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory/excluded_requests' -d '&lt;excluded_requests&gt;&lt;request number="3" description="Reason description for request number 3."&gt;&lt;/request&gt;&lt;request number="4" description="Reason description for request number 4."&gt;&lt;/request&gt;&lt;/requests&gt;'
+    </screen>
+  </sect2>
+
+  <sect2 xml:id="sec.obs.staging.workflow.unexclude.request">
+    <title>Remove Requests from a Staging Workflow</title>
+    <para>
+      The following command will stop excluding requests with number 3 and 4 for the staging workflow project openSUSE:Factory.
+    </para>
+    <screen>
+geeko > <command>osc</command> api -X DELETE '/staging/openSUSE:Factory/excluded_requests' -d '&lt;requests&gt;&lt;number&gt;3&lt;/number&gt;&lt;number&gt;4&lt;/number&gt;&lt;/requests&gt;'
+    </screen>
+  </sect2>
+ </sect1>
+
+</chapter>

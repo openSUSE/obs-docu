@@ -30,7 +30,7 @@ Similar for other guides. HTML documentation can get generated via
 We are also shipping a [docker/docker-compose](https://www.docker.com/) based
 development environment you can use.
 
-1. Since we mount the repository into our container we need to map
+1. Since we mount the repository into our container, we need to map
    your local user id to the one of the container user:
 
    ```bash
@@ -43,7 +43,7 @@ development environment you can use.
    docker-compose build
    ```
 
-1. And after it's build you can run any command in it via:
+1. And after it's built, you can run any command in it via:
 
    ```bash
    docker-compose run --rm obs-docu daps -vv -d DC-obs-all html
