@@ -107,7 +107,16 @@
    confirmation is needed after registration before the user may
    login.</para>
  </sect2>
- <sect2 xml:id="_proxy_mode">
+ <sect2 xml:id="_gravatar_for_groups">
+  <title>Gravatar for Groups</title>
+  <para>In certain cases, it might be desirable to show a Gravatar for a group,
+    similar to the users. In order to show a Gravatar, an email address is needed.
+    Therefore, it is necessary that an admin adds an email address to the group
+    through the API. This can be a achieved by
+  </para>
+  <screen><command>osc api -X POST "/group/&lt;group-title&gt;?cmd=set_email&amp;email=&lt;groups-email-address&gt;"</command></screen>
+ </sect2>
+  <sect2 xml:id="_proxy_mode">
   <title>Proxy Mode</title>
   <para>The proxy mode can be used for specially secured instances, where
    the OBS web server shall not get connected to the network directly. There
