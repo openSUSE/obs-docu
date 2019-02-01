@@ -48,3 +48,16 @@ development environment you can use.
    ```bash
    docker-compose run --rm obs-docu daps -vv -d DC-obs-all html
    ```
+
+## Update Documentation
+
+The first steps to update the documentation are:
+
+- Fork [obs-docu](https://github.com/openSUSE/obs-docu) project and clone the fork on your computer.
+- Prepare the development environment following the instructions above.
+- Add or correct a piece of documentation.
+- Commit your changes in a new branch and send a Pull Request (as in any other repository).
+- Wait until your changes are merged.
+
+Once the Pull Request is approved and merged, your changes are ready to be deployed. However, the OBS documentation is hosted online at openbuildservice.org, so you should move to [obs-landing](https://github.com/openSUSE/obs-landing) repository where you'll find the [instructions to deploy](https://github.com/openSUSE/obs-landing#updating-obs-documentation).
+
