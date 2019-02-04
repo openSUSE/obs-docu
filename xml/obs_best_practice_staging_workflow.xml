@@ -202,5 +202,44 @@
         </para>
       </listitem>
     </itemizedlist>
+    <sect3>
+      <title>Create Staging Project from Scratch</title>
+      <para>
+        Right after the creation of a Staging, two new staging projects are
+        automatically created and assigned to it: Staging:A and Staging:B. However,
+        it is also possible to create a new staging project from scratch.
+      </para>
+      <para>
+        Being placed on the Staging dashboard, click on
+        <emphasis>Configure</emphasis> and then on <emphasis>Create
+        Project</emphasis> to add a name for the new staging project.
+      </para>
+      <figure>
+       <title>Create a New Staging Project</title>
+       <mediaobject>
+        <imageobject>
+         <imagedata fileref="staging_project_create.png"/>
+        </imageobject>
+       </mediaobject>
+      </figure>
+    </sect3>
+    <sect3>
+      <title>Create Staging Project from Template</title>
+      <para>
+        It is possible to create a staging from a template. Inside Staging
+        <emphasis>Configure</emphasis> page, simply choose the staging project
+        you want to copy from (the template), click on its Copy icon on the
+        actions column and add a new name. The staging project copy is
+        processing on background, so there might be a delay before it shows up.
+      </para>
+      <figure>
+       <title>Copy Staging Project from Template</title>
+       <mediaobject>
+        <imageobject>
+         <imagedata fileref="staging_project_copy.png"/>
+        </imageobject>
+       </mediaobject>
+      </figure>
+    </sect3>
   </sect2>
 </sect1>
