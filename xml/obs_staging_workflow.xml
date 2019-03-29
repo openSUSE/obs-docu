@@ -57,7 +57,7 @@ geeko > <command>osc</command> api '/staging/openSUSE:Factory:Staging/staging_pr
   </sect2>
 
   <sect2 xml:id="sec.obs.staging.workflow.projects.show">
-    <title>Overview of All Staging Projects</title>
+    <title>Overview of a Single Staging Project</title>
     <para>
       This endpoint provides an overview of a single staging project.
     </para>
@@ -101,7 +101,7 @@ geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory:Staging/st
   <sect2 xml:id="sec.obs.staging.workflow.assign.request">
     <title>Assign Requests into a Staging Project</title>
     <para>
-      Our main project openSUSE:Factory received requests with number 1 and 2. 
+      Our main project openSUSE:Factory received requests with number 1 and 2.
       We would like to group these two requests together and move them into the staging project openSUSE:Factory:Staging:A.
       This can be done with the following command which will create a link to the package in openSUSE:Factory:Staging:A.
     </para>
@@ -114,7 +114,7 @@ geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory:Staging/st
     <title>Remove Requests from a Staging Project</title>
     <para>
       When we are done with testing the staging project openSUSE:Factory:Staging:A, we need to remove the requests 1 and 2 again.
-      The following command will remove the package links from openSUSE:Factory:Staging:A. 
+      The following command will remove the package links from openSUSE:Factory:Staging:A.
     </para>
     <screen>
 geeko > <command>osc</command> api -X DELETE '/staging/openSUSE:Factory:Staging/staging_projects/openSUSE:Factory:Staging:A/staged_requests' -d '&lt;requests&gt;&lt;number&gt;1&lt;/number&gt;&lt;number&gt;2&lt;/number&gt;&lt;/requests&gt;'
