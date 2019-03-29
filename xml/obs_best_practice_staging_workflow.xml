@@ -8,16 +8,22 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
   <title>Staging</title>
-  <para></para>
+  <para>
+    At the moment, it is possible to create a Staging for any kind of project
+    unless the project is already one of the staging projects.
+  </para>
+  <para>
+    All the Staging workflow starts in the tab 'Staging' which can be found on
+    the project's page. It will take you to the first step to create a new
+    Staging or to the dashboard if the Staging already exists.
+  </para>
   <sect2>
     <title>Creating a Staging</title>
     <para>
-      At the moment, the Staging page is only accessible by hand.
-      "<emphasis>/staging_workflows/new?project=openSUSE:Factory</emphasis>"
-      The creation of a Staging will automatically create two staging
-      projects as a subproject of the main project. Before create we need to
-      select a group of managers, they will be in charge of assigning requests
-      to the staging projects and also excluding requests from the Staging.
+      The creation of a Staging will automatically create two staging projects
+      as a subproject of the main project. Before creating, we need to select a
+      group of managers, they will be in charge of assigning requests to the
+      staging projects and also excluding requests from the Staging.
     </para>
     <figure>
      <title>Creating a Staging for openSUSE:Factory</title>
@@ -154,6 +160,45 @@
         the old group and assign the new group to the related staging projects.
       </para>
     </note>
+    <sect3>
+      <title>Create Staging Project from Scratch</title>
+      <para>
+        Right after the creation of a Staging, two new staging projects are
+        automatically created and assigned to it: Staging:A and Staging:B. However,
+        it is also possible to create a new staging project from scratch.
+      </para>
+      <para>
+        On the Staging dashboard, click on <emphasis>Configure</emphasis> and
+        then on <emphasis>Create Project</emphasis> to add a name for the new
+        staging project.
+      </para>
+      <figure>
+       <title>Create a New Staging Project</title>
+       <mediaobject>
+        <imageobject>
+         <imagedata fileref="staging_project_create.png"/>
+        </imageobject>
+       </mediaobject>
+      </figure>
+    </sect3>
+    <sect3>
+      <title>Create Staging Project from Template</title>
+      <para>
+        It is possible to create a staging from a template. Inside Staging
+        <emphasis>Configure</emphasis> page, simply choose the staging project
+        you want to copy from (the template), click on its Copy icon on the
+        actions column and add a new name. The staging project copy is
+        processing on background, so there might be a delay before it shows up.
+      </para>
+      <figure>
+       <title>Copy Staging Project from Template</title>
+       <mediaobject>
+        <imageobject>
+         <imagedata fileref="staging_project_copy.png"/>
+        </imageobject>
+       </mediaobject>
+      </figure>
+    </sect3>
   </sect2>
   <sect2>
     <title>Staging Project</title>
@@ -202,44 +247,17 @@
         </para>
       </listitem>
     </itemizedlist>
-    <sect3>
-      <title>Create Staging Project from Scratch</title>
-      <para>
-        Right after the creation of a Staging, two new staging projects are
-        automatically created and assigned to it: Staging:A and Staging:B. However,
-        it is also possible to create a new staging project from scratch.
-      </para>
-      <para>
-        Being placed on the Staging dashboard, click on
-        <emphasis>Configure</emphasis> and then on <emphasis>Create
-        Project</emphasis> to add a name for the new staging project.
-      </para>
-      <figure>
-       <title>Create a New Staging Project</title>
-       <mediaobject>
-        <imageobject>
-         <imagedata fileref="staging_project_create.png"/>
-        </imageobject>
-       </mediaobject>
-      </figure>
-    </sect3>
-    <sect3>
-      <title>Create Staging Project from Template</title>
-      <para>
-        It is possible to create a staging from a template. Inside Staging
-        <emphasis>Configure</emphasis> page, simply choose the staging project
-        you want to copy from (the template), click on its Copy icon on the
-        actions column and add a new name. The staging project copy is
-        processing on background, so there might be a delay before it shows up.
-      </para>
-      <figure>
-       <title>Copy Staging Project from Template</title>
-       <mediaobject>
-        <imageobject>
-         <imagedata fileref="staging_project_copy.png"/>
-        </imageobject>
-       </mediaobject>
-      </figure>
-    </sect3>
+    <para>
+      All the actions performed on requests that are assigned to the staging
+      project are tracked. They are listed in the 'History' section.
+    </para>
+    <figure>
+     <title>History</title>
+      <mediaobject>
+       <imageobject>
+        <imagedata fileref="staging_project_history.png"/>
+       </imageobject>
+      </mediaobject>
+    </figure>
   </sect2>
 </sect1>
