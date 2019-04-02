@@ -393,5 +393,6 @@ flood</screen>
  </sect1>
  <xi:include href="obs_best_practice_image_templates.xml"/>
  <xi:include href="obs_best_practice_kiwi_editor.xml"/>
+ <xi:include href="obs_best_practice_manage_group.xml"/>
  <xi:include href="obs_best_practice_staging_workflow.xml"/>
 </chapter>

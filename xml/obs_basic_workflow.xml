@@ -597,7 +597,7 @@ Requires:         zool >= 1.5.6</screen>
        before the standard repositories of the specified
        distribution.
       </para>
-     </note> 
+     </note>
     </step>
     <step xml:id="st.obs.basicworkflow.layering.path">
      <para>
@@ -735,4 +735,12 @@ At revision 1.</screen>
   </sect2>
  </sect1>
 
+ <sect1 xml:id="sec.obs.basicworkflow.manage-group">
+  <title>Manage Group</title>
+  <para>
+    Users with Maintainer rights can add users to their group and remove users
+    from it. They can also give other users Maintainer rights.
+  </para>
+  <screen><command>osc api -d "&lt;group&gt;&lt;title&gt;&lt;group-title&gt;&lt;/title&gt;&lt;email&gt;&lt;group-email&gt;&lt;/email&gt;&lt;maintainer userid="&lt;user-name&gt;"/&gt;&lt;person&gt;&lt;person userid="&lt;user_name&gt;"/&gt;&lt;/person&gt;&lt;/group&gt;' -X PUT "/group/&lt;group-title&gt;" </command></screen>
+ </sect1>
 </chapter>
