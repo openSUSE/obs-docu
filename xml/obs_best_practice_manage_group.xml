@@ -1,0 +1,29 @@
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<sect1 version="5.1" xml:id="manage_group"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <title>Manage Group</title>
+  <para>
+    Only administrators and users with Maintainer rights can manage groups.
+    They can add and remove other users from the group, as well as give them
+    Maintainer rights.
+  </para>
+  <para>
+    On the Group Members tab, there is a link to Add Member, then enter the
+    name of an existing user. You can click on the Maintainer checkbox to give
+    Maintainer rights to a user.
+  </para>
+  <figure>
+   <title>Manage a Group</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="manage_group.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+</sect1>
