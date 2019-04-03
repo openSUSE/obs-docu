@@ -80,7 +80,7 @@
         by either using the <command>osc lock [PROJECT]</command> command</para>
    </listitem>
    <listitem>
-    <para> The <xref linkend="obs.glos.update_project"/> has to have the <link project="[PROJECT]"/>
+    <para> The <xref linkend="obs.glos.update_project"/> has to have the &lt;link project="[PROJECT]"/&gt;
     element in the project meta configuration. </para>
     <para> It is very useful to define groups of bugowners, maintainers and reviewers and to make use of bots
     for further quality assurance tasks.</para>
