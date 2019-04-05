@@ -9,8 +9,9 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Basic Concepts and Work Styles</title>
  <info/>
- <para> These best practices should be known by every OBS user. They describe
-  how to set up projects and working with own or foreign sources.
+ <para>Best practices describe how to set up projects and work with your own or other sources and should be known by every OBS user.
+
+
  </para>
  <sect1 condition="tbd">
   <title>Setting Up a Project Re-Using Other Project's Binaries</title>
@@ -18,37 +19,83 @@
   <remark>TBD</remark>
  </sect1>
  <sect1>
-  <title>Setup a project reusing other projects sources</title>
-  <para> You can also setup your own project using the sources, spec files and
-   patches from another project and develop within this project.</para>
-   <screen>#osc copypac SOURCEPRJ SOURCEPAC DESTPRJ</screen>
-   <para>By default, Open Build Service will strip the maintainer info and now make
-   it part of your own project. To clarify, when we speak of a project, it can
-   mean just one package or a complete set of packages with their own build
-   dependencies. </para>
- </sect1>
+  <title>Setting up a project reusing other project sources</title>
+  <para> 
+	 It is possible to include  the sources, spec files, and patches from another project in  your current project using:  <screen>#osc branch</screen>
+
+	  
+ </para>	 
+	  
  <sect1>
-  <title>Contributing to External Projects Directly</title>
-  <para> In case a user does not have commit permissions for a project, they
-   can request maintainership permissions for this project. This makes sense if
-   the user is already known to the project owners and they trust them as a
-   maintainer. There is a way to do this via the request system of OBS, but
-   only via osc so far:</para>
-   <screen># osc createrequest -a add_me maintainer PROJECT</screen>
- </sect1>
- <sect1>
-  <title>Contributing to Foreign Projects Indirectly</title>
-  <para> Users who are new to a given project, either because they are new
-   users with Open Build Service or packaging or do not have any deeper
-   knowledge about a certain project will not have direct commit permissions.
-   However, they can still create a copy of any package source and ask back to
-   merge their changes. Open Build Service has support to make this easy.
-   <!-- TODO: merge collaboration wiki page here, when we have this docu online -->
-  </para>
-  <!-- this should become a standard style template and added to each section. -->
+  <title>Contributing to Projects </title>
+
+  <para> New users to a given project  may contribute  code:
+
+	  1. Copy the package source
+	  2. Make changes
+	  3. Submit the source containing your changes to the project.
+
+	  When code is accepted it is merged with the project . When code is declined, it remains available for revision and submission.
+
+
   <para> Wiki reference: <link
     xlink:href="http://en.opensuse.org/openSUSE:Build_Service_Collaboration"
     >User comment page</link>
   </para>
+
+
+   <!-- TODO: merge collaboration wiki page here, when we have this docu online -->
+
+
+  </para>
+  <!-- this should become a standard style template and added to each section. -->
+
+
+
+ </sect1>
+	
+ 
+ <sect1>
+       
+
+
+<tittle>Contributing to Projects </title>
+
+<para>After successfully merging code into a project and building trust with the package owners, it is possible to request maintainer permissions. 
+	This allows direct commits to the project without reveue. 
+
+   <screen># osc createrequest -a add_me maintainer PROJECT</screen>
+</para>
+
+
  </sect1>
 </chapter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
