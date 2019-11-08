@@ -579,7 +579,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      <filename>&obsworkdir1;/&gitproject;</filename>.
     </para>
     <para>
-     Download a TAR archive of the sources.
+     Download a TAR archive of the sources. You don't have to unpack it yet. 
     </para>
     <para>
      In our example, the project is hosted on &gh; and you can use the
@@ -746,6 +746,11 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
      Save the file and leave the editor. &osccmd; then
      creates the file <filename>&gitproject;.changes</filename>.
     </para>
+    <para>Your probject directory should now look something like this:</para>
+    <screen><emphasis>project directory</emphasis>
+     ├── &gitproject;-&gitprjvers;.tar.gz
+     ├── &gitproject;.changes
+     └── &gitproject;.spec</screen>
    </step>
    <step>
     <para>Add all the files to your working directory:</para>
