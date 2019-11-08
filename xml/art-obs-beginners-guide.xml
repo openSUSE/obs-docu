@@ -475,7 +475,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    <step>
     <para>
      Click the <guimenu>Repositories</guimenu> tab, then the 
-     <guimenu>Add Repositories</guimenu> link.
+     <guimenu>Add from a Distribution</guimenu> link.
     </para>
    </step>
    <step>
