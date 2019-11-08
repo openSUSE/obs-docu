@@ -19,7 +19,6 @@ https://www.suse.com/communities/blog/suse-studio-integration/
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Beginnerʼs Guide</title>
- <subtitle>&productname; &productnumber;</subtitle>
  <info>
   <productname>&obs;</productname>
   <xi:include href="common_copyright_opensuse.xml"/>
