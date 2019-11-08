@@ -1135,6 +1135,9 @@ Patch0:         &gitproject;_main.diff</screen>
   <para>
    User <systemitem class="username">&obsuser1;</systemitem> is responsible for
    the following.
+   <note>
+    <para>If preferred, the below steps can also be performed using the OBS GUI. Requests can be managed under the <guimenu>Tasks</guimenu> tab.</para>
+   </note>
   </para>
   <procedure xml:id="pro.obsbg.uc.branchprj.sr">
    <title>Dealing with Submit Requests</title>
