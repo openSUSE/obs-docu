@@ -186,6 +186,38 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
+    <term><parameter>ExpandFlags: <replaceable>FLAG</replaceable></parameter></term>
+    <listitem>
+     <para>
+      Flags which modify the behaviour during dependency resolution.
+      <variablelist>
+       <varlistentry>
+        <term><parameter>unorderedimagerepos</parameter></term>
+        <listitem>
+                <para>The priority of repositories defined in an image build is usually important. This is to avoid switching repositories
+                      when the same package is available in multiple repositories. However, it might be wanted to ignore that and just
+                      pick the highest version. This can be achieved by defining this flag</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>preinstallexpanded</parameter></term>
+        <listitem>
+                <para>EXPERIMENTAL: Preinstall also all dependencies of a preinstalled package.
+                      This may increase the amount of preinstalled packages a lot.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>module:NAME</parameter></term>
+        <listitem>
+		<para>For enabling RedHat specific module support in repo md repostories. By default modules are not used, but 
+	              content can be made available by specifing the module name. For removing a module add a exclamation mark(!) as prefix.</para>
+        </listitem>
+       </varlistentry>
+      </variablelist>
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
     <term><parameter>ExportFilter: <replaceable>REGEX</replaceable> <replaceable>ARCH</replaceable></parameter></term>
     <listitem>
      <para>
