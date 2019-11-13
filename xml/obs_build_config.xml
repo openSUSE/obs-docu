@@ -207,7 +207,7 @@ Keep: debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
-        <term><parameter>module:NAME</parameter> (OBS 2.11 or later)</term>
+        <term><parameter>module:NAME-STREAM</parameter> (OBS 2.11 or later)</term>
         <listitem>
 		<para>For enabling RedHat specific module support in repo md repostories. By default modules are not used, but 
 	              content can be made available by specifing the module name. For removing a module add a exclamation mark(!) as prefix.</para>
@@ -350,6 +350,23 @@ Keep: debbuild</screen>
       are <emphasis>not</emphasis> executed during this phase. However, these
       packages will get installed again inside of the VM including script
       execution.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><parameter>PublishFlag: <replaceable>FLAG</replaceable></parameter></term>
+    <listitem>
+     <para>
+      Flags which modify the behaviour during repository generation.
+      <variablelist>
+       <varlistentry>
+        <term><parameter>ympdist:NAME</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+	<para>Defines the distversion to be used in group element of ymp files.
+	      This is used by the installer to check if the repository is suitable for the installed distribution.</para>
+        </listitem>
+       </varlistentry>
+      </variablelist>
      </para>
     </listitem>
    </varlistentry>
