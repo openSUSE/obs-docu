@@ -192,7 +192,7 @@ Keep: debbuild</screen>
       Flags which modify the behaviour during dependency resolution.
       <variablelist>
        <varlistentry>
-        <term><parameter>unorderedimagerepos</parameter></term>
+        <term><parameter>unorderedimagerepos</parameter> (OBS 2.10 or later)</term>
         <listitem>
                 <para>The priority of repositories defined in an image build is usually important. This is to avoid switching repositories
                       when the same package is available in multiple repositories. However, it might be wanted to ignore that and just
@@ -207,7 +207,7 @@ Keep: debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
-        <term><parameter>module:NAME</parameter></term>
+        <term><parameter>module:NAME</parameter> (OBS 2.11 or later)</term>
         <listitem>
 		<para>For enabling RedHat specific module support in repo md repostories. By default modules are not used, but 
 	              content can be made available by specifing the module name. For removing a module add a exclamation mark(!) as prefix.</para>
