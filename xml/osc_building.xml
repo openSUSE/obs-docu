@@ -166,7 +166,6 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   <remark>TBD</remark>
  </sect1>
 
-
  <sect1 condition="tbd">
   <title>From Kiwi Files (&kiwi;)</title>
    <!--
@@ -196,5 +195,203 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   <remark>toms 2017-08-18: integrate content from  obs_build_preinstall.xml;
   using a _preinstallimage file</remark>
  </sect1>
- 
+
+ <sect1 xml:id="sec.obs.building.appimage">
+  <title>As &obs.ai;</title>
+  <para>
+   To create an &obs.ai;, you need:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     an <filename>appimage.yml</filename> file which acts as a build recipe.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     everything else you need to build a RPM package (see <xref
+      linkend="sec.obs.building.spec2rpm"/>).
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     an optional <filename>_service</filename> file if you integrate the
+     source code from a version control system.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     configuration in your &obsa; project, see <xref linkend="pro.obs.building.appimage"/>.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   There are three ways to build an &obs.ai;:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>From RPM packages, or</para>
+   </listitem>
+   <listitem>
+    <para>directly from source code, or</para>
+   </listitem>
+   <listitem>
+    <para>a combination of the previous two methods.</para>
+   </listitem>
+  </itemizedlist>
+  <para>To build a new &obs.ai; from RPM packages, proceed as follows:</para>
+  <procedure xml:id="pro.obs.building.appimage">
+   <title>Building &obs.ai; from RPM Packages</title>
+   <step>
+    <para>
+     Build RPM packages as described in <xref
+      linkend="sec.obs.building.spec2rpm"/>. Make sure the packages have
+     been built successfully.
+    </para>
+   </step>
+   <step>
+    <para>
+     Prepare your project to support &obs.ai;. In this example, we
+     use the home project <uri>&obshome1;</uri>:
+    </para>
+    <substeps>
+     <step>
+      <para>
+       To open the meta configuration, run:
+      </para>
+      <screen>&prompt.user;<command>osc</command> meta prj -e &obshome1;</screen>
+      <para>
+       <remark>toms 2017-09-05: Maybe this step should be explained in
+       a separate section/procedure?</remark>
+       To use the Web interface of your &obsa; instance to do
+       the same, go to your home project and click <menuchoice>
+        <guimenu>Advanced</guimenu>
+        <guimenu>Meta</guimenu>
+       </menuchoice>.
+      </para>
+     </step>
+     <step>
+      <para>
+       To enable &obs.ai; support, add the following XML snippet into the editor:
+      </para>
+      <screen language="xml">&lt;repository name="AppImage">
+  &lt;path project="&obshome1;" repository="<replaceable>PROJECT</replaceable>"/>
+  &lt;path project="OBS:AppImage" repository="AppImage"
+  &lt;arch>x86_64&lt;/arch>
+  &lt;!-- &lt;arch>i586&lt;/arch> -->
+&lt;/repository></screen>
+      <para>
+       The <uri>OBS:AppImage</uri> project is specific to &osbs;.
+      </para>
+     </step>
+     <step>
+      <para>
+       Adapt the <replaceable>PROJECT</replaceable> placeholder and the
+       architecture.
+      </para>
+     </step>
+     <step>
+      <para>
+       Save the configuration<!--, use <keycombo>
+        <keycap>:</keycap>
+        <keycap>x</keycap>
+       </keycombo> or leave the editor with <keycombo>
+        <keycap>:</keycap>
+        <keycap>q</keycap>
+        <keycap>!</keycap>
+       </keycombo>-->.
+      </para>
+     </step>
+    </substeps>
+   </step>
+   <step>
+    <para>
+     Create a <filename>appimage.yml</filename> with the following
+     content:
+    </para>
+    <example>
+     <title>&obs.ai; from RPM Files (<filename>appimage.yml</filename>)</title>
+     <screen language="yaml">app: <replaceable>APPNAME</replaceable> <co xml:id="co.obs.building.ai.app"/>
+
+build: <co xml:id="co.obs.building.ai.build"/>
+  packages:
+    - linuxdeployqt <co xml:id="co.obs.building.ai.linuxdeployqt" condition="tbd"/>
+
+ingredients: <co xml:id="co.obs.building.ai.ingredients"/>
+  packages:
+    - <replaceable>MY_RPM_PACKAGE</replaceable>
+
+script: <co xml:id="co.obs.building.ai.script"/>
+  # instructions
+     </screen>
+     <calloutlist>
+      <callout arearefs="co.obs.building.ai.app">
+       <para>
+        <remark>toms 2017-09-05: any restrictions in naming?</remark>
+        Contains the name of &obs.ai; application. You can use any name you want,
+        but we recommend using lowercase names.
+       </para>
+      </callout>
+      <callout arearefs="co.obs.building.ai.build">
+       <para>Defines the build requirements using RPM package names.</para>
+      </callout>
+      <callout arearefs="co.obs.building.ai.linuxdeployqt" condition="tbd">
+       <para>
+        <remark>toms 2017-09-07: is this package always needed? What's it's purpose?</remark>
+       </para>
+      </callout>
+      <callout arearefs="co.obs.building.ai.ingredients">
+       <para>
+        Defines the installation requirements for the &obs.ai;. These
+        packages are installed into the &obs.ai; build root environment.
+       </para>
+      </callout>
+      <callout arearefs="co.obs.building.ai.script">
+       <para>
+        Contains installation instructions.
+        <remark>toms 2017-09-04: FIXME: add more information</remark>
+       </para>
+      </callout>
+     </calloutlist>
+    </example>
+   </step>
+   <step>
+    <para>Build the &obs.ai;:</para>
+    <screen>&prompt.user;<command>osc</command> build AppImage x86_64 appimage.yml</screen>
+   </step>
+   <step>
+    <para>
+     Retrieve the new &obs.ai; from the <filename class="directory"
+      >/var/tmp/build-root/AppImage-x86_64/usr/src/packages/OTHER/</filename>
+     directory under der name <filename><replaceable
+      >APPNAME</replaceable>-<replaceable
+       >VERSION</replaceable>-<replaceable
+        >LIBRARY</replaceable>-<replaceable
+         >ARCH</replaceable>.AppImage</filename>.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   To build &obs.ai;s from source, change the
+   <filename>appimage.yml</filename> file as follows:
+  </para>
+  <example>
+   <title>&obs.ai; from Source File (<filename>appimage.yml</filename>)</title>
+   <screen language="yaml">app: <replaceable>APPNAME</replaceable>
+
+build:
+  packages:
+    - linuxdeployqt
+    - cmake
+  git:
+    - &gitupstream1;.git
+
+script:
+   - cmake -DCMAKE_INSTALL_PREFIX=/usr .
+   - make
+   - make install DESTDIR=/usr
+   # other lines suppressed</screen>
+  </example>
+  <remark>toms 2017-09-05: do we need a _service file?</remark>
+ </sect1>
 </chapter>

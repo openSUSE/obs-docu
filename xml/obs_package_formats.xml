@@ -12,7 +12,7 @@
  <remark>toms 2017-08-18: list advantages/disadvantages/benefits for each format</remark>
  <remark>toms 2017-08-18: comparison of these formats?</remark>
 
- <sect1>
+ <sect1 xml:id="sec.obs.pkgformats.about">
   <title>About Formats</title>
   <remark>toms 2017-08-18: classification between distribution-dependand and
    independant</remark>
@@ -58,6 +58,9 @@
    <listitem>
     <para>SimpleImage format</para>
    </listitem>
+   <listitem>
+    <para>&obs.ai;</para>
+   </listitem>
   </itemizedlist>
 
   <para> If no build recipe format and binary format are specified in the project
@@ -69,7 +72,7 @@
    adding a <literal>Type</literal> line to the project configuration. </para>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.obs.pkgformats.spec2rpm">
   <title>RPM: Spec</title>
   <para>
    RPM (RPM Package Manager) is used on &opensuse;, &sle;, Red Hat, Fedora,
@@ -99,7 +102,7 @@
   </variablelist>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.obs.pkgformats.dsc">
   <title>Debian: Dsc</title>
   <para>
    DEB packages are used on all Debian or Ubuntu based distributions.
@@ -133,7 +136,7 @@
   </variablelist>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.obs.pkgformats.pkg">
   <title>Arch: pkg</title>
   <para>
    &obs.arch; files is used on Arch Linux and its derivatives. For building
@@ -158,22 +161,14 @@
   </variablelist>
  </sect1>
 
- <sect1 condition="tbd">
+ <sect1 xml:id="sec.obs.pkgformats.snap" condition="tbd">
   <title>Snap</title>
   <para/>
   <remark>TBD</remark>
   <remark>toms 2017-08-18: see obs_build_containers.xml</remark>
  </sect1>
 
-<!--
- <sect1>
-  <title>Livebuild</title>
-  <para/>
-  <remark>TBD</remark>
- </sect1>
--->
-
- <sect1 xml:id="_kiwi_appliance">
+ <sect1 xml:id="sec.obs.pkgformats.kiwi">
   <title>&kiwi; Appliance</title>
   <para>
    <link xlink:href="https://suse.github.io/kiwi/">KIWI</link> is an OS
@@ -224,7 +219,7 @@
   </para>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.obs.pkgformats.simpleimage">
   <title>&obs.si;</title>
   <para>
    <remark>toms 2017-08-18: FIXME This should be explained better</remark>
@@ -278,8 +273,45 @@ systemctl enable sshd</screen>
   </example>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.obs.pkgformats.appimage">
   <title>&obs.ai;</title>
   <remark>toms 2017-08-18: TODO What is it and what is needed</remark>
+  <para>
+   An &obs.ai; is a bundled application including libraries that
+   allows running on a variety of different distributions without
+   further installation or modification. An &obs.ai; contains all
+   libraries that are not already part of the base system.
+   &obs.ai; keeps the underlying operating system unchanged. This means,
+   you do not need root permissions to install an &obs.ai;.
+  </para>
+  <para> For building an &obs.ai; in &obsa;, you need:</para>
+  <variablelist>
+   <varlistentry>
+    <term><filename>PACKAGE</filename></term>
+    <listitem>
+     <para>
+      The original source archive.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename><replaceable>PACKAGE</replaceable>.rpm</filename></term>
+    <listitem>
+     <para>
+      A successfully built RPM package created from the source archive.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><filename>appimage.yml</filename></term>
+    <listitem>
+     <para>
+      A <link xlink:href="http://yaml.org">YAML</link> file which contains
+      a list of dependencies and installation
+      instructions. Dependencies are expressed as RPM package names.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
  </sect1>
 </chapter>
