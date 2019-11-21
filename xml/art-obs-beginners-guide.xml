@@ -19,7 +19,6 @@ https://www.suse.com/communities/blog/suse-studio-integration/
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Beginnerʼs Guide</title>
- <subtitle>&productname; &productnumber;</subtitle>
  <info>
   <productname>&obs;</productname>
   <xi:include href="common_copyright_opensuse.xml"/>
@@ -249,6 +248,114 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </varlistentry>
   </variablelist>
  </sect1>
+ 
+ <sect1 xml:id="sec.obsbg.usagescenarios">
+  <title>Covered Scenarios</title>
+  <para>
+   This guide is based on the following assumptions.
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     Since Git is used throughout this guide, and many &obsa; concepts are modeled
+     after their Subversion (SVN) equivalents, you have a working knowledge of
+     version control systems such as Git and Subversion (SVN).
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     You are using the &osbs; at <link xlink:href="https://build.opensuse.org"/>.
+     If you are using another &obsa; instance, some commands may differ.
+    </para>
+   </listitem>
+   <listitem>
+    <para>You have an account on an &obs; instance.</para>
+   </listitem>
+   <listitem>
+    <para>You are running an RPM-based operating system like &opensuse; or &sle;.</para>
+   </listitem>
+   <listitem>
+    <para>You are using a customized system as shown in <xref
+     linkend="sec.obsbg.obsconfig"/>.</para>
+   </listitem>
+  </itemizedlist>
+  <para>All examples use the following elements.</para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     A user on a local machine (you) called &exampleuser;. This user builds
+     packages on their own machine.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     An &obsa; user called <systemitem class="username"
+      >&obsuser1;</systemitem> with home <uri>&obshome1;</uri> on the &obs;.
+     This user is the same as the system user &exampleuser;, that is, you.
+    </para>
+   </listitem>
+   <listitem>
+    <para>An &obsa; user <systemitem class="username"
+     >&obsuser2;</systemitem> and their home <uri>&obshome2;</uri> on &obs;.
+     This user acts as a collaborator.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     An example upstream open source project available at <link
+      xlink:href="&gitupstream1;"/>. This project contains source code in the C++ programming language.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   This guide describes the following common tasks:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.setuphome"/></term>
+    <listitem>
+     <para>
+      Setting up a home project using the &obsa; Web UI.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.newprj"/></term>
+    <listitem>
+     <para>
+      Creating packages from a basic project hosted on &gh;.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.patching"/></term>
+    <listitem>
+     <para>
+      Patching source code without touching the original
+      source.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.branchprj"/></term>
+    <listitem>
+     <para>
+      Branching a project, making changes, and submitting back
+      the changes to the original project.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><xref linkend="sec.obsbg.uc.install-from-obs"/></term>
+    <listitem>
+     <para>
+      Integrating the download repository into your system
+      and installing your built package.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
 
  <sect1 xml:id="sec.obsbg.obsconfig">
   <title>Configuring Your System for &obsa;</title>
@@ -336,114 +443,6 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   </note>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.usagescenarios">
-  <title>Covered Scenarios</title>
-  <para>
-   This guide is based on the following assumptions.
-  </para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     Since Git is used throughout this guide, and many &obsa; concepts are modeled
-     after their Subversion (SVN) equivalents, you have a working knowledge of
-     version control systems such as Git and Subversion (SVN).
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     You are using the &osbs; at <link xlink:href="https://build.opensuse.org"/>.
-     If you are using another &obsa; instance, some commands may differ.
-    </para>
-   </listitem>
-   <listitem>
-    <para>You have an account on an &obs; instance.</para>
-   </listitem>
-   <listitem>
-    <para>You are running an RPM-based operating system like &opensuse; or &sle;.</para>
-   </listitem>
-   <listitem>
-    <para>You are using a customized system as shown in <xref
-     linkend="sec.obsbg.obsconfig"/>.</para>
-   </listitem>
-  </itemizedlist>
-  <para>All examples use the following elements.</para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     A user on a local machine (you) called &exampleuser;. This user builds
-     packages on their own machine.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     An &obsa; user called <systemitem class="username"
-     >&obsuser1;</systemitem> with home <uri>&obshome1;</uri> on the &obs;.
-     This user is the same as the system user &exampleuser;, that is, you.
-    </para>
-   </listitem>
-   <listitem>
-    <para>An &obsa; user <systemitem class="username"
-     >&obsuser2;</systemitem> and their home <uri>&obshome2;</uri> on &obs;.
-     This user acts as a collaborator.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     An example upstream open source project available at <link
-      xlink:href="&gitupstream1;"/>. This project contains source code in the C++ programming language.
-    </para>
-   </listitem>
-  </itemizedlist>
-  <para>
-   This guide describes the following common tasks:
-  </para>
-  <variablelist>
-   <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.setuphome"/></term>
-    <listitem>
-     <para>
-      Setting up a home project using the &obsa; Web UI.
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.newprj"/></term>
-    <listitem>
-     <para>
-      Creating packages from a basic project hosted on &gh;.
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.patching"/></term>
-    <listitem>
-     <para>
-      Patching source code without touching the original
-      source.
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.branchprj"/></term>
-    <listitem>
-     <para>
-      Branching a project, making changes, and submitting back
-      the changes to the original project.
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.install-from-obs"/></term>
-    <listitem>
-     <para>
-      Integrating the download repository into your system
-      and installing your built package.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
- </sect1>
-
  <sect1 xml:id="sec.obsbg.uc.setuphome">
   <title>Setting Up Your Home Project for the First Time</title>
   <para>
@@ -476,7 +475,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    <step>
     <para>
      Click the <guimenu>Repositories</guimenu> tab, then the 
-     <guimenu>Add Repositories</guimenu> link.
+     <guimenu>Add from a Distribution</guimenu> link.
     </para>
    </step>
    <step>
@@ -580,7 +579,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      <filename>&obsworkdir1;/&gitproject;</filename>.
     </para>
     <para>
-     Download a TAR archive of the sources.
+     Download a TAR archive of the sources. You do not have to unpack it yet. 
     </para>
     <para>
      In our example, the project is hosted on &gh; and you can use the
@@ -747,6 +746,11 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
      Save the file and leave the editor. &osccmd; then
      creates the file <filename>&gitproject;.changes</filename>.
     </para>
+    <para>Your probject directory should now look something like this:</para>
+    <screen><emphasis>project directory</emphasis>
+     ├── &gitproject;-&gitprjvers;.tar.gz
+     ├── &gitproject;.changes
+     └── &gitproject;.spec</screen>
    </step>
    <step>
     <para>Add all the files to your working directory:</para>
@@ -1131,6 +1135,9 @@ Patch0:         &gitproject;_main.diff</screen>
   <para>
    User <systemitem class="username">&obsuser1;</systemitem> is responsible for
    the following.
+   <note>
+    <para>If preferred, the below steps can also be performed using the OBS GUI. Requests can be managed under the <guimenu>Tasks</guimenu> tab.</para>
+   </note>
   </para>
   <procedure xml:id="pro.obsbg.uc.branchprj.sr">
    <title>Dealing with Submit Requests</title>
