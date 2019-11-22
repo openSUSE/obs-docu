@@ -360,6 +360,13 @@ Keep: debbuild</screen>
       Flags which modify the behaviour during repository generation.
       <variablelist>
        <varlistentry>
+        <term><parameter>noearlykiwipublish</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+	  <para>Only publish kiwi build results after entire repository has finished building. Without this kiwi
+		build results get published immediatly after the build is finished.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
         <term><parameter>ympdist:NAME</parameter> (OBS 2.11 or later)</term>
         <listitem>
 	<para>Defines the distversion to be used in group element of ymp files.
