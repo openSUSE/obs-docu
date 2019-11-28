@@ -9,9 +9,10 @@
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Process</title>
  <para>
-  Each package build is created in a fresh environment. This is done to
-  ensure that all dependencies are available and that every later build
-  produces identical results.
+  The build process creates new binaries from sources, binaries, and config.
+  This process may run on the &obsa; server side or on a
+  local workstation. Each package build is created in a fresh environment. This is done to
+  ensure that the enviroment is reproducible.
  </para>
  <sect1 condition="tbd">
   <title>Definition of a Build Process</title>
@@ -35,7 +36,7 @@
    </remark>
    <para>
     This phase depends on the type of the buildroot (building
-    environment). &obsa; supports three different types of buildroots:
+    environment). &obsa; supports multiple types of build environments, for example:
    </para>
     <itemizedlist>
      <listitem>
@@ -53,33 +54,35 @@
        KVM
       </para>
      </listitem>
+     <listitem>
+      <para>
+       Qemu
+      </para>
+     </listitem>
     </itemizedlist> 
     <para>
     In the preinstall phase, the OBS Worker creates a small
-    base system (chroot or VM Image) with manually extracted packages (file
-    system, coreutils, binutils, rpm/debutils, etc.), copies all necessary
-    build requirements into the base system. </para>
+    base system from the packages declared to be preinstalled (file
+    system, coreutils, binutils, rpm/debutils, etc.). The tools installed in this
+    phase must only provide the minimum functionality necessary to allow installing
+    further packages. In addition it copies all necessary build requirements and
+    the source into the base system. </para>
   </sect2>
   <sect2>
    <title>Install Phase</title>
    <para>
-    Depending on the chosen build root, the worker starts a Xen or KVM
-    virtual machine or enters the build root. If this was successful, the
+    Depending on the chosen build environment, the worker may start a
+    virtual machine, an emulator or just enter the build root. If this was successful, the
     install phase reinstalls all base packages from above and additionally all
-    packages you have defined in your build recipe. After this phase the
+    packages you have defined in your build recipe plus dependencies. After this phase the
     environment is ready to process the build recipe.
    </para>
   </sect2>
   <sect2>
    <title>Package Build</title>
-   <remark>
-    FIXME: Terminology: Definition of buildroot? Is buildroot a command? I
-    would have presumed this to be a location not a command or other type of
-    active thingie. - sknorr, 2017-08-24
-   </remark>
    <para>
-    Depending on the type of package, the buildroot executes different build
-    commands:
+    Depending on the type of package, the build environment executes different build
+    commands, for example:
    </para>
    <itemizedlist>
     <listitem>
@@ -94,7 +97,12 @@
     </listitem>
     <listitem>
      <para>
-      Arch Linux: <command>pacman</command>.
+      Arch Linux: <command>pacman</command>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Kiwi image: <command>kiwi</command>.
      </para>
     </listitem>
    </itemizedlist>
@@ -105,19 +113,17 @@
    </para>
    <para>
     To improve package quality, on RPM-based distributions there are
-    additional security checks and a linter called <command>rpmlint</command>.
+    additional checks provided via packages. A common toolchain for handling
+    checks is for example <command>rpmlint</command>.
    </para>
   </sect2>
   <sect2>
    <title>After the Build</title>
    <para>
-    The generated packages are taken from the worker, are signed by the
-    &obsa; signer and are published to the Repository.
+     The generated packages are extracted from the build environment and transferred
+     back to the server by the worker. The build result might be postprocessed by 
+     followup build jobs. Afterwards the resulting files may get signed.
    </para>
-   <remark>
-    FIXME: Terminology -- "signing server" instead of "signer"?
-    - sknorr, 2017-08-24
-   </remark>
   </sect2>
  </sect1>
  <sect1 condition="tbd">
@@ -128,7 +134,9 @@
  <sect1 condition="tbd">
   <title>Security Aspects</title>
   <para/>
-  <remark>TBD</remark>
+  <remark>Only three build environments are currently considered to be secure in the sense
+          that an attacker can not break out of it by providing special sources or binary packages.
+          These are KVM, XEN and ZVM</remark>
  </sect1>
  <sect1>
   <title>Identify a build</title>
