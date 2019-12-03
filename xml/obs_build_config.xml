@@ -172,6 +172,14 @@ Keep: debbuild</screen>
 	             to modify the limit. Specify the seconds behind flag. </para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+       <term><parameter>onlybuild:</parameter></term>
+       <listitem>
+	       <para>DANGER: this may remove many build results when introduced the first time!
+		       It can be used to maintain a whitelist of packages to be build. All other packages
+	               will turn to excluded state.</para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
