@@ -19,10 +19,7 @@
   <book xml:id="book.obs.techpaper">
    <title>Technical Papers</title>
    <info/>
-   <xi:include href="art-obs-beginners-guide.xml"/>
   </book>
   <xi:include href="book-obs-user-guide.xml"/>
   <xi:include href="book-obs-admin-guide.xml"/>
-  <xi:include href="book-obs-reference-guide.xml"/>
-  <xi:include href="book-obs-best-practices.xml"/>
 </set>

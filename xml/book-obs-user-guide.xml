@@ -46,7 +46,10 @@
     see https://en.opensuse.org/openSUSE:Build_Service_Tutorial
   * Use CI services
 -->
-
+ <part xml:id="par.first_steps">
+  <title>First Steps</title>
+  <xi:include href="art-obs-beginners-guide.xml"/>
+ </part>
  <part xml:id="par.concepts">
   <title>Concepts</title>
 <!--  <xi:include href="obs_user_concept.xml"/>-->
@@ -75,5 +78,50 @@
   <xi:include href="obs_product_building.xml"/>
  </part>
 
+ <part xml:id="par.best_practices">
+  <title>Best Practices</title>
+  <xi:include href="obs_best_practice_webui_usage.xml"/>
+  <xi:include href="obs_best_practice_basics.xml"/>
+  <xi:include href="obs_best_practice_integrate_scm_sources.xml"/>
+  <xi:include href="obs_best_practice_upstream.xml"/>
+  <xi:include href="obs_best_practice_local_setup.xml"/>
+  <xi:include href="obs_best_practice_boot_strapping.xml"/>
+  <xi:include href="obs_best_practice_osc_examples.xml"/>
+  <xi:include href="obs_best_practice_advanced.xml"/>
+  <xi:include href="obs_best_practice_kernel_build.xml"/>
+  <xi:include href="obs_best_practice_howto.xml"/>
+ </part>
+
+ <part xml:id="par.reference">
+  <title>Reference</title>
+ <!--<xi:include href="obs_motivation.xml"/>-->
+ <!-- basic parts -->
+ <xi:include href="obs_architecture.xml"/>
+ <xi:include href="obs_concepts.xml"/>
+ <xi:include href="obs_build_process.xml"/>
+ <!-- <xi:include href="obs_build_containers.xml"/>-->
+ <xi:include href="obs_source_management.xml"/>
+ <xi:include href="obs_request_and_review_system.xml"/>
+ <!--<xi:include href="obs_package_formats.xml"/>-->
+ <xi:include href="obs_image_templates.xml"/>
+<!-- <xi:include href="obs_build_config.xml"/>-->
+ <!-- advanced parts -->
+<!-- <xi:include href="obs_source_service.xml"/>-->
+ <xi:include href="obs_multibuild.xml"/>
+<!-- <xi:include href="obs_signing.xml"/>-->
+ <!--<xi:include href="obs_product_building.xml"/>-->
+ <xi:include href="obs_maintenance_setup.xml"/>
+ <xi:include href="obs_binary_tracking.xml"/>
+<!-- tbd: <xi:include href="obs_cross_architecture_build.xml"/>-->
+ <xi:include href="obs_admin.xml"/>
+ <xi:include href="obs_scheduling_and_dispatching.xml"/>
+ <xi:include href="obs_build_job_constraints.xml"/>
+ <xi:include href="obs_build_preinstall.xml"/>
+ <xi:include href="obs_authorization_token.xml"/>
+ <xi:include href="obs_qa_hooks.xml"/>
+ <xi:include href="factory.xml"/>
+ </part>
  <!-- Appendices -->
+ <xi:include href="obs_glossary.xml"/>
+ <xi:include href="legal.xml"/>
 </book>

@@ -22,40 +22,18 @@
    </listitem>
   </varlistentry>
   <varlistentry>
-   <term><xref linkend="art.obs.bg"/></term>
-   <listitem>
-    <para>
-     This guide describes basic workflows for working with packages on &obs;.
-     This includes checking out a package from an upstream project, creating
-     patches, branching a repository, and more.
-    </para>
-   </listitem>
-  </varlistentry>
-  <varlistentry>
-   <term><xref linkend="book.obs-best-practices"/></term>
-   <listitem>
-    <para>
-     This guide offers step-by-step instructions for the most common features
-     of the &obs; and the &osbs;.
-    </para>
-   </listitem>
-  </varlistentry>
-  <varlistentry>
-   <term><xref linkend="book.obs-reference-guide"/></term>
-   <listitem>
-    <para>
-     This guide covers ideas and motivations, concepts and processes of the
-     &obs; and also covers administration topics.
-    </para>
-   </listitem>
-  </varlistentry>
-  <varlistentry>
    <term><xref linkend="book.obs.user"/></term>
    <listitem>
     <para>
-     This guide is intended for users and developers who want to dig deeper
-     into &obs;. It contains information on backgrounds, setting up your
-     computer for working with &obsa;, and usage scenarios.
+     This guide is intended for users of &obs;. The first part describes basic
+     workflows for working with packages on &obs;.  This includes checking out
+     a package from an upstream project, creating patches, branching a
+     repository, and more. The following parts go into more detail and contain
+     information on backgrounds, setting up your computer for working with
+     &obsa;, and usage scenarios. The <citetitle>Best Practices</citetitle>
+     part offers step-by-step instructions for the most common features of the
+     &obs; and the &osbs;. The last part covers ideas and motivations, concepts
+     and processes of the &obs;.
     </para>
    </listitem>
   </varlistentry>

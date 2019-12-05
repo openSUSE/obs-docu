@@ -2,7 +2,7 @@
 <?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
   type="text/xml"
   title="Profiling step"?>
-<!DOCTYPE article
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
@@ -14,7 +14,7 @@ https://www.suse.com/communities/blog/open-build-service-create-image-template/
 https://www.suse.com/communities/blog/suse-studio-integration/
 -->
 
-<article version="5.1" xml:lang="en" xml:id="art.obs.bg"
+<chapter version="5.1" xml:lang="en" xml:id="art.obs.bg"
  xmlns="http://docbook.org/ns/docbook" xmlns:dm="urn:x-suse:ns:docmanager"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1272,4 +1272,4 @@ Patch0:         &gitproject;_main.diff</screen>
    </varlistentry>
   </variablelist>
  </sect1>
-</article>
+</chapter>
