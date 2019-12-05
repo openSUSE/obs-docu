@@ -179,14 +179,14 @@
       <entry>Before each build</entry>
       <entry>After each commit<remark>toms 2017-09-01: True?</remark>
       </entry>
-      <entry>Committed as standard files but not named with 
+      <entry>Committed as standard files but not named with
        a <filename>_service:</filename> prefix</entry>
      </row>
      <row>
       <entry><literal>localonly</literal></entry>
       <entry>Before each build</entry>
       <entry>Never</entry>
-      <entry>Committed as standard files but not named with 
+      <entry>Committed as standard files but not named with
        a <filename>_service:</filename> prefix</entry>
      </row>
      <row>
@@ -421,41 +421,39 @@
  <sect1 xml:id="sec.obs.sserv.token_usage">
   <title>Trigger a service run via a webhook</title>
   <para>You may want to update sources in &obs; whenever they change in a SCM
-	system. You can create a token which allows to trigger a specific 
-	package update and use it via a webhook. It is recommended to create
-	a token for a specific package and not a wildcard token.
-	Read <xref linkend="cha.obs.authorization.token"/> to learn how to 
-	create a token.
+        system. You can create a token which allows to trigger a specific
+        package update and use it via a webhook. It is recommended to create
+        a token for a specific package and not a wildcard token.
+        Read <xref linkend="cha.obs.authorization.token"/> to learn how to
+        create a token.
   </para>
   <sect2 xml:id="sec.obs.sserv.gitlab">
    <title>Using it on gitlab</title>
    <para>
-	   Go to your repository settings page in your gitlab instance. Select Integrations
-	   there. All what you need to fill is the URL
-	   <screen>
-      <command>https://$your_instance/trigger/runservice</command>
-      <command>https://api.opensuse.org/trigger/runservice</command> as real life example.
-	   </screen>
-	   and the Secret Token. Hit the "Add webhook" button and you are good.
-	   You may specify project and package via CGI parameters in case you created a
-	   wildcard token.
-	   <screen>
-      <command>https://$your_instance/trigger/runservice?project=$PROJECT&amp;package=$PACKAGE</command>
-	   </screen>
+           Go to your repository settings page in your gitlab instance. Select Integrations
+           there. All what you need to fill is the URL
    </para>
+   <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/runservice</screen>
+  <para>
+           and the Secret Token. Hit the <guimenu>Add webhook</guimenu> button and you are good.
+           You may specify project and package via CGI parameters in case you created a
+           wildcard token:
+  </para>
+  <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/runservice?project=<replaceable>PROJECT</replaceable>&amp;package=<replaceable>PACKAGE</replaceable></screen>
+
   </sect2>
   <sect2 xml:id="sec.obs.sserv.github.com">
    <title>Using it on github.com</title>
    <para>
       Go to your repository settings page of your repository on github.com. Select Webhooks
-      settings and create a hook via "Add Webhook" button. Define the payload URL as
-	   <screen>
-      <command>https://$your_instance/trigger/webhook?id=$TOKEN_ID</command>.
-      <command>https://api.opensuse.org/trigger/webhook?id=42</command> as real life example.
-	   </screen>
+      settings and create a hook via <guimenu>Add Webhook</guimenu> button. Define the payload
+      URL as
+   </para>
+   <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/webhook?id=$TOKEN_ID</screen>
+   <para>
       and fill the secret box with your token string. Please not that github requires that you
       must also define the token id as part of the webhook string. All other settings can stay
-      untouched and just hit the "Add webhook" button.
+      untouched and just hit the <guimenu>Add webhook</guimenu> button.
    </para>
   </sect2>
  </sect1>
