@@ -2,7 +2,7 @@
 <?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
   type="text/xml"
   title="Profiling step"?>
-<!DOCTYPE article
+<!DOCTYPE chapter
 [
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
@@ -14,7 +14,7 @@ https://www.suse.com/communities/blog/open-build-service-create-image-template/
 https://www.suse.com/communities/blog/suse-studio-integration/
 -->
 
-<article version="5.1" xml:lang="en" xml:id="art.obs.bg"
+<chapter version="5.1" xml:lang="en" xml:id="art.obs.bg"
  xmlns="http://docbook.org/ns/docbook" xmlns:dm="urn:x-suse:ns:docmanager"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -181,7 +181,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     in &obsa; as <uri>home:<replaceable>USERNAME</replaceable></uri>.
     Home projects serve as a personal working area in &obsa; to define build
     targets, upload, build, and download packages. Users are also permitted
-    to create subprojects for temporary subprojects to work on other people's packages. 
+    to create subprojects for temporary subprojects to work on other people's packages.
    </para>
    <para>
     Sometimes, you will see the <uri>obs://<replaceable
@@ -248,7 +248,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </varlistentry>
   </variablelist>
  </sect1>
- 
+
  <sect1 xml:id="sec.obsbg.usagescenarios">
   <title>Covered Scenarios</title>
   <para>
@@ -435,7 +435,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    This will use an alternate layout when checking out a project. For
    example, setting the option above and checking out the home project will
    generate the <filename>home/&obsuser1;</filename> directory structure
-   instead of the single <filename>&obshome1;</filename> directory. 
+   instead of the single <filename>&obshome1;</filename> directory.
   </para>
   <para>
    However, this guide uses the default configuration with colons.
@@ -474,7 +474,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    </step>
    <step>
     <para>
-     Click the <guimenu>Repositories</guimenu> tab, then the 
+     Click the <guimenu>Repositories</guimenu> tab, then the
      <guimenu>Add from a Distribution</guimenu> link.
     </para>
    </step>
@@ -524,7 +524,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    <title>Check the License First</title>
    <para>
     Before building, go to the homepage of the upstream project and check the
-    license. 
+    license.
    </para>
    <para>
     For example, in the &osbs;, you must only redistribute packages which are
@@ -579,7 +579,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
      <filename>&obsworkdir1;/&gitproject;</filename>.
     </para>
     <para>
-     Download a TAR archive of the sources. You do not have to unpack it yet. 
+     Download a TAR archive of the sources. You do not have to unpack it yet.
     </para>
     <para>
      In our example, the project is hosted on &gh; and you can use the
@@ -597,7 +597,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     <para>
      In this example, we are building an RPM for &opensuse;<!-- which can later
      be installed-->. For RPM-based distributions, we create a <firstterm
-      baseform="Spec File">spec file</firstterm>. 
+      baseform="Spec File">spec file</firstterm>.
      The skeleton of such a spec file looks like this:
     </para>
     <example xml:id="ex.obsbg.uc.basicprj.skeletonspec">
@@ -758,7 +758,7 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
    </step>
    <step>
     <para>Build the package for the default build target:</para>
-    <screen>&prompt.user;<command>osc</command> build --local-package <!-- 
+    <screen>&prompt.user;<command>osc</command> build --local-package <!--
 openSUSE_Tumbleweed x86_64 *.spec--></screen>
     <remark>toms 2017-08-17: Please review the following paragraphs:</remark>
     <para>
@@ -833,7 +833,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
    </listitem>
    <listitem>
     <formalpara>
-     <title>Improve Security and Traceability</title>  
+     <title>Improve Security and Traceability</title>
     <para>
      Untouched source code in &obsa; is easier to check for changes than a
      modified one. The check is usually done with a checksum (MD5 or SHA).
@@ -1005,7 +1005,7 @@ Patch0:         &gitproject;_main.diff</screen>
      To apply temporary changes to try out a different path of development.
     </para>
    </listitem>
-   
+
   </itemizedlist>
   <para>
    We assume that you have checked out the project
@@ -1135,10 +1135,10 @@ Patch0:         &gitproject;_main.diff</screen>
   <para>
    User <systemitem class="username">&obsuser1;</systemitem> is responsible for
    the following.
-   <note>
-    <para>If preferred, the below steps can also be performed using the OBS GUI. Requests can be managed under the <guimenu>Tasks</guimenu> tab.</para>
-   </note>
   </para>
+  <note>
+    <para>If preferred, the below steps can also be performed using the OBS GUI. Requests can be managed under the <guimenu>Tasks</guimenu> tab.</para>
+  </note>
   <procedure xml:id="pro.obsbg.uc.branchprj.sr">
    <title>Dealing with Submit Requests</title>
    <step>
@@ -1194,7 +1194,7 @@ Patch0:         &gitproject;_main.diff</screen>
    subprojects, but not for subprojects created as a result of branching a
    package. Branched projects are not published by default.
    If you need the build results, download the binaries manually with
-   <command>osc getbinaries</command>. 
+   <command>osc getbinaries</command>.
   </para>
   <para>
    For example, if you have enabled the &tw; distribution,
@@ -1272,4 +1272,4 @@ Patch0:         &gitproject;_main.diff</screen>
    </varlistentry>
   </variablelist>
  </sect1>
-</article>
+</chapter>

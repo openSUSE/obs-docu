@@ -59,7 +59,7 @@
        Qemu
       </para>
      </listitem>
-    </itemizedlist> 
+    </itemizedlist>
     <para>
     In the preinstall phase, the OBS Worker creates a small
     base system from the packages declared to be preinstalled (file
@@ -121,7 +121,7 @@
    <title>After the Build</title>
    <para>
      The generated packages are extracted from the build environment and transferred
-     back to the server by the worker. The build result might be postprocessed by 
+     back to the server by the worker. The build result might be postprocessed by
      followup build jobs. Afterwards the resulting files may get signed.
    </para>
   </sect2>
@@ -141,17 +141,17 @@
  <sect1>
   <title>Identify a build</title>
   <para>
-    &obsa; is usally tagging each build with an identifier. This can be used to find the building 
+    &obsa; is usally tagging each build with an identifier. This can be used to find the building
     &obsa; instance, the project, repository and exact source for a binary. This information is
-    stored in some variable called DISTURL and is specified as 
+    stored in some variable called DISTURL and is specified as
      <command>obs://$OBS_INSTANCE/$PROJECT/$REPOSITORY/$SOURCE_REVISION-$PACKAGE(:$FLAVOR)</command>
     . Note that the last $:FLAVOR part is optional and exists only when the package was build using the multibuild feature.
 
     The source specified via the DISTURL can be accessed by pasting the URL into the search interface
     of the &obsa; web interface. Or use the command line tool to check it out:
-    <screen>
-     <command># osc checkout $DISTURL</command>
-    </screen>
+  </para>
+  <screen><command># osc checkout $DISTURL</command></screen>
+  <para>
     You need to go to the right OBS instance as this is not handled automatically yet.
   </para>
   <sect2>
@@ -159,18 +159,16 @@
    <para>
     Rpm binaries contain the DISTURL as tag. It can be read from the rpm database for installed rpms and
     also from the rpm binaries itself.
-    <screen>
-     <command># rpm -q --qf '%{DISTRL}\n' $rpm</command>
-    </screen>
    </para>
+    <screen><command># rpm -q --qf '%{DISTRL}\n' $rpm</command></screen>
   </sect2>
   <sect2>
    <title>Read DISTURL from a container</title>
    <para>
     Containers store the DISTURL as label. You will see only the DISTURL from the highest layer via
-    <screen>
-     <command># docker inspect --format '{{.Config.Labels}}' $image_id</command>
-    </screen>
+   </para>
+    <screen><command># docker inspect --format '{{.Config.Labels}}' $image_id</command></screen>
+    <para>
     The disturl is always set via the key 'org.openbuildservice.disturl'.
    </para>
   </sect2>

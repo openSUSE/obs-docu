@@ -191,8 +191,8 @@
       <para>
         We've updated the format of the <emphasis>options.yml</emphasis> after
         the release of OBS 2.9. Old configuration files can be converted via
-        <screen><prompt>(cd /srv/www/obs/api/; rake migrate_options_yml)</prompt></screen>
-      </para>
+       </para>
+       <screen><prompt>(cd /srv/www/obs/api/; rake migrate_options_yml)</prompt></screen>
     </note>
     <note>
      <para>More and more configurations will be moved to the database and do

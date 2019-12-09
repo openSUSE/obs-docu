@@ -168,16 +168,16 @@ Keep: debbuild</screen>
       <varlistentry>
        <term><parameter>logidlelimit:</parameter></term>
        <listitem>
-	       <para>Build jobs which don't create any output get aborted after some time. This flag can be used
-	             to modify the limit. Specify the seconds behind flag. </para>
+               <para>Build jobs which don't create any output get aborted after some time. This flag can be used
+                     to modify the limit. Specify the seconds behind flag. </para>
        </listitem>
       </varlistentry>
       <varlistentry>
        <term><parameter>onlybuild:</parameter></term>
        <listitem>
-	       <para>DANGER: this may remove many build results when introduced the first time!
-		       It can be used to maintain a whitelist of packages to be build. All other packages
-	               will turn to excluded state.</para>
+               <para>DANGER: this may remove many build results when introduced the first time!
+                       It can be used to maintain a whitelist of packages to be build. All other packages
+                       will turn to excluded state.</para>
        </listitem>
       </varlistentry>
      </variablelist>
@@ -198,6 +198,7 @@ Keep: debbuild</screen>
     <listitem>
      <para>
       Flags which modify the behaviour during dependency resolution.
+     </para>
       <variablelist>
        <varlistentry>
         <term><parameter>unorderedimagerepos</parameter> (OBS 2.10 or later)</term>
@@ -217,12 +218,11 @@ Keep: debbuild</screen>
        <varlistentry>
         <term><parameter>module:NAME-STREAM</parameter> (OBS 2.11 or later)</term>
         <listitem>
-		<para>For enabling RedHat specific module support in repo md repostories. By default modules are not used, but 
-	              content can be made available by specifing the module name. For removing a module add a exclamation mark(!) as prefix.</para>
+                <para>For enabling RedHat specific module support in repo md repostories. By default modules are not used, but
+                      content can be made available by specifing the module name. For removing a module add a exclamation mark(!) as prefix.</para>
         </listitem>
        </varlistentry>
       </variablelist>
-     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
@@ -366,23 +366,23 @@ Keep: debbuild</screen>
     <listitem>
      <para>
       Flags which modify the behaviour during repository generation.
+     </para>
       <variablelist>
        <varlistentry>
         <term><parameter>noearlykiwipublish</parameter> (OBS 2.11 or later)</term>
         <listitem>
-	  <para>Only publish kiwi build results after entire repository has finished building. Without this kiwi
-		build results get published immediatly after the build is finished.</para>
+          <para>Only publish kiwi build results after entire repository has finished building. Without this kiwi
+                build results get published immediatly after the build is finished.</para>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><parameter>ympdist:NAME</parameter> (OBS 2.11 or later)</term>
         <listitem>
-	<para>Defines the distversion to be used in group element of ymp files.
-	      This is used by the installer to check if the repository is suitable for the installed distribution.</para>
+        <para>Defines the distversion to be used in group element of ymp files.
+              This is used by the installer to check if the repository is suitable for the installed distribution.</para>
         </listitem>
        </varlistentry>
       </variablelist>
-     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
@@ -407,7 +407,10 @@ Keep: debbuild</screen>
       'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable
       gzip compression. To split the debug packages in an own published repository the option
       <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal>
-      can be appended, e.g. <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
+      can be appended, e.g.
+     </para>
+     <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
+    <para>
       (the repository format may even be omitted to use the default type).
       This results in a debuginfo package repository being created in parallel to the
       package repository.</para>
