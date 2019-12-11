@@ -57,7 +57,7 @@
     <para> openSUSE:11.4:Update is the <xref
       linkend="obs.glos.update_project"/> to release official updates for the
       locked openSUSE:11.4 project.
-      Thus it links to the openSUSE:11.4 project, inheriting all packages from there. </para>
+      Thus it links to the openSUSE:11.4 project, inheriting all package sources from there. </para>
    </listitem>
    <listitem>
     <para> openSUSE:Maintenance is the <xref
@@ -66,8 +66,8 @@
    </listitem>
    <listitem>
     <para> openSUSE:Maintenance:IDxxx is a <xref
-      linkend="obs.glos.incident"/> project created automatically by a maintenance
-      request. </para>
+      linkend="obs.glos.incident"/> project created automatically by accepting a
+      maintenance request. </para>
    </listitem>
   </itemizedlist>
  </sect1>
@@ -76,8 +76,8 @@
   <para>All workflow related projects must be set up with a proper project meta configuration.</para>
   <itemizedlist>
    <listitem>
-    <para> The <xref linkend="obs.glos.ga_project"/> must be locked by the project maintainer
-        by either using the <command>osc lock [PROJECT]</command> command</para>
+    <para>It is recommended to lock the <xref linkend="obs.glos.ga_project"/> by the project maintainer
+        by using the <command>osc lock [PROJECT]</command> command</para>
    </listitem>
    <listitem>
     <para> The <xref linkend="obs.glos.update_project"/> has to have the &lt;link project="[PROJECT]"/&gt;
