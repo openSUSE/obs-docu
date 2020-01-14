@@ -14,7 +14,7 @@
   calculates a <emphasis role="strong"><emphasis>load</emphasis></emphasis> per
   project repository of the used build time (similar to the system load in Unix
   operating systems). The dispatcher assigned jobs to build clients from the
-  repository with the lowest load (thereby increasing the its load). It is
+  repository with the lowest load (thereby increasing its load). It is
   possible to tweak this mechanism via dispatching priorities assigned to the
   repositories via the <emphasis role="strong"
     ><emphasis>/build/_dispatchprios</emphasis></emphasis><emphasis
