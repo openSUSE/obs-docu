@@ -209,7 +209,7 @@ Keep: debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
-        <term><parameter>preinstallexpanded</parameter></term>
+        <term><parameter>preinstallexpand</parameter></term>
         <listitem>
                 <para>EXPERIMENTAL: Preinstall also all dependencies of a preinstalled package.
                       This may increase the amount of preinstalled packages a lot.</para>
