@@ -22,4 +22,5 @@
   <para/>
  </sect1>
  <xi:include href="obs_ag_spider_identification.xml"/>
+ <xi:include href="obs_ag_k8s_worker.xml"/>
 </chapter>
