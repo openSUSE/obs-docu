@@ -20,11 +20,11 @@ Publishing Suite ([daps](https://github.com/openSUSE/daps)).
 After editing the document validate your changes via the following
 commands, for example:
 
-    $ daps -d DC-obs-beginners-guide validate
+    $ daps -d DC-obs-user-guide validate
 
 Similar for other guides. HTML documentation can get generated via
 
-    $ daps -d DC-obs-beginners-guide html
+    $ daps -d DC-obs-user-guide html
 
 ## Development Environment
 We are also shipping a [docker/docker-compose](https://www.docker.com/) based
