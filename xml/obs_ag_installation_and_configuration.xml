@@ -253,7 +253,7 @@
    </table>
    <para>The sequence in the table reflects the start sequence, you need to
     enable the services with</para>
-   <screen>systemctl start &lt;name&gt;</screen>
+   <screen>systemctl enable &lt;name&gt;</screen>
    <para>first and then you can start them:</para>
    <screen>systemctl start obssrcserver.service
 systemctl start obsrepserver.service
