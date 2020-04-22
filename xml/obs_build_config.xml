@@ -151,7 +151,8 @@ Keep: debbuild</screen>
     <listitem>
      <para>
       The <parameter>BuildFlags</parameter> keyword defines flags for the
-      build process. The following values for  FLAG are usable.</para>
+      build process. The following values for FLAG are usable. All flags with
+      a leading collon(:) requires an additional parameter directly behind.</para>
      <variablelist>
       <varlistentry>
        <term><parameter>vmfstype:</parameter></term>
@@ -170,6 +171,12 @@ Keep: debbuild</screen>
        <listitem>
                <para>Build jobs which don't create any output get aborted after some time. This flag can be used
                      to modify the limit. Specify the seconds behind flag. </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><parameter>excludebuildbuild:</parameter></term>
+       <listitem>
+               <para>Exclude a package from building. _multibuild flavors can be specified via package:flavor syntax.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
