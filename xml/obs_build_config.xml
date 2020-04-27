@@ -187,6 +187,14 @@ Keep: debbuild</screen>
                        will turn to excluded state.</para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+       <term><parameter>useccache:</parameter></term>
+       <listitem>
+           <para>Configure usage of ccache for build of packages mentioned by VALUE. Ccache package will be automatically
+               installed and configured. The directory <filename>/.ccache/</filename> will be configured as cache dir.
+               To configure ccache, the file <filename>/.ccache/ccache.conf</filename> can be modified as part of the build process by the <envar>$BUILD_USER</envar> environment variable. </para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
