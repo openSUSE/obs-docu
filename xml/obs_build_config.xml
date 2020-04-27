@@ -191,7 +191,7 @@ Keep: debbuild</screen>
        <term><parameter>useccache:</parameter></term>
        <listitem>
            <para>Configure usage of ccache for build of packages mentioned by VALUE. Ccache package will be automatically
-               installed and configured. /.ccache/ dir will be configured as cache dir.
+               installed and configured. The directory <filename>/.ccache/</filename> will be configured as cache dir.
                To configure ccache, /.ccache/ccache.conf can be modified as part build process by $BUILD_USER. </para>
        </listitem>
       </varlistentry>
