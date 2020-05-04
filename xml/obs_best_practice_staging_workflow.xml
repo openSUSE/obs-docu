@@ -7,26 +7,117 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
-  <title>Staging</title>
+  <title>Staging Workflow</title>
   <para>
-    At the moment, it is possible to create a Staging for any kind of project
-    unless the project is already one of the staging projects.
+    The Build Service is well known for providing an easy way to build and
+    distribute binary packages from source code. The packages, grouped together
+    in what we call a project, are built every time they are updated. The
+    maintainer of the package can choose among a wide range of operating systems
+    and hardware architectures to build the packages on. Those continuous
+    building processes ensure that the packages are always working for the
+    different setups.
   </para>
   <para>
-    All the Staging workflow starts in the tab 'Staging' which can be found on
-    the project's page. It will take you to the first step to create a new
-    Staging or to the dashboard if the Staging already exists.
+    The maintenance of those packages can be made on a collaborative way via
+    Build Service. As shown in the following diagram, the maintainer can create
+    a package and then she or any other developer can branch it (make a copy of
+    it), do some changes on its code and request those changes to be applied on
+    the original package. After that, the maintainer usually reviews the
+    request, chat with the developer in case it needs some fixes and end up
+    accepting the request. Doing so, the new changes to the code become part of
+    the package's source code.
   </para>
+  <figure>
+   <title>Staging Workflow Basic Schema</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="staging_workflow_basic_schema.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+  <para>
+    However, the workflow is not always that easy. Apart from managing
+    individual packages, Build Service provides many other functionalities and
+    it even allows us to release entire distributions. In a very simplistic way,
+    we can say a distribution is just an Build Service project with thousands of
+    packages inside. Packages that have been selected to be installed together
+    as part of the distribution.
+  </para>
+  <para>
+    When dealing with such a big project, many people request changes in many
+    different packages all the time. They have to be reviewed, adjusted and
+    tested (built) before being accepted. As you can imagine, it becomes
+    nonviable to review the packages one by one. Even if the maintainer checks
+    that a package is not broken and merge it, it can break everything else for
+    conflicts with other packages. To deal with these situations, Build Service
+    provides what we call Staging Workflow.
+  </para>
+  <para>
+    The idea behind the Staging Workflow is testing the requests incrementally
+    by batches. First, a copy of the original project is created, it is called
+    Staging Project and is going to act as a playground. The Staging Manager
+    selects some of the requests he consider they belong together and assign the
+    corresponding packages to the Staging Project. This way, the group of
+    packages are going to be tested (built) in one go. Once the Staging Project
+    gets built, the changes can be merged to the original project.
+  </para>
+  <para>
+    The Staging Manager can create as many Staging Projects as he consider and
+    assign different selections of requests to each of them. It is still tedious
+    solving the conflicts that appear between them, but being able to test a lot of
+    packages in parallel is much more efficient than doing the same package by
+    package.
+  </para>
+  <para>
+    Let's make it clearer with a real example. Imagine we are working on the
+    project openSUSE Factory and start working on its Staging Workflow.
+  </para>
+  <para>
+    Many contributors and maintainers really want some improvements to be
+    applied on their packages, so the openSUSE:Factory project receives new
+    requests all the time. Among all of them, there are a few that are related
+    to Gnome packages, so the Staging Manager decides to stage them together in
+    openSUSE:Factory:Staging:A. The Staging Project is an exact copy of the main
+    project openSUSE:Factory.
+  </para>
+  <para>
+    The building process begins and, if something gets broken, the Staging
+    Manager ask the requester to fix it. This can add even more requests to the
+    scene but the goal is always getting a working version of
+    openSUSE:Factory:Staging:A by fixing or even discarding some of the
+    requests. When the building process finish successfully, the requested
+    changes are merged in the source code of openSUSE:Factory and some other
+    batches of requests are staged again and again until we come up with an
+    stable version of openSUSE:Factory ready to be released.
+  </para>
+  <figure>
+   <title>Staging Workflow Schema</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="staging_workflow_schema.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+
   <sect2>
-    <title>Creating a Staging</title>
+    <title>Creating a Staging Workflow</title>
     <para>
-      The creation of a Staging will automatically create two staging projects
+      At the moment, it is possible to create a Staging Workflow for any kind of project
+      unless the project is already one of the Staging Projects.
+    </para>
+    <para>
+      All the Staging Workflow starts in the tab 'Staging' which can be found on
+      the project's page. It will take you to the first step to create a new
+      Staging Workflow or to the dashboard if the Staging Workflow already exists.
+    </para>
+    <para>
+      The creation of a Staging Workflow will automatically create two Staging Projects
       as a subproject of the main project. Before creating, we need to select a
       group of managers, they will be in charge of assigning requests to the
-      staging projects and also excluding requests from the Staging.
+      Staging Projects and also excluding requests from the Staging Workflow.
     </para>
     <figure>
-     <title>Creating a Staging for openSUSE:Factory</title>
+     <title>Creating a Staging Workflow for openSUSE:Factory</title>
      <mediaobject>
       <imageobject>
        <imagedata fileref="staging_workflow_create.png"/>
@@ -40,13 +131,13 @@
     </note>
   </sect2>
   <sect2>
-    <title>Start using it</title>
+    <title>Start Using Staging Workflow</title>
     <para>
-      In this view, we can find all the staging projects with an associated
+      In this view, we can find all the Staging Projects with an associated
       request and their current state.
     </para>
     <figure>
-     <title>Staging Show screen</title>
+     <title>Staging Workflow Show Screen</title>
      <mediaobject>
       <imageobject>
        <imagedata fileref="staging_workflow_show.png"/>
@@ -62,7 +153,7 @@
           <listitem>
             <para>
               <emphasis>Staging Project:</emphasis>
-              Shows the staging project name, its overall state (see legend),
+              Shows the Staging Project name, its overall state (see legend),
               and the overall build progress of the packages within the project.
             </para>
           </listitem>
@@ -103,7 +194,7 @@
           <listitem>
             <para>
               <emphasis>Backlog:</emphasis>
-              List of requests that can be assigned to a staging project.
+              List of requests that can be assigned to a Staging Project.
             </para>
           </listitem>
           <listitem>
@@ -114,8 +205,8 @@
           </listitem>
           <listitem>
             <para>
-              <emphasis>Ignored:</emphasis>
-              List of requests excluded from this staging workflow.
+              <emphasis>Excluded:</emphasis>
+              List of requests excluded from this Staging Workflow.
             </para>
           </listitem>
         </itemizedlist>
@@ -123,12 +214,26 @@
     </itemizedlist>
   </sect2>
   <sect2>
-    <title>Delete a Staging</title>
+    <title>Delete a Staging Workflow</title>
     <para>
-      By clicking on the delete button on the Staging index page, we are able
-      to delete a Staging. By selecting the associated staging projects
-      in the appearing modal window, we are able to delete them as well. If not selected,
-      they will remain as regular subprojects.
+      Next to the title, there is a icon that allows us to delete the Staging Workflow.
+    </para>
+    <figure>
+     <title>Staging Workflow Delete Icon</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_delete_icon.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    <para>
+      By clicking on the delete icon on the Staging Workflow index page, we are able
+      to delete a Staging Workflow.
+    </para>
+    <para>
+      By selecting the associated Staging Projects in the appearing modal
+      window, we are able to delete them as well. If not selected, they will
+      remain as regular subprojects.
     </para>
     <figure>
      <title>Delete a Staging Workflow</title>
@@ -140,14 +245,25 @@
     </figure>
   </sect2>
   <sect2>
-    <title>Configuration</title>
+    <title>Configure a Staging Workflow</title>
     <para>
-      It is possible to create/delete staging projects
-      (openSUSE:Factory:Staging:A, openSUSE:Factory:Staging:B, etc) and change
-      the Managers Group of the Staging.
+      Next to the title, there is a link to the Staging Workflow configuration's page.
     </para>
     <figure>
-     <title>Configuring a Staging</title>
+     <title>Staging Workflow Configure Icon</title>
+     <mediaobject>
+      <imageobject>
+       <imagedata fileref="staging_workflow_configure_icon.png"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    <para>
+      From the configuration page it is possible to delete a Staging Project,
+      create one from scratch or create a copy of an existent one. But also to
+      change the Managers Group of the Staging Workflow.
+    </para>
+    <figure>
+     <title>Configuring a Staging Workflow</title>
      <mediaobject>
       <imageobject>
        <imagedata fileref="staging_workflow_configuration.png"/>
@@ -156,21 +272,21 @@
     </figure>
     <note>
       <para>
-        Changing the Managers Group of a Stanging will automatically unassign
-        the old group and assign the new group to the related staging projects.
+        Changing the Managers Group of a Staging Workflow will automatically unassign
+        the old group and assign the new group to the related Staging Projects.
       </para>
     </note>
     <sect3>
       <title>Create Staging Project from Scratch</title>
       <para>
-        Right after the creation of a Staging, two new staging projects are
+        Right after the creation of a Staging Workflow, two new Staging Projects are
         automatically created and assigned to it: Staging:A and Staging:B. However,
-        it is also possible to create a new staging project from scratch.
+        it is also possible to create a new Staging Project from scratch.
       </para>
       <para>
-        On the Staging dashboard, click on <emphasis>Configure</emphasis> and
-        then on <emphasis>Create Project</emphasis> to add a name for the new
-        staging project.
+        On the Staging Workflow dashboard, click on configure icon next to the title and
+        then on <emphasis>Create Staging Project</emphasis> to add a name for the new
+        Staging Project.
       </para>
       <figure>
        <title>Create a New Staging Project</title>
@@ -182,13 +298,13 @@
       </figure>
     </sect3>
     <sect3>
-      <title>Create Staging Project from Template</title>
+      <title>Create Staging Project from a Template</title>
       <para>
-        It is possible to create a staging from a template. Inside Staging
-        <emphasis>Configure</emphasis> page, simply choose the staging project
-        you want to copy from (the template), click on its Copy icon on the
-        actions column and add a new name. The staging project copy is
-        processing on background, so there might be a delay before it shows up.
+        It is possible to create a Staging Project from a template. Inside Staging Workflow's
+        configuration page, simply choose the Staging Project you want to copy
+        from (the template), click on its Copy icon and add a new name. The
+        Staging Project copy is processed in the background, so there might be a
+        delay before it shows up.
       </para>
       <figure>
        <title>Copy Staging Project from Template</title>
@@ -203,8 +319,8 @@
   <sect2>
     <title>Staging Project</title>
     <para>
-      A staging project contains requests assigned by a Staging Manager. An
-      overview page is provided for a staging project where you can find more
+      A Staging Project contains requests assigned by a Staging Manager. There is
+      an overview page for a Staging Project, where you can find more
       detailed information about the requests, reviews and checks.
     </para>
     <figure>
@@ -243,13 +359,13 @@
       <listitem>
         <para>
           <emphasis>Checks:</emphasis>
-          List of checks of the staging project.
+          List of checks of the Staging Project.
         </para>
       </listitem>
     </itemizedlist>
     <para>
-      All the actions performed on requests that are assigned to the staging
-      project are tracked. They are listed in the 'History' section.
+      All the actions performed on requests that are assigned to the Staging
+      Project are tracked. They are listed in the 'History' section.
     </para>
     <figure>
      <title>History</title>
@@ -259,5 +375,30 @@
        </imageobject>
       </mediaobject>
     </figure>
+  </sect2>
+  <sect2>
+    <title>Working with Requests in Staging Workflow</title>
+    <sect3>
+      <title>Exclude Requests</title>
+      <para>
+        Sometimes it can be useful to exclude a request and don't let it be
+        available in the Backlog. This can prevent the staging project from
+        being assigned with requests we are sure are causing conflicts, have
+        some missing dependencies or have to wait for other request to be
+        accepted.
+      </para>
+      <para>
+        By clicking on the 'Excluded' link on the 'Infos' section, it is possible
+        to exclude requests or bring back already excluded ones.
+      </para>
+      <figure>
+       <title>Exclude Requests</title>
+        <mediaobject>
+         <imageobject>
+          <imagedata fileref="staging_workflow_exclude_requests.png"/>
+         </imageobject>
+        </mediaobject>
+      </figure>
+    </sect3>
   </sect2>
 </sect1>
