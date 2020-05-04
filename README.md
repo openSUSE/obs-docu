@@ -4,11 +4,8 @@ Service (OBS)](https://openbuildservice.org/).
 
 The documentation is currently split into these books:
 
-* The OBS Beginner's Guide
 * The OBS User Guide
 * The OBS Administration Guide
-* The OBS Reference Guide
-* The OBS Best Practices Guide
 
 For more ideas and TODOs, see the Trello board at https://trello.com/b/DxiucSKw/obs-documentation
 
