@@ -12,18 +12,18 @@
     The Build Service is well known for providing an easy way to build and
     distribute binary packages from source code. The packages, grouped together
     in what we call a project, are built every time they are updated. The
-    maintainer of the package can choose among a wide range of operating systems
+    maintainers of the package can choose among a wide range of operating systems
     and hardware architectures to build the packages on. Those continuous
     building processes ensure that the packages are always working for the
     different setups.
   </para>
   <para>
     The maintenance of those packages can be made on a collaborative way via
-    Build Service. As shown in the following diagram, the maintainer can create
-    a package and then she or any other developer can branch it (make a copy of
-    it), do some changes on its code and request those changes to be applied on
-    the original package. After that, the maintainer usually reviews the
-    request, chat with the developer in case it needs some fixes and end up
+    Build Service. As shown in the following diagram, the maintainers can create
+    a package and then they or any other developer can branch it (make a copy of
+    it), can do some changes on its code and can request those changes to be
+    applied on the original package. After that, the maintainers usually review
+    the request, chat with the developer in case it needs some fixes and end up
     accepting the request. Doing so, the new changes to the code become part of
     the package's source code.
   </para>
@@ -39,7 +39,7 @@
     However, the workflow is not always that easy. Apart from managing
     individual packages, Build Service provides many other functionalities and
     it even allows us to release entire distributions. In a very simplistic way,
-    we can say a distribution is just an Build Service project with thousands of
+    we can say a distribution is just a Build Service project with thousands of
     packages inside. Packages that have been selected to be installed together
     as part of the distribution.
   </para>
@@ -47,7 +47,7 @@
     When dealing with such a big project, many people request changes in many
     different packages all the time. They have to be reviewed, adjusted and
     tested (built) before being accepted. As you can imagine, it becomes
-    nonviable to review the packages one by one. Even if the maintainer checks
+    nonviable to review the packages one by one. Even if the maintainers check
     that a package is not broken and merge it, it can break everything else for
     conflicts with other packages. To deal with these situations, Build Service
     provides what we call Staging Workflow.
@@ -55,37 +55,37 @@
   <para>
     The idea behind the Staging Workflow is testing the requests incrementally
     by batches. First, a copy of the original project is created, it is called
-    Staging Project and is going to act as a playground. The Staging Manager
-    selects some of the requests he consider they belong together and assign the
-    corresponding packages to the Staging Project. This way, the group of
+    Staging Project and is going to act as a playground. The Staging Managers
+    select some of the requests they consider to be belonging together and assign the
+    corresponding packages to the Staging Project. This way, the groups of
     packages are going to be tested (built) in one go. Once the Staging Project
     gets built, the changes can be merged to the original project.
   </para>
   <para>
-    The Staging Manager can create as many Staging Projects as he consider and
-    assign different selections of requests to each of them. It is still tedious
+    The Staging Managers can create as many Staging Projects as they require and
+    can assign different selections of requests to each of them. It is still tedious
     solving the conflicts that appear between them, but being able to test a lot of
     packages in parallel is much more efficient than doing the same package by
     package.
   </para>
   <para>
     Let's make it clearer with a real example. Imagine we are working on the
-    project openSUSE Factory and start working on its Staging Workflow.
+    project openSUSE Factory and we start working on its Staging Workflow.
   </para>
   <para>
     Many contributors and maintainers really want some improvements to be
     applied on their packages, so the openSUSE:Factory project receives new
     requests all the time. Among all of them, there are a few that are related
-    to Gnome packages, so the Staging Manager decides to stage them together in
+    to Gnome packages, so the Staging Managers decide to stage them together in
     openSUSE:Factory:Staging:A. The Staging Project is an exact copy of the main
     project openSUSE:Factory.
   </para>
   <para>
     The building process begins and, if something gets broken, the Staging
-    Manager ask the requester to fix it. This can add even more requests to the
+    Managers ask the requestor to fix it. This can add even more requests to the
     scene but the goal is always getting a working version of
     openSUSE:Factory:Staging:A by fixing or even discarding some of the
-    requests. When the building process finish successfully, the requested
+    requests. When the building process finishes successfully, the requested
     changes are merged in the source code of openSUSE:Factory and some other
     batches of requests are staged again and again until we come up with an
     stable version of openSUSE:Factory ready to be released.
