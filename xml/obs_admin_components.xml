@@ -77,6 +77,14 @@
     partition. </para>
   </sect3>
   <sect3>
+   <title>Source Publisher</title>
+   <para> The source publisher processes "sourcepublish" events from the publisher for
+    published binary repositories. It needs to run on the same instance as the source server.
+    It can be used to publish a filesystem structure providing all sources of
+    published binaries. In case of images or containers this also includes the sources
+    of used binary packages.</para>
+  </sect3>
+  <sect3>
    <title>Worker</title>
    <para> The workers register with the repository servers. They receive build
     jobs from the dispatcher. Afterwards they download sources from source

@@ -30,12 +30,12 @@
     </thead>
     <tbody>
      <row>
-      <entry> Repository Server </entry>
-      <entry> obsrepserver.service </entry>
-     </row>
-     <row>
       <entry> Source Server </entry>
       <entry> obssrcserver.service </entry>
+     </row>
+     <row>
+      <entry> Repository Server </entry>
+      <entry> obsrepserver.service </entry>
      </row>
      <row>
       <entry> Scheduler </entry>
@@ -50,6 +50,10 @@
       <entry> obspublisher.service </entry>
      </row>
      <row>
+      <entry> Source Publisher </entry>
+      <entry> obssourcepublish.service </entry>
+     </row>
+     <row>
       <entry> Worker </entry>
       <entry> obsworker.service </entry>
      </row>
@@ -58,7 +62,7 @@
       <entry> obsservice.service </entry>
      </row>
      <row>
-      <entry> Download On Demand Updates </entry>
+      <entry> Download On Demand Repository Meta Data Updates </entry>
       <entry> obsdodup.service </entry>
      </row>
      <row>
