@@ -213,6 +213,10 @@ Keep: debbuild</screen>
            <para>Configure usage of ccache for build of packages mentioned by VALUE. Ccache package will be automatically
                installed and configured. The directory <filename>/.ccache/</filename> will be configured as cache dir.
                To configure ccache, the file <filename>/.ccache/ccache.conf</filename> can be modified as part of the build process by the <envar>$BUILD_USER</envar> environment variable. </para>
+
+           <para>If ccache is enabled, but there is no archive present (for example, in case of newly branched packages, wiped binaries etc...).
+               The archive of the, same-named package from repository paths configured in project's meta, will be used.
+           For this archive the architecture will be taken into consideration. All mentioned paths will be tried in top-to-bottom approach.</para>
        </listitem>
       </varlistentry>
      </variablelist>
