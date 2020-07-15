@@ -37,6 +37,7 @@
  <xi:include href="obs_ag_overview_filesystem.xml"/>
  <xi:include href="obs_ag_administration.xml"/>
  <xi:include href="obs_ag_troubleshooting.xml"/>
+ <xi:include href="obs_best_practice_local_setup.xml"/>
  <!-- Appendices -->
  <xi:include href="legal.xml"/>
 </book>
