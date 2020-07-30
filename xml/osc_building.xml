@@ -225,11 +225,11 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
 
 
  <sect1>
-  <title>Kiwi Appliance Specials (&kiwi;)</title>
+  <title>OBS Extensions for (&kiwi;) Appliance Builds</title>
    <!--
     1. Create a repository in a project
        - enable all architectures
-       - no other repo needed as defined in KIWI's XML config file
+       - path elements are optional if they are defined in KIWI's XML config file
     2. Create project config, setting repo to
        - Type: kiwi
        - Repotype: none
@@ -238,8 +238,9 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
     
     Things to watch for:
     * config.xml needs to have a .kiwi suffix
-    * Repos needs to be specified as obs://$PROJECT/$REPO
-    * Content of root directory as root.tar.bz2
+    * Repos needs to be specified as obs://$PROJECT/$REPO or using http:// Urls which can be mapped
+      by OBS.
+    * Content of root directory as root.tar.bz2 or root.obscpio
     * If you get the error "have choice", select a package and add it to
       the package list
     * 
@@ -265,7 +266,8 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   </itemizedlist>
 
    <para>
-     OBS extends kiwi functionality with following options:
+     OBS extends kiwi functionality with following options. These covers cases which would need explicit 
+     command line commands, so they are covered via the tags to have them in a reproducible way.
    </para>
   
   <itemizedlist>
@@ -307,7 +309,77 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    <listitem>
      <para>A predefined milestone <command>OBS-Milestone: milestone</command> 
      </para>
-     <para>This can predefine a milestone name (eg Beta1) which will be used in cases of a release operation. The candidate will receive it's final tag then.</command> 
+     <para>
+      This defines a milestone name (for example, <literal>Beta1</literal>)
+      which will be applied during release operations. The candidate will
+      receive its final tag then.
+     </para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+
+ <sect1>
+  <title>OBS Extensions for Dockerfile based builds</title>
+   <!--
+    1. Create a repository in a project
+       - enable all architectures
+       - path elements are optional if defined via zypper ar commands
+    2. Create project config, setting repo to
+       - Type: docker
+       - BuildEngine: podman (optional)
+       - Repotype: none
+    3. Create a package
+    4. Submit Dockefile
+    
+   -->
+   <para>
+	OBS needs to parse RUN commands to detect build dependencies (repositories and packages).
+       Currently calls from zypper, apt-get, yum and dnf are supported.
+       Additional downloads need to be covered by source services. This ensures reproducible
+       builds and a safe build environment without network access.
+   </para>
+
+   <para>
+     OBS extends Docker functionality with the below tags.
+     Instead of these options, you would otherwise need explicit command-line commands.
+     However, to make it possible to create reproducible builds, use the OBS tags.
+   </para>
+  
+  <itemizedlist>
+   <listitem>
+      <para>A <command>#!UseOBSRepositories</command> tag will use the expanded list of repositories as defined via path elements in the project meta.
+           This is useful when moving descriptions between projects, for example for development and release builds. </para>
+   </listitem>
+   <listitem>
+    <para>
+     The tag <command>#!UnorderedRepos</command> will disable the
+     repository prioritization for build dependencies.
+     This behavior is similar to plain Docker tooling.
+     It introduces the risk that with each build another repository is
+     prioritized or that dependency problems of newer package versions
+     are hidden.
+ </para>
+   </listitem>
+   <listitem>
+     <para><command>#!BuildTag: TAG</command> to define one or multiple tags to be used for the container.
+     </para>
+   </listitem>
+   <listitem>
+     <para><command>#!BuildVersion: VERSION</command> Report back a defined VERSION.
+     </para>
+   </listitem>
+   <listitem>
+     <para>
+      <command>#!Milestone: MILESTONE</command>
+      This defines a milestone name (for example, <literal>Beta1</literal>)
+      which will be applied during release operations. The candidate will
+      receive its final tag then.
+     </para>
+   </listitem>
+   <listitem>
+     <para>
+      <command>#!NoSquash</command> disables the squashing of all layers created
+      during the build to a single layer. Without this, every RUN line is an additional layer.
      </para>
    </listitem>
   </itemizedlist>
