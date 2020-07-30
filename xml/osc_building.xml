@@ -304,6 +304,12 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   	   in obs://$PROJECT/$REPOSITORY style.
      </para>
    </listitem>
+   <listitem>
+     <para>A predefined milestone <command>OBS-Milestone: milestone</command> 
+     </para>
+     <para>This can predefine a milestone name (eg Beta1) which will be used in cases of a release operation. The candidate will receive it's final tag then.</command> 
+     </para>
+   </listitem>
   </itemizedlist>
  </sect1>
 
