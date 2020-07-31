@@ -147,11 +147,6 @@
   <para> Each service can be used in a mode defining when it should run
    and how to use the result. This can be done per package or globally for an
    entire project. </para>
-<!--
-   toms 2017-09-01:
-   This is the table for the variablelist below. It's a good idea, but
-   this table raises more question than it solves.
-   Commenting for the time being.
   <table>
    <title>Service Modes</title>
    <tgroup cols="4">
@@ -162,47 +157,42 @@
     <thead>
      <row>
       <entry>Mode</entry>
-      <entry>Runs locally</entry>
       <entry>Runs remotely</entry>
+      <entry>Runs locally</entry>
       <entry>Added File Handling</entry>
      </row>
     </thead>
     <tbody>
      <row>
       <entry>Default</entry>
-      <entry>Before each build</entry>
       <entry>After each commit</entry>
-      <entry>Generated file, prefixed with <filename>_service:</filename></entry>
+      <entry>Before local build</entry>
+      <entry>Generated files are prefixed with <filename>_service:</filename></entry>
      </row>
      <row>
       <entry><literal>trylocal</literal></entry>
-      <entry>Before each build</entry>
-      <entry>After each commit<remark>toms 2017-09-01: True?</remark>
-      </entry>
-      <entry>Committed as standard files but not named with
-       a <filename>_service:</filename> prefix</entry>
+      <entry>Yes</entry>
+      <entry>Yes</entry>
+      <entry>Changes are merged into commit</entry>
      </row>
      <row>
       <entry><literal>localonly</literal></entry>
-      <entry>Before each build</entry>
-      <entry>Never</entry>
-      <entry>Committed as standard files but not named with
-       a <filename>_service:</filename> prefix</entry>
+      <entry>No</entry>
+      <entry>Yes</entry>
+      <entry>Changes are merged into commit</entry>
      </row>
      <row>
       <entry><literal>serveronly</literal></entry>
-      <entry>Never</entry>
-      <entry>Before each build</entry>
-      <entry>Generated file, prefixed with <filename>_service:</filename><footnote>
-       <para>
+      <entry>Yes</entry>
+      <entry>No</entry>
+      <entry>Generated files are prefixed with <filename>_service:</filename>
         This can be useful, when the service is not available or can not
         work on developer workstations.
-       </para>
-      </footnote><remark>toms 2017-09-01: ???</remark></entry>
+      </entry>
      </row>
      <row>
       <entry><literal>buildtime</literal></entry>
-      <entry>Before each build<footnote xml:id="fn.obs.sserv.mode.buildtime">
+      <entry>During each build before calling the build tool (eg rpm-build)<footnote xml:id="fn.obs.sserv.mode.buildtime">
        <para>
         A side effect is that the service package is becoming a build
         dependency and must be available.
@@ -212,15 +202,20 @@
       <entry></entry>
      </row>
      <row>
+      <entry><literal>manual</literal></entry>
+      <entry>No</entry>
+      <entry>Only via explicit CLI call</entry>
+      <entry>Exists since OBS 2.11</entry>
+     </row>
+     <row>
       <entry><literal>disabled</literal></entry>
-      <entry>Never</entry>
-      <entry>Never</entry>
-      <entry><remark>toms 2017-09-01: </remark></entry>
+      <entry>No</entry>
+      <entry>Only via explicit CLI call</entry>
+      <entry>Exists since OBS 2.11</entry>
      </row>
     </tbody>
    </tgroup>
   </table>
--->
   <variablelist>
    <varlistentry>
     <term>Default Mode</term>
@@ -284,15 +279,19 @@
     </listitem>
    </varlistentry>
    <varlistentry>
+    <term><literal>manual</literal> Mode</term>
     <term><literal>disabled</literal> Mode</term>
     <listitem>
      <para>
-      The disabled mode is neither running the service locally nor on the
-      server side. It can be used to temporarily disable the service but keeping
+      The manual mode is neither running the service locally nor on the
+      server side by default. It can be used to temporarily disable the service but keeping
       the definition as part of the service definition. Or it can be used to
       define the way how to generate the sources and doing so by manually calling
-      <command>osc service runall</command> The result will
-      get committed as standard files again.
+      <command>osc service rundisabled</command>.
+      The result will get committed as standard files again.
+      NOTE: it did only exist as "disabled" before OBS 2.11, but "manual" is the better
+            matching alias name for its usage. The osc client may do have different
+            behaviour in future between manual and disabled.
      </para>
     </listitem>
    </varlistentry>
