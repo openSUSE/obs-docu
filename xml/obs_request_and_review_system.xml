@@ -77,6 +77,13 @@
      default when submitting from a default user home branch project. </para>
    </sect3>
    <sect3>
+    <title><literal>release</literal></title>
+    <para> Is used to release a finished build. Sources and binaries are copied
+     without a rebuild (The target project should have build disabled). A release 
+     target needs to be defined with 
+     <command>trigger="manual"</command>.</para>
+   </sect3>
+   <sect3>
     <title><literal>delete</literal></title>
     <para> A delete action can request removal of a project or package
      instance. </para>
@@ -101,25 +108,22 @@
    <sect3>
     <title><literal>maintenance_incident</literal></title>
     <para> Official request to open a maintenance incident for official support
-     products. This create by developers who want to start an official
-     maintenance process. Find detail in the maintenance chapter about this. If
-     accepted, a new maintenance incident project is created and package
-     sources listed are copied there. All sources of all actions in one request
-     will be merged into the same maintenance incident. </para>
+     products. These requests are created by developers who want to start an official
+     maintenance process. Details are described in the maintenance chapter. A new
+     maintenance incident project is created and package sources get copied there
+     when accepting it. All sources of all actions in one request
+     will be merged into the same maintenance incident project. </para>
    </sect3>
    <sect3>
     <title><literal>maintenance_release</literal></title>
-    <para> Is used to release a ready maintenance update. Unlike
-     maintenance_incident or submit, sources and binaries are copied without a
-     rebuild. Details can be found in maintenance chapter. </para>
+    <para> Is used to release a maintenance update. Sources and binaries are
+     copied without a rebuild. &obs; also creates a unique update identifier.
+     Details can be found in the maintenance chapter. </para>
    </sect3>
    <sect3>
     <title><literal>group</literal></title>
-    <remark>
-     FIXME: Are groups supported not yet or not anymore? - sknorr, 2017-09-05
-    </remark>
     <para> Deprecated. Was never in a released OBS version. It is not allowed
-     to be used anymore. </para>
+     to be used anymore.</para>
    </sect3>
   </sect2>
   <sect2>
