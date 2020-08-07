@@ -35,6 +35,7 @@
  <xi:include href="obs_preface.xml"/>
  <xi:include href="obs_ag_installation_and_configuration.xml"/>
  <xi:include href="obs_ag_overview_filesystem.xml"/>
+ <xi:include href="obs_ag_security_concepts.xml"/>
  <xi:include href="obs_ag_administration.xml"/>
  <xi:include href="obs_ag_troubleshooting.xml"/>
  <xi:include href="obs_best_practice_local_setup.xml"/>
