@@ -1,0 +1,140 @@
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
+ xml:id="obs.cha.security_concepts">
+ <title>Security Concepts</title>
+ <info/>
+
+ <sect1 xml:id="network">
+  <title>General Paradigma</title>
+  <para>The general paradigm of &obs; is to host all content on its own. Every part 
+        required to rebuild a package is hosted in &obs; to guarantee reproducibility.
+        This includes the ability to rebuild the build environement.
+        However, optional services to integrate remote resources exist as well. These resources
+        are either mirrored and stored in revision control system or just cached.
+        </para>
+  <sect2 xml:id="network_setup">
+   <title>Frontend</title>
+   <para>The API and web interface frontends is the only part which must be accessible from
+         public network. A SSL certificate is highly recommended.</para>
+   <sect3 xml:id="network_access">
+    <title>Access to Mirror Servers</title>
+    <para>The following services require access to stage servers. These servers
+          can be used to publish content without the need to make &obs; server parts
+          public available.</para>
+    <itemizedlist>
+     <listitem>
+      <para>The publisher is used to publish any build results to the stage servers. It
+            needs access for rsync service to the servers.
+            </para>
+     </listitem>
+     <listitem>
+      <para>The source publisher can be used similar to publish sources belonging
+            to published build results (optional service).
+            </para>
+     </listitem>
+    </itemizedlist>
+   </sect3>
+   <sect3 xml:id="public_network_access">
+    <title>Access to the Public Network</title>
+    <para>The following services may require access to the public network.</para>
+    <itemizedlist>
+     <listitem>
+      <para>The srcserver when using the interconnect functionality to use content from
+            remote &obs; instances.
+            </para>
+     </listitem>
+     <listitem>
+      <para>obsdodup when using external repositories (optional service). 
+            The obssrcserver would need access then as well for downloading content.
+            </para>
+     </listitem>
+     <listitem>
+      <para>obssourceservice when supporting automatic source procession (optional service)
+            from remote. 
+            This service may be used to download content (eg. git repositories) as part
+            of the sources.
+            </para>
+     </listitem>
+     <listitem>
+      <para>obsclouduploadworker when publishing to public cloud instances is wanted.
+            </para>
+     </listitem>
+    </itemizedlist>
+   </sect3>
+   <sect3 xml:id="worker_network">
+    <title>Worker network</title>
+    <para>It is recommended to run the &obs; workers in an isolated network. This is
+          an additional security mechanism in case of a security breach on a worker.
+          This network needs access to the source and repository servers of the &obs;
+          backend, but nowhere else.</para>
+   </sect3>
+   <sect3 xml:id="signd_network">
+    <title>Signer network</title>
+    <para>It is recommended to run the signd on an isolated host. The signer services
+          need to stay on the &obs; backend servers, they are just used for scheduling
+          sign jobs. The signd is the critical instance which hosts the single instance 
+          signature key. All further keys which belong to any project are created
+          by the signd, crypted with the instance key and delivered to the backend
+          servers. That way the signd instance is stateless after initial setup 
+          and it is enough to backup the backend servers.
+          Any sign job sends the encrypted private key to the signd server which is decrypting
+          it for signing the content. Access to the signd server must be limited to &obs; 
+          backend server components (source server and publisher).</para>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="build_env">
+   <title>Build Environment</title>
+   <para>The build environment is created by obsworker instances via the build script.
+         Inside the build instances unverified and potentional harmful code is executed.
+         Given that a user can run also any provided kernel the isolation must happen
+         on VM layer. The only supported VM types, which are considered as secure are
+         KVM and XEN VMs. The VMs prohibit any network access from the running instances.
+         The build script is always creating a new file system, copies in all required
+         data and executes the VM.</para>
+   <para>The build results get extracted directly from the
+         block device. This is done to avoid mounting it which may can be used to
+         breach the host kernel in the file system code by crafting the used
+         filesystem during build.
+         </para>
+   <para>Every build also stores the used binaries inside of the <filename>_buildenv</filename> file. This
+         can be used to re-create the build environemnt later, even when newer
+         updates got release meanwhile. This requires however a maintenance setup
+         to avoid that former releases get removed.
+         </para>
+   <para>The build tools (like rpmbuild) are runing usually as non-root user, but 
+         this is not a security instrument. It is only a quality mechanic to ensure that 
+         source packages are rebuildable without root permissions.
+         </para>
+  </sect2>
+  <sect2 xml:id="source_revision_system">
+   <title>Source Revision System</title>
+   <para>The source revision storage system is part of &obs;. The identification of sources
+         still happens using MD5 sums for historic reasons. MD5 is considered to be still
+         good enough for identifing a source, but it is known to be attackable. Recent
+         versions of the &osc; command line tooling is sending therefore also a SHA256 sum
+         in addition which is used to detect collisions by the source server.
+         </para>
+   <para>Sources can reference other package sources via <filename>_link</filename> files. These can be pinned
+         to a revision or always using the latest one. That way underling changes
+         get merged automatically. This is useful for shared development and automated
+         builds, but it should be avoided for base projects.
+         </para>
+  </sect2>
+  <sect2 xml:id="permission_handling">
+   <title>Permission Handling</title>
+   <para>Authorization for write operations is done via the maintainer role on package
+         or project level. On project level the projects are organized in namespaces
+         which are defined via collon's inside of the project name. A maintainer role
+         on a higher namespace grants the permission to claim maintainer role on any 
+         deeper project. Official projects should therefore be organized under own
+         top level namespaces (eg. openSUSE: namespace in our reference instance).
+   </para>
+  </sect2>
+ </sect1>
+</chapter>
