@@ -329,6 +329,18 @@
   <glossterm>Diff</glossterm>
   <glosssee otherterm="obs.glos.patch"/>
  </glossentry>
+ <glossentry xml:id="obs.glos.disturl">
+  <glossterm>DISTURL</glossterm>
+  <glossdef>
+   <para>
+    The DISTURL is a unique identifier of a source and it's build setup. It is written
+    usually written inside of the build result to be able to identify the origin.
+    A DISTURL is structured as <command>obs://OBS_NAME/PROJECT/REPOSITORY/REVISION-PACKAGE</command>.
+    It can be shown for example via
+    <command>rpm -q --qf '%{DISTURL}\n' kernel-default</command>
+   </para>
+  </glossdef>
+ </glossentry>
  <!-- ############## E ############## -->
  <glossentry xml:id="obs.glos.eula">
   <glossterm>EULA</glossterm>

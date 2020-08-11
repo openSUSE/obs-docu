@@ -12,6 +12,7 @@
  <xi:include href="obs_ag_tools.xml"/>
  <xi:include href="obs_ag_build_targets.xml"/>
  <xi:include href="obs_ag_source_service.xml"/>
+ <xi:include href="obs_ag_source_publish.xml"/>
  <xi:include href="obs_ag_dispatch_priority.xml"/>
  <xi:include href="obs_ag_publish_hooks.xml"/>
  <xi:include href="obs_ag_unpublish_hooks.xml"/>
