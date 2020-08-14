@@ -11,7 +11,7 @@
  <info/>
 
  <sect1 xml:id="network">
-  <title>General Paradigma</title>
+  <title>General Paradigm</title>
   <para>The general paradigm of &obs; is to host all content on its own. Every part 
         required to rebuild a package is hosted in &obs; to guarantee reproducibility.
         This includes the ability to rebuild the build environement.
@@ -21,7 +21,7 @@
   <sect2 xml:id="network_setup">
    <title>Frontend</title>
    <para>The API and web interface frontends is the only part which must be accessible from
-         public network. A SSL certificate is highly recommended.</para>
+	   public network. A SSL/TLS certificate is highly recommended.</para>
    <sect3 xml:id="network_access">
     <title>Access to Mirror Servers</title>
     <para>The following services require access to stage servers. These servers
@@ -98,16 +98,16 @@
          The build script is always creating a new file system, copies in all required
          data and executes the VM.</para>
    <para>The build results get extracted directly from the
-         block device. This is done to avoid mounting it which may can be used to
+         block device. This is done to avoid mounting it which could be used to
          breach the host kernel in the file system code by crafting the used
          filesystem during build.
          </para>
    <para>Every build also stores the used binaries inside of the <filename>_buildenv</filename> file. This
-         can be used to re-create the build environemnt later, even when newer
-         updates got release meanwhile. This requires however a maintenance setup
+         can be used to re-create the build environment later, even when newer
+         updates got released meanwhile. This requires however a maintenance setup
          to avoid that former releases get removed.
          </para>
-   <para>The build tools (like rpmbuild) are runing usually as non-root user, but 
+   <para>The build tools (like rpmbuild) are running usually as non-root user, but 
          this is not a security instrument. It is only a quality mechanic to ensure that 
          source packages are rebuildable without root permissions.
          </para>
@@ -116,12 +116,12 @@
    <title>Source Revision System</title>
    <para>The source revision storage system is part of &obs;. The identification of sources
          still happens using MD5 sums for historic reasons. MD5 is considered to be still
-         good enough for identifing a source, but it is known to be attackable. Recent
+         good enough for identifying a source, but it is known to be attackable. Recent
          versions of the &osc; command line tooling is sending therefore also a SHA256 sum
          in addition which is used to detect collisions by the source server.
          </para>
    <para>Sources can reference other package sources via <filename>_link</filename> files. These can be pinned
-         to a revision or always using the latest one. That way underling changes
+         to a revision or to always using the latest one. That way underlying changes
          get merged automatically. This is useful for shared development and automated
          builds, but it should be avoided for base projects.
          </para>
@@ -130,9 +130,9 @@
    <title>Permission Handling</title>
    <para>Authorization for write operations is done via the maintainer role on package
          or project level. On project level the projects are organized in namespaces
-         which are defined via collon's inside of the project name. A maintainer role
+         which are defined via colons inside the project name. A maintainer role
          on a higher namespace grants the permission to claim maintainer role on any 
-         deeper project. Official projects should therefore be organized under own
+         deeper project. Official projects should therefore be organized under their  own
          top level namespaces (eg. openSUSE: namespace in our reference instance).
    </para>
   </sect2>
