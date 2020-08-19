@@ -338,6 +338,8 @@
     A DISTURL is structured as <command>obs://OBS_NAME/PROJECT/REPOSITORY/REVISION-PACKAGE</command>.
     It can be shown for example via
     <command>rpm -q --qf '%{DISTURL}\n' kernel-default</command>
+    <command>podman inspect IMAGE_ID | grep org.openbuildservice.disturl</command>
+    <command>skopeo inspect docker://.... | grep org.openbuildservice.disturl</command>
    </para>
   </glossdef>
  </glossentry>
