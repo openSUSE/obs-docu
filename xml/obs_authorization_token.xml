@@ -50,11 +50,11 @@
    <screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
   </sect2>
   <sect2>
-   <title>Executing a Source Service</title>
-   <para> A token can be used to execute a source service. The source service
-    has to be setup for the package first, check the source service chapter for
-    this. A typical example is to update sources of a package from git. A
-    source service for that can be setup with:</para>
+   <title>Executing an action</title>
+   <para> A token can be used to execute specific operations. This can be a 
+	   source service trigger, a rebuild call or release action atm. The setup needs
+	   to be prepared for the action. For example a source service for that can
+	   be setup with:</para>
    <screen><command>osc</command> add git://....</screen>
    <para> The best way to create a token is bind it to a specific package. The
     advantage is that the operation is limited to that package, so less bad
@@ -84,6 +84,16 @@
    <screen><command>osc</command> token --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
    <screen><command>osc</command> token --trigger &lt;TOKEN&gt;</screen>
    <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice</screen>
+
+   <para>A token to rebuild a package can be created and trigger by </para>
+   <screen><command>osc</command> token --opertion rebuild --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <screen><command>osc</command> token --operation rebuild --trigger &lt;TOKEN&gt;</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/rebuild</screen>
+
+   <para>A token to release a package can be created and trigger by </para>
+   <screen><command>osc</command> token --opertion release --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <screen><command>osc</command> token --operation release --trigger &lt;TOKEN&gt;</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/release</screen>
   </sect2>
   <!-- <sect2>
    <title>Changing Request Review Status</title>
