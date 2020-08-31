@@ -50,9 +50,9 @@
    <screen><command>osc token --delete &lt;TOKEN&gt;</command></screen>
   </sect2>
   <sect2>
-   <title>Executing an action</title>
+   <title>Executing an Action</title>
    <para> A token can be used to execute specific operations. This can be a 
-	   source service trigger, a rebuild call or release action atm. The setup needs
+	   source service trigger, a rebuild call, or release action. The setup needs
 	   to be prepared for the action. For example a source service for that can
 	   be setup with:</para>
    <screen><command>osc</command> add git://....</screen>
