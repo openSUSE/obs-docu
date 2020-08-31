@@ -353,7 +353,7 @@
     </listitem>
     <listitem>
      <para>
-      container images built on &obs;:
+      Container images built on &obs;:
       <command>skopeo inspect docker://URL | grep org.openbuildservice.disturl</command>
      </para>
     </listitem>
