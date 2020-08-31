@@ -347,7 +347,7 @@
     </listitem>
     <listitem>
      <para>
-      locally built container images:
+      Locally built container images:
       <command>podman inspect IMAGE_ID | grep org.openbuildservice.disturl</command>
      </para>
     </listitem>
