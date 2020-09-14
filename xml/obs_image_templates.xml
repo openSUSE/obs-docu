@@ -18,7 +18,7 @@
  <sect1>
   <title>Structure of Image Templates</title>
   <para> As mentioned image templates are essentially pre-configured <link
-    xlink:href="http://opensuse.github.io/kiwi/">KIWI</link> image
+    xlink:href="https://github.com/OSInside/kiwi">KIWI</link> image
    configurations. As any &kiwi; configuration they usually contain a tarball
    containing image sources, a config.sh file and the &kiwi; configuration XML
    file. </para>
