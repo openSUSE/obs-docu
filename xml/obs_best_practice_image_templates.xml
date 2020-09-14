@@ -75,8 +75,8 @@
   &image_template_icon_paragraph;
   <para> For a full list of image descriptions and general information about
    building images with KIWI, see the <link
-    xlink:href="http://opensuse.github.io/kiwi/"> &kiwi; project page</link> and
-   the <link xlink:href="https://doc.opensuse.org/projects/kiwi/doc/">KIWI
+    xlink:href="https://github.com/OSInside/kiwi"> &kiwi; project page</link> and
+   the <link xlink:href="https://osinside.github.io/kiwi/index.html">KIWI
     cookbook</link>. <remark> Refer to new (Python) &kiwi; page instead? -
     sknorr, 2017-07-14 </remark>
   </para>

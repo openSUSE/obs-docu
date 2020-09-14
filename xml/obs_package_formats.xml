@@ -176,7 +176,7 @@
  <sect1 xml:id="_kiwi_appliance">
   <title>&kiwi; Appliance</title>
   <para>
-   <link xlink:href="https://suse.github.io/kiwi/">KIWI</link> is an OS
+   <link xlink:href="https://github.com/OSInside/kiwi">KIWI</link> is an OS
    appliance builder that builds images for various formats, starting from
    hardware images, virtualization systems like QEMU/KVM, Xen and VMware,
    and more. It supports a wide range of architectures, which are x86, x86_64,
@@ -190,7 +190,7 @@
      <para>
       Contains the image configuration in XML format. Full XML schema
       documentation can be found <link
-      xlink:href="https://suse.github.io/kiwi/development/schema.html"/>.
+      xlink:href="https://osinside.github.io/kiwi/image_description.html"/>.
      </para>
     </listitem>
    </varlistentry>
@@ -220,7 +220,7 @@
    </para>
   </note>
   <para> For more information about building images with KIWI, see the <link
-   xlink:href="https://suse.github.io/kiwi/building.html"/>.
+   xlink:href="https://osinside.github.io/kiwi/building_images.html"/>.
   </para>
  </sect1>
 
