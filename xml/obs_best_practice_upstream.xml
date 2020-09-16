@@ -198,7 +198,7 @@
        <code>bcolor</code>
       </entry>
       <entry>
-       Background color in hexa (for example <code>bcolor=004</code>) to make
+       Background color in hex (for example <code>bcolor=004</code>) to make
        the download page better match your project page
       </entry>
      </row>
@@ -207,7 +207,7 @@
        <code>fcolor</code>
       </entry>
       <entry>
-       Text color in hexa (for example <code>fcolor=fff</code>) to make the
+       Text color in hex (for example <code>fcolor=fff</code>) to make the
        download page better match your project page
       </entry>
      </row>
@@ -216,7 +216,7 @@
        <code>acolor</code>
       </entry>
       <entry>
-       Link color in hexa (for example <code>acolor=ff0</code>) to make the
+       Link color in hex (for example <code>acolor=ff0</code>) to make the
        download page better match your project page
       </entry>
      </row>
@@ -225,7 +225,7 @@
        <code>hcolor</code>
       </entry>
       <entry>
-       Highlight color in hexa (for example <code>hcolor=0ff</code>) to make
+       Highlight color in hex (for example <code>hcolor=0ff</code>) to make
        the download page better match your project page
       </entry>
      </row>
@@ -256,7 +256,7 @@
    download page&lt;/a&gt;
 &lt;/object&gt;</screen>
    <para>
-    If you are using php on your server, you can make it easier by using
+    If you are using PHP on your server, you can make it easier by using
     following code:
    </para>
 <screen>

@@ -48,7 +48,7 @@
    <para>
     &suse; distributions also provide build time checks to test the
     installed files inside of the build root. It is to be used for test cases
-    which shall run on all packages which are build inside of a distribution.
+    which shall run on all packages which are built inside of a distribution.
     This hook can be used by installing a file to /usr/lib/rpm/brp-suse.d/
     directory. These scripts also have the power to modify installed files
     if needed. </para>

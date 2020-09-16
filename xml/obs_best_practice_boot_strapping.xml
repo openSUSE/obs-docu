@@ -88,18 +88,18 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
    <sect3>
     <title>Bootstrapping</title>
     <para> To initiate the build process, we will copy the rpm binary from the
-     source OBS of the source project. These binary rpms, from which we will
+     source OBS of the source project. These binary RPMs, from which we will
      remove any reference to release and version, will be used to trigger the
-     first build. The OBS appliance will recompile all the rpms until all rpms
+     first build. The OBS appliance will recompile all the RPMs until all RPMs
      in the project have been compiled only with packages compiled from their
      source code. Some base packages (e.g. tool chains) will be compiled
-     several times during that process. Alternative You can build a first time
-     against a target which is similar to the base that you need to boot strap
+     several times during that process. Alternatively, you can at first build
+     against a target which is similar to the base that you need to bootstrap
      in lieu of building against your own base and change the build reference
      to your bootstrap base once that the first build has been successful.
      Remember that you can also build against remote baseline. Double check
      that the preliminary step have been executed correctly. You must have
-     already : copied a Linux base distribution in an OBS project defined a
+     already: copied a Linux base distribution in an OBS project defined a
      build target for that base project. </para>
     <para> If you have not defined a build target, the necessary directory
      structure will not exist. This is a mandatory step of preparation. Stop
@@ -114,8 +114,8 @@ copypac -t http://api.target.obs.domain $PRJ $i $PRJ ;done
     <para> This directory structure should already exist. If not, there is a
      problem (note that /obs is link and the target may vary with your
      implementation). Now create the “:full” directory. $ mkdir :full Copy over
-     all the binary rpms of the project you are trying to build from scratch.
-     These rpms should have the release and version numbers stripped from them.
+     all the binary RPMs of the project you are trying to build from scratch.
+     These RPMs should have the release and version numbers stripped from them.
      e.g. alsa-utils-1.0.22-2.7.i586.rpm -- should be – alsa-utils.rpm Note :
      If the original project has a :full directory you can copy from there to
      avoid the issue of stripping version and release numbers. * Add binaries

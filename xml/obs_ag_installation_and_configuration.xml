@@ -302,7 +302,7 @@ rcobsclouduploadserver start
        </orderedlist>
      <para>
        At last you have to register the cloud uploader service in
-       <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, eg. by adding
+       <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, for example, by adding
        following line:
      </para>
        <screen>

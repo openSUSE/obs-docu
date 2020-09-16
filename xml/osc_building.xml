@@ -24,7 +24,7 @@
  <sect1 xml:id="sec.obs.building.generic">
   <title>Generic build options</title>
   <para>
-     Independend of the build format you need at least one source file as build description.
+     Independent of the build format you need at least one source file as build description.
      The file name and structure is format specific. You can find some supported formats described below.
      To build your build format, you need:
   </para>
@@ -88,7 +88,7 @@
     </para>
     <screen>&prompt.user;<command>osc</command> build</screen>
     <para>
-     However, you may also manualy specify the build target. For example &opensuse; Tumbleweed for
+     However, you may also manually specify the build target. For example &opensuse; Tumbleweed for
      x86_64, you want to create the RPM package:
     </para>
     <screen>&prompt.user;<command>osc</command> build openSUSE_Tumbleweed x86_64</screen>
@@ -145,15 +145,15 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   <title>Advanced Build Environment Handling</title>
   <para>
 	  The default build environment for local builds is usually chroot. While this is simplest environment
-	  and is therefore easy and fast to handle, it has also a number of shortcummings. For one it is
-	  not safe against attacks, so you must not build sources or using build dependendencies from a resource
+	  and is therefore easy and fast to handle, it has also a number of shortcomings. For one it is
+	  not safe against attacks, so you must not build sources or using build dependencies from a resource
 	  which you do not trust. Furthermore the environment is not fully isolated and runs not the kernel the
 	  target distribution runs. This means esp image builds and kernel/hardware specific builds may fail or
 	  won't produce the same result. The server side is usually set to inside of KVM therefore to avoid this.
   </para>
   <itemizedlist>
    <listitem>
-     <para>You can build also local in KVM (if your hardware supports it) by running
+     <para>You can also build locally in KVM (if your hardware supports it) by running
       </para>
       <screen>&prompt.user;<command>osc</command> build --vm-type=kvm --vm-memory=<replaceable>MB</replaceable></screen>
    </listitem>
@@ -170,7 +170,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
       <screen>&prompt.user;<command>osc</command> shell --vm-type=<replaceable>VM</replaceable></screen>
    </listitem>
    <listitem>
-     <para>To remove the build environemnt, use:
+     <para>To remove the build environment, use:
            </para>
       <screen>&prompt.user;<command>osc</command> wipe --vm-type=<replaceable>VM</replaceable></screen>
    </listitem>
@@ -246,14 +246,14 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
     * 
    -->
    <para>
-	&kiwi; appliance builds create images which can be used for direct consument. Note: builds in non-VM 
-	environments do fail often due to the bootloader setup. Use osc build --vm-type=kvm for local building.
-	OBS is evaluating kiwi builds at least two times. One time for the build host dependencies and another
-	time for the target distribution used inside of the image. For container builds a third evaluation
-	happens to find the base container.
+    &kiwi; appliance builds create images which can be used for direct consumption. Note: builds in non-VM
+    environments do fail often due to the bootloader setup. Use <command>osc build --vm-type=kvm</command> for local building.
+    OBS is evaluating kiwi builds at least two times. One time for the build host dependencies and another
+    time for the target distribution used inside of the image. For container builds a third evaluation
+    happens to find the base container.
    </para>
    <para>
-     kiwi builds inside of OBS need to fullfil following requirements:
+     kiwi builds inside of OBS need to fulfil following requirements:
    </para>
   <itemizedlist>
    <listitem>
@@ -261,7 +261,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
    </listitem>
    <listitem>
      <para>repositories which are used must use either a URL which starts with the OBS download prefix or they must
-  	   be written in obs://PROJECT/REPOSITORY syntax. </para>
+      be written in obs://PROJECT/REPOSITORY syntax. </para>
    </listitem>
   </itemizedlist>
 
@@ -272,7 +272,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   
   <itemizedlist>
    <listitem>
-     <para>A repository defined as obsrepositories:/ will used the expanded list of repositories as defined in the proejct meta.
+     <para>A repository defined as obsrepositories:/ will used the expanded list of repositories as defined in the project meta.
            This is useful when moving kiwi image descriptions between projects, for example for development and release builds. </para>
    </listitem>
    <listitem>
@@ -290,24 +290,24 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
      </para>
    </listitem>
    <listitem>
-     <para>Packages get picked usually in a fixed order from the most important repository in &obsa;. This happens independend 
-  	 of the version number of the packages. Set the xml comment <command>OBS-UnorderedRepos</command> to disable the repository order handling and to have a more similar behaviour as with plain package manager builds. Note: this can result into switching 
-  	 repositories between builds and is therefore less reproducible.
+     <para>Packages get picked usually in a fixed order from the most important repository in &obsa;. This happens independently
+    of the version number of the packages. Set the xml comment <command>OBS-UnorderedRepos</command> to disable the repository order handling and to have a more similar behaviour as with plain package manager builds. Note: this can result into switching 
+    repositories between builds and is therefore less reproducible.
      </para>
    </listitem>
    <listitem>
-     <para>Container builds can specify a specific repository which shall be used for searching the base container. 
-  	   Use the xml comment <command>OBS-Imagerepo:$REPOSITORY_URL</command> for this. The repository url may be
-  	   in obs://$PROJECT/$REPOSITORY style.
+     <para>Container builds can specify a specific repository which shall be used for searching the base container.
+      Use the xml comment <command>OBS-Imagerepo:$REPOSITORY_URL</command> for this. The repository URL may be
+      in obs://$PROJECT/$REPOSITORY style.
      </para>
    </listitem>
    <listitem>
      <para>Container builds can specify additional tags via <command>OBS-AddTag:$TAG</command>. (kiwi limits it to one tag)
-  	   in obs://$PROJECT/$REPOSITORY style.
+      in obs://$PROJECT/$REPOSITORY style.
      </para>
    </listitem>
    <listitem>
-     <para>A predefined milestone <command>OBS-Milestone: milestone</command> 
+     <para>A predefined milestone <command>OBS-Milestone: milestone</command>
      </para>
      <para>
       This defines a milestone name (for example, <literal>Beta1</literal>)

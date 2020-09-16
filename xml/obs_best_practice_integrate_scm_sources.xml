@@ -11,7 +11,7 @@
  <title>How to integrate external SCM sources</title>
  <info/>
    <para>
-     Application development usualy happens in SCM systems like git, subversion, mercurial
+     Application development usually happens in SCM systems like git, subversion, mercurial
      and alike. These external sources can be used directly in OBS via source services.
      OBS will always keep a copy of the sources to guarantee that the build sources
      are still available even when the external SCM server disappears or get altered.
@@ -85,7 +85,7 @@
      <sect2>
        <title>Avoid tar balls</title>
        <para>
-         tar balls are not a requirement by &obsa;, but by the packaging tool, eg. rpmbuild. However,
+         Tar balls are not a requirement by &obsa;, but by the packaging tool, for example, rpmbuild. However,
          you may want to decide not to ship a tar ball inside of the src.rpm. This makes sense for
          large sources where the compression time and needed disk space is just considered a waste
          for short living builds. You can simplify your _service file in that case, but you need to help rpmbuild to work directly in the source.
@@ -108,7 +108,7 @@
        <para>
         The spec file needs some hints to build inside the extracted sources directly. The macro
         can be used to switch to build tar balls or not to keep it working for stable releases where
-        you want to provide a complete source rpm.
+        you want to provide a complete source RPM.
        </para>
         <screen>
           <command>

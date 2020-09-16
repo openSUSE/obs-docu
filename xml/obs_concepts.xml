@@ -75,7 +75,7 @@
       result shall be copied to the build pool. This means it will get used for
       other builds in their build environment. When this is disabled, the build
       has no influence on builds of other packages using this repository. In
-      case a former build exists the old binaries will be used. Disabling this
+      case a previous build exists the old binaries will be used. Disabling this
       flag also means that "wipe" commands to remove binary files will have no
       effect on the build pool. Changing this flag does not trigger rebuilds,
       it just affects the next build. Default is enabled. </para>

@@ -35,7 +35,7 @@
    <title>Source Server</title>
    <para> Maintains the source repository and project/package configurations.
     It provides an HTTP interface, which is the only interface to the
-    Front-end. It may forward requests to other back-end services. Each OBS
+    front-end. It may forward requests to other back-end services. Each OBS
     installation has exactly one Source Server. It maintains the "sources",
     "trees" and "projects" directories. </para>
   </sect3>

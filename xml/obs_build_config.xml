@@ -120,7 +120,7 @@
      <para>
       Sets the binary format used to set up the build
       environment. For example a package with spec build description may use
-      and generate deb packages instead of rpms. If no binary type is
+      and generate deb packages instead of RPMs. If no binary type is
       specified, OBS deduces it from the build recipe type. If the recipe type is
       also not set, OBS looks at the Preinstall package list for a hint.
      </para>
@@ -152,7 +152,8 @@ Keep: debbuild</screen>
      <para>
       The <parameter>BuildFlags</parameter> keyword defines flags for the
       build process. The following values for FLAG are usable. All flags with
-      a leading collon(:) requires an additional parameter directly behind.</para>
+      a leading colon (<literal>:</literal>) require an additional parameter
+      directly following them.</para>
      <variablelist>
       <varlistentry>
        <term><parameter>vmfstype:</parameter></term>
@@ -183,7 +184,7 @@ Keep: debbuild</screen>
        <term><parameter>onlybuild:</parameter></term>
        <listitem>
                <para>DANGER: this may remove many build results when introduced the first time!
-                       It can be used to maintain a whitelist of packages to be build. All other packages
+                       It can be used to maintain a whitelist of packages to be built. All other packages
                        will turn to excluded state.</para>
        </listitem>
       </varlistentry>
@@ -233,8 +234,9 @@ Keep: debbuild</screen>
        <varlistentry>
         <term><parameter>module:NAME-STREAM</parameter> (OBS 2.10.7 or later)</term>
         <listitem>
-                <para>For enabling RedHat specific module support in repo md repostories. By default modules are not used, but
-                      content can be made available by specifing the module name. For removing a module add a exclamation mark(!) as prefix.</para>
+                <para>Enable Red Hat-specific module support in repo md repositories. By default, modules are not used, but
+                      content can be made available by specifying the module name. To remove a module,
+                      add an exclamation mark (<literal>!</literal>) as prefix.</para>
         </listitem>
        </varlistentry>
       </variablelist>
@@ -393,7 +395,7 @@ Keep: debbuild</screen>
         <term><parameter>noearlykiwipublish</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Only publish kiwi build results after entire repository has finished building. Without this kiwi
-                build results get published immediatly after the build is finished.</para>
+                build results get published immediately after the build is finished.</para>
         </listitem>
        </varlistentry>
        <varlistentry>

@@ -46,7 +46,7 @@
    also to transfer all sources including a possible changed flavor from one
    project to another with a standard copy or submit request. </para>
   <para> The _multibuild file lists all build container names, each of them
-   will be build as usual for each defined repository and each scheduler
+   will be built as usual for each defined repository and each scheduler
    architecture. </para>
   <para> For example, inside the <command>kernel</command> source package we
    can build both <command>kernel-source</command> and
@@ -59,7 +59,8 @@
   &lt;flavor&gt;kernel-source&lt;/flavor&gt;
   &lt;flavor&gt;kernel-obs-build&lt;/flavor&gt;
 &lt;/multibuild&gt;</screen>
-   <para>Build description files are needed for each of them for each package (eg.
+   <para>Build description files are needed for each of them for each package
+   (for example,
    kernel-source.spec or kernel-obs-build.dsc) inside of the sources. There
    will be another build in case there is also a matching file for the source
    package container name, otherwise it will turn into an

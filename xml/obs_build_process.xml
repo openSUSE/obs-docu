@@ -12,7 +12,7 @@
   The build process creates new binaries from sources, binaries, and config.
   This process may run on the &obsa; server side or on a
   local workstation. Each package build is created in a fresh environment. This is done to
-  ensure that the enviroment is reproducible.
+  ensure that the environment is reproducible.
  </para>
  <sect1 condition="tbd">
   <title>Definition of a Build Process</title>
@@ -24,7 +24,7 @@
   <para>
    All sources and binaries which are hosted inside &obs; are organized in
    projects. Projects host sources inside of &obsa; packages. The sources are
-   build according to the repository configuration inside of the project.
+   built according to the repository configuration inside of the project.
   </para>
   <sect2>
    <title>Preinstall Phase</title>
@@ -141,11 +141,11 @@
  <sect1>
   <title>Identify a build</title>
   <para>
-    &obsa; is usally tagging each build with an identifier. This can be used to find the building
+    &obsa; is usually tagging each build with an identifier. This can be used to find the building
     &obsa; instance, the project, repository and exact source for a binary. This information is
     stored in some variable called DISTURL and is specified as
-     <command>obs://$OBS_INSTANCE/$PROJECT/$REPOSITORY/$SOURCE_REVISION-$PACKAGE(:$FLAVOR)</command>
-    . Note that the last $:FLAVOR part is optional and exists only when the package was build using the multibuild feature.
+     <command>obs://$OBS_INSTANCE/$PROJECT/$REPOSITORY/$SOURCE_REVISION-$PACKAGE(:$FLAVOR)</command>.
+    Note that the final segment, <literal>:$FLAVOR</literal>, is optional and exists only for packages built using the multibuild feature.
 
     The source specified via the DISTURL can be accessed by pasting the URL into the search interface
     of the &obsa; web interface. Or use the command line tool to check it out:
@@ -155,9 +155,9 @@
     You need to go to the right OBS instance as this is not handled automatically yet.
   </para>
   <sect2>
-   <title>Read DISTURL from a rpm</title>
+   <title>Read DISTURL from an RPM</title>
    <para>
-    Rpm binaries contain the DISTURL as tag. It can be read from the rpm database for installed rpms and
+    RPM binaries contain the DISTURL as tag. It can be read from the rpm database for installed RPMs and
     also from the rpm binaries itself.
    </para>
     <screen><command># rpm -q --qf '%{DISTRL}\n' $rpm</command></screen>

@@ -192,7 +192,7 @@
             <para>amqp_exchange_options[type]</para>
           </entry>
           <entry align="left" valign="top">
-            <para>Type of comunication for the exchange</para>
+            <para>Type of communication for the exchange</para>
           </entry>
           <entry align="left" valign="top">
             <para>
@@ -434,7 +434,7 @@ amqp_queue_options:
             <para><emphasis>__prefix__</emphasis>.package.update</para>
           </entry>
           <entry align="left" valign="top">
-            <para>The package metada was updated</para>
+            <para>The package metadata was updated</para>
           </entry>
           <entry align="left" valign="top">
             <para>
