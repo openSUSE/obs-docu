@@ -181,19 +181,44 @@
 
  <sect1 xml:id="_communication_flow">
   <title>Communication Flow</title>
-  <para>The communication flow can be split into 3 parts:</para>
+  <para>
+   The communication flow can be split into the following major parts:
+  </para>
   <orderedlist>
    <listitem>
-    <para> User-to-front-end communication </para>
+    <para>
+     communication between users and front-end
+    </para>
    </listitem>
    <listitem>
-    <para> Front-end-to-source-server communication </para>
+    <para>
+     communication between front-end and source server
+    </para>
    </listitem>
    <listitem>
-    <para> communication between source server and other back-end
-     components, in first place the repository servers. </para>
+    <para>
+     communication between source server and other back-end
+     components, in particular the repository servers.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     communication between the back-end and the stage server to publish
+     build results
+    </para>
    </listitem>
   </orderedlist>
+  <figure xml:id="fig_obs_communication">
+   <title>OBS Communication (Simplified)</title>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="obs_communication.svg" width="80%"/>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="obs_communication.png"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
   <para>The user is using the front-end (via tools like <emphasis
     role="strong"><emphasis>osc</emphasis></emphasis>) to communicate with the
    Open Build Service. The front-end is providing a web interface and also an
@@ -236,25 +261,6 @@
      ><emphasis>Dispatcher</emphasis></emphasis> checks for free worker which
    met the build constraints for the job and send the job to the <emphasis
     role="strong"><emphasis>worker</emphasis></emphasis>.</para>
-  <figure xml:id="fig_obs_communication">
-   <title>OBS Communication</title>
-   <mediaobject>
-    <imageobject>
-     <imagedata fileref="obs_communication.png" contentwidth="320"/>
-    </imageobject>
-    <textobject>
-     <phrase>obs_communication.png</phrase>
-    </textobject>
-   </mediaobject>
-   <!--<mediaobject>
-    <imageobject>
-     <imagedata fileref="obs_communication_legend.png" contentwidth="180"/>
-    </imageobject>
-    <textobject>
-     <phrase>obs_communication_legend.png</phrase>
-    </textobject>
-   </mediaobject>-->
-  </figure>
   <para>The <emphasis role="strong"><emphasis>Worker</emphasis></emphasis>
    downloads the sources from the <emphasis role="strong"><emphasis>Source
      server</emphasis></emphasis> and all required binary packages from the
