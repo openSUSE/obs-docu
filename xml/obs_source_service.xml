@@ -192,7 +192,7 @@
      </row>
      <row>
       <entry><literal>buildtime</literal></entry>
-      <entry>During each build before calling the build tool (eg rpm-build)<footnote xml:id="fn.obs.sserv.mode.buildtime">
+      <entry>During each build before calling the build tool (for example, rpm-build)<footnote xml:id="fn.obs.sserv.mode.buildtime">
        <para>
         A side effect is that the service package is becoming a build
         dependency and must be available.

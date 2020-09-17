@@ -10,7 +10,7 @@
  <title>Source Publisher</title>
  <para>The job of the source publish service is to publish all sources for 
 directly before published binaries. This will include the sources of repackaged
-binaries. For example the sources of rpms which are used inside of product, 
+binaries. For example, the sources of RPMs which are used inside of product, 
 appliance or container images. A prerequisite for this is that OBS has enabled
 content tracking for the used projects.</para>
 
@@ -30,8 +30,8 @@ content tracking for the used projects.</para>
   <title>Considerations</title>
   <para>The source publishing service is publishing the sources as they are hosted in &obs;. This
         means these are the unprocessed sources and the content is not identical to the
-        content of source rpms for example. Instead these are the sources which are the
-        base for source rpms.</para>
+        content of source RPMs for example. Instead these are the sources which are the
+        base for source RPMs.</para>
   <para>As a consequence hints like NoSource: tags in spec files are ignored. The only
         way to disable publishing for the user is to disable access or sourceaccess via
         the flags.</para>

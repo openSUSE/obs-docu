@@ -21,7 +21,7 @@
   <itemizedlist>
    <listitem>
     <para> The sources of a package defined which dependencies are required at
-     build time. eg. <parameter>BuildRequires</parameter> lines in spec files
+     build time. For example, <parameter>BuildRequires</parameter> lines in spec files
      defined which other packages must get installed to build a package </para>
    </listitem>
    <listitem>

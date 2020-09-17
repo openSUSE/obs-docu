@@ -73,7 +73,7 @@
      environment. It is responsible for starting jobs in the right order and
      integrating the built binary packages. Each OBS installation has one
      scheduler per available architecture and partition. It maintains the
-     cntent of the "build" directory. </para>
+     content of the "build" directory. </para>
    </listitem>
   </varlistentry>
   <varlistentry>

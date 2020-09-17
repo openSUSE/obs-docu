@@ -82,7 +82,7 @@
   </para>
   <para>
     The building process begins and, if something gets broken, the Staging
-    Managers ask the requestor to fix it. This can add even more requests to the
+    Managers ask the requester to fix it. This can add even more requests to the
     scene but the goal is always getting a working version of
     openSUSE:Factory:Staging:A by fixing or even discarding some of the
     requests. When the building process finishes successfully, the requested
@@ -341,7 +341,7 @@
       <listitem>
         <para>
           <emphasis>Missing Reviews:</emphasis>
-          Requests with pendings reviews.
+          Requests with pending reviews.
         </para>
       </listitem>
       <listitem>
@@ -353,7 +353,7 @@
       <listitem>
         <para>
           <emphasis>Broken Packages:</emphasis>
-          List of packages with failling builds.
+          List of packages with failing builds.
         </para>
       </listitem>
       <listitem>

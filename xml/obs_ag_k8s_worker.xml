@@ -6,14 +6,14 @@
         <warning>
             <title>Alpha Implementation</title>
             <para>This is Alpha implementation and not recommended for production.</para>
-            <para>The kubernetes device plugin deployed here makes serveral assumptions about which and how many containers will have access to KVM device.</para>
-            <para>Also the plugin assums avialability of /dev/kvm on every node where the device-plugin-container is running</para>
+            <para>The kubernetes device plugin deployed here makes several assumptions about which and how many containers will have access to KVM device.</para>
+            <para>The plugin also assumes availability of /dev/kvm on every node where the device-plugin-container is running</para>
         </warning>
         <para>The build service worker itself has many backends to run its jobs. One of the preferred backends is KVM.</para>
         <para>This backend allows building inside a VM. This has many advantages from security and isolation perspective.</para>
-        <para>When a build worker is running inside the containarized environment (for example using Kubernetes) access to KVM is not available.</para>
-        <para>For such situations Kubernetes provides access to host devices (eg: KVM, GPU&#8230;&#8203;) through device plugins.</para>
-        <para>So, <literal>/dev/kvm</literal> can be made available to containers via Kubernetes using device plugin api (<link xl:href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/"/>).</para>
+        <para>When a build worker is running inside the containerized environment (for example, using Kubernetes) access to KVM is not available.</para>
+        <para>For such situations Kubernetes provides access to host devices (for example: KVM, GPU&#8230;&#8203;) through device plugins.</para>
+        <para>So, <literal>/dev/kvm</literal> can be made available to containers via Kubernetes using device plugin API (<link xl:href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/"/>).</para>
         <para>One of the implementations of K8s devices plugin for KVM is available here : <link xl:href="https://github.com/kubevirt/kubernetes-device-plugins" /></para>
     <procedure>
     <step xml:id="k8s.worker.getkvm">
@@ -59,14 +59,14 @@ spec:
        </screen>
     </step>
     <step xml:id="k8s.worker.buildworker">
-        <para>Build container image of the build service localy and load it to all worker nodes. There is sample project file here:
+        <para>Build container image of the build service locally and load it to all worker nodes. There is sample project file here:
             <link xl:href="https://build.opensuse.org/package/show/home:sjamgade:branches:OBS:Server:Unstable/OBS-Appliance"/> 
             <literal>docker load &lt; "/path/to/docker.archive.tar.gz" </literal>
          </para>
     </step>
     <step xml:id="k8s.worker.loadworker">
         <para>Use the following manifest to deploy the build service worker.</para>
-        <para>Here ports are hard-coded to allow easy integration with local kubelet without requiring a seperate ingress-controller</para>
+        <para>Here ports are hard-coded to allow easy integration with local kubelet without requiring a separate ingress-controller</para>
         <screen>
 apiVersion: apps/v1
 kind: Deployment
@@ -140,7 +140,7 @@ spec:
         </screen>
     </step>
     <step xml:id="k8s.worker.createworkerconfig">
-        <para>Save the following into a file <literal>launchworker.sh</literal>. Later use this file to launch the worker. Make sure you uncomment the OBS_REPO_SERVERS line and change the ip adddress to your build servers address</para>
+        <para>Save the following into a file <literal>launchworker.sh</literal>. Later use this file to launch the worker. Make sure you uncomment the OBS_REPO_SERVERS line and change the IP address to your build servers address</para>
         <screen>
 cat &lt;&lt; EOH &gt; /etc/buildhost.config
 OBS_WORKER_DIRECTORY=/var/cache/obs/worker

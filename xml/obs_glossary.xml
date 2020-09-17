@@ -333,7 +333,7 @@
   <glossterm>DISTURL</glossterm>
   <glossdef>
    <para>
-    The DISTURL is a unique identifier of a source and it's build setup. It is written
+    The DISTURL is a unique identifier of a source and its build setup. It is written
     usually written inside of the build result to be able to identify the origin.
     A DISTURL is structured as <command>obs://OBS_NAME/PROJECT/REPOSITORY/REVISION-PACKAGE</command>.
     It can be shown for example via
@@ -695,7 +695,7 @@
   <glossterm>Project</glossterm>
   <glossdef>
    <para>
-    Unit which definies access control, repositories, architectures, and a
+    Unit which defines access control, repositories, architectures, and a
     set of packages containing sources.
    </para>
   </glossdef>
@@ -715,7 +715,7 @@
   <glossterm>Publishing</glossterm>
   <glossdef>
    <para>
-    Finished process when a package is successfully build and available in the
+    Finished process when a package is successfully built and available in the
     download repository.
    </para>
    <glossseealso otherterm="obs.glos.downloadrepository"/>

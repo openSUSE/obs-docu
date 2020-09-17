@@ -85,8 +85,8 @@
     osc versions. The result gets committed as standard files and not named
     with _service: prefix. Additionally the service runs on the server by
     default, but usually the service should detect that the result is the same
-    and skip the generated files. In case they differ for any reason (because
-    the webui or API was used for example) they be generated and added on the
+    and skip the generated files. If they differ (for example, because
+    the Web UI or API was used), they are generated and added on the
     server. </para>
   </sect3>
   <sect3>

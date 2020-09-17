@@ -67,7 +67,7 @@
     [...]
   &lt;/repository&gt;
 &lt;/project&gt;</screen>
-   <para>The ReleaseProject must be create before and it should be configured as
+   <para>The ReleaseProject must be created before and it should be configured as
    build disabled. The release can be triggered then via
    <command>osc release BuildProject</command> All sources and
    build results will be copied over from BuildProject to the ReleaseProject

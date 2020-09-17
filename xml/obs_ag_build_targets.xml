@@ -157,7 +157,7 @@ testobs:/srv/www/obs/api # chown obsrun:obsrun \
    <important>
     <para>If you import packages for enterprise distributions like SLES12
      you also need the packages from the SDK. Maybe you need packages from
-     add-on products as well, depending what software you want build.</para>
+     add-on products as well, depending what software you want to build.</para>
    </important>
    <para>Finally you should trigger a rescan for the project on the back-end
     server using <emphasis role="strong">obs_admin</emphasis>:</para>

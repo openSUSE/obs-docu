@@ -203,7 +203,7 @@
     openSUSE:11.4:Update project. </para>
    <screen><command>osc releaserequest</command></screen>
    <para> The release request needs to specify the source and target for each
-    package. In case just the source package or project is specified the api is
+    package. In case just the source package or project is specified the API is
     completing the request on creation time. It is using this based on the
     source link target of each package and the release information in the
     repository definitions. </para>
@@ -334,7 +334,8 @@
        </listitem>
        <listitem>
         <para> A main package gets created or updated, it just contains a
-         link to the current incident package. Eg glibc points to glibc.42. The
+         link to the current incident package.
+         For example, glibc points to glibc.42. The
          purpose of this main package is to have a place to refer to the
          current sources of a package. </para>
        </listitem>

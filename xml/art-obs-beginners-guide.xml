@@ -746,7 +746,7 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
      Save the file and leave the editor. &osccmd; then
      creates the file <filename>&gitproject;.changes</filename>.
     </para>
-    <para>Your probject directory should now look something like this:</para>
+    <para>Your project directory should now look something like this:</para>
     <screen><emphasis>project directory</emphasis>
      ├── &gitproject;-&gitprjvers;.tar.gz
      ├── &gitproject;.changes

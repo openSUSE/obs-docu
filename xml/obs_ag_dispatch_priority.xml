@@ -261,7 +261,7 @@ Examples:
    in the name get some penalty, also home projects are getting only about half
    of the build time as a normal project, with the exception of the home
    project from king, the user account of the boss. The SLES12-SP2 repository
-   is not in real use yet, but if here is nothing else to do build for it as
+   is not in real use yet, but if here is nothing else to do, build for it as
    well.</para>
   <important>
    <para>The dispatcher calculates the values form the <emphasis

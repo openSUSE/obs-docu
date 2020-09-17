@@ -228,7 +228,7 @@
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term>Update a Working Ddirectory</term>
+    <term>Update a Working Directory</term>
     <listitem>
      <screen><command>osc</command> up
 <command>osc</command> up [directory]

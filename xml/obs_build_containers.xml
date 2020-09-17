@@ -23,9 +23,9 @@
   <para> A container that is providing its own kernel is called virtual machine
    in this book. Open Build Service (OBS) supports container builds either by
    supporting the native build format or as side product of a different format.
-   The range is from very simple chroot containers via server format (eg
-   Docker) or desktop format (eg. AppImage or Snap) up to full VM builds
-   (OpenStack, kvm or LiveCD via kiwi). </para>
+   The range is from very simple chroot containers via server format (for example,
+   Docker) or desktop format (for example, AppImage or Snap) up to full VM builds
+   (such as for OpenStack, KVM, or as a LiveCD via kiwi). </para>
 
   <variablelist>
    <varlistentry>
@@ -47,10 +47,10 @@
    <varlistentry>
     <term>AppImage</term>
     <listitem>
-     <para>The Desktop oriented AppImage format is currently only formatted as
-    side effect of an rpm build. Open Build Service (OBS) supports signing and
+     <para>The desktop-oriented AppImage format is currently only created as a
+    side effect of an RPM build. Open Build Service (OBS) supports signing and
     publishing the .AppImage files, the rest is handled via wrapper packages
-    which converts an rpm (or deb package) into an AppImage file. Own build
+    which converts an RPM (or DEB package) into an AppImage file. Own build
     rules can provided via a <filename>Recipe</filename> file, fallback code
     will be used if no <filename>Recipe</filename> file is available.</para>
     </listitem>
@@ -61,16 +61,16 @@
      <para>
      The Snap format is supported natively. However, external resources are
      only supported via source services and therefore not all build types are
-     supported. Snapcraft works also only with an Ubuntu-based base system.
+     supported. Snapcraft only works with Ubuntu-based base systems.
      (Code to support &rpmf;-based distributions exists as well but has not
      been merged upstream yet.)
     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term>Flatpack</term>
+    <term>Flatpak</term>
     <listitem>
-     <para>Flatpack is currently not supported due to the lack of
+     <para>Flatpak is currently not supported due to the lack of
     reproducible builds.</para>
     </listitem>
    </varlistentry>

@@ -68,7 +68,7 @@
          <para>Database driver</para>
         </entry>
         <entry align="left" valign="top">
-         <para>only mysql databases are supported</para>
+         <para>only MySQL databases are supported</para>
         </entry>
        </row>
        <row>
@@ -87,7 +87,7 @@
          <para>username</para>
         </entry>
         <entry align="left" valign="top">
-         <para>mysql user name</para>
+         <para>MySQL user name</para>
         </entry>
         <entry align="left" valign="top">
          <para>database user, not a system user</para>
@@ -142,7 +142,7 @@
          <para>socket</para>
         </entry>
         <entry align="left" valign="top">
-         <para>path to the mysql socket</para>
+         <para>path to the MySQL socket</para>
         </entry>
         <entry align="left" valign="top">
          <para>same host only</para>
@@ -153,7 +153,7 @@
          <para>host</para>
         </entry>
         <entry align="left" valign="top">
-         <para>IP address or hostname of the mysql server</para>
+         <para>IP address or hostname of the MySQL server</para>
         </entry>
         <entry align="left" valign="top">
          <para>for remote servers</para>
@@ -164,7 +164,7 @@
          <para>port</para>
         </entry>
         <entry align="left" valign="top">
-         <para>port number of the mysql server</para>
+         <para>port number of the MySQL server</para>
         </entry>
         <entry align="left" valign="top">
          <para>for remote servers</para>
@@ -846,7 +846,7 @@ LimitRequestFieldsize 20000
       the OBS start scripts </para>
     </listitem>
     <listitem>
-     <para> /usr/lib/obs/server/BSConfig.pm - a perl script defining some
+     <para> /usr/lib/obs/server/BSConfig.pm - a Perl script defining some
       global variables </para>
     </listitem>
    </itemizedlist>
@@ -1140,7 +1140,7 @@ LimitRequestFieldsize 20000
          <para>VM type</para>
         </entry>
         <entry align="left" valign="top">
-         <para><emphasis role="strong">auto</emphasis> xen kvm lxc zvm
+         <para><emphasis role="strong">auto</emphasis> Xen kvm lxc zvm
           emulator:$arch none</para>
         </entry>
         <entry align="left" valign="top">
@@ -1432,7 +1432,7 @@ OBS_BASE_DIR=""
 ## Default:     "no"
 ## Config:      OBS
 #
-# This is usally only enabled on the OBS Appliance
+# This is usually only enabled on the OBS Appliance
 #
 OBS_API_AUTOSETUP="yes"
 #

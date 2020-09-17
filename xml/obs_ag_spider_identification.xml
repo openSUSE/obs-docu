@@ -9,7 +9,7 @@
  xml:id="_obs_spider_identification">
  <title>Spider Identification</title>
  <para> OBS is hiding specific parts/pages of the application from search
-  crawlers (duckduckgo, google etc.), mostly for performance reasons. Which
+  crawlers (DuckDuckGo, Google, etc.), mostly for performance reasons. Which
   user-agent strings are identified as crawlers configured in the file
    <filename>/srv/www/obs/api/config/crawler-user-agents.json</filename>. </para>
  <para> To update that list, you must run the command <command>bundle exec rake
