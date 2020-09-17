@@ -10,7 +10,7 @@
  <title>Security Concepts</title>
  <info/>
 
- <sect1 xml:id="network">
+ <sect1 xml:id="general_paradigm">
   <title>General Paradigm</title>
   <para>The general paradigm of &obs; is to host all content on its own. Every part 
         required to rebuild a package is hosted in &obs; to guarantee reproducibility.
@@ -179,6 +179,147 @@
          since any content can be signed with any project key. The private
          keys are not compromised themselfs though.
    </para>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="trust_zones">
+  <title>Trust Zones </title>
+  <para>&OBS; components deal with different trust zones. These are
+        separated via network or virtualization mechanics.
+  </para>
+
+  <sect2 xml:id="public_zone">
+   <title>Public Zones</title>
+   <para>Public zones are areas where any code under user control is running.
+   </para>
+   <sect3 xml:id="external_network">
+    <title>External Network</title>
+    <para>
+      This can be the public Internet if the &obs; instance is a public
+      instance. Requests can only be triggered via http, secured by SSL
+      to the API instance here. Every developer is using this interface
+      to submit changes. However, further components may open
+      connections to the Internet as described below.
+    </para>
+   </sect3>
+   <sect3 xml:id="untrusted_code">
+    <title>Untrusted Code</title>
+    <para>
+      All code which is used to build content is considered
+      to be untrusted code. This includes even the Linux kernel, since
+      users can build and run their own kernels. The security layer here
+      is usually either KVM and XEN virtualization. The instances are
+      running without any network enabled. Build results get copied by 
+      reading a simple blocklist directly from the device. A security 
+      issue in the file system code can therefore not be used to
+      compromise the worker.
+    </para>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="dmz">
+   <title>Demilitarized Zone (DMZ)</title>
+   <para>The Demilitarized Zone contains services which interact with
+         the public zone directly. 
+   </para>
+   <sect3 xml:id="frontend">
+    <title>&obs; Frontend</title>
+    <para>
+      The frontend service is the only service which provides an open port.
+      It implements the authorization of user requests. The authentication
+      may happen in an external service like a proxy or ldap server.
+      The frontend reads and writes changes to the database and
+      the source server only.
+    </para>
+   </sect3>
+   <sect3 xml:id="frontend_background">
+    <title>&obs; Frontend Background Services</title>
+    <para>
+     &obs; frontend background services handle less time critical operations.
+     This includes services which read data from external services like bug
+     trackers, sending notifications or long running jobs.
+    </para>
+   </sect3>
+   <sect3 xml:id="stage_server">
+    <title>Stage Server</title>
+    <para>
+      The stage server is providing the public content of the &obs; backends.
+      The server can be publicly accessible or just an upload server to
+      a mirror infrastructure.
+    </para>
+   </sect3>
+   <sect3 xml:id="cloud_uploader">
+    <title>Cloud Uploader</title>
+    <para>
+      The cloud uploader is uploading build results on user request. It reads
+      from the binary servers and sends the content via cloud specific plugins
+      to external instances.
+      This is an optional service.
+    </para>
+   </sect3>
+   <sect3 xml:id="source_service">
+    <title>Source Service Server</title>
+    <para>
+      The source service server is acting based on uploaded sources. The 
+      services should be written with security in mind and the administrator
+      can decide which services are trustworthy. Official releases of &obs; define
+      a minimum set of especially trusted services which received a security review.
+      A container can be used for additional security for each service run.
+    </para>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="internal_zone">
+   <title>Internal Zone</title>
+   <para>The internal zone is running service which are supposed to work
+         without further external dependency.
+   </para>
+   <sect3 xml:id="source_server">
+    <title>&obs; Source Server</title>
+    <para>
+      The source server coordinates changes to package and project configuration.
+      In addition to that all events between the binary backends and notifications
+      to the frontend get synchronized.
+      Any source change is tracked and stored in the revision history.
+      There can only be a single source server per OBS install.
+    </para>
+   </sect3>
+   <sect3 xml:id="binary_server">
+    <title>&obs; Binary Servers</title>
+    <para>
+      Binary Servers are hosting all content of build results. They 
+      also prepare public repositories and deliver them to the
+      staging server.
+    </para>
+   </sect3>
+   <sect3 xml:id="external_dependencies">
+    <title>External Dependencies</title>
+    <para>
+      The internal zone has no external dependency.
+      However, the administrator may decide to run the &obs; instance depending
+      on external OBS instances or on external repositories. In that case
+      the internal zone is downloading content from the resources specified
+      by the administrator.
+    </para>
+   </sect3>
+  </sect2>
+  <sect2 xml:id="worker_zone">
+   <title>Worker Zone</title>
+   <para>The &obs; workers are running in an own isolated network. 
+         They access only source and binary servers from internal zone.
+   </para>
+  </sect2>
+  <sect2 xml:id="signing_server">
+   <title>Signing Server</title>
+   <para>The signing server is supposed to be the most isolated service.
+         It is supposed to be stateless after initial setup.
+         Avoid to enable any remote access.
+   </para>
+  <figure xml:id="fig.obsbg.trust_zones">
+   <title>Trust Zones of &obs;</title>
+   <mediaobject>
+    <imageobject>
+     <imagedata width="80%" fileref="OBS-Networks-Trust-Zones.svg"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
   </sect2>
  </sect1>
 </chapter>
