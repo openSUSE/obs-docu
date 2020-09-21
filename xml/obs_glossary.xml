@@ -337,8 +337,27 @@
     usually written inside of the build result to be able to identify the origin.
     A DISTURL is structured as <command>obs://OBS_NAME/PROJECT/REPOSITORY/REVISION-PACKAGE</command>.
     It can be shown for example via
-    <command>rpm -q --qf '%{DISTURL}\n' kernel-default</command>
    </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      RPM packages:
+      <command>rpm -q --qf '%{DISTURL}\n' PACKAGE_NAME</command>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Locally built container images:
+      <command>podman inspect IMAGE_ID | grep org.openbuildservice.disturl</command>
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Container images built on &obs;:
+      <command>skopeo inspect docker://URL | grep org.openbuildservice.disturl</command>
+     </para>
+    </listitem>
+   </itemizedlist>
   </glossdef>
  </glossentry>
  <!-- ############## E ############## -->
