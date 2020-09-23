@@ -175,7 +175,7 @@ Keep: debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>excludebuildbuild:</parameter></term>
+       <term><parameter>excludebuild:</parameter></term>
        <listitem>
                <para>Exclude a package from building. _multibuild flavors can be specified via package:flavor syntax.</para>
        </listitem>
