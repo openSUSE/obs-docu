@@ -164,6 +164,7 @@ Keep: debbuild</screen>
          <literal>ext2</literal>, <literal>ext3</literal>,
          <literal>ext4</literal>, <literal>btrfs</literal>,
          <literal>xfs</literal>, <literal>reiserfs</literal> (v3).
+        </para>
       </varlistentry>
       <varlistentry>
        <term><parameter>vmfsoptions:</parameter></term>
@@ -413,6 +414,23 @@ Keep: debbuild</screen>
         <listitem>
           <para>Only publish kiwi build results after entire repository has finished building. Without this kiwi
                 build results get published immediately after the build is finished.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>nofailedpackages</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+           <para>
+            Block publishing if any build result was failed, broken, or unresolvable.
+            This is evaluated individually for each architecture.
+            That means, packages can be published for an architecture on which it builds,
+            even if a package fails to build on another architecture.
+           </para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>withreports</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+          <para>Also publish internal content tracking files (<literal>.report</literal> files).</para>
         </listitem>
        </varlistentry>
        <varlistentry>
