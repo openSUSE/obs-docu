@@ -211,7 +211,7 @@
       <entry><literal>disabled</literal></entry>
       <entry>No</entry>
       <entry>Only via explicit CLI call</entry>
-      <entry>Exists since OBS 2.11</entry>
+      <entry></entry>
      </row>
     </tbody>
    </tgroup>
