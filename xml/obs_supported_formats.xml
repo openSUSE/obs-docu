@@ -227,7 +227,11 @@
      </para>
    </listitem>
    <listitem>
-     <para><command>#!BuildVersion: VERSION</command> Report back a defined VERSION.
+     <para><command>#!BuildName: NAME</command> Report back a defined NAME. Otherwise it gets derived from the first tag, replacing all / and : with - characters.
+     </para>
+   </listitem>
+   <listitem>
+     <para><command>#!BuildVersion: VERSION</command> Report back a defined VERSION. By default it is set to zero. The version is used by OBS for tracking.
      </para>
    </listitem>
    <listitem>
