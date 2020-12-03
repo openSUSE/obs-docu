@@ -33,17 +33,27 @@
    </listitem>
    <listitem>
     <para>
-     <code>#!BuildConflicts:</code>
+       <code>#!ForceMultiVersion</code> can be used to avoid reseting the build counter reset on version update.
+           s handled automatically in most cases. Just needed when it is not possible to detect
+           r sub packages defining their own version. This can be the case when the sub packages
+           eated dynamic via external rpm macros.
+   </para>
+   </listitem>
+   <listitem>
+    <para>
+        <code>#!BuildConflicts: STRING</code> defines a conflicting package or dependency at build time only.
     </para>
    </listitem>
    <listitem>
     <para>
-     <code>#!BuildIgnore: </code>
+     <code>#!BuildIgnore: STRING</code> ignores a dependency at build time.
     </para>
    </listitem>
    <listitem>
     <para>
-     <code>#!BuildRequires:</code>
+     <code>#!BuildRequires: STRING</code> Requires a build dependency. Usually the rpm native BuildRequires
+     is the better way to define this. Use this tag only when the dependency should only exist when using
+     the build script or OBS.
     </para>
    </listitem>
   </itemizedlist>
