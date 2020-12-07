@@ -424,7 +424,7 @@ Keep: debbuild</screen>
     <term><parameter>Repotype:  <replaceable>TYPE[:OPTIONS]</replaceable></parameter></term>
     <listitem>
      <para> Defines the repository format for published repositories. Valid
-      values are: none, rpm-md, suse, debian, hdlist2, arch, staticlinks. The
+      values are: none, rpm-md, suse, debian, hdlist2, arch, staticlinks and vagrant. The
       OPTIONS parameter depends on the repository type, for rpm-md the known
       options are 'legacy' to create the old rpm-md format, 'deltainfo' or
       'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable
