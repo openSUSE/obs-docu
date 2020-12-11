@@ -158,7 +158,13 @@ Keep: debbuild</screen>
       <varlistentry>
        <term><parameter>vmfstype:</parameter></term>
        <listitem>
-        <para>Defines a specific file system when building inside of a VM. Possible values are iext2, ext3 ext4, btrfs, xfs, reiserfs (v3). There is also an option to disable dir indexing for the ext file systems. This has an effect to the performance, but would make the file ordering inside of directories reproducible. specify for example vmsftype:ext3:nodirindex for this.</para>
+        <para>Defines a specific file system when building inside of a VM. Possible values are iext2, ext3 ext4, btrfs, xfs, reiserfs (v3).</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><parameter>vmfsoptions:</parameter></term>
+       <listitem>
+        <para>Use 'nodirindex' option to disable dir indexing for the ext file systems. This has an effect to the performance, but would make the file ordering inside of directories reproducible.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
