@@ -197,13 +197,27 @@ Keep: debbuild</screen>
       <varlistentry>
        <term><parameter>useccache:</parameter></term>
        <listitem>
-           <para>Configure usage of ccache for build of packages mentioned by VALUE. Ccache package will be automatically
-               installed and configured. The directory <filename>/.ccache/</filename> will be configured as cache dir.
-               To configure ccache, the file <filename>/.ccache/ccache.conf</filename> can be modified as part of the build process by the <envar>$BUILD_USER</envar> environment variable. </para>
-
-           <para>If ccache is enabled, but there is no archive present (for example, in case of newly branched packages, wiped binaries etc...).
-               The archive of the, same-named package from repository paths configured in project's meta, will be used.
-           For this archive the architecture will be taken into consideration. All mentioned paths will be tried in top-to-bottom approach.</para>
+        <para>
+         Configure usage of <command>ccache</command> when building packages
+         that match the value of this parameter.
+         The <package>ccache</package> package will automatically be installed
+         and configured. The directory <filename>/.ccache/</filename> will be
+         configured as cache directory.
+         To configure <command>ccache</command>, the file
+         <filename>/.ccache/ccache.conf</filename> can be modified as part of
+         the build process by the <envar>$BUILD_USER</envar> environment
+         variable.
+        </para>
+        <para>
+         In some cases, there is no archive for the current package, such as
+         when the package was newly branched or when binaries were deleted.
+         In these cases, &obs; will check whether there is a package of the
+         same name built for the same architecture within one of the
+         repositories configured in the project's meta configuration.
+         If so, the archive of that package will be used.
+         The repositories will be searched in the order they are configured
+         in the meta configuration, starting from the top.
+        </para>
        </listitem>
       </varlistentry>
      </variablelist>
