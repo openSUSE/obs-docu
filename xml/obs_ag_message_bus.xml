@@ -678,6 +678,45 @@ amqp_queue_options:
         </row>
         <row>
           <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.repo.build_started</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Repository (re)started building</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :arch, :buildid
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.repo.build_finished</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Repository finished building</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :arch, :buildid
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.repo.status_report</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Status Check for Finished Repository Created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :arch, :buildid
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
             <para><emphasis>__prefix__</emphasis>.request.create</para>
           </entry>
           <entry align="left" valign="top">
@@ -746,6 +785,34 @@ amqp_queue_options:
         </row>
         <row>
           <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.review_changed</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Request was reviewed</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :reviewers, :by_user, :by_group, :by_project, :by_package
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.reviews_done</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>All reviews of request have been completed</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :author, :comment, :description, :number, :actions, :state, :when, :who,
+              :reviewers, :by_user, :by_group, :by_project, :by_package,
+              :diff (local projects)
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
             <para><emphasis>__prefix__</emphasis>.request.comment</para>
           </entry>
           <entry align="left" valign="top">
@@ -756,6 +823,32 @@ amqp_queue_options:
               :author, :comment, :description, :number, :actions, :state, :when, :who,
               :commenters, :commenter, :comment_body, :comment_title,
               :request_number
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.request.status_report</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :number
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.published.status_report</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>Status Check for Published Repository Created</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :buildid
             </para>
           </entry>
         </row>
