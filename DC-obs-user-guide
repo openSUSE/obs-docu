@@ -6,7 +6,7 @@
 ## Basics
 MAIN="MAIN-obs.xml"
 # See "book-obs-user-guide.xml"
-ROOTID="book.obs.user"
+ROOTID="book.obs-user"
 
 ## Profiling
 PROFOS="opensuse;novell"

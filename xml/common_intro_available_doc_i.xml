@@ -22,7 +22,7 @@
    </listitem>
   </varlistentry>
   <varlistentry>
-   <term><xref linkend="book.obs.user"/></term>
+   <term><xref linkend="book.obs-user"/></term>
    <listitem>
     <para>
      This guide is intended for users of &obs;. The first part describes basic
