@@ -164,14 +164,17 @@ Keep: debbuild</screen>
          <literal>ext2</literal>, <literal>ext3</literal>,
          <literal>ext4</literal>, <literal>btrfs</literal>,
          <literal>xfs</literal>, <literal>reiserfs</literal> (v3).
+      </varlistentry>
+      <varlistentry>
+       <term><parameter>vmfsoptions:</parameter></term>
+       <listitem>
+        <para>
          There is also an option to disable directory indexing for ext2, ext3,
          and ext4 file systems.
          This makes file ordering inside of directories reproducible but may
          have a negative performance impact.
          To apply this, specify
-         <literal>vmsftype:ext3:nodirindex</literal> (replace
-         <replaceable>ext3</replaceable> with the appropriate value for the
-         file system).
+         <literal>vmsfoptions:nodirindex</literal>
         </para>
        </listitem>
       </varlistentry>
