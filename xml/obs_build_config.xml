@@ -176,7 +176,7 @@ Keep: debbuild</screen>
          This makes file ordering inside of directories reproducible but may
          have a negative performance impact.
          To apply this, specify
-         <literal>vmsfoptions:nodirindex</literal>
+         <literal>vmfsoptions:nodirindex</literal>
         </para>
        </listitem>
       </varlistentry>
