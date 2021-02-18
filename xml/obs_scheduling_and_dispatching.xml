@@ -155,13 +155,21 @@
      <term>localdep</term>
      <listitem>
       <para> only build project linked packages if they depend on a local
-       package </para>
+       package result. </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>alldirect</term>
+     <listitem>
+       <para> build all packages from the linked projects. Indirectly linked
+              projects get not build.
+       </para>
      </listitem>
     </varlistentry>
     <varlistentry>
      <term>all</term>
      <listitem>
-      <para> treat packages from project links like local packages </para>
+      <para> build all packages from direct and indirect linked projects</para>
      </listitem>
     </varlistentry>
    </variablelist>
