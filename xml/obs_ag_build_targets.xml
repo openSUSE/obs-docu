@@ -38,6 +38,8 @@ This project refers to projects hosted on the &osbs;
   <para>Sending this via osc to the server:</para>
   <screen>osc meta prj -m "add openSUSE.org remote" -F /tmp/openSUSE.org.prj</screen>
  </sect2>
+ <!-- this is broken meanwhile and not the recommended approach. Disabling since people seem to try it.
+      FIXME: add a how-to using DoD esp also working for SLE and RMT setups
  <sect2 xml:id="_importing_distributions">
   <title>Importing Distributions</title>
   <para>With local hosted distributions packages you are independent from
@@ -166,4 +168,5 @@ testobs # obs_admin --rescan-repository SUSE:13.2 standard x86_64</screen>
    <para>This reads all packages and creates the dependency tree.</para>
   </sect3>
  </sect2>
+ -->
 </sect1>
