@@ -207,7 +207,7 @@
      Create a <firstterm baseform="Spec File">spec file</firstterm> which
      contains metadata and build instructions.
      For more information about spec files, see
-     <link xlink:href="https://rpm-guide.readthedocs.io/en/latest/"/>.
+     <link xlink:href="https://rpm-packaging-guide.github.io"/>.
     </para>
     <remark>
      Arguably, allowing people to get to step 4 of a procedure without them
@@ -429,7 +429,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
     ├── SOURCES  <co xml:id="co.workflow.buildroot.sources"/>
     ├── SPECS  <co xml:id="co.workflow.buildroot.specs"/>
     └── SRPMS  <co xml:id="co.workflow.buildroot.srpms"/></screen>
-    <remark>toms 2017-08-22: http://rpm-guide.readthedocs.io/en/latest/rpm-guide.html#rpm-packaging-workspace</remark>
+    <remark>toms 2017-08-22: https://rpm-packaging-guide.github.io/#rpm-packaging-workspace</remark>
     <calloutlist>
      <callout arearefs="co.workflow.buildroot.build">
       <para>
