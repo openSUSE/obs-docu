@@ -646,8 +646,7 @@ Keep: debbuild</screen>
     The macro definition itself are defined without a <literal>%define</literal>
     keyword. Start with <literal>%macroname</literal>, for example:
    </para>
-   <remark>toms 2017-08-23: find a good/better example than %_with_pulseaudio</remark>
-   <screen>%</screen>
+   <screen>%_hardened_build 0</screen>
   </sect2>
  </sect1>
 </chapter>
