@@ -233,6 +233,31 @@ Keep: debbuild</screen>
         </para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+        <term><parameter>obsgendiff</parameter></term>
+       <listitem>
+        <para>
+          OBS can run an external program that has access to the current build
+          and the previously successful result, e.g. to generate a difference or
+          a changelog from the diff.
+        </para>
+        <para>
+          OBS will run all scripts in
+          <filename>/usr/lib/build/obsgendiff.d/</filename> on the build host
+          (not in the <emphasis>%buildroot</emphasis>) when this flag is set.
+          If one of the scripts fails to run or no scripts are found, then the
+          overall build fails. I.e. if <literal>BuildFlags: obsgendiff</literal>
+          is set, then you <emphasis>must</emphasis> provide at least one script
+          in <filename>/usr/lib/build/obsgendiff.d/</filename>, otherwise your
+          build will fail.
+        </para>
+        <para>
+          A common use case for <literal>obsgendiff</literal> is to run <link
+          xlink:href="https://github.com/openSUSE/release-compare">release-compare</link>
+          after the build.
+        </para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
