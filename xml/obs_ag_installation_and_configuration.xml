@@ -12,92 +12,92 @@
 
  <sect1 xml:id="_planning">
   <title>Planning</title>
-  <para>For testing an own OBS instance and for small setups like only
-   packaging some scripts from your administrators into RPMS and creating
-   proper installation sources from them, the ready to use obs-server appliance
+  <para>For testing your own OBS instance, or for small setups, such as if you only
+   want to package a few scripts into RPMS and create
+   proper installation sources from them, the ready-to-use obs-server appliance
    images are the easiest way. You can download them from <link
     xlink:href="http://openbuildservice.org/download/"
     >http://openbuildservice.org/download/</link>.</para>
   <para>
-   To use the OBS for your Linux software development with
-   many packages, projects and users, consider setting up an own installation.
+   However, to use the OBS for large Linux software development with
+   many packages, projects and users, consider setting up a regular installation.
    Depending on the number of users, projects, and
    architectures, you can split up the back-end
    (called partitioning) and have separate hosts for the front-end and the
    database.
   </para>
-  <para>But for most installations it is still OK to run everything but workers
-   one host with enough resources.</para>
+  <para>For most installations, it is OK to run everything except workers
+   on one host, if it has sufficient resources.</para>
   <para>For flexibility and if you want some kind of high availability it is
    recommended to use virtualization for the different components.</para>
   <sect2 xml:id="_resource_planning">
    <title>Resource Planning</title>
-   <para>Normally for a small to middle installation a setup with everything
-    except workers on one host is sufficient. You should have separate /srv
-    volume for the back-end data, XFS as file system is best choice.</para>
-   <para>For each scheduler architecture you should add 4 GB RAM and one CPU
+   <para>Normally, for an small or middle-sized installation, a setup with everything
+    on one host (except workers) is sufficient. You should have a separate /srv
+    volume for the back-end data.  We recommend that you use XFS as file system.</para>
+   <para>For each scheduler architecture, you should add 4 GB RAM and one CPU
     core. For each build distribution you should add at least 50GB disk space
     per architecture.</para>
    <para>A medium instance with about 50 users can easily run on a machine with
-    16GB RAM 4 cores and 1 TB storage. The storage of course depend on the size
+    16GB RAM, 4 cores and 1 TB storage. The storage, of course, depends on the size
     of your projects and how often you have new versions.</para>
-   <para>For bigger installations you can use separate networks for back-end
+   <para>For bigger installations, you can use separate networks for back-end
     communication, workers and front-end.</para>
-   <para>The reference installation on <emphasis role="strong"
-      >build.opensuse.org</emphasis> with lot of users,
-    distributions runs on a partitioned setup with:</para>
+   <para>As of May 2021, the reference installation on <emphasis role="strong"
+      >build.opensuse.org</emphasis>, which has a lot of users
+    and distributions, runs on a partitioned setup with:</para>
    <itemizedlist>
     <listitem>
      <para> a mysql cluster as database </para>
     </listitem>
     <listitem>
-     <para> api-server: 16GB RAM 4 cores 50GB disk </para>
+     <para> api-server: 16GB RAM, 4 cores, 50GB disk </para>
     </listitem>
     <listitem>
      <para> separate binary back-ends (scheduler, dispatcher, reposerver,
       publisher, warden) </para>
     </listitem>
     <listitem>
-     <para> source server 11 GB RAM, 4 cores, 3 TB disk (RAM used mainly for
-      caching) </para>
+     <para> source server: 11 GB RAM, 4 cores, 3 TB disk.  The RAM is used mainly for
+      caching. </para>
     </listitem>
     <listitem>
      <para> main back-end: 62 GB RAM (oversized), 16TB disk </para>
     </listitem>
     <listitem>
-     <para> lot of workers (see - <link
+     <para> a lot of workers (see - <link
        xlink:href="https://build.opensuse.org/monitor"
        >https://build.opensuse.org/monitor</link>) </para>
     </listitem>
    </itemizedlist>
-   <para>For build time and performance the count and performance of available
-    worker hosts more important as the remaining parts.</para>
+   <para>For build time and performance, the count and performance of available
+    worker hosts is more important than the other parts.</para>
   </sect2>
  </sect1>
  <sect1 xml:id="_simple_installation">
   <title>Simple Installation</title>
-  <para>Simple installation means, all OBS services running on the same
+  <para>In this document, we call "simple installation" an OBS installation where all OBS services are running on the same
    machine.</para>
   <important>
    <para>It is very important that you read the <emphasis role="strong"
      >README.SETUP</emphasis> file coming with your OBS version and follow the
-    instructions there, because here maybe changes to this version.</para>
+    instructions there, because it may provide additional, version-specific information.</para>
   </important>
   <para>Before you start the installation of the OBS, you should make sure that
-   your hosts have the correct fully qualified hostname and DNS is working and
+   your hosts have the correct fully qualified hostname, and that DNS is working and
    can resolve all names.</para>
   <sect2 xml:id="_backend_installation">
    <title>Back-end Installation</title>
    <para>The back-end hosts all sources and built packages. It also schedules
-    the jobs. You need to install the "obs-server" package for this. You need
-    to check the <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis> file,
-    but the defaults should be good enough for the simple case.</para>
+    the jobs. To install it, install the "obs-server" package. You should
+    check the <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis> file,
+    though the defaults should be good enough for simple cases.</para>
    <para>You can control the different back-end components via systemctl.
     Basically you can enable/disable the service during booting the system and
-    start/stop/restart it in a running system. For more information, have a look at the
-    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">systemctl man page</link>.
+    start/stop/restart it in a running system. For more information, see
+    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">the systemctl man page</link>.
     For example, to restart the repository
-    server use</para>
+    server, do:</para>
    <screen>systemctl restart obsrepserver.service</screen>
    <table frame="all" rowsep="1" colsep="1">
     <title>Service Names</title>
