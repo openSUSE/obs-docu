@@ -90,7 +90,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
     <listitem>
      <formalpara>
-      <title>A Package List</title>
+      <title>A File List</title>
       <para>
        To successfully install and remove a package and all its contents,
        the package manager needs to know which files and directories belong to
