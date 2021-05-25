@@ -17,7 +17,7 @@
   the workload independent of the running host OS. This includes (but is not
   limited to) libraries, executables and shared resource files. </para>
 
- <sect1>
+ <sect1 xml:id="_supported_formats">
   <title>Supported Container Formats</title>
   <para> A container that is providing its own kernel is commonly called a
   virtual machine and will be referred to as such in this book. The Open Build
@@ -93,7 +93,7 @@
   </sect2>-->
  </sect1>
 
- <sect1>
+ <sect1 xml:id="_container_registry">
    <title>
      Container Registry
    </title>
@@ -159,7 +159,7 @@
    </para>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="_image_signatures">
    <title>
      Container Image Signatures
    </title>
