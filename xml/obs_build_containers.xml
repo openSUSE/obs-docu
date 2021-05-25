@@ -72,7 +72,7 @@
     <term>Flatpak</term>
     <listitem>
      <para>Flatpak packages can be built in the Open Build Service, see
-     &flatpak; for further details.</para>
+     <xref linkend="sec.pkgfmt.flatpak"/> for further details.</para>
     </listitem>
    </varlistentry>
    <varlistentry>

@@ -283,7 +283,7 @@ systemctl enable sshd</screen>
   <remark>toms 2017-08-18: TODO What is it and what is needed</remark>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="sec.pkgfmt.flatpak">
   <title>&flatpak;</title>
   <para>
   The <link xlink:href="https://flatpak.org/">Flatpak</link> format can be used
