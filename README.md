@@ -25,7 +25,7 @@ Similar for other guides. HTML documentation can get generated via
 
 ## Development Environment
 We are also shipping a [docker/docker-compose](https://www.docker.com/) based
-development environment you can use.
+development environment that you can use.
 
 1. Since we mount the repository into our container, we need to map
    your local user id to the one of the container user:
@@ -46,6 +46,16 @@ development environment you can use.
    docker-compose run --rm obs-docu daps -vv -d DC-obs-all html
    ```
 
+### Podman-based Development Environment
+
+If you are not using docker and docker-compose, then you can achieve the same
+using [podman](https://podman.io/) and [buildah](https://buildah.io/):
+```ShellSession
+$ buildah bud --layers --build-arg CONTAINER_USERID=0 --build-arg USER=root --tag obs-docu .
+$ podman run --rm -v $(pwd):/obs-docu:Z localhost/obs-docu daps -vv -d DC-obs-all html
+```
+
+
 ## Update Documentation
 
 The first steps to update the documentation are:
@@ -57,4 +67,3 @@ The first steps to update the documentation are:
 - Wait until your changes are merged.
 
 Once the Pull Request is approved and merged, your changes are ready to be deployed. However, the OBS documentation is hosted online at openbuildservice.org, so you should move to [obs-landing](https://github.com/openSUSE/obs-landing) repository where you'll find the [instructions to deploy](https://github.com/openSUSE/obs-landing#updating-obs-documentation).
-
