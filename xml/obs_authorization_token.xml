@@ -76,7 +76,7 @@
     Again, two examples doing same thing:
    </para>
    <screen><command>osc</command> token --trigger &lt;TOKEN&gt; &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
-   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice?project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST https://$obs_instance/trigger/runservice?project=&lt;PROJECT&gt;&amp;package=&lt;PACKAGE&gt;</screen>
    <para> You can also limit the token to a specific package. The advantage is
     that the operation is limited to that package, so less bad things can
     happen when the token leaks. Also you do not need to specify the package on
@@ -88,12 +88,12 @@
    <para>A token to rebuild a package can be created and trigger by </para>
    <screen><command>osc</command> token --opertion rebuild --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
    <screen><command>osc</command> token --operation rebuild --trigger &lt;TOKEN&gt;</screen>
-   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/rebuild</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST https://$obs_instance/trigger/rebuild</screen>
 
    <para>A token to release a package can be created and trigger by </para>
    <screen><command>osc</command> token --opertion release --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
    <screen><command>osc</command> token --operation release --trigger &lt;TOKEN&gt;</screen>
-   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/release</screen>
+   <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST https://$obs_instance/trigger/release</screen>
   </sect2>
   <!-- <sect2>
    <title>Changing Request Review Status</title>
