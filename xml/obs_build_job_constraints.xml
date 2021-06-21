@@ -96,7 +96,7 @@ Constraint: linux:version:max 4.0</screen>
   <para> To require hardware or build instance features. </para>
   <sect2>
    <title><literal>cpu</literal></title>
-   <para> To require a specific Linux kernel version. </para>
+   <para> To require a specific CPU feature. </para>
    <sect3>
     <title><literal>flag</literal></title>
     <para> CPU features which are provided by the hardware. On Linux they can
