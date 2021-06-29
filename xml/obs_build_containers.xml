@@ -13,192 +13,209 @@
    <para/>
   </abstract>
  </info>
- <para> Containers are workloads which embed all necessary files to make
-  the workload independent of the running host OS. This includes (but is not
-  limited to) libraries, executables and shared resource files. </para>
+ <para>
+  Containers are workloads which embed all necessary files to make the workload
+  independent of the running host OS. This includes (but is not limited to)
+  libraries, executables and shared resource files.
+ </para>
 
  <sect1 xml:id="_supported_formats">
   <title>Supported Container Formats</title>
-  <para> A container that is providing its own kernel is commonly called a
-  virtual machine and will be referred to as such in this book. The Open Build
-  Service (OBS) supports container builds either by supporting the native build
-  format or as side product of a different format.  This ranges is from very
-  simple chroot containers over server (for example, Docker) or desktop formats
-  (for example, AppImages, Snaps or Flatpaks) up to full VM builds (such as for
-  OpenStack, KVM, or as a Live CD via &kiwi;). </para>
+
+  <para>
+   A container that is providing its own kernel is commonly called a virtual
+   machine and will be referred to as such in this book. The Open Build Service
+   (OBS) supports container builds either by supporting the native build format
+   or as side product of a different format. This ranges is from very simple
+   chroot containers over server (for example, Docker) or desktop formats (for
+   example, AppImages, Snaps or Flatpaks) up to full VM builds (such as for
+   OpenStack, KVM, or as a Live CD via &kiwi;).
+  </para>
 
   <variablelist>
    <varlistentry>
     <term>SimpleImage</term>
     <listitem>
-     <para> SimpleImage is a special format which uses the rpm spec file syntax
-     and just packages the resulting install root as tar ball or squashfs image.
-     The format is just using the BuildRequires tags from a file called
-     <filename>simpleimage</filename>, it supports also rpm macro handling to allow
-     for exceptions depending on the build environment. </para>
+     <para>
+      SimpleImage is a special format which uses the rpm spec file syntax and
+      just packages the resulting install root as tar ball or squashfs image.
+      The format is just using the BuildRequires tags from a file called
+      <filename>simpleimage</filename>, it supports also rpm macro handling to
+      allow for exceptions depending on the build environment.
+     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Docker</term>
     <listitem>
-     <para>Docker images can be built either via the &kiwi; tool or from
-     Dockerfiles.</para>
+     <para>
+      Docker images can be built either via the &kiwi; tool or from
+      Dockerfiles.
+     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>AppImage</term>
     <listitem>
-     <para>The desktop-oriented AppImage format is currently only created as a
-    side effect of an RPM build. Open Build Service (OBS) supports signing and
-    publishing the .AppImage files, the rest is handled via wrapper packages
-    which converts an RPM (or DEB package) into an AppImage file. Own build
-    rules can provided via a <filename>Recipe</filename> file, fallback code
-    will be used if no <filename>Recipe</filename> file is available.</para>
+     <para>
+      The desktop-oriented AppImage format is currently only created as a side
+      effect of an RPM build. Open Build Service (OBS) supports signing and
+      publishing the .AppImage files, the rest is handled via wrapper packages
+      which converts an RPM (or DEB package) into an AppImage file. Own build
+      rules can provided via a <filename>Recipe</filename> file, fallback code
+      will be used if no <filename>Recipe</filename> file is available.
+     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Snap</term>
     <listitem>
      <para>
-     The Snap format is supported natively. However, external resources are
-     only supported via source services and therefore not all build types are
-     supported. Snapcraft only works with Ubuntu-based base systems.
-     (Code to support &rpmf;-based distributions exists as well but has not
-     been merged upstream yet.)
-    </para>
+      The Snap format is supported natively. However, external resources are
+      only supported via source services and therefore not all build types are
+      supported. Snapcraft only works with Ubuntu-based base systems. (Code to
+      support &rpmf;-based distributions exists as well but has not been merged
+      upstream yet.)
+     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Flatpak</term>
     <listitem>
-     <para>Flatpak packages can be built in the Open Build Service, see
-     <xref linkend="sec.pkgfmt.flatpak"/> for further details.</para>
+     <para>
+      Flatpak packages can be built in the Open Build Service, see
+      <xref linkend="sec.pkgfmt.flatpak"/> for further details.
+     </para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Livebuild</term>
     <listitem>
-     <para>Livebuild is the Debian livebuild support for ISO images.</para>
+     <para>
+      Livebuild is the Debian livebuild support for ISO images.
+     </para>
     </listitem>
    </varlistentry>
   </variablelist>
 
-<!--  <sect2>
+  <!--  <sect2>
    <title>&kiwi; Appliance Formats</title>
    <para> </para>
-  </sect2>
-  <sect2>
+   </sect2>
+   <sect2>
    <title>&kiwi; Product Builds</title>
    <para> </para>
-  </sect2>-->
+   </sect2>-->
  </sect1>
-
  <sect1 xml:id="_container_registry">
-   <title>
-     Container Registry
-   </title>
-   <para>
-     Container Registries are repositories that container images are published
-     and can be automatically pulled from using tools like <link
-     xlink:href="https://podman.io/">podman</link> or <link
-     xlink:href="https://www.docker.com/">docker</link>.
-   </para>
-   <para>
-     The Open Build Service will automatically publish container images in a
-     OCI-compatible registry, with the URLs to the images constructed as follows:
-     <literal>
-       $BASE/$PROJECT/$REPOSITORY/$IMAGE_NAME:$TAG
-     </literal>
-     with the following components:
-     <itemizedlist>
-       <listitem>
-         <para>
-           <literal>$BASE</literal>: URL/IP under which the Open Build Service
-           instance is reachable
-         </para>
-       </listitem>
-       <listitem>
-         <para>
-           <literal>$PROJECT</literal>: The name of the project where the image is
-           build, with all colons replaced with forward slashes.
-         </para>
-       </listitem>
-       <listitem>
-         <para>
-           <literal>$REPOSITORY</literal>: The name of the repository where the
-           containers are published.
-         </para>
-       </listitem>
-       <listitem>
-         <para>
-           <literal>$IMAGE_NAME</literal>: The name of this container image. It
-           defaults to the name of the package from which the container is
-           build. Alternatively, a different image name can be specified in the
-           build recipe, e.g. via the <literal>containerconfig</literal> element in a
-           &kiwi; file (see <link
-           xlink:href="https://osinside.github.io/kiwi/building_images/build_docker_container.html?highlight=containerconfig">the
-           kiwi documentation</link> for further details).
-         </para>
-       </listitem>
-       <listitem>
-         <para>
-           <literal>$TAG</literal>: The image tag. This defaults to
-           <literal>latest</literal> with alternatives being provided in a similar
-           fashion as the image's name.
-         </para>
-       </listitem>
-     </itemizedlist>
-   </para>
-   <para>
-     The <link
-     xlink:href="https://github.com/openSUSE/cooverview">cooverview</link>
-     project provides a simple user-facing webpage to search for containers
-     published by the Open Build Service and can be used to conveniently obtain
-     the correct registry URLs. It is used to power <link
-     xlink:href="https://registry.opensuse.org/">registry.opensuse.org</link>
-   </para>
- </sect1>
+  <title>Container Registry</title>
 
+  <para>
+   Container Registries are repositories that container images are published
+   and can be automatically pulled from using tools like
+   <link xlink:href="https://podman.io/">podman</link> or
+   <link xlink:href="https://www.docker.com/">docker</link>.
+  </para>
+
+  <para>
+   The Open Build Service will automatically publish container images in a
+   OCI-compatible registry, with the URLs to the images constructed as follows:
+   <literal> $BASE/$PROJECT/$REPOSITORY/$IMAGE_NAME:$TAG </literal> with the
+   following components:
+   <itemizedlist>
+    <listitem>
+     <para>
+      <literal>$BASE</literal>: URL/IP under which the Open Build Service
+      instance is reachable
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>$PROJECT</literal>: The name of the project where the image is
+      build, with all colons replaced with forward slashes.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>$REPOSITORY</literal>: The name of the repository where the
+      containers are published.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>$IMAGE_NAME</literal>: The name of this container image. It
+      defaults to the name of the package from which the container is build.
+      Alternatively, a different image name can be specified in the build
+      recipe, e.g. via the <literal>containerconfig</literal> element in a
+      &kiwi; file (see
+      <link xlink:href="https://osinside.github.io/kiwi/building_images/build_docker_container.html?highlight=containerconfig">the
+      kiwi documentation</link> for further details).
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      <literal>$TAG</literal>: The image tag. This defaults to
+      <literal>latest</literal> with alternatives being provided in a similar
+      fashion as the image's name.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </para>
+
+  <para>
+   The
+   <link
+     xlink:href="https://github.com/openSUSE/cooverview">cooverview</link>
+   project provides a simple user-facing webpage to search for containers
+   published by the Open Build Service and can be used to conveniently obtain
+   the correct registry URLs. It is used to power
+   <link
+     xlink:href="https://registry.opensuse.org/">registry.opensuse.org</link>
+  </para>
+ </sect1>
  <sect1 xml:id="_image_signatures">
-   <title>
-     Container Image Signatures
-   </title>
-   <para>
-     The Open Build Service automatically signs every package that has been
-     build and publishes the cryptographic signature alongside with
-     it. Container images are no exception to this and the detached signatures
-     can be used by <link xlink:href="https://podman.io/">podman</link> to
-     verify every image that is pulled from the registry.
-   </para>
-   <para>
-     Podman has to be configured first as outlined in the following steps.
-     <itemizedlist>
-       <listitem>
-         <para>
-           Create a <literal>yaml</literal> file under
-           <literal>/etc/containers/registries.d/</literal> with an appropriate
-           name for your instance and the following contents:
-           <example>
-           <title>registry.yaml</title>
-           <screen>
+  <title>Container Image Signatures</title>
+
+  <para>
+   The &obs; automatically signs every package that has been build and
+   publishes the cryptographic signature alongside with it. Container images
+   are no exception to this and the detached signatures can be used by
+   <link xlink:href="https://podman.io/">podman</link> to verify every image
+   that is pulled from the registry.
+  </para>
+
+  <para>
+   Podman has to be configured first as outlined in the following steps.
+  </para>
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     Create a <literal>yaml</literal> file under
+     <literal>/etc/containers/registries.d/</literal> with an appropriate name
+     for your instance and the following contents:
+     <example>
+      <title>registry.yaml</title>
+<screen>
 ---
 docker:
   <replaceable>REGISTRY_URL</replaceable>:
     sigstore: <replaceable>REGISTRY_URL</replaceable>/sigstore
-           </screen>
-           </example>
-           Replace <replaceable>REGISTRY_URL</replaceable> with the appropriate
-           URL to your instance of &obs; (for example,
-           <literal>registry.opensuse.org</literal>).
-         </para>
-       </listitem>
-       <listitem>
-         <para>
-           Add the following object into the key <literal>transports</literal>
-           in the file <filename>/etc/containers/policy.json</filename>:
-           <example>
-           <title>policy.json</title>
-           <screen>
+</screen>
+     </example>
+     Replace <replaceable>REGISTRY_URL</replaceable> with the appropriate URL
+     to your instance of &obs; (for example,
+     <literal>registry.opensuse.org</literal>).
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Add the following object into the key <literal>transports</literal> in the
+     file <filename>/etc/containers/policy.json</filename>:
+    </para>
+    <example>
+     <title>policy.json</title>
+<screen>
     "docker": {
       "<replaceable>REGISTRY_URL</replaceable>": [
         {
@@ -208,13 +225,15 @@ docker:
         }
       ]
     }
-           </screen>
-           </example>
-           The complete <filename>/etc/containers/policy.json</filename> can then
-           look like this:
-           <example>
-           <title>policy.json</title>
-           <screen>
+</screen>
+    </example>
+    <para>
+     The complete <filename>/etc/containers/policy.json</filename> can then
+     look like this:
+    </para>
+    <example>
+     <title>policy.json</title>
+<screen>
 {
   "default": [
     {
@@ -240,23 +259,22 @@ docker:
     }
   }
 }
-           </screen>
-           </example>
-         </para>
-       </listitem>
-       <listitem>
-         <para>
-           Save the public key of the project where your image is build under
-           <replaceable>PATH_TO_PUBLIC_KEY</replaceable> (you can choose any
-           location to which you have read access, only ensure that you specify
-           it in <filename>/etc/containers/policy.json</filename> as well).
-         </para>
-       </listitem>
-     </itemizedlist>
-   </para>
-   <para>
-     Podman will from now on automatically fetch the published signatures from
-     the backend and verify them before storing the images locally.
-   </para>
+</screen>
+    </example>
+   </listitem>
+   <listitem>
+    <para>
+     Save the public key of the project where your image is build under
+     <replaceable>PATH_TO_PUBLIC_KEY</replaceable> (you can choose any location
+     to which you have read access, only ensure that you specify it in
+     <filename>/etc/containers/policy.json</filename> as well).
+    </para>
+   </listitem>
+  </itemizedlist>
+
+  <para>
+   Podman will from now on automatically fetch the published signatures from
+   the backend and verify them before storing the images locally.
+  </para>
  </sect1>
 </chapter>
