@@ -28,16 +28,18 @@
    </listitem>
    <listitem>
     <para>
-     OBS specific RPM macros which are set are: <literal>%_project</literal> and <literal>%_repository</literal>
+     OBS-specific RPM macros which are set are: <literal>%_project</literal> and <literal>%_repository</literal>
     </para>
    </listitem>
    <listitem>
     <para>
-       <code>#!ForceMultiVersion</code> can be used to avoid reseting the build counter reset on version update.
-           s handled automatically in most cases. Just needed when it is not possible to detect
-           r sub packages defining their own version. This can be the case when the sub packages
-           eated dynamic via external rpm macros.
-   </para>
+     <code>#!ForceMultiVersion</code> can be used to avoid resetting the
+     build counter reset on version update. This is handled automatically in
+     most cases. Explicitly adding this instruction is only needed when it is
+     not possible to detect whether there are subpackages defining their own
+     version. This can be the case when the subpackages are created
+     dynamically via external rpm macros.
+    </para>
    </listitem>
    <listitem>
     <para>
@@ -108,14 +110,14 @@
     * 
    -->
    <para>
-	&kiwi; appliance builds create images which can be used for direct consument. Note: builds in non-VM 
+	&kiwi; appliance builds create images which can be used for direct consumption. Note: builds in non-VM
 	environments do fail often due to the bootloader setup. Use <command>osc build --vm-type=kvm</command> for local building.
 	OBS is evaluating kiwi builds at least two times. One time for the build host dependencies and another
 	time for the target distribution used inside of the image. For container builds a third evaluation
 	happens to find the base container.
    </para>
    <para>
-     &kiwi; builds inside of OBS need to fullfil following requirements:
+     &kiwi; builds inside of OBS need to fulfill following requirements:
    </para>
   <itemizedlist>
    <listitem>
@@ -152,19 +154,19 @@
      </para>
    </listitem>
    <listitem>
-     <para>Packages get picked usually in a fixed order from the most important repository in &obsa;. This happens independend 
-  	 of the version number of the packages. Set the xml comment <command>OBS-UnorderedRepos</command> to disable the repository order handling and to have a more similar behaviour as with plain package manager builds. Note: this can result into switching 
+     <para>Packages get picked usually in a fixed order from the most important repository in &obsa;. This happens independently
+      of the version number of the packages. Set the xml comment <command>OBS-UnorderedRepos</command> to disable the repository order handling and to have a more similar behavior as with plain package manager builds. Note: this can result into switching
   	 repositories between builds and is therefore less reproducible.
      </para>
    </listitem>
    <listitem>
      <para>Container builds can specify a specific repository which shall be used for searching the base container. 
-  	   Use the xml comment <command>OBS-Imagerepo:$REPOSITORY_URL</command> for this. The repository url may be
+      Use the XML comment <command>OBS-Imagerepo:$REPOSITORY_URL</command> for this. The repository URL may be
   	   in <uri>obs://$PROJECT/$REPOSITORY</uri> style.
      </para>
    </listitem>
    <listitem>
-     <para>Container builds can specify additional tags via <command>OBS-AddTag:$TAG</command>. (kiwi limits it to one tag)
+     <para>Container builds can specify additional tags via <command>OBS-AddTag:$TAG</command> (&kiwi; limits it to one tag)
   	   in <uri>obs://$PROJECT/$REPOSITORY</uri> style.
      </para>
    </listitem>

@@ -6,7 +6,7 @@
         <warning>
             <title>Alpha Implementation</title>
             <para>This is Alpha implementation and not recommended for production.</para>
-            <para>The kubernetes device plugin deployed here makes several assumptions about which and how many containers will have access to KVM device.</para>
+            <para>The Kubernetes device plugin deployed here makes several assumptions about which and how many containers will have access to KVM device.</para>
             <para>The plugin also assumes availability of /dev/kvm on every node where the device-plugin-container is running</para>
         </warning>
         <para>The build service worker itself has many backends to run its jobs. One of the preferred backends is KVM.</para>

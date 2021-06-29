@@ -65,14 +65,14 @@
    </sect3>
   </sect2>
   <sect2 xml:id="_backup_strategies">
-   <title>Backup startegies</title>
+   <title>Backup strategies</title>
    <para>
      A backup is ideally taken only from a not running service. In real live this is 
-     usually not possbile, so it is important to run a backup on a production system.
+     usually not possible, so it is important to run a backup on a production system.
    </para>
    <sect3 xml:id="_backup_strategy_database">
     <title>Database</title>
-    <para>mysql backup either directly from a non-primary node in the galera
+    <para>MySQL backup either directly from a non-primary node in the galera
     cluster (table dump locks the database during operation) or from a mysql slave
     attached to the cluster.
     </para>
@@ -129,7 +129,7 @@
   </sect2>
   <sect2 xml:id="_restore_binaries">
    <title>Binaries</title>
-   <para>All build results are evaluated by the scheduler. Therefore any inconsisency can be
+   <para>All build results are evaluated by the scheduler. Therefore any inconsistency can be
 	   detected by the scheduler. One way is to enforce a cold start, which means that the
 	   scheduler would rescan all sources and binaries and trigger builds where needed.
 	   This can be achieved by
@@ -138,7 +138,7 @@
 	           &prompt.user;<command>rcobsscheduler start</command> 
 	   </screen>
 	   The scheduler state will be visible as in cold start. It may take a longer time, so it
-	   might be more efficent to check only certain projects or architectures if needed.
+	   might be more efficient to check only certain projects or architectures if needed.
 	   This can be triggered in a running system by executing
 	   <screen>&prompt.user;<command>obs_admin --check-project PROJECT ARCHITERCTURE</command> 
 	   </screen>
@@ -152,7 +152,7 @@
  <sect1 xml:id="_handle_data_corruption">
   <title>Repair Data Corruption</title>
   <para>
-	  On-disk data might be corrupted indepdent of a restore. For example due to power outage, filesystem
+	  On-disk data might be corrupted independent of a restore. For example due to power outage, filesystem
 	  or disk errors. A MySQL/Maria database in a cluster should repair itself in that case. Data
 	  on disk in the backend parts can be checked and fixed using an dedicated tool. See the help
 	  of the tool for further details or run
