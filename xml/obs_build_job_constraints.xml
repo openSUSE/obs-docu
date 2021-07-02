@@ -112,6 +112,13 @@ Constraint: linux:version:max 4.0</screen>
      <para> Example for project configuration:</para>
      <screen>Constraint: hardware:cpu:flag mmx
 Constraint: hardware:cpu:flag sse2</screen>
+     <para>A special flag is 'EL0', which can get added on specific armv8l systems.
+	   It is telling that it the hardware is supporting only execption level 0. This
+	   basically means no vm or kernel in 32bit is supported, but user land is
+	   supported. This flag can be used to block builds on such hardware, if
+	   no 64bit kernel is available for certain projects: </para>
+     <para>Example for project configuration:</para>
+     <screen>Constraint: hardware:cpu:flag exclude=true EL0</screen>
    </sect3>
   </sect2>
   <sect2>
