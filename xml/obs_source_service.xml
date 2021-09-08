@@ -198,7 +198,7 @@
         dependency and must be available.
        </para>
       </footnote></entry>
-      <entry>Before each build<xref linkend="fn.obs.sserv.mode.buildtime"/></entry>
+      <entry>Before each build<footnoteref linkend="fn.obs.sserv.mode.buildtime"/></entry>
       <entry></entry>
      </row>
      <row>
