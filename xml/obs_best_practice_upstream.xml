@@ -73,9 +73,9 @@
     dependencies is being built in the same project, you need to request
     creating subproject. In openSUSE Build Service, this is done through asking
     OBS admins for it on
-    <link xlink:href="mailto:opensuse-buildservice+subscribe@opensuse.org">opensuse-buildservice
+    <link xlink:href="mailto:buildservice@opensuse.org">buildservice
     mailing list </link>. Its archive and link for subscribing can be found
-    at <link xlink:href="http://lists.opensuse.org/opensuse-buildservice/"/> .
+    at <link xlink:href="https://lists.opensuse.org/manage/lists/buildservice.lists.opensuse.org/"/> .
    </para>
    <para>
     If you need to just put your package somewhere, you can create it in your
