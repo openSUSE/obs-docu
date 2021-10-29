@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter [
+<!ENTITY % entities SYSTEM "entity-decl.ent">
+%entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.scm_ci_workflow_integration"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:ns7="http://docbook.org/ns/transclusion"
+         xmlns:ns6="http://www.w3.org/1998/Math/MathML"
+         xmlns:ns5="http://www.w3.org/2000/svg"
+         xmlns:ns4="http://www.w3.org/1999/xhtml"
+         xmlns:ns="http://docbook.org/ns/docbook">
+  <title>SCM/CI Workflow Integration [Beta Feature]</title>
+
+  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup">
+    <title>SCM/CI Workflow Integration Setup</title>
+
+    <note>
+      <title>The feature described in this chapter is a <emphasis>Beta
+      Feature</emphasis>.</title>
+
+      <para>That means the development of this feature is still in progress and under
+      constant revision. We can substantially change this feature throughout the process
+      or even discard it. Make sure to check back before reporting problems.
+      </para>
+
+      <para>Everybody can join the beta program, read <link
+      xlink:href="https://openbuildservice.org/2018/10/04/the-beta-program">here</link>
+      how to do it.</para>
+    </note>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.introduction">
+      <title>Introduction</title>
+
+      <para>With this integration, you can take advantage of source code management (SCM)
+      systems like GitHub or GitLab to manage your packages sources. Then, you can
+      integrate those sources with OBS to run different <emphasis
+      role="bold">workflows</emphasis>, for instance, to build a
+      package and report back the result to the SCM.</para>
+
+      <para>In the following sections, you will find the instructions to set
+      up the integration between SCMs and OBS.</para>
+
+      <para>This chapter talks in GitHub jargon to simplify the text. As
+      constantly mentioning all the names for the same things, e.g. <emphasis>Pull Requests/Merge Requests</emphasis>,
+      is tiresome and confusing. However, every aspect has its
+      correspondence in GitLab. Refer to <xref
+      linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table"/>
+      for clarification of terminology.</para>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.prerequisites">
+      <title>Prerequisites</title>
+
+      <para>Before you start, you need to</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>have a repository on GitHub.</para>
+        </listitem>
+
+        <listitem>
+          <para>have a package on an OBS Instance.</para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.supported_scms">
+      <title>Supported SCMs</title>
+
+      <para>We support the GitHub.com and GitLab.com instances.</para>
+
+      <para>We also support Self-Hosted instances from GitHub and GitLab. As
+      long as the network connectivity works, OBS will be able to interact
+      with that SCM.</para>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication">
+      <title>Token Authentication</title>
+
+      <para>OBS and GitHub need to talk to each other. Tokens are the way to
+      make this happen.</para>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_obs_with_scm">
+        <title>How to Authenticate OBS with SCMs</title>
+
+        <para>You have to create a GitHub <emphasis role="bold">personal
+        access token</emphasis>. OBS is going to use it to talk to
+        GitHub on your behalf.</para>
+
+        <para>The personal access token needs, at least, the following scopes
+        assigned:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>GitHub: repo</para>
+          </listitem>
+
+          <listitem>
+            <para>GitLab: api</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Check <link
+        xlink:href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">GitHub’s</link>
+        and <link
+        xlink:href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token">GitLab</link>’s
+        documentation to learn how.</para>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs">
+        <title>How to Authenticate SCMs with OBS</title>
+
+         <para>You have to create an OBS <emphasis role="bold">workflow
+        token</emphasis>. Github is going to use it to trigger actions on
+        OBS on your behalf.</para>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs.create_token">
+          <title>Create Token</title>
+
+          <para>You can create the OBS token via WebUI in <emphasis>Profile
+          &gt; Manage Your Tokens.</emphasis></para>
+
+          <para>You can also use <emphasis>osc</emphasis> for this:</para>
+
+          <screen>osc token --create --operation workflow --scm-token long_ascii_salad</screen>
+
+          <para>Example of response:</para>
+
+          <screen language="xml">
+&lt;status code="ok"&gt;
+    &lt;summary&gt;Ok&lt;/summary&gt;
+    &lt;data name="token"&gt;long_ascii_salad&lt;/data&gt;
+    &lt;data name="id"&gt;12345&lt;/data&gt;
+&lt;/status&gt;
+       </screen>
+
+          <para>Make sure you replace <emphasis>long_ascii_salad</emphasis>
+          with your real GitHub personal access token created in <xref
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_obs_with_scm"/></para>
+
+          <warning>
+            <para>Don't forget to keep your token secret to prevent someone
+            else from triggering operations in your name!</para></warning>
+        </sect4>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs.revoke_regenerate_token">
+          <title>Regenerating Secrets and Deleting Tokens</title>
+
+          <para>If you suspect your OBS token secret was leaked, you can regenerate
+          the secret or delete the whole token to secure it again:</para>
+
+          <para><emphasis role="bold">a) Regenerate the
+          token secret</emphasis></para>
+
+          <para>Through the WebUI in<emphasis> Profile &gt; Manage Your Tokens
+          &gt; Edit &gt; Regenerate Token</emphasis>.</para>
+
+          <para><emphasis role="bold">b) Delete the token</emphasis></para>
+
+          <para>You can always delete your token via WebUI, in
+          <emphasis>Profile &gt; Manage Your Tokens</emphasis>, or with these
+          commands:</para>
+
+          <screen language="xml"><command>osc</command> token # list all your tokens</screen>
+
+          <screen language="xml"><command>osc</command> token --delete $token_id # remove the token with the given id</screen>
+
+          <para>Then you can create a new one as explained in <xref
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs"/>
+          and replace it wherever you use it.</para>
+        </sect4>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks">
+      <title>Webhooks</title>
+
+      <para>Once OBS and GitHub are allowed to speak to each other, they can
+      start talking via <emphasis role="bold">webhooks</emphasis>.</para>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.scm_events">
+        <title>SCM Events</title>
+
+        <para>On a GitHub repository, events are happening all the time: a
+        pull request is created, somebody pushes a commit, a pull request is
+        merged etc. When you set up a webhook on GitHub, you can specify
+        which events you are interested in. Only when those events happen, the
+        webhook will be sent to OBS.</para>
+
+        <para>This is the list of SCM events supported by the existing
+        workflows in OBS:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Pull requests</para>
+          </listitem>
+
+          <listitem>
+            <para>Pushes</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Other SCMs like GitLab have similar behaviour; the main
+        difference is how they name the events. Refer to the <link
+        linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table">Equivalence
+        Table</link> for more details or read more about <link
+        xlink:href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads">GitHub
+        events</link> and <link
+        xlink:href="https://docs.gitlab.com/ce/user/project/integrations/webhooks.html#events">GitLab
+        events</link>.</para>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.how_to_set_up_a_webhook_on_github">
+        <title>How to Set Up a Webhook on Github</title>
+
+        <para>Go to the project you want to set the integration on, then under
+        <emphasis>Settings &gt; Webhooks</emphasis>.</para>
+
+        <figure>
+          <title>Webhooks on GitHub.</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata contentwidth="480"
+                         fileref="https://openbuildservice.org/images/posts/sprint_95_github_webhook_form.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>You have to fill in the form with:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Payload URL:</emphasis>
+            <emphasis>https://build.opensuse.org/trigger/workflow?id=12345</emphasis>.
+            Replace 12345 with the OBS token numerical ID previously
+            obtained.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Content type:</emphasis>
+            application/json.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Secret:</emphasis>
+            <emphasis>uvwxyz</emphasis>. Replace uvwxyz with the OBS token
+            secret string previously obtained.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Enable SSL
+            verification</emphasis>.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Let me select individual
+            events</emphasis>: Pull requests, Pushes.</para>
+          </listitem>
+        </itemizedlist>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.how_to_set_up_a_webhook_on_gitlab">
+        <title>How to Set Up a Webhook on GitLab</title>
+
+        <para>Go to the project you want to set the integration on, under
+        the<emphasis> Settings &gt; Webhooks</emphasis>.</para>
+
+        <figure>
+          <title>Webhooks on GitLab.</title>
+
+          <mediaobject>
+            <imageobject>
+              <imagedata contentwidth="480"
+                         fileref="https://openbuildservice.org/images/posts/sprint_95_gitlab_webhook_form.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Fill in the following fields:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">URL:</emphasis><emphasis>
+            https://build.opensuse.org/trigger/workflow?id=12345.</emphasis>
+            Replace 12345 with the OBS token numerical ID previously
+            obtained.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Secret Token:</emphasis>
+            <emphasis>uvwxyz</emphasis> Replace uvwxyz with the OBS token
+            secret string previously obtained.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Trigger:</emphasis> <emphasis>Merge
+            request events</emphasis>, <emphasis>Push
+            events</emphasis>.</para>
+          </listitem>
+        </itemizedlist>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows">
+      <title>OBS Workflows</title>
+
+      <para>A GitHub event occurs and OBS receives the corresponding webhook.
+      Now is when the <emphasis role="bold">OBS workflows</emphasis> come into
+      play.</para>
+
+      <para>A workflow is nothing else than a sequence of <emphasis
+      role="bold">steps</emphasis> you want to perform in OBS.
+      You can describe the steps to run in a YAML configuration
+      file.</para>
+
+      <para>To do so, in the root directory of your GitHub repository, create
+      a directory <emphasis>.obs</emphasis> which contains a file called
+      <emphasis>workflows.yml</emphasis>.</para>
+
+      <para>The content of <emphasis>.obs/workflows.yml</emphasis> could look
+      like this:<screen>rebuild_master:
+  steps:
+    - rebuild_package
+        project: home:Admin
+        package: ctris
+  filters:
+    event: push</screen></para>
+
+      <para>You can also define multiple workflows, each one needs an
+      <emphasis>unique</emphasis> name. The following example contains two
+      workflows: <emphasis>main_workflow</emphasis> and
+      <emphasis>rebuild_master</emphasis>.</para>
+
+      <screen>main_workflow:
+  steps:
+    - branch_package
+        source_project: OBS:Server:Unstable
+        source_package: obs-server
+        target_project: OBS:Server:Unstable:CI
+  filters:
+    event: pull_request
+rebuild_master:
+  steps:
+    - rebuild_package
+        project: home:Admin
+        package: ctris
+  filters:
+    event: push
+    branches:
+      only:
+        - master</screen>
+
+      <para>OBS assumes the configuration file is placed in your target branch
+      and not in other branches or forks.</para>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">
+        <title>OBS Workflow Steps</title>
+
+        <para>We support the following steps (the keys used in the
+        configuration file appears surrounded with parenthesis):</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Branch a package in a project (branch_package).</para>
+          </listitem>
+
+          <listitem>
+            <para>Link a package to a project (link_package).</para>
+          </listitem>
+
+          <listitem>
+            <para>Configure repositories/architectures for a project
+            (configure_repositories)</para>
+          </listitem>
+
+          <listitem>
+            <para>Rebuild a package (rebuild_package)</para>
+          </listitem>
+        </itemizedlist>
+
+        <warning>
+          <para>The user the token belongs to needs to have permissions to
+          branch a package, link packages, configure repositories/architectures and rebuild packages.</para>
+        </warning>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.branch_a_package">
+          <title>Branch a Package in a Project</title>
+
+          <para>Given we have a source package called<emphasis>
+          ctris</emphasis> coming from a source project called
+          <emphasis>games</emphasis>, and a target project called
+          <emphasis>home:jane</emphasis>, this step will branch that package
+          onto the target project, keeping in mind that:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>For a pull request event, it will go to e.g.:
+              <emphasis>home:jane:github:jane:ctris:PR-1/ctris</emphasis>. Being <emphasis>PR-1</emphasis> the pull request number.</para>
+            </listitem>
+
+            <listitem>
+              <para>For a push event, it will go to e.g.:<emphasis>
+              home:jane/ctris-66f2acfbded89a19935ee6d481b7cf2ab95427f6</emphasis>. Being <emphasis>66f2acfbded89a19935ee6d481b7cf2ab95427f6</emphasis> the SHA of the latest commit that triggered the event.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>This is an example of a configuration file with a branch
+          package step:</para>
+
+          <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: games
+        source_package: ctris
+        target_project: home:jane</screen>
+        </sect4>
+
+        <sect4>
+          <title>Link a Package to a Project</title>
+
+          <para>The link package step is the equivalent of <emphasis>osc
+          linkpac</emphasis> command.</para>
+
+          <para>Given a source project called <emphasis>devel</emphasis>, a
+          source package called <emphasis>gcc</emphasis>, a target project
+          called <emphasis>home:jane</emphasis>, and a GitHub fork called
+          <emphasis>jane/gcc</emphasis> the step will link the package
+          <emphasis>devel/gcc</emphasis> against:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis>home:jane:github:jane:gcc:PR-1/gcc</emphasis>
+              for a pull request event. Being <emphasis>PR-1</emphasis> the pull request number.</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis>home:jane/gcc-fae00a0ac0e5687343a60ae02bf60352002ab9aa</emphasis>
+              for a push event. Being <emphasis>fae00a0ac0e5687343a60ae02bf60352002ab9aa</emphasis>
+              the SHA of the latest commit that triggered the event.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>This is an example of a configuration file with a link package
+          step:</para>
+
+          <screen>workflow:
+  steps:
+    - link_package:
+        source_project: devel
+        source_package: gcc
+        target_project: home:jane</screen>
+        </sect4>
+
+        <sect4>
+          <title>Configure Repositories/Architectures for a Project</title>
+
+          <para>Given a project called <emphasis>home:jane</emphasis>, we can
+          configure a number of repositories and architectures.</para>
+
+          <para>Each repository needs:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>a name, e.g.:
+              <emphasis>openSUSE_Tumbleweed</emphasis></para>
+            </listitem>
+
+            <listitem>
+              <para>a target project, e.g.:
+              <emphasis>openSUSE:Factory</emphasis></para>
+            </listitem>
+
+            <listitem>
+              <para>a target repository, e.g.:
+              <emphasis>snapshot</emphasis></para>
+            </listitem>
+
+            <listitem>
+              <para>a list of architectures to be defined for each repository.
+              e.g.: <emphasis>x86_64</emphasis> and
+              <emphasis>i586</emphasis></para>
+            </listitem>
+          </itemizedlist>
+
+          <para>This is an example of a configuration file with a configure
+          repositories step:</para>
+
+          <screen>workflow:
+  steps:
+    - configure_repositories:
+        project: OBS:Server:Unstable:CI
+        repositories:
+          - name: openSUSE_Tumbleweed
+            target_project: openSUSE:Factory
+            target_repository: snapshot
+            architectures:
+              - x86_64
+              - i586
+          - name: openSUSE_Leap_15.2
+            target_project: openSUSE:Leap:15.2
+            target_repository: standard
+            architectures:
+              - x86_64</screen>
+        </sect4>
+
+        <sect4>
+          <title>Rebuild a Package</title>
+
+          <para>Given a project called <emphasis>home:Admin</emphasis> and a
+          package <emphasis>ctris</emphasis>, the step will rebuild the
+          package <emphasis>home:Admin/ctris</emphasis>.</para>
+
+          <para>This is an example of a configuration file with a rebuild
+          package step.</para>
+
+          <screen>workflow:
+  steps:
+    - rebuild_package:
+        project: home:Admin
+        package: ctris</screen>
+        </sect4>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">
+        <title>Filters</title>
+
+        <para>You can customize when workflows run and what they report by declaring filters.
+        There are two types:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Architectures and
+            Repositories</emphasis> <emphasis role="bold">filters</emphasis>
+            affect what we report back to GitHub.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Branch and Event filters</emphasis>
+            will make workflows run or not for specific
+            branches/events.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>You can define them in the configuration file
+        <emphasis>.obs/workflows.yml</emphasis>.</para>
+
+        <para>Here's an example with all filters:</para>
+
+        <para><screen>
+workflow:
+  steps:
+    - branch_package:
+        source_project: home:jane_doe
+        source_package: ctris
+        target_project: games
+  filters:
+    event: pull_request
+    branches: 
+      only:
+        - master
+        - staging
+    architectures:
+      ignore:
+        - s390x
+        - ia64
+    repositories:
+      only:
+        - openSUSE_Tumbleweed</screen></para>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">
+          <title>Filters Delimiters: only and ignore</title>
+
+          <para>Some steps can affect a group of elements (branches,
+          architectures, etc.) You can use filter delimiters like <emphasis
+          role="bold">only</emphasis> and <emphasis
+          role="bold">ignore</emphasis> to specify which elements should be
+          affected, or not, by the step.</para>
+
+          <para>The available filters delimiters are:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">only: </emphasis>the step only
+              affects the elements in the list.</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis role="bold">ignore:</emphasis> the step affects
+              all the elements except those in the list.</para>
+            </listitem>
+          </itemizedlist>
+
+          <note>
+            <para><emphasis role="bold">only</emphasis> has precedence over
+            <emphasis role="bold">ignore</emphasis>, so if both are defined,
+            <emphasis role="bold">ignore</emphasis> is not considered.</para>
+          </note>
+
+          <para>This is an example to run a workflow <emphasis>only</emphasis> for the target
+          branches <emphasis>master</emphasis>:</para>
+
+          <para><screen>workflow:
+  steps:
+    - rebuild_package:
+      project: games
+      package: ctris
+  filters:
+    branches:
+      only:
+        - master</screen></para>
+
+          <para>This is an example of a workflow reporting back to GitHub for
+          all repositories, <emphasis>except</emphasis> the repository named
+          <emphasis>openSUSE_Tumbleweed</emphasis>:</para>
+
+          <para><screen>workflow:
+  steps:
+    - branch_package:
+      source_project: games
+      source_package: ctris
+      target_project: home:jane_doe
+  filters:
+    repositories:
+      ignore:
+        - openSUSE_Tumbleweed</screen></para>
+        </sect4>
+
+        <sect4>
+          <title>Event Filter</title>
+
+          <para>Setting an event filter will run the workflow only for those events. We already
+          covered SCM Events <link
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.scm_events">here</link>.</para>
+
+          <para>The available events filters are:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis role="bold">pull_request</emphasis> is for pull
+              request events.</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis role="bold">push</emphasis> is for push
+              events.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>The following is an example to run a workflow only for a pull
+          request event:</para>
+
+          <para><screen>workflow:
+  steps:
+    - branch_package:
+        source_project: games
+        source_package: ctris
+        target_project: home:jane_doe
+  filters: 
+    event: pull_request</screen></para>
+        </sect4>
+
+        <sect4>
+          <title>Branches Filter</title>
+
+          <para>Matches target branches based on their names and runs a
+          workflow only for those branches.</para>
+
+          <para>This is an example to run a workflow for all target branches,
+          except <emphasis>master</emphasis> and
+          <emphasis>final</emphasis>:</para>
+
+          <para><screen>workflow:
+  steps:
+    - branch_package:
+      source_project: home:jane_doe
+      source_package: ctris
+      target_project: games
+  filters:
+    branches:
+      ignore:
+        - master
+        - final </screen></para>
+
+          <para>Learn more about <link
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
+          Delimiters: only and ignore</link>.</para>
+        </sect4>
+
+        <sect4>
+          <title>Architectures Filter</title>
+
+          <para>This filter matches architectures based on their names and
+          report back to GitHub only for those architectures.</para>
+
+          <para>Example of a workflow reporting back to the GitHub only for
+          architectures <emphasis>s390x</emphasis> and
+          <emphasis>x86_64</emphasis>:</para>
+
+          <para><screen>workflow:
+  steps:
+    - branch_package:
+      source_project: home:jane_doe
+      source_package: ctris
+      target_project: games
+  filters:
+    architectures:
+      only:
+        - s390x
+        - x86_64</screen></para>
+
+          <para>Learn more about <link
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
+          Delimiters: only and ignore</link>.</para>
+        </sect4>
+
+        <sect4>
+          <title>Repositories Filter</title>
+
+          <para>Matches repositories based on their names and report back to
+          GitHub only for those repositories.</para>
+
+          <para>Example of a workflow reporting back to GitHub only for
+          repositories <emphasis>openSUSE_Tumbleweed</emphasis> and
+          <emphasis>CentOS_8</emphasis>:</para>
+
+          <para><screen>workflow:
+  steps:
+    - branch_package:
+      source_project: home:jane_doe
+      source_package: ctris
+      target_project: games
+  filters:
+    repositories:
+      only:
+        - openSUSE_Tumbleweed
+        - CentOS_8</screen></para>
+
+          <para>Learn more about <link
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
+          Delimiters: only and ignore</link>.</para>
+        </sect4>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.status_reporting">
+      <title>Status Reporting</title>
+
+      <para>Once all the steps in the workflow are done, OBS will report the build results back to GitHub.
+      results back to GitHub.</para>
+
+      <para>OBS will show detailed package build status for each distribution
+      and architecture you have set up in the configuration file.</para>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata contentwidth="480"
+                     fileref="https://openbuildservice.org/images/posts/blog-post-about-reporting-repositories-architectures-and-reacting-to-updates-in-a-pr/commit_status.png"/>
+        </imageobject>
+      </mediaobject>
+
+      <para>Moreover, if your package builds several multibuild flavours, the status will
+      have the <link
+      xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.multibuild.html">flavor</link>
+      name appended to the package name:</para>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata contentwidth="480"
+                     fileref="https://openbuildservice.org/images/posts/blog-post-about-reporting-repositories-architectures-and-reacting-to-updates-in-a-pr/commit_status_multibuild.png"/>
+        </imageobject>
+      </mediaobject>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.errors">
+      <title>Errors</title>
+
+      <table>
+        <title>Common Errors</title>
+
+        <tgroup align="left" cols="2">
+          <thead>
+            <row>
+              <entry>Error</entry>
+
+              <entry>Reason</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry><emphasis>".obs/workflows.yml could not be downloaded on
+              the SCM branch"</emphasis></entry>
+
+              <entry>The configuration file is not in the expected place.
+              Check <link
+              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows">OBS
+              Workflows</link>.</entry>
+            </row>
+
+            <row>
+              <entry><emphasis>"Invalid workflow step
+              definition"</emphasis></entry>
+
+              <entry>Read about <link
+              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">Steps</link>
+              to check the format of the steps in the .obs/workflows.yml file. Use the
+              correct steps names.</entry>
+            </row>
+
+            <row>
+              <entry><emphasis>"Unsupported filters"</emphasis></entry>
+
+              <entry>Read <link
+              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">Filters</link>
+              to check the format of the filters in the .obs/workflows.yml file. Use the
+              correct filter names.</entry>
+            </row>
+
+            <row>
+              <entry>"Filters have unsupported keys"</entry>
+
+              <entry>Read <link
+              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">Filters</link>
+              to check the format of the filters in the .obs/workflows.yml file. Use the
+              correct filter keys and delimiters.</entry>
+            </row>
+
+            <row>
+              <entry><emphasis>"Bad credentials"</emphasis></entry>
+
+              <entry>Your SCM token secret is not properly set in your OBS workflow token.
+              Check <link
+              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs">How
+              to Authenticate SCMs with OBS</link>.</entry>
+            </row>
+
+            <row>
+              <entry><emphasis>"Project not found"</emphasis></entry>
+
+              <entry>Make sure the projects you declared in the
+              .obs/workflows.yml file exist in your OBS instance.</entry>
+            </row>
+
+            <row>
+              <entry><emphasis>"Package not found"</emphasis></entry>
+
+              <entry>Make sure the packages you declared in the
+              .obs/workflows.yml file exist in your OBS instance.</entry>
+            </row>
+
+            <row>
+              <entry>No build result updates are displayed in your
+              PR/MR</entry>
+
+              <entry>Make sure there are repositories defined on your source
+              project. Another reason can be that the build did not start because
+              your package is "unresolvable" or "broken".</entry>
+            </row>
+
+            <row>
+              <entry>The project in OBS doesn't get updated with the latest
+              changes in the SCM.</entry>
+
+              <entry>For certain steps you need to set up a
+              <emphasis>_service</emphasis> file. Follow the <link
+              xlink:href="https://github.com/openSUSE/obs-service-tar_scm#user-documentation">obs-service-tar_scm</link>
+              documentation.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table">
+      <title>Equivalence Table</title>
+
+      <table>
+        <title>Equivalence table</title>
+
+        <tgroup align="left" cols="2">
+          <thead>
+            <row>
+              <entry>GitHub</entry>
+
+              <entry>GitLab</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>Repository</entry>
+
+              <entry>Project</entry>
+            </row>
+
+            <row>
+              <entry>Pull request</entry>
+
+              <entry>Merge request</entry>
+            </row>
+
+            <row>
+              <entry>PR</entry>
+
+              <entry>MR</entry>
+            </row>
+
+            <row>
+              <entry>Push</entry>
+
+              <entry>Push Hook</entry>
+            </row>
+
+            <row>
+              <entry>Pull requests (in webhook configuration)</entry>
+
+              <entry>Merge request events (in webhook configuration)</entry>
+            </row>
+
+            <row>
+              <entry>Pushes (in webhook configuration)</entry>
+
+              <entry>Push events (in webhook configuration)</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases">
+    <title>SCM/CI Workflow Integration Use-Cases</title>
+
+    <note>
+      <title>The feature described in this chapter is a <emphasis>Beta
+      Feature</emphasis>.</title>
+
+      <para>That means the development of this feature is still in progress and under
+      constant revision. We can substantially change this feature throughout the process
+      or even discard it. Make sure to check back before reporting problems.
+      </para>
+
+      <para>Everybody can join the beta program, read <link
+      xlink:href="https://openbuildservice.org/2018/10/04/the-beta-program">here</link>
+      how to do it.</para>
+    </note>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.service">
+      <title>OBS SCM Service</title>
+
+      <para>For some of the use cases, you might want the OBS package to get
+      the sources from the pull request in GitHub.</para>
+
+      <para>For this, you can make use of the existing <link
+      xlink:href="https://github.com/openSUSE/obs-service-tar_scm#user-documentation">obs-service-tar_scm</link>
+      service. Your package should include a properly defined
+      <emphasis>_service</emphasis> file. obs-service-tar_scm will
+      automatically use the sources of the pull request that triggered
+      it.</para>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.test_build_pull_request">
+      <title>Test Build a Package For Every Pull Request on GitHub</title>
+
+      <para>You decide to manage your package sources from a GitHub
+      repository. However, every time someone tries to add changes to your
+      sources by opening a pull request, you need to verify that your package
+      still builds for certain repositories and architectures in OBS. You can
+      have the best of both worlds with the <link
+      linkend="sec.obs.obs_scm_ci_workflow_integration.setup">SCM/CI workflows
+      integration in OBS</link>.</para>
+
+      <para>You will need:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A project in OBS that you own, it will be the <emphasis>target
+          project</emphasis>. Let's say:
+          <emphasis>home:jane:playground</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para>A package in OBS that you want to test build, it will be the
+          <emphasis>source package</emphasis> inside the source project. E.g.:
+          <emphasis>GNOME:Factory/gnome-shell</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para>A repository in GitHub with the source code that will receive
+          the pull requests, e.g.:
+          <emphasis>https://github.com/GNOME/gnome-shell</emphasis>.</para>
+        </listitem>
+
+        <listitem>
+          <para>The required tokens to allow OBS and GitHub talk each other as
+          explained in <xref
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication"/></para>
+        </listitem>
+
+        <listitem>
+          <para>The required webhooks so GitHub notifies OBS of any event as
+          explained in <xref
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks"/></para>
+        </listitem>
+      </itemizedlist>
+
+      <para>This is obviously a good candidate to use the <link
+      linkend="sec.obs.obs_scm_ci_workflow_integration.use_cases.service">OBS
+      SCM Service</link>.</para>
+
+      <para>There are two different strategies to do this: <emphasis
+      role="bold">branching</emphasis> the package or <emphasis
+      role="bold">linking</emphasis> to it.</para>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.test_build_pull_request.branch">
+        <title>Branch</title>
+
+        <para>If you decide to branch the package for the test build, the
+        configuration file should be something like this:</para>
+
+        <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: GNOME:Factory
+        source_package: gnome-shell
+        target_project: home:jane:playground
+  filters: 
+    event: pull_request</screen>
+
+        <para>Whenever someone opens a new pull request in the repository, OBS
+        will branch the <emphasis>source package</emphasis> onto the
+        <emphasis>target project</emphasis>, trigger the build, and report the
+        results in the pull request's status checks.</para>
+
+        <para>Keep in mind that, when OBS branches a package, it copies the
+        repositories from the <emphasis>source project</emphasis> to the
+        <emphasis>target project</emphasis>, so everything is ready to start
+        building.</para>
+
+        <para>Once the pull request is accepted or closed, the branched
+        package will be deleted.</para>
+
+        <para>Read <link
+        linkend="sec.obs.obs_scm_ci_workflow_integration.setup">how to set up
+        the workflows</link> and, specifically, the<link
+        linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">
+        workflow steps</link>.</para>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.test_build_pull_request.link_configure_repositories">
+        <title>Link and Configure Repositories</title>
+
+        <para>If you prefer to link the package for the test build, the
+        configuration file should be something like this:</para>
+
+        <screen>workflow:
+  steps:
+    - link_package:
+        source_project: GNOME:Factory
+        source_package: gnome-shell
+        target_project: home:jane:playground
+   - configure_repositories:
+        project: home:jane:playground
+        repositories:
+          - name: openSUSE_Tumbleweed
+            target_project: openSUSE:Factory
+            target_repository: snapshot
+            architectures:
+              - x86_64
+              - i586
+          - name: openSUSE_Leap_15.2
+            target_project: openSUSE:Leap:15.2
+            target_repository: standard
+            architectures:
+              - x86_64
+  filters:
+    event: pull_request</screen>
+
+        <para>Whenever someone opens a new pull request in the repository, OBS
+        will create a <emphasis>target package</emphasis> linked to the
+        <emphasis>source package</emphasis>.</para>
+
+        <para>Unlike the branching, in this case the repositories are not copied to the
+        <emphasis>target project</emphasis>. That is why you need to set up
+        the <emphasis>configure_repositories</emphasis> step giving you the
+        flexibility to decide which repositories are you interested in.</para>
+
+        <para>Read <link
+        linkend="sec.obs.obs_scm_ci_workflow_integration.setup">how to set up
+        the workflows</link> and, specifically, the <link
+        linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">workflow
+        steps</link>.</para>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.rebuild_package_for_every_change">
+      <title>Rebuild a Package for Every Change in a Branch</title>
+
+      <para>You have a test build set up and you want it to keep up to date
+      with the new changes you add to the PR. One way to do it, is to
+      configure a rebuild package step with a push event filter.</para>
+
+      <para>You need:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A project and package to test build. E.g.:
+          <emphasis>home:jane/rust</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para>A repository in GitHub with an opened PR. E.g.:
+          <emphasis>https://github.com/jane/rust/pull/1</emphasis></para>
+        </listitem>
+
+        <listitem>
+          <para>The required tokens to allow OBS and GitHub talk each other as
+          explained in <xref
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication"/></para>
+        </listitem>
+
+        <listitem>
+          <para>The required webhooks so GitHub notifies OBS of any event as
+          explained in <xref
+          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks"/></para>
+        </listitem>
+
+        <listitem>
+          <para>The source code synchronization setup with the <link
+          linkend="sec.obs.obs_scm_ci_workflow_integration.use_cases.service">OBS
+          SCM Service</link>.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The workflow configuration should be like this one:</para>
+
+      <screen>workflow:
+  steps:
+    - rebuild_package:
+        project: home:jane
+        package: rust
+  filters:
+    event: push</screen>
+    </sect2>
+  </sect1>
+</chapter>
