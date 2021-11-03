@@ -5,6 +5,9 @@ images/online
 images/print
 profiled
 tmp
+.cache
+.config
+.bash_history
 /build/
 *.sw?
 *~
