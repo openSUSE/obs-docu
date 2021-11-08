@@ -221,11 +221,9 @@
 
         <figure>
           <title>Webhooks on GitHub.</title>
-
           <mediaobject>
             <imageobject>
-              <imagedata contentwidth="480"
-                         fileref="https://openbuildservice.org/images/posts/sprint_95_github_webhook_form.png"/>
+            <imagedata fileref="sprint_95_github_webhook_form.png" width="480"/>
             </imageobject>
           </mediaobject>
         </figure>
@@ -274,8 +272,7 @@
 
           <mediaobject>
             <imageobject>
-              <imagedata contentwidth="480"
-                         fileref="https://openbuildservice.org/images/posts/sprint_95_gitlab_webhook_form.png"/>
+                <imagedata fileref="sprint_95_gitlab_webhook_form.png" width="480"/>
             </imageobject>
           </mediaobject>
         </figure>
@@ -755,24 +752,30 @@ workflow:
       <para>OBS will show detailed package build status for each distribution
       and architecture you have set up in the configuration file.</para>
 
-      <mediaobject>
-        <imageobject>
-          <imagedata contentwidth="480"
-                     fileref="https://openbuildservice.org/images/posts/blog-post-about-reporting-repositories-architectures-and-reacting-to-updates-in-a-pr/commit_status.png"/>
-        </imageobject>
-      </mediaobject>
+      <figure>
+        <title>Build Status</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="commit_status.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
 
       <para>Moreover, if your package builds several multibuild flavours, the status will
       have the <link
       xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.multibuild.html">flavor</link>
       name appended to the package name:</para>
 
-      <mediaobject>
-        <imageobject>
-          <imagedata contentwidth="480"
-                     fileref="https://openbuildservice.org/images/posts/blog-post-about-reporting-repositories-architectures-and-reacting-to-updates-in-a-pr/commit_status_multibuild.png"/>
-        </imageobject>
-      </mediaobject>
+      <figure>
+        <title>Build Status for Several Multibuild Flavours</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="commit_status_multibuild.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.errors">
