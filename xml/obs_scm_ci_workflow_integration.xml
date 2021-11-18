@@ -643,7 +643,12 @@ workflow:
 
             <listitem>
               <para><emphasis role="bold">push</emphasis> is for push
-              events.</para>
+              events related to commits.</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis role="bold">tag_push</emphasis> is for push
+              events related to tags.</para>
             </listitem>
           </itemizedlist>
 
