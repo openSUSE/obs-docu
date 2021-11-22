@@ -783,6 +783,24 @@ workflow:
       </figure>
     </sect2>
 
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.workflow_runs">
+      <title>Workflow Runs</title>
+
+      <para>For every SCM event, OBS records the request and the response sent back to the SCM.
+      These records are stored in OBS in the form of workflow runs. This helps with debugging workflows. If an error occurs in any of
+      the workflow steps, the workflow run will record error messages.</para>
+
+      <figure>
+        <title>Workflow Runs</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="workflow_run.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect2>
+
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.errors">
       <title>Errors</title>
 
