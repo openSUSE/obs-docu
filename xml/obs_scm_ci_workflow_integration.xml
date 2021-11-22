@@ -810,6 +810,30 @@ workflow:
           </imageobject>
         </mediaobject>
       </figure>
+
+      <para>Workflow runs can be found under the list of tokens.</para>
+
+      <figure>
+        <title>Tokens list</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="tokens_ui_index_with_workflow_run.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>You can check the status of the workflow run (running/fail/success) represented by icons.</para>
+
+      <figure>
+        <title>Workflow runs list</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="workflow_runs_list.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.errors">
