@@ -396,17 +396,17 @@ rebuild_master:
           <itemizedlist>
             <listitem>
               <para>With a pull request event, it will go to e.g.:
-              <emphasis>home:jane:github:jane:ctris:PR-1/ctris</emphasis>. Being <emphasis>PR-1</emphasis> the pull request number.</para>
+              <emphasis>home:jane:github:jane:ctris:PR-1/ctris</emphasis>. <emphasis>PR-1</emphasis> being the pull request number.</para>
             </listitem>
 
             <listitem>
               <para>With a push event for commits, it will go to e.g.:<emphasis>
-              home:jane/ctris-66f2acfbded89a19935ee6d481b7cf2ab95427f6</emphasis>. Being <emphasis>66f2acfbded89a19935ee6d481b7cf2ab95427f6</emphasis> the SHA of the latest commit that triggered the event.</para>
+              home:jane/ctris-66f2acfbded89a19935ee6d481b7cf2ab95427f6</emphasis>. <emphasis>66f2acfbded89a19935ee6d481b7cf2ab95427f6</emphasis> being the SHA of the latest commit that triggered the event.</para>
             </listitem>
 
             <listitem>
               <para>With a push event for tags, it will go to e.g.:<emphasis>
-              home:jane/ctris-release_1</emphasis>. Being <emphasis>release_1</emphasis> the name of the tag that triggered the event.</para>
+              home:jane/ctris-release_1</emphasis>. <emphasis>release_1</emphasis> being the name of the tag that triggered the event.</para>
             </listitem>
           </itemizedlist>
 
@@ -436,19 +436,19 @@ rebuild_master:
           <itemizedlist>
             <listitem>
               <para><emphasis>home:jane:github:jane:gcc:PR-1/gcc</emphasis>
-              for a pull request event. Being <emphasis>PR-1</emphasis> the pull request number.</para>
+              for a pull request event. <emphasis>PR-1</emphasis> being the pull request number.</para>
             </listitem>
 
             <listitem>
               <para><emphasis>home:jane/gcc-fae00a0ac0e5687343a60ae02bf60352002ab9aa</emphasis>
-              with a push event for commits. Being <emphasis>fae00a0ac0e5687343a60ae02bf60352002ab9aa</emphasis>
-              the SHA of the latest commit that triggered the event.</para>
+              with a push event for commits. <emphasis>fae00a0ac0e5687343a60ae02bf60352002ab9aa</emphasis>
+              being the SHA of the latest commit that triggered the event.</para>
             </listitem>
 
             <listitem>
               <para><emphasis>home:jane/gcc-release_1</emphasis>
-              with a push event for tags. Being <emphasis>release_1</emphasis>
-              the name of the tag that triggered the event.</para>
+              with a push event for tags. <emphasis>release_1</emphasis>
+              being the name of the tag that triggered the event.</para>
             </listitem>
           </itemizedlist>
 
