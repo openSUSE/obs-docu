@@ -237,6 +237,15 @@
      </para>
    </listitem>
    <listitem>
+     <para><command>#!ExclusiveArch: ARCH_LIST</command> An exclusive architecture list to build for. The architecture list is seperated by spaces.
+     </para>
+   </listitem>
+   <listitem>
+     <para><command>#!OBS-ExcludeArch: ARCH_LIST</command> An excluded architecture list to skip builds. The architecture list is sep
+erated by spaces.
+     </para>
+   </listitem>
+   <listitem>
      <para>
       <command>#!Milestone: MILESTONE</command>
       This defines a milestone name (for example, <literal>Beta1</literal>)
