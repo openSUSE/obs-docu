@@ -237,7 +237,7 @@
      </para>
    </listitem>
    <listitem>
-     <para><command>#!ExclusiveArch: ARCH_LIST</command> An exclusive architecture list to build for. The architecture list is seperated by spaces.
+     <para><command>#!ExclusiveArch: ARCH_LIST</command> An exclusive architecture list to build for. The architecture list is separated by spaces.
      </para>
    </listitem>
    <listitem>
