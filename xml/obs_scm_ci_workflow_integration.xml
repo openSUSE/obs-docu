@@ -792,6 +792,13 @@ workflow:
           </imageobject>
         </mediaobject>
       </figure>
+
+      <note>
+        <para>Due to a limitation, the <emphasis role="bold">initial</emphasis>
+        "pending" build status of packages with multibuild flavors is <emphasis role="bold">not</emphasis>
+        reported. The build status for those flavors will however still be reported
+        when the build finishes.</para>
+      </note>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.workflow_runs">
