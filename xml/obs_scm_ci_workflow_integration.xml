@@ -778,13 +778,13 @@ workflow:
         </mediaobject>
       </figure>
 
-      <para>Moreover, if your package builds several multibuild flavours, the status will
+      <para>Moreover, if your package builds several multibuild flavors, the status will
       have the <link
       xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.multibuild.html">flavor</link>
       name appended to the package name:</para>
 
       <figure>
-        <title>Build Status for Several Multibuild Flavours</title>
+        <title>Build Status for Several Multibuild Flavors</title>
         <mediaobject>
           <imageobject>
             <imagedata width="480"
@@ -792,6 +792,13 @@ workflow:
           </imageobject>
         </mediaobject>
       </figure>
+
+      <note>
+        <para>Due to a limitation, the <emphasis role="bold">initial</emphasis>
+        "pending" build status of packages with multibuild flavors is <emphasis role="bold">not</emphasis>
+        reported. The build status for those flavors will however still be reported
+        when the build finishes.</para>
+      </note>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.workflow_runs">
@@ -1124,7 +1131,7 @@ workflow:
         source_project: GNOME:Factory
         source_package: gnome-shell
         target_project: home:jane:playground
-   - configure_repositories:
+    - configure_repositories:
         project: home:jane:playground
         repositories:
           - name: openSUSE_Tumbleweed
