@@ -778,13 +778,13 @@ workflow:
         </mediaobject>
       </figure>
 
-      <para>Moreover, if your package builds several multibuild flavours, the status will
+      <para>Moreover, if your package builds several multibuild flavors, the status will
       have the <link
       xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.multibuild.html">flavor</link>
       name appended to the package name:</para>
 
       <figure>
-        <title>Build Status for Several Multibuild Flavours</title>
+        <title>Build Status for Several Multibuild Flavors</title>
         <mediaobject>
           <imageobject>
             <imagedata width="480"
