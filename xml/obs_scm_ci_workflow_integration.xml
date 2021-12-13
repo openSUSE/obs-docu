@@ -1124,7 +1124,7 @@ workflow:
         source_project: GNOME:Factory
         source_package: gnome-shell
         target_project: home:jane:playground
-   - configure_repositories:
+    - configure_repositories:
         project: home:jane:playground
         repositories:
           - name: openSUSE_Tumbleweed
