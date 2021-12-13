@@ -321,7 +321,7 @@
       <para>The content of <emphasis>.obs/workflows.yml</emphasis> could look
       like this:<screen>rebuild_master:
   steps:
-    - rebuild_package
+    - rebuild_package:
         project: home:Admin
         package: ctris
   filters:
@@ -334,7 +334,7 @@
 
       <screen>main_workflow:
   steps:
-    - branch_package
+    - branch_package:
         source_project: OBS:Server:Unstable
         source_package: obs-server
         target_project: OBS:Server:Unstable:CI
@@ -342,7 +342,7 @@
     event: pull_request
 rebuild_master:
   steps:
-    - rebuild_package
+    - rebuild_package:
         project: home:Admin
         package: ctris
   filters:
@@ -614,8 +614,8 @@ workflow:
           <para><screen>workflow:
   steps:
     - rebuild_package:
-      project: games
-      package: ctris
+        project: games
+        package: ctris
   filters:
     branches:
       only:
@@ -628,9 +628,9 @@ workflow:
           <para><screen>workflow:
   steps:
     - branch_package:
-      source_project: games
-      source_package: ctris
-      target_project: home:jane_doe
+        source_project: games
+        source_package: ctris
+        target_project: home:jane_doe
   filters:
     repositories:
       ignore:
@@ -689,9 +689,9 @@ workflow:
           <para><screen>workflow:
   steps:
     - branch_package:
-      source_project: home:jane_doe
-      source_package: ctris
-      target_project: games
+        source_project: home:jane_doe
+        source_package: ctris
+        target_project: games
   filters:
     branches:
       ignore:
@@ -716,9 +716,9 @@ workflow:
           <para><screen>workflow:
   steps:
     - branch_package:
-      source_project: home:jane_doe
-      source_package: ctris
-      target_project: games
+        source_project: home:jane_doe
+        source_package: ctris
+        target_project: games
   filters:
     architectures:
       only:
@@ -743,9 +743,9 @@ workflow:
           <para><screen>workflow:
   steps:
     - branch_package:
-      source_project: home:jane_doe
-      source_package: ctris
-      target_project: games
+        source_project: home:jane_doe
+        source_package: ctris
+        target_project: games
   filters:
     repositories:
       only:
