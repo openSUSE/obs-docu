@@ -1,0 +1,350 @@
+<!DOCTYPE chapter
+[
+   <!ENTITY % entities SYSTEM "entity-decl.ent">
+   %entities;
+]>
+
+<chapter version="5.1" xml:id="cha.obs.notifications"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Notifications</title>
+
+ <note>
+  <title>
+   The feature described in this chapter is not included yet in any official
+   OBS release.
+  </title>
+
+  <para>
+   That means this feature is only available through our Unstable project which
+   we deploy on
+   <link xlink:href="https://build.opensuse.org/">public OBS instance</link>,
+   but is still not part of an OBS release.
+  </para>
+ </note>
+
+ <para>
+  The "Notifications" page is the place that keeps you up-to-date with your
+  daily OBS work. There, you can see notifications of events that happen in OBS
+  and are important for you.
+ </para>
+ <para>
+  You can configure them in detail to receive just what is of your interest.
+  Not only that, with the web UI interface, you can easily filter your
+  notifications and mark them as read, improving your OBS workflow experience.
+ </para>
+
+ <sect1 xml:id="cha.obs.notifications.notifications_configuration">
+  <title>Notifications Configuration</title>
+  <para>
+   Click on the "Change Your Notifications" link to define which notifications
+   you want to receive. You can see this link in the "Actions" menu on your "Profile" page
+   and on the "Notifications" page.
+  </para>
+
+  <figure>
+   <title>"Change Your Notifications" link.</title>
+
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="notification_change_your_notifications_link.png" width="800"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+
+  <para>
+   On this page, you can configure under which conditions you receive each type
+   of notification (email, RSS, web). Mark the "web" checkboxes to configure
+   what notifications you will receive in the web UI.
+  </para>
+
+  <figure>
+   <title>Mark Web Notifications.</title>
+
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="notification_mark_web.png" width="800"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+
+  <para>
+   You can get web notifications from events happening to projects and packages
+   where the group you belong to is an owner. Just mark the "web" checkbox
+   in the groups your are interested in.
+  </para>
+
+  <figure>
+   <title>Mark Web Notifications for Groups.</title>
+
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="notification_group_selection.png" width="600"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+ </sect1>
+
+ <sect1 xml:id="cha.obs.notifications.where_can_we_find_the_notifications">
+  <title>Where Can We Find the Notifications?</title>
+  <para>
+   At the top right corner of every page, you will find a link to your
+   notifications. It includes a counter of your unread notifications. Just
+   click on it to access your notifications page.
+  </para>
+
+  <figure>
+   <title>Notifications Link.</title>
+
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="notification_link.png" width="800"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+ </sect1>
+
+ <sect1 xml:id="cha.obs.notifications.notifications_content">
+  <title>Notifications Content</title>
+  <para>
+   After clicking on the "Notifications" link, you will see a list of your most
+   recent unread notifications.
+
+   <figure>
+    <title>Notifications Page.</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="notification_notifications.png" width="800"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </para>
+  <para>
+   To access older entries, you can make use of the pagination links.
+
+   <figure>
+    <title>Notification Paginations Links.</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="notification_pagination_links.png" width="800"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </para>
+  <para>
+   A notification can have different origins. Each notification item includes a
+   couple of lines to help recognize them among the others. You always have the
+   option to click on a notification, which will lead you to the specific
+   section of OBS (request, comment, project, package, ...) with the full
+   details on what caused the notification.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="cha.obs.notifications.mark_notifications_as_read_or_unread">
+  <title>Mark Notification as Read or Unread</title>
+  <para>
+   Once you read a notification and possibly take action, you can mark it as
+   read. This will sort the notification in the "read" category and it's not
+   shown anymore next to the one that might still need some attention. Also
+   worth mentioning that we perform a periodical cleanup that deletes all
+   the notifications older than 365 days.
+  </para>
+  <para>
+   There are different ways and places to mark your notifications as read.
+   Marking a single notification can be done by simply clicking the button with
+   the green checkmark shown on the notification itself.
+   <figure>
+    <title>Mark single notification as read.</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="mark_notification_as_read_01.png" width="480"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+
+   Another way is to mark it directly on the related element (for example
+   the associated request) through the little toolbar that appears on top. You
+   will be redirected back to your notifications page afterwards.
+   <figure>
+    <title>Mark notification as read through toolbar.</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="mark_notification_as_read_02.png" width="480"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </para>
+  <para>
+   If you received a lot of notifications and don't want to mark them one by
+   one, there are two ways to speed up the process. You can use the checkboxes
+   on the left to select individual notifications and click on the "Mark
+   selected as 'Read'" button.
+   <figure>
+    <title>Checkboxes to mark multiple notifications.</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="mark_notification_as_read_03.png" width="480"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+
+   In case you exceed 300 notifications you have the possibility to use the
+   button "Mark all as 'Read" that will appear on the right side to mark all
+   notifications of the chosen filter as read. In case you exceed 300
+   notifications you have the possibility to use the button "Mark all as
+   'Read" that will appear on the right side to mark all notifications of the
+   chosen filter as read.
+   <figure>
+    <title>Mark all as read.</title>
+    <mediaobject>
+     <imageobject>
+      <imagedata fileref="mark_notification_as_read_04.png" width="480"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </para>
+  <para>
+   Should you ever mark a notification as read by accident, you can simply
+   revert this by selecting the "read" filter on the right side and using the
+   equivalent elements, used to mark them as read, in order to bring them back
+   to your unread notifications.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="cha.obs.notifications.notifications_filters">
+  <title>Notifications Filters</title>
+  <para>
+   Filters help you in focusing your attention on a subset of your
+   notifications. They are on the left side of your screen.
+  </para>
+
+  <figure>
+   <title>Example of notification filters.</title>
+
+   <mediaobject>
+    <imageobject>
+     <imagedata fileref="notification_filters.png" width="480"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+
+  <para>Here's a description of all available filters:</para>
+
+  <itemizedlist>
+   <listitem>
+    <para>
+     <emphasis>Unread:</emphasis>
+     All unread notifications, so notifications which you haven't marked as
+     read, will be displayed when selecting this filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Read:</emphasis>
+     All notifications which you have marked as read will be displayed when
+     selecting this filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Comments:</emphasis>
+     All unread notifications related to comments will be displayed when
+     selecting this filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Requests:</emphasis>
+     All unread notifications related to requests will be displayed when
+     selecting this filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Incoming Requests:</emphasis>
+     All unread notifications related to incoming requests, so requests which
+     someone submitted to a project/package you are involved in, will be
+     displayed when selecting this filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Outgoing Requests:</emphasis>
+     All unread notifications related to outgoing requests, so requests which
+     you submitted to a project/package, will be displayed when selecting this
+     filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Projects:</emphasis>
+     All unread notifications related to a project will be displayed when
+     selecting a project filter. Each project with at least one unread
+     notification has its own project filter.
+    </para>
+   </listitem>
+
+   <listitem>
+    <para>
+     <emphasis>Groups:</emphasis>
+     All unread notifications related to a group will be displayed when
+     selecting a group filter. Each group with at least one unread notification
+     has its own group filter.
+    </para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+ <sect1 xml:id="cha.obs.notifications.api">
+   <title>API</title>
+   <para>
+     Every user can check their unread notifications by querying:
+   </para>
+   <screen>osc api -X GET "/my/notifications"</screen>
+   <para>
+     It will return a list with your unread notifications:
+   </para>
+   <screen language="xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;notifications count="2"&gt;
+    &lt;total_pages&gt;1&lt;/total_pages&gt;
+    &lt;current_page&gt;0&lt;/current_page&gt;
+    &lt;notification id="3"&gt;
+        &lt;title&gt;test 1&lt;/title&gt;
+        &lt;who&gt;Administrator&lt;/who&gt;
+        &lt;state&gt;new&lt;/state&gt;
+        &lt;when/&gt;
+        &lt;event_type&gt;review_wanted&lt;/event_type&gt;
+    &lt;/notification&gt;
+    &lt;notification id="25"&gt;
+        &lt;title&gt;test 2&lt;/title&gt;
+        &lt;who&gt;User 2&lt;/who&gt;
+        &lt;event_type&gt;comment_for_package&lt;/event_type&gt;
+        &lt;when/&gt;
+    &lt;/notification&gt;
+&lt;/notifications&gt;
+   </screen>
+   <para>
+     This one will toggle a notification read or unread.
+   </para>
+   <screen>osc api -X PUT "/my/notifications/3"</screen>
+   <para>
+     It will say if the operation went well or not.
+   </para>
+   <screen language="xml">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;status code="ok"&gt;
+    &lt;summary&gt;Ok&lt;/summary&gt;
+&lt;/status&gt;
+   </screen>
+   <para>
+     For more informtion regarding the notifications API endpoints, check out our <link xlink:href="https://build.opensuse.org/apidocs-new/#/Notifications/get_my_notifications">New API Documentation</link>.
+   </para>
+ </sect1>
+</chapter>
