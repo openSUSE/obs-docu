@@ -241,7 +241,15 @@
      </para>
    </listitem>
    <listitem>
-     <para><command>#!OBS-ExcludeArch: ARCH_LIST</command> An excluded architecture list to skip builds. The architecture list is separated by spaces.
+     <para><command>#!ExcludeArch: ARCH_LIST</command> An excluded architecture list to skip builds. The architecture list is separated by spaces.
+     </para>
+   </listitem>
+   <listitem>
+     <para><command>#!ArchExclusiveLine: ARCH_LIST</command> The next line will only get executed on the listed architectures.
+     </para>
+   </listitem>
+   <listitem>
+     <para><command>#!ArchExcludedLine: ARCH_LIST</command> The next line will not get executed on the listed architectures.
      </para>
    </listitem>
    <listitem>
