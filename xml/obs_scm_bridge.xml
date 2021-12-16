@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE chapter [
+<!ENTITY % entities SYSTEM "entity-decl.ent">
+%entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.scm_bridge"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:ns7="http://docbook.org/ns/transclusion"
+         xmlns:ns6="http://www.w3.org/1998/Math/MathML"
+         xmlns:ns5="http://www.w3.org/2000/svg"
+         xmlns:ns4="http://www.w3.org/1999/xhtml"
+         xmlns:ns="http://docbook.org/ns/docbook">
+  <title>SCM Bridge [EXPERIMENTAL]</title>
+
+  <sect1 xml:id="sec.obs.obs_scm_bridge">
+    <title>SCM Bridge</title>
+
+    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.introduction">
+      <title>Introduction</title>
+
+      <para>The SCM bridge allows to setup single packages or entire projects in any trusted SCM repositories. 
+            However, the only supported SCM is currently git.</para>
+
+      <para>This allows to manage the entire package sources in an external SCM repository. While the classic
+            OBS services for scms (like obs_scm or tar_scm) are using the workflows inside of OBS, these workflows will happen
+            now inside of the SCM provider instance. OBS will just verify the authenticity of that resource in
+            future.</para>
+
+      <para>Any source processing by source services is not supported by design. All source management, review and
+            merge handling needs to happen on the SCM side.</para>
+
+      <para>osc can be used to checkout sources. This will create a scm repository, so any modification needs to be
+            done using the native scm tooling (eg. git). osc can be used for local build tests and checking server
+            side build results.</para>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
+      <title>Setup a package using the scm bridge</title>
+
+      <para>The setup is purily done in package meta by defining the scm url inside of the scmsync tag:</para>
+
+      <screen>&lt;scmsync&gt;https://gitlab.com/some/repository&lt;/scmsync&gt;</screen>
+
+      <para>The repository is cloned including all subdirectories, but the build descriptions need to be
+            available on top level.</para>
+
+      <para>It is recommended just to refrence further external build assets, like tar balls or git repositories using
+            asset management. These assets will get downloaded and verified as well. Have a look in 
+            <link xlink:href="http://opensuse.github.io/obs-build/pbuild.html#_remote_assets">the pbuild
+            documentation</link> for further details on this. </para>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.project">
+      <title>Setup an entire project using the scm bridge</title>
+
+      <para>An entire project can be setup by defining the scmsync tag in project meta data. Every top level
+            subdirectory of the scm repository is considered as a package.</para>
+
+      <para>Large projects can use git submodules for each package. This avoids the need to
+            clone the entire project for modifications on single packages.</para>
+
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.specials">
+      <title>Extensions for GIT repositories</title>
+
+      <para>The following tweaks can be used for git repositories.</para>
+
+      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.subdirectory">
+        <title>Using content from a subdirectory only</title>
+        <para>The scmsync url can get extended via a subdir query variable. Only the specified sub directory
+              will be used in that case. For example
+              <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?subdir=MY_SUBDIRECTORY&lt;/scmsync&gt;</screen>
+        </para>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.revision">
+        <title>Using a specific revision, tag or branch</title>
+
+        <para>The url can define a revision, tag or branch via an url fragment. This means the url can get extended by a
+              hash character and the revision, tag or branch.
+              <screen>&lt;scmsync&gt;https://gitlab.com/some/repository#MY_REVISION&lt;/scmsync&gt;</screen>
+              This allows to setup multiple projects building for different branches. It is possible to use
+             branches for implementing CI workflows. Eg a submission test building just a subset, a clean build
+             and a final reviewed build.
+        </para>
+      </sect3>
+    </sect2>
+  </sect1>
+</chapter>
