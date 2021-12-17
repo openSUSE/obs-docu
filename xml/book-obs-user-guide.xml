@@ -70,6 +70,7 @@
 
   <xi:include href="obs_scm_ci_workflow_integration.xml" />
   <xi:include href="obs_staging_workflow.xml"/>
+  <xi:include href="obs_notifications.xml"/>
  </part>
 
  <part condition="tbd">
