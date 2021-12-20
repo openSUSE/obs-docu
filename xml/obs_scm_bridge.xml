@@ -61,6 +61,8 @@
       <para>Large projects can use git submodules for each package. This avoids the need to
             clone the entire project for modifications on single packages.</para>
 
+      <para>The build configuration part can get stored as '_config' file in the top level directory.</para>
+
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.specials">
