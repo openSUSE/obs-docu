@@ -156,6 +156,15 @@ Keep: debbuild</screen>
       directly following them.</para>
      <variablelist>
       <varlistentry>
+       <term><parameter>allowrootforbuild</parameter></term>
+       <listitem>
+        <para>
+         Allow any package build to use root user for building. This still needs
+         a marker inside of the build description to enable it.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
        <term><parameter>vmfstype:</parameter></term>
        <listitem>
         <para>
