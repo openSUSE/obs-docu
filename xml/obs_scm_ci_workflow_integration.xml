@@ -466,8 +466,22 @@ rebuild_master:
         <sect4>
           <title>Configure Repositories/Architectures for a Project</title>
 
-          <para>Given a project called <emphasis>home:jane</emphasis>, we can
-          configure a number of repositories and architectures.</para>
+          <para>Given a project called <emphasis>home:jane</emphasis>, the step will
+          configure a number of repositories and architectures for:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><emphasis>home:jane:jane_github:repo123:PR-1</emphasis>
+              when the event is a pull request. <emphasis>jane_github</emphasis> being the
+              username/organization which owns the SCM repository.
+              <emphasis>repo123</emphasis> being the name of the SCM repository.
+              <emphasis>PR-1</emphasis> being the pull request number.</para>
+            </listitem>
+
+            <listitem>
+              <para><emphasis>home:jane</emphasis> when the event is a commit or tag push.</para>
+            </listitem>
+          </itemizedlist>
 
           <para>Each repository needs:</para>
 
@@ -500,7 +514,7 @@ rebuild_master:
           <screen>workflow:
   steps:
     - configure_repositories:
-        project: OBS:Server:Unstable:CI
+        project: home:jane
         repositories:
           - name: openSUSE_Tumbleweed
             target_project: openSUSE:Factory
