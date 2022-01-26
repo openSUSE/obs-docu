@@ -492,13 +492,8 @@ rebuild_master:
             </listitem>
 
             <listitem>
-              <para>a target project, e.g.:
-              <emphasis>openSUSE:Factory</emphasis></para>
-            </listitem>
-
-            <listitem>
-              <para>a target repository, e.g.:
-              <emphasis>snapshot</emphasis></para>
+              <para>a list of paths, each having a target project (e.g: <emphasis>openSUSE:Factory</emphasis>)
+                and target repository (e.g: <emphasis>snapshot</emphasis>)</para>
             </listitem>
 
             <listitem>
@@ -517,14 +512,18 @@ rebuild_master:
         project: home:jane
         repositories:
           - name: openSUSE_Tumbleweed
-            target_project: openSUSE:Factory
-            target_repository: snapshot
+            paths:
+              - target_project: openSUSE:Factory
+                target_repository: snapshot
+              - target_project: openSUSE:Tumbleweed
+                target_repository: standard
             architectures:
               - x86_64
               - i586
           - name: openSUSE_Leap_15.2
-            target_project: openSUSE:Leap:15.2
-            target_repository: standard
+            paths:
+              - target_project: openSUSE:Leap:15.2
+                target_repository: standard
             architectures:
               - x86_64</screen>
         </sect4>
@@ -1149,14 +1148,16 @@ workflow:
         project: home:jane:playground
         repositories:
           - name: openSUSE_Tumbleweed
-            target_project: openSUSE:Factory
-            target_repository: snapshot
+            paths:
+              - target_project: openSUSE:Factory
+                target_repository: snapshot
             architectures:
               - x86_64
               - i586
           - name: openSUSE_Leap_15.2
-            target_project: openSUSE:Leap:15.2
-            target_repository: standard
+            paths:
+              - target_project: openSUSE:Leap:15.2
+                target_repository: standard
             architectures:
               - x86_64
   filters:
