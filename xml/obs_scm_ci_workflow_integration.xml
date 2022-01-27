@@ -421,7 +421,7 @@ rebuild_master:
         target_project: home:jane</screen>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.link_a_package_to_a_project">
           <title>Link a Package to a Project</title>
 
           <para>The link package step is the equivalent of <emphasis>osc
@@ -463,7 +463,7 @@ rebuild_master:
         target_project: home:jane</screen>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.configure_repositories_architectures_for_a_project">
           <title>Configure Repositories/Architectures for a Project</title>
 
           <para>Given a project called <emphasis>home:jane</emphasis>, the step will
@@ -528,7 +528,7 @@ rebuild_master:
               - x86_64</screen>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.rebuild_a_package">
           <title>Rebuild a Package</title>
 
           <para>Given a project called <emphasis>home:Admin</emphasis> and a
@@ -650,7 +650,7 @@ workflow:
         - openSUSE_Tumbleweed</screen></para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.event_filter">
           <title>Event Filter</title>
 
           <para>Setting an event filter will run the workflow only for those events. We already
@@ -689,7 +689,7 @@ workflow:
     event: pull_request</screen></para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.branches_filter">
           <title>Branches Filter</title>
 
           <para>Matches target branches based on their names and runs a
@@ -716,7 +716,7 @@ workflow:
           Delimiters: only and ignore</link>.</para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.architectures_filter">
           <title>Architectures Filter</title>
 
           <para>This filter matches architectures based on their names and
@@ -743,7 +743,7 @@ workflow:
           Delimiters: only and ignore</link>.</para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.repositories_filter">
           <title>Repositories Filter</title>
 
           <para>Matches repositories based on their names and report back to
