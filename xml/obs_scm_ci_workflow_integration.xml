@@ -421,7 +421,7 @@ rebuild_master:
         target_project: home:jane</screen>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.link_a_package_to_a_project">
           <title>Link a Package to a Project</title>
 
           <para>The link package step is the equivalent of <emphasis>osc
@@ -463,7 +463,7 @@ rebuild_master:
         target_project: home:jane</screen>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.configure_repositories_architectures_for_a_project">
           <title>Configure Repositories/Architectures for a Project</title>
 
           <para>Given a project called <emphasis>home:jane</emphasis>, the step will
@@ -492,13 +492,8 @@ rebuild_master:
             </listitem>
 
             <listitem>
-              <para>a target project, e.g.:
-              <emphasis>openSUSE:Factory</emphasis></para>
-            </listitem>
-
-            <listitem>
-              <para>a target repository, e.g.:
-              <emphasis>snapshot</emphasis></para>
+              <para>a list of paths, each having a target project (e.g: <emphasis>openSUSE:Factory</emphasis>)
+                and target repository (e.g: <emphasis>snapshot</emphasis>)</para>
             </listitem>
 
             <listitem>
@@ -517,19 +512,23 @@ rebuild_master:
         project: home:jane
         repositories:
           - name: openSUSE_Tumbleweed
-            target_project: openSUSE:Factory
-            target_repository: snapshot
+            paths:
+              - target_project: openSUSE:Factory
+                target_repository: snapshot
+              - target_project: openSUSE:Tumbleweed
+                target_repository: standard
             architectures:
               - x86_64
               - i586
           - name: openSUSE_Leap_15.2
-            target_project: openSUSE:Leap:15.2
-            target_repository: standard
+            paths:
+              - target_project: openSUSE:Leap:15.2
+                target_repository: standard
             architectures:
               - x86_64</screen>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.rebuild_a_package">
           <title>Rebuild a Package</title>
 
           <para>Given a project called <emphasis>home:Admin</emphasis> and a
@@ -651,7 +650,7 @@ workflow:
         - openSUSE_Tumbleweed</screen></para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.event_filter">
           <title>Event Filter</title>
 
           <para>Setting an event filter will run the workflow only for those events. We already
@@ -690,7 +689,7 @@ workflow:
     event: pull_request</screen></para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.branches_filter">
           <title>Branches Filter</title>
 
           <para>Matches target branches based on their names and runs a
@@ -717,7 +716,7 @@ workflow:
           Delimiters: only and ignore</link>.</para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.architectures_filter">
           <title>Architectures Filter</title>
 
           <para>This filter matches architectures based on their names and
@@ -744,7 +743,7 @@ workflow:
           Delimiters: only and ignore</link>.</para>
         </sect4>
 
-        <sect4>
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.repositories_filter">
           <title>Repositories Filter</title>
 
           <para>Matches repositories based on their names and report back to
@@ -1149,14 +1148,16 @@ workflow:
         project: home:jane:playground
         repositories:
           - name: openSUSE_Tumbleweed
-            target_project: openSUSE:Factory
-            target_repository: snapshot
+            paths:
+              - target_project: openSUSE:Factory
+                target_repository: snapshot
             architectures:
               - x86_64
               - i586
           - name: openSUSE_Leap_15.2
-            target_project: openSUSE:Leap:15.2
-            target_repository: standard
+            paths:
+              - target_project: openSUSE:Leap:15.2
+                target_repository: standard
             architectures:
               - x86_64
   filters:
