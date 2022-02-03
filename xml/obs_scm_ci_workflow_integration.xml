@@ -377,6 +377,10 @@ rebuild_master:
           <listitem>
             <para>Rebuild a package (rebuild_package)</para>
           </listitem>
+
+          <listitem>
+            <para>Set flags for a project or package (set_flags)</para>
+          </listitem>
         </itemizedlist>
 
         <warning>
@@ -543,6 +547,83 @@ rebuild_master:
     - rebuild_package:
         project: home:Admin
         package: ctris</screen>
+        </sect4>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags_for_a_project_or_package">
+          <title>Set flags for a project or package</title>
+
+          <para>Given a project called <emphasis>home:Admin</emphasis>, the
+          flag <emphasis>build</emphasis>, and the status <emphasis>enable</emphasis> the step will abable all builds:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>for the <emphasis>home:Admin:$MY_SCM_ORG:$MY_SCM_PROJECT:PR-$MY_PR_NUMBER</emphasis> project when the webhook
+              event is a pull request.</para>
+            </listitem>
+
+            <listitem>
+              <para>for the <emphasis>home:Admin</emphasis> when the webhook event is a push.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>It is important to note that <emphasis>set_flags</emphasis> should be used in combination with other steps like
+          <emphasis>branch_package</emphasis> or <emphasis>link_package</emphasis>. The provided project has to be a project
+          which was a target project from a previous step. Same for the package, it has to be branched/linked in a previous step.</para>
+
+          <para>The flag has to be one of the keys from:</para>
+          <itemizedlist>
+            <listitem>
+              <para>lock</para>
+            </listitem>
+            <listitem>
+              <para>build</para>
+            </listitem>
+            <listitem>
+              <para>publish</para>
+            </listitem>
+            <listitem>
+              <para>debuginfo</para>
+            </listitem>
+            <listitem>
+              <para>useforbuild</para>
+            </listitem>
+            <listitem>
+              <para>binarydownload</para>
+            </listitem>
+            <listitem>
+              <para>sourceaccess</para>
+            </listitem>
+            <listitem>
+              <para>access</para>
+            </listitem>
+          </itemizedlist>
+          <para>
+            The status is either <emphasis>disable</emphasis> or <emphasis>enable</emphasis>.
+          </para>
+
+          <screen>
+workflow:
+  steps:
+    - branch_package:
+        source_project: home:Admin
+        source_package: hello_world
+        target_project: home:Iggy
+    - set_flags:
+        flags:
+          - type: build
+            status: disable
+            project: home:Iggy
+          - type: publish
+            status: disable
+            project: home:Iggy
+            repository: 'openSUSE_Tumbleweed'
+            architecture: 'x86_64'
+          - type: publish
+            status: enable
+            project: home:Iggy
+            package: hello_world
+
+          </screen>
         </sect4>
       </sect3>
 
