@@ -377,6 +377,10 @@ rebuild_master:
           <listitem>
             <para>Rebuild a package (rebuild_package)</para>
           </listitem>
+
+          <listitem>
+            <para>Set flags for projects, packages, repositories or architectures (set_flags)</para>
+          </listitem>
         </itemizedlist>
 
         <warning>
@@ -543,6 +547,74 @@ rebuild_master:
     - rebuild_package:
         project: home:Admin
         package: ctris</screen>
+        </sect4>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags">
+          <title>Set Flags for Projects, Packages, Repositories or Architectures</title>
+
+          <para>There are OBS-wide defaults for each flag type. This step is only necessary if you want to diverge from those
+          <link linkend="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags.type">defaults</link>.</para>
+
+          <para>Providing the type <emphasis>build</emphasis>, the status <emphasis>enable</emphasis> and the project <emphasis>home:Admin</emphasis>, OBS will
+          enable <emphasis>all</emphasis> builds:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>for the <emphasis>home:Admin:$MY_SCM_ORG:$MY_SCM_PROJECT:PR-$MY_PR_NUMBER</emphasis> project
+              when the webhook event is a pull request.</para>
+            </listitem>
+            <listitem>
+              <para>for the <emphasis>home:Admin</emphasis> project when the webhook event is a push.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>Providing multiple flags is supported as noted in the configuration file below:</para>
+
+          <screen>workflow:
+  steps:
+    - set_flags:
+        flags:
+          - type: build
+            status: enable
+            project: home:Admin
+          - type: publish
+            status: disable
+            project: home:Admin</screen>
+
+          <para>The type, status and project keys are always required. Optional keys are also available to limit the flag to a package, repository or architecture.</para>
+
+          <para>The project, package, repository and architecture should exist before a flag is set for them. They can be created in steps preceding a
+          <emphasis>set_flags</emphasis> step, although this isn't necessary as long as they exist.</para>
+
+          <para xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags.type">The type has to be one of the following values:</para>
+          <itemizedlist>
+            <listitem><para>lock (default status <emphasis>disable</emphasis>)</para></listitem>
+            <listitem><para>build (default status <emphasis>enable</emphasis>)</para></listitem>
+            <listitem><para>publish (default status <emphasis>enable</emphasis>)</para></listitem>
+            <listitem><para>debuginfo (default status <emphasis>disable</emphasis>)</para></listitem>
+            <listitem><para>useforbuild (default status <emphasis>enable</emphasis>)</para></listitem>
+            <listitem><para>binarydownload (default status <emphasis>enable</emphasis>)</para></listitem>
+            <listitem><para>sourceaccess (default status <emphasis>enable</emphasis>)</para></listitem>
+            <listitem><para>access (default status <emphasis>enable</emphasis>)</para></listitem>
+          </itemizedlist>
+
+          <para>The status is either <emphasis>disable</emphasis> or <emphasis>enable</emphasis>.</para>
+
+          <para>So with the configuration file provided below and a <emphasis>pull request event</emphasis>, builds of the
+          <emphasis>home:Admin:$MY_SCM_ORG:$MY_SCM_PROJECT:PR-$MY_PR_NUMBER/ctris</emphasis> package will be disabled for the
+          <emphasis>openSUSE_Tumbleweed</emphasis> repository and <emphasis>x86_64</emphasis> architecture. For a <emphasis>push event</emphasis>,
+          it's exactly the same, except for the package which is <emphasis>home:Admin/ctris-$MY_COMMIT_SHA_OR_TAG_NAME</emphasis>.</para>
+
+        <screen>workflow:
+  steps:
+    - set_flags:
+        flags:
+          - type: build
+            status: disable
+            project: home:Admin
+            package: ctris
+            repository: openSUSE_Tumbleweed
+            architecture: x86_64</screen>
         </sect4>
       </sect3>
 
@@ -1256,6 +1328,31 @@ workflow:
         package: rust
   filters:
     event: push</screen>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.set_flags">
+      <title>Set Flags on a Package to Disable Builds for an Architecture</title>
+
+      <para>When you branch a package, all its repositories and their architectures will be copied over.
+      For this package, you might want to disable builds for a certain repository or architecture. This is
+      possible with the <emphasis>set_flags</emphasis> step.</para>
+
+      <para>The workflow configuration should be like this one:</para>
+
+      <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: home:jane_doe
+        source_package: rust
+        target_project: home:jane_doe:CI
+    - set_flags:
+        flags:
+          - type: build
+            status: disable
+            project: home:jane_doe:CI
+            package: rust
+            architecture: x86_64</screen>
+      <para></para>
     </sect2>
   </sect1>
 </chapter>
