@@ -817,21 +817,8 @@ workflow:
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.workflow_runs">
       <title>Workflow Runs</title>
 
-      <para>For every SCM event, OBS records the request and the response sent back to the SCM.
-      These records are stored in OBS in the form of workflow runs. This helps with debugging workflows. If an error occurs in any of
-      the workflow steps, the workflow run will record error messages.</para>
-
-      <figure>
-        <title>Workflow Runs</title>
-        <mediaobject>
-          <imageobject>
-            <imagedata width="480"
-                      fileref="workflow_run.png"/>
-          </imageobject>
-        </mediaobject>
-      </figure>
-
-      <para>Workflow runs can be found under the list of tokens.</para>
+      <para>For every SCM event, OBS compiles relevant information about the workflows running on the system. You can find the
+      so-called "Workflow Runs" under the list of tokens.</para>
 
       <figure>
         <title>Tokens list</title>
@@ -843,10 +830,17 @@ workflow:
         </mediaobject>
       </figure>
 
-      <para>You can check the status of the workflow run (running/fail/success) represented by icons.</para>
+      <para>From the list of workflow runs, you can get information like:</para>
+
+      <itemizedlist>
+        <listitem><para>the status (running/fail/success) represented by icons,</para></listitem>
+        <listitem><para>the type of event and action,</para></listitem>
+        <listitem><para>links to the SCM repository, pull/merge request or commit involved,</para></listitem>
+        <listitem><para>the time when the workflow was triggered</para></listitem>
+      </itemizedlist>
 
       <figure>
-        <title>Workflow runs list</title>
+        <title>Workflow Runs</title>
         <mediaobject>
           <imageobject>
             <imagedata width="480"
@@ -854,6 +848,40 @@ workflow:
           </imageobject>
         </mediaobject>
       </figure>
+
+      <para>Click on each workflow run to get detailed information about it. OBS records the request received from the SCM,</para>
+      <figure>
+        <title>Workflow Runs - Request</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="workflow_runs_request.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <para>the response sent back to the SCM,</para>
+      <figure>
+        <title>Workflow Runs - Response</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="workflow_runs_response.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <para>and the artifacts used or generated during the run of each workflow.</para>
+      <figure>
+        <title>Workflow Runs - Artifacts</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="480"
+                      fileref="workflow_runs_artifacts.png"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>These records will help with debugging workflows. If an error occurs in any of the workflow steps,
+      the workflow run will record error messages. And reading the artifacts will help to understand what happened behind the scenes.</para>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.errors">
