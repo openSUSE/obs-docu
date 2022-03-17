@@ -1,0 +1,55 @@
+name: create-pr-preview
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  build-and-deploy-pr-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Checkout obs-landing repo
+        uses: actions/checkout@v3
+        with:
+          repository: openSUSE/obs-landing
+          path: obs-landing
+      - name: build
+        uses: addnab/docker-run-action@v3
+        with:
+          image: openbuildservice/obs-docu:latest
+          options: -v ${{ github.workspace }}:/github/workspace/
+          run: |
+            pushd /github/workspace/
+            for doc in obs-admin-guide obs-user-guide; do
+              source ./DC-$doc || exit 1
+
+              daps --verbosity=3 html || exit 1
+              daps --verbosity=3 epub || exit 1
+              daps --verbosity=3 pdf || exit 1
+
+              rm -rf obs-landing/help/manuals/${doc} || exit 1
+              # update html
+              cp -aL build/${doc}/html/${ROOTID} obs-landing/help/manuals/${doc} || exit 1
+
+              # update epub
+              mv build/${doc}/${ROOTID}_en.epub obs-landing/files/manuals/${doc}.epub || exit 1
+
+              # update pdf
+              mv build/${doc}/${ROOTID}_color_en.pdf obs-landing/files/manuals/${doc}.pdf || exit 1
+            done
+      - name: Navigate to obs-landing repo
+        run: |
+          cd obs-landing/
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2.3
+        with:
+          env:
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          production-deploy: false
+          production-branch: master
+          netlify-config-path: ./netlify.toml
+          timeout-minutes: 1
+
+
+
