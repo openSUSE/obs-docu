@@ -12,7 +12,7 @@
   how to deploy them for production use. </para>
  <sect2>
   <title>Server Appliance</title>
-  <para> The &obsa; server appliance contains a recent &opensuse; distribution with
+  <para> The &obsa; server applianceeeeeee contains a recent &opensuse; distribution with
    a pre-installed and pre-configured OBS front-end, back-end and worker. The
    operating system on this appliance adapts to the hardware on first boot and
    defaults to automatic IP and DNS configuration via DHCP. </para>
@@ -68,7 +68,7 @@
      </tbody>
     </tgroup>
    </table>
-  
+
  </sect2>
  <sect2>
   <title>Deployment</title>
