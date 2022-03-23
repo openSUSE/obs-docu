@@ -240,6 +240,23 @@ Keep: debbuild</screen>
          The repositories will be searched in the order they are configured
          in the meta configuration, starting from the top.
         </para>
+        <para>
+         An alternative way to enable caching based on build dependencies is to
+         add "--enable-cache" as dependency, for example via a Substitute rule:
+         <command>
+           Substitute: gcc-c++ gcc-c++ --enable-ccache
+         </command>
+         This will always enable ccache when a direct build depdency to gcc-c++
+         is required.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><parameter>ccachetype:</parameter></term>
+       <listitem>
+        <para>
+          Defines the ccache implementation, possible values are: ccache, sccache
+        </para>
        </listitem>
       </varlistentry>
       <varlistentry>
@@ -574,7 +591,16 @@ Keep: debbuild</screen>
     <term><parameter>Target: <replaceable>TARGET_ARCH</replaceable></parameter> (RPM only)</term>
     <listitem>
      <para>Defines the target architecture. This can be used to build for i686
-      on i586 schedulers for example.</para>
+      on i586 schedulers for example. Please note that on rpm based systems just the architecture needs
+      to be specified, but on debian systems the gnu triplet, for example arm-linux-gnueabihf.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><parameter>Target: <replaceable>GNU_TRIPLET</replaceable></parameter> (Debian only)</term>
+    <listitem>
+     <para>Defines the target architecture. This can be used to build for i686
+      on i586 schedulers for example. Please note that on rpm based systems just the architecture needs
+      to be specified, but on debian systems the gnu triplet, for example arm-linux-gnueabihf.</para>
     </listitem>
    </varlistentry>
    <varlistentry>
