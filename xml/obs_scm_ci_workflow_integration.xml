@@ -634,7 +634,7 @@ rebuild_master:
           <listitem>
             <para><emphasis role="bold">Branch and Event filters</emphasis>
             will make workflows run or not for specific
-            branches/events.</para>
+            branches/event.</para>
           </listitem>
         </itemizedlist>
 
@@ -725,11 +725,10 @@ workflow:
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.event_filter">
           <title>Event Filter</title>
 
-          <para>Setting an event filter will run the workflow only for those events. We already
-          covered SCM Events <link
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.scm_events">here</link>.</para>
+          <para>Setting an event filter will run the workflow only for this event. The event filter doesn't accept multiple events.
+          Documentation on the SCM events is <link linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.scm_events">here</link>.</para>
 
-          <para>The available events filters are:</para>
+          <para>The available event filters are:</para>
 
           <itemizedlist>
             <listitem>
