@@ -31,29 +31,25 @@ jobs:
           path: obs-landing
           ssh-key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
       - name: build
-        uses: addnab/docker-run-action@v3
-        with:
-          image: openbuildservice/obs-docu:latest
-          options: -v ${{ github.workspace }}:/github/workspace/
-          run: |
-            pushd /github/workspace/
-            for doc in obs-admin-guide obs-user-guide; do
-              source ./DC-$doc || exit 1
+        run: |
+          git clone git@github.com:openSUSE/daps2docker.git
+          pushd daps2docker
 
-              daps --verbosity=3 html || exit 1
-              daps --verbosity=3 epub || exit 1
-              daps --verbosity=3 pdf || exit 1
+          for doc in obs-admin-guide obs-user-guide; do
+            source ../DC-$doc || exit 1
+            ./daps2docker.sh ../DC-$doc || exit 1
+            ./daps2docker.sh ../DC-$doc epub || exit 1
 
-              rm -rf obs-landing/help/manuals/${doc} || exit 1
-              # update html
-              cp -aL build/${doc}/html/${ROOTID} obs-landing/help/manuals/${doc} || exit 1
+            rm -rf ../obs-landing/help/manuals/${doc} || exit 1
+            # update html
+            cp -aL /tmp/daps2docker-*/$doc/html/${ROOTID} ../obs-landing/help/manuals/${doc} || exit 1
 
-              # update epub
-              mv build/${doc}/${ROOTID}_en.epub obs-landing/files/manuals/${doc}.epub || exit 1
+            # update epub
+            mv /tmp/daps2docker-*/$doc/${ROOTID}_en.epub ../obs-landing/files/manuals/${doc}.epub || exit 1
 
-              # update pdf
-              mv build/${doc}/${ROOTID}_color_en.pdf obs-landing/files/manuals/${doc}.pdf || exit 1
-            done
+            # update pdf
+            mv /tmp/daps2docker-*/$doc/${ROOTID}_color_en.pdf ../obs-landing/files/manuals/${doc}.pdf || exit 1
+          done
       - name: Commit files
         run: |
           pushd obs-landing
