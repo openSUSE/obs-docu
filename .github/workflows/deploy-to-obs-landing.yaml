@@ -42,18 +42,19 @@ jobs:
 
             rm -rf ../obs-landing/help/manuals/${doc} || exit 1
             # update html
-            cp -aL /tmp/daps2docker-*/$doc/html/${ROOTID} ../obs-landing/help/manuals/${doc} || exit 1
+            mv -v /tmp/daps2docker-*/$doc/html/${ROOTID} ../obs-landing/help/manuals/${doc} || exit 1
 
             # update epub
-            mv /tmp/daps2docker-*/$doc/${ROOTID}_en.epub ../obs-landing/files/manuals/${doc}.epub || exit 1
+            mv -v /tmp/daps2docker-*/$doc/${ROOTID}_en.epub ../obs-landing/files/manuals/${doc}.epub || exit 1
 
             # update pdf
-            mv /tmp/daps2docker-*/$doc/${ROOTID}_color_en.pdf ../obs-landing/files/manuals/${doc}.pdf || exit 1
+            mv -v /tmp/daps2docker-*/$doc/${ROOTID}_color_en.pdf ../obs-landing/files/manuals/${doc}.pdf || exit 1
           done
       - name: Commit files
         run: |
           pushd obs-landing
           git config --local user.email "bs-team@suse.de"
           git config --local user.name "obs-docs-deployment"
-          git commit -m "Update books to current state" -a
+          git add -A
+          git commit -m "Update books to current state"
           git push
