@@ -29,6 +29,3 @@ jobs:
       with:
         name: obs-docu-html
         path: /tmp/daps2docker-*/obs-all/html/obs-all/
-
-
-
