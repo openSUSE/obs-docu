@@ -1353,5 +1353,115 @@ workflow:
             architecture: x86_64</screen>
       <para></para>
     </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.create_package_releases_with_tags">
+      <title>Create Package on OBS for Every Software Release With Git Tags</title>
+
+      <para>You have a software project for which you mark releases with Git tags. For every release, you want to create
+      a package on OBS. This can be automated in a workflow with the <emphasis>branch_package</emphasis> step and the
+      <emphasis>tag_push</emphasis> event filter. Once the workflow is in place, every tag you push to your SCM repository
+      will branch a package on OBS and create, then build a package for the source code associated to the tag's commit.
+      This way, your users can always install a versioned release of your software project. You can also link one of those
+      versioned releases to another project on OBS if you need it as a dependency.</para>
+
+      <para>After the usual <link linkend="sec.obs.obs_scm_ci_workflow_integration.setup">setup</link> for
+      OBS workflows with tokens and webhooks, you will need:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A package in OBS that you own, and for which you want to create releases. It will be the
+          <emphasis>source package</emphasis> (e.g.: <emphasis>home:jane/my_package</emphasis>) and it will
+          contain a <emphasis>_service</emphasis> file. When this package is branched by the
+          <emphasis>branch_package</emphasis> step, the branched package name will end with the name of the tag which
+          was pushed (e.g.: <emphasis>my_package-1.0</emphasis>).</para>
+        </listitem>
+
+        <listitem>
+          <para>A project in OBS that you own, and which will contain all packages created by the <emphasis>branch_package</emphasis>
+          step. It will be the <emphasis>target project</emphasis> (e.g.: <emphasis>home:jane:releases</emphasis>).</para>
+        </listitem>
+
+        <listitem>
+          <para>A SCM repository for your software project with the source code and spec file in which you
+          will create Git tags to mark releases, e.g.: <emphasis>https://github.com/jane/my_package</emphasis>.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The workflow configuration should be like this one:</para>
+
+      <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: home:jane
+        source_package: my_package
+        target_project: home:jane:releases
+  filters:
+    event: tag_push</screen>
+
+      <para>The <emphasis>_service</emphasis> file in your source package should be like:</para>
+
+      <screen>&lt;?xml version=&quot;1.0&quot;?&gt;
+  &lt;services&gt;
+    &lt;service name=&quot;obs_scm&quot;&gt;
+      &lt;param name=&quot;versionformat&quot;&gt;@PARENT_TAG@&lt;/param&gt;
+      &lt;param name=&quot;url&quot;&gt;https://github.com/jane/my_package.git&lt;/param&gt;
+      &lt;param name=&quot;scm&quot;&gt;git&lt;/param&gt;
+      &lt;param name=&quot;revision&quot;&gt;@PARENT_TAG@&lt;/param&gt;
+      &lt;param name=&quot;extract&quot;&gt;my_package.spec&lt;/param&gt;
+    &lt;/service&gt;
+    &lt;service name=&quot;set_version&quot;/&gt;
+    &lt;service name=&quot;tar&quot; mode=&quot;buildtime&quot;/&gt;
+  &lt;/services&gt;</screen>
+
+      <para>Here's an explanation of the services involved:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>The <link xlink:href="https://github.com/openSUSE/obs-service-tar_scm#obs_scm">obs_scm</link> service fetches
+          the source code from your SCM repository for a specific revision, which in this case, is for the latest tag
+          (<emphasis>@PARENT_TAG@</emphasis>). Don't forget to extract the spec file with a <emphasis>extract</emphasis> element.</para>
+
+          <para>Set the <emphasis>versionformat</emphasis> to match how you want to name your releases. This is typically
+          the Git tag name, so <emphasis>@PARENT_TAG@</emphasis> is what you should use. For other options, refer to
+          <link xlink:href="https://git-scm.com/docs/git-log">git log</link> and its <emphasis>format:&lt;format-string&gt;</emphasis>
+          documentation.</para>
+        </listitem>
+
+        <listitem>
+          <para>The <link xlink:href="https://github.com/openSUSE/obs-service-set_version">set_version</link> service updates the
+          <emphasis>Version</emphasis> directive in the spec file downloaded by the <emphasis>obs_scm</emphasis> service. The version
+          format comes from the <emphasis>versionformat</emphasis> element under the <emphasis>obs_scm</emphasis> service.</para>
+        </listitem>
+
+        <listitem>
+          <para>The <link xlink:href="https://github.com/openSUSE/obs-service-tar_scm#tar">tar</link> service creates a tarball out of
+          the source code fetched by the <emphasis>obs_scm</emphasis> service.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>For the spec file in your SCM repository, pay attention to this:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>The <emphasis>Source0</emphasis> directive is based on values you provided to the <emphasis>obs_scm</emphasis> service
+          in the <emphasis>_service</emphasis> file and it should be like this: <emphasis>my_package-%{version}.tar</emphasis>.</para>
+
+          <para>The first part is the SCM repository name (e.g: <emphasis>my_package</emphasis>). The second part is the version
+          macro which will be expanded to match what you defined in the <emphasis>versionformat</emphasis> of the
+          <emphasis>obs_scm</emphasis> service in the <emphasis>_service</emphasis> file. The third part is the archive extension
+          (<emphasis>.tar</emphasis>) since a tarball was created by the <emphasis>tar</emphasis> service.</para>
+        </listitem>
+
+        <listitem>
+          <para>Under the <emphasis>%prep</emphasis> directive, you might have to update the <emphasis>%setup</emphasis> directive
+          if your source package name doesn't match the name of your SCM repository. Here's how, with <emphasis>my_package</emphasis>
+          being the SCM repository name:</para>
+
+          <screen>%prep
+  %setup -q -n my_package-%version
+          </screen>
+        </listitem>
+      </itemizedlist>
+    </sect2>
   </sect1>
 </chapter>
