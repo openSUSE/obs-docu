@@ -381,11 +381,15 @@ rebuild_master:
           <listitem>
             <para>Set flags for projects, packages, repositories or architectures (set_flags)</para>
           </listitem>
+
+          <listitem>
+            <para>Trigger services of a package (trigger_services)</para>
+          </listitem>
         </itemizedlist>
 
         <warning>
           <para>The user the token belongs to needs to have permissions to
-          branch a package, link packages, configure repositories/architectures and rebuild packages.</para>
+          branch a package, link packages, configure repositories/architectures, rebuild packages and trigger services of a package.</para>
         </warning>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.branch_a_package">
@@ -615,6 +619,25 @@ rebuild_master:
             package: ctris
             repository: openSUSE_Tumbleweed
             architecture: x86_64</screen>
+        </sect4>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.trigger_services">
+          <title>Trigger Services of a Package</title>
+
+          <para>Given a project called <emphasis>home:Admin</emphasis> and a
+          package <emphasis>ctris</emphasis>, the step will trigger services of the
+          package <emphasis>home:Admin/ctris</emphasis>.</para>
+
+          <para>Be sure to have a <link xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.source_service.html">_service</link>
+          file in the package <emphasis>home:Admin/ctris</emphasis>.</para>
+
+          <para>This is an example of a configuration file with a trigger services step:</para>
+
+          <screen>workflow:
+  steps:
+    - trigger_services:
+        project: home:Admin
+        package: ctris</screen>
         </sect4>
       </sect3>
 
