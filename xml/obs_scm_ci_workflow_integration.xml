@@ -995,53 +995,6 @@ workflow:
 
           <tbody>
             <row>
-              <entry><emphasis>".obs/workflows.yml could not be downloaded on
-              the SCM branch"</emphasis></entry>
-
-              <entry>The configuration file is not in the expected place.
-              Check <link
-              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows">OBS
-              Workflows</link>.</entry>
-            </row>
-
-            <row>
-              <entry><emphasis>"Invalid workflow step
-              definition"</emphasis></entry>
-
-              <entry>Read about <link
-              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">Steps</link>
-              to check the format of the steps in the .obs/workflows.yml file. Use the
-              correct steps names.</entry>
-            </row>
-
-            <row>
-              <entry><emphasis>"Unsupported filters"</emphasis></entry>
-
-              <entry>Read <link
-              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">Filters</link>
-              to check the format of the filters in the .obs/workflows.yml file. Use the
-              correct filter names.</entry>
-            </row>
-
-            <row>
-              <entry>"Filters have unsupported keys"</entry>
-
-              <entry>Read <link
-              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">Filters</link>
-              to check the format of the filters in the .obs/workflows.yml file. Use the
-              correct filter keys and delimiters.</entry>
-            </row>
-
-            <row>
-              <entry><emphasis>"Bad credentials"</emphasis></entry>
-
-              <entry>Your SCM token secret is not properly set in your OBS workflow token.
-              Check <link
-              linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs">How
-              to Authenticate SCMs with OBS</link>.</entry>
-            </row>
-
-            <row>
               <entry><emphasis>"Project not found"</emphasis></entry>
 
               <entry>Make sure the projects you declared in the
