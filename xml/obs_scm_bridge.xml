@@ -39,14 +39,14 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
       <title>Setup a package using the scm bridge</title>
 
-      <para>The setup is purily done in package meta by defining the scm url inside of the scmsync tag:</para>
+      <para>The setup is purely done in package meta by defining the scm url inside of the scmsync tag:</para>
 
       <screen>&lt;scmsync&gt;https://gitlab.com/some/repository&lt;/scmsync&gt;</screen>
 
       <para>The repository is cloned including all subdirectories, but the build descriptions need to be
             available on top level.</para>
 
-      <para>It is recommended just to refrence further external build assets, like tar balls or git repositories using
+      <para>It is recommended just to reference further external build assets, like tar balls or git repositories using
             asset management. These assets will get downloaded and verified as well. Have a look in 
             <link xlink:href="http://opensuse.github.io/obs-build/pbuild.html#_remote_assets">the pbuild
             documentation</link> for further details on this. </para>
@@ -85,7 +85,7 @@
               hash character and the revision, tag or branch.
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository#MY_REVISION&lt;/scmsync&gt;</screen>
               This allows to setup multiple projects building for different branches. It is possible to use
-             branches for implementing CI workflows. Eg a submission test building just a subset, a clean build
+             branches for implementing CI workflows. For example a submission test building just a subset, a clean build
              and a final reviewed build.
         </para>
       </sect3>
