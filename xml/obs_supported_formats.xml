@@ -245,11 +245,11 @@
      </para>
    </listitem>
    <listitem>
-     <para><command>#!ArchExclusiveLine: ARCH_LIST</command> The next line will only get executed on the listed architectures.
+     <para><command>#!ArchExclusiveLine: ARCH_LIST</command> The next line will only be considered by the scheduler the listed architectures. The line will still get executed on all architectures during the build.
      </para>
    </listitem>
    <listitem>
-     <para><command>#!ArchExcludedLine: ARCH_LIST</command> The next line will not get executed on the listed architectures.
+     <para><command>#!ArchExcludedLine: ARCH_LIST</command> The next line will not be considered by the scheduler on the listed architectures. The line will still get executed on all architectures during the build.
      </para>
    </listitem>
    <listitem>
