@@ -166,47 +166,27 @@
  </sect1>
  <sect1>
   <title>API Search Interface</title>
-  <para> The search is provided via the generic XPath search interface. It is
-   provided below the paths:</para>
+  <para>
+   The search of released binaries is provided via the following API endpoints:
+  </para>
   <itemizedlist>
    <listitem>
-    <para> /search/released/binary/id : short form, just listing the matched
-     binary identifiers </para>
+    <para>
+     /search/released/binary/id : short form, just listing the matched
+     binary identifiers. See the <link
+     xlink:href="https://build.opensuse.org/apidocs-new/index.html#/Search/get_search_released_binary_id">reference documentation</link>.
+    </para>
    </listitem>
    <listitem>
-    <para> /search/released/binary : long form, provides all other tracked
-     information as described above </para>
+    <para>/search/released/binary : long form, provides all other tracked
+     information as described above. See the <link
+     xlink:href="https://build.opensuse.org/apidocs-new/index.html#/Search/get_search_released_binary">reference documentation</link>.
+    </para>
    </listitem>
   </itemizedlist>
-  <sect2>
-   <title>Examples</title>
-   <para> To find the latest version of given glibc-devel binary in all
-    products. Skipping old and revoked versions:</para>
-   <screen>/search/released/binary?match=@name"=glibc-devel"+and+obsolete[not(@time)]</screen>
-   <para> To find a specific version by given updateinfo id. This ID is visible
-    in the update tools to the end user:</para>
-   <screen>/search/released/binary?match=updateinfo/@id="OBS-2014-42"</screen>
-   <para> To find a specific version by given disturl. Used to find all
-    affected products by a certain build of a binary:</para>
-   <screen>/search/released/binary?match=disturl="obs://..."</screen>
-   <para> When got the specific package version got released the first time: </para>
-<screen>/search/released/binary?match=@name='kernel-default'+and+@version='1.0'+and+@release='1'+and+@arch='i586'+and+supportstatus='l3'+and+operation='added'</screen>
-   <para> All binaries in a given repository:</para>
-   <screen>/search/released/binary?match=repository/[@project='BaseDistro3'+and+@name='BaseDistro3_repo']</screen>
-
-   <para> All binaries part of a product release:</para>
-   <screen>/search/released/binary?match=product/[@project='openSUSE'+and+@name='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
-
-   <para> All binaries part of the update repositories of a product:</para>
-   <screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+(@arch='x86_64'+or+not(@arch))]</screen>
-
-   <para> All binaries part of the update repositories of a versioned product: </para>
-   <screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@version='13.2']</screen>
-
-   <para> All binaries part of the update repositories of a versioned product
-    (enterprise style):</para>
-   <screen>/search/released/binary?match=updatefor/[@project='openSUSE'+and+@product='openSUSE'+and+@baseversion='12'+and+@patchlevel='1']</screen>
-
-  </sect2>
+  <para>
+   Please visit the before mentioned links to get details and several examples of how to
+   use these API endpoints.
+  </para>
  </sect1>
 </chapter>
