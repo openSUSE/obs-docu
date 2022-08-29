@@ -376,7 +376,6 @@
     &lt;param name="verifier"&gt;sha256&lt;/param&gt;
     &lt;param name="checksum"&gt;7f535a96a834b31ba2201a90c4d365990785dead92be02d4cf846713be938b78&lt;/param&gt;
   &lt;/service&gt;
-  &lt;service name="update_source" mode="disabled" /&gt;
 &lt;/services&gt;</screen>
   <para>
    With the example above, the services above are executed in the
@@ -394,13 +393,6 @@
     <para>
      Compares the downloaded file (<filename>krabber-1.0.tar.gz</filename>)
      against the SHA256 checksum.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     When <command>osc service runall</command> is run manually, update
-     the source archive from an online source. In all other cases, ignore
-     this part of the <filename>_service</filename> file.
     </para>
    </listitem>
   </orderedlist>
