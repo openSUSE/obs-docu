@@ -275,4 +275,12 @@
   using a _preinstallimage file</remark>
  </sect1>
  
+ <!--
+ <sect1 condition="tbd">
+  <title>Mkosi Image Builds</title>
+  <para/>
+  <remark>TBD</remark>
+ </sect1>
+ -->
+
 </chapter>
