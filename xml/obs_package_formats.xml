@@ -58,6 +58,9 @@
    <listitem>
     <para>SimpleImage format</para>
    </listitem>
+   <listitem>
+    <para>Mkosi format to build images</para>
+   </listitem>
   </itemizedlist>
 
   <para> If no build recipe format and binary format are specified in the project
@@ -408,6 +411,75 @@ Support: kmod-compat kernel-default perl-YAML-LibYAML
   &lt;/repository&gt;
   &lt;repository name="openSUSE_Leap_15.1"&gt;
     &lt;path project="OBS:Flatpak" repository="openSUSE_Leap_15.1"/&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+  &lt;/repository&gt;
+&lt;/project&gt;
+   </screen>
+  </example>
+ </sect1>
+
+ <sect1 xml:id="sec.pkgfmt.mkosi">
+  <title>mkosi</title>
+  <para>
+   <link xlink:href="https://github.com/systemd/mkosi/">Mkosi</link> allows
+   building images for rpm, arch, deb and gentoo based distributions, on any
+   architecture that supports UEFI. Images built with mkosi will follow the
+   <link xlink:href="https://systemd.io/DISCOVERABLE_PARTITIONS/">Discoverable Partitions Specification</link>
+   and will be bootable on baremetal (UEFI), virtual machines (UEFI),
+   containers via
+   <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html">systemd-nspawn,</link>
+   or as
+   <link xlink:href="https://systemd.io/PORTABLE_SERVICES/">Portable Services</link>
+   in systemd.</para>
+  <para> For building an image in mkosi you need the
+   <filename>mkosi.my_image</filename> recipe file. This file contains the
+   image configuration in INI format. All available options can be found in the
+   <link xlink:href="https://github.com/systemd/mkosi/blob/main/mkosi.md">Mkosi documentation</link>.
+  </para>
+
+  <note>
+   <para>Ensure to set <literal>Type: mkosi</literal> in the repository's
+   <literal>prjconf</literal> where the image builds are enabled on &obsa;.
+   </para>
+  </note>
+
+  <example>
+   <title>mkosi minimal build recipe (<filename>mkosi.suse</filename>) for a
+   Tumbleweed image</title>
+   <screen>
+[Distribution]
+Distribution=opensuse
+Release=tumbleweed
+
+[Output]
+Format=gpt_ext4
+
+[Content]
+Password=
+Autologin=yes
+Packages=
+ patterns-base-minimal_base
+   </screen>
+  </example>
+  <example>
+   <title>mkosi Project config (<filename>prjconf</filename>)</title>
+   <screen>
+%if "%_repository" == "suse"
+Type: mkosi
+Substitute: integritysetup
+Substitute: veritysetup
+Prefer: openSUSE-release-appliance-custom python310-cryptography
+%endif
+   </screen>
+  </example>
+  <example>
+   <title>mkosi Project meta example</title>
+   <screen>
+&lt;project name="Your:Project:Name"&gt;
+  &lt;title&gt;Title&lt;/title&gt;
+  &lt;description&gt;Description&lt;/description&gt;
+  &lt;repository name="suse"&gt;
+    &lt;path project="openSUSE:Factory" repository="snapshot"/&gt;
     &lt;arch&gt;x86_64&lt;/arch&gt;
   &lt;/repository&gt;
 &lt;/project&gt;
