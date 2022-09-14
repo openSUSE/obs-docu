@@ -785,60 +785,6 @@ workflow:
           linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
           Delimiters: only and ignore</link>.</para>
         </sect4>
-
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.architectures_filter">
-          <title>Architectures Filter</title>
-
-          <para>This filter matches architectures based on their names and
-          report back to GitHub only for those architectures.</para>
-
-          <para>Example of a workflow reporting back to the GitHub only for
-          architectures <emphasis>s390x</emphasis> and
-          <emphasis>x86_64</emphasis>:</para>
-
-          <para><screen>workflow:
-  steps:
-    - branch_package:
-        source_project: home:jane_doe
-        source_package: ctris
-        target_project: games
-  filters:
-    architectures:
-      only:
-        - s390x
-        - x86_64</screen></para>
-
-          <para>Learn more about <link
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
-          Delimiters: only and ignore</link>.</para>
-        </sect4>
-
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.repositories_filter">
-          <title>Repositories Filter</title>
-
-          <para>Matches repositories based on their names and report back to
-          GitHub only for those repositories.</para>
-
-          <para>Example of a workflow reporting back to GitHub only for
-          repositories <emphasis>openSUSE_Tumbleweed</emphasis> and
-          <emphasis>CentOS_8</emphasis>:</para>
-
-          <para><screen>workflow:
-  steps:
-    - branch_package:
-        source_project: home:jane_doe
-        source_package: ctris
-        target_project: games
-  filters:
-    repositories:
-      only:
-        - openSUSE_Tumbleweed
-        - CentOS_8</screen></para>
-
-          <para>Learn more about <link
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
-          Delimiters: only and ignore</link>.</para>
-        </sect4>
       </sect3>
     </sect2>
 
