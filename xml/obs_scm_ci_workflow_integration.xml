@@ -644,28 +644,13 @@ rebuild_master:
       <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">
         <title>Filters</title>
 
-        <para>You can customize when workflows run and what they report by declaring filters.
-        There are two types:</para>
-
-        <itemizedlist>
-          <listitem>
-            <para><emphasis role="bold">Architectures and
-            Repositories</emphasis> <emphasis role="bold">filters</emphasis>
-            affect what we report back to GitHub.</para>
-          </listitem>
-
-          <listitem>
-            <para><emphasis role="bold">Branch and Event filters</emphasis>
-            will make workflows run or not for specific
-            branches/event.</para>
-          </listitem>
-        </itemizedlist>
+        <para>You can customize when workflows run by declaring
+        <emphasis role="bold">branch</emphasis> or <emphasis role="bold">Event</emphasis> filters.
+        They will make workflows run or not for specific branches/events.
+        </para>
 
         <para>You can define them in the configuration file
-        <emphasis>.obs/workflows.yml</emphasis>.</para>
-
-        <para>Here's an example with all filters:</para>
-
+        <emphasis>.obs/workflows.yml</emphasis>. Here's an example:</para>
         <para><screen>
 workflow:
   steps:
@@ -675,17 +660,10 @@ workflow:
         target_project: games
   filters:
     event: pull_request
-    branches: 
+    branches:
       only:
         - master
-        - staging
-    architectures:
-      ignore:
-        - s390x
-        - ia64
-    repositories:
-      only:
-        - openSUSE_Tumbleweed</screen></para>
+        - staging</screen></para>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">
           <title>Filters Delimiters: only and ignore</title>
