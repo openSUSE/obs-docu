@@ -668,8 +668,8 @@ workflow:
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">
           <title>Filters Delimiters: only and ignore</title>
 
-          <para>Some steps can affect a group of elements (branches,
-          architectures, etc.) You can use filter delimiters like <emphasis
+          <para>Some steps can affect a group of elements (branches)
+          You can use filter delimiters like <emphasis
           role="bold">only</emphasis> and <emphasis
           role="bold">ignore</emphasis> to specify which elements should be
           affected, or not, by the step.</para>
@@ -707,20 +707,18 @@ workflow:
       only:
         - master</screen></para>
 
-          <para>This is an example of a workflow reporting back to GitHub for
-          all repositories, <emphasis>except</emphasis> the repository named
-          <emphasis>openSUSE_Tumbleweed</emphasis>:</para>
+          <para>This is an example to run a workflow for all the target branches
+          <emphasis>except</emphasis> for the branch <emphasis>staging</emphasis>:</para>
 
           <para><screen>workflow:
   steps:
-    - branch_package:
-        source_project: games
-        source_package: ctris
-        target_project: home:jane_doe
+    - rebuild_package:
+        project: games
+        package: ctris
   filters:
-    repositories:
+    branches:
       ignore:
-        - openSUSE_Tumbleweed</screen></para>
+        - staging</screen></para>
         </sect4>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.event_filter">
