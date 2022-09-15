@@ -644,28 +644,13 @@ rebuild_master:
       <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">
         <title>Filters</title>
 
-        <para>You can customize when workflows run and what they report by declaring filters.
-        There are two types:</para>
-
-        <itemizedlist>
-          <listitem>
-            <para><emphasis role="bold">Architectures and
-            Repositories</emphasis> <emphasis role="bold">filters</emphasis>
-            affect what we report back to GitHub.</para>
-          </listitem>
-
-          <listitem>
-            <para><emphasis role="bold">Branch and Event filters</emphasis>
-            will make workflows run or not for specific
-            branches/event.</para>
-          </listitem>
-        </itemizedlist>
+        <para>You can customize when workflows run by declaring
+        <emphasis role="bold">branch</emphasis> or <emphasis role="bold">Event</emphasis> filters.
+        They will make workflows run or not for specific branches/events.
+        </para>
 
         <para>You can define them in the configuration file
-        <emphasis>.obs/workflows.yml</emphasis>.</para>
-
-        <para>Here's an example with all filters:</para>
-
+        <emphasis>.obs/workflows.yml</emphasis>. Here's an example:</para>
         <para><screen>
 workflow:
   steps:
@@ -675,23 +660,16 @@ workflow:
         target_project: games
   filters:
     event: pull_request
-    branches: 
+    branches:
       only:
         - master
-        - staging
-    architectures:
-      ignore:
-        - s390x
-        - ia64
-    repositories:
-      only:
-        - openSUSE_Tumbleweed</screen></para>
+        - staging</screen></para>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">
           <title>Filters Delimiters: only and ignore</title>
 
-          <para>Some steps can affect a group of elements (branches,
-          architectures, etc.) You can use filter delimiters like <emphasis
+          <para>Some steps can affect a group of elements (branches)
+          You can use filter delimiters like <emphasis
           role="bold">only</emphasis> and <emphasis
           role="bold">ignore</emphasis> to specify which elements should be
           affected, or not, by the step.</para>
@@ -729,20 +707,18 @@ workflow:
       only:
         - master</screen></para>
 
-          <para>This is an example of a workflow reporting back to GitHub for
-          all repositories, <emphasis>except</emphasis> the repository named
-          <emphasis>openSUSE_Tumbleweed</emphasis>:</para>
+          <para>This is an example to run a workflow for all the target branches
+          <emphasis>except</emphasis> for the branch <emphasis>staging</emphasis>:</para>
 
           <para><screen>workflow:
   steps:
-    - branch_package:
-        source_project: games
-        source_package: ctris
-        target_project: home:jane_doe
+    - rebuild_package:
+        project: games
+        package: ctris
   filters:
-    repositories:
+    branches:
       ignore:
-        - openSUSE_Tumbleweed</screen></para>
+        - staging</screen></para>
         </sect4>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.event_filter">
@@ -804,60 +780,6 @@ workflow:
       ignore:
         - master
         - final </screen></para>
-
-          <para>Learn more about <link
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
-          Delimiters: only and ignore</link>.</para>
-        </sect4>
-
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.architectures_filter">
-          <title>Architectures Filter</title>
-
-          <para>This filter matches architectures based on their names and
-          report back to GitHub only for those architectures.</para>
-
-          <para>Example of a workflow reporting back to the GitHub only for
-          architectures <emphasis>s390x</emphasis> and
-          <emphasis>x86_64</emphasis>:</para>
-
-          <para><screen>workflow:
-  steps:
-    - branch_package:
-        source_project: home:jane_doe
-        source_package: ctris
-        target_project: games
-  filters:
-    architectures:
-      only:
-        - s390x
-        - x86_64</screen></para>
-
-          <para>Learn more about <link
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
-          Delimiters: only and ignore</link>.</para>
-        </sect4>
-
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.repositories_filter">
-          <title>Repositories Filter</title>
-
-          <para>Matches repositories based on their names and report back to
-          GitHub only for those repositories.</para>
-
-          <para>Example of a workflow reporting back to GitHub only for
-          repositories <emphasis>openSUSE_Tumbleweed</emphasis> and
-          <emphasis>CentOS_8</emphasis>:</para>
-
-          <para><screen>workflow:
-  steps:
-    - branch_package:
-        source_project: home:jane_doe
-        source_package: ctris
-        target_project: games
-  filters:
-    repositories:
-      only:
-        - openSUSE_Tumbleweed
-        - CentOS_8</screen></para>
 
           <para>Learn more about <link
           linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
