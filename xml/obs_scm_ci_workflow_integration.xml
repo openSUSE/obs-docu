@@ -12,24 +12,10 @@
          xmlns:ns5="http://www.w3.org/2000/svg"
          xmlns:ns4="http://www.w3.org/1999/xhtml"
          xmlns:ns="http://docbook.org/ns/docbook">
-  <title>SCM/CI Workflow Integration [Beta Feature]</title>
+  <title>SCM/CI Workflow Integration</title>
 
   <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup">
     <title>SCM/CI Workflow Integration Setup</title>
-
-    <note>
-      <title>The feature described in this chapter is a <emphasis>Beta
-      Feature</emphasis>.</title>
-
-      <para>That means the development of this feature is still in progress and under
-      constant revision. We can substantially change this feature throughout the process
-      or even discard it. Make sure to check back before reporting problems.
-      </para>
-
-      <para>Everybody can join the beta program, read <link
-      xlink:href="https://openbuildservice.org/2018/10/04/the-beta-program">here</link>
-      how to do it.</para>
-    </note>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.introduction">
       <title>Introduction</title>
@@ -1012,20 +998,6 @@ workflow:
 
   <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases">
     <title>SCM/CI Workflow Integration Use-Cases</title>
-
-    <note>
-      <title>The feature described in this chapter is a <emphasis>Beta
-      Feature</emphasis>.</title>
-
-      <para>That means the development of this feature is still in progress and under
-      constant revision. We can substantially change this feature throughout the process
-      or even discard it. Make sure to check back before reporting problems.
-      </para>
-
-      <para>Everybody can join the beta program, read <link
-      xlink:href="https://openbuildservice.org/2018/10/04/the-beta-program">here</link>
-      how to do it.</para>
-    </note>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.service">
       <title>OBS SCM Service</title>
