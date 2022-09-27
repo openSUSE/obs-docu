@@ -21,7 +21,7 @@
       <title>Introduction</title>
 
       <para>With this integration, you can take advantage of source code management (SCM)
-      systems like GitHub or GitLab to manage your packages sources. Then, you can
+      systems like GitHub, GitLab or Gitea to manage your packages sources. Then, you can
       integrate those sources with OBS to run different <emphasis
       role="bold">workflows</emphasis>, for instance, to build a
       package and report back the result to the SCM.</para>
@@ -32,7 +32,7 @@
       <para>This chapter talks in GitHub jargon to simplify the text. As
       constantly mentioning all the names for the same things, e.g. <emphasis>Pull Requests/Merge Requests</emphasis>,
       is tiresome and confusing. However, every aspect has its
-      correspondence in GitLab. Refer to <xref
+      correspondence in GitLab and Gitea. Refer to <xref
       linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table"/>
       for clarification of terminology.</para>
     </sect2>
@@ -58,8 +58,8 @@
 
       <para>We support the GitHub.com and GitLab.com instances.</para>
 
-      <para>We also support Self-Hosted instances from GitHub and GitLab. As
-      long as the network connectivity works, OBS will be able to interact
+      <para>We also support Self-Hosted instances from GitHub, GitLab and Gitea.
+      As long as the network connectivity works, OBS will be able to interact
       with that SCM.</para>
     </sect2>
 
@@ -87,12 +87,18 @@
           <listitem>
             <para>GitLab: api</para>
           </listitem>
+
+          <listitem>
+            <para>Gitea does not support scopes for access tokens</para>
+          </listitem>
         </itemizedlist>
 
         <para>Check <link
         xlink:href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">GitHub’s</link>
+        , <link
+        xlink:href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token">GitLab's</link>
         and <link
-        xlink:href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#creating-a-personal-access-token">GitLab</link>’s
+        xlink:href="https://docs.gitea.io/en-us/api-usage/#generating-and-listing-api-tokens">Gitea's</link>
         documentation to learn how.</para>
       </sect3>
 
@@ -187,6 +193,10 @@
           <listitem>
             <para>Pushes</para>
           </listitem>
+
+          <listitem>
+            <para>Tag Pushes</para>
+          </listitem>
         </itemizedlist>
 
         <para>Other SCMs like GitLab have similar behaviour; the main
@@ -194,8 +204,11 @@
         linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table">Equivalence
         Table</link> for more details or read more about <link
         xlink:href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads">GitHub
-        events</link> and <link
-        xlink:href="https://docs.gitlab.com/ce/user/project/integrations/webhooks.html#events">GitLab
+        events</link>, <link
+        xlink:href="https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html">GitLab
+        events</link>
+        and <link
+        xlink:href="https://docs.gitea.io/en-us/webhooks/">Gitea
         events</link>.</para>
       </sect3>
 
@@ -283,6 +296,54 @@
             <para><emphasis role="bold">Trigger:</emphasis> <emphasis>Merge
             request events</emphasis>, <emphasis>Push
               events</emphasis>, <emphasis>Tag push events</emphasis>.</para>
+          </listitem>
+        </itemizedlist>
+      </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.how_to_set_up_a_webhook_on_gitea">
+        <title>How to Set Up a Webhook on Gitea</title>
+
+        <para>Go to the repository you want to set the integration on, then under
+        <emphasis>Settings &gt; Webhooks</emphasis>.</para>
+
+        <figure>
+          <title>Webhooks on Gitea.</title>
+          <mediaobject>
+            <imageobject>
+            <imagedata fileref="sprint_95_gitea_webhook_form.png" width="480"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>You have to fill in the form with:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">Target URL:</emphasis>
+            <emphasis>https://build.opensuse.org/trigger/workflow?id=12345</emphasis>.
+            Replace 12345 with the OBS token numerical ID previously
+            obtained.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">HTTP Method:</emphasis>
+            POST.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">POST Content Type:</emphasis>
+            application/json.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Secret:</emphasis>
+            <emphasis>uvwxyz</emphasis>. Replace uvwxyz with the OBS token
+            secret string previously obtained.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">Custom events...</emphasis>:
+            Pull Request, Push.</para>
           </listitem>
         </itemizedlist>
       </sect3>
@@ -777,8 +838,7 @@ workflow:
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.status_reporting">
       <title>Status Reporting</title>
 
-      <para>Once all the steps in the workflow are done, OBS will report the build results back to GitHub.
-      results back to GitHub.</para>
+      <para>Once all the steps in the workflow are done, OBS will report the build results back to GitHub.</para>
 
       <para>OBS will show detailed package build status for each distribution
       and architecture you have set up in the configuration file.</para>
@@ -945,50 +1005,50 @@ workflow:
       <table>
         <title>Equivalence table</title>
 
-        <tgroup align="left" cols="2">
+        <tgroup align="left" cols="3">
           <thead>
             <row>
               <entry>GitHub</entry>
-
               <entry>GitLab</entry>
+              <entry>Gitea</entry>
             </row>
           </thead>
 
           <tbody>
             <row>
               <entry>Repository</entry>
-
               <entry>Project</entry>
+              <entry>Repository</entry>
             </row>
 
             <row>
               <entry>Pull request</entry>
-
               <entry>Merge request</entry>
+              <entry>Pull request</entry>
             </row>
 
             <row>
               <entry>PR</entry>
-
               <entry>MR</entry>
+              <entry>PR</entry>
             </row>
 
             <row>
               <entry>Push</entry>
-
               <entry>Push Hook</entry>
+              <entry>Push</entry>
             </row>
 
             <row>
               <entry>Pull requests (in webhook configuration)</entry>
-
               <entry>Merge request events (in webhook configuration)</entry>
+              <entry>Pull Request (in webhook configuration)</entry>
             </row>
 
             <row>
               <entry>Pushes (in webhook configuration)</entry>
-
               <entry>Push events (in webhook configuration)</entry>
+              <entry>Push (in webhook configuration)</entry>
             </row>
           </tbody>
         </tgroup>
