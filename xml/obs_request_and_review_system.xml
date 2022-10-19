@@ -173,8 +173,9 @@
     <title>Manually added reviews</title>
     <para> Reviewers can be added manually by anyone involved in a request.
      This can be used to hand over a review. In that situation the new reviewer
-     needs to be added and the old review needs to be accepted. The request
-     becomes declined when any of the reviewers are declining the request.
+     needs to be added and the original reviewer's own review needs to be accepted.
+     The request becomes declined when any of the reviewers are declining the
+     request.
     </para>
    </sect3>
    <sect3>
