@@ -24,16 +24,19 @@
             However, the only supported SCM is currently git.</para>
 
       <para>This allows to manage the entire package sources in an external SCM repository. While the classic
-            OBS services for scms (like obs_scm or tar_scm) are using the workflows inside of OBS, these workflows will happen
-            now inside of the SCM provider instance. OBS will just verify the authenticity of that resource in
-            future.</para>
-
-      <para>Any source processing by source services is not supported by design. All source management, review and
-            merge handling needs to happen on the SCM side.</para>
+      OBS services for scms (like obs_scm or tar_scm) are using the workflows inside of OBS, these workflows
+      have to happen inside of the SCM provider instance. OBS will just verify the authenticity of that resource in
+      future.</para>
 
       <para>osc can be used to checkout sources. This will create a scm repository, so any modification needs to be
-            done using the native scm tooling (eg. git). osc can be used for local build tests and checking server
-            side build results.</para>
+      done using the native scm tooling (eg. git). osc can still be used for local building and checking server
+      side build results.</para>
+
+      <para>Be aware that any source mechanics like link or branch of OBS are not working when using the bridging.
+      This means also that workflows are not working anymore or are limited. For example a submit request would
+      still work when having scmsync on package level, but the user would manually specify the target always.
+      It won't work at all when the entire project is managed via git. This briding mechanic is designed to follow
+      the configured git provider, so this instance need to provide any required workflow.</para>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
@@ -46,10 +49,10 @@
       <para>The repository is cloned including all subdirectories, but the build descriptions need to be
             available on top level.</para>
 
-      <para>It is recommended just to reference further external build assets, like tar balls or git repositories using
-            asset management. These assets will get downloaded and verified as well. Have a look in 
-            <link xlink:href="http://opensuse.github.io/obs-build/pbuild.html#_remote_assets">the pbuild
-            documentation</link> for further details on this. </para>
+    <para>It is recommended just to reference further external build assets, like tar balls or git repositories
+          using asset management. These assets will get downloaded and verified as well. Have a look in 
+          <link xlink:href="http://opensuse.github.io/obs-build/pbuild.html#_remote_assets">the pbuild
+          documentation</link> for further details on this. </para>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.project">
@@ -65,18 +68,32 @@
 
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.specials">
-      <title>Extensions for GIT repositories</title>
+    <sect2 xml:id="sec.obs.obs_scm_bridge.implementation_and_limitations">
+      <title>Implementation and Limitations</title>
 
-      <para>The following tweaks can be used for git repositories.</para>
-
-      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.subdirectory">
-        <title>Using content from a subdirectory only</title>
-        <para>The scmsync url can get extended via a subdir query variable. Only the specified sub directory
-              will be used in that case. For example
+      <para>The sources are currently cloned for the OBS source server to allow OBS to process them. This
+      is to be considered as an internal implementation detail and may change in future.</para>
+      <para>
+       <itemizedlist>
+        <listitem>
+          <para>Git submodules: are cloned by default</para>
+        </listitem>
+        <listitem>
+          <para>Git VCS history: is not included for server side builds by default to save storage space. It can be included by adding a keepmeta=1 CGI parameter to the URL. This is not needed for local building when using osc.</para>
+        </listitem>
+        <listitem>
+          <para>Git LFS files: are not included by default. They can be included by adding a lfs=1 CGI parameter to the URL.</para>
+        </listitem>
+        <listitem>
+          <para>Using just a sub directory of the git repository can be done by adding a subdir=DIRECTORY CGI parameter to the URL.</para>
+        </listitem>
+        <listitem>
+          <para>Architecture specific remote assets can be selected by adding a arch=ARCH CGI parameter to the URL.</para>
+        </listitem>
+</itemizedlist>
+       As example, this would like this for the subdirectory case:
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?subdir=MY_SUBDIRECTORY&lt;/scmsync&gt;</screen>
-        </para>
-      </sect3>
+      </para>
 
       <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.revision">
         <title>Using a specific revision, tag or branch</title>
@@ -89,6 +106,29 @@
              and a final reviewed build.
         </para>
       </sect3>
+      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.pbuild">
+        <title>Converting to a project git</title>
+	<para>A project git repository is mostly the same as any project for the pbuild tool. The
+	   <screen># osc create-pbuild-config</screen>
+        command is creating the _config file for a specific repository. This file is used by OBS as well as build
+	configuration (aka prjconf). The additional _pbuild file is the pendant to the project meta and is not yet
+	honored by OBS, but it can be part of the git tree anyway for pbuild users.
+        </para>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_bridge.update_notifications">
+      <title>SCM Source Updates</title>
+
+      <para>The OBS instance need to get notified on any change in the SCM server. This can be either achieved 
+      by single configurations for each git repository as documented in the <xref linkend="sec.obs.sserv.token_usage"/> documentation.
+      An alternative way is to configure it global. This requires admin permissions on the git hosting side
+      and another bridge implementation. The advantage is that any used repository will be synced automatically just
+      by referencing it via the scmsync meta tag.
+      </para>
+      <para>
+      This has been only implemented for gitea atm, you can find details in the <link xlink:href="https://github.com/adrianschroeter/obs-gitea-bridge">obs-gitea-bridge</link> documentation.
+      </para>
     </sect2>
   </sect1>
 </chapter>
