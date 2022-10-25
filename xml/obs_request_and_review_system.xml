@@ -170,26 +170,27 @@
     certain package. Also, new maintainers of a package will see requests in
     case the old maintainer did not handle them. </para>
    <sect3>
-    <title>Manual added reviews</title>
+    <title>Manually added reviews</title>
     <para> Reviewers can be added manually by anyone involved in a request.
      This can be used to hand over a review. In that situation the new reviewer
-     needs to be added and the own review needs to be accept. The request
-     becomes declined when any of the reviewers are declining the request.
+     needs to be added and the original reviewer's own review needs to be accepted.
+     The request becomes declined when any of the reviewers are declining the
+     request.
     </para>
    </sect3>
    <sect3>
-    <title>Automatic added reviews</title>
+    <title>Automatically added reviews</title>
     <para> Project and package objects can have users or groups with a reviewer
      role. They are added automatically to a request as reviewer when a request
      is created which has them as target. In case the project and package
-     bother specify reviewer all of them are added to the request. </para>
+     do specify reviewers, all of them are added to the request. </para>
    </sect3>
   </sect2>
   <sect2>
    <title>Request creation</title>
-   <para> The API is doing a number of checks on request creation time. In case
+   <para> The API is doing a number of checks at request creation time. In case
     a target is not specified it tries to set it according to the linked
-    package. If an entire project is specified as source it expands it to refer
+    package. If an entire project is specified as source it expands it to
     all packages inside. This means it is replacing one action with multiple.
     When using the addrevision parameter it does also add the current revision
     of the package source to the action. This makes it easy to create new
@@ -198,8 +199,8 @@
   <sect2>
    <title>Request operations</title>
    <para> Requests can be modified only in very limited ways after creation.
-    This is to avoid that reviewers reviewed a request but the nature of the
-    requests is changing afterwards. Valid operations on a request are: </para>
+    This is to avoid the nature of the request changing, after reviewers have
+    reviewed it. Valid operations on a request are: </para>
    <itemizedlist>
     <listitem>
      <para> diff: does not modify the request, just shows source
