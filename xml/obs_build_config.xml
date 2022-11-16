@@ -284,6 +284,23 @@ Keep: debbuild</screen>
         </para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+        <term><parameter>slsaprovenance</parameter></term>
+       <listitem>
+        <para>
+	  OBS 2.11 can produce and publish additional SLSA provenance attestation 
+          files. This files are currently following the v0.2 Alpha spec, which is
+	  suspect to change. We will change the code to follow the specification,
+	  so the files might change in an incompatible way until a stable version
+	  has been released.
+        </para>
+	<para>
+          This flag is usually only useful, when the publishing happens via a
+          maintenance and release workflow for stable distribution, not for
+          constant rebuilding rolling releases.
+        </para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
