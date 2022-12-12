@@ -127,12 +127,12 @@ Constraint: hardware:cpu:flag sse2</screen>
       Additional flags are also reported for effective architecture level of
       the cpu. This includes the following flags:
       <itemizedlist>
-        <listitem>power7</listitem>
-        <listitem>power8</listitem>
-        <listitem>power9</listitem>
-        <listitem>x86-64-v2</listitem>
-        <listitem>x86-64-v3</listitem>
-        <listitem>x86-64-v4</listitem>
+        <listitem><para>power7</para></listitem>
+        <listitem><para>power8</para></listitem>
+        <listitem><para>power9</para></listitem>
+        <listitem><para>x86-64-v2</para></listitem>
+        <listitem><para>x86-64-v3</para></listitem>
+        <listitem><para>x86-64-v4</para></listitem>
       </itemizedlist>
      </para>
    </sect3>
