@@ -123,6 +123,18 @@ Constraint: hardware:cpu:flag sse2</screen>
      </para>
      <para>Example for project configuration:</para>
      <screen>Constraint: hardware:cpu:flag exclude=true EL0</screen>
+     <para>
+      Additional flags are also reported for effective architecture level of
+      the cpu. This includes the following flags:
+      <itemizedlist>
+        <listitem>power7</listitem>
+        <listitem>power8</listitem>
+        <listitem>power9</listitem>
+        <listitem>x86-64-v2</listitem>
+        <listitem>x86-64-v3</listitem>
+        <listitem>x86-64-v4</listitem>
+      </itemizedlist>
+     </para>
    </sect3>
   </sect2>
   <sect2>
