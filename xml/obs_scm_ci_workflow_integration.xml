@@ -833,6 +833,54 @@ workflow:
           Delimiters: only and ignore</link>.</para>
         </sect4>
       </sect3>
+
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.placeholder_variables">
+        <title>Placeholder Variables</title>
+
+        <para>With placeholder variables, workflows are now dynamic. Whenever a
+        webhook event comes in, OBS downloads the workflows file and parses it.
+        This is when the placeholder variables are replaced by the data they
+        refer to in the webhook event payload.</para>
+
+        <para>Here's a list of supported placeholder variables and their mapping:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis>%{SCM_ORGANIZATION_NAME}</emphasis>: The name of the SCM
+            organization, like <emphasis>openSUSE</emphasis> for the GitHub repository
+            <emphasis>openSUSE/open-build-service</emphasis>.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis>%{SCM_REPOSITORY_NAME}</emphasis>: The name of the SCM
+            repository, like <emphasis>open-build-service</emphasis> for the GitHub repository
+            <emphasis>openSUSE/open-build-service</emphasis>.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis>%{SCM_PR_NUMBER}</emphasis>: The number of the pull/merge
+            request from which the webhook event originates. This placeholder variable should be defined
+            in workflows running only for pull request webhook events.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis>%{SCM_COMMIT_SHA}</emphasis>: The SHA of the commit from
+            which the webhook event originates.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Below is an example of a workflow with a placeholder variable:</para>
+
+        <screen># The test_build workflow will branch a package based on the SCM repository name from which the webhook event came from.
+test_build:
+  steps:
+    - branch_package
+        source_project: games
+        source_package: %{SCM_REPOSITORY_NAME}
+        target_project: games:CI
+  filters:
+    event: pull_request</screen>
+      </sect3>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.status_reporting">
