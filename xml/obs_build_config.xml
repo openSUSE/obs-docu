@@ -550,7 +550,8 @@ Keep: debbuild</screen>
       OPTIONS parameter depends on the repository type, for rpm-md the known
       options are 'legacy' to create the old rpm-md format, 'deltainfo' or
       'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable
-      gzip compression. To split the debug packages in an own published repository the option
+      gzip compression, 'sha512' to switch to SHA-512 instead of SHA-256 checksums
+      in rpm-md meta data files. To split the debug packages in an own published repository the option
       <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal>
       can be appended, e.g.
      </para>
