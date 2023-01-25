@@ -139,7 +139,7 @@ Constraint: hardware:cpu:flag sse2</screen>
   </sect2>
   <sect2>
    <title><literal>processors</literal></title>
-   <para> To require a minimal number of processors for the build job. </para>
+   <para>To require a minimal number of processors provided by the VM.</para>
    <para> Example for _constraints file:</para>
     <screen>&lt;constraints&gt;
   &lt;hardware&gt;
@@ -148,6 +148,20 @@ Constraint: hardware:cpu:flag sse2</screen>
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
     <screen>Constraint: hardware:processors 4</screen>
+  </sect2>
+  <sect2>
+   <title><literal>jobs</literal></title>
+   <para> To require a minimal number of pre-confiured parallel jobs for the build job. 
+          This limits the parallel wanted jobs for the build tooling, but is actually not
+          a hardware requirement.</para>
+   <para> Example for _constraints file:</para>
+    <screen>&lt;constraints&gt;
+  &lt;hardware&gt;
+    &lt;jobs&gt;4&lt;/jobs&gt;
+  &lt;/hardware&gt;
+&lt;/constraints&gt;</screen>
+    <para>Example for project configuration:</para>
+    <screen>Constraint: hardware:jobs 4</screen>
   </sect2>
   <sect2>
    <title><literal>disk</literal></title>
