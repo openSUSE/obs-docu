@@ -26,4 +26,31 @@
   <para> The disturl can also be entered in the search field of the web
    interface of the build service. </para>
  </sect1>
+ <sect1>
+  <title>Generating SALSA Provenance Data</title>
+  <para> 
+          OBS 2.11 can produce and publish additional SLSA provenance attestation
+          files. This files are currently following the v0.2 Alpha spec, which is
+          suspect to change. We will change the code to follow the specification,
+          so the files might change in an incompatible way until a stable version
+          has been released.
+        </para>
+        <para>
+          This can be enabled via the BSConfig.pm file only. The reason behind is
+          that the functionality is expensive in regards of disk space. All old
+          binaries used for build are kept.
+          You may want to enable it nevertheless by setting the slsaprovenance variable
+          in BSConfig.pm with a list of projects to enable it.</para>
+ </sect1>
+ <sect1>
+  <title>Generating SBOM SPDX Data</title>
+   <para> 
+     OBS 2.11 can produce and publish additional SPDX data for container
+     files. This can get enabled via the build configuration:
+   </para>
+   <screen><command>BuildFlags: spdx</command></screen>
+   <para>
+     The generated data is currently limited to installed rpm files atm.
+   </para>
+ </sect1>
 </chapter>
