@@ -27,7 +27,7 @@
    interface of the build service. </para>
  </sect1>
  <sect1>
-  <title>Generating SALSA Provenance Data</title>
+  <title>Generating SLSA Provenance Data</title>
   <para> 
           OBS 2.11 can produce and publish additional SLSA provenance attestation
           files. This files are currently following the v0.2 Alpha spec, which is
