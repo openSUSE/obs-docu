@@ -178,7 +178,7 @@ Constraint: hardware:cpu:flag sse2</screen>
   &lt;/hardware&gt;
 &lt;/constraints&gt;</screen>
      <para>Example for project configuration:</para>
-     <screen>Constraint: hardware:disk:size unit=G 4</screen>
+     <screen>Constraint: hardware:disk:size unit=G </screen>
    </sect3>
   </sect2>
   <sect2>
