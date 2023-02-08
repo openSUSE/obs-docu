@@ -380,9 +380,9 @@ amqp_queue_options:
           </entry>
           <entry align="left" valign="top">
             <para>
-              :repository, :arch, :release, :readytime, :srcmd5,
-              :rev, :reason, :bcnt, :verifymd5, :hostarch, :starttime,
-              :endtime, :workerid, :versrel, :previouslyfailed
+              :project, :package, :repository, :arch, :release, :readytime,
+              :srcmd5, :rev, :reason, :bcnt, :verifymd5, :starttime, :endtime,
+              :workerid, :versrel, :buildtype
             </para>
           </entry>
         </row>
@@ -395,9 +395,10 @@ amqp_queue_options:
           </entry>
           <entry align="left" valign="top">
             <para>
-              :repository, :arch, :release, :readytime, :srcmd5,
-              :rev, :reason, :bcnt, :verifymd5, :hostarch, :starttime,
-              :endtime, :workerid, :versrel, :previouslyfailed, :faillog
+              :project, :package, :repository, :arch, :release, :readytime,
+              :srcmd5, :rev, :reason, :bcnt, :verifymd5, :starttime, :endtime,
+              :workerid, :versrel, :previouslyfailed, :successive_failcount,
+              :buildtype
             </para>
           </entry>
         </row>
@@ -410,9 +411,9 @@ amqp_queue_options:
           </entry>
           <entry align="left" valign="top">
             <para>
-              :repository, :arch, :release, :readytime, :srcmd5,
-              :rev, :reason, :bcnt, :verifymd5, :hostarch, :starttime,
-              :endtime, :workerid, :versrel, :previouslyfailed
+              :project, :package, :repository, :arch, :release, :readytime,
+              :srcmd5, :rev, :reason, :bcnt, :verifymd5, :starttime, :endtime,
+              :workerid, :versrel, :buildtype
             </para>
           </entry>
         </row>
