@@ -363,7 +363,9 @@
 
       <para>To do so, in the root directory of your GitHub repository, create
       a directory <emphasis>.obs</emphasis> which contains a file called
-      <emphasis>workflows.yml</emphasis>.</para>
+      <emphasis>workflows.yml</emphasis>. If you don't want to use that
+      directory, you should check
+      <link linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location">Configuration File Location section</link> out.</para>
 
       <para>The content of <emphasis>.obs/workflows.yml</emphasis> could look
       like this:<screen>rebuild_master:
@@ -398,8 +400,38 @@ rebuild_master:
       only:
         - master</screen>
 
-      <para>OBS assumes the configuration file is placed in your target branch
-      and not in other branches or forks.</para>
+      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location">
+        <title>Configuration File Location</title>
+
+        <para>By default the configuration file is fetched from the repository's
+        target branch under <emphasis>.obs/workflows.yml</emphasis>. You can
+        of course adjust that by editing the token configuration in OBS. The
+        following options are available:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis>Path for Workflows Configuration File</emphasis>
+            allows you to adjust the path to be different than the default
+            <emphasis>.obs/workflows.yml</emphasis> in the code repository.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis>URL to Workflows Configuration File</emphasis>
+            allows you to use a file that is hosted in a different place than
+            the code repository.</para>
+          </listitem>
+        </itemizedlist>
+
+        <figure>
+          <title>Configuration File Location Options in Edit Token</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="480"
+                        fileref="workflows_config_file_location.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect3>
 
       <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">
         <title>OBS Workflow Steps</title>
