@@ -912,6 +912,10 @@ test_build:
         target_project: games:CI
   filters:
     event: pull_request</screen>
+
+        <para>For a more in-depth example in combination with configuration file
+        location, refer to
+        <xref linkend="sec.obs.obs_scm_ci_workflow_integration.use_cases.config_url_and_placeholder_variables"/>.</para>
       </sect3>
     </sect2>
 
@@ -1472,6 +1476,57 @@ test_build:
           </screen>
         </listitem>
       </itemizedlist>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.config_url_and_placeholder_variables">
+      <title>Using a Custom Configuration File URL in Combination with Placeholder Variables</title>
+
+      <para>It may happen that you have multiple repositories following the same
+      set of workflow steps, and you would rather have one copy of the configuration
+      file stored in a single place and applied to multiple workflows. This can be
+      done with the combination of placeholder variables and the configuration
+      file url setting</para>
+
+      <para>Let's say you have the following configuration file that works with
+      your SCM repository called <emphasis>gnome-shell</emphasis></para>
+
+      <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: "test-project"
+        source_package: "gnome-shell"
+        target_project: "test-target-project"
+  filters:
+    event: pull_request</screen>
+
+      <para>If you replace <emphasis>gnome-shell</emphasis> with
+      <emphasis>%{SCM_REPOSITORY_NAME}</emphasis> like so:</para>
+
+      <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: "test-project"
+        source_package: "%{SCM_REPOSITORY_NAME}"
+        target_project: "test-target-project"
+  filters:
+    event: pull_request</screen>
+
+      <para>It will perform just as well as it did before, however now
+      this configuration can be applied to any other OBS package in the
+      <emphasis>test-project</emphasis> and SCM repository combination assuming
+      they have the same name.</para>
+
+      <para>From here the only thing left to do would be to host this file
+      somewhere where OBS can access it, creating a workflow token and the
+      corresponding webhooks (following the <link linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication">setup instructions</link>)
+      for every SCM repository you want this configuration file to apply to,
+      making sure you <link linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location">set the correct configuration url</link>.</para>
+
+      <para>There are many other ways to use these two features in parallel,
+      make sure to read
+      <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.placeholder_variables"/>
+      and <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location"/>
+      to get some inspiration on how you can use them in your project.</para>
     </sect2>
   </sect1>
 </chapter>
