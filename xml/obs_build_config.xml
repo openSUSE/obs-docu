@@ -285,6 +285,16 @@ Keep: debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
+        <term><parameter>setvcs</parameter></term>
+       <listitem>
+        <para>
+          Add the SCM URL to binary results when the package sources are managed 
+          via the scmsync mechanic. The url is written into the VCS tag of rpms
+          when enabling this functionality.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
         <term><parameter>spdx</parameter></term>
        <listitem>
         <para>
