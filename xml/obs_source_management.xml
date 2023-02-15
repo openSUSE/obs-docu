@@ -25,6 +25,11 @@
    md5 sum and the package name. </para>
   <para> The disturl can also be entered in the search field of the web
    interface of the build service. </para>
+  <para>rpm packages managed via the scmsync mechanic may have also the VCS tag.
+   It provides the git repository URL when the project is build using the
+    <screen><command>BuildFlags: setvcs</command></screen>
+   flag in the build config.
+  </para>
  </sect1>
  <sect1>
   <title>Generating SLSA Provenance Data</title>
