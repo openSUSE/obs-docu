@@ -519,6 +519,12 @@ Keep: debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
+        <term><parameter>withsbom</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+          <para>Enables publishing of SBOM files (SPDX or CycloneDX format) (<literal>.cdx.json</literal> or <literal>.spdx.json</literal> files). Please note that the building of SBOM files usually needs to get enabled via a BuildFlags switch as well.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
         <term><parameter>withreports</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Also publish internal content tracking files (<literal>.report</literal> files).</para>
