@@ -834,7 +834,7 @@ workflow:
         source_project: games
         source_package: ctris
         target_project: home:jane_doe
-  filters: 
+  filters:
     event: pull_request</screen></para>
         </sect4>
 
@@ -863,6 +863,13 @@ workflow:
           <para>Learn more about <link
           linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">Filters
           Delimiters: only and ignore</link>.</para>
+
+          <note>
+            <para>
+              <emphasis role="bold">tag_push</emphasis> events are not supported by the
+              <emphasis role="bold">branches filter</emphasis>.
+            </para>
+          </note>
         </sect4>
       </sect3>
 
@@ -1222,7 +1229,7 @@ test_build:
         source_project: GNOME:Factory
         source_package: gnome-shell
         target_project: home:jane:playground
-  filters: 
+  filters:
     event: pull_request</screen>
 
         <para>Whenever someone opens a new pull request in the repository, OBS
