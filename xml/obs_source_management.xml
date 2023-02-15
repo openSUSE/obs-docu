@@ -43,14 +43,10 @@
           in BSConfig.pm with a list of projects to enable it.</para>
  </sect1>
  <sect1>
-  <title>Generating SBOM SPDX Data</title>
+  <title>Generating SBOM (Software Bill Of Material) Data</title>
    <para> 
-     OBS 2.11 can produce and publish additional SPDX data for container
-     files. This can get enabled via the build configuration:
-   </para>
-   <screen><command>BuildFlags: spdx</command></screen>
-   <para>
-     The generated data is currently limited to installed rpm files atm.
+     OBS 2.11 can produce and publish additional SPDX data for certain build types.
+     Please check the build config documentation for the sbom flag.
    </para>
  </sect1>
 </chapter>
