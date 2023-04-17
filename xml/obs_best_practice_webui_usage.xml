@@ -264,14 +264,6 @@ flood</screen>
   </figure>
   <note>
    <para> Published repositories are marked with the OBS truck</para> 
-    <!--<inlineequation>
-     <inlinemediaobject>
-      <imageobject>
-       <imagedata fileref="obs_lkw.png"/>
-      </imageobject>
-     </inlinemediaobject>
-    </inlineequation>-->
-   
   </note>
   <para>
    Now click <guimenu>Go to download repository</guimenu>. Note that publishing the
