@@ -348,6 +348,27 @@ Keep: debbuild</screen>
                       add an exclamation mark (<literal>!</literal>) as prefix.</para>
         </listitem>
        </varlistentry>
+       <varlistentry>
+        <term><parameter>ignoreconflicts</parameter></term>
+        <listitem>
+                <para>Ignore defined conflicts of packages. By default these are reported as unresolvable.
+                      This switch may be useful when packages get not installed in the build environment,
+                      but getting processed afterwards. That tool, eg. some image building tool, must be
+                      able to handle the situation (eg. by just using a subset of the packages).
+                      </para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>keepfilerequires</parameter></term>
+        <listitem>
+                <para>Dependencies on files are only fulfilled if matching FileProvides are specified
+                      in the project configuration. If those are missing, the dependency results in
+                      an "unresolvable" state for directly required files or in silent breaking of the
+                      dependency for indirectly required files. With this option, all file requires are
+                      honoured by default and lead to "unresolvable" if there are no matching FileProvides defined.
+                 </para>
+        </listitem>
+       </varlistentry>
       </variablelist>
     </listitem>
    </varlistentry>
