@@ -305,6 +305,15 @@ Keep: debbuild</screen>
         </para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+        <term><parameter>container-compression-format:FORMAT</parameter></term>
+       <listitem>
+        <para>
+          Sets a compression format for container layers. Possible values are gzip, zstd,
+          zstd:chunked. Every value other than gzip is only supported by podman and buildah.
+        </para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
