@@ -19,8 +19,13 @@
  <para> The build constraints for a package are part of the package sources, as
   a _constraints XML source file (validated on submission). The _constraints
   source file can contain the values listed below. </para>
- <para> NOTE: If no build host meets the constraints, the package will stay in
-  state "scheduled" and never be dispatched. </para>
+ <para>In addition to that some build recipe parsers support to parse constraints
+  also from the build descriptions, eg. in spec files. These can also be used
+  conditionally in their context. For example to apply these only on some architectures
+  or only for specific multibuild flavors.</para>
+ <para>Constraints defined in project build config, _constraints and the build recipe are merged
+  in this order. This means a constraint for the same topic overwrites the one from the former location.</para>
+ <para>NOTE: If no build host meets the constraints, the package will turn to a failed state.</para>
  <sect1>
   <title><literal>hostlabel</literal></title>
   <para> The hostlabel is any string which can be assigned to build hosts when
@@ -38,6 +43,8 @@
 &lt;/constraints&gt;</screen>
    <para>Example for project configuration:  </para>
    <screen>Constraint: hostlabel benchmark_runner</screen>
+   <para>Example for rpm spec file or Dockerfile:</para>
+   <screen>#!BuildConstraint: hostlabel benchmark_runner</screen>
  </sect1>
  <sect1>
   <title><literal>sandbox</literal></title>
@@ -51,6 +58,8 @@
 &lt;/constraints&gt;</screen>
    <para>Example for project configuration:</para>
    <screen>Constraint: sandbox secure</screen>
+   <para>Example for rpm spec file or Dockerfile:</para>
+   <screen>#!BuildConstraint: hostlabel:benchmark_runner</screen>
  </sect1>
  <sect1>
   <title><literal>linux</literal></title>
@@ -68,6 +77,9 @@
     <para>Example for project configuration:</para>
     <screen>Constraint: linux:version:min 3.0
 Constraint: linux:version:max 4.0</screen>
+   <para>Example for rpm spec file or Dockerfile:</para>
+    <screen>#!BuildConstraint: linux:version:min 3.0
+#!BuildConstraint: linux:version:max 4.0</screen>
    <sect3>
     <title><literal>min</literal></title>
     <para> Minimal kernel version. </para>
@@ -89,6 +101,8 @@ Constraint: linux:version:max 4.0</screen>
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
     <screen>Constraint: linux:flavor default</screen>
+   <para>Example for rpm spec file or Dockerfile:</para>
+    <screen>#!BuildConstraint: linux:flavor default</screen>
   </sect2>
  </sect1>
  <sect1>
@@ -112,6 +126,9 @@ Constraint: linux:version:max 4.0</screen>
      <para> Example for project configuration:</para>
      <screen>Constraint: hardware:cpu:flag mmx
 Constraint: hardware:cpu:flag sse2</screen>
+   <para>Example for rpm spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:cpu:flag mmx
+#!BuildConstraint: hardware:cpu:flag sse2</screen>
      <para>
       <literal>EL0</literal> is a special flag that that can be used on
       hardware that only supports level-0 exceptions, such as certain armv8l
@@ -123,6 +140,8 @@ Constraint: hardware:cpu:flag sse2</screen>
      </para>
      <para>Example for project configuration:</para>
      <screen>Constraint: hardware:cpu:flag exclude=true EL0</screen>
+     <para>Example for rpm spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:cpu:flag exclude=true EL0</screen>
      <para>
       Additional flags are also reported for effective architecture level of
       the cpu. This includes the following flags:
@@ -148,6 +167,8 @@ Constraint: hardware:cpu:flag sse2</screen>
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
     <screen>Constraint: hardware:processors 4</screen>
+    <para>Example for rpm spec file or Dockerfile:</para>
+    <screen>#!BuildConstraint: hardware:processors 4</screen>
   </sect2>
   <sect2>
    <title><literal>jobs</literal></title>
@@ -162,6 +183,8 @@ Constraint: hardware:cpu:flag sse2</screen>
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
     <screen>Constraint: hardware:jobs 4</screen>
+    <para>Example for rpm spec file or Dockerfile:</para>
+    <screen>#!BuildConstraint: hardware:jobs 4</screen>
   </sect2>
   <sect2>
    <title><literal>disk</literal></title>
@@ -179,6 +202,8 @@ Constraint: hardware:cpu:flag sse2</screen>
 &lt;/constraints&gt;</screen>
      <para>Example for project configuration:</para>
      <screen>Constraint: hardware:disk:size unit=G 4</screen>
+     <para>Example for rpm spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:disk:size unit=G 4</screen>
    </sect3>
   </sect2>
   <sect2>
@@ -197,6 +222,8 @@ Constraint: hardware:cpu:flag sse2</screen>
 &lt;/constraints&gt;</screen>
      <para> Example for project configuration:</para>
      <screen>Constraint: hardware:memory:size unit=M 1400</screen>
+     <para>Example for rpm spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:memory:size unit=M 1400</screen>
    </sect3>
   </sect2>
   <sect2>
@@ -216,6 +243,8 @@ Constraint: hardware:cpu:flag sse2</screen>
 &lt;/constraints&gt;</screen>
      <para>Example for project configuration: </para>
      <screen>Constraint: hardware:physicalmemory:size unit=M 1400</screen>
+     <para>Example for rpm spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:physicalmemory:size unit=M 1400</screen>
    </sect3>
   </sect2>
  </sect1>
