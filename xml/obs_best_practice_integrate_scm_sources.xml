@@ -88,8 +88,10 @@
          Tar balls are not a requirement by &obsa;, but by the packaging tool, for example, rpmbuild. However,
          you may want to decide not to ship a tar ball inside of the src.rpm. This makes sense for
          large sources where the compression time and needed disk space is just considered a waste
-         for short living builds. You can simplify your _service file in that case, but you need to help rpmbuild to work directly in the source.
-         It is also a good practice to package the _service file instead of the tar ball to 
+         for short living builds and where full source packages are not a requirement.
+         You can simplify your _service file in that case, but you need to help rpmbuild to work directly in the source.
+         Since RPM will not include the OBS provided SCM sources in the src.rpm,
+         it is also a good practice to package the _service file instead of the tar ball to
          give the user a chance to rebuild the src.rpm as long the external SCM server is
          providing the sources. The simplified _service file looks like this:
        </para>
