@@ -506,6 +506,10 @@ rebuild_master:
         source_project: games
         source_package: ctris
         target_project: home:jane</screen>
+
+        <para>Branching a package into a project that did not exist before, for instance for a pull request event, will branch the package and
+        set up the same repositories that the source project has. If you want to skip this and set up repositories yourself, with the
+        configure_repositories step, set the <emphasis>add_repositories</emphasis> key to anything else than <emphasis>enabled</emphasis>.</para>
         </sect4>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.link_a_package_to_a_project">
@@ -548,6 +552,12 @@ rebuild_master:
         source_project: devel
         source_package: gcc
         target_project: home:jane</screen>
+
+          <note>
+            <para>If you rely on <link linkend="cha.obs.source_service">Source Services</link>
+            to run, for instance to pick up changes from a PR with the <emphasis>obs_scm</emphasis> service, you can't make use of this step.
+            Package links do not run the services. Use the <emphasis>branch_package</emphasis> step instead.</para>
+          </note>
         </sect4>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.configure_repositories_architectures_for_a_project">
