@@ -30,25 +30,49 @@ jobs:
           repository: openSUSE/obs-landing
           path: obs-landing
           ssh-key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
-      - name: build
+      - name: install daps2docker
         run: |
           git clone git@github.com:openSUSE/daps2docker.git
+      - name: validate
+          run: |
           pushd daps2docker
 
           for doc in obs-admin-guide obs-user-guide; do
             source ../DC-$doc || exit 1
-            ./daps2docker.sh ../DC-$doc || exit 1
-            ./daps2docker.sh ../DC-$doc epub || exit 1
+            ./daps2docker.sh ../DC-$doc validate
+          done
+      - name: build html
+          run: |
+          pushd daps2docker
+
+          for doc in obs-admin-guide obs-user-guide; do
+            source ../DC-$doc || exit 1
+            ./daps2docker.sh ../DC-$doc html || exit 1
 
             rm -rf ../obs-landing/help/manuals/${doc} || exit 1
-            # update html
             mv -v /tmp/daps2docker-*/$doc/html/${ROOTID} ../obs-landing/help/manuals/${doc} || exit 1
+          done
+      - name: build pdf
+          run: |
+          pushd daps2docker
+
+          for doc in obs-admin-guide obs-user-guide; do
+            source ../DC-$doc || exit 1
+            ./daps2docker.sh ../DC-$doc pdf || exit 1
+
+            # update pdf
+            mv -v /tmp/daps2docker-*/$doc/${ROOTID}_en.pdf ../obs-landing/files/manuals/${doc}.pdf || exit 1
+          done
+      - name: build epub
+          run: |
+          pushd daps2docker
+
+          for doc in obs-admin-guide obs-user-guide; do
+            source ../DC-$doc || exit 1
+            ./daps2docker.sh ../DC-$doc epub || exit 1
 
             # update epub
             mv -v /tmp/daps2docker-*/$doc/${ROOTID}_en.epub ../obs-landing/files/manuals/${doc}.epub || exit 1
-
-            # update pdf
-            mv -v /tmp/daps2docker-*/$doc/${ROOTID}_color_en.pdf ../obs-landing/files/manuals/${doc}.pdf || exit 1
           done
       - name: Commit files
         run: |
