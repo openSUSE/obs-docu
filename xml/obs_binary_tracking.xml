@@ -174,13 +174,13 @@
     <para>
      /search/released/binary/id : short form, just listing the matched
      binary identifiers. See the <link
-     xlink:href="https://build.opensuse.org/apidocs-new/index.html#/Search/get_search_released_binary_id">reference documentation</link>.
+     xlink:href="https://api.opensuse.org/apidocs/#/Search/get_search_released_binary_id">reference documentation</link>.
     </para>
    </listitem>
    <listitem>
     <para>/search/released/binary : long form, provides all other tracked
      information as described above. See the <link
-     xlink:href="https://build.opensuse.org/apidocs-new/index.html#/Search/get_search_released_binary">reference documentation</link>.
+     xlink:href="https://api.opensuse.org/apidocs/#/Search/get_search_released_binary">reference documentation</link>.
     </para>
    </listitem>
   </itemizedlist>
