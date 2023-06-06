@@ -38,7 +38,7 @@
   <glossterm>API</glossterm>
   <glossdef>
    <para>
-    API stands for application programming interface. It let your product or service communicate with other products and services without having to know how they’re implemented.
+    API stands for application programming interface. It lets your product or service communicate with other products and services without having to know how they’re implemented.
    </para>
    <para>
     The OBS API is located here: <link xlink:href="https://api.opensuse.org" />.
