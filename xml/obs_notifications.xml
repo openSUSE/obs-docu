@@ -344,7 +344,7 @@
 &lt;/status&gt;
    </screen>
    <para>
-     For more informtion regarding the notifications API endpoints, check out our <link xlink:href="https://build.opensuse.org/apidocs-new/#/Notifications/get_my_notifications">New API Documentation</link>.
+     For more informtion regarding the notifications API endpoints, check out our <link xlink:href="https://api.opensuse.org/apidocs/#/Notifications/get_my_notifications">New API Documentation</link>.
    </para>
  </sect1>
 </chapter>

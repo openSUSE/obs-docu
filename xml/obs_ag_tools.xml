@@ -282,7 +282,7 @@ Options:
     -X HTTP_METHOD, -m HTTP_METHOD, --method=HTTP_METHOD
                         specify HTTP method to use (GET|PUT|DELETE|POST)</screen>
    <para>The online API documentation is available at
-<link xlink:href="https://build.opensuse.org/apidocs"><emphasis>https://build.opensuse.org/apidocs</emphasis></link>
+<link xlink:href="https://api.opensuse.org/apidocs/"/>
    </para>
    <para>Some examples for admin stuff:</para>
 <screen># Read the global configuration file
