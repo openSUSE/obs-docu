@@ -825,6 +825,12 @@ workflow:
             </listitem>
 
             <listitem>
+              <para><emphasis role="bold">merge_request</emphasis> is an alias for the
+              'pull_request' event. Introduced with <link linkend="sec.obs.obs_scm_ci_workflow_integration.workflow_version_table">workflow version 1.1</link>
+              .</para>
+            </listitem>
+
+            <listitem>
               <para><emphasis role="bold">push</emphasis> is for push
               events related to commits.</para>
             </listitem>
