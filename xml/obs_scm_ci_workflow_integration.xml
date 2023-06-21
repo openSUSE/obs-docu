@@ -1157,6 +1157,57 @@ test_build:
     </sect2>
   </sect1>
 
+  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.versions">
+    <title>SCM/CI Workflow Versions</title>
+    <para>To secure the compatibility of SCM/CI workflows with new features and changes,
+    we are introducing those through new versions. We specify them with a <emphasis
+    role="bold">MAJOR.MINOR</emphasis> versioning scheme.
+    We introduce breaking, non-backward compatible features and changes with
+    major version updates. Minor updates only include backward compatible updates,
+    but might require adjustments to the workflows in order to benefit from new features.
+    The workflow version is specified on the toplevel of your workflow configuration
+    yaml file. Right now we don't enforce to specify a version in the workflow yaml
+    configuration and default to the latest minor version.</para>
+
+    <screen>
+    version: '1.0'
+    workflow:
+      steps:
+        - link_package:
+            source_project: GNOME:Factory
+            source_package: gnome-shell
+            target_project: home:jane:playground
+    </screen>
+
+    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.workflow_version_table">
+      <title>Workflow Version Table</title>
+      <para>Current available workflow versions and the introduced changes can be found
+      in the versions table below.</para>
+      <table>
+        <title>Workflow Versions</title>
+        <tgroup cols="2" align="left">
+          <thead>
+            <row>
+              <entry>Version</entry>
+              <entry>Changes</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>1.1</entry>
+              <entry>
+                <para>
+                  Add alias for 'merge_request' to event filters.
+                  Previously we only supported the term 'pull_request'.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </sect2>
+  </sect1>
+
   <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases">
     <title>SCM/CI Workflow Integration Use-Cases</title>
 
