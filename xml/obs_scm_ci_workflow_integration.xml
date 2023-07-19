@@ -1163,6 +1163,90 @@ test_build:
     </sect2>
   </sect1>
 
+  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.event_action_and_status_report_table">
+    <title>Workflow Steps reference table</title>
+    <para>This table shows what will be returned to the SCM on different SCM events.</para>
+
+    <table>
+      <title>Workflow Steps reference table</title>
+      <tgroup align="left" cols="7">
+        <thead>
+          <row>
+            <entry>SCM events and actions</entry>
+            <entry>branch_package step</entry>
+            <entry>rebuild_package step</entry>
+            <entry>link_package step</entry>
+            <entry>configure_repositories step</entry>
+            <entry>set_flags step</entry>
+            <entry>trigger_services step</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry>pull_request opened/Merge Request Hook 'open'</entry>
+            <entry>The source_package will be branched to subprojects of the %{target_project} with the naming convention %{target_project}:PR-%{pull_request_number}/%{source_package}. The build results of the branched package will be reported to the SCM.</entry>
+            <entry>The step will rebuild the package and the build results will be reported back to SCM.</entry>
+            <entry>The source package will be linked to package against %{target_project}:PR-%{pull_request_number}/%{source_package}. The Build results status will be reported to SCM.</entry>
+            <entry>The step will configure given repositories and architectures for the project. Build results status will not be reported back to SCM.</entry>
+            <entry>The flags will be added to the package but nothing will be reported to the SCM.</entry>
+            <entry>The step will trigger the service of the package and report the build results status to SCM.</entry>
+          </row>
+
+          <row>
+            <entry>pull_request synchronized/Merge Request Hook 'update'</entry>
+            <entry>The branched package will be updated with the new sources which will trigger a rebuild. The build results of the branched package will be reported to the SCM.</entry>
+            <entry>The package will rebuild and the build results status will be reported to SCM.</entry>
+            <entry>The sources of the package will be synced and the build results status will be reported.</entry>
+            <entry>The sources of the package will be synced and the build results status will not be reported.</entry>
+            <entry>The flags will be added to the package but nothing will be reported to the SCM.</entry>
+            <entry>The step will trigger the service of the package and report the build results status to SCM.</entry>
+          </row>
+
+          <row>
+            <entry>pull_request closed/Merge Request Hook 'close'</entry>
+            <entry>The project containg the branched package will be deleted.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+          </row>
+
+          <row>
+            <entry>pull_request reopened/Merge Request Hook 'reopen'</entry>
+            <entry>The branched project containing the branched package will be restored and build results will be reported to SCM.</entry>
+            <entry>The package will rebuild and the build results status will be reported to SCM.</entry>
+            <entry>Build results status will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>The flags will be added to the package but nothing will be reported to the SCM.</entry>
+            <entry>The step will trigger the service of the package and report the build results status to SCM.</entry>
+          </row>
+
+          <row>
+            <entry>push</entry>
+            <entry>There source_package will be synced to %{target_project}/%{source_package}-%{commit_hash}. The build results of the new package will be reported to the SCM.</entry>
+            <entry>The package will rebuild and the build results status will be reported to SCM.</entry>
+            <entry>Build results status will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>The flags will be added to the package but nothing will be reported to the SCM.</entry>
+            <entry>The step will trigger the service of the package and report the build results status to SCM.</entry>
+          </row>
+
+          <row>
+            <entry>tag_push</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Build results status will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>Nothing will be reported back to SCM.</entry>
+            <entry>The step will trigger the service of the package and report the build results status to SCM.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </sect1>
+
   <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.versions">
     <title>SCM/CI Workflow Versions</title>
     <para>To secure the compatibility of SCM/CI workflows with new features and changes,
