@@ -1163,6 +1163,206 @@ test_build:
     </sect2>
   </sect1>
 
+  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.event_action_and_status_report_table">
+    <title>SCM/CI Workflow Steps Reference Table</title>
+    <para>For each step, this table shows which event on the SCM will trigger which operations on the OBS.</para>
+
+    <table>
+      <title>Workflow Steps reference table</title>
+      <tgroup align="left" cols="7">
+        <thead>
+          <row>
+            <entry>SCM event and action</entry>
+            <entry>branch_package step</entry>
+            <entry>link_package step</entry>
+            <entry>rebuild_package step</entry>
+            <entry>trigger_services step</entry>
+            <entry>configure_repositories step</entry>
+            <entry>set_flags step</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row><!-- PR open -->
+            <entry>Pull Request opened</entry>
+            <entry><!-- branch_package -->
+              The <envar>%{source_project}/%{source_package}</envar> will be branched to
+              <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{source_package}</envar>
+              The <envar>%{SCM_COMMIT_SHA}</envar> will be updated in the file <filename>_branch_request</filename>
+              or in the <envar>scmsync</envar> attribute of the package.
+              This will trigger a run of the services, which will trigger a rebuild.
+              The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- link_package -->
+              The <envar>%{source_project}/%{source_package}</envar> will be linked into
+              <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{source_package}</envar>
+              The <envar>%{SCM_COMMIT_SHA}</envar> will be updated in the <envar>scmsync</envar> attribute of the package.
+              This will trigger a run of the services, which will trigger a rebuild.
+              The build results of the linked package will will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- rebuild_package -->
+              The <envar>%{project}/%{package}</envar> will be rebuild.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- trigger_services -->
+              The services of <envar>%{project}/%{package}</envar> will be triggered.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- configure_repositories -->
+              The repositories will be configured for the <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> project.
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- set_flags -->
+              The flags will be configured for the <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{package}</envar>.
+              Nothing will be reported to the SCM.
+            </entry>
+          </row>
+
+          <row><!-- PR update -->
+            <entry>Pull Request updated</entry>
+            <entry><!-- branch_package -->
+              The <envar>%{SCM_COMMIT_SHA}</envar> will be updated in the file <filename>_branch_request</filename>
+              or in the <envar>scmsync</envar> attribute of the
+              package <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{source_package}</envar>
+              This will trigger a run of the services, which will trigger a rebuild.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- link_package -->
+              The <envar>%{SCM_COMMIT_SHA}</envar> will be updated in in the <envar>scmsync</envar> attribute of the
+              package <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{source_package}</envar>
+              This will trigger a run of the services, which will trigger a rebuild.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- rebuild_package -->
+              The <envar>%{project}/%{package}</envar> will be rebuild.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- trigger_services -->
+              The services of <envar>%{project}/%{package}</envar> will be triggered.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- configure_repositories -->
+              The repositories will be configured for the <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> project.
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- set_flags -->
+              The flags will be configured for the <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{package}</envar>.
+              Nothing will be reported to the SCM.
+            </entry>
+          </row>
+
+          <row><!-- PR close -->
+            <entry>Pull Request closed</entry>
+            <entry><!-- branch_package -->
+              The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be deleted.
+              </entry>
+            <entry><!-- link_package -->
+              The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be deleted.
+            </entry>
+            <entry><!-- rebuild_package -->
+              This event is ignored.
+            </entry>
+            <entry><!-- trigger_services -->
+              This event is ignored.
+            </entry>
+            <entry><!-- configure_repositories -->
+              This event is ignored.
+            </entry>
+            <entry><!-- set_flags -->
+              This event is ignored.
+            </entry>
+          </row>
+
+          <row><!-- PR reopen -->
+            <entry>Pull Request reopened</entry>
+            <entry><!-- branch_package -->
+              The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be restored.
+              This will trigger a rebuild of the contained packages.
+              The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- link_package -->
+              The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be restored.
+              This will trigger a rebuild of the contained packages.
+              The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- rebuild_package -->
+              This event is ignored.
+            </entry>
+            <entry><!-- trigger_services -->
+              This event is ignored.
+            </entry>
+            <entry><!-- configure_repositories -->
+              This event is ignored.
+            </entry>
+            <entry><!-- set_flags -->
+              This event is ignored.
+            </entry>
+          </row>
+
+          <row><!-- Push -->
+            <entry>Push</entry>
+            <entry><!-- branch_package -->
+              The <envar>%{source_project}/%{source_package}</envar> will be branched to
+              <envar>%{target_project}/%{source_package}-%{SCM_COMMIT_SHA}</envar>
+              The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- link_package -->
+              The <envar>%{source_project}/%{source_package}</envar> will be linked into
+              <envar>%{target_project}/%{source_package}-%{SCM_COMMIT_SHA}</envar>
+              The build results of the linked package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- rebuild_package -->
+              The <envar>%{project}/%{package}</envar> will be rebuild.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- trigger_services -->
+              The services of <envar>%{project}/%{package}</envar> will be triggered.
+              The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- configure_repositories -->
+              The repositories will be configured for the <envar>%{project}</envar>.
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- set_flags -->
+              The flags will be configured for the <envar>%{project}/%{package}</envar>.
+              Nothing will be reported to the SCM.
+            </entry>
+          </row>
+
+          <row><!-- Tag Push -->
+            <entry>Tag Push</entry>
+            <entry><!-- branch_package -->
+              The <envar>%{source_project}/%{source_package}</envar> will be branched to
+              <envar>%{target_project}/%{source_package}-%{TAG_NAME}</envar>
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- link_package -->
+              The <envar>%{source_project}/%{source_package}</envar> will be linked into
+              <envar>%{target_project}/%{source_package}-%{TAG_NAME}</envar>
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- rebuild_package -->
+              The <envar>%{project}/%{package}</envar> will be rebuild.
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- trigger_services -->
+              The services of <envar>%{project}/%{package}</envar> will be triggered.
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- configure_repositories -->
+              The repositories will be configured for the <envar>%{project}</envar>.
+              Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- set_flags -->
+              The flags will be configured for the <envar>%{project}/%{package}</envar>.
+              Nothing will be reported to the SCM.
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </sect1>
+
   <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.versions">
     <title>SCM/CI Workflow Versions</title>
     <para>To secure the compatibility of SCM/CI workflows with new features and changes,
