@@ -61,7 +61,7 @@
 <!ENTITY osc            "osc">
 <!ENTITY osccmd         "<command xmlns='http://docbook.org/ns/docbook'>&osc;</command>">
 <!ENTITY oscbuildpath   "/var/tmp/oscbuild">
-<!ENTITY oscbuildcache  "/var/tmp/oscbuild-packagecache">
+<!ENTITY oscbuildcache  "/var/tmp/osbuild-packagecache">
 
 <!ENTITY gh             "GitHub">
 <!ENTITY gitorg         "obs-example">
