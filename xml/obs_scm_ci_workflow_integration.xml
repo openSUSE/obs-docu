@@ -445,6 +445,10 @@ rebuild_master:
           </listitem>
 
           <listitem>
+            <para>Submit a request (submit_request).</para>
+          </listitem>
+
+          <listitem>
             <para>Link a package to a project (link_package).</para>
           </listitem>
 
@@ -510,6 +514,53 @@ rebuild_master:
         <para>Branching a package into a project that did not exist before, for instance for a pull request event, will branch the package and
         set up the same repositories that the source project has. If you want to skip this and set up repositories yourself, with the
         configure_repositories step, set the <emphasis>add_repositories</emphasis> key to anything else than <emphasis>enabled</emphasis>.</para>
+        </sect4>
+
+        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.submit_request">
+          <title>Submit a Request</title>
+
+          <para>The submit request step is the equivalent of the <emphasis>osc submitrequest</emphasis> command.</para>
+
+          <para>The requirements to run a submit request step are:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>There has to be a source package.</para>
+            </listitem>
+
+            <listitem>
+              <para>There has to be some changes between the source package and the target package.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>After the previous requirements are met, keep in mind that:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>With a pull request open event, push event, or tag_push event, it will create the submit request.</para>
+            </listitem>
+
+
+            <listitem>
+              <para>When more commits are added to the pull request, it will supersede
+              the request it previously created with a new request.</para>
+            </listitem>
+
+            <listitem>
+              <para>With a pull_request closed event, it will revoke the request.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>This is an example of a configuration file with a submit request step:</para>
+
+          <screen>workflow:
+  steps:
+    - submit_request:
+        source_project: games
+        source_package: ctris
+        target_project: home:jane_doe
+        target_package: ctris                        # (optional, uses source_package if not set)
+        description: 'Check out this cool package'   # (optional, uses the commit/pull request message if not set)</screen>
         </sect4>
 
         <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.link_a_package_to_a_project">
@@ -1169,11 +1220,12 @@ test_build:
 
     <table>
       <title>Workflow Steps reference table</title>
-      <tgroup align="left" cols="7">
+      <tgroup align="left" cols="8">
         <thead>
           <row>
             <entry>SCM event and action</entry>
             <entry>branch_package step</entry>
+            <entry>submit_request step</entry>
             <entry>link_package step</entry>
             <entry>rebuild_package step</entry>
             <entry>trigger_services step</entry>
@@ -1192,6 +1244,11 @@ test_build:
               or in the <envar>scmsync</envar> attribute of the package.
               This will trigger a run of the services, which will trigger a rebuild.
               The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- submit_request -->
+              Create a submit request from <envar>%{source_project}/%{source_package}</envar>
+              to <envar>%{target_project}/%{target_package}</envar>.
+              The request status changes will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
             </entry>
             <entry><!-- link_package -->
               The <envar>%{source_project}/%{source_package}</envar> will be linked into
@@ -1227,6 +1284,11 @@ test_build:
               This will trigger a run of the services, which will trigger a rebuild.
               The build results will be reported back to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
             </entry>
+            <entry><!-- submit_request -->
+              Supersede the request it previously created with a new request
+              from <envar>%{source_project}/%{source_package}</envar> to <envar>%{target_project}/%{target_package}</envar>.
+              The request status changes will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
             <entry><!-- link_package -->
               The <envar>%{SCM_COMMIT_SHA}</envar> will be updated in in the <envar>scmsync</envar> attribute of the
               package <envar>%{target_project}:PR-%{SCM_PR_NUMBER}/%{source_package}</envar>
@@ -1256,6 +1318,9 @@ test_build:
             <entry><!-- branch_package -->
               The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be deleted.
               </entry>
+            <entry><!-- submit_request -->
+              The submit request will be revoked.
+            </entry>
             <entry><!-- link_package -->
               The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be deleted.
             </entry>
@@ -1279,6 +1344,11 @@ test_build:
               The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be restored.
               This will trigger a rebuild of the contained packages.
               The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- submit_request -->
+              Create a submit request from <envar>%{source_project}/%{source_package}</envar>
+              to <envar>%{target_project}/%{target_package}</envar>.
+              The request status changes will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
             </entry>
             <entry><!-- link_package -->
               The project <envar>%{target_project}:PR-%{SCM_PR_NUMBER}</envar> will be restored.
@@ -1305,6 +1375,11 @@ test_build:
               The <envar>%{source_project}/%{source_package}</envar> will be branched to
               <envar>%{target_project}/%{source_package}-%{SCM_COMMIT_SHA}</envar>
               The build results of the branched package will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
+            </entry>
+            <entry><!-- submit_request -->
+              Create a submit request from <envar>%{source_project}/%{source_package}</envar>
+              to <envar>%{target_project}/%{target_package}</envar>.
+              The request status changes will be reported to the <envar>%{SCM_COMMIT_SHA}</envar> as commit status.
             </entry>
             <entry><!-- link_package -->
               The <envar>%{source_project}/%{source_package}</envar> will be linked into
@@ -1335,6 +1410,10 @@ test_build:
               The <envar>%{source_project}/%{source_package}</envar> will be branched to
               <envar>%{target_project}/%{source_package}-%{TAG_NAME}</envar>
               Nothing will be reported to the SCM.
+            </entry>
+            <entry><!-- submit_request -->
+              Create a submit request from <envar>%{source_project}/%{source_package}</envar>
+              to <envar>%{target_project}/%{target_package}</envar>.
             </entry>
             <entry><!-- link_package -->
               The <envar>%{source_project}/%{source_package}</envar> will be linked into
