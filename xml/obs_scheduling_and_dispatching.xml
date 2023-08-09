@@ -175,4 +175,31 @@
    </variablelist>
   </sect2>
  </sect1>
+ <sect1>
+  <title>Release Number Handling</title>
+  <para>Most build formats define a version and a release number. The Version is usually
+  defined by the up-stream project, while the release number is owned by the distributor.
+  In addtion to this &obs; differentiates between the a source change (called check-in counter aka CI_CNT)
+  and a build counter (BCNT). The check-in counter gets increased when any source change is done. The build
+  counter gets increased when a build gets trigger due to any other reason than a source change.</para>
+  <para>The version and check-in counter are defined by the package source, while the build counter is
+  stored per project, package, repository and architecture.
+  </para>
+  <sect2>
+   <title>Build Counter Syncing via Architectures</title>
+   <para>The default configuration is to sync build counters across all architectures for a given
+   project, package and repository. This can only be changed by the OBS administrator.
+   </para>
+  </sect2>
+  <sect2>
+   <title>Build Counter Syncing via multiple packages</title>
+   <para>In some cases it is critical keep the build counter in sync via multiple packages.
+   The old way to do so is to define a common bcntsynctag in package meta. The used string
+   identifies the packages to be kept in sync. The package name is the default when no
+   bcntsynctag exists. Please note that this affects always all flavors of a multibuild source.
+   </para>
+   <para>The newer recommended way is to define these tags in the sources instead. These
+   work also with git implementations and are more flexible.</para>
+  </sect2>
+ </sect1>
 </chapter>
