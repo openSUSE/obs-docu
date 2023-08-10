@@ -43,6 +43,13 @@
    </listitem>
    <listitem>
     <para>
+      <code>#!BcntSyncTag: STRING</code> defines the build counter sync tag in a spec file.
+      It is used when the bcntsynctag element tag is not defined in package meta. Also it can
+      depend on architecture, repository or flavor for example.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
         <code>#!BuildConflicts: STRING</code> defines a conflicting package or dependency at build time only.
     </para>
    </listitem>
@@ -162,6 +169,10 @@
            This is useful when moving kiwi image descriptions between projects, for example for development and release builds. </para>
    </listitem>
    <listitem>
+     <para>Defining build counter sync tag <command>OBS-BcntSyncTag: STRING</command> 
+     </para>
+   </listitem>
+   <listitem>
      <para>An exclusive architecture list to build for can be defined with an xml comment <command>OBS-ExclusiveArch: ARCH_LIST</command> 
      </para>
    </listitem>
@@ -245,6 +256,10 @@
      prioritized or that dependency problems of newer package versions
      are hidden.
  </para>
+   </listitem>
+   <listitem>
+     <para><command>#!BcntSyncTag: TAG</command> to define the build counter sync tag.
+     </para>
    </listitem>
    <listitem>
      <para><command>#!BuildTag: TAG</command> to define one or multiple tags to be used for the container.
