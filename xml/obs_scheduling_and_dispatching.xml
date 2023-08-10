@@ -179,7 +179,7 @@
   <title>Release Number Handling</title>
   <para>Most build formats define a version and a release number. The version is usually
   defined by the up-stream project, while the release number is owned by the distributor.
-  In addtion to this &obs; differentiates between the a source change (called check-in counter aka CI_CNT)
+  In addtion to this &obs; differentiates between a source change counter (called check-in counter aka CI_CNT)
   and a build counter (BCNT). The check-in counter gets increased when any source change is done. The build
   counter gets increased when a build gets triggered due to any other reason than a source change.</para>
   <para>The version and check-in counter are defined by the package source, while the build counter is
