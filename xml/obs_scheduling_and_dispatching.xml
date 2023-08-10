@@ -183,7 +183,7 @@
   and a build counter (BCNT). The check-in counter gets increased when any source change is done. The build
   counter gets increased when a build gets trigger due to any other reason than a source change.</para>
   <para>The version and check-in counter are defined by the package source, while the build counter is
-  stored per project, package, repository and architecture.
+  stored per project, package, repository and architecture combination.
   </para>
   <sect2>
    <title>Build Counter Syncing via Architectures</title>
