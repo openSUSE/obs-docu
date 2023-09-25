@@ -468,8 +468,8 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    </step>
    <step>
     <para>
-     Click the <guimenu>Home Project</guimenu> link in the upper-right
-     corner.
+     Click the <guimenu>Your Home Project</guimenu> link in
+     the Places menu on the left.
     </para>
    </step>
    <step>
