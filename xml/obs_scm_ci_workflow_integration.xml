@@ -187,7 +187,7 @@
 
         <itemizedlist>
           <listitem>
-            <para>Pull requests</para>
+            <para>Pull requests and Merge requests</para>
           </listitem>
 
           <listitem>
@@ -199,9 +199,59 @@
           </listitem>
         </itemizedlist>
 
-        <para>Other SCMs like GitLab have similar behaviour; the main
-        difference is how they name the events. Refer to the <link
-        linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table">Equivalence
+        <para>In addition, the Pull request events contain a field called
+        action. OBS supports a different subset of Pull request event actions,
+        depending on the SCM. For GitHub and Gitea, the following set of actions
+        is supported:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>closed</para>
+          </listitem>
+
+          <listitem>
+            <para>opened</para>
+          </listitem>
+
+          <listitem>
+            <para>reopened</para>
+          </listitem>
+
+          <listitem>
+            <para>synchronize</para>
+          </listitem>
+
+          <listitem>
+            <para>synchronized</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>For Gitlab's Merge request events, the following actions are
+        supported:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>close</para>
+          </listitem>
+
+          <listitem>
+            <para>merge</para>
+          </listitem>
+
+          <listitem>
+            <para>open</para>
+          </listitem>
+
+          <listitem>
+            <para>reopen</para>
+          </listitem>
+
+          <listitem>
+            <para>update</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Refer to the <link linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table">Equivalence
         Table</link> for more details or read more about <link
         xlink:href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads">GitHub
         events</link>, <link
