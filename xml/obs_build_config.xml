@@ -14,9 +14,9 @@
   <title>About the Project Configuration</title>
   <para>
    Each project has a <firstterm>project configuration</firstterm> which
-   defines the setup of the build system. Usually it is empty and you do
-   not need to change anything. However, when you change it, it can be
-   used for the following reasons:
+   defines the setup of the build system and the publish behaviour. Usually
+   it is empty and you do not need to change anything. However, when you
+   change it, it can be used for the following reasons:
   </para>
   <remark>toms 2017-08-18: Add more reasons why it is needed</remark>
   <itemizedlist>
@@ -40,6 +40,11 @@
     <para>
      Handle user decisions like package providing the same or special
      macros, packages, or flags in the build environment.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Modify publish behaviour, eg. define metadata or filter binaries.
     </para>
    </listitem>
   </itemizedlist>
