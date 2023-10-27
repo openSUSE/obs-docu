@@ -128,7 +128,7 @@
        - Repotype: none
     3. Create a package
     4. Submit adapted KIWI config files
-    
+
     Things to watch for:
     * config.xml needs to have a .kiwi suffix
     * Repos needs to be specified as obs://$PROJECT/$REPO or using http:// Urls which can be mapped
@@ -136,7 +136,7 @@
     * Content of root directory as root.tar.bz2 or root.obscpio
     * If you get the error "have choice", select a package and add it to
       the package list
-    * 
+    *
    -->
    <para>
 	&kiwi; appliance builds create images which can be used for direct consumption. Note: builds in non-VM
@@ -159,31 +159,31 @@
   </itemizedlist>
 
    <para>
-     OBS extends kiwi functionality with following options. These covers cases which would need explicit 
+     OBS extends kiwi functionality with following options. These covers cases which would need explicit
      command line commands, so they are covered via the tags to have them in a reproducible way.
    </para>
-  
+
   <itemizedlist>
    <listitem>
      <para>A repository defined as <uri>obsrepositories:/</uri> will used the expanded list of repositories as defined in the project meta.
            This is useful when moving kiwi image descriptions between projects, for example for development and release builds. </para>
    </listitem>
    <listitem>
-     <para>Defining build counter sync tag <command>OBS-BcntSyncTag: STRING</command> 
+     <para>Defining build counter sync tag <command>OBS-BcntSyncTag: STRING</command>
      </para>
    </listitem>
    <listitem>
-     <para>An exclusive architecture list to build for can be defined with an xml comment <command>OBS-ExclusiveArch: ARCH_LIST</command> 
+     <para>An exclusive architecture list to build for can be defined with an xml comment <command>OBS-ExclusiveArch: ARCH_LIST</command>
      </para>
    </listitem>
    <listitem>
-     <para>An excluded architecture list to skip builds can be defined with an xml comment <command>OBS-ExcludeArch: ARCH_LIST</command> 
+     <para>An excluded architecture list to skip builds can be defined with an xml comment <command>OBS-ExcludeArch: ARCH_LIST</command>
      </para>
    </listitem>
    <listitem>
-     <para>A list of profiles to build can be defined via an xml comment <command>OBS-Profiles: PROFILE_LIST</command> 
+     <para>A list of profiles to build can be defined via an xml comment <command>OBS-Profiles: PROFILE_LIST</command>
      </para>
-     <para>This can also be handled via _multibuild flavor lists by setting a fixed string of <command>OBS-Profiles: @BUILD_FLAVOR@</command> 
+     <para>This can also be handled via _multibuild flavor lists by setting a fixed string of <command>OBS-Profiles: @BUILD_FLAVOR@</command>
      </para>
    </listitem>
    <listitem>
@@ -193,7 +193,7 @@
      </para>
    </listitem>
    <listitem>
-     <para>Container builds can specify a specific repository which shall be used for searching the base container. 
+     <para>Container builds can specify a specific repository which shall be used for searching the base container.
       Use the XML comment <command>OBS-Imagerepo:$REPOSITORY_URL</command> for this. The repository URL may be
   	   in <uri>obs://$PROJECT/$REPOSITORY</uri> style.
      </para>
@@ -204,7 +204,7 @@
      </para>
    </listitem>
    <listitem>
-     <para>A predefined milestone <command>OBS-Milestone: milestone</command> 
+     <para>A predefined milestone <command>OBS-Milestone: milestone</command>
      </para>
      <para>
       This defines a milestone name (for example, <literal>Beta1</literal>)
@@ -227,7 +227,7 @@
        - Repotype: none
     3. Create a package
     4. Submit Dockefile
-    
+
    -->
    <para>
 	OBS needs to parse RUN commands to detect build dependencies (repositories and packages).
@@ -241,7 +241,7 @@
      Instead of these options, you would otherwise need explicit command-line commands.
      However, to make it possible to create reproducible builds, use the OBS tags.
    </para>
-  
+
   <itemizedlist>
    <listitem>
       <para>A <command>#!UseOBSRepositories</command> tag will use the expanded list of repositories as defined via path elements in the project meta.
@@ -270,7 +270,7 @@
      </para>
    </listitem>
    <listitem>
-     <para><command>#!BuildVersion: VERSION</command> Report back a defined VERSION. By default it is set to zero. The version is used by OBS for tracking.
+     <para><command>#!BuildVersion: VERSION</command> Report back a defined VERSION. By default it is set to zero. The version is used by OBS for tracking. This needs to be set together with BuildName, otherwise it will be ignored.
      </para>
    </listitem>
    <listitem>
@@ -318,7 +318,7 @@
   <remark>toms 2017-08-18: integrate content from  obs_build_preinstall.xml;
   using a _preinstallimage file</remark>
  </sect1>
- 
+
  <!--
  <sect1 condition="tbd">
   <title>Mkosi Image Builds</title>
