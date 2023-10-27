@@ -122,6 +122,28 @@
      </para>
     </listitem>
    </varlistentry>
+   <varlistentry>
+    <term><option>cafile</option> (string)</term>
+    <listitem>
+     <para>
+     Provide set of trusted CA certificates for HTTPs requests. Expects CAs
+     in a single file containing a bundle of CA certificates in PEM format.
+     More details can be found in <link
+     xlink:href="https://www.openssl.org/docs/manmaster/man3/SSL_CTX_load_verify_locations.html">OpenSSL documentation</link>.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><option>capath</option> (string)</term>
+    <listitem>
+     <para>
+     Provide set of trusted CA certificates for HTTPs requests. Expects a
+     directory containing CA certificates in PEM format.
+     More details can be found in <link
+     xlink:href="https://www.openssl.org/docs/manmaster/man3/SSL_CTX_load_verify_locations.html">OpenSSL documentation</link>.
+     </para>
+    </listitem>
+   </varlistentry>
   </variablelist>
  </sect1>
 
