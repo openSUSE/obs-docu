@@ -314,6 +314,16 @@ Keep: debbuild</screen>
         </para>
        </listitem>
       </varlistentry>
+      <varlistentry>
+        <term><parameter>container-build-format:FORMAT</parameter></term>
+       <listitem>
+        <para>
+          For podman container builds, it specifies the container config format. Possible values
+          are 'docker' and 'oci'. The default is 'docker'. The 'docker' format allows a few
+          extensions like ONBUILD, SHELL, DOMAINNAME, COMMENT, HEALTHCHECK amongst others.
+        </para>
+       </listitem>
+      </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>

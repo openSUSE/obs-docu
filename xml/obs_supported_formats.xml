@@ -304,6 +304,13 @@
      </para>
    </listitem>
   </itemizedlist>
+
+  <para>
+    The used filename of the build results are only important inside of OBS. The publishing 
+    happens via the built-in registry interface which is providing all defined tags for an image.
+    The filename itself may be used on aggregates or other binary filters in OBS. It is either 
+    derived by the first defined tag or by the BuildName and BuildVersion tag if both are defined.
+   </para>
  </sect1>
 
  <sect1 condition="tbd">
