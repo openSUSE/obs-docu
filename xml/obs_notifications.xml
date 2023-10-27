@@ -121,18 +121,6 @@
    </figure>
   </para>
   <para>
-   To access older entries, you can make use of the pagination links.
-
-   <figure>
-    <title>Notification Paginations Links.</title>
-    <mediaobject>
-     <imageobject>
-      <imagedata fileref="notification_pagination_links.png" width="800"/>
-     </imageobject>
-    </mediaobject>
-   </figure>
-  </para>
-  <para>
    A notification can have different origins. Each notification item includes a
    couple of lines to help recognize them among the others. You always have the
    option to click on a notification, which will lead you to the specific
