@@ -50,7 +50,7 @@
     <listitem>
      <para>
       Docker images can be built either via the &kiwi; tool or from
-      Dockerfiles.
+      Dockerfile build descriptions.
      </para>
     </listitem>
    </varlistentry>

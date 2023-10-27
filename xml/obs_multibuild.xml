@@ -64,7 +64,8 @@
    kernel-source.spec or kernel-obs-build.dsc) inside of the sources. There
    will be another build in case there is also a matching file for the source
    package container name, otherwise it will turn into an
-   <quote>excluded</quote> state.
+   <quote>excluded</quote> state. Dockerfile based build descriptions may provide
+   own build descriptions for each flavor via Dockerfile.FLAVOR suffixed files.
   </para>
  </sect1>
 </chapter>
