@@ -162,20 +162,20 @@
    </para>
    <para>GPG keypairs are created by the <systemitem>signd</systemitem> daemon. Therefore,
          it is recommend to run this daemon on a separated and protected host. The
-         master key pair should exist only on this signd host. Any further
-         created keypair is not stored on the signd instance, instead
+         master keypair should exist only on this <systemitem>signd</systemitem> host. Any further
+         created keypair is not stored on the <systemitem>signd</systemitem> instance, instead
          the private part is encrypted with the master key and transferred
          to the &obs; backend. Thus, the <systemitem>signd</systemitem> instance is stateless and
          needs no recurring backups after initial setup.
          All keypairs (public and private parts) are therefore part of the
-         backup of the &obs; backend servers. The sign executable is
-         transferring just the hash to be signed (not the entire file content) together
-         with the crypted private key to <systemitem>signd</systemitem>. The daemon
+         backup of the &obs; backend servers. The <systemitem>sign</systemitem> executable
+         transfers just the hash to be signed (not the entire file content) together
+         with the encrypted private key to <systemitem>signd</systemitem>. The daemon
          decrypts the private key with the master key, creates the signature, and sends it
-         back to the client. The returned signature is applied to the binary by the sign
+         back to the client. The returned signature is applied to the binary by the <systemitem>sign</systemitem>
          executable afterwards.
    </para>
-   <para>A compromised backend is still be a serious security incident
+   <para>A compromised backend would still result in a serious security incident
          since any content can be signed with any project key. The private
          keys are not compromised themselves though.
    </para>
