@@ -51,7 +51,8 @@
   <title>Generating SBOM (Software Bill Of Material) Data</title>
    <para> 
      OBS 2.11 can produce and publish additional SPDX data for certain build types.
-     Please check the build config documentation for the sbom flag.
+     Please check <xref linkend="sec.prjconfig.syntax"/> for
+     <literal>sbom:FORMAT</literal> (under <literal>BuildFlags</literal>).
    </para>
  </sect1>
 </chapter>
