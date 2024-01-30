@@ -89,18 +89,24 @@
   <sect2 xml:id="_backend_installation">
    <title>Back-end Installation</title>
    <para>The back-end hosts all sources and built packages. It also schedules
-    the jobs. To install it, install the "obs-server" package. You should
-    check the <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis> file,
-    though the defaults should be good enough for simple cases.</para>
-   <para>You can control the different back-end components via systemctl.
+    the jobs. To install it, install the "obs-server" package. After installation,
+    it's a good idea to check the service configuration in
+    <emphasis role="strong">/usr/lib/obs/server/BSConfig.pm</emphasis>, although
+    the defaults should be good enough for simple cases.</para>
+   <note>
+    <para>
+      Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
+    </para>
+   </note>
+   <para>The back-end consists of a number of services that are controlled via systemctl.
     Basically you can enable/disable the service during booting the system and
     start/stop/restart it in a running system. For more information, see
     <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemctl.html#Commands">the systemctl man page</link>.
-    For example, to restart the repository
-    server, do:</para>
+    For example, to restart the repository server, do:
+   </para>
    <screen>systemctl restart obsrepserver.service</screen>
    <table frame="all" rowsep="1" colsep="1">
-    <title>Service Names</title>
+    <title>Services</title>
     <?dbhtml table-width="75%"?>
     <?dbfo table-width="75%"?>
     <?dblatex table-width="75%"?>
@@ -110,29 +116,18 @@
      <colspec colname="col_3" colwidth="74*"/>
      <thead>
       <row>
-       <entry align="left" valign="top"> Component </entry>
-       <entry align="left" valign="top"> Service Name </entry>
-       <entry align="left" valign="top"> Remarks</entry>
+       <entry align="left" valign="top"> Service </entry>
+       <entry align="left" valign="top"> Description </entry>
+       <entry align="left" valign="top"> Remark </entry>
       </row>
      </thead>
      <tbody>
       <row>
        <entry align="left" valign="top">
-        <para>Source Server</para>
-       </entry>
-       <entry align="left" valign="top">
         <para>obssrcserver.service</para>
        </entry>
        <entry align="left" valign="top">
-        <para/>
-       </entry>
-      </row>
-      <row>
-       <entry align="left" valign="top">
-        <para>Repository</para>
-       </entry>
-       <entry align="left" valign="top">
-        <para>Server obsrepserver.service</para>
+        <para>Source server</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -140,10 +135,10 @@
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Source</para>
+        <para>obsrepserver.service</para>
        </entry>
        <entry align="left" valign="top">
-        <para>Services obsservice.service</para>
+        <para>Repository server</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -151,87 +146,120 @@
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Download</para>
+        <para>obsservice.service</para>
        </entry>
+       <entry align="left" valign="top">
+        <para>Source services server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
        <entry align="left" valign="top">
         <para>obsdodup.service</para>
        </entry>
        <entry align="left" valign="top">
+        <para>Repository metadata download</para>
+       </entry>
+       <entry align="left" valign="top">
         <para>since 2.7</para>
        </entry>
       </row>
       <row>
-       <entry align="left" valign="top">
-        <para>Delta Storage</para>
-       </entry>
        <entry align="left" valign="top">
         <para>obsdeltastore.service</para>
        </entry>
        <entry align="left" valign="top">
+        <para>Delta storage</para>
+       </entry>
+       <entry align="left" valign="top">
         <para>since 2.7</para>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Scheduler</para>
+        <para>obsscheduler.service</para>
        </entry>
        <entry align="left" valign="top">
-        <para>obsscheduler.service</para>
+        <para>Scheduler</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
       <row>
-       <entry align="left" valign="top">
-        <para>Dispatcher</para>
-       </entry>
        <entry align="left" valign="top">
         <para>obsdispatcher.service</para>
        </entry>
        <entry align="left" valign="top">
+        <para>Dispatcher proxy</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Publisher</para>
+        <para>obsservicedispatch.service</para>
        </entry>
+       <entry align="left" valign="top">
+        <para>Dispatcher</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
        <entry align="left" valign="top">
         <para>obspublisher.service</para>
        </entry>
        <entry align="left" valign="top">
+        <para>Publisher</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
       <row>
-       <entry align="left" valign="top">
-        <para>Signer</para>
-       </entry>
        <entry align="left" valign="top">
         <para>obssigner.service</para>
        </entry>
        <entry align="left" valign="top">
+        <para>Signer proxy</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Warden</para>
+        <para>obssignd.service</para>
        </entry>
+       <entry align="left" valign="top">
+        <para>Signer</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para/>
+       </entry>
+      </row>
+      <row>
        <entry align="left" valign="top">
         <para>obswarden.service</para>
        </entry>
        <entry align="left" valign="top">
+        <para>Warden</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Cloud upload worker</para>
+        <para>obsclouduploadworker.service</para>
        </entry>
        <entry align="left" valign="top">
-        <para>obsclouduploadworker.service</para>
+        <para>Cloud upload worker</para>
        </entry>
        <entry align="left" valign="top">
         <para>Only needed for cloud upload feature</para>
@@ -239,10 +267,10 @@
       </row>
       <row>
        <entry align="left" valign="top">
-        <para>Cloud upload server</para>
+        <para>obsclouduploadserver.service</para>
        </entry>
        <entry align="left" valign="top">
-        <para>obsclouduploadserve.service</para>
+        <para>Cloud upload server</para>
        </entry>
        <entry align="left" valign="top">
         <para>Only needed for cloud upload feature</para>
@@ -251,27 +279,21 @@
      </tbody>
     </tgroup>
    </table>
-   <para>The sequence in the table reflects the start sequence, you need to
-    enable the services with</para>
+   <para>At start time, <emphasis>obssrcserver.service</emphasis> (the source
+    server) must be started first, and <emphasis>obsrepservice.service</emphasis>
+    second. The remaining services can be started in any order. When installing
+    manually, you will need to first enable the services with</para>
    <screen>systemctl enable &lt;name&gt;</screen>
-   <para>first and then you can start them:</para>
+   <para>so they start automatically at boot (the start order is enforced via
+    the respective systemd unit files) and then you can start them:</para>
    <screen>systemctl start obssrcserver.service
 systemctl start obsrepserver.service
-systemctl start obsservice.service
-systemctl start obsdodup.service
-systemctl start obsdeltastore.service
-systemctl start obsscheduler.service
-systemctl start obsdispatcher.service
-systemctl start obspublisher.service
-systemctl start obssigner.service
-systemctl start obswarden.service
-systemctl start obsclouduploadworker.service
-systemctl start obsclouduploadserver.service
 </screen>
+   <para>followed by the remaining services in any order.</para>
    <warning>
-    <para>The commands start services which are accessible from the outside. Do
-     not do this on a system connected to an untrusted network or make sure to
-     block the ports with a firewall.</para>
+    <para>The start-up commands start services which are accessible from the
+     outside. If the system is connected to an untrusted network, either block
+     the ports with a firewall or do not run the commands at all.</para>
    </warning>
    <sect3 xml:id="_cloud_upload_setup">
     <title>Cloud Upload Setup</title>
@@ -308,9 +330,6 @@ rcobsclouduploadserver start
        <screen>
 our $clouduploadserver = "http://$hostname:5452";
        </screen>
-     <para>
-       Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
-     </para>
      <warning>
        <para>
          Ensure that the system time of your cloud uploader instance is correct.
