@@ -307,43 +307,40 @@ systemctl start obsrepserver.service
       Right now we only support the AWS Amazon Cloud (<link xlink:href="https://aws.amazon.com"/>) and Microsoft Azure
       (<link xlink:href="https://portal.azure.com"/>) as providers.
     </para>
-    <sect4 xml:id="_cloud_upload_server_setup">
-     <title>Server setup</title>
-     <para>
-       Before you can start uploading images to the Amazon Web Services (AWS)
-       you have to:
-     </para>
-       <orderedlist>
-         <listitem>
-           <para>Install the obs-cloud-uploader package</para>
-           <screen>
+    <para>
+      Before you can start uploading images to the Amazon Web Services (AWS)
+      and/or Microsoft Azure, you have to:
+    </para>
+      <orderedlist>
+        <listitem>
+          <para>Install the obs-cloud-uploader package</para>
+          <screen>
 zypper in obs-cloud-uploader
-           </screen>
-         </listitem>
-         <listitem>
-           <para>Start the cloud upload services</para>
-           <screen>
-rcobsclouduploadworker start
-rcobsclouduploadserver start
-           </screen>
-         </listitem>
-       </orderedlist>
-     <para>
-       At last you have to register the cloud uploader service in
-       <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, for example, by adding
-       following line:
-     </para>
-       <screen>
+          </screen>
+        </listitem>
+        <listitem>
+          <para>Start the cloud upload services</para>
+          <screen>
+systemctl start obsclouduploadworker.service
+systemctl start obsclouduploadserver.service
+          </screen>
+        </listitem>
+      </orderedlist>
+    <para>
+      At last you have to register the cloud uploader service in
+      <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, for example, by adding
+      following line:
+    </para>
+      <screen>
 our $clouduploadserver = "http://$hostname:5452";
-       </screen>
-     <warning>
-       <para>
-         Ensure that the system time of your cloud uploader instance is correct.
-         AWS is relying on the timestamps of the requests it receives.
-         Having an incorrect system time will cause cloud uploads to fail.
-       </para>
-     </warning>
-    </sect4>
+      </screen>
+    <warning>
+      <para>
+        Ensure that the system time of your cloud uploader instance is correct.
+        AWS is relying on the timestamps of the requests it receives.
+        Having an incorrect system time will cause cloud uploads to fail.
+      </para>
+    </warning>
     <sect4 xml:id="_aws">
      <title>AWS Amazon Cloud</title>
      <sect5 xml:id="_aws_authentication_workflow">
