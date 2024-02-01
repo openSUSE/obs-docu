@@ -540,6 +540,14 @@ Keep: debbuild</screen>
      </para>
       <variablelist>
        <varlistentry>
+        <term><parameter>artifacthub:TAG</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+        <para>Publish a specific verified publisher identifier (aka repository id) for artifactub.io.
+              This can be used to proof to be the publisher (aka maintainer) for containers from these
+              OBS repositories.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
         <term><parameter>create_empty</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Create a repository even with no content, but with meta data.</para>
