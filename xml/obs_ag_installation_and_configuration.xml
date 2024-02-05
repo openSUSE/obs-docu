@@ -509,22 +509,24 @@ c_rehash /etc/ssl/certs/</screen>
     <para>Check and edit <emphasis role="strong"
        >/srv/www/obs/api/config/options.yml</emphasis>
     </para>
-    <para>If you change the hostnames/ips of the api, you need to adjust
+    <para>If you change the hostnames/ips of the API, you need to adjust
       <emphasis role="strong">frontend_host</emphasis>
      accordingly. If you want to use LDAP, you need to change the LDAP settings
      as well. Look at the <xref linkend="_user_and_group_management"/> for
      details. You will find examples and more details in the <xref
       linkend="_configuration_files"/>.</para>
-    <para>It is recommended to enable</para>
+    <para>It is strongly recommended to enable</para>
     <screen>use_xforward: true</screen>
-    <para>as well here.</para>
-    <para>Afterwards you can start the OBS web api and make it permanent
+    <para>as well here, to tell Rails to forward requests to the back-end for
+     asynchronous processing. (Without this setting, the front-end will block
+     while the back-end handles each request.)</para>
+    <para>Afterwards, you can start the OBS API and make it permanent
      via</para>
     <screen>systemctl enable apache2
 systemctl start apache2
 
-systemctl enable obsapidelayed.service
-systemctl start obsapidelayed.service
+systemctl enable obs-api-support.target
+systemctl start obs-api-support.target
 
 systemctl enable memcached.service
 systemctl start memcached.service</screen>
