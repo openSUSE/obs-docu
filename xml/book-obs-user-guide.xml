@@ -116,7 +116,7 @@
 <!-- tbd: <xi:include href="obs_cross_architecture_build.xml"/>-->
  <xi:include href="obs_admin.xml"/>
  <xi:include href="obs_scheduling_and_dispatching.xml"/>
- <xi:include href="obs_build_job_constraints.xml"/>
+ <xi:include href="obs_build_constraints.xml"/>
  <xi:include href="obs_build_preinstall.xml"/>
  <xi:include href="obs_authorization_token.xml"/>
  <xi:include href="obs_qa_hooks.xml"/>

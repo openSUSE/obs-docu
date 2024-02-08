@@ -3,43 +3,125 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.build_job_constraints"
+<chapter version="5.1" xml:id="cha.obs.build_constraints"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Build Job Constraints</title>
+ <title>Build Constraints</title>
  <info/>
- <para> Build job constraints can define requirements for the hardware or
-  software of the build host. Constraints can be defined per package or for
-  repositories. </para>
- <para> The build constraints for an entire project or specific repositories is
-  part of the project config. For each constraint, it contains a line</para>
-  <screen>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</screen> 
-  <para>The selector is a colon-separated list. </para>
- <para> The build constraints for a package are part of the package sources, as
-  a _constraints XML source file (validated on submission). The _constraints
-  source file can contain the values listed below. </para>
- <para>In addition to that some build recipe parsers support to parse constraints
-  also from the build descriptions, eg. in spec files. These can also be used
-  conditionally in their context. For example to apply these only on some architectures
-  or only for specific multibuild flavors.</para>
- <para>Constraints defined in project build config, _constraints and the build recipe are merged
-  in this order. This means a constraint for the same topic overwrites the one from the former location.</para>
- <para>NOTE: If no build host meets the constraints, the package will turn to a failed state.</para>
+ <para> Using build constraints, one can define hardware and/or software
+  requirements that the Build Service will then use to narrow down the pool
+  of build workers that are qualified to build a particular project, package or
+  repository.
+ </para>
+ <para> By setting appropriate build constraints, one can avoid situations
+  in which builds fail due to insufficient memory or disk space, wrong kernel
+  version, etc. </para>
  <sect1>
-  <title><literal>hostlabel</literal></title>
-  <para> The hostlabel is any string which can be assigned to build hosts when
-   starting the bs_worker process. It can be used to run on specific hosts,
-   which may be used for running benchmarks in a reproducible way. This
-   constraint can also be defined as a negative definition using the
-   <literal>exclude=true</literal>
-   attribute. However, the hostlabel is always specific to one OBS instance.
-   You should avoid it as much as possible, since building with this constraint
-   in another instance is usually not possible. Use any of the other
-   constraints if possible. </para>
-  <para> Example for _constraints file:</para>
-   <screen>&lt;constraints exclude="false"&gt;
-  &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
+  <title>Setting constraints</title>
+  <para> Constraints can be set for a particular package by including a
+   _constraints file in the package. </para>
+  <para> Constraints can also be included directly in the build recipe (spec,
+   dsc, etc.), provided the build recipe parser supports it. </para>
+  <warning>
+   <para>It's not clear how the reader would find out if a given build recipe
+    parser supports BuildConstraints and it would even be nice here to link to a
+    discussion of what, specifically, is meant by "build recipe". </para>
+  </warning>
+  <para> Finally, constraints can be set on a project-wide basis by including
+   <literal>Constraint</literal> directives in the project config. These can be
+   guarded in various ways to make them apply only for certain architectures or
+   certain repositories. </para>
+  <sect2>
+   <title>Setting constraints in a _constraints file</title>
+   <para> Build constraints for a package are part of the package sources, as
+    an XML source file called <literal>_constraints</literal>. If present, the Build
+    Service will validate this file upon submission. Constraints files vary in 
+    complexity, depending on how many constraints are being set and whether they 
+    need to be set globally or on a per-architecture basis. </para>
+   <para> Here is a simple example: </para>
+   <screen>&lt;?xml version="1.0"?&gt;
+&lt;constraints&gt;
+  &lt;hardware&gt;
+    &lt;physicalmemory&gt;
+      &lt;size unit="M"&gt;2000&lt;/size&gt;
+    &lt;/physicalmemory&gt;
+    &lt;disk&gt;
+      &lt;size unit="G"&gt;5&lt;/size&gt;
+    &lt;/disk&gt;
+  &lt;/hardware&gt;
+  &lt;sandbox&gt;kvm&lt;/sandbox&gt;
+  &lt;hostlabel exclude="true"&gt;SLOW_CPU&lt;/hostlabel&gt;
+&lt;/constraints&gt;</screen>
+   <para>See <xref linkend="_constraint_syntax"/> for a full treatment of
+    constraint syntax.</para>
+  </sect2>
+  <sect2>
+   <title>Setting constraints in build recipes</title>
+   <para> Some build recipe parsers support parsing of constraints
+    also from the build descriptions, e.g. in RPM spec files or Dockerfiles.
+    Where supported, setting of constraints directly in build recipes
+    is achieved by inserting "magic comment lines" with the
+    format <literal>#!BuildConstraint: &lt;QUALIFIER&gt; &lt;VALUE&gt;</literal>
+    directly in the file. Instead of specifying the qualifiers by nesting
+    directives like in XML, colons are used. For example:
+    </para>
+   <screen>#!BuildConstraint: linux:version:min 3.0</screen>
+   <para> In this example, "linux:version:min" is the constraint qualifier and
+    "3.0" is the value. </para>
+   <para>These lines can also be guarded with various conditionals, 
+    for example to apply these only on some architectures, or only for specific
+    multibuild flavors. </para>
+   <warning>
+    <para>Here we should link to a discussion of RPM conditionals</para>
+   </warning>
+   <para>See <xref linkend="_constraint_syntax"/> for a full treatment of
+    constraint syntax.</para>
+  </sect2>
+  <sect2>
+   <title>Setting constraints in project configuration</title>
+   <para> Build constraints for an entire project, or for specific repositories
+    within it, or for specific architectures within those repositories, are
+    defined in the project config by adding lines as so: </para>
+   <screen>Constraint: &lt;QUALIFIER&gt; &lt;VALUE&gt;</screen>
+   <para> Colons are used to construct the QUALIFIER, just as when setting
+    constraints in build recipes. For example: </para>
+   <screen>Constraint: linux:version:min 3.0</screen>
+   <para> In this example, "linux:version:min" is the constraint qualifier and
+    "3.0" is the value. </para>
+   <para> The project configuration supports <literal>%if</literal> guards, which
+    can be used to make a constraint apply only to certain architectures or
+    repositories. For example:</para>
+   <screen>%ifarch ppc ppc64 ppc64le
+Constraint: hardware:cpu:flag power8
+%endif</screen>
+   <para>or</para>
+   <screen>%if "%_repository" == "images"
+Constraint: hardware:disk:size unit=M 4000
+%endif</screen>
+   <para> Constraints defined in project config, _constraints file, and the build
+    recipe are merged in this order. This means a constraint for the same topic 
+    overwrites the one from the former location. </para>
+   <para>Read on for a full treatment of constraint syntax.</para>
+  </sect2>
+ <sect1 xml:id="_constraint_syntax">
+  <title>Constraint syntax</title>
+  <para> In general, build constraints consist of a qualifier and a value.
+   Qualifiers can either be set directly, such as <literal>hostlabel</literal> or
+   consist of subqualifiers, as in the case of <literal>hardware</literal>.</para>
+  <sect2>
+   <title><literal>hostlabel</literal></title>
+   <para> The "hostlabel" qualifier is any string which can be assigned to
+    build workers when starting the <literal>bs_worker</literal> process. It can be
+    used to restrict a build to specific workers, for example to run benchmarks
+    in a reproducible way. This constraint can also be defined as a negative
+    definition using the <literal>exclude=true</literal> attribute. However,
+    the hostlabel is always specific to one OBS instance.  You should avoid it as
+    much as possible, since building with this constraint in another instance is
+    usually not possible. Use any of the other constraints if possible. </para>
+   <para> Example for _constraints file:</para>
+    <screen>&lt;constraints exclude="false"&gt;
+   &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
 &lt;/constraints&gt;</screen>
    <para>Example for project configuration:  </para>
    <screen>Constraint: hostlabel benchmark_runner</screen>
@@ -48,7 +130,7 @@
  </sect1>
  <sect1>
   <title><literal>sandbox</literal></title>
-  <para> Defines the sandbox which is used for the build job. Sandboxes are
+  <para> Defines the sandbox which is used for the build. Sandboxes are
    chroot, Xen or KVM environments. There is also the virtual secure sandbox,
    which allows building on Xen or KVM. This constraints may also be defined as
    a negative definition via the <literal>exclude=true</literal> attribute. </para>
@@ -172,7 +254,7 @@ Constraint: hardware:cpu:flag sse2</screen>
   </sect2>
   <sect2>
    <title><literal>jobs</literal></title>
-   <para> To require a minimal number of pre-confiured parallel jobs for the build job. 
+   <para> To require a minimal number of pre-confiured parallel jobs for the build. 
           This limits the parallel wanted jobs for the build tooling, but is actually not
           a hardware requirement.</para>
    <para> Example for _constraints file:</para>
@@ -248,19 +330,25 @@ Constraint: hardware:cpu:flag sse2</screen>
    </sect3>
   </sect2>
  </sect1>
- <sect1>
   <title>Constraint Handling</title>
+  <sect2>
+   <title>What happens when workers fail to meet the constraints</title>
+   <para> If no build worker meets the constraints, the package will turn to
+    a failed state. See also ... for a discussion of how the scheduler's behavior
+    differs according to how many build workers meet the defined constraints. </para>
+  </sect2>
+ <sect1>
   <para> The constraint handling depends on what is met by the restrictions.
    The handling starts when there is no worker to fulfill the constraints. </para>
   <sect2>
    <title>More than half of the workers satisfy the constraints</title>
-   <para> The job will just stay in state scheduled and no further notification
+   <para> The build will just stay in state scheduled and no further notification
     is set. </para>
   </sect2>
   <sect2>
    <title>Less than Half of the Workers Satisfy the Constraints</title>
-   <para> The job will stay in state scheduled and the dispatch details are set
-    to tell the user that this job can take a long time to be built. This will
+   <para> The build will stay in state scheduled and the dispatch details are set
+    to tell the user that this build can take a long time to complete. This will
     be shown in the Web UI on mouse over and the scheduled state will be
     highlighted as well.</para>
     <screen>waiting for 4 compliant workers (4 down)</screen> 
@@ -271,7 +359,7 @@ Constraint: hardware:cpu:flag sse2</screen>
   <sect2>
    <title>No Workers Satisfy the Constraints</title>
    <para> If no worker can handle the constraints defined by the package or
-    project the build job fails. There is also a hint in the build log what has
+    project, the build fails. There is also a hint in the build log what has
     failed.</para>
     <screen>package build was not possible:
 
