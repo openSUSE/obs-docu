@@ -31,24 +31,15 @@
    which can be examined to get details of the resources our build consumed. We
    can then use this information to set appropriate values for the relevant build
    constraints. </para>
-  <important><para>
-   When reviewing the build statistics, it's important to be aware that the
-   numbers can vary significantly from build to build depending on build
-   parallelism (e.g. <literal>make -j</literal>).
-   </para></important>
   <sect2>
    <title>Displaying the build statistics</title>
    <para> The information from the <literal>_statistics</literal> file can be
     found in the Build Service web UI, by clicking on the build target we are
-    interested in and then clicking on "Show resources". </para>
-  </sect2>
-  <sect2>
-   <title>Downloading the _statistics file</title>
-   <para> It is also possible to download the <literal>_statistics</literal> file
-    from the Build Service. There are two ways of doing that: using
-    <literal>osc getbinaries</literal>, or through the OBS API. </para>
+    interested in and then clicking on "Show resources". Alternatively, the
+    <literal>_statistics</literal> file itself can be downloaded from the
+    Build Service, either from the command line or using the OBS API.</para>
    <sect3>
-    <title>Downloading the _statistics file using osc</title>
+    <title>Downloading the _statistics file using &osccmd;</title>
     <para> Since the <literal>_statistics</literal> file is a build artifact
      produced by every successful build, it is always included among the build
      artifacts downloaded by <literal>osc getbinaries</literal>. </para>
@@ -57,6 +48,11 @@
     <title>Downloading the _statistics file using the OBS API</title>
     <para> If you are using the OBS API, the relevant call is:</para>
     <screen>GET /build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_statistics</screen>
+    <important><para>
+     When reviewing the build statistics, it's important to be aware that the
+     numbers can vary significantly from build to build depending on build
+     parallelism (e.g. <literal>make -j</literal>).
+     </para></important>
    </sect3>
   </sect2>
  </sect1>
