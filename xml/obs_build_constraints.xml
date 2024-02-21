@@ -64,13 +64,15 @@
   <title>Constraint Qualifiers</title>
   <para> In general, build constraints are specified in terms of a qualifier
    and a value. The qualifier expresses "what" - the build worker parameter
-   that is to be constrained - and the value expresses "how much", or, in other
-   words, the minimum value (of that parameter) that a given build worker must
-   meet in order to fulfill the constraint. </para>
-  <para> In the simplest cases (e.g. a <literal>hostlabel</literal> qualifier
-   with the value <literal>foohost</literal>), both the qualifier and the value
-   are just strings. In more complicated cases, the qualifier can include
-   subqualifiers and be modified by attributes. For example: </para>
+   that is to be constrained - and the semantics of the value depend on the
+   qualifier. If the qualifier takes a numeric value, it generally expresses
+   "how much", or, in other words, the minimum value (of that parameter) that a
+   given build worker must meet in order to fulfill the constraint. But there
+   are some qualifiers, such as <literal>hostlabel</literal>, that take a simple
+   string value.</para>
+  <para> In the simplest cases (e.g. <literal>hostlabel</literal> qualifier)
+   the qualifier is just a string. In more complicated cases, the qualifier can
+   include subqualifiers and be modified by attributes. For example: </para>
   <screen>hardware:disk:size unit=G</screen>
   <para> The string <literal>hardware:disk:size</literal> in this example means
    "size, a subqualifier of disk, which is itself a subqualifier of hardware",
