@@ -161,14 +161,18 @@ Constraint: hardware:disk:size unit=M 4000
     <literal>#!BuildConstraint</literal> lines can be guarded with various
     conditionals to limit their effect to certain architectures
     or, e.g., multibuild flavors. </para>
-  <note><para>
-   Be careful when setting build constraints. The idea is to use them to
-   express minimum values for the various parameters, below which builds
-   are likely to fail. If you set a constraint too high, you risk reducing the
-   pool of compliant build workers down to a very low number, or even to zero.
-   See <xref linkend="_constraint_handling"/> for a discussion of how the OBS
-   handles these cases.
-  </para></note>
+   <important><para>
+    Be careful when setting build constraints. The idea is to use them to
+    express minimum values for the various parameters, below which builds
+    are likely to fail. If you set a constraint too high, you risk reducing the
+    pool of compliant build workers down to a very low number, or even to zero.
+    See <xref linkend="_constraint_handling"/> for a discussion of how the OBS
+    handles these cases. It's also important to understand that constraints are
+    by default applied to build workers regardless of architecture, but you may
+    only be interested in certain architectures and not in others. To get arch-
+    specific information on which workers satisfy your constraints, see
+    <xref linkend="_constraint_checking_with_osc"/>
+   </para></important>
   </sect2>
  </sect1>
  <sect1 xml:id="_constraint_syntax">
@@ -464,7 +468,7 @@ no compliant workers (constraints mismatch hint: hardware:processors sandbox)
 Please adapt your constraints.</screen>
   </sect2>
  </sect1>
- <sect1>
+ <sect1 xml:id="_constraint_checking_with_osc">
   <title>Checking Constraints with &osccmd;</title>
   <para> You can check the constraints of a project or package with the osc
    tool. You have to be in an &osccmd; working directory.</para>
