@@ -3,276 +3,462 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.build_job_constraints"
+<chapter version="5.1" xml:id="cha.obs.build_constraints"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Build Job Constraints</title>
+ <title>Build Constraints</title>
  <info/>
- <para> Build job constraints can define requirements for the hardware or
-  software of the build host. Constraints can be defined per package or for
-  repositories. </para>
- <para> The build constraints for an entire project or specific repositories is
-  part of the project config. For each constraint, it contains a line</para>
-  <screen>Constraint: &lt;SELECTOR&gt; &lt;STRING&gt;</screen> 
-  <para>The selector is a colon-separated list. </para>
- <para> The build constraints for a package are part of the package sources, as
-  a _constraints XML source file (validated on submission). The _constraints
-  source file can contain the values listed below. </para>
- <para>In addition to that some build recipe parsers support to parse constraints
-  also from the build descriptions, eg. in spec files. These can also be used
-  conditionally in their context. For example to apply these only on some architectures
-  or only for specific multibuild flavors.</para>
- <para>Constraints defined in project build config, _constraints and the build recipe are merged
-  in this order. This means a constraint for the same topic overwrites the one from the former location.</para>
- <para>NOTE: If no build host meets the constraints, the package will turn to a failed state.</para>
+ <para> Build constraints provide a way for the user to specify build worker
+  parameters that the Build Service will use to decide which build workers
+  are "qualified" to undertake a given build. </para>
+ <para> The primary use case for build constraints is to avoid build failures
+  that can happen when an underpowered build worker attempts a build. Build
+  constraints can be used for other purposes, too. For example, since build
+  constraints provide tools for limiting builds to certain build workers, they
+  can be used to implement site-specific hardware use policies. </para>
  <sect1>
-  <title><literal>hostlabel</literal></title>
-  <para> The hostlabel is any string which can be assigned to build hosts when
-   starting the bs_worker process. It can be used to run on specific hosts,
-   which may be used for running benchmarks in a reproducible way. This
-   constraint can also be defined as a negative definition using the
-   <literal>exclude=true</literal>
-   attribute. However, the hostlabel is always specific to one OBS instance.
-   You should avoid it as much as possible, since building with this constraint
-   in another instance is usually not possible. Use any of the other
-   constraints if possible. </para>
-  <para> Example for _constraints file:</para>
-   <screen>&lt;constraints exclude="false"&gt;
-  &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
+  <title>Build Resource Usage and Statistics</title>
+  <para> Ideally, the build constraints should be set to the minimum values
+   that enable a build to succeed. In the real world, we do not always
+   have a precise idea of what the minimum values are for all the different
+   build worker parameters that can be controlled using OBS build constraints.
+   That need not deter us from setting build constraints, however. It is not
+   necessary to wait for a build failure before setting minimum memory and disk
+   space constraints, for example, because the OBS can give us reasonable values
+   for memory and disk space based on a successful build. </para>
+  <para> Each successful build produces a file called <literal>_statistics</literal>
+   which can be examined to get details of the resources our build consumed. We
+   can then use this information to set appropriate values for the relevant build
+   constraints. </para>
+  <important><para>
+   When reviewing the build statistics, it's important to be aware that the
+   numbers can vary significantly from build to build depending on build
+   parallelism (e.g. <literal>make -j</literal>).
+   </para></important>
+  <sect2>
+   <title>Displaying the build statistics</title>
+   <para> The information from the <literal>_statistics</literal> file can be
+    found in the Build Service web UI, by clicking on the build target we are
+    interested in and then clicking on "Show resources". </para>
+  </sect2>
+  <sect2>
+   <title>Downloading the _statistics file</title>
+   <para> It is also possible to download the <literal>_statistics</literal> file
+    from the Build Service. There are two ways of doing that: using
+    <literal>osc getbinaries</literal>, or through the OBS API. </para>
+   <sect3>
+    <title>Downloading the _statistics file using osc</title>
+    <para> Since the <literal>_statistics</literal> file is a build artifact
+     produced by every successful build, it is always included among the build
+     artifacts downloaded by <literal>osc getbinaries</literal>. </para>
+   </sect3>
+   <sect3>
+    <title>Downloading the _statistics file using the OBS API</title>
+    <para> If you are using the OBS API, the relevant call is:</para>
+    <screen>GET /build/{project_name}/{repository_name}/{architecture_name}/{package_name}/_statistics</screen>
+   </sect3>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_constraint_qualifiers">
+  <title>Constraint Qualifiers</title>
+  <para> In general, build constraints are specified in terms of a qualifier
+   and a value. The qualifier expresses "what" - the build worker parameter
+   that is to be constrained - and the value expresses "how much", or, in other
+   words, the minimum value (of that parameter) that a given build worker must
+   meet in order to fulfill the constraint. </para>
+  <para> In the simplest cases (e.g. a <literal>hostlabel</literal> qualifier
+   with the value <literal>foohost</literal>), both the qualifier and the value
+   are just strings. In more complicated cases, the qualifier can include
+   subqualifiers and be modified by attributes. For example: </para>
+  <screen>hardware:disk:size unit=G</screen>
+  <para> The string <literal>hardware:disk:size</literal> in this example means
+   "size, a subqualifier of disk, which is itself a subqualifier of hardware",
+   and <literal>unit=G</literal> means "the value is expressed in units of 
+   Gigabytes. </para>
+  <para> For a full treatment of constraint syntax, see
+   <xref linkend="_constraint_syntax"/>. </para>
+ </sect1>
+ <sect1>
+  <title>Constraint scope and precedence </title>
+  <para> Depending on the required scope, constraint qualifiers and their
+   values can be set at four different levels: instance, project, package, and
+   build recipe. Setting constraints at the OBS instance level is up to the
+   administrator of the OBS instance and is covered in the OBS Admin Guide.
+   Project-wide constraints are defined in the project configuration. Package
+   constraints are defined in a special file, <literal>_constraints</literal>,
+   in the packages sources. It is also possible to insert constraints directly
+   in the individual build recipes (RPM spec files, Dockerfiles). </para>
+  <para> The constraints that are in force for a particular build are
+   determined by merging all constraints defined at all levels: site, project,
+   package, and build recipe. The merging is done in that order, with later
+   settings overwriting earlier ones. That means, for example, that site-wide
+   constraints can be overrided at any of the lower levels (project, package,
+   build recipe), project-level constraints can be overrided at the package
+   and build recipe levels, etc.</para>
+  <sect2>
+   <title>Project-scoped constraints</title>
+   <para> Build constraints for an entire project, or for specific repositories
+    within it, or for specific architectures within those repositories, are
+    defined in the project config by adding lines as so: </para>
+   <screen>Constraint: &lt;QUALIFIER&gt; &lt;VALUE&gt;</screen>
+   <para> The QUALIFIER syntax is the same as used in RPM spec files, documented
+    in <xref linkend="_constraint_syntax"/>. Within the project configuration,
+    individual <literal>Constraint</literal> lines can be enclosed in guards to
+    make a constraint apply only to certain architectures or repositories. For
+    example:</para>
+   <screen>%ifarch ppc ppc64 ppc64le
+Constraint: hardware:cpu:flag power8
+%endif</screen>
+   <para>or</para>
+   <screen>%if "%_repository" == "images"
+Constraint: hardware:disk:size unit=M 4000
+%endif</screen>
+   <para> For a full treatment of constraint syntax, see
+    <xref linkend="_constraint_syntax"/>. </para>
+  </sect2>
+  <sect2>
+   <title>Package-scoped constraints</title>
+   <para> Setting constraints at the package level is achieved by including
+    an XML file called <literal>_constraints</literal> in the package sources.
+    The Build Service will attempt to validate this file when it is committed
+    (from the osc command line) or saved (in the web UI) to prevent invalid XML
+    from reaching the Build Service. </para>
+   <para> Here is a simple example showing what a <literal>_constraints</literal>
+    file might look like: </para>
+   <screen>&lt;?xml version="1.0"?&gt;
+&lt;constraints&gt;
+  &lt;hardware&gt;
+    &lt;physicalmemory&gt;
+      &lt;size unit="M"&gt;2000&lt;/size&gt;
+    &lt;/physicalmemory&gt;
+    &lt;disk&gt;
+      &lt;size unit="G"&gt;5&lt;/size&gt;
+    &lt;/disk&gt;
+  &lt;/hardware&gt;
+  &lt;sandbox&gt;kvm&lt;/sandbox&gt;
+  &lt;hostlabel exclude="true"&gt;SLOW_CPU&lt;/hostlabel&gt;
+&lt;/constraints&gt;</screen>
+   <para> For details on constraint qualifiers and how to specify them
+    in a <literal>_constraints</literal> file, see
+    <xref linkend="_constraint_syntax"/>. </para>
+  </sect2>
+  <sect2>
+   <title>Build recipe-scoped constraints</title>
+   <para> At the build recipe level, constraints are set by embedding lines
+    containing constraint qualifiers and values directly in RPM spec files or
+    Dockerfiles. Such lines take the form </para>
+    <screen>#!BuildConstraint: &lt;QUALIFIER&gt; &lt;VALUE&gt;</screen>
+   <para> The <literal>#</literal> character at the beginning of the line
+    causes the build recipe parser (RPM, Docker, podman) to ignore the
+    whole line, but in combination with the <literal>!</literal> character
+    signifies an OBS-specific directive that is picked up by a pre-processor
+    within the OBS back-end. </para>
+   <para> Instead of specifying subqualifiers by nesting
+    directives like in XML, colons are used. For example: </para>
+   <screen>#!BuildConstraint: linux:version:min 3.0</screen>
+   <para> In this example, "linux:version:min" is the constraint qualifier and
+    "3.0" is the value. </para>
+   <para> As described for project-scoped conditionals, above,
+    <literal>#!BuildConstraint</literal> lines can be guarded with various
+    conditionals to limit their effect to certain architectures
+    or, e.g., multibuild flavors. </para>
+  <note><para>
+   Be careful when setting build constraints. The idea is to use them to
+   express minimum values for the various parameters, below which builds
+   are likely to fail. If you set a constraint too high, you risk reducing the
+   pool of compliant build workers down to a very low number, or even to zero.
+   See <xref linkend="_constraint_handling"/> for a discussion of how the OBS
+   handles these cases.
+  </para></note>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="_constraint_syntax">
+  <title>Constraint syntax</title>
+  <para> This section describes the various constraint qualifiers and their
+   syntax. </para>
+  <sect2>
+   <title><literal>hostlabel</literal></title>
+   <para> The "hostlabel" qualifier is any string which can be assigned to
+    build workers when starting the <literal>bs_worker</literal> process. It can be
+    used to restrict a build to specific workers, for example to run benchmarks
+    in a reproducible way. This constraint can also be defined as a negative
+    definition using the <literal>exclude=true</literal> attribute. However,
+    keep in mind that <literal>hostlabel</literal> settings are not portable,
+    since the always specific to a given OBS instance and should therefore only
+    be used as a last resort in situations that cannot be addressed by any of
+    the other qualifiers. </para>
+   <para> Example for <literal>_constraints</literal> file:</para>
+    <screen>&lt;constraints exclude="false"&gt;
+   &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
 &lt;/constraints&gt;</screen>
    <para>Example for project configuration:  </para>
    <screen>Constraint: hostlabel benchmark_runner</screen>
-   <para>Example for rpm spec file or Dockerfile:</para>
+   <para>Example for RPM spec file or Dockerfile:</para>
    <screen>#!BuildConstraint: hostlabel benchmark_runner</screen>
- </sect1>
- <sect1>
-  <title><literal>sandbox</literal></title>
-  <para> Defines the sandbox which is used for the build job. Sandboxes are
-   chroot, Xen or KVM environments. There is also the virtual secure sandbox,
-   which allows building on Xen or KVM. This constraints may also be defined as
-   a negative definition via the <literal>exclude=true</literal> attribute. </para>
-  <para> Example for <filename>_constraints</filename> file:</para>
-   <screen>&lt;constraints exclude="true"&gt;
-  &lt;sandbox&gt;secure&lt;/sandbox&gt;
-&lt;/constraints&gt;</screen>
-   <para>Example for project configuration:</para>
-   <screen>Constraint: sandbox secure</screen>
-   <para>Example for rpm spec file or Dockerfile:</para>
-   <screen>#!BuildConstraint: hostlabel:benchmark_runner</screen>
- </sect1>
- <sect1>
-  <title><literal>linux</literal></title>
-  <para> The Linux kernel specific part. </para>
+  </sect2>
   <sect2>
-   <title>version</title>
-   <para> To require a specific Linux kernel version. </para>
-   <para> Example for _constraints file:</para>
+   <title><literal>sandbox</literal></title>
+   <para> Defines the sandbox which is used for the build. The "sandbox" is
+    the virtual environment in which the build takes place. Each worker is
+    configured with a fixed sandbox type. The possible values are:
+    <itemizedlist>
+     <listitem><para>chroot</para></listitem>
+     <listitem><para>xen</para></listitem>
+     <listitem><para>kvm</para></listitem>
+     <listitem><para>secure</para></listitem>
+    </itemizedlist>
+    (where "secure" means: "Any sandbox other than chroot"). Since chroot is
+    known to be insecure, it's possible that the OBS instance you are using
+    does not have any chroot build workers. In such a case, setting sandbox
+    to chroot would cause your builds to fail unconditionally due to a lack
+    of compliant workers.
+    Like other constraints, this one may also be defined as
+    a negative definition via the <literal>exclude=true</literal> attribute. </para>
+   <para> Example for <filename>_constraints</filename> file:</para>
     <screen>&lt;constraints&gt;
-  &lt;linux&gt;&lt;version&gt;
-    &lt;min&gt;3.0&lt;/min&gt;
-    &lt;max&gt;4.0&lt;/max&gt;
-  &lt;/version&gt;&lt;/linux&gt;
+   &lt;sandbox exclude="true"&gt;secure&lt;/sandbox&gt;
+&lt;/constraints&gt;</screen>
+    <para>Example for project configuration:</para>
+    <screen>Constraint: sandbox exclude="true" secure</screen>
+    <para>Example for RPM spec file or Dockerfile:</para>
+    <screen>#!BuildConstraint: sandbox exclude="true" secure</screen>
+  </sect2>
+  <sect2>
+   <title><literal>linux</literal></title>
+   <para> This is a category of constraints specific to the Linux kernel,
+    applied to the kernel running on the build worker. </para>
+   <sect3>
+    <title>version</title>
+    <para> To require a specific Linux kernel version or version range. </para>
+    <para> Example for the <literal>_constraints</literal> file:</para>
+    <screen>&lt;constraints&gt;
+   &lt;linux&gt;&lt;version&gt;
+     &lt;min&gt;3.0&lt;/min&gt;
+     &lt;max&gt;4.0&lt;/max&gt;
+   &lt;/version&gt;&lt;/linux&gt;
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
     <screen>Constraint: linux:version:min 3.0
 Constraint: linux:version:max 4.0</screen>
-   <para>Example for rpm spec file or Dockerfile:</para>
+    <para>Example for RPM spec file or Dockerfile:</para>
     <screen>#!BuildConstraint: linux:version:min 3.0
 #!BuildConstraint: linux:version:max 4.0</screen>
-   <sect3>
-    <title><literal>min</literal></title>
-    <para> Minimal kernel version. </para>
+    <sect4>
+     <title><literal>min</literal></title>
+     <para> Minimum kernel version. </para>
+    </sect4>
+    <sect4>
+     <title><literal>max</literal></title>
+     <para> Maximum kernel version. </para>
+    </sect4>
    </sect3>
    <sect3>
-    <title><literal>max</literal></title>
-    <para> Maximal kernel version. </para>
-   </sect3>
-  </sect2>
-  <sect2>
-   <title><literal>flavor</literal></title>
-   <para> A specific kernel flavor like default or smp (from kernel packages
-    kernel-default or kernel-smp). </para>
-   <para> Example for _constraints file:</para>
+    <title><literal>flavor</literal></title>
+    <para> A specific kernel flavor, such as default or smp (corresponding to
+     the kernel packages kernel-default and kernel-smp, respectively). </para>
+    <para> Example for <literal>_constraints</literal> file:</para>
     <screen>&lt;constraints&gt;
-  &lt;linux&gt;
-    &lt;flavor&gt;default&lt;/flavor&gt;
-  &lt;/linux&gt;
+    &lt;linux&gt;
+      &lt;flavor&gt;default&lt;/flavor&gt;
+    &lt;/linux&gt;
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
     <screen>Constraint: linux:flavor default</screen>
-   <para>Example for rpm spec file or Dockerfile:</para>
+    <para>Example for RPM spec file or Dockerfile:</para>
     <screen>#!BuildConstraint: linux:flavor default</screen>
+   </sect3>
   </sect2>
- </sect1>
- <sect1>
-  <title><literal>hardware</literal></title>
-  <para> To require hardware or build instance features. </para>
   <sect2>
-   <title><literal>cpu</literal></title>
-   <para> To require a specific CPU feature. </para>
+   <title><literal>hardware</literal></title>
+   <para> To specify that build workers must meet certain minimum hardware
+    specifications or possess certain hardware features. </para>
    <sect3>
-    <title><literal>flag</literal></title>
-    <para> CPU features which are provided by the hardware. On Linux they can
-     be found in /proc/cpuinfo. The flag element may be used multiple times to
-     require multiple CPU features. </para>
-    <para> Example for _constraints file:</para>
-     <screen>&lt;constraints&gt;
-  &lt;hardware&gt;&lt;cpu&gt;
-    &lt;flag&gt;mmx&lt;/flag&gt;
-    &lt;flag&gt;sse2&lt;/flag&gt;
-  &lt;/cpu&gt;&lt;/hardware&gt;
+    <title><literal>cpu</literal></title>
+    <para> To require a specific CPU feature. </para>
+    <sect4>
+     <title><literal>flag</literal></title>
+     <para> CPU features which are provided by the hardware. On Linux, these can
+      be found in <literal>/proc/cpuinfo</literal>. The flag element may be
+      used multiple times to require multiple CPU features. </para>
+     <para> Example for <literal>_constraints</literal> file:</para>
+      <screen>&lt;constraints&gt;
+   &lt;hardware&gt;&lt;cpu&gt;
+     &lt;flag&gt;mmx&lt;/flag&gt;
+     &lt;flag&gt;sse2&lt;/flag&gt;
+   &lt;/cpu&gt;&lt;/hardware&gt;
 &lt;/constraints&gt;</screen>
-     <para> Example for project configuration:</para>
-     <screen>Constraint: hardware:cpu:flag mmx
+      <para> Example for project configuration:</para>
+      <screen>Constraint: hardware:cpu:flag mmx
 Constraint: hardware:cpu:flag sse2</screen>
-   <para>Example for rpm spec file or Dockerfile:</para>
-     <screen>#!BuildConstraint: hardware:cpu:flag mmx
+      <para>Example for RPM spec file or Dockerfile:</para>
+      <screen>#!BuildConstraint: hardware:cpu:flag mmx
 #!BuildConstraint: hardware:cpu:flag sse2</screen>
-     <para>
-      <literal>EL0</literal> is a special flag that that can be used on
-      hardware that only supports level-0 exceptions, such as certain armv8l
-      systems.
-      This means that VMs or 32-bit kernels are not supported but userland is
-      supported.
-      This flag can be used to block builds on such hardware if no 64-bit
-      kernel is available for a project.
-     </para>
-     <para>Example for project configuration:</para>
-     <screen>Constraint: hardware:cpu:flag exclude=true EL0</screen>
-     <para>Example for rpm spec file or Dockerfile:</para>
-     <screen>#!BuildConstraint: hardware:cpu:flag exclude=true EL0</screen>
-     <para>
-      Additional flags are also reported for effective architecture level of
-      the cpu. This includes the following flags:
-      <itemizedlist>
-        <listitem><para>power7</para></listitem>
-        <listitem><para>power8</para></listitem>
-        <listitem><para>power9</para></listitem>
-        <listitem><para>x86-64-v2</para></listitem>
-        <listitem><para>x86-64-v3</para></listitem>
-        <listitem><para>x86-64-v4</para></listitem>
-      </itemizedlist>
-     </para>
+      <para><literal>EL0</literal> is a special flag that that can be used on
+       hardware that only supports level-0 exceptions, such as certain armv8l
+       systems. This means that VMs or 32-bit kernels are not supported but
+       userland is supported. This flag can be used to block builds on such
+       hardware if no 64-bit kernel is available for a project. </para>
+      <para>Example for project configuration:</para>
+      <screen>Constraint: hardware:cpu:flag exclude=true EL0</screen>
+      <para>Example for RPM spec file or Dockerfile:</para>
+      <screen>#!BuildConstraint: hardware:cpu:flag exclude=true EL0</screen>
+      <para>
+       Additional flags are also reported for effective architecture level of
+       the CPU. This includes the following flags:
+       <itemizedlist>
+         <listitem><para>power7</para></listitem>
+         <listitem><para>power8</para></listitem>
+         <listitem><para>power9</para></listitem>
+         <listitem><para>x86-64-v2</para></listitem>
+         <listitem><para>x86-64-v3</para></listitem>
+         <listitem><para>x86-64-v4</para></listitem>
+       </itemizedlist>
+      </para>
+    </sect4>
    </sect3>
-  </sect2>
-  <sect2>
-   <title><literal>processors</literal></title>
-   <para>To require a minimal number of processors provided by the VM.</para>
-   <para> Example for _constraints file:</para>
-    <screen>&lt;constraints&gt;
-  &lt;hardware&gt;
-    &lt;processors&gt;4&lt;/processors&gt;
-  &lt;/hardware&gt;
-&lt;/constraints&gt;</screen>
-    <para>Example for project configuration:</para>
-    <screen>Constraint: hardware:processors 4</screen>
-    <para>Example for rpm spec file or Dockerfile:</para>
-    <screen>#!BuildConstraint: hardware:processors 4</screen>
-  </sect2>
-  <sect2>
-   <title><literal>jobs</literal></title>
-   <para> To require a minimal number of pre-confiured parallel jobs for the build job. 
-          This limits the parallel wanted jobs for the build tooling, but is actually not
-          a hardware requirement.</para>
-   <para> Example for _constraints file:</para>
-    <screen>&lt;constraints&gt;
-  &lt;hardware&gt;
-    &lt;jobs&gt;4&lt;/jobs&gt;
-  &lt;/hardware&gt;
-&lt;/constraints&gt;</screen>
-    <para>Example for project configuration:</para>
-    <screen>Constraint: hardware:jobs 4</screen>
-    <para>Example for rpm spec file or Dockerfile:</para>
-    <screen>#!BuildConstraint: hardware:jobs 4</screen>
-  </sect2>
-  <sect2>
-   <title><literal>disk</literal></title>
-   <para> Hard disk specific. </para>
    <sect3>
-    <title><literal>size</literal></title>
-    <para> To require a minimal size of the disk. </para>
-    <para> Example for _constraints file:</para>
+    <title><literal>processors</literal></title>
+    <para>To specify a minimum number of processor cores, virtual or physical
+     (i.e., as reported by <literal>/proc/cpuinfo</literal>, provided by the build
+     worker and usable for the build</para>
+    <para> Example for <literal>_constraints</literal> file:</para>
      <screen>&lt;constraints&gt;
-  &lt;hardware&gt;
-    &lt;disk&gt;
-      &lt;size unit="G"&gt;4&lt;/size&gt;
-    &lt;/disk&gt;
-  &lt;/hardware&gt;
+   &lt;hardware&gt;
+     &lt;processors&gt;4&lt;/processors&gt;
+   &lt;/hardware&gt;
 &lt;/constraints&gt;</screen>
      <para>Example for project configuration:</para>
-     <screen>Constraint: hardware:disk:size unit=G 4</screen>
-     <para>Example for rpm spec file or Dockerfile:</para>
-     <screen>#!BuildConstraint: hardware:disk:size unit=G 4</screen>
+     <screen>Constraint: hardware:processors 4</screen>
+     <para>Example for RPM spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:processors 4</screen>
    </sect3>
-  </sect2>
-  <sect2>
-   <title><literal>memory</literal></title>
-   <para> Memory specific. </para>
    <sect3>
-    <title><literal>size</literal></title>
-    <para> To require a minimal memory size including swap space. </para>
-    <para> Example for _constraints file:</para>
+    <title><literal>jobs</literal></title>
+    <para> Each build worker is configured with a given default for the
+     <literal>JOBS</literal> environment variable, which expresses how many parallel
+     build processes the worker should be able to sustain. To require a minimal
+     number of pre-confiured parallel jobs for the build, use this qualifier.
+     </para>
+    <note><para>
+     This specifies the number of parallel jobs the build tooling should use, so
+     even though it is under <literal>hardware</literal> it is not actually a
+     hardware requirement.
+     </para></note>
+    <para> Example for <literal>_constraints</literal> file: </para>
      <screen>&lt;constraints&gt;
+   &lt;hardware&gt;
+     &lt;jobs&gt;4&lt;/jobs&gt;
+   &lt;/hardware&gt;
+&lt;/constraints&gt;</screen>
+     <para>Example for project configuration:</para>
+     <screen>Constraint: hardware:jobs 4</screen>
+     <para>Example for RPM spec file or Dockerfile:</para>
+     <screen>#!BuildConstraint: hardware:jobs 4</screen>
+   </sect3>
+   <sect3>
+    <title><literal>disk</literal></title>
+    <para> Hard disk specific constraints. </para>
+    <sect4>
+     <title><literal>size</literal></title>
+     <para> To specify a minimum amount of free disk space, below which a build
+      on the worker will not be attempted. </para>
+     <para> Example for <literal>_constraints</literal> file:</para>
+      <screen>&lt;constraints&gt;
   &lt;hardware&gt;
-    &lt;memory&gt;
-      &lt;size unit="M"&gt;1400&lt;/size&gt;
-    &lt;/memory&gt;
+     &lt;disk&gt;
+       &lt;size unit="G"&gt;4&lt;/size&gt;
+     &lt;/disk&gt;
   &lt;/hardware&gt;
 &lt;/constraints&gt;</screen>
-     <para> Example for project configuration:</para>
-     <screen>Constraint: hardware:memory:size unit=M 1400</screen>
-     <para>Example for rpm spec file or Dockerfile:</para>
-     <screen>#!BuildConstraint: hardware:memory:size unit=M 1400</screen>
+      <para>Example for project configuration:</para>
+      <screen>Constraint: hardware:disk:size unit=G 4</screen>
+      <para>Example for RPM spec file or Dockerfile:</para>
+      <screen>#!BuildConstraint: hardware:disk:size unit=G 4</screen>
+    </sect4>
    </sect3>
-  </sect2>
-  <sect2>
-   <title><literal>physicalmemory</literal></title>
-   <para> Memory specific. </para>
    <sect3>
-    <title><literal>size</literal></title>
-    <para> To require a minimal memory size. Swap space is not taken into
-     account here. </para>
-    <para> Example for _constraints file:</para>
-     <screen>&lt;constraints&gt;
-  &lt;hardware&gt;
-    &lt;physicalmemory&gt;
-      &lt;size unit=M&gt;1400&lt;/size&gt;
-    &lt;/physicalmemory&gt;
-  &lt;/hardware&gt;
+    <title><literal>memory</literal></title>
+    <para> To specify a minimum amount of RAM memory that the worker must be
+     equipped with. </para>
+    <sect4>
+     <title><literal>size</literal></title>
+     <para> To require a minimum memory size,
+      <emphasis>including swap space</emphasis>. </para>
+     <para> Example for <literal>_constraints</literal> file:</para>
+      <screen>&lt;constraints&gt;
+   &lt;hardware&gt;
+     &lt;memory&gt;
+       &lt;size unit="M"&gt;1400&lt;/size&gt;
+     &lt;/memory&gt;
+   &lt;/hardware&gt;
 &lt;/constraints&gt;</screen>
-     <para>Example for project configuration: </para>
-     <screen>Constraint: hardware:physicalmemory:size unit=M 1400</screen>
-     <para>Example for rpm spec file or Dockerfile:</para>
-     <screen>#!BuildConstraint: hardware:physicalmemory:size unit=M 1400</screen>
+      <para> Example for project configuration:</para>
+      <screen>Constraint: hardware:memory:size unit=M 1400</screen>
+      <para>Example for RPM spec file or Dockerfile:</para>
+      <screen>#!BuildConstraint: hardware:memory:size unit=M 1400</screen>
+    </sect4>
+   </sect3>
+   <sect3>
+    <title><literal>physicalmemory</literal></title>
+    <para> Memory specific. </para>
+    <sect4>
+     <title><literal>size</literal></title>
+     <para> To require a minimal memory size. Swap space is not taken into
+      account here. </para>
+     <para> Example for _constraints file:</para>
+      <screen>&lt;constraints&gt;
+   &lt;hardware&gt;
+     &lt;physicalmemory&gt;
+       &lt;size unit=M&gt;1400&lt;/size&gt;
+     &lt;/physicalmemory&gt;
+   &lt;/hardware&gt;
+&lt;/constraints&gt;</screen>
+      <para>Example for project configuration: </para>
+      <screen>Constraint: hardware:physicalmemory:size unit=M 1400</screen>
+      <para>Example for RPM spec file or Dockerfile:</para>
+      <screen>#!BuildConstraint: hardware:physicalmemory:size unit=M 1400</screen>
+    </sect4>
    </sect3>
   </sect2>
  </sect1>
- <sect1>
+ <sect1 xml:id="_constraint_handling">
   <title>Constraint Handling</title>
-  <para> The constraint handling depends on what is met by the restrictions.
-   The handling starts when there is no worker to fulfill the constraints. </para>
+  <para> What happens when someone sets a constraint so high, that the OBS
+   instance does not have even a single worker that meets it? What happens
+   when just a few workers satisfy all the constraints, but all of them are
+   busy building packages, or have been taken down for maintenance? This
+   section describes how the OBS handles these "low compliant worker"
+   situations. </para>
   <sect2>
-   <title>More than half of the workers satisfy the constraints</title>
-   <para> The job will just stay in state scheduled and no further notification
-    is set. </para>
+   <title>At least one compliant worker is available</title>
+   <para> After determining which build workers satisfy the defined
+    constraints for a given build, the scheduler checks if any of them are
+    available to start building. If at least one is available, the build
+    begins. The rest of this section describes the OBS's behavior when no
+    compliant build workers are free to start building a given package. </para>
   </sect2>
   <sect2>
-   <title>Less than Half of the Workers Satisfy the Constraints</title>
-   <para> The job will stay in state scheduled and the dispatch details are set
-    to tell the user that this job can take a long time to be built. This will
+   <title>More than half of existing workers satisfy the constraints</title>
+   <para> The build will stay in state "scheduled" until one of the compliant
+    workers becomes available. No further notification is set. </para>
+  </sect2>
+  <sect2>
+   <title>Less than half of existing workers satisfy the constraints</title>
+   <para> The build will stay in state scheduled until one of the compliant
+    workers becomes available. In addition, the dispatch details are set
+    to tell the user that this build might take a long time to complete. This will
     be shown in the Web UI on mouse over and the scheduled state will be
-    highlighted as well.</para>
+    highlighted as well. The notification looks like this:</para>
     <screen>waiting for 4 compliant workers (4 down)</screen> 
-   <para>The <command>(4
-     down)</command> means that 4 of the 4 compliant workers are down and that
-    someone should have a look. </para>
+   <para>In this case, all four compliant workers are down. The notification
+    helps the user understand why the build is not starting. </para>
   </sect2>
   <sect2>
-   <title>No Workers Satisfy the Constraints</title>
+   <title>No existing workers satisfy the constraints</title>
    <para> If no worker can handle the constraints defined by the package or
-    project the build job fails. There is also a hint in the build log what has
-    failed.</para>
+    project, the build fails. In such cases, the build log will mention why
+    the build failed: </para>
     <screen>package build was not possible:
 
 no compliant workers (constraints mismatch hint: hardware:processors sandbox)
@@ -282,13 +468,13 @@ Please adapt your constraints.</screen>
  </sect1>
  <sect1>
   <title>Checking Constraints with &osccmd;</title>
-  <para> You can check the constraints of a project / package with the osc
-   tool. You have to be in an osc working directory.</para>
+  <para> You can check the constraints of a project or package with the osc
+   tool. You have to be in an &osccmd; working directory.</para>
    
-   <screen><command>osc checkconstraints [OPTS] REPOSITORY ARCH CONSTRAINTSFILE</command></screen>
+   <screen><command>osc checkconstraints [OPTS] [REPOSITORY] [ARCH] [CONSTRAINTSFILE]</command></screen>
    <para>Either you give a repository and an arch or osc will check the constraints
    for all repository / arch pairs for the package. A few examples:</para>
-   <screen><command># osc checkconstraints</command>
+   <screen>&prompt.user;<command>osc checkconstraints</command>
 Repository                Arch                      Worker
 ----------                ----                      ------
 openSUSE_Leap_42.2        x86_64                    1
@@ -296,7 +482,7 @@ openSUSE_Leap_42.1        x86_64                    1</screen>
    <para>If no file is given it takes the local _constraints file. If this file does
    not exist or the --ignore-file switch is set only the project constraints
    are used.</para>
-   <screen><command># osc checkconstraints openSUSE_Leap_42.1 x86_64</command>
+   <screen>&prompt.user;<command>osc checkconstraints openSUSE_Leap_42.1 x86_64</command>
 Worker
 ------
 x86_64:worker:1
@@ -304,8 +490,9 @@ x86_64:worker:2</screen>
    <para>If a repository and an arch is given a list of compliant workers is
    returned. </para>
   <para> Another command to verify a worker and display the worker information
-   is osc workerinfo. </para>
-  <screen>&lt;worker hostarch="x86_64" registerserver="http://localhost:5252" workerid="worker:1"&gt;
+   is <literal>osc workerinfo</literal>. </para>
+  <screen>&prompt.user;<command>osc workerinfo x86_64:worker:1</command>
+&lt;worker hostarch="x86_64" registerserver="http://localhost:5252" workerid="worker:1"&gt;
   &lt;hostlabel&gt;MY_WORKER_LABEL_1&lt;/hostlabel&gt;
   &lt;sandbox&gt;chroot&lt;/sandbox&gt;
   &lt;linux&gt;
