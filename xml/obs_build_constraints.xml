@@ -201,31 +201,23 @@ Constraint: hardware:disk:size unit=M 4000
   </sect2>
   <sect2>
    <title><literal>sandbox</literal></title>
-   <para> Defines the sandbox which is used for the build. The "sandbox" is
-    the virtual environment in which the build takes place. Each worker is
-    configured with a fixed sandbox type. The possible values are:
-    <itemizedlist>
-     <listitem><para>chroot</para></listitem>
-     <listitem><para>xen</para></listitem>
-     <listitem><para>kvm</para></listitem>
-     <listitem><para>qemu</para></listitem>
-     <listitem><para>secure</para></listitem>
-    </itemizedlist>
-    (where "secure" means: "Any sandbox other than chroot"). Since chroot is
-    known to be insecure, it's possible that the OBS instance you are using
-    does not have any chroot build workers. In such a case, setting sandbox
-    to chroot would cause your builds to fail unconditionally due to a lack
-    of compliant workers.
-    Like other constraints, this one may also be defined as
-    a negative definition via the <literal>exclude=true</literal> attribute. </para>
+   <para> Defines the "sandbox" which is used for the build. The "sandbox" is
+    the virtual environment (on the worker) in which the build takes place.
+    Each worker is configured with a fixed sandbox type. The sandbox configuration
+    is typically done by the OBS administrator, and is technically implemented
+    as a build constraint (and hence is mentioned here) because it is a
+    mechanism for limiting which workers are selected to perform a given build.
+    </para>
+   <para> Since this is not a user-facing constraint, it should not be necessary
+    for users to specify it. </para>
    <para> Example for <filename>_constraints</filename> file:</para>
     <screen>&lt;constraints&gt;
-   &lt;sandbox exclude="true"&gt;secure&lt;/sandbox&gt;
+   &lt;sandbox exclude="true"&gt;kvm&lt;/sandbox&gt;
 &lt;/constraints&gt;</screen>
     <para>Example for project configuration:</para>
-    <screen>Constraint: sandbox exclude="true" secure</screen>
+    <screen>Constraint: sandbox exclude="true" kvm</screen>
     <para>Example for RPM spec file or Dockerfile:</para>
-    <screen>#!BuildConstraint: sandbox exclude="true" secure</screen>
+    <screen>#!BuildConstraint: sandbox exclude="true" kvm</screen>
   </sect2>
   <sect2>
    <title><literal>linux</literal></title>
