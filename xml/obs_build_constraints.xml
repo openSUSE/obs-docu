@@ -208,6 +208,7 @@ Constraint: hardware:disk:size unit=M 4000
      <listitem><para>chroot</para></listitem>
      <listitem><para>xen</para></listitem>
      <listitem><para>kvm</para></listitem>
+     <listitem><para>qemu</para></listitem>
      <listitem><para>secure</para></listitem>
     </itemizedlist>
     (where "secure" means: "Any sandbox other than chroot"). Since chroot is
