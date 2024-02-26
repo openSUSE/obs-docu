@@ -186,7 +186,7 @@
       <title>How To Moderate?</title>
       <para>
         As a moderator you can click on the yellow warning about reports, usually displayed close to the element.
-        There, you can read all the reports and make a <emphasis>Decision</emphasis>. Write the reason why you agree (Favor) or disagree (Cleared).
+        There, you can read all the reports and make a <xref linkend="obs.glos.moderation_decision"/>. Write the reason why you agree (Favor) or disagree (Cleared).
       </para>
 
       <figure>
