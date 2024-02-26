@@ -9,7 +9,7 @@
   xmlns:xlink="http://www.w3.org/1999/xlink" >
   <title>Moderation</title>
   <info/>
- 
+
   <para>As a platform where a lot of social interaction happens, OBS is not free of spam,
     harmful content or other outcomes of user misconduct.
     Therefore, OBS provides features which help any user report problematic content and help moderators to act accordingly.
@@ -242,12 +242,12 @@
         </itemizedlist>
       </para>
       <para>
-        Most of these actions are reversible. Read section <emphasis>Reverting Moderator's Actions</emphasis>.
+        Most of these actions are reversible. Read section <xref linkend="reverting_moderatos_actions"/>.
       </para>
     </sect2>
   </sect1>
 
-  <sect1>
+  <sect1 xml:id="reverting_moderatos_actions">
     <title>Reverting Moderator's Actions</title>
     <para>
       Most of these actions are reversible except for removing a comment.
@@ -266,7 +266,7 @@
     </para>
     <para>
       In case the moderator changes their mind, they can revert the actions they made.
-      Read section <emphasis>Reverting Moderator's Actions</emphasis>.
+      Read section <xref linkend="reverting_moderatos_actions"/>.
     </para>
 
     <figure>
@@ -295,3 +295,4 @@
       </figure>
   </sect1>
 </chapter>
+
