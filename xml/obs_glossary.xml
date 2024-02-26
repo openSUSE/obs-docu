@@ -293,6 +293,15 @@
    <glossseealso otherterm="obs.glos.rpm"/>
   </glossdef>
  </glossentry>
+ <glossentry xml:id="obs.glos.moderation_decision">
+  <glossterm>Decision</glossterm>
+  <glossdef>
+   <para>
+    Decision made by a moderator (<emphasis>Cleared</emphasis> or <emphasis>Favor</emphasis>) when they
+    receive a report of problematic content or user.
+   </para>
+  </glossdef>
+ </glossentry>
  <glossentry xml:id="obs.glos.description" condition="tbd">
   <glossterm>Description</glossterm>
   <glossdef>

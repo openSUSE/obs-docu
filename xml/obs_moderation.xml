@@ -1,0 +1,298 @@
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.moderation"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <title>Moderation</title>
+  <info/>
+
+  <para>As a platform where a lot of social interaction happens, OBS is not free of spam,
+    harmful content or other outcomes of user misconduct.
+    Therefore, OBS provides features which help any user report problematic content and help moderators to act accordingly.
+    Those features are described below, and they are helpful for admins, staff members, moderators and users.
+  </para>
+
+  <sect1>
+    <title>What Is Problematic Content for OBS?</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Spam
+        </para>
+      </listitem>
+          <listitem>
+        <para>
+          Scam
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Project or package with a forbidden license
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Illegal content
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Any other outcome of misconduct, according to our
+          <link xlink:href="https://build.opensuse.org/code_of_conduct">Code of Conduct</link>.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+
+  <sect1>
+    <title>Reporting Problematic Content</title>
+    <sect2>
+      <title>Who Can Report?</title>
+      <para>
+        Any kind of user can report problematic content in OBS.
+      </para>
+    </sect2>
+    <sect2>
+      <title>What Can Be Reported?</title>
+      <para>
+        This is the list of elements that can be reported:
+        <itemizedlist>
+          <listitem>
+            <para>
+              Comments
+            </para>
+          </listitem>
+              <listitem>
+            <para>
+              Projects
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Packages
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Requests
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Users
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </sect2>
+    <sect2>
+      <title>How To Report?</title>
+      <para>
+        You can find a <emphasis>Report</emphasis> action next to the comment, request or any of the elements mentioned above.
+        It is displayed as a button, a link or an item in the actions menu. Click on it and fill in the form.
+        You can simply choose one of the provided categories (Spam, Illegal Content, etc.) or write your reason. 
+      </para>
+
+      <figure>
+        <title>Report a Comment</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="report_button_comment.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <figure>
+        <title>Report a User</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="report_user.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        When reporting a comment, the form allows you to report the comment's author as well.
+        Which saves you from having to go to the user's profile page afterwards.
+      </para>
+
+      <figure>
+        <title>Report Comment and Author</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="comment_report.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        Once the element is reported, moderators will act accordingly.
+        The following sections describe how they should proceed.
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1>
+    <title>Acting as a Moderator</title>
+    <para>
+      Moderators should inspect the elements reported by the users
+      to decide whether the reports are fair or not, and act accordingly.
+      They can dismiss the report, hide comments or remove the problematic elements, including users.
+    </para>
+    <sect2>
+      <title>Who Is a Moderator?</title>
+      <para>
+        Admins and staff members are the default moderators in any OBS instance unless they delegate the role to another user.
+        Going through <emphasis>Configuration > Manage Users</emphasis>, admins can assign the <emphasis>Moderator</emphasis> role to someone else.
+        From that moment on, only the users with the <emphasis>Moderator</emphasis> role will be involved in the moderation process.
+      </para>
+    </sect2>
+
+    <sect2>
+      <title>How Do Moderators Know About the Reports?</title>
+      <para>
+        Next to any problematic element, they can see a yellow text warning about the reports.
+      </para>
+
+      <figure>
+        <title>Reports Warning</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="reports_warning.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+        <para>
+        However, it is convenient that moderators subscribe to moderation-related events,
+        so they can receive notifications of all the reports and other actions related to the moderation process.
+      </para>
+
+      <figure>
+        <title>Moderation-related Notifications</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="moderation-related_notifications.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </sect2>
+
+    <sect2>
+      <title>How To Moderate?</title>
+      <para>
+        As a moderator you can click on the yellow warning about reports, usually displayed close to the element.
+        There, you can read all the reports and make a <xref linkend="obs.glos.moderation_decision"/>. Write the reason why you agree (Favor) or disagree (Cleared).
+      </para>
+
+      <figure>
+        <title>Decision Form</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="decision_form.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        You can read all the editions of a comment to better judge if the user misbehaved at some point.
+        Use the arrow next to the comment date for that.
+      </para>
+
+      <figure>
+        <title>Comment Edition History</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="comment_history.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>
+        Once you have taken a favored decision, you or an admin can:
+        <itemizedlist>
+          <listitem>
+            <para>
+              hide the comment: click on the Moderate button next to it to replace the original text with a standard message;
+            </para>
+
+            <figure>
+              <title>Moderate a Comment</title>
+              <mediaobject>
+                <imageobject>
+                <imagedata fileref="moderate_comment.png" width="800"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </listitem>
+          <listitem>
+            <para>
+              revoke the request;
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              remove the comment, project, package or user.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        Most of these actions are reversible. Read section <xref linkend="reverting_moderatos_actions"/>.
+      </para>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="reverting_moderatos_actions">
+    <title>Reverting Moderator's Actions</title>
+    <para>
+      Most of these actions are reversible except for removing a comment.
+      You can recover a user, project and package.
+      You can click on the Permit button to show the hidden comment again.
+      However, the comments will be permanently removed.
+    </para>
+  </sect1>
+
+  <sect1>
+    <title>User Appeal</title>
+    <para>
+      After a moderator makes a decision based on a report, the affected user is notified.
+      The user can appeal and justify why their content is not harmful.
+      There is an <emphasis>Appeal</emphasis> action in the notification.
+    </para>
+    <para>
+      In case the moderator changes their mind, they can revert the actions they made.
+      Read section <xref linkend="reverting_moderatos_actions"/>.
+    </para>
+
+    <figure>
+      <title>Appeal to Decision</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="appeal_to_decision.png" width="800"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+  <sect1>
+    <title>Canned Responses For Moderators</title>
+    <para>
+      Handling reports can be redundant, therefore moderators can customize their own set of canned responses to reuse them for their decisions.
+    </para>
+
+    <figure>
+        <title>Canned Responses</title>
+        <mediaobject>
+          <imageobject>
+          <imagedata fileref="canned_responses.png" width="800"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+  </sect1>
+</chapter>
+
