@@ -110,12 +110,12 @@ our $publishedhook = {
 OBSHOME="/srv/obs"
 SRC_REPO_DIR="$OBSHOME/repos"
 LOGFILE="$OBSHOME/log/reposync.log"
-$DST_REPO_DIR="/srv/repo-mirror"
+DST_REPO_DIR="/srv/repo-mirror"
 # Global substitution! To handle strings like Foo:Bar:testing - two
 #+double-colons!
 PRJ_PATH=${1//:/:\/}
 PATH_TO_REPO=$2
-rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
+rsync -a --log-file=$LOGFILE --mkpath $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
    <para>For testing purposes, it can be invoked as follows:</para>
    <screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh Product/SLES11-SP1 \
     /srv/obs/repos/Product/SLE11-SP1</screen>
@@ -132,7 +132,7 @@ DST_REPO_DIR=$1
 PRJ_PATH=${2//:/:\/}
 PATH_TO_REPO=$3
 mkdir -p $DST_REPO_DIR/$PRJ_PATH
-rsync -a --log-file=$LOGFILE $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
+rsync -a --log-file=$LOGFILE --mkpath $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</screen>
    <para>For testing purposes, it can be invoked as follows:</para>
    <screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh \
     /srv/www/public_mirror/Product/SLES11-SP1 \
