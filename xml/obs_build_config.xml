@@ -7,16 +7,16 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Project Configuration</title>
+ <title>Build Configuration</title>
  <info/>
 
  <sect1 xml:id="sec.prjconfig.about">
-  <title>About the Project Configuration</title>
+  <title>About the Build Configuration</title>
   <para>
-   Each project has a <firstterm>project configuration</firstterm> which
+   Each project has a <firstterm>build configuration</firstterm> which
    defines the setup of the build system and the publish behaviour. Usually
-   it is empty and you do not need to change anything. However, when you
-   change it, it can be used for the following reasons:
+   the distribution base is defining it and you do not need to change anything.
+   However, when you change it, it can be used for the following reasons:
   </para>
   <remark>toms 2017-08-18: Add more reasons why it is needed</remark>
   <itemizedlist>
@@ -32,14 +32,17 @@
    </listitem>
    <listitem>
     <para>
-     Decide which package is installed during build if there are circular
-     dependencies.
+     Decide which package is installed during build.
     </para>
    </listitem>
    <listitem>
     <para>
-     Handle user decisions like package providing the same or special
-     macros, packages, or flags in the build environment.
+     Resolve dependency problems like when there are multiple providers for a dependency:
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Handle user decisions like macro settings
     </para>
    </listitem>
    <listitem>
@@ -49,7 +52,14 @@
    </listitem>
   </itemizedlist>
   <para>
-   To view the project configuration, use one of the following methods
+   The build configuration can be stored in multiple places. Inside of OBS it
+   can be stored only once per project. However, it is possible to define
+   exceptions via if-conditions, for example per repository name or architecture.
+   At build time, the configuration get merged according to the repository
+   path configuration. This resulting configuration can be requested using
+   <command>osc buildconfig</command>.
+   To view or edit the build configuration in projects, use one of the following
+   methods
   </para>
   <itemizedlist>
    <listitem>
@@ -58,8 +68,6 @@
      <para>Use <command>osc meta prjconf</command> in your working directory
      of your project.</para>
     </formalpara>
-    <remark>toms 2017-08-22: FIXME what's the difference between
-     "osc meta prjconf PROJECT" and "osc buildconfig PROJECT PACKAGE"?</remark>
    </listitem>
    <listitem>
     <formalpara>
@@ -69,16 +77,15 @@
    </listitem>
    <listitem>
     <formalpara>
-     <title>From the Local Build System</title>
-     <para>Open one of the files in <filename>/usr/lib/build/configs/*.conf</filename>
-     to see one of the default configurations that is being used.</para>
+     <title>With the &obsa; API</title>
+     <para>Reachable via the <uri>/source/<replaceable>PROJECT</replaceable>/_config</uri> path.</para>
     </formalpara>
-    <remark>toms 2017-08-22: should that be mentioned?</remark>
    </listitem>
    <listitem>
     <formalpara>
-     <title>With the &obsa; API</title>
-     <para>Reachable via the <uri>/source/<replaceable>PROJECT</replaceable>/_config</uri> path.</para>
+    <title>Via git/scmsync</title>
+     <para>Store a file called '_config' in a git repository used via scmsync mechanic
+     for a project.</para>
     </formalpara>
    </listitem>
   </itemizedlist>
@@ -94,16 +101,24 @@
    configuration. All lines have the form:</para>
   <screen>keyword: arguments</screen>
   <para>
+   Use %if or %ifarch if the line should only be used in some condition.
+  </para>
+  <para>
+   Many keywords like `Require` or `BuildFlags` do not replace existing
+   data, but add to it. This means you can have multiple `BuildFlags`
+   lines instead of having one line with all the flags you need.
+  </para>
+  <para>
+   An exclamation mark `!` can be prepended to the argument to remove 
+   an existing entry from the data.
+  </para>
+  <para>
    In the following list, the placeholder <replaceable>PACKAGES</replaceable>
-   indicates <remark>toms 2017-08-18: a list of package names, separated
-   by colons(?) or spaces(?)</remark> a package base name.
+   indicates a package base name. Multiple packages needs to be seperated with
+   spaces.
    For example, as a package name you need the base name like
    <package>gcc</package> but not the full name as in
    <package>gcc-1.2.3.i386.rpm</package>.
-   <remark>toms 2017-08-18: What does the following sentence mean?
-   "&lt;PACKAGES&gt; mean binary package provides, but not the full file
-   name. For example gcc, but not gcc-1.2.3.i386.rpm. Provides of a package can
-   not be used either."</remark>
   </para>
 
   <para>
@@ -111,16 +126,16 @@
    configuration:
   </para>
   <variablelist xml:id="vl.prjconfig.keywords">
-   <title>Available Keywords in Project Configuration</title>
+   <title>Available Keywords in Build Configuration</title>
+   <!-- AssetsURL is not mentioned here as it has no effect in OBS -->
    <varlistentry>
     <term><parameter>BinaryType: <replaceable>TYPE</replaceable></parameter> (OBS 2.4 or later)</term>
     <listitem>
      <para>
-      Binary type. This is the format of the files which will be the
-      result of the build jobs. This gets usually set depending on the build
-      recipe type. In some situations, for example a &kiwi; build job result
-      gets converted into an rpm, it can be used to overwrite it. Possible
-      values are: rpm, deb or none.
+      The binary type is the format of the packages that make up the build
+      environment. This is usually set automatically depending on the recipe
+      type and preinstall package list.
+      Currently understood values are: `rpm`, `deb`, and `arch`.
      </para>
      <para>
       Sets the binary format used to set up the build
@@ -134,21 +149,18 @@
    <varlistentry>
     <term><parameter>BuildEngine: <replaceable>ENGINE</replaceable></parameter></term>
     <listitem>
-     <para> Use an alternative build engine. This is still chained inside of
-      the build script for security reasons. Alternatives are mock (for Fedora
-      and Red Hat) and debootstrap (for Debian). This will avoid differences in
-      the build environment setup, but it will also have an effect on speed and
-      reduced features. It should only be used when you want to emulate the
-      distribution build. debbuild engine will build deb files out of a spec
-      file description. It can be used by the following definition inside of
-      the project build config:</para>
-     <screen>Repotype: debian
-Type: spec
+     <para>
+       Use an alternative build engine. Examples are `mock` (for Fedora and
+       Red Hat) and `debootstrap` (for Debian), `debbuild` (to build debian
+       packages with spec files), `podman` (container builds).
+       
+       Here is an example config for `debbuild`:
+	</para>
+     <screen>Type: spec
+Repotype: debian
 Binarytype: deb
 BuildEngine: debbuild
-Support: pax
-Support: debbuild
-Keep: debbuild</screen>
+Support: pax debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
@@ -156,9 +168,7 @@ Keep: debbuild</screen>
     <listitem>
      <para>
       The <parameter>BuildFlags</parameter> keyword defines flags for the
-      build process. The following values for FLAG are usable. All flags with
-      a leading colon (<literal>:</literal>) require an additional parameter
-      directly following them.</para>
+      build process. The following values for FLAG are usable.</para>
      <variablelist>
       <varlistentry>
        <term><parameter>allowrootforbuild</parameter></term>
@@ -170,7 +180,7 @@ Keep: debbuild</screen>
         </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>vmfstype:</parameter></term>
+       <term><parameter>vmfstype:TYPE</parameter></term>
        <listitem>
         <para>
          Defines a specific file system when building inside of a VM.
@@ -182,82 +192,55 @@ Keep: debbuild</screen>
         </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>vmfsoptions:</parameter></term>
+       <term><parameter>vmfsoptions:OPTION</parameter></term>
        <listitem>
         <para>
-         There is also an option to disable directory indexing for ext2, ext3,
-         and ext4 file systems.
-         This makes file ordering inside of directories reproducible but may
-         have a negative performance impact.
-         To apply this, specify
+          Sets options for file system creation. Currently only the `nodirindex`
+          option is supported, which disables directory indexing for ext file
+          systems. This makes file ordering inside of directories reproducible
+          but may have a negative performance impact.
          <literal>vmfsoptions:nodirindex</literal>
         </para>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>kiwiprofile:</parameter></term>
+       <term><parameter>kiwiprofile:PROFILE</parameter></term>
        <listitem>
-        <para>builds the selected profile in &kiwi; appliance builds. </para>
+        <para>Selects the profiles to build in kiwi appliance builds.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>logidlelimit:</parameter></term>
+       <term><parameter>logidlelimit:SECONDS</parameter></term>
        <listitem>
-               <para>Build jobs which don't create any output get aborted after some time. This flag can be used
-                     to modify the limit. Specify the seconds behind flag. </para>
+         <para>Build jobs which do not create any output are aborted after some time.
+               This flag can be used to modify the limit.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>excludebuild:</parameter></term>
+       <term><parameter>excludebuild:PACKAGE</parameter></term>
        <listitem>
-               <para>Exclude a package from building. _multibuild flavors can be specified via package:flavor syntax.</para>
+	 <para>Exclude a package from building. If a package builds multiple flavors,
+	       the corresponding flavor can be specified via the `package:flavor` syntax.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>onlybuild:</parameter></term>
+       <term><parameter>onlybuild:PACKAGE</parameter></term>
        <listitem>
-               <para>DANGER: this may remove many build results when introduced the first time!
-                       It can be used to maintain a whitelist of packages to be built. All other packages
-                       will turn to excluded state.</para>
+         <para>DANGER: this may remove many build results when introduced the first time!
+               It can be used to maintain a whitelist of packages to be built. All other packages
+               will turn to excluded state and get removed if available.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>useccache:</parameter></term>
+       <term><parameter>useccache:PACKAGE</parameter></term>
        <listitem>
         <para>
-         Configure usage of <command>ccache</command> when building packages
-         that match the value of this parameter.
-         The <package>ccache</package> package will automatically be installed
-         and configured. The directory <filename>/.ccache/</filename> will be
-         configured as cache directory.
-         To configure <command>ccache</command>, the file
-         <filename>/.ccache/ccache.conf</filename> can be modified as part of
-         the build process by the <envar>$BUILD_USER</envar> environment
-         variable.
-        </para>
-        <para>
-         In some cases, there is no archive for the current package, such as
-         when the package was newly branched or when binaries were deleted.
-         In these cases, &obs; will check whether there is a package of the
-         same name built for the same architecture within one of the
-         repositories configured in the project's meta configuration.
-         If so, the archive of that package will be used.
-         The repositories will be searched in the order they are configured
-         in the meta configuration, starting from the top.
-        </para>
-        <para>
-         An alternative way to enable caching based on build dependencies is to
-         add "--enable-cache" as dependency, for example via a Substitute rule:
-         <command>
-           Substitute: gcc-c++ gcc-c++ --enable-ccache
-         </command>
-         This will always enable ccache when a direct build depdency to gcc-c++
-         is required.
+         Configure usage of ccache when building the specified package.
         </para>
        </listitem>
       </varlistentry>
       <varlistentry>
-       <term><parameter>ccachetype:</parameter></term>
+       <term><parameter>ccachetype:TYPE</parameter></term>
        <listitem>
         <para>
           Defines the ccache implementation, possible values are: ccache, sccache
@@ -333,12 +316,40 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
+    <term><parameter>Conflict: <replaceable>PACKAGE</replaceable></parameter></term>
+    <listitem>
+     <para>Specify that a package must not be installed in the build environment.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><parameter>Conflict: <replaceable>PACKAGE_A</replaceable>:<replaceable>PACKAGE_B</replaceable></parameter></term>
+    <listitem>
+     <para>Specify a synthetic conflict between two given packages.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
     <term><parameter>Constraint: <replaceable>SELECTOR</replaceable> <replaceable>STRING</replaceable></parameter> (OBS 2.4 or later)</term>
     <listitem>
      <para>
       Define build constraints for build jobs. The selector is a
       colon-separated list which gets a string assigned. See the build job
       constraints page for details.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><parameter>DistMacro: <replaceable>NAME</replaceable> <replaceable>VALUE</replaceable></parameter></term>
+    <listitem>
+     <para>
+      Define a macro to be used when parsing the spec files of packages.
+      This is similar to using a `Macros:` section with the difference
+      that the macro will not be written to the .rpmmacros file. It should
+      therefore be used for macros that come from packages of the
+      distributions.
+      
+      Note that the lines of the project config are macro expanded while
+      parsing, so you have to use `%%` for a literal percent sign in
+      the value.
      </para>
     </listitem>
    </varlistentry>
@@ -352,52 +363,77 @@ Keep: debbuild</screen>
        <varlistentry>
         <term><parameter>unorderedimagerepos</parameter> (OBS 2.10 or later)</term>
         <listitem>
-                <para>The priority of repositories defined in an image build is usually important. This is to avoid switching repositories
-                      when the same package is available in multiple repositories. However, it might be wanted to ignore that and just
-                      pick the highest version. This can be achieved by defining this flag</para>
+           <para>The priority of repositories defined in an image build is usually important. This is to avoid switching repositories
+           when the same package is available in multiple repositories. However, it might be wanted to ignore that and just
+           pick the highest version. This can be achieved by defining this flag</para>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><parameter>preinstallexpand</parameter></term>
         <listitem>
-                <para>EXPERIMENTAL: Preinstall also all dependencies of a preinstalled package.
-                      This may increase the amount of preinstalled packages a lot.</para>
+           <para>Preinstall also all dependencies of a preinstalled package.
+                 This may increase the amount of preinstalled packages a lot.</para>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><parameter>module:NAME-STREAM</parameter> (OBS 2.10.7 or later)</term>
         <listitem>
-                <para>Enable Red Hat-specific module support in repo md repositories. By default, modules are not used, but
-                      content can be made available by specifying the module name. To remove a module,
-                      add an exclamation mark (<literal>!</literal>) as prefix.</para>
+	<para>Enable Red Hat-specific module support in repo md repositories. By default, 
+	      no module is used, so every module needed needs to be
+              specified in the configuration. To remove a module,
+              add an exclamation mark (<literal>!</literal>) as prefix.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>dorecommends</parameter></term>
+        <listitem>
+          <para>Try to install all recommended packages. Packages with dependency conflicts
+                are ignored.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>dosupplements</parameter></term>
+        <listitem>
+          <para>Try to install all supplemented packages. Packages with dependency conflicts
+                are ignored. This has the downside that new packages can cause different
+                dependency expansion, so this should only be enabled for special use
+                cases.  </para>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><parameter>ignoreconflicts</parameter></term>
         <listitem>
-                <para>Ignore defined conflicts of packages. By default these are reported as unresolvable.
-                      This switch may be useful when packages get not installed in the build environment,
-                      but getting processed afterwards. That tool, eg. some image building tool, must be
-                      able to handle the situation (eg. by just using a subset of the packages).
-                      </para>
+          <para>Ignore defined conflicts of packages. By default these are reported as unresolvable.
+                This switch may be useful when packages get not installed in the build environment,
+                but getting processed afterwards. That tool, eg. some image building tool, must be
+                able to handle the situation (eg. by just using a subset of the packages).
+                </para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>kiwi-nobasepackages</parameter></term>
+        <listitem>
+          <para>Do not put the require/support/preinstall packages in the repositories
+                offered to the kiwi build tool. This should have been the default.
+           </para>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><parameter>keepfilerequires</parameter></term>
         <listitem>
-                <para>Dependencies on files are only fulfilled if matching FileProvides are specified
-                      in the project configuration. If those are missing, the dependency results in
-                      an "unresolvable" state for directly required files or in silent breaking of the
-                      dependency for indirectly required files. With this option, all file requires are
-                      honoured by default and lead to "unresolvable" if there are no matching FileProvides defined.
-                 </para>
+          <para>Dependencies on files are only fulfilled if matching FileProvides are specified
+                in the project configuration. If those are missing, the dependency results in
+                an "unresolvable" state for directly required files or in silent breaking of the
+                dependency for indirectly required files. With this option, all file requires are
+                honoured by default and lead to "unresolvable" if there are no matching FileProvides defined.
+           </para>
         </listitem>
        </varlistentry>
       </variablelist>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>ExportFilter: <replaceable>REGEX</replaceable> <replaceable>ARCH</replaceable></parameter></term>
+    <term><parameter>ExportFilter: <replaceable>REGEX</replaceable> <replaceable>ARCHITECTURES</replaceable></parameter></term>
     <listitem>
      <para>
       The export filter can be used to export build results from one
@@ -432,22 +468,22 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Ignore: <replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>Ignore: <replaceable>PACKAGE_OR_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
       Ignore can be used to break dependencies. This can be useful to
-      reduce the number of needed packages or to break cyclic dependencies. Be
-      careful with this feature, as breaking dependencies can have surprising
-      results.
+      reduce the number of needed packages or to break cyclic dependencies. If a
+      package is specified, all capabilities provided by the package are
+      ignored.
      </para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Ignore: <replaceable>PACKAGE_A</replaceable>:<replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>Ignore: <replaceable>ORIGIN_PACKAGE</replaceable>:<replaceable>PACKAGE_OR_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
-      It is possible to define the ignore only for one package. This
-      package must be listed first with a colon.
+       Ignore a dependency coming from ORIGIN_PACKAGE. See the previous section
+       for more details.
      </para>
     </listitem>
    </varlistentry>
@@ -455,11 +491,10 @@ Keep: debbuild</screen>
     <term><parameter>Keep: <replaceable>PACKAGES</replaceable></parameter></term>
     <listitem>
      <para>
-      To eliminate build cycles the to-be-built package is not installed
+      To eliminate build cycles the to-be-built package are not installed
       by default, even when it is required. Keep can be used to overwrite this
-      behavior. It is usually needed for packages like <systemitem
-       >make</systemitem> that are used to
-      build itself. Preinstalled packages are automatically kept, as the
+      behavior. It is usually needed for packages like <systemitem>make</systemitem>
+      that are used to build itself. Preinstalled packages are automatically kept, as the
       package installation program needs to work all the time.
      </para>
     </listitem>
@@ -468,9 +503,10 @@ Keep: debbuild</screen>
     <term><parameter>OptFlags: <replaceable>TARGET_ARCH</replaceable> <replaceable>FLAGS</replaceable></parameter> (RPM only)</term>
     <listitem>
      <para>
-      Optflags exports compiler flags to the build. They will only have an
-      effect when the spec file is using $RPM_OPT_FLAGS. The target
-      architecture may be * to affect all architectures.
+       Optflags exports compiler flags to the build by adding lines to rpm's
+       <command>rpmrc</command> file. They will only have an effect when the spec file is using
+       <command>$RPM_OPT_FLAGS</command> or <command>%{optflags}</command>. The target architecture may be set
+       to <command>*</command> to affect all architectures.
      </para>
     </listitem>
    </varlistentry>
@@ -490,10 +526,11 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Patterntype: <replaceable>TYPES</replaceable></parameter></term>
+    <term><parameter>Patterntype: <replaceable>TYPE</replaceable></parameter></term>
     <listitem>
      <para>
-      Defines the pattern format. Valid values are: none (default), ymp, comps.
+       Defines the pattern format. Valid values are: none (default), ymp, comps.
+       Multiple types can be specified.
      </para>
     </listitem>
    </varlistentry>
@@ -512,28 +549,40 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Prefer: <replaceable>PACKAGE_A</replaceable>:<replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>Prefer: <replaceable>ORIGIN_PACKAGE</replaceable>:<replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
-      It is possible to define the prefer only when one package is creating
-      the choice error. This package must be listed first with a colon.
+      It is possible to define the prefer only when the dependency comes
+      from the specified originating package.
      </para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Preinstall: <replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>Preinstall: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
-      Are needed to run the package installation program. These packages get
-      unpacked before the VM gets started. Included scripts
-      are <emphasis>not</emphasis> executed during this phase. However, these
-      packages will get installed again inside of the VM including script
-      execution.
+       This is used to specify packages needed to run the package installation
+       program. These packages are unpacked so that the native installation
+       program can be used to install the build environment.
+       Included scripts are <emphasis>not</emphasis> executed during this phase. However, these
+       packages will be re-installed later on including script execution.
      </para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>PublishFlag: <replaceable>FLAG</replaceable></parameter></term>
+    <term><parameter>PublishFilter: <replaceable>REGEXP</replaceable> [<replaceable>REGEXP</replaceable>]</parameter></term>
+    <listitem>
+     <para>
+      Limits the published binary packages in public repositories. Packages
+      that match any <replaceable>REGEXP</replaceable> will not be put into
+      the exported repository. There can be only one line of
+      PublishFilter for historic reasons. However, multiple
+      <replaceable>REGEXP</replaceable> can be defined.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><parameter>PublishFlags: <replaceable>FLAG</replaceable></parameter></term>
     <listitem>
      <para>
       Flags which modify the behaviour during repository generation.
@@ -572,6 +621,17 @@ Keep: debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
+        <term><parameter>singleexport</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+           <para>
+             If multiple packages contain different versions of a rpm package, only
+             publish the one from the first package. If the project is of the type
+             maintenance_release, this will be the package with the highest
+             incident number.
+           </para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
         <term><parameter>withsbom</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Enables publishing of SBOM files (SPDX or CycloneDX format) (<literal>.cdx.json</literal> or <literal>.spdx.json</literal> files). Please note that the building of SBOM files usually needs to get enabled via a BuildFlags switch as well.</para>
@@ -594,14 +654,10 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>PublishFilter: <replaceable>REGEXP</replaceable> [<replaceable>REGEXP</replaceable>]</parameter></term>
+    <term><parameter>RegistryURL: <replaceable>URL</replaceable></parameter></term>
     <listitem>
      <para>
-      Limits the published binary packages in public repositories. Packages
-      that match any <replaceable>REGEXP</replaceable> will not be put into
-      the exported repository. There can be only one line of
-      PublishFilter for historic reasons. However, multiple
-      <replaceable>REGEXP</replaceable> can be defined.
+       Define a url for the downloading of containers.
      </para>
     </listitem>
    </varlistentry>
@@ -620,17 +676,26 @@ Keep: debbuild</screen>
      </para>
      <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
     <para>
-      (the repository format may even be omitted to use the default type).
       This results in a debuginfo package repository being created in parallel to the
       package repository.</para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Required: <replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>RepoURL: <replaceable>[TYPE@]URL</replaceable></parameter></term>
     <listitem>
      <para>
-      Contain one or more packages that always get installed for package
-      builds. A change in one of these packages triggers a new build.
+       Define a url for the downloading of repository packages. Supported types
+       are currently `arch`, `debian`, `hdlist2`, `rpmmd`, `suse`. If the
+       type is not specified, it is guessed from the build type.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><parameter>Required: <replaceable>PACKAGE</replaceable></parameter></term>
+    <listitem>
+     <para>
+      Specify a package that always is installed for package builds.
+      A change in one of these packages triggers a new build.
      </para>
     </listitem>
    </varlistentry>
@@ -645,22 +710,22 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Substitute: <replaceable>PACKAGE_A</replaceable> <replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>Substitute: <replaceable>OLD_DEPENDENCY</replaceable> <replaceable>NEW_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
-      It is possible to replace to BuildRequires with other packages.
-      This will have only an effect on directly BuildRequired packages, not on
-      indirectly required packages.
+       It is possible to replace BuildRequires dependencies with other
+       dependencies. This will have only an effect on directly BuildRequired
+       packages, not on indirectly required packages.
      </para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Support: <replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>Support: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
-      Contain one or more packages which also get installed for package
-      builds, but a change in one of the packages does not trigger
-      an automatic rebuild.
+       Specify a package that always is installed for package builds.
+       Unlike Required:, a change in one of these packages does not trigger an
+       automatic rebuild.
      </para>
      <para>
       This is useful for packages that most likely do not influence the build
@@ -669,7 +734,7 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Target: <replaceable>TARGET_ARCH</replaceable></parameter> (RPM only)</term>
+    <term><parameter>Target: <replaceable>TARGET_ARCH</replaceable></parameter></term>
     <listitem>
      <para>Defines the target architecture. This can be used to build for i686
       on i586 schedulers for example. Please note that on rpm based systems just the architecture needs
@@ -677,7 +742,7 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>Target: <replaceable>GNU_TRIPLET</replaceable></parameter> (Debian only)</term>
+    <term><parameter>Target: <replaceable>GNU_TRIPLET</replaceable></parameter></term>
     <listitem>
      <para>Defines the target architecture. This can be used to build for i686
       on i586 schedulers for example. Please note that on rpm based systems just the architecture needs
@@ -699,7 +764,7 @@ Keep: debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><parameter>VMInstall: <replaceable>PACKAGES</replaceable></parameter></term>
+    <term><parameter>VMInstall: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
       Like <parameter>Preinstall</parameter>, but these packages get only
@@ -711,20 +776,57 @@ Keep: debbuild</screen>
   </variablelist>
  </sect1>
 
- <sect1 xml:id="sec.prjconfig.macros">
-  <title>Macro Section</title>
-  <remark>toms 2017-08-18: TODO: Extend this section from https://en.opensuse.org/openSUSE:Build_Service_prjconf#Macros</remark>
+ <sect1 xml:id="sec.prjconfig.ccache">
+  <title>Building with ccache or sccache</title>
   <para>
-   Macros are defined at the end of the project configuration.
-   The macro section is only used on RPM builds.
-   <!--
-    The content gets exported to be used by <command>rpmbuild</command>
-   command during the build.
-   It can be used to export a define using "%key value" lines.
-   -->
+    The usage of ccache or sccache can be enabled for each package by
+    seting the useccache:PACKAGE build flag.
   </para>
   <para>
-   The project configuration knows two possible definitions:
+    The ccache package will automatically be installed and configured.
+    The directory /.ccache/ will be configured as cache
+    directory. To configure ccache, the file /.ccache/ccache.conf can be
+    modified as part of the build process by the $BUILD_USER environment
+    variable.
+  </para>
+  <para>
+    In some cases, there is no archive for the current package, such as when
+    the package was newly branched or when binaries were deleted. In these
+    cases, the system will check whether there is a package of the same name
+    built for the same architecture within one of the repositories
+    configured in the project's meta configuration. If so, the archive of
+    that package will be used. The repositories will be searched in the
+    order they are configured in the meta configuration, starting from the
+    top.
+  </para>
+  <para>
+    An alternative way to enable caching based on build dependencies is to
+    add "--enable-cache" as dependency, for example via a Substitute rule:
+    <screen><command>
+        Substitute: gcc-c++ gcc-c++ --enable-ccache
+    </command></screen>
+    This will always enable ccache when a direct build depdency to gcc-c++
+    is required.
+  </para>
+  <para>
+    It is also possible to set the type, eg:
+    <screen><command>
+        Substitute: cargo cargo --enable-ccache=sccache
+    </command></screen>
+  </para>
+ </sect1>
+
+ <sect1 xml:id="sec.prjconfig.macros">
+  <title>Macro Definitions for the build configuration</title>
+  <para>
+    You can use rpm macro definitions in the project config to improve
+    configurability.
+    Macros are defined with %define or %global. They are only known
+    in the project configuration but not available when the build is
+    done.
+  </para>
+  <para>
+   For example:
   </para>
   <itemizedlist>
    <listitem>
@@ -751,17 +853,14 @@ Keep: debbuild</screen>
   </itemizedlist>
 
   <sect2 xml:id="sec.prjconfig.macros.define">
-   <title>Macros Used in Project Configuration Only</title>
+   <title>Macros Used in Build Configuration Only</title>
    <para>
-    Inside the project configuration use <systemitem class="macro">%define</systemitem>
-    to define your macros. You can use all the features that RPM supports
-    except you cannot define functions or call external commands.
+     To specify macros for the building process, use the Macros:
+     keyword. All lines after Macros: up to the end of the config
+     or to a :Macros line are used when parsing the spec file and
+     also made available to the build by copying them to the .rpmmacros
+     file in the build root.
    </para>
-   <remark>toms 2017-08-23: the example in https://en.opensuse.org/openSUSE:Build_Service_prjconf#Macros
-   is misleading. On the one side the Wiki says %define macros are only used
-   inside the prj config, but on the other side it is used in the spec file.
-   Confusing!
-   </remark>
    <para>
     For example, you can define
    </para>
