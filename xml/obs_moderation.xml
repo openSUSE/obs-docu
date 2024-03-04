@@ -17,35 +17,38 @@
   </para>
 
   <sect1>
-    <title>What Is Problematic Content for OBS?</title>
-    <itemizedlist>
-      <listitem>
-        <para>
-          Spam
-        </para>
-      </listitem>
-          <listitem>
-        <para>
-          Scam
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Project or package with a forbidden license
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Illegal content
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Any other outcome of misconduct, according to our
-          <link xlink:href="https://build.opensuse.org/code_of_conduct">Code of Conduct</link>.
-        </para>
-      </listitem>
-    </itemizedlist>
+    <title>Code of Conduct</title>
+    <para>
+      The Code of Conduct is the starting point of the moderation process.
+      What is considered problematic content in your Build Service instance?
+      Maybe spam, scams, or projects with a forbidden license?
+      Both moderators and users should read the document and understand what is right or wrong to behave properly.
+      The document is usually displayed on the footer of the Build Service instance.
+    </para>
+
+    <figure>
+      <title>Code of Conduct</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="code_of_conduct.png" width="800"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      Admins are responsible for making the Conde of Conduct visible to everyone.
+      They should add the text on <emphasis>Configuration > Code of Conduct</emphasis> to make it appear on the footer.
+      It allows markdown.
+    </para>
+
+    <figure>
+      <title>Configuration Code of Conduct</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="configuration_code_of_conduct.png" width="800"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
   </sect1>
 
   <sect1>
@@ -242,12 +245,12 @@
         </itemizedlist>
       </para>
       <para>
-        Most of these actions are reversible. Read section <xref linkend="reverting_moderatos_actions"/>.
+        Most of these actions are reversible. Read section <xref linkend="reverting_moderators_actions"/>.
       </para>
     </sect2>
   </sect1>
 
-  <sect1 xml:id="reverting_moderatos_actions">
+  <sect1 xml:id="reverting_moderators_actions">
     <title>Reverting Moderator's Actions</title>
     <para>
       Most of these actions are reversible except for removing a comment.
@@ -266,7 +269,7 @@
     </para>
     <para>
       In case the moderator changes their mind, they can revert the actions they made.
-      Read section <xref linkend="reverting_moderatos_actions"/>.
+      Read section <xref linkend="reverting_moderators_actions"/>.
     </para>
 
     <figure>
