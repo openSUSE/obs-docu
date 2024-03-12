@@ -12,21 +12,22 @@
  <para> Build constraints provide a way for the user to specify build worker
   parameters that the Build Service will use to decide which build workers
   are "qualified" to undertake a given build. </para>
- <para> The primary use case for build constraints is to avoid build failures
-  that can happen when an underpowered build worker attempts a build. Build
-  constraints can be used for other purposes, too. For example, since build
-  constraints provide tools for limiting builds to certain build workers, they
-  can be used to implement site-specific hardware use policies. </para>
+ <para> They are intended to be used for defining known, hard requirements
+  for successfully building a given package (for example, disk space, memory,
+  or certain CPU functionality). </para>
  <sect1>
   <title>Build Resource Usage and Statistics</title>
   <para> Ideally, the build constraints should be set to the minimum values
-   that enable a build to succeed. In the real world, we do not always
-   have a precise idea of what the minimum values are for all the different
-   build worker parameters that can be controlled using OBS build constraints.
-   That need not deter us from setting build constraints, however. It is not
-   necessary to wait for a build failure before setting minimum memory and disk
-   space constraints, for example, because the OBS can give us reasonable values
-   for memory and disk space based on a successful build. </para>
+   that enable a build to succeed, because any higher setting than the minimum
+   might unnecessarily reduce the number of build workers available to build
+   the package. </para>
+  <para> Now, in the real world, we do not always have a precise idea of what
+   the minimum values are for all the different build worker parameters that
+   can be controlled using OBS build constraints.  That need not deter us from
+   setting build constraints, however. It is not necessary to wait for a build
+   failure before setting minimum memory and disk space constraints, for example,
+   because the OBS can give us reasonable values for memory and disk space
+   based on a successful build. </para>
   <para> Each successful build produces a file called <literal>_statistics</literal>
    which can be examined to get details of the resources our build consumed. We
    can then use this information to set appropriate values for the relevant build
@@ -66,9 +67,9 @@
    given build worker must meet in order to fulfill the constraint. But there
    are some qualifiers, such as <literal>hostlabel</literal>, that take a simple
    string value.</para>
-  <para> In the simplest cases (e.g. <literal>hostlabel</literal> qualifier)
-   the qualifier is just a string. In more complicated cases, the qualifier can
-   include subqualifiers and be modified by attributes. For example: </para>
+  <para> In the simplest cases, the qualifier is just a string. In more
+   complicated cases, the qualifier can include subqualifiers and be modified
+   by attributes. For example: </para>
   <screen>hardware:disk:size unit=G</screen>
   <para> The string <literal>hardware:disk:size</literal> in this example means
    "size, a subqualifier of disk, which is itself a subqualifier of hardware",
@@ -112,6 +113,10 @@ Constraint: hardware:cpu:flag power8
    <screen>%if "%_repository" == "images"
 Constraint: hardware:disk:size unit=M 4000
 %endif</screen>
+  <important>
+    <para> Constraints set in project configuration affect not only the
+     project itself, but also all projects that build against it.</para>
+     </important>
    <para> For a full treatment of constraint syntax, see
     <xref linkend="_constraint_syntax"/>. </para>
   </sect2>
@@ -166,13 +171,17 @@ Constraint: hardware:disk:size unit=M 4000
     express minimum values for the various parameters, below which builds
     are likely to fail. If you set a constraint too high, you risk reducing the
     pool of compliant build workers down to a very low number, or even to zero.
-    See <xref linkend="_constraint_handling"/> for a discussion of how the OBS
-    handles these cases. It's also important to understand that constraints are
-    by default applied to build workers regardless of architecture, but you may
-    only be interested in certain architectures and not in others. To get arch-
-    specific information on which workers satisfy your constraints, see
-    <xref linkend="_constraint_checking_with_osc"/>
-   </para></important>
+    (A low number of compliant build workers means your build may not start for
+    a long time, and no compliant workers at all will cause the build to fail.
+    See <xref linkend="_constraint_handling"/> for details.)
+    </para></important>
+   <important><para>
+    By default, constraints applied to build workers regardless of
+    architecture. However, you may only be interested in certain architectures
+    and not in others. See <xref linkend="_constraint_checking_with_osc"/>
+    for how to get architecture-specific information on which workers satisfy
+    your constraints.
+    </para></important>
   </sect2>
  </sect1>
  <sect1 xml:id="_constraint_syntax">
@@ -182,14 +191,16 @@ Constraint: hardware:disk:size unit=M 4000
   <sect2>
    <title><literal>hostlabel</literal></title>
    <para> The "hostlabel" qualifier is any string which can be assigned to
-    build workers when starting the <literal>bs_worker</literal> process. It can be
-    used to restrict a build to specific workers, for example to run benchmarks
-    in a reproducible way. This constraint can also be defined as a negative
-    definition using the <literal>exclude=true</literal> attribute. However,
-    keep in mind that <literal>hostlabel</literal> settings are not portable,
-    since the always specific to a given OBS instance and should therefore only
-    be used as a last resort in situations that cannot be addressed by any of
-    the other qualifiers. </para>
+    build workers when starting the <literal>bs_worker</literal> process. Since
+    its intended use is to restrict a build to specific workers, it should only
+    be used after consultation with OBS administrators who have detailed
+    knowledge of the build farm, and ideally as a negative definition, using the
+    <literal>exclude=true</literal> attribute. Even then, keep in mind that
+    <literal>hostlabel</literal> settings are not portable, since the always
+    specific to a given OBS instance and should therefore only be used as a last
+    resort in situations that cannot be addressed by any of the other qualifiers.
+    </para>
+   <para> An example use case is to run benchmarks in a reproducible way.</para>
    <para> Example for <literal>_constraints</literal> file:</para>
     <screen>&lt;constraints exclude="false"&gt;
    &lt;hostlabel&gt;benchmark_runner&lt;/hostlabel&gt;
@@ -202,14 +213,11 @@ Constraint: hardware:disk:size unit=M 4000
   <sect2>
    <title><literal>sandbox</literal></title>
    <para> Defines the "sandbox" which is used for the build. The "sandbox" is
-    the virtual environment (on the worker) in which the build takes place.
-    Each worker is configured with a fixed sandbox type. The sandbox configuration
-    is typically done by the OBS administrator, and is technically implemented
-    as a build constraint (and hence is mentioned here) because it is a
-    mechanism for limiting which workers are selected to perform a given build.
-    </para>
-   <para> Since this is not a user-facing constraint, it should not be necessary
-    for users to specify it. </para>
+    the virtual environment in which the build takes place: each build worker
+    is configured with a fixed sandbox type. </para>
+   <para> The configuration of this build constraint is typically left to
+    OBS administrators, and there is usually no reason for a project or package
+    maintainer to set it. </para>
    <para> Example for <filename>_constraints</filename> file:</para>
     <screen>&lt;constraints&gt;
    &lt;sandbox exclude="true"&gt;kvm&lt;/sandbox&gt;
@@ -442,12 +450,13 @@ Constraint: hardware:cpu:flag sse2</screen>
    <title>Less than half of existing workers satisfy the constraints</title>
    <para> The build will stay in state scheduled until one of the compliant
     workers becomes available. In addition, the dispatch details are set
-    to tell the user that this build might take a long time to complete. This will
-    be shown in the Web UI on mouse over and the scheduled state will be
-    highlighted as well. The notification looks like this:</para>
+    to tell the user that this build might take a long time to complete.
+    The notification looks like this:</para>
     <screen>waiting for 4 compliant workers (4 down)</screen> 
    <para>In this case, all four compliant workers are down. The notification
-    helps the user understand why the build is not starting. </para>
+    helps the user understand why the build is not starting. The dispatch
+    details can also be retrieved using the OBS API or, e.g., using the command
+    <literal>osc results -v</literal>).</para>
   </sect2>
   <sect2>
    <title>No existing workers satisfy the constraints</title>
