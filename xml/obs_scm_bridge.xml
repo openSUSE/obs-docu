@@ -20,21 +20,21 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.introduction">
       <title>Introduction</title>
 
-      <para>The SCM bridge allows to setup single package or entire project sources to be stored and
-            maintained in any trusted SCM repositories. 
-            However, the only supported SCM is currently git.</para>
+      <para>The SCM bridge allows the sources of a single package or an entire project
+            to be stored and maintained in any trusted SCM repositories.
+            However, git is currently the only supported SCM system.</para>
 
-      <para>This allows to run the manage all packaging relevant source changes in an external SCM repository using the
-      native tooling if the SCM (eg. git). It is recommended to have this SCM server on the same trust level as the OBS
+      <para>This allows to manage all packaging-relevant source changes in an external SCM repository using the
+      native tooling if the SCM (e.g. git). It is recommended to have this SCM server on the same trust level as the OBS
       instance as it becomes the authoritative source. 
       However, any SCM server reachable via network could be used.</para>
 
-      <para>osc can still be used to checkout sources. This will create a scm repository, so any modification needs to be
-      done using the native scm tooling (eg. git). osc can still be used for local building and checking server
+      <para>osc can still be used to checkout sources. This will create an SCM repository, so any modification needs to be
+      done using the native SCM tooling (e.g. git). osc can still be used for local building and checking server
       side build results.</para>
 
       <para>Be aware that any source modification mechanics, submit requests or link behaviour may work
-      differently or not all. For example you can not use automatic package source merging via _link files anymore.
+      differently or not at all. For example you can not use automatic package source merging via _link files anymore.
       This means also that workflows inside of OBS are not working anymore or are limited. A submit or release
       request would still work with a scmsync (source control management system sync) source,
       but the user would manually need to specify the target always.
@@ -47,34 +47,34 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
       <title>Setup a package using the scm bridge</title>
 
-      <para>The setup is purely done in package meta by defining the scm url inside of the scmsync tag:</para>
+      <para>The setup is purely done in package meta by defining the SCM url inside of the scmsync tag:</para>
 
       <screen>&lt;scmsync&gt;https://gitlab.com/some/repository&lt;/scmsync&gt;</screen>
 
       <para>The repository is cloned including all subdirectories and submodules.
-            However the build descriptions need to be available on top level.</para>
+            However the build descriptions need to be placed in the top-level directory.</para>
 
-      <para>Large binary files may be store using git LFS or by referencing external build assets,
+      <para>Large binary files may be stored using git LFS or by referencing external build assets,
             using asset management. These assets will get downloaded and verified as well. The advantage is
-            that this information can also be using to build SBOM informations. Have a look in 
+            that this information can also be used to compile Software Bills of Materials (SBOMs). Have a look in 
             <link xlink:href="http://opensuse.github.io/obs-build/pbuild.html#_remote_assets">the pbuild
 	    documentation</link> for further details on this. </para>
 
-      <para>Another typical scenario is to have an own git repository owned by the package maintainer where
-      a build descriptions and distribution specific files are store. The sources from the upstream
+      <para>In another typical scenario, a package maintainer owns a git repository where
+      a build descriptions and distribution specific files are stored. The sources from the upstream
       project may be added via a git submodule. However, for many build types like rpm builds it is recommended
       to build a tar ball at buildtime for the source rpm. This can be achieved with buildtime source services.
       </para>
     </sect2>
 
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.project">
-      <title>Setup an entire project using the scm bridge</title>
+      <title>Setup an entire project using the SCM bridge</title>
 
       <para>An entire project can be setup by defining the scmsync tag in project meta data. Every top level
             subdirectory of the scm repository is considered as a package.</para>
 
       <para>Large projects may use git submodules for each package. This avoids the need to
-            clone the entire project for modifications on single packages.</para>
+            clone the entire project to modify a single packages.</para>
 
       <para>The build configuration part can get stored as '_config' file in the top level directory.</para>
     </sect2>
@@ -83,7 +83,7 @@
       <title>Implementation and Limitations</title>
 
       <para>The sources are currently cloned for the OBS source server to allow OBS to process them. This
-            is to be considered as an internal implementation detail and may change in future.</para>
+            is to be considered an internal implementation detail and may change in future.</para>
       <para>
        <itemizedlist>
         <listitem>
@@ -96,23 +96,23 @@
           <para>Git LFS files: are included by default. They can be excluded by adding a lfs=0 CGI parameter to the URL.</para>
         </listitem>
         <listitem>
-          <para>Using just a sub directory of the git repository can be done by adding a subdir=DIRECTORY CGI parameter to the URL.</para>
+          <para>Using just a subdirectory of the git repository can be done by adding a subdir=DIRECTORY CGI parameter to the URL.</para>
         </listitem>
         <listitem>
           <para>Architecture specific remote assets can be selected by adding a arch=ARCH CGI parameter to the URL.</para>
         </listitem>
        </itemizedlist>
-       As example, this would like this for the subdirectory case:
+       As an example, for the subdirectory case the URL would look like this:
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?subdir=MY_SUBDIRECTORY&lt;/scmsync&gt;</screen>
       </para>
 
       <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.revision">
         <title>Using a specific revision, tag or branch</title>
 
-        <para>The url can define a revision, tag or branch via an url fragment. This means the url can get extended by a
+        <para>The URL can define a revision, tag or branch via an URL fragment. This means the URL can get extended by a
               hash character and the revision, tag or branch.
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository#MY_REVISION&lt;/scmsync&gt;</screen>
-              This allows to setup multiple projects building for different branches. It is possible to use
+              This allows to set up multiple projects building for different branches. It is possible to use
              branches for implementing CI workflows. For example a submission test building just a subset, a clean build
              and a final reviewed build.
         </para>
@@ -122,16 +122,16 @@
         <title>Converting to a project git</title>
 	<para>A project git repository is mostly the same as any project for the pbuild tool. The
 	   <screen># osc create-pbuild-config</screen>
-        command is creating the _config file for a specific repository. This file is used by OBS as well as build
-	configuration (aka prjconf). The additional _pbuild file is the pendant to the project meta and is not yet
-	honored by OBS, but it can be part of the git tree anyway for pbuild users.
+        command creates the _config and _pbuild files for a given repository and architecture. The _config file is used by OBS as well as by the build
+	configuration (prjconf). The additional _pbuild file is analogous to the OBS project meta, but is not yet
+	honored by OBS. Still, it can be included in the git tree for pbuild users.
         </para>
       </sect3>
 
       <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.fork">
         <title>Forking a scmsync package</title>
-	<para>The obs server allows to create a cloned project with another package using a specified
-	scm repository. This can be used by tooling to create forked test builds for merge requests.
+	<para>The OBS server allows to create a cloned project with another package using a specified
+	SCM repository. This can be used by tooling to create forked test builds for merge requests.
 	The api POST route for this is
 	<screen>/source/PROJECT/PACKAGE?cmd=fork&amp;scmsync=NEW_SCM_URL</screen>
 	<!-- osc will provide functionality to create a git fork and an OBS package fork afterwards -->
@@ -142,9 +142,9 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.update_notifications">
       <title>SCM Source Updates</title>
 
-      <para>The OBS instance need to get notified on any change in the SCM server. This can be either achieved 
-      by single configurations for each git repository as documented in the <xref linkend="sec.obs.sserv.token_usage"/> documentation.
-      An alternative way is to configure it global. This requires admin permissions on the git hosting side
+      <para>The OBS instance need to get notified on any change in the SCM server. There are two ways to achieve this.
+      One way is via single configurations for each git repository as documented in the <xref linkend="sec.obs.sserv.token_usage"/> documentation.
+      An alternative way is to configure it globally. This requires admin permissions on the git hosting side
       and another bridge implementation. The advantage is that any used repository will be synced automatically just
       by referencing it via the scmsync meta tag.
       </para>
