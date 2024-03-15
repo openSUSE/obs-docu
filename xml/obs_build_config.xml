@@ -47,7 +47,7 @@
    </listitem>
    <listitem>
     <para>
-     Modify publish behaviour, eg. define metadata or filter binaries.
+     Modify publish behaviour, e.g. define metadata or filter binaries.
     </para>
    </listitem>
   </itemizedlist>
@@ -55,8 +55,10 @@
    The build configuration can be stored in multiple places. Inside of OBS it
    can be stored only once per project. However, it is possible to define
    exceptions via if-conditions, for example per repository name or architecture.
-   At build time, the configuration get merged according to the repository
-   path configuration. This resulting configuration can be requested using
+   At the project level, the build configuration is sometimes referred to
+   as the "project config", or "prjconf" for short. At build time, the configuration
+   gets merged according to the repository path configuration defined in the project
+   metadata. This resulting configuration can be requested using
    <command>osc buildconfig</command>.
    To view or edit the build configuration in projects, use one of the following
    methods
@@ -84,7 +86,7 @@
    <listitem>
     <formalpara>
     <title>Via git/scmsync</title>
-     <para>Store a file called '_config' in a git repository used via scmsync mechanic
+     <para>Store a file called '_config' in a git repository used via the scmsync mechanism
      for a project.</para>
     </formalpara>
    </listitem>
@@ -94,17 +96,18 @@
  <sect1 xml:id="sec.prjconfig.syntax">
   <title>Configuration File Syntax</title>
   <para>
-   The syntax is basically the same than in RPM spec files.
-   However, it is independent of the used packaging format.
-   The project configuration is parsed by &obsa;.
+   The syntax is basically the same as in RPM spec files.
+   However, it is independent of the packaging format used.
+   The build configuration (prjconf) is parsed by &obsa;.
    This means, you can use RPM features like macros or conditions in the
-   configuration. All lines have the form:</para>
+   configuration. All lines (except conditionals) have the form:</para>
   <screen>keyword: arguments</screen>
   <para>
-   Use %if or %ifarch if the line should only be used in some condition.
+   Use the conditionals (%if or %ifarch) if a line should only be used in some
+   condition.
   </para>
   <para>
-   Many keywords like `Require` or `BuildFlags` do not replace existing
+   Many keywords, like `Require` or `BuildFlags`, do not replace existing
    data, but add to it. This means you can have multiple `BuildFlags`
    lines instead of having one line with all the flags you need.
   </para>
@@ -114,16 +117,16 @@
   </para>
   <para>
    In the following list, the placeholder <replaceable>PACKAGES</replaceable>
-   indicates a package base name. Multiple packages needs to be seperated with
-   spaces.
+   indicates a package base name (or names). When specifying multiple packages,
+   separate their base names with spaces.
    For example, as a package name you need the base name like
    <package>gcc</package> but not the full name as in
    <package>gcc-1.2.3.i386.rpm</package>.
   </para>
 
   <para>
-   The following list contains a list of allowed keywords in the project
-   configuration:
+   The following list contains a list of allowed keywords in the build
+   configuration (prjconf):
   </para>
   <variablelist xml:id="vl.prjconfig.keywords">
    <title>Available Keywords in Build Configuration</title>
@@ -405,8 +408,8 @@ Support: pax debbuild</screen>
         <listitem>
           <para>Ignore defined conflicts of packages. By default these are reported as unresolvable.
                 This switch may be useful when packages get not installed in the build environment,
-                but getting processed afterwards. That tool, eg. some image building tool, must be
-                able to handle the situation (eg. by just using a subset of the packages).
+                but getting processed afterwards. That tool, e.g. some image building tool, must be
+                able to handle the situation (e.g. by just using a subset of the packages).
                 </para>
         </listitem>
        </varlistentry>
@@ -422,7 +425,7 @@ Support: pax debbuild</screen>
         <term><parameter>keepfilerequires</parameter></term>
         <listitem>
           <para>Dependencies on files are only fulfilled if matching FileProvides are specified
-                in the project configuration. If those are missing, the dependency results in
+                in the build configuration (prjconf). If those are missing, the dependency results in
                 an "unresolvable" state for directly required files or in silent breaking of the
                 dependency for indirectly required files. With this option, all file requires are
                 honoured by default and lead to "unresolvable" if there are no matching FileProvides defined.
@@ -817,34 +820,29 @@ Support: pax debbuild</screen>
  </sect1>
 
  <sect1 xml:id="sec.prjconfig.macros">
-  <title>Macro Definitions for the build configuration</title>
+  <title>Macro Definitions in the Build Configuration</title>
   <para>
-    You can use rpm macro definitions in the project config to improve
-    configurability.
-    Macros are defined with %define or %global. They are only known
-    in the project configuration but not available when the build is
-    done.
-  </para>
-  <para>
-   For example:
+    You can use rpm macro definitions in the build configuration (prjconf) to improve
+    configurability. There are two types of macros that can be defined in the build
+    configuration:
   </para>
   <itemizedlist>
    <listitem>
     <formalpara>
      <title>%define Macro Definitions</title>
      <para>
-      Starting with a <systemitem class="macro">%define</systemitem> line and
-      are used in the project configuration only. These definitions are
+      Starting with a <systemitem class="macro">%define</systemitem> line
+      are used in the build configuration only. These definitions are
       <emphasis>not</emphasis> available inside the build root.
      </para>
     </formalpara>
    </listitem>
    <listitem>
     <formalpara>
-     <title>Other Macro Definitions</title>
+     <title>Macros: Macro Definitions</title>
      <para>
-      Starting after the <systemitem class="macro">Macros:</systemitem> line
-      and are exported into the <filename>.rpmmacros</filename> file of the
+      Macros defined after a <systemitem class="macro">Macros:</systemitem> line
+      are exported into the <filename>.rpmmacros</filename> file of the
       build root. As such, these macro definitions can be used in a spec
       file.
      </para>
@@ -853,21 +851,31 @@ Support: pax debbuild</screen>
   </itemizedlist>
 
   <sect2 xml:id="sec.prjconfig.macros.define">
-   <title>Macros Used in Build Configuration Only</title>
+   <title>Macros for the Build Configuration Only</title>
    <para>
-     To specify macros for the building process, use the Macros:
-     keyword. All lines after Macros: up to the end of the config
-     or to a :Macros line are used when parsing the spec file and
-     also made available to the build by copying them to the .rpmmacros
-     file in the build root.
+     To specify macros for the building process, use the %define
+     keyword.
    </para>
    <para>
-    For example, you can define
+    For example, if you put this line in the prjconf
    </para>
    <screen>%define _with_pulseaudio 1</screen>
+   <para>
+    then the macro %_with_pulseaudio will expand to 1 only inside
+    the build configuration.
+   </para>
   </sect2>
   <sect2 xml:id="sec.prjconfig.macros.macrosection">
    <title>Macros Used in Spec Files Only</title>
+   <para>
+    To define the values of macros used in spec files, `%define` is <emphasis
+    role="bold">not</emphasis> used. For this use case, either enclose the macro
+    definitions between "Macros:"/":Macros" lines, or place them at the end of the
+    prjconf file. All lines after a line containing the directive "Macros:" up
+    to the end of the config, or up to a :Macros line, are used when parsing
+    spec files and also made available to the build by copying them to the
+    .rpmmacros file in the build root.
+   </para>
    <para>
     The macro definition in the project configuration is located at the end
     and has the following structure:
