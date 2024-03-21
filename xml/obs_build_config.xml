@@ -613,13 +613,24 @@ Support: pax debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
+        <term><parameter>archsync</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+	<para>Publish all architectures at the same time. This means that the publisher is waiting
+              until the last architecture has finished building.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
         <term><parameter>nofailedpackages</parameter> (OBS 2.11 or later)</term>
         <listitem>
            <para>
             Block publishing if any build result was failed, broken, or unresolvable.
-            This is evaluated individually for each architecture.
             That means, packages can be published for an architecture on which it builds,
             even if a package fails to build on another architecture.
+           </para>
+	   <para>
+	    This is by default evaluated individually for each architecture. It can be
+	    combined with the archsync flag when publishing should be blocked also when a failure
+	    exists on any architecture.
            </para>
         </listitem>
        </varlistentry>
