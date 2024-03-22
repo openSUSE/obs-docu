@@ -840,22 +840,49 @@ Support: pax debbuild</screen>
   <itemizedlist>
    <listitem>
     <formalpara>
-     <title>%define Macro Definitions</title>
-     <para>
-      Starting with a <systemitem class="macro">%define</systemitem> line
-      are used in the build configuration only. These definitions are
-      <emphasis>not</emphasis> available inside the build root.
-     </para>
-    </formalpara>
-   </listitem>
-   <listitem>
-    <formalpara>
      <title>Macros: Macro Definitions</title>
      <para>
       Macros defined after a <systemitem class="macro">Macros:</systemitem> line
       are exported into the <filename>.rpmmacros</filename> file of the
       build root. As such, these macro definitions can be used in a spec
       file.
+
+      The section may be closed via a <systemitem class="macro">:Macros</systemitem>
+      line. This is esp. needed when it is inside of any %if-%endif statement to
+      avoid parse errors.
+      The Macros section is always verbatim, that means any condition to activate it
+      must be outside of the <systemitem class="macro">Macros:</systemitem>  tags.
+
+      Macros defined in this section are used by &obs; for build dependency resolution
+      and are also available at build time. Any definition here is also overwriting
+      defintions provided by any packages.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>DistMacro</title>
+     <para>
+       The DistMacro can be used to define a macro for build dependency resolution.
+       It is intended to be used when a distribution defines a relevant macros inside
+       of any of their package. These macros are hidden by default to the &obs; dependency
+       resolver. Use this directive to make it known to &obs;. 
+
+       Unlike Macros: it won't overwrite any existing and possibly changed definition at build time.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%define Macro Definitions</title>
+     <para>
+      Starting with a <systemitem class="macro">%define</systemitem> line
+      are used during the build configuration parsing only. These definitions are
+      <emphasis>not</emphasis> available inside the build root or during parsing
+      the recipies.
+
+      Typical usecases are macros inside of %if statemenets inside of the build
+      configuration or macros in any Support, Require or Substitute line.
      </para>
     </formalpara>
    </listitem>
