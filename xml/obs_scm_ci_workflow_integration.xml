@@ -89,7 +89,7 @@
           </listitem>
 
           <listitem>
-            <para>Gitea does not support scopes for access tokens</para>
+            <para>Gitea: repo</para>
           </listitem>
         </itemizedlist>
 
