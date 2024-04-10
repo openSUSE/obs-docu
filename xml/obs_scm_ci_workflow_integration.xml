@@ -794,6 +794,9 @@ rebuild_master:
 
           <para>The status is either <emphasis>disable</emphasis> or <emphasis>enable</emphasis>.</para>
 
+          <para>Take into consideration, that if the <emphasis>set_flags</emphasis> step doesn't define a flag specifically, a flag which had been set
+          previously will preserve its value.</para>
+
           <para>So with the configuration file provided below and a <emphasis>pull request event</emphasis>, builds of the
           <emphasis>home:Admin:$MY_SCM_ORG:$MY_SCM_PROJECT:PR-$MY_PR_NUMBER/ctris</emphasis> package will be disabled for the
           <emphasis>openSUSE_Tumbleweed</emphasis> repository and <emphasis>x86_64</emphasis> architecture. For a <emphasis>push event</emphasis>,
