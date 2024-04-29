@@ -286,6 +286,16 @@ Support: pax debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
+        <term><parameter>nodisturl</parameter></term>
+       <listitem>
+        <para>
+	  Skip the embedding of DISTURL tag into binaries. Please note that this might
+	  also break other features like binary tracking. So never do this for maintained
+	  binaries.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
         <term><parameter>sbom:FORMAT</parameter></term>
        <listitem>
         <para>
