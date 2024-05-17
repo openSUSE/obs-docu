@@ -358,7 +358,6 @@
    and are either part of the package sources or used project-wide.
    Project-wide services are stored under the <uri>_project</uri> package
    in file <filename>_service</filename>.
-   package
   </para>
   <para> The <filename>_service</filename> file contains a list of services
    which get called in the listed order. Each service can define a list of
