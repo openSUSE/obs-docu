@@ -25,7 +25,7 @@
             However, git is currently the only supported SCM system.</para>
 
       <para>This allows to manage all packaging-relevant source changes in an external SCM repository using the
-      native tooling if the SCM (e.g. git). It is recommended to have this SCM server on the same trust level as the OBS
+      native tooling of the SCM (e.g. git). It is recommended to have this SCM server on the same trust level as the OBS
       instance as it becomes the authoritative source. 
       However, any SCM server reachable via network could be used.</para>
 
@@ -37,7 +37,7 @@
       differently or not at all. For example you can not use automatic package source merging via _link files anymore.
       This means also that workflows inside of OBS are not working anymore or are limited. A submit or release
       request would still work with a scmsync (source control management system sync) source,
-      but the user would manually need to specify the target always.
+      but the user would always need to manually specify the target.
       Functionality for when an entire project is managed via scmsync is even more limited.</para>
 
       <para>Furthermore it is recommended to configure a global notification hook in the SCM server to
@@ -47,7 +47,7 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
       <title>Setup a package using the scm bridge</title>
 
-      <para>The setup is purely done in package meta by defining the SCM url inside of the scmsync tag:</para>
+      <para>The setup is purely done in package meta by defining the SCM URL inside of the scmsync tag:</para>
 
       <screen>&lt;scmsync&gt;https://gitlab.com/some/repository&lt;/scmsync&gt;</screen>
 
@@ -61,7 +61,7 @@
 	    documentation</link> for further details on this. </para>
 
       <para>In another typical scenario, a package maintainer owns a git repository where
-      a build descriptions and distribution specific files are stored. The sources from the upstream
+      a build description and distribution specific files are stored. The sources from the upstream
       project may be added via a git submodule. However, for many build types like rpm builds it is recommended
       to build a tar ball at buildtime for the source rpm. This can be achieved with buildtime source services.
       </para>
@@ -74,7 +74,7 @@
             subdirectory of the scm repository is considered as a package.</para>
 
       <para>Large projects may use git submodules for each package. This avoids the need to
-            clone the entire project to modify a single packages.</para>
+            clone the entire project to modify a single package.</para>
 
       <para>The build configuration part can get stored as '_config' file in the top level directory.</para>
     </sect2>
@@ -99,7 +99,7 @@
           <para>Using just a subdirectory of the git repository can be done by adding a subdir=DIRECTORY CGI parameter to the URL.</para>
         </listitem>
         <listitem>
-          <para>Architecture specific remote assets can be selected by adding a arch=ARCH CGI parameter to the URL.</para>
+          <para>Architecture specific remote assets can be selected by adding an arch=ARCH CGI parameter to the URL.</para>
         </listitem>
        </itemizedlist>
        As an example, for the subdirectory case the URL would look like this:
@@ -142,7 +142,7 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.update_notifications">
       <title>SCM Source Updates</title>
 
-      <para>The OBS instance need to get notified on any change in the SCM server. There are two ways to achieve this.
+      <para>The OBS instance needs to get notified on any change in the SCM server. There are two ways to achieve this.
       One way is via single configurations for each git repository as documented in the <xref linkend="sec.obs.sserv.token_usage"/> documentation.
       An alternative way is to configure it globally. This requires admin permissions on the git hosting side
       and another bridge implementation. The advantage is that any used repository will be synced automatically just
