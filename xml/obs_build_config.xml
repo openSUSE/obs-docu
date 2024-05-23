@@ -701,7 +701,148 @@ Support: pax debbuild</screen>
      <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
     <para>
       This results in a debuginfo package repository being created in parallel to the
-      package repository.</para>
+	    package repository.</para>
+    <para>
+      This is the list of repository types, multiple of them can be combined depending on
+      the published binaries.</para>
+      <variablelist>
+       <varlistentry>
+        <term><parameter>rpm-md</parameter></term>
+        <listitem>
+        <para>rpm-md repository data is generated as invented by YUM originaly.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>suse</parameter></term>
+        <listitem>
+        <para>suse tag repository data is generated as used until SUSE Linux 10 generation.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>hdlist2</parameter></term>
+        <listitem>
+        <para>Mandriva repository format</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>debian</parameter></term>
+        <listitem>
+        <para>Debian repository format</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>arch</parameter></term>
+        <listitem>
+        <para>Arch Linux repository format</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>vagrant</parameter></term>
+        <listitem>
+        <para>Vagrant image repository format</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>staticlinks</parameter></term>
+        <listitem>
+        <para>Additional links to build results excluding version and build numbers are created.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>zyppservice</parameter></term>
+        <listitem>
+        <para>Generate zypp service files, publishing all used repository pathes to the zypp client.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>helm</parameter></term>
+        <listitem>
+        <para>Helm repository metadata</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>checksumsfile</parameter></term>
+        <listitem>
+        <para>Checksums file with signatures of repository content</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>ymp</parameter></term>
+        <listitem>
+        <para>YaST single install ymp file generation. Zypp services should be used instead.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>comps</parameter></term>
+        <listitem>
+        <para>Generate comps files, Fedora style patterns</para>
+        </listitem>
+       </varlistentry>
+      </variablelist>
+    <para>
+      This is the list of repository options to modify the way the repository type is generated:</para>
+      <variablelist>
+       <varlistentry>
+        <term><parameter>sha256</parameter></term>
+        <listitem>
+        <para>rpm-md repository data is generated using SHA-256 checksums. This is the default.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>sha512</parameter></term>
+        <listitem>
+        <para>rpm-md repository data is generated using SHA-512 checksums.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>legacy</parameter></term>
+        <listitem>
+        <para>rpm-md repository data is generated using SHA-1 checksums. Considered to be unsafe and not anymore recommended.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>zchunk</parameter></term>
+        <listitem>
+        <para>rpm-md repository data gets extended with additional zchunk compressed files.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>filelists-ext</parameter></term>
+        <listitem>
+        <para>rpm-md repository provides additional filelist-ext provides</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>compression-zstd</parameter></term>
+        <listitem>
+        <para>rpm-md repository data is compressed using zstd instead of gz</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>deltainfo</parameter></term> <!-- prestodelta is a synonim, but we don't confuse people here -->
+        <listitem>
+        <para>rpm-md repository provides additional rpm delta informations for incremental rpm updates.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>splitdebug:SUFFIX</parameter></term>
+        <listitem>
+        <para>A second rpm-md repository is generated where all debuginfo and debugsource packages get moved to. The specified SUFFIX is added to the repository name.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>rsyncable</parameter></term>
+        <listitem>
+        <para>rpm-md repository gets recompressed using rsyncable format.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><parameter>rawsig</parameter></term>
+        <listitem>
+        <para>checksumsfile repository provides binary signatures instead of ascii signatures</para>
+        </listitem>
+       </varlistentry>
+      </variablelist>
     </listitem>
    </varlistentry>
    <varlistentry>
