@@ -47,7 +47,7 @@
     <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
       <title>Setup a package using the scm bridge</title>
 
-      <para>The setup is purely done in package meta by defining the SCM url inside of the scmsync tag:</para>
+      <para>The setup is purely done in package meta by defining the SCM URL inside of the scmsync tag:</para>
 
       <screen>&lt;scmsync&gt;https://gitlab.com/some/repository&lt;/scmsync&gt;</screen>
 
