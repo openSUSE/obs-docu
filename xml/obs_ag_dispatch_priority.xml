@@ -25,8 +25,8 @@
  <sect2 xml:id="_build__dispatchprios_api_call">
   <title>The <literal>/build/_dispatchprios</literal> API Call</title>
   <para>The <emphasis>/build/_dispatchprios</emphasis> API call allows an
-   Admin to set a priority for defined projects and repositories using the HTML
-   put method. With the HTML get method the current XML priority file can be
+   Admin to set a priority for defined projects and repositories using the HTTP
+   put method. With the HTTP get method the current XML priority file can be
    read.</para>
   <screen>&lt;dispatchprios&gt;
   &lt;prio project="ProjectName" repository="RepoName" arch="Architecture" adjust="Number" /&gt;
