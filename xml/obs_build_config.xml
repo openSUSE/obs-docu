@@ -645,6 +645,20 @@ Support: pax debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
+        <term><parameter>keepobsolete</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+           <para>
+             The default behaviour of OBS is to remove binaries when a package object gets removed,
+             even when the project is publish disabled (but the package may have been enabled).
+           </para>
+	   <para>
+             This flag is changing this behaviour to keep binaries in published repositories
+             even when a package gets removed. As consequence this flag has only an effect on
+             publish disabled projects.
+           </para>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
         <term><parameter>singleexport</parameter> (OBS 2.11 or later)</term>
         <listitem>
            <para>
