@@ -81,7 +81,20 @@
 
         <itemizedlist>
           <listitem>
-            <para>GitHub: repo</para>
+            <para>GitHub Classic Token: repo</para>
+          </listitem>
+
+          <listitem>
+            <para>GitHub Fine-Grained Token:</para>
+            <itemizedlist>
+              <listitem>
+                <para>Contents: Read only</para>
+              </listitem>
+
+              <listitem>
+                <para>Commit statuses: Read and write</para>
+              </listitem>
+            </itemizedlist>
           </listitem>
 
           <listitem>
