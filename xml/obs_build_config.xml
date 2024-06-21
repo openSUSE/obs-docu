@@ -702,23 +702,14 @@ Support: pax debbuild</screen>
    <varlistentry>
     <term><parameter>Repotype:  <replaceable>TYPE[:OPTIONS]</replaceable></parameter></term>
     <listitem>
-     <para> Defines the repository format for published repositories. Valid
-      values are: none, rpm-md, suse, debian, hdlist2, arch, staticlinks and vagrant. The
-      OPTIONS parameter depends on the repository type, for rpm-md the known
-      options are 'legacy' to create the old rpm-md format, 'deltainfo' or
-      'prestodelta' to create delta rpm packages, 'rsyncable' to use rsyncable
-      gzip compression, 'sha512' to switch to SHA-512 instead of SHA-256 checksums
-      in rpm-md meta data files. To split the debug packages in an own published repository the option
-      <literal>splitdebug:<replaceable>REPOSITORY_SUFFIX</replaceable></literal>
-      can be appended, e.g.
+     <para> Defines the repository format for published repositories. Read on
+      for permissible values (repository types). The syntax of the OPTIONS
+      parameter depends on the repository type, and is also described below.
      </para>
-     <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
-    <para>
-      This results in a debuginfo package repository being created in parallel to the
-	    package repository.</para>
-    <para>
-      This is the list of repository types, multiple of them can be combined depending on
-      the published binaries.</para>
+     <para>
+      This is the list of repository types. Multiple values can be combined
+      in the same line, separated by spaces.
+     </para>
       <variablelist>
        <varlistentry>
         <term><parameter>rpm-md</parameter></term>
@@ -841,7 +832,8 @@ Support: pax debbuild</screen>
        <varlistentry>
         <term><parameter>splitdebug:SUFFIX</parameter></term>
         <listitem>
-        <para>A second rpm-md repository is generated where all debuginfo and debugsource packages get moved to. The specified SUFFIX is added to the repository name.</para>
+        <para>A second repository is generated where all debuginfo and debugsource packages get moved to. The specified SUFFIX is added to the repository name. For example:</para>
+        <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
