@@ -492,13 +492,18 @@ sudo chown -R wwwrun.www log tmp</screen>
      For testing follow the instructions to create a self signed SSL
      certificate:</para>
     <screen>mkdir /srv/obs/certs
-openssl genrsa -out /srv/obs/certs/server.key 1024
+openssl genrsa -out /srv/obs/certs/server.key 4096
 openssl req -new -key /srv/obs/certs/server.key \
         -out /srv/obs/certs/server.csr
 openssl x509 -req -days 365 -in /srv/obs/certs/server.csr \
         -signkey /srv/obs/certs/server.key -out /srv/obs/certs/server.crt
 cat /srv/obs/certs/server.key /srv/obs/certs/server.crt \
       &gt; /srv/obs/certs/server.pem</screen>
+    <para>If 4096 bits is too small for the RSA key, or if you're wondering why
+     that number of bits, etc., read the output of</para>
+    <screen><command>man crypto-policies</command></screen>
+    <para>and</para>
+    <screen><command>man update-crypto-policies</command></screen>
     <para>To allow the usage of https API in Web UI code you need to trust your
      certificate as well:</para>
     <screen>cp /srv/obs/certs/server.pem /etc/ssl/certs/
