@@ -499,8 +499,10 @@ openssl x509 -req -days 365 -in /srv/obs/certs/server.csr \
         -signkey /srv/obs/certs/server.key -out /srv/obs/certs/server.crt
 cat /srv/obs/certs/server.key /srv/obs/certs/server.crt \
       &gt; /srv/obs/certs/server.pem</screen>
-    <para>If 4096 bits is too small for the RSA key, or if you're wondering why
-     that number of bits, etc., read the output of</para>
+    <para>At the time of this writing (2024), we consider the 4K RSA key
+     to be a safe implementation, but you might want to check out the
+     current standards by consulting (on both client and server side)
+     the output of</para>
     <screen><command>man crypto-policies</command></screen>
     <para>and</para>
     <screen><command>man update-crypto-policies</command></screen>
