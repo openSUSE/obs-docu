@@ -610,16 +610,17 @@ Support: pax debbuild</screen>
         </listitem>
        </varlistentry>
        <varlistentry>
-        <term><parameter>create_empty</parameter> (OBS 2.11 or later)</term>
+        <term><parameter>createempty</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Create a repository even with no content, but with meta data.</para>
         </listitem>
        </varlistentry>
        <varlistentry>
-        <term><parameter>noearlykiwipublish</parameter> (OBS 2.11 or later)</term>
+        <term><parameter>noearlypublish</parameter> (OBS 2.11 or later)</term>
         <listitem>
-          <para>Only publish kiwi build results after entire repository has finished building. Without this kiwi
-                build results get published immediately after the build is finished.</para>
+          <para>Only publish build results after entire repository has finished building. This is default for
+                classic package (rpm/deb) build types, but not for certain image builds (like kiwi or products).
+                Without this build results get published immediately after the build is finished.</para>
         </listitem>
        </varlistentry>
        <varlistentry>
