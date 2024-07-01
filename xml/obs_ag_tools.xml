@@ -161,7 +161,7 @@ for example) and may use different methods for authentication like
 Kerberos see <xref linkend="_kerberos"/>
    </para>
   </warning>
-  <para>For the admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</para>
+  <para>For admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</para>
   <itemizedlist>
    <listitem>
     <para>
@@ -176,112 +176,14 @@ API - to read and write online configuration data
   </itemizedlist>
   <sect3 xml:id="_osc_meta_subcommand">
    <title><command>osc meta</command> Subcommand</title>
-<screen>meta: Show meta information, or edit it
-
-Show or edit build service metadata of type &lt;prj|pkg|prjconf|user|pattern&gt;.
-
-This command displays metadata on buildservice objects like projects,
-packages, or users. The type of metadata is specified by the word after
-"meta", like e.g. "meta prj".
-
-prj denotes metadata of a buildservice project.
-prjconf denotes the (build) configuration of a project.
-pkg denotes metadata of a buildservice package.
-user denotes the metadata of a user.
-pattern denotes installation patterns defined for a project.
-
-To list patterns, use 'osc meta pattern PRJ'. An additional argument
-will be the pattern file to view or edit.
-
-With the --edit switch, the metadata can be edited. Per default, osc
-opens the program specified by the environmental variable EDITOR with a
-temporary file. Alternatively, content to be saved can be supplied via
-the --file switch. If the argument is '-', input is taken from stdin:
-osc meta prjconf home:user | sed ... | osc meta prjconf home:user -F -
-
-For meta prj and prjconf updates optional commit messages can be applied
-with --message.
-
-When trying to edit a non-existing resource, it is created implicitly.
-
-
-Examples:
-    osc meta prj PRJ
-    osc meta pkg PRJ PKG
-    osc meta pkg PRJ PKG -e
-
-Usage:
-    osc meta &lt;prj|prjconf&gt; [-r|--revision REV] ARGS...
-    osc meta &lt;prj|pkg|prjconf|user|pattern&gt; ARGS...
-    osc meta &lt;prj|pkg|prjconf|user|pattern&gt; [-m|--message TEXT] -e|--edit
-    ARGS...
-    osc meta &lt;prj|pkg|prjconf|user|pattern&gt; [-m|--message TEXT] -F|--file
-    ARGS...
-    osc meta pattern --delete PRJ PATTERN
-    osc meta attribute PRJ [PKG [SUBPACKAGE]] [--attribute ATTRIBUTE]
-    [--create|--delete|--set [value_list]]
-Options:
-    -h, --help          show this help message and exit
-    --delete            delete a pattern or attribute
-    -s ATTRIBUTE_VALUES, --set=ATTRIBUTE_VALUES
-                        set attribute values
-    -R, --remove-linking-repositories
-                        Try to remove also all repositories building against
-                        remove ones.
-    -c, --create        create attribute without values
-    -e, --edit          edit metadata
-    -m TEXT, --message=TEXT
-                        specify log message TEXT. For prj and prjconf meta
-                        only
-    -r REV, --revision=REV
-                        checkout given revision instead of head revision.
- For
-                        prj and prjconf meta only
-    -F FILE, --file=FILE
-                        read metadata from FILE, instead of opening an
- editor.
-                        '-' denotes standard input.
-    -f, --force         force the save operation, allows one to ignores some
-                        errors like depending repositories. For prj meta
- only.
-    --attribute-project
-                        include project values, if missing in packages
-    --attribute-defaults
-                        include defined attribute defaults
-    -a ATTRIBUTE, --attribute=ATTRIBUTE
-                        affect only a given attribute</screen>
+   <para>The <command>osc meta</command> subcommand is documented inside the "osc" tool itself. This documentation can be displayed by issuing the command:</para>
+<screen>osc meta --help</screen>
   </sect3>
   <sect3 xml:id="_osc_api_subcommand">
    <title><command>osc api</command> Subcommand</title>
-<screen>api: Issue an arbitrary request to the API
-
-Useful for testing.
-
-URL can be specified either partially (only the path component), or fully
-with URL scheme and hostname ('http://...').
-
-Note the global -A and -H options (see osc help).
-
-Examples:
-  osc api /source/home:user
-  osc api -X PUT -T /etc/fstab source/home:user/test5/myfstab
-  osc api -e /configuration
-
-Usage:
-    osc api URL
-
-Options:
-    -h, --help          show this help message and exit
-    -a NAME STRING, --add-header=NAME STRING
-                        add the specified header to the request
-    -T FILE, -f FILE, --file=FILE
-                        specify filename to upload, uses PUT mode by default
-    -d STRING, --data=STRING
-                        specify string data for e.g. POST
-    -e, --edit          GET, edit and PUT the location
-    -X HTTP_METHOD, -m HTTP_METHOD, --method=HTTP_METHOD
-                        specify HTTP method to use (GET|PUT|DELETE|POST)</screen>
-   <para>The online API documentation is available at
+   <para>The <command>osc api</command> subcommand is documented inside the "osc" tool itself. This documentation can be displayed by issuing the command:</para>
+<screen>osc api --help</screen>
+   <para>The OBS API itself is documented at
 <link xlink:href="https://api.opensuse.org/apidocs/"/>
    </para>
    <para>Some examples for admin stuff:</para>
