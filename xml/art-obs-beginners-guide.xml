@@ -360,7 +360,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
  <sect1 xml:id="sec.obsbg.obsconfig">
   <title>Configuring Your System for &obsa;</title>
   <para>
-   While it is possible to use the <command>osc</command> tool without any
+   While it is possible to use the &osccmd; tool without any
    configuration, it is recommended to set up your system as described below.
   </para>
   <para>
@@ -1008,15 +1008,14 @@ Patch0:         &gitproject;_main.diff</screen>
 
   </itemizedlist>
   <para>
-   We assume that you have checked out the project
-   <uri>&obshome1;/&gitproject;</uri>
-   on &obsa; and the user <systemitem class="username">&obsuser2;</systemitem>
-   wants to change the code to change the welcome message. The code should
-   then be submitted to the original project.
+   Let us assume that there is a user <systemitem class="username">&obsuser1;</systemitem>
+   who has created a package <uri>&obshome1;/&gitproject;</uri>
+   on &obsa;. Now, a second user, <systemitem class="username">&obsuser2;</systemitem>,
+   would like to submit a code change request to that package.
   </para>
   <para>
    User <systemitem class="username">&obsuser2;</systemitem> has to perform the
-   following steps.
+   following steps:
   </para>
   <procedure xml:id="pro.obsbg.uc.branchprj">
    <title>Branching from a Project</title>
@@ -1093,18 +1092,20 @@ Patch0:         &gitproject;_main.diff</screen>
   </procedure>
   <para>
    User <systemitem class="username">&obsuser2;</systemitem> has
-   finished the task now and the submit request is assigned to <systemitem
-    class="username">&obsuser1;</systemitem>. User <systemitem
-     class="username">&obsuser1;</systemitem> can now either accept or decline
-   the submit request.
+   finished the task now and the submit request is assigned to
+   <systemitem class="username">&obsuser1;</systemitem>. User
+   <systemitem class="username">&obsuser1;</systemitem> can now either accept or
+   decline the submit request (<quote>SR</quote>). Also, as long as the SR remains
+   open, <systemitem class="username">&obsuser2;</systemitem> can also supersede
+   it with a new request.
   </para>
   <itemizedlist>
    <listitem>
     <formalpara>
      <title>Accept the Submit Request</title>
-     <para>The changes from user <systemitem class="username"
-      >&obsuser2;</systemitem> will be integrated into the
-     <uri>&obshome1;</uri> project. The accepted submit request will be
+     <para>The changes from user
+      <systemitem class="username">&obsuser2;</systemitem> will be integrated into
+      the <uri>&obshome1;</uri> project. The accepted submit request will be
       closed. To make further changes, &obsuser2; needs to create a new submit
       request.
      </para>
@@ -1130,6 +1131,22 @@ Patch0:         &gitproject;_main.diff</screen>
      The submitter will see declined requests still as open requests,
      because users see it as task on the &obsa; Web UI.
     </para> -->
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>Supersede the Submit Request</title>
+     <para>
+      As long as the SR is still open (and this includes the case when it has
+      been declined), <systemitem class="username">&obsuser2;</systemitem> can
+      continue making changes in their local checkout and, at any time, issue a new
+      submit request using the above workflow. At submission time, &obsa; will detect
+      the existing (previous) SR and ask the submitter whether they would like to
+      supersede it. If <systemitem class="username">&obsuser2;</systemitem> answers
+      "yes" here, the new SR will supersede the previous one. Alternatively, by
+      answering "no" to the supersede question, a second SR will be created alongside
+      the previous one.
+     </para>
+    </formalpara>
    </listitem>
   </itemizedlist>
   <para>
