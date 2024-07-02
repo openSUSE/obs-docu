@@ -154,14 +154,15 @@
  <sect1 xml:id="sec.obs.basicworkflow.create-new">
   <title>Creating a New Package</title>
   <para>
-   This section covers how to create packages from a project hosted on &gh;
-   (the <quote>upstream project</quote>). We assume that this project contains source code
-   which you want to package for different &suse; distributions.
+   This section covers how to create packages for an arbitrary software project,
+   which we will refer to here as the <quote>upstream project</quote>. We
+   assume that this project contains source code
+   which you want to package for one or more &suse; (openSUSE) distributions.
    We assume the setup of your home project in your &obsa; instance is
    already done. If not, refer to <xref linkend="sec.obs.basicworkflow.setuphome"/>.
   </para>
   <para>
-   To create a package from an upstream project, do the following:
+   To create a package from the upstream project, do the following:
   </para>
   <procedure>
    <title>General Procedure to Build a RPM Package</title>
@@ -310,6 +311,34 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
      Check if your build was successful. If everything was fine, commit the
      files to your package to your home project on &obsa;:</para>
     <screen>&prompt.user;<command>osc</command> commit</screen>
+   </step>
+  </procedure>
+  <para>
+   To delete a file in your working directory, merely deleting it from the local
+   filesystem (<command>rm FILE</command>) is not sufficient, since
+   &osccmd;, like any other Source Code Control System, will just complain
+   that the file is missing. If you really want to delete a file, use the command:
+  </para>
+  <screen>&prompt.user;<command>osc</command> delete FILE</screen>
+  <para>
+   While there is no dedicated &osccmd; to "move" (rename) a file,
+   the desired end result can be obtained using the following procedure:
+  </para>
+  <procedure>
+   <title>Procedure for Moving a File within a Locally Checked-out OBS Package</title>
+   <step>
+    <screen>&prompt.user;<command>cp</command> ORIGINAL_FILE NEW_FILE</screen>
+   </step>
+   <step>
+    <screen>&prompt.user;<command>osc</command> delete ORIGINAL_FILE</screen>
+   </step>
+   <step>
+    <screen>&prompt.user;<command>osc</command> add NEW_FILE</screen>
+   </step>
+   <step>
+    <para>And, finally:</para>
+    <screen>&prompt.user;<command>osc</command> status</screen>
+    <para>to verify that the end result is as intended.</para>
    </step>
   </procedure>
  </sect1>
