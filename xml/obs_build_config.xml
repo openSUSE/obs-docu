@@ -973,18 +973,20 @@ Support: pax debbuild</screen>
   <para>
     An alternative way to enable caching based on build dependencies is to
     add "--enable-cache" as dependency, for example via a Substitute rule:
-    <screen><command>
-        Substitute: gcc-c++ gcc-c++ --enable-ccache
-    </command></screen>
+  </para>
+  <screen><command>
+      Substitute: gcc-c++ gcc-c++ --enable-ccache
+  </command></screen>
+  <para>
     This will always enable ccache when a direct build depdency to gcc-c++
     is required.
   </para>
   <para>
     It is also possible to set the type, eg:
-    <screen><command>
-        Substitute: cargo cargo --enable-ccache=sccache
-    </command></screen>
   </para>
+  <screen><command>
+      Substitute: cargo cargo --enable-ccache=sccache
+  </command></screen>
  </sect1>
 
  <sect1 xml:id="sec.prjconfig.macros">
