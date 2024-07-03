@@ -166,7 +166,7 @@
   <note>
     <para>
       The package groups shown in the editor are only those with type <emphasis>image</emphasis> and the packages will be added in this kind of package group.
-      If it did exist previously the &kiwi; Editor creates a package group with type <emphasis>image</emphasis> for you.
+      If it didn't exist previously, the &kiwi; Editor creates a package group with type <emphasis>image</emphasis> for you.
     </para>
   </note>
   </sect2>
