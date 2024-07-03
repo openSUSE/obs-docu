@@ -112,7 +112,7 @@
    lines instead of having one line with all the flags you need.
   </para>
   <para>
-   An exclamation mark `!` can be prepended to the argument to remove 
+   An exclamation mark `!` can be prepended to the argument to remove
    an existing entry from the data.
   </para>
   <para>
@@ -156,9 +156,9 @@
        Use an alternative build engine. Examples are `mock` (for Fedora and
        Red Hat) and `debootstrap` (for Debian), `debbuild` (to build debian
        packages with spec files), `podman` (container builds).
-       
+
        Here is an example config for `debbuild`:
-	</para>
+        </para>
      <screen>Type: spec
 Repotype: debian
 Binarytype: deb
@@ -222,8 +222,8 @@ Support: pax debbuild</screen>
       <varlistentry>
        <term><parameter>excludebuild:PACKAGE</parameter></term>
        <listitem>
-	 <para>Exclude a package from building. If a package builds multiple flavors,
-	       the corresponding flavor can be specified via the `package:flavor` syntax.</para>
+         <para>Exclude a package from building. If a package builds multiple flavors,
+               the corresponding flavor can be specified via the `package:flavor` syntax.</para>
        </listitem>
       </varlistentry>
       <varlistentry>
@@ -279,7 +279,7 @@ Support: pax debbuild</screen>
         <term><parameter>setvcs</parameter></term>
        <listitem>
         <para>
-          Add the SCM URL to binary results when the package sources are managed 
+          Add the SCM URL to binary results when the package sources are managed
           via the scmsync mechanic. The url is written into the VCS tag of rpms
           when enabling this functionality.
         </para>
@@ -289,9 +289,9 @@ Support: pax debbuild</screen>
         <term><parameter>nodisturl</parameter></term>
        <listitem>
         <para>
-	  Skip the embedding of DISTURL tag into binaries. Please note that this might
-	  also break other features like binary tracking. So never do this for maintained
-	  binaries.
+          Skip the embedding of DISTURL tag into binaries. Please note that this might
+          also break other features like binary tracking. So never do this for maintained
+          binaries.
         </para>
        </listitem>
       </varlistentry>
@@ -299,10 +299,10 @@ Support: pax debbuild</screen>
         <term><parameter>sbom:FORMAT</parameter></term>
        <listitem>
         <para>
-	  OBS 2.11 can produce and publish additional SBOM (Software Bill Of Material) 
-	  meta data by enabling this flag.
-	  This is currently supported for container and kiwi images builds and includes
-	  only data from installed rpm packages. Supported formats are spdx and cyclonedx.
+          OBS 2.11 can produce and publish additional SBOM (Software Bill Of Material)
+          meta data by enabling this flag.
+          This is currently supported for container and kiwi images builds and includes
+          only data from installed rpm packages. Supported formats are spdx and cyclonedx.
         </para>
        </listitem>
       </varlistentry>
@@ -359,7 +359,7 @@ Support: pax debbuild</screen>
       that the macro will not be written to the .rpmmacros file. It should
       therefore be used for macros that come from packages of the
       distributions.
-      
+
       Note that the lines of the project config are macro expanded while
       parsing, so you have to use `%%` for a literal percent sign in
       the value.
@@ -391,8 +391,8 @@ Support: pax debbuild</screen>
        <varlistentry>
         <term><parameter>module:NAME-STREAM</parameter> (OBS 2.10.7 or later)</term>
         <listitem>
-	<para>Enable Red Hat-specific module support in repo md repositories. By default, 
-	      no module is used, so every module needed needs to be
+        <para>Enable Red Hat-specific module support in repo md repositories. By default,
+              no module is used, so every module needed needs to be
               specified in the configuration. To remove a module,
               add an exclamation mark (<literal>!</literal>) as prefix.</para>
         </listitem>
@@ -626,7 +626,7 @@ Support: pax debbuild</screen>
        <varlistentry>
         <term><parameter>archsync</parameter> (OBS 2.11 or later)</term>
         <listitem>
-	<para>Publish all architectures at the same time. This means that the publisher is waiting
+        <para>Publish all architectures at the same time. This means that the publisher is waiting
               until the last architecture has finished building.</para>
         </listitem>
        </varlistentry>
@@ -638,10 +638,10 @@ Support: pax debbuild</screen>
             That means, packages can be published for an architecture on which it builds,
             even if a package fails to build on another architecture.
            </para>
-	   <para>
-	    This is by default evaluated individually for each architecture. It can be
-	    combined with the archsync flag when publishing should be blocked also when a failure
-	    exists on any architecture.
+           <para>
+            This is by default evaluated individually for each architecture. It can be
+            combined with the archsync flag when publishing should be blocked also when a failure
+            exists on any architecture.
            </para>
         </listitem>
        </varlistentry>
@@ -652,7 +652,7 @@ Support: pax debbuild</screen>
              The default behaviour of OBS is to remove binaries when a package object gets removed,
              even when the project is publish disabled (but the package may have been enabled).
            </para>
-	   <para>
+           <para>
              This flag is changing this behaviour to keep binaries in published repositories
              even when a package gets removed. As consequence this flag has only an effect on
              publish disabled projects.
@@ -975,9 +975,7 @@ Support: pax debbuild</screen>
     An alternative way to enable caching based on build dependencies is to
     add "--enable-cache" as dependency, for example via a Substitute rule:
   </para>
-  <screen><command>
-      Substitute: gcc-c++ gcc-c++ --enable-ccache
-  </command></screen>
+  <screen><command>Substitute: gcc-c++ gcc-c++ --enable-ccache</command></screen>
   <para>
     This will always enable ccache when a direct build depdency to gcc-c++
     is required.
@@ -985,9 +983,8 @@ Support: pax debbuild</screen>
   <para>
     It is also possible to set the type, eg:
   </para>
-  <screen><command>
-      Substitute: cargo cargo --enable-ccache=sccache
-  </command></screen>
+  <screen><command>Substitute: cargo cargo --enable-ccache=sccache</command></screen>
+
  </sect1>
 
  <sect1 xml:id="sec.prjconfig.macros">
@@ -1026,7 +1023,7 @@ Support: pax debbuild</screen>
        The DistMacro can be used to define a macro for build dependency resolution.
        It is intended to be used when a distribution defines relevant macros inside
        of any of their packages. These macros are hidden by default to the &obs; dependency
-       resolver. Use this directive to make it known to &obs;. 
+       resolver. Use this directive to make it known to &obs;.
 
        Unlike Macros:, DistMacro won't overwrite any existing and possibly
        changed definition at build time.

@@ -132,6 +132,7 @@
    OCI-compatible registry, with the URLs to the images constructed as follows:
    <literal> $BASE/$PROJECT/$REPOSITORY/$IMAGE_NAME:$TAG </literal> with the
    following components:
+  </para>
    <itemizedlist>
     <listitem>
      <para>
@@ -170,7 +171,7 @@
      </para>
     </listitem>
    </itemizedlist>
-  </para>
+
 
   <para>
    The
@@ -204,6 +205,7 @@
      Create a <literal>yaml</literal> file under
      <literal>/etc/containers/registries.d/</literal> with an appropriate name
      for your instance and the following contents:
+    </para>
      <example>
       <title>registry.yaml</title>
 <screen>
@@ -213,6 +215,7 @@ docker:
     sigstore: <replaceable>REGISTRY_URL</replaceable>/sigstore
 </screen>
      </example>
+     <para>
      Replace <replaceable>REGISTRY_URL</replaceable> with the appropriate URL
      to your instance of &obs; (for example,
      <literal>registry.opensuse.org</literal>).

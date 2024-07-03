@@ -26,14 +26,16 @@
   <para> The disturl can also be entered in the search field of the web
    interface of the build service. </para>
   <para>rpm packages managed via the scmsync mechanic may have also the VCS tag.
-   It provides the git repository URL when the project is build using the
+  It provides the git repository URL when the project is build using the
+  </para>
     <screen><command>BuildFlags: setvcs</command></screen>
-   flag in the build config.
+ <para>
+    flag in the build config.
   </para>
  </sect1>
  <sect1>
   <title>Generating SLSA Provenance Data</title>
-  <para> 
+  <para>
           OBS 2.11 can produce and publish additional SLSA provenance attestation
           files. This files are currently following the v0.2 Alpha spec, which is
           suspect to change. We will change the code to follow the specification,
@@ -49,7 +51,7 @@
  </sect1>
  <sect1>
   <title>Generating SBOM (Software Bill Of Material) Data</title>
-   <para> 
+   <para>
      OBS 2.11 can produce and publish additional SPDX data for certain build types.
      This is controlled via the project configuration. For details, refer to
      <xref linkend="sec.prjconfig.syntax"/> for

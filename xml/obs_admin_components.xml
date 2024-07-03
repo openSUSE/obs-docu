@@ -14,7 +14,7 @@
   <title>Simplified &obsa; Component Overview</title>
   <mediaobject>
    <imageobject>
-    <imagedata fileref="obs_components.png" width="800"/>
+    <imagedata fileref="obs_components.png" width="80%"/>
    </imageobject>
   </mediaobject>
  </figure>

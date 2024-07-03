@@ -73,7 +73,7 @@
   <screen>hardware:disk:size unit=G</screen>
   <para> The string <literal>hardware:disk:size</literal> in this example means
    "size, a subqualifier of disk, which is itself a subqualifier of hardware",
-   and <literal>unit=G</literal> means "the value is expressed in units of 
+   and <literal>unit=G</literal> means "the value is expressed in units of
    Gigabytes. </para>
   <para> For a full treatment of constraint syntax, see
    <xref linkend="_constraint_syntax"/>. </para>
@@ -309,6 +309,7 @@ Constraint: hardware:cpu:flag sse2</screen>
       <para>
        Additional flags are also reported for effective architecture level of
        the CPU. This includes the following flags:
+      </para>
        <itemizedlist>
          <listitem><para>power7</para></listitem>
          <listitem><para>power8</para></listitem>
@@ -317,7 +318,6 @@ Constraint: hardware:cpu:flag sse2</screen>
          <listitem><para>x86-64-v3</para></listitem>
          <listitem><para>x86-64-v4</para></listitem>
        </itemizedlist>
-      </para>
     </sect4>
    </sect3>
    <sect3>
@@ -452,7 +452,7 @@ Constraint: hardware:cpu:flag sse2</screen>
     workers becomes available. In addition, the dispatch details are set
     to tell the user that this build might take a long time to complete.
     The notification looks like this:</para>
-    <screen>waiting for 4 compliant workers (4 down)</screen> 
+    <screen>waiting for 4 compliant workers (4 down)</screen>
    <para>In this case, all four compliant workers are down. The notification
     helps the user understand why the build is not starting. The dispatch
     details can also be retrieved using the OBS API or, e.g., using the command
@@ -474,7 +474,7 @@ Please adapt your constraints.</screen>
   <title>Checking Constraints with &osccmd;</title>
   <para> You can check the constraints of a project or package with the osc
    tool. You have to be in an &osccmd; working directory.</para>
-   
+
    <screen><command>osc checkconstraints [OPTS] [REPOSITORY] [ARCH] [CONSTRAINTSFILE]</command></screen>
    <para>Either you give a repository and an arch or osc will check the constraints
    for all repository / arch pairs for the package. A few examples:</para>
