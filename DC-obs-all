@@ -13,7 +13,7 @@ PROFOS="opensuse;novell"
 PROFCONDITION="bogus"
 
 ## stylesheet location
-STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2021-ns"
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
 FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse"
 
 ## Use DocBook5 instead of GeekoDoc
