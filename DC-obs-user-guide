@@ -21,5 +21,11 @@ FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse"
 ## Use DocBook5 instead of GeekoDoc
 DOCBOOK5_RNG_URI="http://docbook.org/xml/5.2/rng/docbookxi.rng"
 
+## Disabled SUSE logo
+XSLTPARAM="--param generate.logo=0"
+
+## Disable share links
+XSLTPARAM+=" --param generate.share.and.print=0"
+
 ## enable sourcing
 export DOCCONF=$BASH_SOURCE
