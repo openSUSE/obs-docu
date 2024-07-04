@@ -17,7 +17,7 @@
   <subtitle>&productname; &productnumber;</subtitle>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
    <dm:bugtracker>
-    <dm:url>https://github.com/SUSE/obs-docu/issues/new</dm:url>
+    <dm:url>https://github.com/openSUSE/obs-docu/issues/new</dm:url>
     <dm:product>OBS</dm:product>
    </dm:bugtracker>
   </dm:docmanager>
