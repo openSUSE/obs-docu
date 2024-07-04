@@ -48,7 +48,7 @@
 
    <mediaobject>
     <imageobject>
-     <imagedata fileref="notification_change_your_notifications_link.png" width="800"/>
+     <imagedata fileref="notification_change_your_notifications_link.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -64,7 +64,7 @@
 
    <mediaobject>
     <imageobject>
-     <imagedata fileref="notification_mark_web.png" width="800"/>
+     <imagedata fileref="notification_mark_web.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -80,7 +80,7 @@
 
    <mediaobject>
     <imageobject>
-     <imagedata fileref="notification_group_selection.png" width="600"/>
+     <imagedata fileref="notification_group_selection.png" width="70%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -99,7 +99,7 @@
 
    <mediaobject>
     <imageobject>
-     <imagedata fileref="notification_link.png" width="800"/>
+     <imagedata fileref="notification_link.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -110,16 +110,15 @@
   <para>
    After clicking on the "Notifications" link, you will see a list of your most
    recent unread notifications.
-
-   <figure>
+  </para>
+  <figure>
     <title>Notifications Page.</title>
     <mediaobject>
-     <imageobject>
-      <imagedata fileref="notification_notifications.png" width="800"/>
-     </imageobject>
+      <imageobject>
+        <imagedata fileref="notification_notifications.png" width="80%"/>
+      </imageobject>
     </mediaobject>
-   </figure>
-  </para>
+  </figure>
   <para>
    A notification can have different origins. Each notification item includes a
    couple of lines to help recognize them among the others. You always have the
@@ -142,53 +141,55 @@
    There are different ways and places to mark your notifications as read.
    Marking a single notification can be done by simply clicking the button with
    the green checkmark shown on the notification itself.
-   <figure>
+  </para>
+  <figure>
     <title>Mark single notification as read.</title>
     <mediaobject>
-     <imageobject>
-      <imagedata fileref="mark_notification_as_read_01.png" width="480"/>
-     </imageobject>
+      <imageobject>
+        <imagedata fileref="mark_notification_as_read_01.png" width="50%"/>
+      </imageobject>
     </mediaobject>
-   </figure>
-
+  </figure>
+  <para>
    Another way is to mark it directly on the related element (for example
    the associated request) through the little toolbar that appears on top. You
    will be redirected back to your notifications page afterwards.
-   <figure>
+  </para>
+  <figure>
     <title>Mark notification as read through toolbar.</title>
     <mediaobject>
-     <imageobject>
-      <imagedata fileref="mark_notification_as_read_02.png" width="480"/>
-     </imageobject>
+      <imageobject>
+      <imagedata fileref="mark_notification_as_read_02.png" width="50%"/>
+      </imageobject>
     </mediaobject>
-   </figure>
-  </para>
+  </figure>
   <para>
    If you received a lot of notifications and don't want to mark them one by
    one, there are two ways to speed up the process. You can use the checkboxes
    on the left to select individual notifications and click on the "Mark
    selected as 'Read'" button.
-   <figure>
+  </para>
+  <figure>
     <title>Checkboxes to mark multiple notifications.</title>
     <mediaobject>
-     <imageobject>
-      <imagedata fileref="mark_notification_as_read_03.png" width="480"/>
+      <imageobject>
+        <imagedata fileref="mark_notification_as_read_03.png" width="50%"/>
      </imageobject>
     </mediaobject>
-   </figure>
-
+  </figure>
+  <para>
    In case you exceed 300 notifications you have the possibility to use the
    button "Mark all as 'Read" that will appear on the right side to mark all
    notifications of the chosen filter as read.
-   <figure>
+  </para>
+  <figure>
     <title>Mark all as read.</title>
     <mediaobject>
-     <imageobject>
-      <imagedata fileref="mark_notification_as_read_04.png" width="480"/>
-     </imageobject>
+      <imageobject>
+        <imagedata fileref="mark_notification_as_read_04.png" width="50%"/>
+      </imageobject>
     </mediaobject>
-   </figure>
-  </para>
+  </figure>
   <para>
    Should you ever mark a notification as read by accident, you can simply
    revert this by selecting the "read" filter on the right side and using the
@@ -209,7 +210,7 @@
 
    <mediaobject>
     <imageobject>
-     <imagedata fileref="notification_filters.png" width="480"/>
+     <imagedata fileref="notification_filters.png" width="50%"/>
     </imageobject>
    </mediaobject>
   </figure>

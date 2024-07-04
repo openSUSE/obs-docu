@@ -26,7 +26,7 @@
 
       <para>This allows to manage all packaging-relevant source changes in an external SCM repository using the
       native tooling of the SCM (e.g. git). It is recommended to have this SCM server on the same trust level as the OBS
-      instance as it becomes the authoritative source. 
+      instance as it becomes the authoritative source.
       However, any SCM server reachable via network could be used.</para>
 
       <para>osc can still be used to checkout sources. This will create an SCM repository, so any modification needs to be
@@ -56,9 +56,9 @@
 
       <para>Large binary files may be stored using git LFS or by referencing external build assets,
             using asset management. These assets will get downloaded and verified as well. The advantage is
-            that this information can also be used to compile Software Bills of Materials (SBOMs). Have a look in 
+            that this information can also be used to compile Software Bills of Materials (SBOMs). Have a look in
             <link xlink:href="http://opensuse.github.io/obs-build/pbuild.html#_remote_assets">the pbuild
-	    documentation</link> for further details on this. </para>
+            documentation</link> for further details on this. </para>
 
       <para>In another typical scenario, a package maintainer owns a git repository where
       a build description and distribution specific files are stored. The sources from the upstream
@@ -84,7 +84,6 @@
 
       <para>The sources are currently cloned for the OBS source server to allow OBS to process them. This
             is to be considered an internal implementation detail and may change in future.</para>
-      <para>
        <itemizedlist>
         <listitem>
           <para>Git submodules: are cloned by default</para>
@@ -102,16 +101,19 @@
           <para>Architecture specific remote assets can be selected by adding an arch=ARCH CGI parameter to the URL.</para>
         </listitem>
        </itemizedlist>
-       As an example, for the subdirectory case the URL would look like this:
+       <para>
+         As an example, for the subdirectory case the URL would look like this:
+       </para>
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?subdir=MY_SUBDIRECTORY&lt;/scmsync&gt;</screen>
-      </para>
 
       <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.revision">
         <title>Using a specific revision, tag or branch</title>
 
         <para>The URL can define a revision, tag or branch via an URL fragment. This means the URL can get extended by a
-              hash character and the revision, tag or branch.
-              <screen>&lt;scmsync&gt;https://gitlab.com/some/repository#MY_REVISION&lt;/scmsync&gt;</screen>
+        hash character and the revision, tag or branch.
+        </para>
+        <screen>&lt;scmsync&gt;https://gitlab.com/some/repository#MY_REVISION&lt;/scmsync&gt;</screen>
+        <para>
               This allows to set up multiple projects building for different branches. It is possible to use
              branches for implementing CI workflows. For example a submission test building just a subset, a clean build
              and a final reviewed build.
@@ -120,22 +122,23 @@
 
       <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.pbuild">
         <title>Converting to a project git</title>
-	<para>A project git repository is mostly the same as any project for the pbuild tool. The
-	   <screen># osc create-pbuild-config</screen>
-        command creates the _config and _pbuild files for a given repository and architecture. The _config file is used by OBS as well as by the build
-	configuration (prjconf). The additional _pbuild file is analogous to the OBS project meta, but is not yet
-	honored by OBS. Still, it can be included in the git tree for pbuild users.
+        <para>A project git repository is mostly the same as any project for the pbuild tool. The command </para>
+        <screen># osc create-pbuild-config</screen>
+      <para>
+        creates the _config and _pbuild files for a given repository and architecture. The _config file is used by OBS as well as by the build
+        configuration (prjconf). The additional _pbuild file is analogous to the OBS project meta, but is not yet
+        honored by OBS. Still, it can be included in the git tree for pbuild users.
         </para>
       </sect3>
 
       <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.fork">
         <title>Forking a scmsync package</title>
-	<para>The OBS server allows to create a cloned project with another package using a specified
-	SCM repository. This can be used by tooling to create forked test builds for merge requests.
-	The api POST route for this is
-	<screen>/source/PROJECT/PACKAGE?cmd=fork&amp;scmsync=NEW_SCM_URL</screen>
-	<!-- osc will provide functionality to create a git fork and an OBS package fork afterwards -->
+        <para>The OBS server allows to create a cloned project with another package using a specified
+        SCM repository. This can be used by tooling to create forked test builds for merge requests.
+        The api POST route for this is
         </para>
+        <screen>/source/PROJECT/PACKAGE?cmd=fork&amp;scmsync=NEW_SCM_URL</screen>
+        <!-- osc will provide functionality to create a git fork and an OBS package fork afterwards -->
       </sect3>
     </sect2>
 

@@ -32,7 +32,7 @@
    <title>Simple Project Setup</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="maintenance_project_setup.png" width="800"/>
+     <imagedata fileref="maintenance_project_setup.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -86,12 +86,13 @@
     for further quality assurance tasks.</para>
    </listitem>
    <listitem>
-    <para> The <xref linkend="obs.glos.maintenance_project"/> has to have the
-    <screen>&lt;project name=... kind="maintenance"&gt;</screen> attribute in the project meta
-    configuration, as well as a <screen>&lt;maintenance&gt;</screen> element containing one or more
-    <screen>&lt;maintains project="[PROJECT]"/&gt;</screen> elements. </para>
-    <para> It is very useful to define groups of maintainers and reviewers and to make use of review bots
-    to enforce desired quality properties here.</para>
+    <para> The <xref linkend="obs.glos.maintenance_project"/> has to have the</para>
+    <screen>&lt;project name=... kind="maintenance"&gt;</screen>
+    <para>attribute in the project meta configuration, as well as a</para>
+    <screen>&lt;maintenance&gt;</screen>
+    <para>element containing one or more</para>
+    <screen>&lt;maintains project="[PROJECT]"/&gt;</screen>
+    <para>elements. It is very useful to define groups of maintainers and reviewers and to make use of review bots to enforce desired quality properties here.</para>
    </listitem>
   </itemizedlist>
  </sect1>
@@ -271,7 +272,7 @@
     </listitem>
     <listitem>
      <para> Default content for an incident is added via branch by attribute
-      call:</para> 
+      call:</para>
       <itemizedlist>
        <listitem>
         <para> Package sources get added based on given package and
@@ -325,7 +326,7 @@
     </listitem>
     <listitem>
      <para> The release happens on accepting the request by the maintainers of
-      the release project.</para> 
+      the release project.</para>
       <itemizedlist>
        <listitem>
         <para> All package sources and binaries get copied into a package
@@ -360,7 +361,7 @@
      </para>
     </listitem>
     <listitem>
-     <para> OPTIONAL: A maintenance incident can be restarted by</para> 
+     <para> OPTIONAL: A maintenance incident can be restarted by</para>
       <itemizedlist>
        <listitem>
         <para> Removing the lock flag. </para>
@@ -473,7 +474,7 @@
    <informalfigure>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="maintenance_channel_project_setup.png" width="800"/>
+      <imagedata fileref="maintenance_channel_project_setup.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </informalfigure>

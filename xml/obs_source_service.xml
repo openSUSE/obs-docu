@@ -197,8 +197,8 @@
         A side effect is that the service package is becoming a build
         dependency and must be available.
        </para>
-      </footnote></entry>
-      <entry>Before each build<footnoteref linkend="fn.obs.sserv.mode.buildtime"/></entry>
+      </footnote>The service package must be available for building.</entry>
+      <entry></entry>
       <entry></entry>
      </row>
      <row>

@@ -30,7 +30,7 @@
       <title>Code of Conduct</title>
       <mediaobject>
         <imageobject>
-        <imagedata fileref="code_of_conduct.png" width="800"/>
+        <imagedata fileref="code_of_conduct.png" width="80%"/>
         </imageobject>
       </mediaobject>
     </figure>
@@ -45,7 +45,7 @@
       <title>Configuration Code of Conduct</title>
       <mediaobject>
         <imageobject>
-        <imagedata fileref="configuration_code_of_conduct.png" width="800"/>
+        <imagedata fileref="configuration_code_of_conduct.png" width="80%"/>
         </imageobject>
       </mediaobject>
     </figure>
@@ -63,6 +63,7 @@
       <title>What Can Be Reported?</title>
       <para>
         This is the list of elements that can be reported:
+      </para>
         <itemizedlist>
           <listitem>
             <para>
@@ -90,21 +91,20 @@
             </para>
           </listitem>
         </itemizedlist>
-      </para>
     </sect2>
     <sect2>
       <title>How To Report?</title>
       <para>
         You can find a <emphasis>Report</emphasis> action next to the comment, request or any of the elements mentioned above.
         It is displayed as a button, a link or an item in the actions menu. Click on it and fill in the form.
-        You can simply choose one of the provided categories (Spam, Illegal Content, etc.) or write your reason. 
+        You can simply choose one of the provided categories (Spam, Illegal Content, etc.) or write your reason.
       </para>
 
       <figure>
         <title>Report a Comment</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="report_button_comment.png" width="800"/>
+          <imagedata fileref="report_button_comment.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -113,7 +113,7 @@
         <title>Report a User</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="report_user.png" width="800"/>
+          <imagedata fileref="report_user.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -127,7 +127,7 @@
         <title>Report Comment and Author</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="comment_report.png" width="800"/>
+          <imagedata fileref="comment_report.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -165,7 +165,7 @@
         <title>Reports Warning</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="reports_warning.png" width="800"/>
+          <imagedata fileref="reports_warning.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -179,7 +179,7 @@
         <title>Moderation-related Notifications</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="moderation-related_notifications.png" width="800"/>
+          <imagedata fileref="moderation-related_notifications.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -196,7 +196,7 @@
         <title>Decision Form</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="decision_form.png" width="800"/>
+          <imagedata fileref="decision_form.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -210,13 +210,14 @@
         <title>Comment Edition History</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="comment_history.png" width="800"/>
+          <imagedata fileref="comment_history.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
 
       <para>
         Once you have taken a favored decision, you or an admin can:
+      </para>
         <itemizedlist>
           <listitem>
             <para>
@@ -227,7 +228,7 @@
               <title>Moderate a Comment</title>
               <mediaobject>
                 <imageobject>
-                <imagedata fileref="moderate_comment.png" width="800"/>
+                <imagedata fileref="moderate_comment.png" width="80%"/>
                 </imageobject>
               </mediaobject>
             </figure>
@@ -243,7 +244,6 @@
             </para>
           </listitem>
         </itemizedlist>
-      </para>
       <para>
         Most of these actions are reversible. Read section <xref linkend="reverting_moderators_actions"/>.
       </para>
@@ -276,7 +276,7 @@
       <title>Appeal to Decision</title>
       <mediaobject>
         <imageobject>
-        <imagedata fileref="appeal_to_decision.png" width="800"/>
+        <imagedata fileref="appeal_to_decision.png" width="80%"/>
         </imageobject>
       </mediaobject>
     </figure>
@@ -292,10 +292,9 @@
         <title>Canned Responses</title>
         <mediaobject>
           <imageobject>
-          <imagedata fileref="canned_responses.png" width="800"/>
+          <imagedata fileref="canned_responses.png" width="80%"/>
           </imageobject>
         </mediaobject>
       </figure>
   </sect1>
 </chapter>
-

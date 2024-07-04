@@ -22,7 +22,7 @@
    <title>Start page</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="start_page_login.png" width="800"/>
+     <imagedata fileref="start_page_login.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -33,7 +33,7 @@
    <title>Login</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="login_prompt.png" width="800"/>
+     <imagedata fileref="login_prompt.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -44,7 +44,7 @@
    <title>Logged in</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="logged_in.png" width="800"/>
+     <imagedata fileref="logged_in.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -66,7 +66,7 @@
     <title>Project Page</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="user_home_page.png" width="800"/>
+      <imagedata fileref="user_home_page.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -80,7 +80,7 @@
     <title>Updating project description</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="change_project_title_and_description.png" width="800"
+      <imagedata fileref="change_project_title_and_description.png" width="80%"
       />
      </imageobject>
     </mediaobject>
@@ -102,7 +102,7 @@
     <title>Creating Subprojects</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="create_subprojects.png" width="800"/>
+      <imagedata fileref="create_subprojects.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -118,7 +118,7 @@
    <title>My Projects</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="obswebui_my_projects.png" width="800"/>
+     <imagedata fileref="obswebui_my_projects.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -130,7 +130,7 @@
    <title>Status Monitor</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="status_monitor.png" width="800"/>
+     <imagedata fileref="status_monitor.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -146,7 +146,7 @@
    <title>My Projects</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="obswebui_my_projects.png" width="800"/>
+     <imagedata fileref="obswebui_my_projects.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -168,7 +168,7 @@
      <para> Look at package's page. </para>
     </listitem>
    </orderedlist>
-  
+
   <sect2>
    <title>Add Link to Existing Package</title>
    <para> Right below packages, there's "Branch Package from other Project" . </para>
@@ -176,7 +176,7 @@
     <title>Branch Package</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="branch_package.png" width="800"/>
+      <imagedata fileref="branch_package.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -194,7 +194,7 @@ flood</screen>
     <title>Apache Flood Branch</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="apache_flood_branch.png" width="800"/>
+      <imagedata fileref="apache_flood_branch.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -205,7 +205,7 @@ flood</screen>
     <title>Branched Package</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_branched.png" width="800"/>
+      <imagedata fileref="flood_branched.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -224,7 +224,7 @@ flood</screen>
     <title>flood_succeeded_finished</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_succeeded_finished.png" width="800"/>
+      <imagedata fileref="flood_succeeded_finished.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -233,7 +233,7 @@ flood</screen>
     <title>flood_build_success</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_build_sucess.png" width="800"/>
+      <imagedata fileref="flood_build_sucess.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -243,7 +243,7 @@ flood</screen>
     <title>flood_build_log</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="flood_build_log.png" width="800"/>
+      <imagedata fileref="flood_build_log.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>
@@ -258,12 +258,12 @@ flood</screen>
    <title>My_Repository</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="my_repository.png" width="800"/>
+     <imagedata fileref="my_repository.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
   <note>
-   <para> Published repositories are marked with the OBS truck</para> 
+   <para> Published repositories are marked with the OBS truck</para>
   </note>
   <para>
    Now click <guimenu>Go to download repository</guimenu>. Note that publishing the
@@ -275,7 +275,7 @@ flood</screen>
    <title>Repository Structure</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="download_rpm_directories.png" width="800"/>
+     <imagedata fileref="download_rpm_directories.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -296,7 +296,7 @@ flood</screen>
     <title>Adding a Repository to a Project</title>
     <mediaobject>
      <imageobject>
-      <imagedata fileref="adding_opensuse_factory.png" width="800"/>
+      <imagedata fileref="adding_opensuse_factory.png" width="80%"/>
      </imageobject>
     </mediaobject>
    </figure>

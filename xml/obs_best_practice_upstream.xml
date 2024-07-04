@@ -6,7 +6,7 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.upstream" os="opensuse;novell">
  <title>Publishing Upstream Binaries</title>
  <info/>
- 
+
  <para>
   This chapter covers main step of using OBS to publish binaries of your
   project for multiple distributions.
@@ -159,7 +159,7 @@
    <title>openSUSE download page for package from OBS</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="download_page_screenshot.png" width="800"/>
+     <imagedata fileref="download_page_screenshot.png" width="80%"/>
     </imageobject>
    </mediaobject>
   </figure>
@@ -246,15 +246,16 @@
     <code>object</code>
     to include download code:
    </para>
-<screen>&lt;object type="text/html" 
+   <screen>&lt;object type="text/html"
    data="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"
    width="100%" height="100%"&gt;
-   &lt;param name="src" 
+   &lt;param name="src"
       value="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff" /&gt;
    Your browser doesn't support objects, please continue to the
    &lt;a href="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"&gt;
    download page&lt;/a&gt;
-&lt;/object&gt;</screen>
+&lt;/object&gt;
+   </screen>
    <para>
     If you are using PHP on your server, you can make it easier by using
     following code:
@@ -263,10 +264,10 @@
 &lt;?php
    $url = "http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff";
    echo '
-&lt;object type="text/html" 
+&lt;object type="text/html"
    data="' . $url . '"
    width="100%" height="100%"&gt;
-   &lt;param name="src" 
+   &lt;param name="src"
       value="' . $url . '" /&gt;
    Your browser doesn't support objects, please continue to the
    &lt;a href="' . $url . '"&gt;download page&lt;/a&gt;

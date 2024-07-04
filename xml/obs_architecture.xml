@@ -24,7 +24,7 @@
    <title>Simplified OBS Component Overview</title>
    <mediaobject>
     <imageobject>
-     <imagedata fileref="obs_components.png" width="500"/>
+     <imagedata fileref="obs_components.png" width="50%"/>
     </imageobject>
    </mediaobject>
   </figure>
