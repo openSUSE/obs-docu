@@ -32,7 +32,7 @@
    susetags, rpmmd and deb), we recommend that you use a mirror server URL in
    &lt;download&gt; in order to reduce traffic on the master server and
    configure a &lt;master&gt; with an <command>https</command> url and a
-    <command>sslfinger</command> in order to avoid man in the middle attacks by
+    <command>sslfingerprint</command> in order to avoid man in the middle attacks by
    peer verification. </para>
  </sect2>
  <sect2>

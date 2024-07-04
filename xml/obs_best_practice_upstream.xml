@@ -247,12 +247,12 @@
     to include download code:
    </para>
 <screen>&lt;object type="text/html" 
-   data="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;amp;package=osc&amp;amp;bcolor=004&amp;amp;acolor=ff0&amp;amp;fcolor=fff&amp;amp;hcolor=0ff"
+   data="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"
    width="100%" height="100%"&gt;
    &lt;param name="src" 
-      value="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;amp;package=osc&amp;amp;bcolor=004&amp;amp;acolor=ff0&amp;amp;fcolor=fff&amp;amp;hcolor=0ff" /&gt;
+      value="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff" /&gt;
    Your browser doesn't support objects, please continue to the
-   &lt;a href="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;amp;package=osc&amp;amp;bcolor=004&amp;amp;acolor=ff0&amp;amp;fcolor=fff&amp;amp;hcolor=0ff"&gt;
+   &lt;a href="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"&gt;
    download page&lt;/a&gt;
 &lt;/object&gt;</screen>
    <para>
@@ -261,7 +261,7 @@
    </para>
 <screen>
 &lt;?php
-   $url = "http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;amp;package=osc&amp;amp;bcolor=004&amp;amp;acolor=ff0&amp;amp;fcolor=fff&amp;amp;hcolor=0ff";
+   $url = "http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff";
    echo '
 &lt;object type="text/html" 
    data="' . $url . '"
@@ -280,7 +280,7 @@
     :
    </para>
 <screen>
-&lt;iframe src="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;amp;package=osc&amp;amp;bcolor=004&amp;amp;acolor=ff0&amp;amp;fcolor=fff&amp;amp;hcolor=0ff"/&gt;
+&lt;iframe src="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc&amp;bcolor=004&amp;acolor=ff0&amp;fcolor=fff&amp;hcolor=0ff"/&gt;
 </screen>
   </sect2>
  </sect1>

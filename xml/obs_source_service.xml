@@ -441,7 +441,7 @@
    </para>
    <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/webhook?id=$TOKEN_ID</screen>
    <para>
-      and fill the secret box with your token string. Please not that github requires that you
+      and fill the secret box with your token string. Please note that github requires that you
       must also define the token id as part of the webhook string. All other settings can stay
       untouched and just hit the <guimenu>Add webhook</guimenu> button.
    </para>

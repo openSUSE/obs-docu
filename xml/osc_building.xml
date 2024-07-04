@@ -147,7 +147,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
 	  The default build environment for local builds is usually chroot. While this is simplest environment
 	  and is therefore easy and fast to handle, it has also a number of shortcomings. For one it is
 	  not safe against attacks, so you must not build sources or using build dependencies from a resource
-	  which you do not trust. Furthermore the environment is not fully isolated and runs not the kernel the
+	  which you do not trust. Furthermore the environment is not fully isolated and runs on the kernel the
 	  target distribution runs. This means esp image builds and kernel/hardware specific builds may fail or
 	  won't produce the same result. The server side is usually set to inside of KVM therefore to avoid this.
   </para>
