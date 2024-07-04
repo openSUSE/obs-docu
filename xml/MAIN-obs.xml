@@ -12,14 +12,22 @@
   xmlns:dm="urn:x-suse:ns:docmanager"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
+ <info>
   <title>OBS Documentation</title>
   <subtitle>&productname; &productnumber;</subtitle>
-  <info/>
-
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker>
+    <dm:url>https://github.com/SUSE/obs-docu/issues/new</dm:url>
+    <dm:product>OBS</dm:product>
+   </dm:bugtracker>
+  </dm:docmanager>
+ </info>
+<!--
   <book xml:id="book.obs.techpaper">
    <title>Technical Papers</title>
    <info/>
   </book>
+-->
   <xi:include href="book-obs-user-guide.xml"/>
   <xi:include href="book-obs-admin-guide.xml"/>
 </set>
