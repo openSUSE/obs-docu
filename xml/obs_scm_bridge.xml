@@ -78,9 +78,9 @@
 
       <para>The build configuration part can get stored as '_config' file in the top level directory.</para>
 
-      <para>It is possible to limit the actual used package sources by specifing an "onlybuild" cgi parameter
-      as part of the scmsync url. This parameter can be used multiple times. This is usefull to
-      for example when trying to do a testbuild of just a few packages without the need to modify the source.
+      <para>It is possible to limit the actual used package sources by specifying an "onlybuild" cgi parameter
+      as part of the scmsync url. This parameter can be used multiple times. This is useful,
+      for example, when trying to do a test build of just a few packages without the need to modify the source.
       In that way an open merge request may be tested before merging. Example URL:</para>
          <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?onlybuild=glibc&amp;onlybuild=kernel&lt;/scmsync&gt;</screen>
     </sect2>
