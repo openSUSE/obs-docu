@@ -6,7 +6,7 @@
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="_obs_spider_identification">
+ xml:id="obs-spider-identification">
  <title>Spider Identification</title>
  <para> OBS is hiding specific parts/pages of the application from search
   crawlers (DuckDuckGo, Google, etc.), mostly for performance reasons. Which

@@ -10,7 +10,7 @@
  <title>Installation and Configuration</title>
  <info/>
 
- <sect1 xml:id="_planning">
+ <sect1 xml:id="planning">
   <title>Planning</title>
   <para>For testing your own OBS instance, or for small setups, such as if you only
    want to package a few scripts into RPMS and create
@@ -30,7 +30,7 @@
    on one host, if it has sufficient resources.</para>
   <para>For flexibility and if you want some kind of high availability it is
    recommended to use virtualization for the different components.</para>
-  <sect2 xml:id="_resource_planning">
+  <sect2 xml:id="planning-resource-planning">
    <title>Resource Planning</title>
    <para>Normally, for an small or middle-sized installation, a setup with everything
     on one host (except workers) is sufficient. You should have a separate /srv
@@ -74,7 +74,7 @@
     worker hosts is more important than the other parts.</para>
   </sect2>
  </sect1>
- <sect1 xml:id="_simple_installation">
+ <sect1 xml:id="simple-installation">
   <title>Simple Installation</title>
   <para>In this document, we call "simple installation" an OBS installation where all OBS services are running on the same
    machine.</para>
@@ -86,7 +86,7 @@
   <para>Before you start the installation of the OBS, you should make sure that
    your hosts have the correct fully qualified hostname, and that DNS is working and
    can resolve all names.</para>
-  <sect2 xml:id="_backend_installation">
+  <sect2 xml:id="simple-installation-backend-installation">
    <title>Back-end Installation</title>
    <para>The back-end hosts all sources and built packages. It also schedules
     the jobs. To install it, install the "obs-server" package. After installation,
@@ -95,7 +95,7 @@
     the defaults should be good enough for simple cases.</para>
    <note>
     <para>
-      Read more about configuring the backend in <xref linkend="_distributed_setup"/>.
+      Read more about configuring the backend in <xref linkend="distributed-setup"/>.
     </para>
    </note>
    <para>The back-end consists of a number of systemd units (services):</para>
@@ -301,7 +301,7 @@ systemctl start obsrepserver.service
      outside. If the system is connected to an untrusted network, either block
      the ports with a firewall or do not run the commands at all.</para>
    </warning>
-   <sect3 xml:id="_cloud_upload_setup">
+   <sect3 xml:id="simple-installation-backend-installation-cloud-upload-setup">
     <title>Cloud Upload Setup</title>
     <para>In order to setup the Cloud Upload feature you will need to configure the tools required per each cloud provider.
       Right now we only support the AWS Amazon Cloud (<link xlink:href="https://aws.amazon.com"/>) and Microsoft Azure
@@ -341,9 +341,9 @@ our $clouduploadserver = "http://$hostname:5452";
         Having an incorrect system time will cause cloud uploads to fail.
       </para>
     </warning>
-    <sect4 xml:id="_aws">
+    <sect4 xml:id="simple-installation-backend-installation-cloud-upload-setup-aws">
      <title>AWS Amazon Cloud</title>
-     <sect5 xml:id="_aws_authentication_workflow">
+     <sect5 xml:id="simple-installation-backend-installation-cloud-upload-setup-aws-aws-authentication-workflow">
        <title>Authentication Workflow</title>
        <para>
          We are going to use the role based authentication provided by Amazon to enable the OBS instance to upload images to other user's accounts.
@@ -358,7 +358,7 @@ our $clouduploadserver = "http://$hostname:5452";
          The whole workflow is described in the <link xlink:href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</link>.
        </para>
      </sect5>
-     <sect5 xml:id="_aws_authentication_credential_setup">
+     <sect5 xml:id="simple-installation-backend-installation-cloud-upload-setup-aws-aws-authentication-credential-setup">
        <title>Credentials Setup</title>
        <para>
          For uploading images to AWS, OBS is using the <link xlink:href="https://aws.amazon.com/cli">AWS CLI</link> tool.
@@ -369,9 +369,9 @@ our $clouduploadserver = "http://$hostname:5452";
        </para>
      </sect5>
     </sect4>
-    <sect4 xml:id="_ms_azure">
+    <sect4 xml:id="simple-installation-backend-installation-cloud-upload-setup-ms-azure">
      <title>Microsoft Azure</title>
-     <sect5 xml:id="_ms_azure_authentication_workflow">
+     <sect5 xml:id="simple-installation-backend-installation-cloud-upload-setup-ms-azure-ms-azure-authentication-workflow">
       <title>Authentication Workflow</title>
       <para>
        The authentication is done via Microsoft's Active Directory. The user has to create a new application and needs to
@@ -391,7 +391,7 @@ our $clouduploadserver = "http://$hostname:5452";
        OBS communicates with the REST API of Microsoft Azure to authenticate and upload images.
       </para>
      </sect5>
-     <sect5 xml:id="_ms_azure_setup">
+     <sect5 xml:id="simple-installation-backend-installation-cloud-upload-setup-ms-azure-setup">
       <title>Configuration</title>
       <para>
        The <emphasis role="strong">Application ID</emphasis> and the <emphasis role="strong">Application Key</emphasis> will be stored encrypted in
@@ -407,7 +407,7 @@ openssl genrsa -out secret.pem
 openssl rsa -in secret.pem -out _pubkey -outform PEM -pubout
        </screen>
      </sect5>
-     <sect5 xml:id="_ms_azure_authentication_credential_setup">
+     <sect5 xml:id="simple-installation-backend-installation-cloud-upload-setup-aws-ms-azure-authentication-credential-setup">
       <title>Credentials setup</title>
       <para>
        It's important that the public key is named <emphasis role="strong">_pubkey</emphasis> and the secret key is named
@@ -417,11 +417,11 @@ openssl rsa -in secret.pem -out _pubkey -outform PEM -pubout
     </sect4>
    </sect3>
   </sect2>
-  <sect2 xml:id="_frontend_installation">
+  <sect2 xml:id="simple-installation-frontend-installation">
    <title>Front-end Installation</title>
    <para>You need to install the "obs-api" package for this and a MySQL
     server.</para>
-   <sect3 xml:id="_mysql_setup">
+   <sect3 xml:id="simple-installation-frontend-installation-mysql-setup">
     <title>MySQL Setup</title>
     <para>Make sure that the mysql server is started on every system reboot
      (use "insserv mysql" for permanent start). You should run
@@ -469,7 +469,7 @@ sudo RAILS_ENV="production" rake writeconfiguration
 sudo chown -R wwwrun.www log tmp</screen>
     <para>Now you are done with the database setup.</para>
    </sect3>
-   <sect3 xml:id="_apache_setup">
+   <sect3 xml:id="simple-installation-frontend-installation-apache-setup">
     <title>Apache Setup</title>
     <para>Now we need to configure the Web server. By default, you can reach
      the familiar web user interface and also api both on port 443 speaking
@@ -511,7 +511,7 @@ cat /srv/obs/certs/server.key /srv/obs/certs/server.crt \
     <screen>cp /srv/obs/certs/server.pem /etc/ssl/certs/
 c_rehash /etc/ssl/certs/</screen>
    </sect3>
-   <sect3 xml:id="_api_configuration">
+   <sect3 xml:id="simple-installation-frontend-installation-api-configuration">
     <title>API Configuration</title>
     <para>Check and edit <emphasis role="strong"
        >/srv/www/obs/api/config/options.yml</emphasis>
@@ -519,9 +519,9 @@ c_rehash /etc/ssl/certs/</screen>
     <para>If you change the hostnames/ips of the API, you need to adjust
       <emphasis role="strong">frontend_host</emphasis>
      accordingly. If you want to use LDAP, you need to change the LDAP settings
-     as well. Look at the <xref linkend="_user_and_group_management"/> for
+     as well. Look at the <xref linkend="user-and-group-management"/> for
      details. You will find examples and more details in the <xref
-      linkend="_configuration_files"/>.</para>
+      linkend="configuration-files"/>.</para>
     <para>It is strongly recommended to enable</para>
     <screen>use_xforward: true</screen>
     <para>as well here, to tell Rails to forward requests to the back-end for
@@ -541,7 +541,7 @@ systemctl start memcached.service</screen>
      online configuration steps.</para>
    </sect3>
   </sect2>
-  <sect2 xml:id="_online_configuration">
+  <sect2 xml:id="simple-installation-online-configuration">
    <title>Online Configuration</title>
    <para>To customize the OBS instance you may need to configure some settings
     via the OBS API and Web user interface.</para>
@@ -624,7 +624,7 @@ cat /tmp/obs.config
    <para>If you want to use an interconnect to another OBS instance to reuse
     the build targets you can do this as Admin via the Web UI or create a
     project with a <emphasis role="strong">remoteurl</emphasis> tag (see <xref
-     linkend="_project_meta_data"/>)</para>
+     linkend="meta-data-project-meta-data"/>)</para>
    <screen>&lt;project name="openSUSE.org"&gt;
   &lt;title&gt;openSUSE.org Project&lt;/title&gt;
   &lt;description&gt;
@@ -641,7 +641,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
     this:</para>
    <screen>osc -c ~/.obsadmin_osc.rc meta prj openSUSE.org -F /tmp/openSUSE.org.meta</screen>
    <para>You also can import binary distribution, see <xref
-     linkend="_importing_distributions"/> for this.</para>
+     linkend="managing-build-targets-importing-distributions"/> for this.</para>
    <para>The OBS has a list of available distributions used for build. This
     list is displayed to user, if they are adding repositories to their
     projects. This list can be managed via the API path /distributions</para>
@@ -664,7 +664,7 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
    <screen>osc -c ~/.obsadmin_osc.rc api /distributions -T /tmp/distributions.xml</screen>
   </sect2>
  </sect1>
- <sect1 xml:id="_worker_farm">
+ <sect1 xml:id="worker-farm">
   <title>Worker Farm</title>
   <para>To not burden your OBS back-end daemons with the unpredictable load
    package builds can produce (think someone builds a monstrous package like
@@ -685,12 +685,12 @@ openSUSE:12.3 project as specified on the opensuse.org Build Service.
     <emphasis role="strong">OBS_SRC_SERVER</emphasis>, <emphasis role="strong"
     >OBS_REPO_SERVERS</emphasis> and <emphasis role="strong"
     >OBS_WORKER_INSTANCES</emphasis> need to be set. More details in the <xref
-    linkend="_configuration_files"/>.</para>
+    linkend="configuration-files"/>.</para>
   <para>start the worker:</para>
   <screen>systemctl enable obsworker
 systemctl start obsworker</screen>
  </sect1>
- <sect1 xml:id="_distributed_setup">
+ <sect1 xml:id="distributed-setup">
   <title>Distributed Setup</title>
   <para>All OBS back-end daemons can also be started on individual machines in
    your network. Also, the front-end Web server and the MySQL server can run on
@@ -825,15 +825,15 @@ systemctl start obswarden.service</screen>
     role="strong">OBS_REPO_SERVERS</emphasis> variable. You can also define
    workers with a subset of the repo servers to prioritize partitions.</para>
  </sect1>
- <sect1 xml:id="_monitoring">
+ <sect1 xml:id="monitoring">
   <title>Monitoring</title>
   <para>In this chapter you will find some general monitoring instructions for
    the Open Build Service. All examples are based on Nagios plugins, but the
    information provided should be easily adaptable for other monitoring
    solutions.</para>
-  <sect2 xml:id="_endpoint_checks">
+  <sect2 xml:id="monitoring-endpoint-checks">
    <title>Endpoint Checks</title>
-   <sect3 xml:id="_http_checks_check_if_the_http_server_responds">
+   <sect3 xml:id="monitoring-endpoint-checks-http-checks-check-if-the-http-server-responds">
     <title>HTTP Checks: Checking Whether the HTTP Server Responds</title>
     <para>This check will output a critical if the HTTP server with ip address
      172.19.19.19 (-I 172.19.19.19) listening on port 80 (-p 80) does not
@@ -871,11 +871,11 @@ systemctl start obswarden.service</screen>
     </orderedlist>
    </sect3>
   </sect2>
-  <sect2 xml:id="_common_checks">
+  <sect2 xml:id="monitoring-common-checks">
    <title>Common Checks</title>
    <para>This is a list of common checks that should be run on each individual
     server.</para>
-   <sect3 xml:id="_disk_space_check_for_available_disk_space">
+   <sect3 xml:id="monitoring-common-checks-disk-space-check-for-available-disk-space">
     <title>Disk Space: Checking Available Disk Space</title>
     <para>This check will output a warning if less than 10 percent disk space
      is available (-w 10) and output a critical if less than 5 percent disk
@@ -883,7 +883,7 @@ systemctl start obswarden.service</screen>
      systems with type <emphasis>none</emphasis> (-x none).</para>
     <screen>check_disk -w 10 -c 5 -x none</screen>
    </sect3>
-   <sect3 xml:id="_memory_usage_check_for_available_memory">
+   <sect3 xml:id="monitoring-common-checks-memory-usage-check-for-available-memory">
     <title>Memory Usage: Checking Available Memory</title>
     <para>This check will output a warning if less than 10 percent memory is
      available (-w 10) and output a critical if less than 5 percent memory is
@@ -894,7 +894,7 @@ systemctl start obswarden.service</screen>
       >https://exchange.nagios.org/</link>.</para>
     <screen>check_mem.pl -f -C -w 10 -c 5</screen>
    </sect3>
-   <sect3 xml:id="_ntp_check_date_and_time">
+   <sect3 xml:id="monitoring-common-checks-ntp-check-date-and-time">
     <title>NTP: Checking Date and Time</title>
     <para>This check will compare the local time with the time provided by the
      NTP server pool.ntp.org (-H pool.ntp.org). It will output a warning if the
@@ -902,7 +902,7 @@ systemctl start obswarden.service</screen>
      differs by 1 seconds (-c 1).</para>
     <screen>check_ntp_time -H pool.ntp.org -w 0.5 -c 1</screen>
    </sect3>
-   <sect3 xml:id="_ping_check_that_the_server_is_alive">
+   <sect3 xml:id="monitoring-common-checks-ping-check-that-the-server-is-alive">
     <title>Ping: Checking That the Server Is Alive</title>
     <para>This plugin checks if the server responds to a ping request and it
      will output a warning if the respond time exceeds 200ms or 30 percent
@@ -910,7 +910,7 @@ systemctl start obswarden.service</screen>
      exceeds 500ms or 60 percent package loss.</para>
     <screen>check_icmp -H server -w 200.0,30% -c 500.0,60%</screen>
    </sect3>
-   <sect3 xml:id="_load_check_the_load_on_the_server">
+   <sect3 xml:id="monitoring-common-checks-load-check-the-load-on-the-server">
     <title>Load: Checking the Load on the Server</title>
     <para>This check will output a warning if the load value exceeded 7.0 in
      the last minute, 6.0 in the last 5 minutes or 5.0 in the last 15 minutes
@@ -919,7 +919,7 @@ systemctl start obswarden.service</screen>
      minutes (-c 12.0,8.0,6.0).</para>
     <screen>check_load -w 7.0,6.0,5.0 -c 12.0,8.0,6.0</screen>
    </sect3>
-   <sect3 xml:id="_disk_health_check_the_health_of_local_hard_disks">
+   <sect3 xml:id="monitoring-common-checks-disk-health-check-the-health-of-local-hard-disks">
     <title>Disk Health: Checking the Health of Local Hard Disks</title>
     <para>This check is only relevant on physical systems with local storage
      attached to it. It will check the disk status utilizing the S.M.A.R.T
@@ -930,9 +930,9 @@ systemctl start obswarden.service</screen>
     <screen>check_smartmon --drive /dev/sda --drive /dev/sdb</screen>
    </sect3>
   </sect2>
-  <sect2 xml:id="_other_checks">
+  <sect2 xml:id="monitoring-other-checks">
    <title>Other Checks</title>
-   <sect3 xml:id="_mysql_check_that_the_mysql_database_is_responding">
+   <sect3 xml:id="monitoring-other-checks-mysql-check-that-the-mysql-database-is-responding">
     <title>MySQL: Checking That the MySQL Database Is Responding</title>
     <para>This check will check that the MySQL database server is running and
      that the database <emphasis>api_production</emphasis> is available.</para>
@@ -947,7 +947,7 @@ systemctl start obswarden.service</screen>
      </listitem>
     </orderedlist>
    </sect3>
-   <sect3 xml:id="_backup_status_check_that_a_valid_backup_is_avilable">
+   <sect3 xml:id="monitoring-other-checks-backup-status-check-that-a-valid-backup-is-avilable">
     <title>Backup Status: Checking That a Valid Backup Is Available</title>
     <para>It is always advisable to check that the last backup run was
      successful and a recent backup is available. The check itself depends on

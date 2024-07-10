@@ -176,7 +176,7 @@
  </sect1>
 -->
 
- <sect1 xml:id="_kiwi_appliance">
+ <sect1 xml:id="kiwi-appliance">
   <title>&kiwi; Appliance</title>
   <para>
    <link xlink:href="https://github.com/OSInside/kiwi">KIWI</link> is an OS

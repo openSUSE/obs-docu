@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?asciidoc-toc?>
 <?asciidoc-numbered?>
-<sect1 xml:id="_worker_in_kubernetes_" xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<sect1 xml:id="worker-in-kubernetes" xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
         <title>Worker in Kubernetes</title>
         <warning>
             <title>Alpha Implementation</title>

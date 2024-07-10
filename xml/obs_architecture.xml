@@ -16,7 +16,7 @@
   </abstract>
  </info>
 
- <sect1 xml:id="_overview_graph">
+ <sect1 xml:id="overview-graph">
   <title>Overview Graph</title>
   <para> &OBS; is not a monolithic server; it consists of multiple daemons
    that fulfill different tasks (see <xref linkend="fig.overview.simplified"/>). </para>
@@ -179,7 +179,7 @@
 
 <!-- <xi:include href="obs_ag_backend_components.xml"/>-->
 
- <sect1 xml:id="_communication_flow">
+ <sect1 xml:id="communication-flow">
   <title>Communication Flow</title>
   <para>
    The communication flow can be split into the following major parts:

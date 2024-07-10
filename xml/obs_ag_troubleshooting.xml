@@ -25,7 +25,7 @@
   description and so on. Most of them should not happen if the packager does
   test the build locally before committing it to the OBS. This type of problems
   is not covered by this chapter.</para>
- <sect1 xml:id="_general_hints">
+ <sect1 xml:id="general-hints">
   <title>General Hints</title>
   <para>If you detect unexpected behavior of the open build service, you
    should follow some rules to locate the problem:</para>
@@ -34,7 +34,7 @@
     <para> Consult the log files, for the back-end look at
       <emphasis>/srv/obs/log</emphasis> for the back-end log files and
       <emphasis>/srv/www/obs/api/log</emphasis> for the front-end log files.
-     See the Log files <xref linkend="_log_files"/> for more details.
+     See the Log files <xref linkend="log-files"/> for more details.
     </para>
    </listitem>
    <listitem>
@@ -64,7 +64,7 @@
    </listitem>
   </orderedlist>
  </sect1>
- <sect1 xml:id="_debug_frontend_problems">
+ <sect1 xml:id="debug-frontend-problems">
   <title>Debugging Front-end Problems</title>
   <para>If you get unexpected results from submitting commands with the
     <emphasis role="strong"><emphasis>osc</emphasis></emphasis> tool, you can

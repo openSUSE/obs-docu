@@ -18,19 +18,19 @@
  <xi:include href="obs_ag_unpublish_hooks.xml"/>
  <xi:include href="obs_ag_user_management.xml"/>
  <xi:include href="obs_ag_message_bus.xml"/>
- <sect1 xml:id="_backup">
+ <sect1 xml:id="backup">
   <title>Backup</title>
   <para>
     &obs; configuration and content needs usually a backup. The following explains
     suggested strategies and places considered for a backup.
   </para>
 
-  <sect2 xml:id="_backup_places">
+  <sect2 xml:id="backup-backup-places">
    <title>Places to consider</title>
    <para>The following is pointing to the places with admin configurations or user content.
          The default location places are considered here.
    </para>
-   <sect3 xml:id="_backup_configuration_frontend">
+   <sect3 xml:id="backup-backup-places-backup-configuration-frontend">
      <title>Frontend Configuration</title>
      <itemizedlist>
       <listitem>
@@ -43,41 +43,41 @@
     <para>The configuration is not changing usually. It is enough to backup it after config changes.
     </para>
    </sect3>
-   <sect3 xml:id="_backup_database_frontend">
+   <sect3 xml:id="backup-backup-places-backup-database-frontend">
      <title>Frontend Database</title>
      <para>The MySQL/MariaDB database backup can be done in different ways. Please consider the database
            manual for details. One possible way is to create dumps via mysqldump tool. The backup should be
            done at the same point of time as the source server. Inconsistencies can be resolved
            using the check_consistency tool.</para>
    </sect3>
-   <sect3 xml:id="_backup_backend_configuration">
+   <sect3 xml:id="backup-backup-places-backup-backend-configuration">
      <title>Backend Configuration</title>
      <para>The backend has a single configuration file which may got altered. This is by default
              /usr/lib/obs/server/BSConfig.pm . The file is not supposed to be changed usually and
              it can only be done by the system root user. A backup after a change is sufficient.
      </para>
    </sect3>
-   <sect3 xml:id="_backup_backend_content">
+   <sect3 xml:id="backup-backup-places-backup-backend-content">
      <title>Backend Content</title>
      <para>All backend content is below /srv/obs directory. This include the sources, build results and
            also all configuration changes done by the OBS admin users.
      </para>
    </sect3>
   </sect2>
-  <sect2 xml:id="_backup_strategies">
+  <sect2 xml:id="backup-backup-strategies">
    <title>Backup strategies</title>
    <para>
      A backup is ideally taken only from a not running service. In real live this is
      usually not possible, so it is important to run a backup on a production system.
    </para>
-   <sect3 xml:id="_backup_strategy_database">
+   <sect3 xml:id="backup-backup-strategies-backup-strategy-database">
     <title>Database</title>
     <para>MySQL backup either directly from a non-primary node in the galera
     cluster (table dump locks the database during operation) or from a mysql slave
     attached to the cluster.
     </para>
    </sect3>
-   <sect3 xml:id="_backup_strategy_backend_sources">
+   <sect3 xml:id="backup-backup-strategies-backup-strategy-backend-sources">
     <title>Sources</title>
      <para>The sources are supposed to be backup at the same time as the database. This
            can get achieved by either having a dedicated instance for the source server
@@ -92,7 +92,7 @@
       </listitem>
      </itemizedlist>
    </sect3>
-   <sect3 xml:id="_backup_strategy_backend_binaries">
+   <sect3 xml:id="backup-backup-strategies-backup-strategy-backend-binaries">
     <title>Build Results</title>
     <para>Full backups via snapshots, either offered by the SAN storage or
     via LVM snapshot methods. Consistency is normally on repository level. Any inconsistency
@@ -103,13 +103,13 @@
   </sect2>
  </sect1>
 
- <sect1 xml:id="_restore">
+ <sect1 xml:id="restore">
   <title>Restore</title>
   <para>
     A restored system might contain inconsistencies if it was taken from a running service.
     These can be resolved as follows.
   </para>
-  <sect2 xml:id="_restore_database_inconsistencies">
+  <sect2 xml:id="restore-restore-database-inconsistencies">
    <title>Check and repair database inconsistencies</title>
    <para>If either database portions or sources got restored there are chances for inconsistencies.
    These can be found via
@@ -128,7 +128,7 @@
            <screen>&prompt.user;<command>cd /srv/www/obs/api/</command>
 &prompt.user;<command>./bin/rake fix_project project="YOUR_PROJECT"</command> </screen>
   </sect2>
-  <sect2 xml:id="_restore_binaries">
+  <sect2 xml:id="restore-restore-binaries">
    <title>Binaries</title>
    <para>All build results are evaluated by the scheduler. Therefore any inconsistency can be
            detected by the scheduler. One way is to enforce a cold start, which means that the
@@ -151,7 +151,7 @@
   </sect2>
  </sect1>
 
- <sect1 xml:id="_handle_data_corruption">
+ <sect1 xml:id="repair-data-corruption">
   <title>Repair Data Corruption</title>
   <para>
           On-disk data might be corrupted independent of a restore. For example due to power outage, filesystem

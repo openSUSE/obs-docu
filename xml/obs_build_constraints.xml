@@ -57,7 +57,7 @@
    </sect3>
   </sect2>
  </sect1>
- <sect1 xml:id="_constraint_qualifiers">
+ <sect1 xml:id="constraint-qualifiers">
   <title>Constraint Qualifiers</title>
   <para> In general, build constraints are specified in terms of a qualifier
    and a value. The qualifier expresses "what" - the build worker parameter
@@ -76,7 +76,7 @@
    and <literal>unit=G</literal> means "the value is expressed in units of
    Gigabytes. </para>
   <para> For a full treatment of constraint syntax, see
-   <xref linkend="_constraint_syntax"/>. </para>
+   <xref linkend="constraint-syntax"/>. </para>
  </sect1>
  <sect1>
   <title>Constraint scope and precedence </title>
@@ -102,7 +102,7 @@
     defined in the project config by adding lines as so: </para>
    <screen>Constraint: &lt;QUALIFIER&gt; &lt;VALUE&gt;</screen>
    <para> The QUALIFIER syntax is the same as used in RPM spec files, documented
-    in <xref linkend="_constraint_syntax"/>. Within the project configuration,
+    in <xref linkend="constraint-syntax"/>. Within the project configuration,
     individual <literal>Constraint</literal> lines can be enclosed in guards to
     make a constraint apply only to certain architectures or repositories. For
     example:</para>
@@ -118,7 +118,7 @@ Constraint: hardware:disk:size unit=M 4000
      project itself, but also all projects that build against it.</para>
      </important>
    <para> For a full treatment of constraint syntax, see
-    <xref linkend="_constraint_syntax"/>. </para>
+    <xref linkend="constraint-syntax"/>. </para>
   </sect2>
   <sect2>
    <title>Package-scoped constraints</title>
@@ -144,7 +144,7 @@ Constraint: hardware:disk:size unit=M 4000
 &lt;/constraints&gt;</screen>
    <para> For details on constraint qualifiers and how to specify them
     in a <literal>_constraints</literal> file, see
-    <xref linkend="_constraint_syntax"/>. </para>
+    <xref linkend="constraint-syntax"/>. </para>
   </sect2>
   <sect2>
    <title>Build recipe-scoped constraints</title>
@@ -173,18 +173,18 @@ Constraint: hardware:disk:size unit=M 4000
     pool of compliant build workers down to a very low number, or even to zero.
     (A low number of compliant build workers means your build may not start for
     a long time, and no compliant workers at all will cause the build to fail.
-    See <xref linkend="_constraint_handling"/> for details.)
+    See <xref linkend="constraint-handling"/> for details.)
     </para></important>
    <important><para>
     By default, constraints applied to build workers regardless of
     architecture. However, you may only be interested in certain architectures
-    and not in others. See <xref linkend="_constraint_checking_with_osc"/>
+    and not in others. See <xref linkend="constraint-checking-with-osc"/>
     for how to get architecture-specific information on which workers satisfy
     your constraints.
     </para></important>
   </sect2>
  </sect1>
- <sect1 xml:id="_constraint_syntax">
+ <sect1 xml:id="constraint-syntax">
   <title>Constraint syntax</title>
   <para> This section describes the various constraint qualifiers and their
    syntax. </para>
@@ -425,7 +425,7 @@ Constraint: hardware:cpu:flag sse2</screen>
    </sect3>
   </sect2>
  </sect1>
- <sect1 xml:id="_constraint_handling">
+ <sect1 xml:id="constraint-handling">
   <title>Constraint Handling</title>
   <para> What happens when someone sets a constraint so high, that the OBS
    instance does not have even a single worker that meets it? What happens
@@ -470,7 +470,7 @@ no compliant workers (constraints mismatch hint: hardware:processors sandbox)
 Please adapt your constraints.</screen>
   </sect2>
  </sect1>
- <sect1 xml:id="_constraint_checking_with_osc">
+ <sect1 xml:id="constraint-checking-with-osc">
   <title>Checking Constraints with &osccmd;</title>
   <para> You can check the constraints of a project or package with the osc
    tool. You have to be in an &osccmd; working directory.</para>

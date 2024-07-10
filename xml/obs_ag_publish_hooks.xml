@@ -6,7 +6,7 @@
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="_publisher_hooks">
+ xml:id="publisher-hooks">
  <title>Publisher Hooks</title>
  <para>The job of the publisher service is to publish the built packages
   and/or images by creating repositories that are made available through a web
@@ -15,7 +15,7 @@
   to different servers or do anything with them that comes to mind. These
   scripts are called <emphasis role="strong"><emphasis>publisher
     hooks</emphasis></emphasis>.</para>
- <sect2 xml:id="_publisher_hooks_configuration">
+ <sect2 xml:id="publisher-hooks-publisher-hooks-configuration">
   <title>Configuring Publisher Hooks</title>
   <para>Hooks are configured via the configuration file
     <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per
@@ -99,9 +99,9 @@ our $publishedhook = {
    script.</para>
   <para>The scripts are called without a timeout.</para>
  </sect2>
- <sect2 xml:id="_example_publisher_scripts">
+ <sect2 xml:id="publisher-hooks-example-publisher-scripts">
   <title>Example Publisher Scripts</title>
-  <sect3 xml:id="_simple_publisher_hook">
+  <sect3 xml:id="publisher-hooks-example-publisher-scripts-simple-publisher-hook">
    <title>Simple Publisher Hook</title>
    <para>The following example script ignores the packages that have changed
     and copies all RPMs from the repository directory to a target
@@ -120,7 +120,7 @@ rsync -a --log-file=$LOGFILE --mkpath $PATH_TO_REPO/ $DST_REPO_DIR/$PRJ_PATH/</s
    <screen>$ sudo -u obsrun /usr/local/bin/publish-hook.sh Product/SLES11-SP1 \
     /srv/obs/repos/Product/SLE11-SP1</screen>
   </sect3>
-  <sect3 xml:id="_advanced_publisher_hook">
+  <sect3 xml:id="publisher-hooks-example-publisher-scripts-advanced-publisher-hook">
    <title>Advanced Publisher Hook</title>
    <para>The following example script reads the destination path from a
     parameter that is configured with the hook script:</para>

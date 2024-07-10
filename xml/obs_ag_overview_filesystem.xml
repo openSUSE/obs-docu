@@ -10,11 +10,11 @@
  <title>File System Overview</title>
  <info/>
 
- <sect1 xml:id="_configuration_files">
+ <sect1 xml:id="configuration-files">
   <title>Configuration Files</title>
-  <sect2 xml:id="_frontend_configuration">
+  <sect2 xml:id="configuration-files-frontend-configuration">
    <title>Front-end Configuration</title>
-   <para>The front-end is configured with 4 files:</para>
+   <para>The front-end is configured with four files:</para>
    <itemizedlist>
     <listitem>
      <para>/srv/www/obs/api/config/database.yml</para>
@@ -29,7 +29,7 @@
      <para>/etc/apache2/vhosts.d/obs.conf</para>
     </listitem>
    </itemizedlist>
-   <sect3 xml:id="_database_yml">
+   <sect3 xml:id="configuration-files-frontend-configuration-database-yml">
     <title><filename>database.yml</filename></title>
     <para>This file has the information needed to access the database. It
      contain credentials for the database access and should be only readable by
@@ -174,7 +174,7 @@
      </tgroup>
     </table>
    </sect3>
-   <sect3 xml:id="_options_yml">
+   <sect3 xml:id="configuration-files-frontend-configuration-options-yml">
     <title><filename>options.yml</filename></title>
     <para>The configuration file /srv/www/obs/api/config/options.yml is the
      default configuration file for the Open Build Service Web UI and API. It
@@ -637,7 +637,7 @@ development:
   memcached_host: cache
 </screen>
    </sect3>
-   <sect3 xml:id="_feature_yml">
+   <sect3 xml:id="configuration-files-frontend-configuration-feature-yml">
     <title><filename>feature.yml</filename></title>
     <para>The configuration file /srv/www/obs/api/config/feature.yml
      contains the default configuration about features that can be enabled or
@@ -727,7 +727,7 @@ test:
 ]]>
     </screen>
    </sect3>
-   <sect3 xml:id="_apache_vhost_obs_conf">
+   <sect3 xml:id="configuration-files-frontend-configuration-apache-vhost-obs-conf">
     <title>Apache Virtual Host <filename>obs.conf</filename></title>
     <para>The Apache configuration depends on the Apache version and which
      extra options are used, so use the documentation of the Apache version you
@@ -837,7 +837,7 @@ LimitRequestFieldsize 20000
 &lt;/VirtualHost&gt;</screen>
    </sect3>
   </sect2>
-  <sect2 xml:id="_backend_configuration">
+  <sect2 xml:id="configuration-files-backend-configuration">
    <title>Back-end Configuration</title>
    <para>The Back-end is configured with 2 files:</para>
    <itemizedlist>
@@ -850,7 +850,7 @@ LimitRequestFieldsize 20000
       global variables </para>
     </listitem>
    </itemizedlist>
-   <sect3 xml:id="_etc_sysconfig_obs_server">
+   <sect3 xml:id="configuration-files-backend-configuration-etc-sysconfig-obs-server">
     <title><filename>/etc/sysconfig/obs-server</filename></title>
     <para>This script is used to set up the basic paths and the worker. the
      most important settings are the <emphasis role="strong"
@@ -1745,7 +1745,7 @@ OBS_ROOT_SSHD_KEY_URL=""
 #
 OBS_WORKER_SCRIPT_URL=""</screen>
    </sect3>
-   <sect3 xml:id="_bsconfig_pm">
+   <sect3 xml:id="bsconfig-pm">
     <title>BSConfig.pm</title>
     <para>This file is a perl module used by most back-end scripts, it
      mainly defines global variables. Since it is a perl module, after changes
@@ -2467,7 +2467,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para/>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_distributed_setup"/>
+         <para>see <xref linkend="distributed-setup"/>
          </para>
         </entry>
        </row>
@@ -2482,7 +2482,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para/>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_distributed_setup"/>
+         <para>see <xref linkend="distributed-setup"/>
          </para>
         </entry>
        </row>
@@ -2497,7 +2497,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para/>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_distributed_setup"/>
+         <para>see <xref linkend="distributed-setup"/>
          </para>
         </entry>
        </row>
@@ -2512,7 +2512,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para/>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_dispatch_adjust_array"/>
+         <para>see <xref linkend="dispatch-priorities-dispatch-adjust-array"/>
          </para>
         </entry>
        </row>
@@ -2527,7 +2527,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para><literal>0</literal> 1</para>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_publisher_hooks"/>
+         <para>see <xref linkend="publisher-hooks"/>
          </para>
         </entry>
        </row>
@@ -2542,7 +2542,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para/>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_publisher_hooks"/>
+         <para>see <xref linkend="publisher-hooks"/>
          </para>
         </entry>
        </row>
@@ -2557,7 +2557,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para><literal>0</literal> 1</para>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_unpublisher_hooks"/>
+         <para>see <xref linkend="unpublisher-hooks"/>
          </para>
         </entry>
        </row>
@@ -2572,7 +2572,7 @@ OBS_WORKER_SCRIPT_URL=""</screen>
          <para/>
         </entry>
         <entry align="left" valign="top">
-         <para>see <xref linkend="_unpublisher_hooks"/>
+         <para>see <xref linkend="unpublisher-hooks"/>
          </para>
         </entry>
        </row>
@@ -2798,9 +2798,9 @@ if (-r $hostconfig) {
    </sect3>
   </sect2>
  </sect1>
- <sect1 xml:id="_log_files">
+ <sect1 xml:id="log-files">
   <title>Log Files</title>
-  <sect2 xml:id="_frontend">
+  <sect2 xml:id="log-files-frontend">
    <title>Front-end</title>
    <para>The front-end log files are found under
      <emphasis>/srv/www/obs/api/log</emphasis>.</para>
@@ -2832,7 +2832,7 @@ if (-r $hostconfig) {
     </listitem>
    </itemizedlist>
   </sect2>
-  <sect2 xml:id="_backend">
+  <sect2 xml:id="log-files-backend">
    <title>Back-end</title>
    <para>The back-end log files are found by default under
      <emphasis>/srv/obs/log/</emphasis>.</para>
@@ -2884,7 +2884,7 @@ if (-r $hostconfig) {
    </itemizedlist>
   </sect2>
  </sect1>
- <sect1 xml:id="_src_obs_tree">
+ <sect1 xml:id="src-obs-tree">
   <title><filename>/srv/obs</filename> Tree</title>
   <para>The default back-end data directory is located under
     <emphasis>/srv/obs/</emphasis>. Here are a bunch of subdirectories used for
@@ -2894,7 +2894,7 @@ if (-r $hostconfig) {
    which stores the global OBS configuration for the back-end. You should not
    modify this file directly, but use the API /configuration interface instead,
    since this information needs to kept in sync with the front-end.</para>
-  <sect2 xml:id="_build_directory">
+  <sect2 xml:id="src-obs-tree-build-directory">
    <title><filename>build</filename> Directory</title>
    <para>In this subdirectory managed by the repo server daemon, all
     repository data, metadata and build results are stored in a hierarchical
@@ -2928,29 +2928,29 @@ if (-r $hostconfig) {
 │           ├── srtp
 │           └── wget</screen>
   </sect2>
-  <sect2 xml:id="_cloudupload_directory">
+  <sect2 xml:id="src-obs-tree-cloudupload-directory">
    <title><filename>cloudupload</filename> Directory</title>
    <para>Info for cloud upload jobs is stored here, it has a subdir named <emphasis>done</emphasis> for storing the already finished jobs.</para>
   </sect2>
-  <sect2 xml:id="_db_directory">
+  <sect2 xml:id="src-obs-tree-db-directory">
    <title><filename>db</filename> Directory</title>
    <para>Back-end database root directory use by the source server, repo
     server scheduler and publisher. Nobody should touch this.</para>
   </sect2>
-  <sect2 xml:id="_diffcache_directory">
+  <sect2 xml:id="src-obs-tree-diffcache-directory">
    <title><filename>diffcache</filename> Directory</title>
    <para>Cache for source server compare operations.</para>
   </sect2>
-  <sect2 xml:id="_events_directory">
+  <sect2 xml:id="src-obs-tree-events-directory">
    <title><filename>events</filename> Directory</title>
    <para>Communication between services.</para>
   </sect2>
-  <sect2 xml:id="_info_directory">
+  <sect2 xml:id="src-obs-tree-info-directory">
    <title><filename>info</filename> Directory</title>
    <para>Scheduler information managed by the scheduler and used by the repo
     server.</para>
   </sect2>
-  <sect2 xml:id="_jobs_directory">
+  <sect2 xml:id="src-obs-tree-jobs-directory">
    <title><filename>jobs</filename> Directory</title>
    <para>The build jobs are stored in the /srv/obs/jobs directory. They are
     organized bybuild architecture:</para>
@@ -2963,34 +2963,34 @@ if (-r $hostconfig) {
    <para>The jobs/load file contains statistical data about the build
     jobs.</para>
   </sect2>
-  <sect2 xml:id="_log_directory">
+  <sect2 xml:id="src-obs-tree-log-directory">
    <title><filename>log</filename> Directory</title>
    <para>Contains the log files of the back-end daemons.</para>
   </sect2>
-  <sect2 xml:id="_projects_directory">
+  <sect2 xml:id="src-obs-tree-projects-directory">
    <title><filename>projects</filename> Directory</title>
    <para>Contains the project hierarchy and metadata under revision
     control.</para>
   </sect2>
-  <sect2 xml:id="_remotecache_directory">
+  <sect2 xml:id="src-obs-tree-remotecache-directory">
    <title><filename>remotecache</filename> Directory</title>
    <para>Cache for remote repository information.</para>
   </sect2>
-  <sect2 xml:id="_repos_directory">
+  <sect2 xml:id="src-obs-tree-repos-directory">
    <title><filename>repos</filename> Directory</title>
    <para>Directory managed by the publisher to collect build results, also
     used by the repo server and scheduler to find build results.</para>
   </sect2>
-  <sect2 xml:id="_repos_sync_directory">
+  <sect2 xml:id="src-obs-tree-repos-sync-directory">
    <title><filename>repos_sync</filename> Directory</title>
    <para>Directory with files pointing to the project root directories,
     helper for publisher rsync.</para>
   </sect2>
-  <sect2 xml:id="_run_directory">
+  <sect2 xml:id="src-obs-tree-run-directory">
    <title><filename>run</filename> Directory</title>
    <para>State and lock information for the back-end daemons</para>
   </sect2>
-  <sect2 xml:id="_sources_directory">
+  <sect2 xml:id="src-obs-tree-sources-directory">
    <title><filename>sources</filename> Directory</title>
    <para>All package sources under revision control in one directory per
     package, managed by the source server. Package sources are by default
@@ -3011,24 +3011,24 @@ if (-r $hostconfig) {
 ├── :service
 └── :upload</screen>
   </sect2>
-  <sect2 xml:id="_trees_directory">
+  <sect2 xml:id="src-obs-tree-trees-directory">
    <title><filename>trees</filename> Directory</title>
    <para>Revision control data for project and packages, managed by the
     source server.</para>
   </sect2>
-  <sect2 xml:id="_upload_directory">
+  <sect2 xml:id="src-obs-tree-upload-directory">
    <title><filename>upload</filename> Directory</title>
    <para>Temporary directory for uploading files for other back-end
     components.</para>
   </sect2>
-  <sect2 xml:id="_workers_directory">
+  <sect2 xml:id="src-obs-tree-workers-directory">
    <title><filename>workers</filename> Directory</title>
    <para>Worker information</para>
   </sect2>
  </sect1>
- <sect1 xml:id="_meta_data">
+ <sect1 xml:id="meta-data">
   <title>Metadata</title>
-  <sect2 xml:id="_obs_revision_control">
+  <sect2 xml:id="meta-data-obs-revision-control">
    <title>&obsa; Revision Control</title>
    <para>This section gives a short generic overview how the revision
     information are stored in the OBS back-end for packages and projects. The
@@ -3038,7 +3038,7 @@ if (-r $hostconfig) {
      <emphasis>/srv/obs/sources</emphasis> directories. The revision
     information is stored in separate files by the Source Server in the
      <emphasis>/srv/obs/projects directory</emphasis>.</para>
-   <sect3 xml:id="_obs_revision_control_files">
+   <sect3 xml:id="meta-data-obs-revision-control-obs-revision-control-files">
     <title>OBS revision control files</title>
     <para>The revision information is stored in simple CSV like file format
      with a bar (|) as delimiter between the 8 columns. The files do have the
@@ -3198,7 +3198,7 @@ if (-r $hostconfig) {
 0a17daaa913df9e50ee65e83a1898363  package1.spec
 1f810b3521242a98333b7bbf6b2b7ef7  test1.sh</screen>
    </sect3>
-   <sect3 xml:id="_obs_revision_api">
+   <sect3 xml:id="meta-data-obs-revision-control-obs-revision-api">
     <title>&obsa; Revision API</title>
     <para>The revision info can be retrieved via API calls for the specific
      package, for example, using
@@ -3210,7 +3210,7 @@ if (-r $hostconfig) {
      "comment=some+comment" can be used to set a commit message.</para>
    </sect3>
   </sect2>
-  <sect2 xml:id="_project_meta_data">
+  <sect2 xml:id="meta-data-project-meta-data">
    <title>Project Metadata</title>
    <para>Project metadata are XML files containing the meta project
     information, such as title, description, related user and groups with
@@ -3445,7 +3445,7 @@ if (-r $hostconfig) {
   &lt;/repository&gt;
 &lt;/project&gt;</screen>
   </sect2>
-  <sect2 xml:id="_package_meta_data">
+  <sect2 xml:id="meta-data-package-meta-data">
    <title>Package Metadata</title>
    <para>XML file about package meta information, like Title, description,
     related user and groups with roles, build settings, publish settings, debug
@@ -3468,7 +3468,7 @@ if (-r $hostconfig) {
   &lt;/debuginfo&gt;
 &lt;/package&gt;</screen>
   </sect2>
-  <sect2 xml:id="_attribute_meta_data">
+  <sect2 xml:id="meta-data-attribute-meta-data">
    <title>Attribute Metadata</title>
    <para>Attributes can be used to add special information to packages.
     Attributes can be used to trigger special actions.</para>
@@ -3483,7 +3483,7 @@ if (-r $hostconfig) {
   &lt;/attribute&gt;
 &lt;/attributes&gt;</screen>
   </sect2>
-  <sect2 xml:id="_job_files">
+  <sect2 xml:id="meta-data-job-files">
    <title>Job Files</title>
    <para>Jobs are stored by the scheduler in the
      <filename>/srv/obs/jobs</filename> directory and contain the build setup

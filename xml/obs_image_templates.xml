@@ -30,7 +30,7 @@
    page. </para>-->
   <note>
    <para> For more information about &kiwi; images, see <xref
-     linkend="_kiwi_appliance"/>. </para>
+     linkend="kiwi-appliance"/>. </para>
   </note>
  </sect1>
  <sect1>
@@ -50,7 +50,7 @@
    templates. </para>
   <para>
    For more information about interconnects, see
-   <xref linkend="_managing_build_targets"/>.
+   <xref linkend="managing-build-targets"/>.
   </para>
  </sect1>
 </chapter>

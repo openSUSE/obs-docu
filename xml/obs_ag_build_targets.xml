@@ -3,12 +3,12 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<sect1 version="5.1" xml:id="_managing_build_targets"
+<sect1 version="5.1" xml:id="managing-build-targets"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Managing Build Targets</title>
- <sect2 xml:id="_interconnect">
+ <sect2 xml:id="managing-build-targets-interconnect">
   <title>Interconnect</title>
   <para>Using another Open Build Service as source for build targets is the
    easiest way to start. The advantage is, that you save local resources and
@@ -26,7 +26,7 @@
    create a remote project using the <emphasis>osc meta prj</emphasis> command.
    A remote project differs from a local project as it has a <emphasis
     role="strong">remoteurl</emphasis> tag (see <xref
-    linkend="_project_meta_data"/>).</para>
+    linkend="meta-data-project-meta-data"/>).</para>
   <para>Example:</para>
   <screen>&lt;project name="openSUSE.org"&gt;
   &lt;title&gt;openSUSE.org Project Link&lt;/title&gt;
@@ -38,7 +38,7 @@ This project refers to projects hosted on the &osbs;
   <para>Sending this via osc to the server:</para>
   <screen>osc meta prj -m "add openSUSE.org remote" -F /tmp/openSUSE.org.prj</screen>
  </sect2>
- <sect2 xml:id="_importing_distributions">
+ <sect2 xml:id="managing-build-targets-importing-distributions">
  <title>Importing Distributions</title>
  <!-- do not describe old obs_mirror here anymore, it is misleading and broken -->
   <para>FIXME: describe how to do it using DoD</para>

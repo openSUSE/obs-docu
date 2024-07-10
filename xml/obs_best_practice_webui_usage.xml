@@ -328,9 +328,8 @@ flood</screen>
    </figure>
    <para> The minimal set of fields you have to enter are architecture,
     repository type and the URL that provides the binary packages. Detailed
-    information about the data you can enter here you can find at the <link
-     xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.concepts.html#concept_dod"
-     >DoD concept section</link>. Press "Save" to create the repository. </para>
+    information about the data you can enter here can be found at
+    <xref linkend="concept-dod"/>. Press "Save" to create the repository. </para>
    <figure>
     <title>Download on Demand Repository Form</title>
     <mediaobject>
