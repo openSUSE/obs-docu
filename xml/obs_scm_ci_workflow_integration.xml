@@ -3,7 +3,7 @@
 <!ENTITY % entities SYSTEM "entity-decl.ent">
 %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.scm_ci_workflow_integration"
+<chapter version="5.1" xml:id="cha-obs-scm-ci-workflow-integration"
          xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -14,10 +14,10 @@
          xmlns:ns="http://docbook.org/ns/docbook">
   <title>SCM/CI Workflow Integration</title>
 
-  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup">
+  <sect1 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup">
     <title>SCM/CI Workflow Integration Setup</title>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.introduction">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-introduction">
       <title>Introduction</title>
 
       <para>With this integration, you can take advantage of source code management (SCM)
@@ -33,11 +33,11 @@
       constantly mentioning all the names for the same things, e.g. <emphasis>Pull Requests/Merge Requests</emphasis>,
       is tiresome and confusing. However, every aspect has its
       correspondence in GitLab and Gitea. Refer to <xref
-      linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table"/>
+      linkend="sec-obs-obs-scm-ci-workflow-integration-setup-equivalence-table"/>
       for clarification of terminology.</para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.prerequisites">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-prerequisites">
       <title>Prerequisites</title>
 
       <para>Before you start, you need to</para>
@@ -53,7 +53,7 @@
       </itemizedlist>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.supported_scms">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-supported-scms">
       <title>Supported SCMs</title>
 
       <para>We support the GitHub.com and GitLab.com instances.</para>
@@ -63,13 +63,13 @@
       with that SCM.</para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication">
       <title>Token Authentication</title>
 
       <para>OBS and GitHub need to talk to each other. Tokens are the way to
       make this happen.</para>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_obs_with_scm">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication-how-to-authenticate-obs-with-scm">
         <title>How to Authenticate OBS with SCMs</title>
 
         <para>You have to create a GitHub <emphasis role="bold">personal
@@ -115,14 +115,14 @@
         documentation to learn how.</para>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication-how-to-authenticate-scm-with-obs">
         <title>How to Authenticate SCMs with OBS</title>
 
          <para>You have to create an OBS <emphasis role="bold">workflow
         token</emphasis>. Github is going to use it to trigger actions on
         OBS on your behalf.</para>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs.create_token">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication-how-to-authenticate-scm-with-obs-create-token">
           <title>Create Token</title>
 
           <para>You can create the OBS token via WebUI in <emphasis>Profile
@@ -144,14 +144,14 @@
 
           <para>Make sure you replace <emphasis>long_ascii_salad</emphasis>
           with your real GitHub personal access token created in <xref
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_obs_with_scm"/></para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication-how-to-authenticate-obs-with-scm"/></para>
 
           <warning>
             <para>Don't forget to keep your token secret to prevent someone
             else from triggering operations in your name!</para></warning>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs.revoke_regenerate_token">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication-how-to-authenticate-scm-with-obs-revoke-regenerate-token">
           <title>Regenerating Secrets and Deleting Tokens</title>
 
           <para>If you suspect your OBS token secret was leaked, you can regenerate
@@ -174,19 +174,19 @@
           <screen language="xml"><command>osc</command> token --delete $token_id # remove the token with the given id</screen>
 
           <para>Then you can create a new one as explained in <xref
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication.how_to_authenticate_scm_with_obs"/>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication-how-to-authenticate-scm-with-obs"/>
           and replace it wherever you use it.</para>
         </sect4>
       </sect3>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks">
       <title>Webhooks</title>
 
       <para>Once OBS and GitHub are allowed to speak to each other, they can
       start talking via <emphasis role="bold">webhooks</emphasis>.</para>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.scm_events">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks-scm-events">
         <title>SCM Events</title>
 
         <para>On a GitHub repository, events are happening all the time: a
@@ -264,7 +264,7 @@
           </listitem>
         </itemizedlist>
 
-        <para>Refer to the <xref  xrefstyle="select:title" linkend="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table"/> for more details or read more about <link
+        <para>Refer to the <xref  xrefstyle="select:title" linkend="sec-obs-obs-scm-ci-workflow-integration-setup-equivalence-table"/> for more details or read more about <link
         xlink:href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads">GitHub
         events</link>, <link
         xlink:href="https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html">GitLab
@@ -274,7 +274,7 @@
         events</link>.</para>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.how_to_set_up_a_webhook_on_github">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks-how-to-set-up-a-webhook-on-github">
         <title>How to Set Up a Webhook on Github</title>
 
         <para>Go to the project you want to set the integration on, then under
@@ -322,7 +322,7 @@
         </itemizedlist>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.how_to_set_up_a_webhook_on_gitlab">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks-how-to-set-up-a-webhook-on-gitlab">
         <title>How to Set Up a Webhook on GitLab</title>
 
         <para>Go to the project you want to set the integration on, under
@@ -362,7 +362,7 @@
         </itemizedlist>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.how_to_set_up_a_webhook_on_gitea">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks-how-to-set-up-a-webhook-on-gitea">
         <title>How to Set Up a Webhook on Gitea</title>
 
         <para>Go to the repository you want to set the integration on, then under
@@ -411,7 +411,7 @@
       </sect3>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows">
       <title>OBS Workflows</title>
 
       <para>A GitHub event occurs and OBS receives the corresponding webhook.
@@ -427,7 +427,7 @@
       a directory <emphasis>.obs</emphasis> which contains a file called
       <emphasis>workflows.yml</emphasis>. If you don't want to use that
       directory, you should check
-      <xref  xrefstyle="select:title" linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location"/> out.</para>
+      <xref  xrefstyle="select:title" linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-config-location"/> out.</para>
 
       <para>
         The content of <emphasis>.obs/workflows.yml</emphasis> could look
@@ -465,7 +465,7 @@ rebuild_master:
       only:
         - master</screen>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-config-location">
         <title>Configuration File Location</title>
 
         <para>By default the configuration file is fetched from the repository's
@@ -498,7 +498,7 @@ rebuild_master:
         </figure>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-steps">
         <title>OBS Workflow Steps</title>
 
         <para>We support the following steps (the keys used in the
@@ -540,7 +540,7 @@ rebuild_master:
           branch a package, link packages, configure repositories/architectures, rebuild packages and trigger services of a package.</para>
         </warning>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.branch_a_package">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-branch-a-package">
           <title>Branch a Package in a Project</title>
 
           <para>Given we have a source package called<emphasis>
@@ -581,7 +581,7 @@ rebuild_master:
         configure_repositories step, set the <emphasis>add_repositories</emphasis> key to anything else than <emphasis>enabled</emphasis>.</para>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.submit_request">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-submit-request">
           <title>Submit a Request</title>
 
           <para>The submit request step is the equivalent of the <emphasis>osc submitrequest</emphasis> command.</para>
@@ -628,7 +628,7 @@ rebuild_master:
         description: 'Check out this cool package'   # (optional, uses the commit/pull request message if not set)</screen>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.link_a_package_to_a_project">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-link-a-package-to-a-project">
           <title>Link a Package to a Project</title>
 
           <para>The link package step is the equivalent of <emphasis>osc
@@ -670,13 +670,13 @@ rebuild_master:
         target_project: home:jane</screen>
 
           <note>
-            <para>If you rely on <xref  xrefstyle="select:title" linkend="cha.obs.source_service"/>
+            <para>If you rely on <xref  xrefstyle="select:title" linkend="cha-obs-source-service"/>
             to run, for instance to pick up changes from a PR with the <emphasis>obs_scm</emphasis> service, you can't make use of this step.
             Package links do not run the services. Use the <emphasis>branch_package</emphasis> step instead.</para>
           </note>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.configure_repositories_architectures_for_a_project">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-configure-repositories-architectures-for-a-project">
           <title>Configure Repositories/Architectures for a Project</title>
 
           <para>Given a project called <emphasis>home:jane</emphasis>, the step will
@@ -741,7 +741,7 @@ rebuild_master:
               - x86_64</screen>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.rebuild_a_package">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-rebuild-a-package">
           <title>Rebuild a Package</title>
 
           <para>Given a project called <emphasis>home:Admin</emphasis> and a
@@ -758,12 +758,12 @@ rebuild_master:
         package: ctris</screen>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-set-flags">
           <title>Set Flags for Projects, Packages, Repositories or Architectures</title>
 
           <para>There are OBS-wide defaults for each flag type. This step is
           only necessary if you want to diverge from the defaults (see
-          <xref linkend="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags.type"/>).</para>
+          <xref linkend="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-set-flags-type"/>).</para>
 
           <para>Providing the type <emphasis>build</emphasis>, the status <emphasis>enable</emphasis> and the project <emphasis>home:Admin</emphasis>, OBS will
           enable <emphasis>all</emphasis> builds:</para>
@@ -797,7 +797,7 @@ rebuild_master:
           <emphasis>set_flags</emphasis> step, although this isn't necessary as long as they exist.</para>
 
           <para>The type has to be one of the following values:</para>
-          <itemizedlist xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.set_flags.type">
+          <itemizedlist xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-set-flags-type">
             <title>Valid flag types</title>
             <listitem><para>lock (default status <emphasis>disable</emphasis>)</para></listitem>
             <listitem><para>build (default status <emphasis>enable</emphasis>)</para></listitem>
@@ -831,7 +831,7 @@ rebuild_master:
             architecture: x86_64</screen>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.steps.trigger_services">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-trigger-services">
           <title>Trigger Services of a Package</title>
 
           <para>Given a project called <emphasis>home:Admin</emphasis> and a
@@ -851,7 +851,7 @@ rebuild_master:
         </sect4>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-filters">
         <title>Filters</title>
 
         <para>You can customize when workflows run by declaring
@@ -874,7 +874,7 @@ rebuild_master:
         - master
         - staging</screen>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-filters-delimiters">
           <title>Filters Delimiters: only and ignore</title>
 
           <para>Some steps can affect a group of elements (branches)
@@ -930,11 +930,11 @@ rebuild_master:
         - staging</screen>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.event_filter">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-filters-event-filter">
           <title>Event Filter</title>
 
           <para>Setting an event filter will run the workflow only for this event. The event filter doesn't accept multiple events.
-          Documentation on the SCM events can be found here: <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks.scm_events"/>.</para>
+          Documentation on the SCM events can be found here: <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks-scm-events"/>.</para>
 
           <para>The available event filters are:</para>
 
@@ -946,7 +946,7 @@ rebuild_master:
 
             <listitem>
               <para><emphasis role="bold">merge_request</emphasis> is an alias for the
-              'pull_request' event. Introduced with workflow version 1.1 (also see <xref linkend="sec.obs.obs_scm_ci_workflow_integration.workflow_version_table"/>).
+              'pull_request' event. Introduced with workflow version 1.1 (also see <xref linkend="sec-obs-obs-scm-ci-workflow-integration-workflow-version-table"/>).
               .</para>
             </listitem>
 
@@ -974,7 +974,7 @@ rebuild_master:
     event: pull_request</screen>
         </sect4>
 
-        <sect4 xml:id="sec.obs.obs_scm_ci_workflow_integration.obs_workflows.filters.branches_filter">
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-filters-branches-filter">
           <title>Branches Filter</title>
 
           <para>Matches target branches based on their names and runs a
@@ -997,7 +997,7 @@ rebuild_master:
         - final </screen>
 
           <para>Learn more about <xref  xrefstyle="select:title"
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.filters.delimiters"/>.</para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-filters-delimiters"/>.</para>
 
           <note>
             <para>
@@ -1008,7 +1008,7 @@ rebuild_master:
         </sect4>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.placeholder_variables">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-placeholder-variables">
         <title>Placeholder Variables</title>
 
         <para>With placeholder variables, workflows are now dynamic. Whenever a
@@ -1057,11 +1057,11 @@ test_build:
 
         <para>For a more in-depth example in combination with configuration file
         location, refer to
-        <xref linkend="sec.obs.obs_scm_ci_workflow_integration.use_cases.config_url_and_placeholder_variables"/>.</para>
+        <xref linkend="sec-obs-obs-scm-ci-workflow-integration-use-cases-config-url-and-placeholder-variables"/>.</para>
       </sect3>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.status_reporting">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-status-reporting">
       <title>Status Reporting</title>
 
       <para>Once all the steps in the workflow are done, OBS will report the build results back to GitHub.</para>
@@ -1102,7 +1102,7 @@ test_build:
       </note>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.workflow_runs">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-workflow-runs">
       <title>Workflow Runs</title>
 
       <para>For every SCM event, OBS compiles relevant information about the workflows running on the system. You can find the
@@ -1172,7 +1172,7 @@ test_build:
       the workflow run will record error messages. And reading the artifacts will help to understand what happened behind the scenes.</para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.errors">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-errors">
       <title>Errors</title>
 
       <table>
@@ -1225,7 +1225,7 @@ test_build:
       </table>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.equivalence_table">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-equivalence-table">
       <title>Equivalence Table</title>
 
       <table>
@@ -1282,7 +1282,7 @@ test_build:
     </sect2>
   </sect1>
 
-  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.setup.event_action_and_status_report_table">
+  <sect1 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-event-action-and-status-report-table">
     <title>SCM/CI Workflow Steps Reference Table</title>
     <para>For each step, this table shows which event on the SCM will trigger which operations on the OBS.</para>
 
@@ -1510,7 +1510,7 @@ test_build:
     </table>
   </sect1>
 
-  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.versions">
+  <sect1 xml:id="sec-obs-obs-scm-ci-workflow-integration-versions">
     <title>SCM/CI Workflow Versions</title>
     <para>To secure the compatibility of SCM/CI workflows with new features and changes,
     we are introducing those through new versions. We specify them with a <emphasis
@@ -1532,7 +1532,7 @@ test_build:
             target_project: home:jane:playground
     </screen>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.workflow_version_table">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-workflow-version-table">
       <title>Workflow Version Table</title>
       <para>Current available workflow versions and the introduced changes can be found
       in the versions table below.</para>
@@ -1561,10 +1561,10 @@ test_build:
     </sect2>
   </sect1>
 
-  <sect1 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases">
+  <sect1 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases">
     <title>SCM/CI Workflow Integration Use-Cases</title>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.service">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-service">
       <title>OBS SCM Service</title>
 
       <para>For some of the use cases, you might want the OBS package to get
@@ -1578,7 +1578,7 @@ test_build:
       it.</para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.test_build_pull_request">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-test-build-pull-request">
       <title>Test Build a Package For Every Pull Request on GitHub</title>
 
       <para>You decide to manage your package sources from a GitHub
@@ -1586,7 +1586,7 @@ test_build:
       sources by opening a pull request, you need to verify that your package
       still builds for certain repositories and architectures in OBS. You can
       have the best of both worlds with the <xref xrefstyle="select:title"
-      linkend="sec.obs.obs_scm_ci_workflow_integration.setup"/>.</para>
+      linkend="sec-obs-obs-scm-ci-workflow-integration-setup"/>.</para>
 
       <para>You will need:</para>
 
@@ -1612,24 +1612,24 @@ test_build:
         <listitem>
           <para>The required tokens to allow OBS and GitHub talk each other as
           explained in <xref
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication"/></para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication"/></para>
         </listitem>
 
         <listitem>
           <para>The required webhooks so GitHub notifies OBS of any event as
           explained in <xref
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks"/></para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks"/></para>
         </listitem>
       </itemizedlist>
 
       <para>This is obviously a good candidate to use the <xref xrefstyle="select:title"
-      linkend="sec.obs.obs_scm_ci_workflow_integration.use_cases.service"/>.</para>
+      linkend="sec-obs-obs-scm-ci-workflow-integration-use-cases-service"/>.</para>
 
       <para>There are two different strategies to do this: <emphasis
       role="bold">branching</emphasis> the package or <emphasis
       role="bold">linking</emphasis> to it.</para>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.test_build_pull_request.branch">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-test-build-pull-request-branch">
         <title>Branch</title>
 
         <para>If you decide to branch the package for the test build, the
@@ -1658,12 +1658,12 @@ test_build:
         package will be deleted.</para>
 
         <para>Read <xref xrefstyle="select:title"
-        linkend="sec.obs.obs_scm_ci_workflow_integration.setup"/> and,
+        linkend="sec-obs-obs-scm-ci-workflow-integration-setup"/> and,
         specifically, the workflow steps (<xref
-        linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps"/>).</para>
+        linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-steps"/>).</para>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.test_build_pull_request.link_configure_repositories">
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-test-build-pull-request-link-configure-repositories">
         <title>Link and Configure Repositories</title>
 
         <para>If you prefer to link the package for the test build, the
@@ -1704,13 +1704,13 @@ test_build:
         flexibility to decide which repositories are you interested in.</para>
 
         <para>Read <xref xrefstyle="select:title"
-        linkend="sec.obs.obs_scm_ci_workflow_integration.setup"/> and,
+        linkend="sec-obs-obs-scm-ci-workflow-integration-setup"/> and,
         specifically, the workflow steps (<xref
-        linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.steps"/>).</para>
+        linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-steps"/>).</para>
       </sect3>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.rebuild_package_for_every_change">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-rebuild-package-for-every-change">
       <title>Rebuild a Package for Every Change in a Branch</title>
 
       <para>You have a test build set up and you want it to keep up to date
@@ -1733,18 +1733,18 @@ test_build:
         <listitem>
           <para>The required tokens to allow OBS and GitHub talk each other as
           explained in <xref
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication"/></para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication"/></para>
         </listitem>
 
         <listitem>
           <para>The required webhooks so GitHub notifies OBS of any event as
           explained in <xref
-          linkend="sec.obs.obs_scm_ci_workflow_integration.setup.webhooks"/></para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-webhooks"/></para>
         </listitem>
 
         <listitem>
           <para>The source code synchronization setup with the <xref xrefstyle="select:title"
-          linkend="sec.obs.obs_scm_ci_workflow_integration.use_cases.service"/>.</para>
+          linkend="sec-obs-obs-scm-ci-workflow-integration-use-cases-service"/>.</para>
         </listitem>
       </itemizedlist>
 
@@ -1759,7 +1759,7 @@ test_build:
     event: push</screen>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.set_flags">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-set-flags">
       <title>Set Flags on a Package to Disable Builds for an Architecture</title>
 
       <para>When you branch a package, all its repositories and their architectures will be copied over.
@@ -1784,7 +1784,7 @@ test_build:
       <para></para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.create_package_releases_with_tags">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-create-package-releases-with-tags">
       <title>Create Package on OBS for Every Software Release With Git Tags</title>
 
       <para>You have a software project for which you mark releases with Git tags. For every release, you want to create
@@ -1795,7 +1795,7 @@ test_build:
       versioned releases to another project on OBS if you need it as a dependency.</para>
 
       <para>After the usual setup for
-      OBS workflows with tokens and webhooks (see <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup"/>), you will need:</para>
+      OBS workflows with tokens and webhooks (see <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup"/>), you will need:</para>
 
       <itemizedlist>
         <listitem>
@@ -1894,7 +1894,7 @@ test_build:
       </itemizedlist>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_ci_workflow_integration.use_cases.config_url_and_placeholder_variables">
+    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-use-cases-config-url-and-placeholder-variables">
       <title>Using a Custom Configuration File URL in Combination with Placeholder Variables</title>
 
       <para>It may happen that you have multiple repositories following the same
@@ -1934,14 +1934,14 @@ test_build:
 
       <para>From here the only thing left to do would be to host this file
       somewhere where OBS can access it, creating a workflow token and the
-      corresponding webhooks (following the setup instructions at <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.token_authentication"/>)
+      corresponding webhooks (following the setup instructions at <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-token-authentication"/>)
       for every SCM repository you want this configuration file to apply to,
-      making sure you set the correct configuration url (see <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location"/>).</para>
+      making sure you set the correct configuration url (see <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-config-location"/>).</para>
 
       <para>There are many other ways to use these two features in parallel,
       make sure to read
-      <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.placeholder_variables"/>
-      and <xref linkend="sec.obs.obs_scm_ci_workflow_integration.setup.obs_workflows.config_location"/>
+      <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-placeholder-variables"/>
+      and <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-config-location"/>
       to get some inspiration on how you can use them in your project.</para>
     </sect2>
   </sect1>

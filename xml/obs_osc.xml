@@ -4,7 +4,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.osc"
+<chapter version="5.1" xml:id="cha-obs-osc"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -19,7 +19,7 @@
  <remark>toms 2017-08-16:  http://docserv.suse.de/documents/Open_Build_Service/obs-best-practices/html/cha.obs.best-practices.oscexamples.html#id17157
  osc, the Python command line client</remark>
 
- <sect1 xml:id="sec.obs.osc.install">
+ <sect1 xml:id="sec-obs-osc-install">
   <title>Installing and Configuring<!-- the &osc; CLI Tool--></title>
   <remark>toms 2017-08-17: Integrate some sections/text from here http://docserv.suse.de/documents/Open_Build_Service/obs-best-practices/html/cha.obs.best-practices.localsetup.html
   </remark>
@@ -43,7 +43,7 @@
    <filename>~/bin</filename> directory, and make the file executable.</para>
  </sect1>
 
- <sect1 xml:id="sec.osc.config">
+ <sect1 xml:id="sec-osc-config">
   <title>Configuring &osc;</title>
   <para>Usually, the default configuration is appropriate in most cases.
    There are some special configuration option which might be helpful
@@ -147,10 +147,10 @@
   </variablelist>
  </sect1>
 
- <sect1 xml:id="sec.osc.usage">
+ <sect1 xml:id="sec-osc-usage">
   <title>Usage</title>
   <para></para>
-  <sect2 xml:id="sec.osc.help">
+  <sect2 xml:id="sec-osc-help">
    <title>Getting Help</title>
    <para>
     <!--Before you work with &osccmd; it is useful to know how to get help.-->
@@ -164,7 +164,7 @@
   </para>
   </sect2>
   <!-- From obs_best_practice_osc_examples.xml -->
-  <sect2 xml:id="sec.osc.firsttime">
+  <sect2 xml:id="sec-osc-firsttime">
    <title>Using &osccmd; for the First Time</title>
    <para>
     When you use the &osccmd; command for the first time, the command will
@@ -206,7 +206,7 @@
     authenticated it.
    </para>
   </sect2>
-  <sect2 xml:id="sec.osc.examples">
+  <sect2 xml:id="sec-osc-examples">
    <title>Overview of Brief Examples</title>
   <para>
    The &osccmd; command is similar to <command>git</command>:
@@ -236,7 +236,7 @@
       Which &obsa; instance it shows depends on the option <option>apiurl</option>
       in the configuration file. By default, the &opensuse; Build Server
       is used. If you need another server, use the <option>-A</option>
-      option as shown in <xref linkend="sec.osc.config"/>.
+      option as shown in <xref linkend="sec-osc-config"/>.
      </para>
     </listitem>
    </varlistentry>

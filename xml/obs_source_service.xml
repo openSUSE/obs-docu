@@ -3,14 +3,14 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.source_service"
+<chapter version="5.1" xml:id="cha-obs-source-service"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Using Source Services</title>
  <info/>
 
- <sect1 xml:id="sec.obs.sserv.about">
+ <sect1 xml:id="sec-obs-sserv-about">
   <title>About Source Service</title>
   <para>
    Source Services are tools to validate, generate or modify sources in a
@@ -81,7 +81,7 @@
   </itemizedlist>
   <para>
    For using source services you need (refer to <xref
-    linkend="ex.obs.sserv.struct"/>):
+    linkend="ex-obs-sserv-struct"/>):
   </para>
   <itemizedlist>
    <listitem>
@@ -101,34 +101,34 @@
     </para>
    </listitem>
   </itemizedlist>
-  <example xml:id="ex.obs.sserv.struct">
+  <example xml:id="ex-obs-sserv-struct">
    <title>Structure of a <filename>_service</filename> File</title>
-  <screen language="xml">&lt;services&gt; <co xml:id="co.obs.sserv.struct.services"/>
- &lt;service name="<replaceable>MY_SCRIPT</replaceable>"<co xml:id="co.obs.sserv.struct.name"/> mode="<replaceable>MODE</replaceable>"<co xml:id="co.obs.sserv.struct.mode"/>&gt;
-  &lt;param name="<replaceable>PARAMETER1</replaceable>"&gt;<replaceable>PARAMETER1_VALUE</replaceable>&lt;/param&gt;<co xml:id="co.obs.sserv.struct.param"/>
+  <screen language="xml">&lt;services&gt; <co xml:id="co-obs-sserv-struct-services"/>
+ &lt;service name="<replaceable>MY_SCRIPT</replaceable>"<co xml:id="co-obs-sserv-struct-name"/> mode="<replaceable>MODE</replaceable>"<co xml:id="co-obs-sserv-struct-mode"/>&gt;
+  &lt;param name="<replaceable>PARAMETER1</replaceable>"&gt;<replaceable>PARAMETER1_VALUE</replaceable>&lt;/param&gt;<co xml:id="co-obs-sserv-struct-param"/>
  &lt;/service&gt;
 &lt;/services&gt;</screen>
    <calloutlist>
-    <callout arearefs="co.obs.sserv.struct.services">
+    <callout arearefs="co-obs-sserv-struct-services">
      <para>
       The root element of a <filename>_service</filename> file.
      </para>
     </callout>
-    <callout arearefs="co.obs.sserv.struct.name">
+    <callout arearefs="co-obs-sserv-struct-name">
      <para>
       The service name. The service is a script that is stored in the
       <filename>/usr/lib/obs/service</filename> directory.
      </para>
     </callout>
-    <callout arearefs="co.obs.sserv.struct.mode">
+    <callout arearefs="co-obs-sserv-struct-mode">
      <para>
-      Mode of the service, see <xref linkend="sec.obs.sserv.mode"/>.
+      Mode of the service, see <xref linkend="sec-obs-sserv-mode"/>.
      </para>
     </callout>
-    <callout arearefs="co.obs.sserv.struct.param">
+    <callout arearefs="co-obs-sserv-struct-param">
      <para>
       One or more parameters which are passed to the script defined in
-      <xref linkend="co.obs.sserv.struct.name"/>.
+      <xref linkend="co-obs-sserv-struct-name"/>.
      </para>
     </callout>
    </calloutlist>
@@ -142,7 +142,7 @@
   services from /usr/lib/obs/service/?</remark>
  </sect1>
 
- <sect1 xml:id="sec.obs.sserv.mode">
+ <sect1 xml:id="sec-obs-sserv-mode">
   <title>Modes of Services</title>
   <para> Each service can be used in a mode defining when it should run
    and how to use the result. This can be done per package or globally for an
@@ -192,7 +192,7 @@
      </row>
      <row>
       <entry><literal>buildtime</literal></entry>
-      <entry>During each build before calling the build tool (for example, rpm-build)<footnote xml:id="fn.obs.sserv.mode.buildtime">
+      <entry>During each build before calling the build tool (for example, rpm-build)<footnote xml:id="fn-obs-sserv-mode-buildtime">
        <para>
         A side effect is that the service package is becoming a build
         dependency and must be available.
@@ -298,7 +298,7 @@
   </variablelist>
  </sect1>
 
- <sect1 xml:id="sec.obs.sserv.validate">
+ <sect1 xml:id="sec-obs-sserv-validate">
   <title>Defining Services for Validation</title>
   <para>
    Source Services can be used to validate sources. This can be defined
@@ -351,7 +351,7 @@
   </itemizedlist>
  </sect1>
 
- <sect1 xml:id="sec.obs.sserv.create">
+ <sect1 xml:id="sec-obs-sserv-create">
   <title>Creating Source Service Definitions</title>
   <para>
    Source services are defined in the <filename>_service</filename> file
@@ -397,7 +397,7 @@
   </orderedlist>
  </sect1>
 
- <sect1 xml:id="sec.obs.sserv.remove">
+ <sect1 xml:id="sec-obs-sserv-remove">
   <title>Removing a Source Service</title>
   <para> Sometimes it is useful to continue working on generated files
    manually. In this situation the <filename>_service</filename> file needs
@@ -408,16 +408,16 @@
     <command>osc service merge</command>. </para>
  </sect1>
 
- <sect1 xml:id="sec.obs.sserv.token_usage">
+ <sect1 xml:id="sec-obs-sserv-token-usage">
   <title>Trigger a service run via a webhook</title>
   <para>You may want to update sources in &obs; whenever they change in a SCM
         system. You can create a token which allows to trigger a specific
         package update and use it via a webhook. It is recommended to create
         a token for a specific package and not a wildcard token.
-        Read <xref linkend="cha.obs.authorization.token"/> to learn how to
+        Read <xref linkend="cha-obs-authorization-token"/> to learn how to
         create a token.
   </para>
-  <sect2 xml:id="sec.obs.sserv.gitlab">
+  <sect2 xml:id="sec-obs-sserv-gitlab">
    <title>Using it on gitlab</title>
    <para>
            Go to your repository settings page in your gitlab instance. Select Integrations
@@ -432,7 +432,7 @@
   <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/runservice?project=<replaceable>PROJECT</replaceable>&amp;package=<replaceable>PACKAGE</replaceable></screen>
 
   </sect2>
-  <sect2 xml:id="sec.obs.sserv.github.com">
+  <sect2 xml:id="sec-obs-sserv-github-com">
    <title>Using it on github.com</title>
    <para>
       Go to your repository settings page of your repository on github.com. Select Webhooks

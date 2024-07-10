@@ -16,7 +16,7 @@
         <para>So, <literal>/dev/kvm</literal> can be made available to containers via Kubernetes using device plugin API (<link xl:href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/"/>).</para>
         <para>One of the implementations of K8s devices plugin for KVM is available here : <link xl:href="https://github.com/kubevirt/kubernetes-device-plugins" /></para>
     <procedure>
-    <step xml:id="k8s.worker.getkvm">
+    <step xml:id="k8s-worker-getkvm">
         <para>Use the following manifest to deploy the KVM device plugin in a container.</para>
         <para>This plugin is packaged as <literal>k8s-device-plugin-kvm</literal> and corresponding container built here:
         <link xl:href="https://build.opensuse.org/package/show/home:sjamgade:branches:devel:CaaSP:Head:ControllerNode/kubernetes-device-plugins-docker"/></para>
@@ -58,13 +58,13 @@ spec:
            path: /var/lib/kubelet/device-plugins
        </screen>
     </step>
-    <step xml:id="k8s.worker.buildworker">
+    <step xml:id="k8s-worker-buildworker">
         <para>Build container image of the build service locally and load it to all worker nodes. There is sample project file here:
             <link xl:href="https://build.opensuse.org/package/show/home:sjamgade:branches:OBS:Server:Unstable/OBS-Appliance"/> 
             <literal>docker load &lt; "/path/to/docker.archive.tar.gz" </literal>
          </para>
     </step>
-    <step xml:id="k8s.worker.loadworker">
+    <step xml:id="k8s-worker-loadworker">
         <para>Use the following manifest to deploy the build service worker.</para>
         <para>Here ports are hard-coded to allow easy integration with local kubelet without requiring a separate ingress-controller</para>
         <screen>
@@ -139,7 +139,7 @@ spec:
       nodePort: 32516
         </screen>
     </step>
-    <step xml:id="k8s.worker.createworkerconfig">
+    <step xml:id="k8s-worker-createworkerconfig">
         <para>Save the following into a file <literal>launchworker.sh</literal>. Later use this file to launch the worker. Make sure you uncomment the OBS_REPO_SERVERS line and change the IP address to your build servers address</para>
         <screen>
 cat &lt;&lt; EOH &gt; /etc/buildhost.config
@@ -159,7 +159,7 @@ EOH
 obsworker restart
         </screen>
     </step>
-    <step xml:id="k8s.worker.startworker">
+    <step xml:id="k8s-worker-startworker">
         <para>Use the following command to launch the build service worker.</para>
         <screen>
 cat launchworker.sh | kubectl exec -i -t test-worker-pod bash 

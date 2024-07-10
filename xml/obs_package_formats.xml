@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.package_formats"
+<chapter version="5.1" xml:id="cha-obs-package-formats"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -286,7 +286,7 @@ systemctl enable sshd</screen>
   <remark>toms 2017-08-18: TODO What is it and what is needed</remark>
  </sect1>
 
- <sect1 xml:id="sec.pkgfmt.flatpak">
+ <sect1 xml:id="sec-pkgfmt-flatpak">
   <title>&flatpak;</title>
   <para>
   The <link xlink:href="https://flatpak.org/">Flatpak</link> format can be used
@@ -418,7 +418,7 @@ Support: kmod-compat kernel-default perl-YAML-LibYAML
   </example>
  </sect1>
 
- <sect1 xml:id="sec.pkgfmt.mkosi">
+ <sect1 xml:id="sec-pkgfmt-mkosi">
   <title>mkosi</title>
   <para>
    <link xlink:href="https://github.com/systemd/mkosi/">Mkosi</link> allows

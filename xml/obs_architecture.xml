@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.architecture"
+<chapter version="5.1" xml:id="cha-obs-architecture"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -19,8 +19,8 @@
  <sect1 xml:id="overview-graph">
   <title>Overview Graph</title>
   <para> &OBS; is not a monolithic server; it consists of multiple daemons
-   that fulfill different tasks (see <xref linkend="fig.overview.simplified"/>). </para>
-  <figure xml:id="fig.overview.simplified">
+   that fulfill different tasks (see <xref linkend="fig-overview-simplified"/>). </para>
+  <figure xml:id="fig-overview-simplified">
    <title>Simplified OBS Component Overview</title>
    <mediaobject>
     <imageobject>
@@ -222,7 +222,7 @@
    other back-end components.
   </para>
 
-  <figure xml:id="fig_obs_communication">
+  <figure xml:id="fig-obs-communication">
    <title>OBS Communication (Simplified)</title>
    <mediaobject>
     <imageobject role="fo">
@@ -234,7 +234,7 @@
    </mediaobject>
   </figure>
   <para>
-   The figure <xref linkend="fig_obs_communication"/> shows the
+   The figure <xref linkend="fig-obs-communication"/> shows the
    communication flow between the &obsa; components if a package source
    (for example, a <filename>_service</filename> file) was updated:
   </para>

@@ -4,7 +4,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.basicworkflow"
+<chapter version="5.1" xml:id="cha-obs-basicworkflow"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -18,7 +18,7 @@
   <remark>TBD</remark>
  </sect1>
 -->
- <sect1 xml:id="sec.obs.basicworkflow.setuphome">
+ <sect1 xml:id="sec-obs-basicworkflow-setuphome">
   <title>Setting Up Your Home Project</title>
   <remark>toms 2017-08-25: Suggestion by sknorr:
    generic section plus home project (cross refs only)
@@ -27,7 +27,7 @@
    This section shows how to set up your home project with the command line
    tool &osccmd;. For more
    information about setting up your home project with the Web UI, see
-   <xref linkend="sec.obsbg.uc.setuphome"/>.
+   <xref linkend="sec-obsbg-uc-setuphome"/>.
   </para>
   <para>
    This chapter is based on the following assumptions:
@@ -41,19 +41,19 @@
    </listitem>
    <listitem>
     <para>
-     You have installed &osccmd; as described in <xref linkend="sec.obs.osc.install"/>.
+     You have installed &osccmd; as described in <xref linkend="sec-obs-osc-install"/>.
     </para>
    </listitem>
    <listitem>
     <para>
-     You have configured &osccmd; as described in <xref linkend="sec.osc.firsttime"/>.
+     You have configured &osccmd; as described in <xref linkend="sec-osc-firsttime"/>.
     </para>
    </listitem>
   </itemizedlist>
 
   <procedure>
    <title>Setting Up Your Home Project</title>
-   <step xml:id="st.basicworkflow.setuphome.oscls">
+   <step xml:id="st-basicworkflow-setuphome-oscls">
     <para>
      Get a list of all available build targets of your &obsa; instance:
     </para>
@@ -66,7 +66,7 @@
      <uri>openSUSE:Tools</uri>, <uri>openSUSE:Templates</uri>.
     </para>
    </step>
-   <step xml:id="st.obs.metaprj">
+   <step xml:id="st-obs-metaprj">
     <para>
      Configure your build targets with:
     </para>
@@ -102,7 +102,7 @@
    <step>
     <para>
      Add more <tag>repository</tag> elements as needed.  Insert the information
-     from <xref linkend="st.basicworkflow.setuphome.oscls"/> into the
+     from <xref linkend="st-basicworkflow-setuphome-oscls"/> into the
      <tag class="attribute">project</tag> attribute.
     </para>
     <remark>
@@ -142,7 +142,7 @@
      is valid, &osccmd; will save it. Otherwise, it will show an error and
      prompt you whether to <guimenu>Try again?</guimenu>. In this case, press
      <keycap>n</keycap>. Your changes will be lost and you will need to start
-     from <xref linkend="st.obs.metaprj"/> again.
+     from <xref linkend="st-obs-metaprj"/> again.
     </para>
    </step>
   </procedure>
@@ -159,7 +159,7 @@
    assume that this project contains source code
    which you want to package for one or more &suse; (openSUSE) distributions.
    We assume the setup of your home project in your &obsa; instance is
-   already done. If not, refer to <xref linkend="sec.obs.basicworkflow.setuphome"/>.
+   already done. If not, refer to <xref linkend="sec-obs-basicworkflow-setuphome"/>.
   </para>
   <para>
    To create a package from the upstream project, do the following:
@@ -303,7 +303,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
 -->openSUSE_Tumbleweed x86_64 *.spec
     </screen>
     <para>
-     If you encounter problems, see <xref linkend="sec.obs.basicworkflow.builderrors"/>.
+     If you encounter problems, see <xref linkend="sec-obs-basicworkflow-builderrors"/>.
     </para>
    </step>
    <step>
@@ -343,7 +343,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   </procedure>
  </sect1>
 
- <sect1 xml:id="sec.obs.basicworkflow.builderrors">
+ <sect1 xml:id="sec-obs-basicworkflow-builderrors">
   <title>Investigating the Local Build Process</title>
   <remark>toms 2017-08-22: https://en.opensuse.org/openSUSE:Build_Service_Tutorial#Correct_Errors_in_the_Local_Build_Process</remark>
   <para>
@@ -353,16 +353,16 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   </para>
   <itemizedlist>
    <listitem>
-    <para><xref linkend="sec.obs.basicworkflow.builderrors.buildlog"/></para>
+    <para><xref linkend="sec-obs-basicworkflow-builderrors-buildlog"/></para>
    </listitem>
    <listitem>
-    <para><xref linkend="sec.obs.basicworkflow.builderrors.buildroot"/></para>
+    <para><xref linkend="sec-obs-basicworkflow-builderrors-buildroot"/></para>
    </listitem>
   </itemizedlist>
 
   <remark>toms 2017-08-22: Troubleshooting?</remark>
 
-  <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildlog">
+  <sect2 xml:id="sec-obs-basicworkflow-builderrors-buildlog">
    <title>Build Log</title>
    <para>
     Each build produces a log file on &obsa;. This log file can be viewed by
@@ -412,7 +412,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    </variablelist>
   </sect2>
 
-  <sect2 xml:id="sec.obs.basicworkflow.builderrors.buildroot">
+  <sect2 xml:id="sec-obs-basicworkflow-builderrors-buildroot">
    <title>Local Build Root Directory</title>
    <para>
     If you build a package locally and you get a build error, investigate
@@ -444,30 +444,30 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    <para>
     The build root contains the following structure:
    </para>
-   <example xml:id="exa.workflow.buildroot">
+   <example xml:id="exa-workflow-buildroot">
     <title>Directory Structure of a Build Root (<filename>/var/tmp/build-root/</filename>)</title>
     <screen>/home/abuild/
 └── rpmbuild
-    ├── BUILD <co xml:id="co.workflow.buildroot.build"/>
-    ├── BUILDROOT  <co xml:id="co.workflow.buildroot.buildroot"/>
-    ├── OTHER  <co xml:id="co.workflow.buildroot.other"/>
-    ├── RPMS  <co xml:id="co.workflow.buildroot.rpms"/>
+    ├── BUILD <co xml:id="co-workflow-buildroot-build"/>
+    ├── BUILDROOT  <co xml:id="co-workflow-buildroot-buildroot"/>
+    ├── OTHER  <co xml:id="co-workflow-buildroot-other"/>
+    ├── RPMS  <co xml:id="co-workflow-buildroot-rpms"/>
     │   ├── i386
     │   ├── noarch
     │   └── x86_64
-    ├── SOURCES  <co xml:id="co.workflow.buildroot.sources"/>
-    ├── SPECS  <co xml:id="co.workflow.buildroot.specs"/>
-    └── SRPMS  <co xml:id="co.workflow.buildroot.srpms"/></screen>
+    ├── SOURCES  <co xml:id="co-workflow-buildroot-sources"/>
+    ├── SPECS  <co xml:id="co-workflow-buildroot-specs"/>
+    └── SRPMS  <co xml:id="co-workflow-buildroot-srpms"/></screen>
     <remark>toms 2017-08-22: https://rpm-packaging-guide.github.io/#rpm-packaging-workspace</remark>
     <calloutlist>
-     <callout arearefs="co.workflow.buildroot.build">
+     <callout arearefs="co-workflow-buildroot-build">
       <para>
        Contains directory named after the package name.
        In spec files, the name of the package directory is referenced
        using the <systemitem class="macro">%buildroot</systemitem> macro.
       </para>
      </callout>
-     <callout arearefs="co.workflow.buildroot.buildroot">
+     <callout arearefs="co-workflow-buildroot-buildroot">
       <para>
        If the build process was unable to create a package, this directory
        contains all files and directories which are installed in the target
@@ -479,12 +479,12 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
        emptied.
       </para>
      </callout>
-     <callout arearefs="co.workflow.buildroot.other">
+     <callout arearefs="co-workflow-buildroot-other">
       <para>
        Usually contains the file <filename>rpmlint.log</filename>.
       </para>
      </callout>
-     <callout arearefs="co.workflow.buildroot.rpms">
+     <callout arearefs="co-workflow-buildroot-rpms">
       <para>
        If the build was successful, stores binary RPMs into subdirectories of
        architecture
@@ -492,17 +492,17 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
        <filename>x86_64</filename>).
       </para>
      </callout>
-     <callout arearefs="co.workflow.buildroot.sources">
+     <callout arearefs="co-workflow-buildroot-sources">
       <para>
        All source files from the working copy will be copied here.
       </para>
      </callout>
-     <callout arearefs="co.workflow.buildroot.specs">
+     <callout arearefs="co-workflow-buildroot-specs">
       <para>
       <remark>toms 2017-08-22: empty?</remark>
       </para>
      </callout>
-     <callout arearefs="co.workflow.buildroot.srpms">
+     <callout arearefs="co-workflow-buildroot-srpms">
       <para>
        Stores source RPMs into this directory.
       </para>
@@ -534,24 +534,24 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   <itemizedlist>
    <listitem>
     <para>
-     <xref linkend="sec.obs.basicworkflow.deps"/>
+     <xref linkend="sec-obs-basicworkflow-deps"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     <xref linkend="sec.obs.basicworkflow.layering"/>
+     <xref linkend="sec-obs-basicworkflow-layering"/>
      (<emphasis>layering</emphasis>)
     </para>
    </listitem>
    <listitem>
     <para>
-     <xref linkend="sec.obs.basicworkflow.reuse"/>
+     <xref linkend="sec-obs-basicworkflow-reuse"/>
      (<emphasis>linking</emphasis> and <emphasis>aggregating</emphasis>)
     </para>
    </listitem>
   </itemizedlist>
 
-  <sect2 xml:id="sec.obs.basicworkflow.deps">
+  <sect2 xml:id="sec-obs-basicworkflow-deps">
    <title>Adding Dependencies to Your Build Recipes</title>
    <remark>toms 2017-08-24: Should probably go into the concept part?</remark>
    <remark>toms 2017-08-24: should we explain hard and soft requirements?</remark>
@@ -561,7 +561,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
     requirements). Both belong to the header of the spec file<!-- (see <xref
      linkend=""/>)-->.
    </para>
-   <example xml:id="ex.obs.basicworkflow.excerpt">
+   <example xml:id="ex-obs-basicworkflow-excerpt">
     <title>Excerpt of Build and Installation Requirements</title>
     <screen>Name:             foo-example
 Version:          1.0.0
@@ -570,7 +570,7 @@ Requires:         zool >= 1.5.6</screen>
    </example>
    <remark>toms 2017-08-24: Version compare with zypper vcmp?</remark>
   </sect2>
-  <sect2 xml:id="sec.obs.basicworkflow.layering">
+  <sect2 xml:id="sec-obs-basicworkflow-layering">
    <title>Associating Other Repositories with Your Repository</title>
    <para>
     There is no need to duplicate the work of others. If you need a specific
@@ -597,7 +597,7 @@ Requires:         zool >= 1.5.6</screen>
      </para>
      <screen>&prompt.user;<command>osc</command> meta prj --edit &obshome1;</screen>
     </step>
-    <step xml:id="st.obs.basicworkflow.layering.repository">
+    <step xml:id="st-obs-basicworkflow-layering-repository">
      <para>
       Search for <tag>repository</tag> elements. For example, to allow usage
       packages from <uri>devel:languages:python</uri> in a
@@ -628,7 +628,7 @@ Requires:         zool >= 1.5.6</screen>
       </para>
      </note>
     </step>
-    <step xml:id="st.obs.basicworkflow.layering.path">
+    <step xml:id="st-obs-basicworkflow-layering-path">
      <para>
       Add more <tag>path</tag> elements under the same
       <tag>repository</tag> element.
@@ -636,14 +636,14 @@ Requires:         zool >= 1.5.6</screen>
     </step>
     <step>
      <para>
-      If necessary, repeat <xref linkend="st.obs.basicworkflow.layering.repository"/> and
-      <xref linkend="st.obs.basicworkflow.layering.path"/> to add <tag>path</tag>
+      If necessary, repeat <xref linkend="st-obs-basicworkflow-layering-repository"/> and
+      <xref linkend="st-obs-basicworkflow-layering-path"/> to add <tag>path</tag>
       elements to <tag>repository</tag> elements of other distributions or releases.
      </para>
     </step>
    </procedure>
   </sect2>
-  <sect2 xml:id="sec.obs.basicworkflow.reuse">
+  <sect2 xml:id="sec-obs-basicworkflow-reuse">
    <title>Reusing Packages in Your Project</title>
    <remark>toms 2017-08-30: This part and its subsections needs to be
    further discussed. "Aggregate" as a word doesn't really fit with the
@@ -657,7 +657,7 @@ Requires:         zool >= 1.5.6</screen>
    <remark>toms 2017-08-30: add a notes when NOT to use the two methods.
    </remark>
 
-   <sect3 xml:id="sec.obs.basicworkflow.reuse.aggregating" condition="tbs">
+   <sect3 xml:id="sec-obs-basicworkflow-reuse-aggregating" condition="tbs">
     <title>Aggregating a Package</title>
     <para>
      An <quote>aggregate</quote> package is a pointer to an &obsa; package.
@@ -706,7 +706,7 @@ Requires:         zool >= 1.5.6</screen>
      contains the <filename>_aggregate</filename> file.
     </para>
    </sect3>
-   <sect3 xml:id="sec.obs.basicworkflow.reuse.linking">
+   <sect3 xml:id="sec-obs-basicworkflow-reuse-linking">
     <title>Linking a Package</title>
     <para>
      A linked package is a clone of another package with

@@ -3,14 +3,14 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.prjconfig"
+<chapter version="5.1" xml:id="cha-obs-prjconfig"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Build Configuration</title>
  <info/>
 
- <sect1 xml:id="sec.prjconfig.about">
+ <sect1 xml:id="sec-prjconfig-about">
   <title>About the Build Configuration</title>
   <para>
    Each project has a <firstterm>build configuration</firstterm> which
@@ -93,7 +93,7 @@
   </itemizedlist>
  </sect1>
 
- <sect1 xml:id="sec.prjconfig.syntax">
+ <sect1 xml:id="sec-prjconfig-syntax">
   <title>Configuration File Syntax</title>
   <para>
    The syntax is basically the same as in RPM spec files.
@@ -128,7 +128,7 @@
    The following list contains a list of allowed keywords in the build
    configuration (prjconf):
   </para>
-  <variablelist xml:id="vl.prjconfig.keywords">
+  <variablelist xml:id="vl-prjconfig-keywords">
    <title>Available Keywords in Build Configuration</title>
    <!-- AssetsURL is not mentioned here as it has no effect in OBS -->
    <varlistentry>
@@ -958,7 +958,7 @@ Support: pax debbuild</screen>
   </variablelist>
  </sect1>
 
- <sect1 xml:id="sec.prjconfig.ccache">
+ <sect1 xml:id="sec-prjconfig-ccache">
   <title>Building with ccache or sccache</title>
   <para>
     The usage of ccache or sccache can be enabled for each package by
@@ -997,7 +997,7 @@ Support: pax debbuild</screen>
 
  </sect1>
 
- <sect1 xml:id="sec.prjconfig.macros">
+ <sect1 xml:id="sec-prjconfig-macros">
   <title>Macro Definitions in the Build Configuration</title>
   <para>
     You can use rpm macro definitions in the build configuration (prjconf) to improve
@@ -1056,7 +1056,7 @@ Support: pax debbuild</screen>
    </listitem>
   </itemizedlist>
 
-  <sect2 xml:id="sec.prjconfig.macros.define">
+  <sect2 xml:id="sec-prjconfig-macros-define">
    <title>Macros for the Build Configuration Only</title>
    <para>
      To specify macros for the building process, use the %define
@@ -1071,7 +1071,7 @@ Support: pax debbuild</screen>
     the build configuration.
    </para>
   </sect2>
-  <sect2 xml:id="sec.prjconfig.macros.macrosection">
+  <sect2 xml:id="sec-prjconfig-macros-macrosection">
    <title>Macros Used in Spec Files Only</title>
    <para>
     To define the values of macros used in spec files, `%define` is <emphasis

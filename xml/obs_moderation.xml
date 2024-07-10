@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.moderation"
+<chapter version="5.1" xml:id="cha-obs-moderation"
   xmlns="http://docbook.org/ns/docbook"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -189,7 +189,7 @@
       <title>How To Moderate?</title>
       <para>
         As a moderator you can click on the yellow warning about reports, usually displayed close to the element.
-        There, you can read all the reports and make a <xref linkend="obs.glos.moderation_decision"/>. Write the reason why you agree (Favor) or disagree (Cleared).
+        There, you can read all the reports and make a <xref linkend="obs-glos-moderation-decision"/>. Write the reason why you agree (Favor) or disagree (Cleared).
       </para>
 
       <figure>
@@ -245,12 +245,12 @@
           </listitem>
         </itemizedlist>
       <para>
-        Most of these actions are reversible. Read section <xref linkend="reverting_moderators_actions"/>.
+        Most of these actions are reversible. Read section <xref linkend="reverting-moderators-actions"/>.
       </para>
     </sect2>
   </sect1>
 
-  <sect1 xml:id="reverting_moderators_actions">
+  <sect1 xml:id="reverting-moderators-actions">
     <title>Reverting Moderator's Actions</title>
     <para>
       Most of these actions are reversible except for removing a comment.
@@ -269,7 +269,7 @@
     </para>
     <para>
       In case the moderator changes their mind, they can revert the actions they made.
-      Read section <xref linkend="reverting_moderators_actions"/>.
+      Read section <xref linkend="reverting-moderators-actions"/>.
     </para>
 
     <figure>

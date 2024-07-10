@@ -44,11 +44,11 @@
     see https://en.opensuse.org/openSUSE:Build_Service_Tutorial
   * Use CI services
 -->
- <part xml:id="par.first_steps">
+ <part xml:id="par-first-steps">
   <title>First Steps</title>
   <xi:include href="art-obs-beginners-guide.xml"/>
  </part>
- <part xml:id="par.concepts">
+ <part xml:id="par-concepts">
   <title>Concepts</title>
 <!--  <xi:include href="obs_user_concept.xml"/>-->
   <xi:include href="obs_package_formats.xml"/>
@@ -60,7 +60,7 @@
   <xi:include href="obs_build_config.xml"/>
  </part>
 
- <part xml:id="par.working">
+ <part xml:id="par-working">
   <title>Usage</title>
   <xi:include href="obs_basic_workflow.xml"/>
   <xi:include href="osc_building.xml"/>
@@ -79,7 +79,7 @@
   <xi:include href="obs_product_building.xml"/>
  </part>
 
- <part xml:id="par.best_practices">
+ <part xml:id="par-best-practices">
   <title>Best Practices</title>
   <xi:include href="obs_best_practice_webui_usage.xml"/>
   <xi:include href="obs_best_practice_basics.xml"/>
@@ -92,7 +92,7 @@
   <xi:include href="obs_best_practice_howto.xml"/>
  </part>
 
- <part xml:id="par.reference">
+ <part xml:id="par-reference">
   <title>Reference</title>
  <!--<xi:include href="obs_motivation.xml"/>-->
  <!-- basic parts -->

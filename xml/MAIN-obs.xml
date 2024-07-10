@@ -7,7 +7,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
   %entities;
 ]>
-<set version="5.1" xml:lang="en" xml:id="art_obs_quickstart"
+<set version="5.1" xml:lang="en" xml:id="art-obs-quickstart"
   xmlns="http://docbook.org/ns/docbook"
   xmlns:dm="urn:x-suse:ns:docmanager"
   xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -23,7 +23,7 @@
   </dm:docmanager>
  </info>
 <!--
-  <book xml:id="book.obs.techpaper">
+  <book xml:id="book-obs-techpaper">
    <title>Technical Papers</title>
    <info/>
   </book>

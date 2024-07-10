@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.maintenance_setup"
+<chapter version="5.1" xml:id="cha-obs-maintenance-setup"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -50,23 +50,23 @@
    start the maintenance process via doing a "maintenance" request. </para>
   <itemizedlist>
    <listitem>
-    <para> openSUSE:11.4 is the <xref linkend="obs.glos.ga_project"/> in
+    <para> openSUSE:11.4 is the <xref linkend="obs-glos-ga-project"/> in
      this example. It is locked and not changing anymore. </para>
    </listitem>
    <listitem>
     <para> openSUSE:11.4:Update is the <xref
-      linkend="obs.glos.update_project"/> to release official updates for the
+      linkend="obs-glos-update-project"/> to release official updates for the
       locked openSUSE:11.4 project.
       Thus it links to the openSUSE:11.4 project, inheriting all package sources from there. </para>
    </listitem>
    <listitem>
     <para> openSUSE:Maintenance is the <xref
-      linkend="obs.glos.maintenance_project"/> which in this case maintains
+      linkend="obs-glos-maintenance-project"/> which in this case maintains
       the openSUSE:11.4:Update project (and optionally others as well). </para>
    </listitem>
    <listitem>
     <para> openSUSE:Maintenance:IDxxx is a <xref
-      linkend="obs.glos.incident"/> project created automatically by accepting a
+      linkend="obs-glos-incident"/> project created automatically by accepting a
       maintenance request. </para>
    </listitem>
   </itemizedlist>
@@ -76,17 +76,17 @@
   <para>All workflow related projects must be set up with a proper project meta configuration.</para>
   <itemizedlist>
    <listitem>
-    <para>It is recommended to lock the <xref linkend="obs.glos.ga_project"/> by the project maintainer
+    <para>It is recommended to lock the <xref linkend="obs-glos-ga-project"/> by the project maintainer
         by using the <command>osc lock [PROJECT]</command> command</para>
    </listitem>
    <listitem>
-    <para> The <xref linkend="obs.glos.update_project"/> has to have the &lt;link project="[PROJECT]"/&gt;
+    <para> The <xref linkend="obs-glos-update-project"/> has to have the &lt;link project="[PROJECT]"/&gt;
     element in the project meta configuration. </para>
     <para> It is very useful to define groups of bugowners, maintainers and reviewers and to make use of bots
     for further quality assurance tasks.</para>
    </listitem>
    <listitem>
-    <para> The <xref linkend="obs.glos.maintenance_project"/> has to have the</para>
+    <para> The <xref linkend="obs-glos-maintenance-project"/> has to have the</para>
     <screen>&lt;project name=... kind="maintenance"&gt;</screen>
     <para>attribute in the project meta configuration, as well as a</para>
     <screen>&lt;maintenance&gt;</screen>
@@ -118,8 +118,8 @@
    <screen><command>osc branch --maintenance openSUSE:12.1 glibc</command>
 <command>osc branch -M -c openSUSE:12.1 glibc</command></screen>
     <para>In a simple setup as described before, create the maintenance branch
-    from the package of the <xref linkend="obs.glos.update_project"/> as the
-    <xref linkend="obs.glos.ga_project"/> can never be changed anymore. </para>
+    from the package of the <xref linkend="obs-glos-update-project"/> as the
+    <xref linkend="obs-glos-ga-project"/> can never be changed anymore. </para>
    <para> NOTE: both branch commands do support the --noaccess parameter, which
     will create a hidden project. This may be used when a not yet publicly
     known security issue is get fixed. </para>

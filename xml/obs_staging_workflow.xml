@@ -4,12 +4,12 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.stagingworkflow"
+<chapter version="5.1" xml:id="cha-obs-stagingworkflow"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Staging Workflow</title>
- <sect1 xml:id="sec.obs.staging.workflow.projects">
+ <sect1 xml:id="sec-obs-staging-workflow-projects">
    <title>Working with Staging Projects</title>
    <para>
      This API provides an easy way to get information about a single or all staging projects like
@@ -17,7 +17,7 @@
      Note: To use this API, you first need to setup a staging workflow for a project.
    </para>
 
-   <sect2 xml:id="sec.obs.staging.workflow.projects.index">
+   <sect2 xml:id="sec-obs-staging-workflow-projects-index">
     <title>Overview of All Staging Projects</title>
     <para>
       This endpoint provides an overview of all staging projects for a certain project.
@@ -79,7 +79,7 @@ geeko > <command>osc</command> api '/staging/openSUSE:Factory/staging_projects/?
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.projects.show">
+  <sect2 xml:id="sec-obs-staging-workflow-projects-show">
     <title>Overview of a Single Staging Project</title>
     <para>
       This endpoint provides an overview of a single staging project.
@@ -122,7 +122,7 @@ geeko > <command>osc</command> api '/staging/openSUSE:Factory/staging_projects//
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.projects.copy">
+  <sect2 xml:id="sec-obs-staging-workflow-projects-copy">
     <title>Copy a Staging Project</title>
     <para>
       This endpoint creates a copy of a staging project. It will queue a job which is going to copy the project configuration, repositories, groups and users.
@@ -133,11 +133,11 @@ geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory/staging_pr
   </sect2>
  </sect1>
 
- <sect1 xml:id="sec.obs.staging.workflow.requests">
+ <sect1 xml:id="sec-obs-staging-workflow-requests">
   <title>Working with Requests</title>
   <para>One of the main features of the staging workflow is assigning incoming requests to different staging projects.</para>
 
-  <sect2 xml:id="sec.obs.staging.workflow.assign.request">
+  <sect2 xml:id="sec-obs-staging-workflow-assign-request">
     <title>Assign Requests into a Staging Project</title>
     <para>
       Our main project openSUSE:Factory received requests with id 1 and 2.
@@ -149,7 +149,7 @@ geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory/staging_pr
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.remove.request">
+  <sect2 xml:id="sec-obs-staging-workflow-remove-request">
     <title>Remove Requests from a Staging Project</title>
     <para>
       When we are done with testing the staging project openSUSE:Factory:Staging:A, we need to remove the requests 1 and 2 again.
@@ -160,7 +160,7 @@ geeko > <command>osc</command> api -X DELETE '/staging/openSUSE:Factory/staging_
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.staging.request">
+  <sect2 xml:id="sec-obs-staging-workflow-staging-request">
     <title>List Requests of a Staging Project</title>
     <para>Listing all requests which are currently assigned to openSUSE:Factory:Staging:A can be done with the following command.</para>
     <screen>
@@ -181,7 +181,7 @@ geeko > <command>osc</command> api '/staging/openSUSE:Factory/staging_projects/o
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.exclude.request">
+  <sect2 xml:id="sec-obs-staging-workflow-exclude-request">
     <title>Exclude Requests for a Staging Workflow</title>
     <para>
       Our main project openSUSE:Factory received requests with id 3 and 4.
@@ -192,7 +192,7 @@ geeko > <command>osc</command> api -X POST '/staging/openSUSE:Factory/excluded_r
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.unexclude.request">
+  <sect2 xml:id="sec-obs-staging-workflow-unexclude-request">
     <title>Bring Back Excluded Requests from a Staging Workflow</title>
     <para>
       The following command will stop excluding requests with id 3 and 4 for the staging workflow project openSUSE:Factory.
@@ -202,7 +202,7 @@ geeko > <command>osc</command> api -X DELETE '/staging/openSUSE:Factory/excluded
     </screen>
   </sect2>
 
-  <sect2 xml:id="sec.obs.staging.workflow.accept.staging.project">
+  <sect2 xml:id="sec-obs-staging-workflow-accept-staging-project">
     <title>Accept Staging Project</title>
     <para>
       Once all the requests are ready and the staging project has an acceptable state, the requests can be merged. In other words, the staging project can be accepted.

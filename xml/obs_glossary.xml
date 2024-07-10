@@ -10,21 +10,21 @@
   ******* Please post on the OBS mailing list your suggestion, if you ********
   ******* are unsure.                                                 ********
 -->
-<glossary version="5.1" xml:id="obs.glossary"
+<glossary version="5.1" xml:id="obs-glossary"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Glossary</title>
 
  <!-- ############## A ############## -->
- <glossentry xml:id="obs.glos.announcement" condition="tbd">
+ <glossentry xml:id="obs-glos-announcement" condition="tbd">
   <glossterm>Announcement</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.appimage">
+ <glossentry xml:id="obs-glos-appimage">
   <glossterm>&obs.ai;</glossterm>
   <!-- See https://en.opensuse.org/openSUSE:Build_Service_AppImage_builds -->
   <glossdef>
@@ -34,7 +34,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.apidoc">
+ <glossentry xml:id="obs-glos-apidoc">
   <glossterm>API</glossterm>
   <glossdef>
    <para>
@@ -48,7 +48,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.appliance">
+ <glossentry xml:id="obs-glos-appliance">
   <glossterm>Appliance</glossterm>
   <glossdef>
    <para>
@@ -58,22 +58,22 @@
     Appliances can be copied as-is onto a hard disk, an SSD, or started as a
     virtual machine (<emphasis>deployed</emphasis>).
    </para>
-   <glossseealso otherterm="obs.glos.os_image"/>
-   <glossseealso otherterm="obs.glos.image"/>
+   <glossseealso otherterm="obs-glos-os-image"/>
+   <glossseealso otherterm="obs-glos-image"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.archive">
+ <glossentry xml:id="obs-glos-archive">
   <glossterm baseform="Archive">Archive (Archive File)</glossterm>
   <glossdef>
    <para>
     An archive file contains a representation of usually multiple files and
     directories. Usually, archive files are also compressed. Archive
     files are the basis for binary packages
-    (<xref linkend="obs.glos.project_binary"/>).
+    (<xref linkend="obs-glos-project-binary"/>).
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.attribute">
+ <glossentry xml:id="obs-glos-attribute">
   <glossterm>Attribute</glossterm>
   <glossdef>
    <para>
@@ -85,7 +85,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## B ############## -->
- <glossentry xml:id="obs.glos.project_binary">
+ <glossentry xml:id="obs-glos-project-binary">
   <glossterm baseform="Binary Package">Binary Package (Binary)</glossterm>
   <glossdef>
    <para>
@@ -109,16 +109,16 @@
     human-readable like a script, usually does not matter). - sknorr,
     2017-08-30
    </remark>
-   <glossseealso otherterm="obs.glos.container"/>
-   <glossseealso otherterm="obs.glos.os_image"/>
-   <glossseealso otherterm="obs.gloss.source_package"/>
-   <glossseealso otherterm="obs.glos.deb"/>
-   <glossseealso otherterm="obs.glos.rpm"/>
-   <glossseealso otherterm="obs.glos.kiwi"/>
-   <glossseealso otherterm="obs.glos.archive"/>
+   <glossseealso otherterm="obs-glos-container"/>
+   <glossseealso otherterm="obs-glos-os-image"/>
+   <glossseealso otherterm="obs-gloss-source-package"/>
+   <glossseealso otherterm="obs-glos-deb"/>
+   <glossseealso otherterm="obs-glos-rpm"/>
+   <glossseealso otherterm="obs-glos-kiwi"/>
+   <glossseealso otherterm="obs-glos-archive"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.branch">
+ <glossentry xml:id="obs-glos-branch">
   <glossterm>Branch</glossterm>
   <glossdef>
    <para>
@@ -127,10 +127,10 @@
     repository. You can either <!-- update,? -->delete the branch or
     merge it into the original repository with a submit request.
    </para>
-   <glossseealso otherterm="obs.glos.submitrequest"/>
+   <glossseealso otherterm="obs-glos-submitrequest"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.bug">
+ <glossentry xml:id="obs-glos-bug">
   <glossterm>Bug</glossterm>
   <glossdef>
    <para>
@@ -138,7 +138,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.bugowner">
+ <glossentry xml:id="obs-glos-bugowner">
   <glossterm>Bugowner</glossterm>
   <glossdef>
    <!-- Helpful: https://en.opensuse.org/openSUSE:Package_maintainership_guide
@@ -149,17 +149,17 @@
     individual packages only. Users with this role can only read data but
     they are responsible for reacting to bug reports.
    </para>
-   <glossseealso otherterm="obs.glos.maintainer"/>
+   <glossseealso otherterm="obs-glos-maintainer"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.bugreporting" condition="tbd">
+ <glossentry xml:id="obs-glos-bugreporting" condition="tbd">
   <glossterm>Bug Reporting</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.build">
+ <glossentry xml:id="obs-glos-build">
   <glossterm>Build</glossterm>
   <glossdef>
    <para>
@@ -168,14 +168,14 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.buildlog">
+ <glossentry xml:id="obs-glos-buildlog">
   <glossterm>Build Log</glossterm>
   <glossdef>
    <para>Output of the build process of a certain package.</para>
-   <glossseealso otherterm="obs.glos.build"/>
+   <glossseealso otherterm="obs-glos-build"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.buildrecipe">
+ <glossentry xml:id="obs-glos-buildrecipe">
   <glossterm>Build Recipe</glossterm>
   <glossdef>
    <para>Generic term for a recipe file for creating a package.
@@ -185,11 +185,11 @@
     used and contains all the previous points. Debian-based systems use
     a <filename>debian</filename> directory which splits all the information.
    </para>
-   <glossseealso otherterm="obs.glos.spec"/>
-<!--   <glossseealso otherterm=""obs.glos.debianrulefile"/>-->
+   <glossseealso otherterm="obs-glos-spec"/>
+<!--   <glossseealso otherterm=""obs-glos-debianrulefile"/>-->
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.buildrequirement">
+ <glossentry xml:id="obs-glos-buildrequirement">
   <glossterm>Build Requirement</glossterm>
   <glossdef>
    <para>
@@ -198,18 +198,18 @@
     <remark>For example, a C++ program needs the C++ compiler included in the
     <package>gcc</package> package.</remark>
    </para>
-   <glossseealso otherterm="obs.glos.installrequirement"/>
-   <glossseealso otherterm="obs.glos.buildrecipe"/>
+   <glossseealso otherterm="obs-glos-installrequirement"/>
+   <glossseealso otherterm="obs-glos-buildrecipe"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.buildresult">
+ <glossentry xml:id="obs-glos-buildresult">
   <glossterm>Build Result</glossterm>
   <glossdef>
    <para>The current state of a package. Example of a build result could be
    succeeded, failed, blocked, etc.</para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.buildroot">
+ <glossentry xml:id="obs-glos-buildroot">
   <glossterm>Build Root</glossterm>
   <glossdef>
    <para>
@@ -217,10 +217,10 @@
     packages. By default, the build root is located in
     <filename>/var/tmp/build-root/<replaceable>BUILD_TARGET</replaceable></filename>.
    </para>
-   <glossseealso otherterm="obs.glos.buildtarget"/>
+   <glossseealso otherterm="obs-glos-buildtarget"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.buildtarget">
+ <glossentry xml:id="obs-glos-buildtarget">
   <glossterm>Build Target</glossterm>
   <glossdef>
    <para>
@@ -229,7 +229,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## C ############## -->
- <glossentry xml:id="obs.glos.changelog">
+ <glossentry xml:id="obs-glos-changelog">
   <glossterm>Changelog</glossterm>
   <glossdef>
    <para>
@@ -237,10 +237,10 @@
     can contain information about version updates, bug and security fixes,
     incompatible changes, or changes related to the distribution.
    </para>
-   <glossseealso otherterm="obs.glos.changesfile"/>
+   <glossseealso otherterm="obs-glos-changesfile"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.changesfile">
+ <glossentry xml:id="obs-glos-changesfile">
   <glossterm baseform="changesfile"><filename class="extension"
    >.changes</filename> File</glossterm>
   <glossdef>
@@ -248,10 +248,10 @@
     In &obsa;, a file with the file extension <filename class="extension"
      >.changes</filename> to store changelog information.
    </para>
-   <glossseealso otherterm="obs.glos.changelog"/>
+   <glossseealso otherterm="obs-glos-changelog"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.commit">
+ <glossentry xml:id="obs-glos-commit">
   <glossterm>Commit</glossterm>
   <glossdef>
    <para>
@@ -259,10 +259,10 @@
     the author, the date and time, a commit checksum, an optional request number,
     and a log message.
    </para>
-   <glossseealso otherterm="obs.glos.revision"/>
+   <glossseealso otherterm="obs-glos-revision"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.container">
+ <glossentry xml:id="obs-glos-container">
   <glossterm>Container</glossterm>
   <glossdef>
    <para>
@@ -275,25 +275,25 @@
     system. Unlike binary packages, containers are deployed and not installed.
     Formats of containers include &appimg;, &docker;, &snap;, and &flatpak;.
    </para>
-   <glossseealso otherterm="obs.glos.project_binary"/>
-   <glossseealso otherterm="obs.glos.os_image"/>
-   <glossseealso otherterm="obs.glos.image"/>
+   <glossseealso otherterm="obs-glos-project-binary"/>
+   <glossseealso otherterm="obs-glos-os-image"/>
+   <glossseealso otherterm="obs-glos-image"/>
    <!-- glosseealso docker/appimage/snap/flatpak etc. -->
   </glossdef>
  </glossentry>
 
  <!-- ############## D ############## -->
- <glossentry xml:id="obs.glos.deb">
+ <glossentry xml:id="obs-glos-deb">
   <glossterm>Deb</glossterm>
   <glossdef>
    <para>
     A package format created and used by the Debian distribution.
    </para>
-   <glossseealso otherterm="obs.glos.package"/>
-   <glossseealso otherterm="obs.glos.rpm"/>
+   <glossseealso otherterm="obs-glos-package"/>
+   <glossseealso otherterm="obs-glos-rpm"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.moderation_decision">
+ <glossentry xml:id="obs-glos-moderation-decision">
   <glossterm>Decision</glossterm>
   <glossdef>
    <para>
@@ -302,18 +302,18 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.description" condition="tbd">
+ <glossentry xml:id="obs-glos-description" condition="tbd">
   <glossterm>Description</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.dependency">
+ <glossentry xml:id="obs-glos-dependency">
   <glossterm>Dependency</glossterm>
-  <glosssee otherterm="obs.glos.requirement"/>
+  <glosssee otherterm="obs-glos-requirement"/>
  </glossentry>
- <glossentry xml:id="obs.glos.develproject">
+ <glossentry xml:id="obs-glos-develproject">
   <glossterm>Devel Project</glossterm>
   <glossdef>
    <para>
@@ -321,11 +321,11 @@
     the devel project <uri>devel:languages:python</uri> stores all packages
     related to the Python programming language.
    </para>
-   <glossseealso otherterm="obs.glos.homeproject"/>
-   <glossseealso otherterm="obs.glos.project"/>
+   <glossseealso otherterm="obs-glos-homeproject"/>
+   <glossseealso otherterm="obs-glos-project"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.docker">
+ <glossentry xml:id="obs-glos-docker">
   <glossterm>Docker</glossterm>
   <glossdef>
    <para>
@@ -333,10 +333,10 @@
     Docker is a lightweight virtualization solution to run multiple virtual
     units (containers) simultaneously on a single control host.
    </para>
-   <glossseealso otherterm="obs.glos.container"/>
+   <glossseealso otherterm="obs-glos-container"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.downloadrepository">
+ <glossentry xml:id="obs-glos-downloadrepository">
   <glossterm>Download Repository</glossterm>
   <glossdef>
    <para>
@@ -348,11 +348,11 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.diff">
+ <glossentry xml:id="obs-glos-diff">
   <glossterm>Diff</glossterm>
-  <glosssee otherterm="obs.glos.patch"/>
+  <glosssee otherterm="obs-glos-patch"/>
  </glossentry>
- <glossentry xml:id="obs.glos.disturl">
+ <glossentry xml:id="obs-glos-disturl">
   <glossterm>DISTURL</glossterm>
   <glossdef>
    <para>
@@ -384,7 +384,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## E ############## -->
- <glossentry xml:id="obs.glos.eula">
+ <glossentry xml:id="obs-glos-eula">
   <glossterm>EULA</glossterm>
   <glossdef>
    <para>
@@ -395,11 +395,11 @@
   </glossdef>
  </glossentry>
  <!-- ############## F ############## -->
- <glossentry xml:id="obs.glos.fix">
+ <glossentry xml:id="obs-glos-fix">
   <glossterm>Fix</glossterm>
-  <glosssee otherterm="obs.glos.patch"/>
+  <glosssee otherterm="obs-glos-patch"/>
  </glossentry>
- <glossentry xml:id="obs.glos.flag">
+ <glossentry xml:id="obs-glos-flag">
   <glossterm>Flags</glossterm>
   <glossdef>
    <para>
@@ -409,15 +409,15 @@
   </glossdef>
  </glossentry>
  <!-- ############## G ############## -->
- <glossentry xml:id="obs.glos.ga_project">
+ <glossentry xml:id="obs-glos-ga-project">
   <glossterm>GA Project</glossterm>
   <glossdef>
    <para> The GA (general availability) project builds an initial release of a product. It gets frozen
     after releasing the product. All further updates get released via the <xref
-     linkend="obs.glos.update_project"/> of this project. </para>
+     linkend="obs-glos-update-project"/> of this project. </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.gpgkey">
+ <glossentry xml:id="obs-glos-gpgkey">
   <glossterm>GPG Key</glossterm>
   <glossdef>
    <para>
@@ -427,27 +427,27 @@
   </glossdef>
  </glossentry>
  <!-- ############## H ############## -->
- <glossentry xml:id="obs.glos.homeproject">
+ <glossentry xml:id="obs-glos-homeproject">
   <glossterm>Home Project</glossterm>
   <glossdef>
    <para>
     Working area in OBS for uploading and building packages. Each
     home project starts with <uri>home:<replaceable>USERNAME</replaceable></uri>.
    </para>
-   <glossseealso otherterm="obs.glos.project"/>
+   <glossseealso otherterm="obs-glos-project"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.homerepository" condition="tbd">
+ <glossentry xml:id="obs-glos-homerepository" condition="tbd">
   <glossterm>Home Repository</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
-   <glossseealso otherterm="obs.glos.project"/>
-   <glossseealso otherterm="obs.glos.repository"/>
+   <glossseealso otherterm="obs-glos-project"/>
+   <glossseealso otherterm="obs-glos-repository"/>
   </glossdef>
  </glossentry>
  <!-- ############## I ############## -->
- <glossentry xml:id="obs.glos.image">
+ <glossentry xml:id="obs-glos-image">
   <glossterm baseform="Image">Image (Image File)</glossterm>
   <glossdef>
    <para>
@@ -456,12 +456,12 @@
     multiple types of image:
    </para>
     <simplelist type="inline">
-     <member><xref linkend="obs.glos.os_image"/></member>
-     <member><xref linkend="obs.glos.container"/></member>
+     <member><xref linkend="obs-glos-os-image"/></member>
+     <member><xref linkend="obs-glos-container"/></member>
     </simplelist>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.imagedescription">
+ <glossentry xml:id="obs-glos-imagedescription">
   <glossterm>Image Description</glossterm>
   <glossdef>
    <para>
@@ -470,10 +470,10 @@
     <filename class="extension">*.kiwi</filename>), scripts, or configuration data to
     customize certain parts of the &kiwi; build process.
    </para>
-   <glossseealso otherterm="obs.glos.kiwi"/>
+   <glossseealso otherterm="obs-glos-kiwi"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.incident">
+ <glossentry xml:id="obs-glos-incident">
   <glossterm>Incident</glossterm>
   <glossdef>
    <para> Describes a specific problem and the
@@ -482,7 +482,7 @@
     maintenance incident project and the update get built here. </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.installrequirement">
+ <glossentry xml:id="obs-glos-installrequirement">
   <glossterm>Installation Requirement</glossterm>
   <glossdef>
    <para>
@@ -491,7 +491,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## K ############## -->
- <glossentry xml:id="obs.glos.kiwi">
+ <glossentry xml:id="obs-glos-kiwi">
   <glossterm>&kiwi;</glossterm>
   <glossdef>
    <para>
@@ -499,31 +499,31 @@
     create images for Linux supported hardware platforms or for virtualization
     systems.
    </para>
-   <glossseealso otherterm="obs.glos.image"/>
+   <glossseealso otherterm="obs-glos-image"/>
   </glossdef>
  </glossentry>
  <!-- ############## L ############## -->
- <glossentry xml:id="obs.glos.license">
+ <glossentry xml:id="obs-glos-license">
   <glossterm>License</glossterm>
   <glossdef>
    <para>
     Written contract to specify permissions for use and distribution of software.
    </para>
-   <glossseealso otherterm="obs.glos.project"/>
+   <glossseealso otherterm="obs-glos-project"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.link">
+ <glossentry xml:id="obs-glos-link">
   <glossterm>Link</glossterm>
   <glossdef>
    <para>
     A concept that defines a relationship between a source and a
     target repository.
    </para>
-   <glossseealso otherterm="obs.glos.project"/>
+   <glossseealso otherterm="obs-glos-project"/>
   </glossdef>
  </glossentry>
  <!-- ############## M ############## -->
- <glossentry xml:id="obs.glos.maintainer">
+ <glossentry xml:id="obs-glos-maintainer">
   <glossterm>Maintainer</glossterm>
   <glossdef>
    <para>
@@ -532,26 +532,26 @@
     add, modify, and remove packages and subprojects, accept submit requests,
     and change metadata.
    </para>
-   <glossseealso otherterm="obs.glos.bugowner"/>
+   <glossseealso otherterm="obs-glos-bugowner"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.maintenance_project" vendor="suse">
+ <glossentry xml:id="obs-glos-maintenance-project" vendor="suse">
   <glossterm>Maintenance Project</glossterm>
   <glossdef>
    <para> A project without sources and binaries,
     defined by the maintenance team. Incidents are created as sub projects
     of this project. </para>
-   <glossseealso otherterm="obs.glos.incident"/>
+   <glossseealso otherterm="obs-glos-incident"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.maintenance_request" condition="tbd">
+ <glossentry xml:id="obs-glos-maintenance-request" condition="tbd">
   <glossterm>Maintenance Request</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.metadata" condition="tbd">
+ <glossentry xml:id="obs-glos-metadata" condition="tbd">
   <glossterm>Metadata</glossterm>
   <glossdef>
    <para/>
@@ -559,7 +559,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## O ############## -->
- <glossentry xml:id="obs.glos.obs_package">
+ <glossentry xml:id="obs-glos-obs-package">
   <glossterm>&obsa; Package</glossterm>
   <glossdef>
    <para>
@@ -583,7 +583,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.obs" sortas="Open Build Service">
+ <glossentry xml:id="obs-glos-obs" sortas="Open Build Service">
   <glossterm baseform="&obs;">&OBS;</glossterm>
   <glossdef>
    <para>
@@ -597,15 +597,15 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.build.o.o">
+ <glossentry xml:id="obs-glos-build-o-o">
   <glossterm>&osbs;</glossterm>
   <glossdef>
    <para> A specific Web service instance of <xref
-     linkend="obs.glos.obs"/> from the &opensuse; project at
+     linkend="obs-glos-obs"/> from the &opensuse; project at
     <link xlink:href="http://build.opensuse.org"/>. </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.osc">
+ <glossentry xml:id="obs-glos-osc">
   <glossterm>&osccmd;</glossterm>
   <glossdef>
    <para>
@@ -613,12 +613,12 @@
     stands for <emphasis>openSUSE commander</emphasis>. &osccmd; works
     similarly to SVN or Git.
    </para>
-   <glossseealso otherterm="obs.glos.obs"/>
+   <glossseealso otherterm="obs-glos-obs"/>
    <glossseealso><link xlink:href="https://github.com/openSUSE/osc"
    /></glossseealso>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.os_image">
+ <glossentry xml:id="obs-glos-os-image">
   <glossterm>Operating System Image</glossterm>
   <glossdef>
    <para>
@@ -627,20 +627,20 @@
     Depending on their purpose, operating system images are classified into:
    </para>
     <simplelist type="inline">
-     <member><xref linkend="obs.glos.product_image"/></member>
-     <member><xref linkend="obs.glos.appliance"/></member>
-     <member><xref linkend="obs.glos.vm_image"/></member>
+     <member><xref linkend="obs-glos-product-image"/></member>
+     <member><xref linkend="obs-glos-appliance"/></member>
+     <member><xref linkend="obs-glos-vm-image"/></member>
     </simplelist>
    <para>
     Formats of operating system images include ISO, Virtual Disk, and PXE Root
     File System.
    </para>
-   <glossseealso otherterm="obs.glos.project_binary"/>
-   <glossseealso otherterm="obs.glos.image"/>
-   <glossseealso otherterm="obs.glos.kiwi"/>
+   <glossseealso otherterm="obs-glos-project-binary"/>
+   <glossseealso otherterm="obs-glos-image"/>
+   <glossseealso otherterm="obs-glos-kiwi"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.overlay_file">
+ <glossentry xml:id="obs-glos-overlay-file">
   <glossterm>Overlay File</glossterm>
   <glossdef>
    <para>
@@ -652,31 +652,31 @@
     system (overlaid) of the appliance root. This includes
     permissions and attributes as a supplement.
    </para>
-   <glossseealso otherterm="obs.glos.appliance"/>
-   <glossseealso otherterm="obs.glos.kiwi"/>
-   <!--   <glossseealso otherterm="obs.glos.imagedescription"/>-->
+   <glossseealso otherterm="obs-glos-appliance"/>
+   <glossseealso otherterm="obs-glos-kiwi"/>
+   <!--   <glossseealso otherterm="obs-glos-imagedescription"/>-->
   </glossdef>
  </glossentry>
  <!-- ############## P ############## -->
- <glossentry xml:id="obs.glos.package">
+ <glossentry xml:id="obs-glos-package">
   <glossterm>Package</glossterm>
   <glossdef>
    <para>
     &obsa; handles very different types of software package:
    </para>
     <simplelist type="inline">
-     <member><xref linkend="obs.gloss.source_package"/></member>
-     <member><xref linkend="obs.glos.obs_package"/></member>
-     <member><xref linkend="obs.glos.project_binary"/></member>
+     <member><xref linkend="obs-gloss-source-package"/></member>
+     <member><xref linkend="obs-glos-obs-package"/></member>
+     <member><xref linkend="obs-glos-project-binary"/></member>
     </simplelist>
-   <glossseealso otherterm="obs.glos.container"/>
+   <glossseealso otherterm="obs-glos-container"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.packagerequirement">
+ <glossentry xml:id="obs-glos-packagerequirement">
   <glossterm>Package Requirement</glossterm>
-  <glosssee otherterm="obs.glos.requirement"/>
+  <glosssee otherterm="obs-glos-requirement"/>
  </glossentry>
- <glossentry xml:id="obs.glos.packagerepository">
+ <glossentry xml:id="obs-glos-packagerepository">
   <glossterm>Package Repository</glossterm>
   <glossdef>
    <para>A place where installable packages are available. This can
@@ -691,16 +691,16 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.patch">
+ <glossentry xml:id="obs-glos-patch">
   <glossterm>Patch</glossterm>
   <glossdef>
    <para>
     Textual differences between two versions of a file.
    </para>
-   <glossseealso otherterm="obs.glos.patchfile"/>
+   <glossseealso otherterm="obs-glos-patchfile"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.patchfile">
+ <glossentry xml:id="obs-glos-patchfile">
   <glossterm>Patch File</glossterm>
   <glossdef>
    <para>
@@ -708,17 +708,17 @@
      class="extension">.diff</filename> or <filename class="extension"
       >.patch</filename>.
    </para>
-   <glossseealso otherterm="obs.glos.patch"/>
+   <glossseealso otherterm="obs-glos-patch"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.patchinfo" condition="tbd">
+ <glossentry xml:id="obs-glos-patchinfo" condition="tbd">
   <glossterm>Patchinfo</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.product_image">
+ <glossentry xml:id="obs-glos-product-image">
   <glossterm>Product Image</glossterm>
   <glossdef>
    <para>
@@ -729,11 +729,11 @@
     Live images are a special case of operating system images. They can be
     run directly a USB disk or DVD and are often but not always installable.
    </para>
-   <glossseealso otherterm="obs.glos.os_image"/>
-   <glossseealso otherterm="obs.glos.image"/>
+   <glossseealso otherterm="obs-glos-os-image"/>
+   <glossseealso otherterm="obs-glos-image"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.project">
+ <glossentry xml:id="obs-glos-project">
   <glossterm>Project</glossterm>
   <glossdef>
    <para>
@@ -742,7 +742,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.projectconfiguration">
+ <glossentry xml:id="obs-glos-projectconfiguration">
   <glossterm>Project Configuration</glossterm>
   <glossdef>
    <para>
@@ -750,21 +750,21 @@
     on or off certain features during the build or to handle circular
     dependencies.
    </para>
-   <glossseealso otherterm="obs.glos.project"/>
+   <glossseealso otherterm="obs-glos-project"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.publishing">
+ <glossentry xml:id="obs-glos-publishing">
   <glossterm>Publishing</glossterm>
   <glossdef>
    <para>
     Finished process when a package is successfully built and available in the
     download repository.
    </para>
-   <glossseealso otherterm="obs.glos.downloadrepository"/>
+   <glossseealso otherterm="obs-glos-downloadrepository"/>
   </glossdef>
  </glossentry>
  <!-- ############## R ############## -->
- <glossentry xml:id="obs.glos.release_project">
+ <glossentry xml:id="obs-glos-release-project">
   <glossterm>Release Project</glossterm>
   <glossdef>
    <para> A release project is hosting a release repository which is not
@@ -773,17 +773,17 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.repository">
+ <glossentry xml:id="obs-glos-repository">
   <glossterm>Repository</glossterm>
   <glossdef>
    <para>
      A distribution-specific area that holds dependencies required for
      building a package.
    </para>
-   <glossseealso otherterm="obs.glos.downloadrepository"/>
+   <glossseealso otherterm="obs-glos-downloadrepository"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.repofile">
+ <glossentry xml:id="obs-glos-repofile">
   <glossterm>Repo File</glossterm>
   <glossdef>
    <para>
@@ -792,56 +792,56 @@
     name of the repository, the repository type, and references to the download
     repository and the GPG key.
    </para>
-   <glossseealso otherterm="obs.glos.downloadrepository"/>
+   <glossseealso otherterm="obs-glos-downloadrepository"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.request" condition="tbd">
+ <glossentry xml:id="obs-glos-request" condition="tbd">
   <glossterm>Request</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.requirement">
+ <glossentry xml:id="obs-glos-requirement">
   <glossterm>Requirement</glossterm>
   <glossdef>
    <para>
     In the &obsa; context, package requirements that are needed to
     create, build, or install a package.
    </para>
-   <glossseealso otherterm="obs.glos.buildrequirement"/>
-   <glossseealso otherterm="obs.glos.installrequirement"/>
+   <glossseealso otherterm="obs-glos-buildrequirement"/>
+   <glossseealso otherterm="obs-glos-installrequirement"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.revision">
+ <glossentry xml:id="obs-glos-revision">
   <glossterm>Revision</glossterm>
   <glossdef>
    <para>A unique numeric identifier of a commit.</para>
-   <glossseealso otherterm="obs.glos.commit"/>
+   <glossseealso otherterm="obs-glos-commit"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.rpm">
+ <glossentry xml:id="obs-glos-rpm">
   <glossterm>RPM</glossterm>
   <glossdef>
    <para>
     A package format. It stands for recursive acronym RPM Package Manager.
     Mainly used by &suse;, Red Hat, u.a.
    </para>
-   <glossseealso otherterm="obs.glos.deb"/>
-   <glossseealso otherterm="obs.glos.package"/>
+   <glossseealso otherterm="obs-glos-deb"/>
+   <glossseealso otherterm="obs-glos-package"/>
   </glossdef>
  </glossentry>
  <!-- ############## S ############## -->
- <glossentry xml:id="obs.glos.sandbox">
+ <glossentry xml:id="obs-glos-sandbox">
   <glossterm>Sandbox</glossterm>
   <glossdef>
    <para>Isolated region of a host system which runs either a virtual machine
     or a change root environment.
    </para>
-   <glossseealso otherterm="obs.glos.buildroot"/>
+   <glossseealso otherterm="obs-glos-buildroot"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.servicefile">
+ <glossentry xml:id="obs-glos-servicefile">
   <glossterm>Service File</glossterm>
   <glossdef>
    <para>
@@ -851,7 +851,7 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.spec">
+ <glossentry xml:id="obs-glos-spec">
   <glossterm>Spec File</glossterm>
   <glossdef>
    <para>
@@ -859,32 +859,32 @@
     a general package description and dependencies required for
     building and installing the package.
    </para>
-   <glossseealso otherterm="obs.glos.buildrecipe"/>
-   <glossseealso otherterm="obs.glos.patch"/>
-   <glossseealso otherterm="obs.glos.source"/>
+   <glossseealso otherterm="obs-glos-buildrecipe"/>
+   <glossseealso otherterm="obs-glos-patch"/>
+   <glossseealso otherterm="obs-glos-source"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.statusmonitor" condition="tbd">
+ <glossentry xml:id="obs-glos-statusmonitor" condition="tbd">
   <glossterm>Status Monitor</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.source">
+ <glossentry xml:id="obs-glos-source">
   <glossterm>Source</glossterm>
   <glossdef>
    <para>
     Original form, mostly written in a computer language.
    </para>
-   <glossseealso otherterm="obs.glos.package"/>
+   <glossseealso otherterm="obs-glos-package"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.sourcelink">
+ <glossentry xml:id="obs-glos-sourcelink">
   <glossterm>Source Link</glossterm>
-  <glosssee otherterm="obs.glos.link"/>
+  <glosssee otherterm="obs-glos-link"/>
  </glossentry>
- <glossentry xml:id="obs.gloss.source_package">
+ <glossentry xml:id="obs-gloss-source-package">
   <glossterm>Source Package</glossterm>
   <glossdef>
    <para>
@@ -897,20 +897,20 @@
     An example of source packages are SRPMs which contain the source for
     accompanying &rpmf; binary packages.
    </para>
-   <glossseealso otherterm="obs.glos.project_binary"/>
-   <glossseealso otherterm="obs.glos.archive"/>
+   <glossseealso otherterm="obs-glos-project-binary"/>
+   <glossseealso otherterm="obs-glos-archive"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.sourceservice">
+ <glossentry xml:id="obs-glos-sourceservice">
   <glossterm>Source Service</glossterm>
   <glossdef>
    <para>
     A tool to validate, generate, or modify a source in a trustable way.
    </para>
-   <glossseealso otherterm="obs.glos.source"/>
+   <glossseealso otherterm="obs-glos-source"/>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.susepackagehub">
+ <glossentry xml:id="obs-glos-susepackagehub">
   <glossterm>&suse; Package Hub</glossterm>
   <glossdef>
    <para>
@@ -920,14 +920,14 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.systemstatus" condition="tbd">
+ <glossentry xml:id="obs-glos-systemstatus" condition="tbd">
   <glossterm>System Status</glossterm>
   <glossdef>
    <para/>
    <remark>TBD</remark>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.submitrequest">
+ <glossentry xml:id="obs-glos-submitrequest">
   <glossterm>Submit Request</glossterm>
   <glossdef>
    <para>
@@ -935,17 +935,17 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.subproject">
+ <glossentry xml:id="obs-glos-subproject">
   <glossterm>Subproject</glossterm>
   <glossdef>
    <para>A child of a parent project.</para>
-   <glossseealso otherterm="obs.glos.develproject"/>
-   <glossseealso otherterm="obs.glos.homeproject"/>
-   <glossseealso otherterm="obs.glos.project"/>   
+   <glossseealso otherterm="obs-glos-develproject"/>
+   <glossseealso otherterm="obs-glos-homeproject"/>
+   <glossseealso otherterm="obs-glos-project"/>   
   </glossdef>
  </glossentry>
  <!-- ############## T ############## -->
- <glossentry xml:id="obs.glos.target">
+ <glossentry xml:id="obs-glos-target">
   <glossterm>Target</glossterm>
   <glossdef>
    <para>
@@ -956,20 +956,20 @@
   </glossdef>
  </glossentry>
  <!-- ############## U ############## -->
- <glossentry xml:id="obs.glos.update_project">
+ <glossentry xml:id="obs-glos-update-project">
   <glossterm>Update Project</glossterm>
   <glossdef>
    <para> A project which provides official updates for the products generated
-    in the <xref linkend="obs.glos.ga_project"/>. The update project usually
+    in the <xref linkend="obs-glos-ga-project"/>. The update project usually
     links sources and repositories against the <xref
-     linkend="obs.glos.ga_project"/>.
+     linkend="obs-glos-ga-project"/>.
    </para>
-   <glossseealso otherterm="obs.glos.release_project"/>
-   <glossseealso otherterm="obs.glos.ga_project"/>
+   <glossseealso otherterm="obs-glos-release-project"/>
+   <glossseealso otherterm="obs-glos-ga-project"/>
   </glossdef>
  </glossentry>
  <!-- ############## V ############## -->
- <glossentry xml:id="obs.glos.vm_image">
+ <glossentry xml:id="obs-glos-vm-image">
   <glossterm>Virtual Machine Image</glossterm>
   <glossdef>
    <para>
@@ -978,12 +978,12 @@
     computer and run as-is. As such, there is some overlap between virtual
     machine images and appliances.
    </para>
-   <glossseealso otherterm="obs.glos.os_image"/>
-   <glossseealso otherterm="obs.glos.image"/>
+   <glossseealso otherterm="obs-glos-os-image"/>
+   <glossseealso otherterm="obs-glos-image"/>
   </glossdef>
  </glossentry>
  <!-- ############## W ############## -->
- <glossentry xml:id="obs.glos.watchlist">
+ <glossentry xml:id="obs-glos-watchlist">
   <glossterm>Watchlist</glossterm>
   <glossdef>
    <para>
@@ -992,11 +992,11 @@
    </para>
   </glossdef>
  </glossentry>
- <glossentry xml:id="obs.glos.workingcopy">
+ <glossentry xml:id="obs-glos-workingcopy">
   <glossterm>Working Copy</glossterm>
-  <glosssee otherterm="obs.glos.workingdirectory"/>
+  <glosssee otherterm="obs-glos-workingdirectory"/>
  </glossentry>
- <glossentry xml:id="obs.glos.workingdirectory">
+ <glossentry xml:id="obs-glos-workingdirectory">
   <glossterm>Working Directory</glossterm>
   <glossdef>
    <para>
@@ -1007,7 +1007,7 @@
   </glossdef>
  </glossentry>
  <!-- ############## Z ############## -->
- <glossentry xml:id="obs.glos.zypper">
+ <glossentry xml:id="obs-glos-zypper">
   <glossterm>&zypper;</glossterm>
   <glossdef>
    <para>

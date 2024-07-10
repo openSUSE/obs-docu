@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.supported_formats"
+<chapter version="5.1" xml:id="cha-obs-supported-formats"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -14,7 +14,7 @@
   This chapter is focusing on describing &obs; specifics of a format.
   Either limitations or extensions of &obs; builds.
  </para>
- <sect1 xml:id="sec.obs.building.spec2rpm">
+ <sect1 xml:id="sec-obs-building-spec2rpm">
   <title>Spec File Specials (RPM)</title>
   <para>
      To create an RPM package, you need a spec file.

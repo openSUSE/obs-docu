@@ -3,14 +3,14 @@
    <!ENTITY % entities SYSTEM "entity-decl.ent">
    %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.image_templates"
+<chapter version="5.1" xml:id="cha-obs-image-templates"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Image Templates</title>
  <info/>
  &image_template_introduction_paragraph;
- <!--<para xml:id="image_template_introduction_paragraph"> Image templates are
+ <!--<para xml:id="image-template-introduction-paragraph"> Image templates are
   pre-configured image configurations. The <link
    xlink:href="https://build.opensuse.org/image_templates">image templates page
   </link> provides a list of these templates. Users can clone these templates
@@ -23,7 +23,7 @@
    containing image sources, a config.sh file and the &kiwi; configuration XML
    file. </para>
   &image_template_icon_paragraph;
-  <!--<para xml:id="image_template_icon_paragraph"> In addition, you can define an
+  <!--<para xml:id="image-template-icon-paragraph"> In addition, you can define an
    icon for your image templates by adding graphical image (for example, PNG,
    JPG) to your template sources and name it <command>_icon</command>. If that
    file exists, it will be used as icon for your image on the image templates

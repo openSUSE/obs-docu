@@ -4,14 +4,14 @@
    %entities;
 ]>
 
-<sect1 version="5.1" xml:id="image_templates_how_to"
+<sect1 version="5.1" xml:id="image-templates-how-to"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
  <title>Image Templates</title>
  &image_template_introduction_paragraph;
  <!--<xi:include href="obs_image_templates.xml"
-  xpointer="image_template_introduction_paragraph"/>-->
+  xpointer="image-template-introduction-paragraph"/>-->
  <para> How you can create your own image templates will be shown here. </para>
  <figure>
   <title>&obsa; Templates Page</title>
@@ -71,7 +71,7 @@
   <para> &kiwi; configurations usually consists of an xml configuration root
    tarball. </para>
   <!--<xi:include href="obs_image_templates.xml"
-   xpointer="image_template_icon_paragraph"/>-->
+   xpointer="image-template-icon-paragraph"/>-->
   &image_template_icon_paragraph;
   <para> For a full list of image descriptions and general information about
    building images with KIWI, see the <link

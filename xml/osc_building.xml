@@ -4,7 +4,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.building"
+<chapter version="5.1" xml:id="cha-obs-building"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -21,7 +21,7 @@
  </info>
  <remark>toms 2017-08-18: Also integrate content from obs_build_containers.xml</remark>
  
- <sect1 xml:id="sec.obs.building.generic">
+ <sect1 xml:id="sec-obs-building-generic">
   <title>Generic build options</title>
   <para>
      Independent of the build format you need at least one source file as build description.
@@ -55,7 +55,7 @@
    <step>
     <para>
      If you have not done so yet, set up your project as shown in
-     <xref linkend="sec.obs.basicworkflow.setuphome"/>.
+     <xref linkend="sec-obs-basicworkflow-setuphome"/>.
     </para>
    </step>
    <step>
@@ -141,7 +141,7 @@ The buildroot was: /var/tmp/build-root/openSUSE_Tumbleweed-x86_64</screen>
   </procedure>
  </sect1>
 
- <sect1 xml:id="sec.obs.building.advanced">
+ <sect1 xml:id="sec-obs-building-advanced">
   <title>Advanced Build Environment Handling</title>
   <para>
 	  The default build environment for local builds is usually chroot. While this is simplest environment

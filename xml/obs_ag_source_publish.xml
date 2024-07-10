@@ -6,7 +6,7 @@
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="source_publish">
+ xml:id="source-publish">
  <title>Source Publisher</title>
  <para>The job of the source publish service is to publish all sources for 
 directly before published binaries. This will include the sources of repackaged
@@ -14,7 +14,7 @@ binaries. For example, the sources of RPMs which are used inside of product,
 appliance or container images. A prerequisite for this is that OBS has enabled
 content tracking for the used projects.</para>
 
- <sect2 xml:id="source_publish_configuration">
+ <sect2 xml:id="source-publish-configuration">
   <title>Configuring Source Publisher</title>
   <para>The source publishing can be configured via the file
     <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where it can be 
@@ -26,7 +26,7 @@ content tracking for the used projects.</para>
   <screen language="perl">our $sourcepublish_filter = [ "openSUSE:.*", "SUSE:.*" ]; </screen>
  </sect2>
 
- <sect2 xml:id="source_publish_considerations">
+ <sect2 xml:id="source-publish-considerations">
   <title>Considerations</title>
   <para>The source publishing service is publishing the sources as they are hosted in &obs;. This
         means these are the unprocessed sources and the content is not identical to the
@@ -35,7 +35,7 @@ content tracking for the used projects.</para>
   <para>As a consequence hints like NoSource: tags in spec files are ignored. The only
         way to disable publishing for the user is to disable access or sourceaccess via
         the flags.</para>
-  <para>The filesystem structure is <emphasis>$project/$package/$srcmd5/</emphasis>. A  <xref linkend="obs.glos.disturl"/>
+  <para>The filesystem structure is <emphasis>$project/$package/$srcmd5/</emphasis>. A  <xref linkend="obs-glos-disturl"/>
         inside of binary builds can be used to find the right sources.</para>
   <para>&obs; will care for de-duplication on the rsync server. This must get implemented there.</para>
  </sect2>

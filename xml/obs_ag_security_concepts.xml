@@ -6,11 +6,11 @@
 <chapter xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="obs.cha.security_concepts">
+ xml:id="obs-cha-security-concepts">
  <title>Security Concepts</title>
  <info/>
 
- <sect1 xml:id="general_paradigm">
+ <sect1 xml:id="general-paradigm">
   <title>General Paradigm</title>
   <para>The general paradigm of &obs; is to host all content on its own. Every part 
         required to rebuild a package is hosted in &obs; to guarantee reproducibility.
@@ -18,11 +18,11 @@
         However, optional services to integrate remote resources exist as well. These resources
         are either mirrored and stored in revision control system or just cached.
         </para>
-  <sect2 xml:id="network_setup">
+  <sect2 xml:id="network-setup">
    <title>Frontend</title>
    <para>The API and web interface frontends is the only part which must be accessible from
 	   public network. A SSL/TLS certificate is highly recommended.</para>
-   <sect3 xml:id="network_access">
+   <sect3 xml:id="network-access">
     <title>Access to Mirror Servers</title>
     <para>The following services require access to stage servers. These servers
           can be used to publish content without the need to make &obs; server parts
@@ -40,7 +40,7 @@
      </listitem>
     </itemizedlist>
    </sect3>
-   <sect3 xml:id="public_network_access">
+   <sect3 xml:id="public-network-access">
     <title>Access to the Public Network</title>
     <para>The following services may require access to the public network.</para>
     <itemizedlist>
@@ -67,14 +67,14 @@
      </listitem>
     </itemizedlist>
    </sect3>
-   <sect3 xml:id="worker_network">
+   <sect3 xml:id="worker-network">
     <title>Worker network</title>
     <para>It is recommended to run the &obs; workers in an isolated network. This is
           an additional security mechanism in case of a security breach on a worker.
           This network needs access to the source and repository servers of the &obs;
           backend, but nowhere else.</para>
    </sect3>
-   <sect3 xml:id="signd_network">
+   <sect3 xml:id="signd-network">
     <title>Signer network</title>
     <para>It is recommended to run the signd on an isolated host. The signer services
           need to stay on the &obs; backend servers, they are just used for scheduling
@@ -88,7 +88,7 @@
           backend server components (source server and publisher).</para>
    </sect3>
   </sect2>
-  <sect2 xml:id="build_env">
+  <sect2 xml:id="build-env">
    <title>Build Environment</title>
    <para>The build environment is created by obsworker instances via the build script.
          Inside the build instances unverified and potentially harmful code is executed.
@@ -112,7 +112,7 @@
          source packages are rebuildable without root permissions.
          </para>
   </sect2>
-  <sect2 xml:id="source_revision_system">
+  <sect2 xml:id="source-revision-system">
    <title>Source Revision System</title>
    <para>The source revision storage system is part of &obs;. The identification of sources
          still happens using MD5 sums for historic reasons. MD5 is considered to be still
@@ -126,7 +126,7 @@
          builds, but it should be avoided for base projects.
          </para>
   </sect2>
-  <sect2 xml:id="permission_handling">
+  <sect2 xml:id="permission-handling">
    <title>Permission Handling</title>
    <para>Authorization for write operations is done via the maintainer role on package
          or project level. On project level the projects are organized in namespaces
@@ -136,7 +136,7 @@
          top level namespaces (for example, openSUSE: namespace in our reference instance).
    </para>
   </sect2>
-  <sect2 xml:id="signature_handling">
+  <sect2 xml:id="signature-handling">
    <title>Signature Handling</title>
    <para>Signatures are used to proof the origin of a shipment independent of
           &obs; instance. Once the <systemitem>signd</systemitem> daemon has
@@ -181,17 +181,17 @@
    </para>
   </sect2>
  </sect1>
- <sect1 xml:id="trust_zones">
+ <sect1 xml:id="trust-zones">
   <title>Trust Zones </title>
   <para>&OBS; components deal with different trust zones. These are
         separated via network or virtualization mechanics.
   </para>
 
-  <sect2 xml:id="public_zone">
+  <sect2 xml:id="public-zone">
    <title>Public Zones</title>
    <para>Public zones are areas where any code under user control is running.
    </para>
-   <sect3 xml:id="external_network">
+   <sect3 xml:id="external-network">
     <title>External Network</title>
     <para>
       This can be the public Internet if the &obs; instance is a public
@@ -201,7 +201,7 @@
       connections to the Internet as described below.
     </para>
    </sect3>
-   <sect3 xml:id="untrusted_code">
+   <sect3 xml:id="untrusted-code">
     <title>Untrusted Code</title>
     <para>
       All code which is used to build content is considered
@@ -230,7 +230,7 @@
       the source server only.
     </para>
    </sect3>
-   <sect3 xml:id="frontend_background">
+   <sect3 xml:id="frontend-background">
     <title>&obs; Frontend Background Services</title>
     <para>
      &obs; frontend background services handle less time critical operations.
@@ -238,7 +238,7 @@
      trackers, sending notifications or long running jobs.
     </para>
    </sect3>
-   <sect3 xml:id="stage_server">
+   <sect3 xml:id="stage-server">
     <title>Stage Server</title>
     <para>
       The stage server is providing the public content of the &obs; backends.
@@ -246,7 +246,7 @@
       a mirror infrastructure.
     </para>
    </sect3>
-   <sect3 xml:id="cloud_uploader">
+   <sect3 xml:id="cloud-uploader">
     <title>Cloud Uploader</title>
     <para>
       The cloud uploader is uploading build results on user request. It reads
@@ -255,7 +255,7 @@
       This is an optional service.
     </para>
    </sect3>
-   <sect3 xml:id="source_service">
+   <sect3 xml:id="source-service">
     <title>Source Service Server</title>
     <para>
       The source service server is acting based on uploaded sources. The 
@@ -266,12 +266,12 @@
     </para>
    </sect3>
   </sect2>
-  <sect2 xml:id="internal_zone">
+  <sect2 xml:id="internal-zone">
    <title>Internal Zone</title>
    <para>The internal zone is running service which are supposed to work
          without further external dependency.
    </para>
-   <sect3 xml:id="source_server">
+   <sect3 xml:id="source-server">
     <title>&obs; Source Server</title>
     <para>
       The source server coordinates changes to package and project configuration.
@@ -281,7 +281,7 @@
       There can only be a single source server per OBS install.
     </para>
    </sect3>
-   <sect3 xml:id="binary_server">
+   <sect3 xml:id="binary-server">
     <title>&obs; Binary Servers</title>
     <para>
       Binary Servers are hosting all content of build results. They 
@@ -289,7 +289,7 @@
       staging server.
     </para>
    </sect3>
-   <sect3 xml:id="external_dependencies">
+   <sect3 xml:id="external-dependencies">
     <title>External Dependencies</title>
     <para>
       The internal zone has no external dependency.
@@ -300,19 +300,19 @@
     </para>
    </sect3>
   </sect2>
-  <sect2 xml:id="worker_zone">
+  <sect2 xml:id="worker-zone">
    <title>Worker Zone</title>
    <para>The &obs; workers are running in an own isolated network. 
          They access only source and binary servers from internal zone.
    </para>
   </sect2>
-  <sect2 xml:id="signing_server">
+  <sect2 xml:id="signing-server">
    <title>Signing Server</title>
    <para>The signing server is supposed to be the most isolated service.
          It is supposed to be stateless after initial setup.
          Avoid to enable any remote access.
    </para>
-  <figure xml:id="fig.obsbg.trust_zones">
+  <figure xml:id="fig-obsbg-trust-zones">
    <title>Trust Zones of &obs;</title>
    <mediaobject>
     <imageobject>
