@@ -307,6 +307,16 @@ Support: pax debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
+        <term><parameter>slsaversion:VERSION</parameter></term>
+       <listitem>
+        <para>
+	  OBS 2.11 is producing slsa provenance files in version 0 by default at build
+	  time, when enabled.
+          It is possible to switch to v1 by specifing slsaversion:v1 as buildflag.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
         <term><parameter>container-compression-format:FORMAT</parameter></term>
        <listitem>
         <para>
