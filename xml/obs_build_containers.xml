@@ -159,7 +159,7 @@
       Alternatively, a different image name can be specified in the build
       recipe, e.g. via the <literal>containerconfig</literal> element in a
       &kiwi; file (see
-      <link xlink:href="https://osinside.github.io/kiwi/building_images/build_docker_container.html?highlight=containerconfig">the
+      <link xlink:href="https://osinside.github.io/kiwi/building_images/build_container_image.html?highlight=containerconfig">the
       kiwi documentation</link> for further details).
      </para>
     </listitem>
