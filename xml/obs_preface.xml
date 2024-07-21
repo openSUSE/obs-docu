@@ -17,10 +17,6 @@
  </para>
  <para>
   This guide does not focus on a specific &obsa; version.
-  <remark>
-   That is hogwash: It just documents whatever was available at the time of
-   writing. - sknorr, 2017-08-23
-  </remark>
   It is also not a replacement of the documentation inside of the <link
    xlink:href="https://en.opensuse.org/Portal:Build_Service"
   >&opensuse; Wiki</link>. However, content from the wiki may be included in
