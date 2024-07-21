@@ -22,12 +22,6 @@
    </dm:bugtracker>
   </dm:docmanager>
  </info>
-<!--
-  <book xml:id="book-obs-techpaper">
-   <title>Technical Papers</title>
-   <info/>
-  </book>
--->
   <xi:include href="book-obs-user-guide.xml"/>
   <xi:include href="book-obs-admin-guide.xml"/>
 </set>
