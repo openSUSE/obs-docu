@@ -19,8 +19,8 @@
  <sect1 xml:id="overview-graph">
   <title>Overview Graph</title>
   <para> &OBS; is not a monolithic server; it consists of multiple daemons
-   that fulfill different tasks (see <xref linkend="fig-overview-simplified"/>). </para>
-  <figure xml:id="fig-overview-simplified">
+   that fulfill different tasks:</para>
+  <figure>
    <title>Simplified OBS Component Overview</title>
    <mediaobject>
     <imageobject>
@@ -29,8 +29,7 @@
    </mediaobject>
   </figure>
   <para>
-  The OBS Back-end <!--is a collection of Perl applications that-->
-  manages the source files and build jobs of the OBS.
+  The OBS Backend manages the source files and build jobs of the OBS.
  </para>
 
  <variablelist>
