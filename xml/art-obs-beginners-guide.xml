@@ -571,12 +571,12 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       baseform="Working Directory">working directory</firstterm>:
     </para>
     <screen>&prompt.user;<command>cd</command> &obsworkdir1;
-&prompt.user;<command>osc</command> mkpac &gitproject;</screen>
+&prompt.user;<command>osc</command> mkpac &sampleprj;</screen>
    </step>
    <step>
     <para>
      Get the source code of the upstream project and save it in
-     <filename>&obsworkdir1;/&gitproject;</filename>.
+     <filename>&obsworkdir1;/&sampleprj;</filename>.
     </para>
     <para>
      Download a TAR archive of the sources. You do not have to unpack it yet.
@@ -603,18 +603,18 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
     <example xml:id="ex-obsbg-uc-basicprj-skeletonspec">
      <title>Skeleton of a Spec File</title>
     <screen>#
-# spec file for package &gitproject;
+# spec file for package &sampleprj;
 #
 # -- Copyright omitted --
 
-Name:           &gitproject; <co xml:id="co-obsbg-uc-basicprj-metadata"/>
-Version:        &gitprjvers; <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Name:           &sampleprj; <co xml:id="co-obsbg-uc-basicprj-metadata"/>
+Version:        &prjvers; <xref linkend="co-obsbg-uc-basicprj-metadata"/>
 Release:        0 <xref linkend="co-obsbg-uc-basicprj-metadata"/>
 License:        GPL-3.0 <xref linkend="co-obsbg-uc-basicprj-metadata"/>
 Group:          Documentation <xref linkend="co-obsbg-uc-basicprj-metadata"/>
 Summary:        Frobnication Tool <xref linkend="co-obsbg-uc-basicprj-metadata"/>
 Url:            &gitupstream1; <xref linkend="co-obsbg-uc-basicprj-metadata"/>
-Source:         &gitproject;-%{version}.tar.gz <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Source:         &sampleprj;-%{version}.tar.gz <xref linkend="co-obsbg-uc-basicprj-metadata"/>
 BuildRequires:  gcc <co xml:id="co-obsbg-uc-basicprj-buildreq"/>
 BuildRequires:  cmake <xref linkend="co-obsbg-uc-basicprj-buildreq"/>
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -725,7 +725,6 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
     </calloutlist>
     </example>
     <para>
-     <remark>toms 2017-08-17: FIXME: Better link to OBS instead of GH?</remark>
      For the complete spec file, see <link xlink:href="&referencespec;"/>.
     </para>
    </step>
@@ -744,13 +743,13 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
     </para>
     <para>
      Save the file and leave the editor. &osccmd; then
-     creates the file <filename>&gitproject;.changes</filename>.
+     creates the file <filename>&sampleprj;.changes</filename>.
     </para>
     <para>Your project directory should now look something like this:</para>
     <screen><emphasis>project directory</emphasis>
-     ├── &gitproject;-&gitprjvers;.tar.gz
-     ├── &gitproject;.changes
-     └── &gitproject;.spec</screen>
+     ├── &sampleprj;-&prjvers;.tar.gz
+     ├── &sampleprj;.changes
+     └── &sampleprj;.spec</screen>
    </step>
    <step>
     <para>Add all the files to your working directory:</para>
@@ -858,9 +857,9 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
    similar to this:
   </para>
   <screen><emphasis>project directory</emphasis>
-├── &gitproject;-&gitprjvers;.tar.gz
-├── &gitproject;.changes
-└── &gitproject;.spec</screen>
+├── &sampleprj;-&prjvers;.tar.gz
+├── &sampleprj;.changes
+└── &sampleprj;.spec</screen>
   <para>In our case, we want to modify the source code under
    <filename>src/main.cpp</filename> to change the greeting message.
   </para>
@@ -874,21 +873,21 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     <substeps>
      <step>
       <para>Unpack the source code:</para>
-      <screen>&prompt.user;<command>tar</command> xvf &gitproject;-*.tar.gz</screen>
+      <screen>&prompt.user;<command>tar</command> xvf &sampleprj;-*.tar.gz</screen>
       <para>
        If you have downloaded the archive from &gh;, the archive contains
        a directory in the form <filename><replaceable
         >NAME</replaceable>-<replaceable>VERSION</replaceable></filename>.
        In our case, unpacking the downloaded archive results in the
-       <filename>&gitproject;-&gitprjvers;/</filename> directory.
+       <filename>&sampleprj;-&prjvers;/</filename> directory.
       </para>
      </step>
      <step>
       <para>
-       Switch to the directory <filename>&gitproject;-&gitprjvers;/</filename>
+       Switch to the directory <filename>&sampleprj;-&prjvers;/</filename>
        and make a copy of the original C++ source file:
       </para>
-      <screen>&prompt.user;<command>cd</command> &gitproject;-&gitprjvers;/
+      <screen>&prompt.user;<command>cd</command> &sampleprj;-&prjvers;/
 &prompt.user;<command>cp</command> src/main.cpp src/main.cpp.orig</screen>
      </step>
      <step>
@@ -913,7 +912,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
      <step>
       <para>Redirect the diff into a file:</para>
       <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp \
-  > ../&gitproject;_main.diff</screen>
+  > ../&sampleprj;_main.diff</screen>
       <para>
        You can use an arbitrary name for the patch file. However, we
        recommend giving the file a descriptive name and adding the name of the
@@ -927,7 +926,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
      <step>
       <para>
        You can now remove the directory <filename
-        >&gitproject;-&gitprjvers;/</filename>, as it is not needed anymore.
+        >&sampleprj;-&prjvers;/</filename>, as it is not needed anymore.
       </para>
      </step>
     </substeps>
@@ -935,8 +934,8 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
    <step>
     <para>Open your spec file and add the following line in the header under
     the <literal>Source</literal> line like this:</para>
-    <screen>Source:         &gitproject;-%{version}.tar.gz
-Patch0:         &gitproject;_main.diff</screen>
+    <screen>Source:         &sampleprj;-%{version}.tar.gz
+Patch0:         &sampleprj;_main.diff</screen>
    </step>
    <step>
     <para>In the <literal>%prep</literal> section, add the <literal>%patch</literal>
@@ -949,7 +948,7 @@ Patch0:         &gitproject;_main.diff</screen>
     <para>
      Add your patch file to the local repository:
     </para>
-    <screen>&prompt.user;<command>osc</command> add &gitproject;_main.diff
+    <screen>&prompt.user;<command>osc</command> add &sampleprj;_main.diff
 </screen>
    </step>
    <step>
@@ -1009,7 +1008,7 @@ Patch0:         &gitproject;_main.diff</screen>
   </itemizedlist>
   <para>
    Let us assume that there is a user <systemitem class="username">&obsuser1;</systemitem>
-   who has created a package <uri>&obshome1;/&gitproject;</uri>
+   who has created a package <uri>&obshome1;/&sampleprj;</uri>
    on &obsa;. Now, a second user, <systemitem class="username">&obsuser2;</systemitem>,
    would like to submit a code change request to that package.
   </para>
@@ -1027,15 +1026,15 @@ Patch0:         &gitproject;_main.diff</screen>
    </step>
    <step>
     <para>Create a branch from &exampleuser_plain;'s home project:</para>
-    <screen>&prompt.user2;<command>osc</command> branchco &obshome1; &gitproject;</screen>
-    <para>This creates a branched package in &obsa; at <uri>&obsbranch2;/&gitproject;</uri>
+    <screen>&prompt.user2;<command>osc</command> branchco &obshome1; &sampleprj;</screen>
+    <para>This creates a branched package in &obsa; at <uri>&obsbranch2;/&sampleprj;</uri>
      and checks out a directory
-     <filename>&obsworkdir2;:branches:home:&obsuser1;:&gitproject;</filename>.
+     <filename>&obsworkdir2;:branches:home:&obsuser1;:&sampleprj;</filename>.
     </para>
    </step>
    <step>
     <para>Change the working directory to your checked-out branch:</para>
-    <screen>&prompt.user2;<command>cd</command> &obsworkdir2;/branches/home/&obsuser1;/&gitproject;</screen>
+    <screen>&prompt.user2;<command>cd</command> &obsworkdir2;/branches/home/&obsuser1;/&sampleprj;</screen>
    </step>
    <step>
     <para>Make changes as shown in <xref
@@ -1087,7 +1086,7 @@ Patch0:         &gitproject;_main.diff</screen>
      be submitted together. To avoid that, specify the names of the source and
      destination projects and the package name:
     </para>
-    <screen>&prompt.user2;<command>osc</command> submitreq &obsbranch2;:&obshome1; &gitproject; &obshome1;</screen>
+    <screen>&prompt.user2;<command>osc</command> submitreq &obsbranch2;:&obshome1; &sampleprj; &obshome1;</screen>
    </step>
   </procedure>
   <para>
@@ -1219,7 +1218,7 @@ Patch0:         &gitproject;_main.diff</screen>
    <uri>&obsdnlurlhome1;/openSUSE_Tumbleweed</uri>. This <emphasis>download
    repository</emphasis> is used as an installation source for Zypper or &yast;.
   </para>
-  <para>To install the <package>&gitproject;</package> package from your home project,
+  <para>To install the <package>&sampleprj;</package> package from your home project,
   use the following steps:</para>
   <procedure>
    <step xml:id="st.obsbg.uc.install-from-obs.repourls">
@@ -1242,7 +1241,7 @@ Patch0:         &gitproject;_main.diff</screen>
    </step>
    <step xml:id="st-obsbg-install">
     <para>Install the package:</para>
-    <screen>&prompt.root;<command>zypper</command> install &gitproject;</screen>
+    <screen>&prompt.root;<command>zypper</command> install &sampleprj;</screen>
    </step>
   </procedure>
   <para>
