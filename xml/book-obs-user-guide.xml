@@ -63,7 +63,7 @@
  <part xml:id="par-working">
   <title>Usage</title>
   <xi:include href="obs_basic_workflow.xml"/>
-  <xi:include href="osc_building.xml"/>
+  <xi:include href="obs_local_building.xml"/>
 
   <xi:include href="obs_source_services.xml"/>
   <!-- tbd: <xi:include href="obs_signing.xml"/>-->
