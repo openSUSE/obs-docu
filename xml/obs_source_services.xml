@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha-obs-source-service"
+<chapter version="5.1" xml:id="cha-obs-source-services"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -11,7 +11,7 @@
  <info/>
 
  <sect1 xml:id="sec-obs-sserv-about">
-  <title>About Source Service</title>
+  <title>About Source Services</title>
   <para>
    Source Services are tools to validate, generate or modify sources in a
    trustable way. They are designed as smallest possible tools and can be
@@ -23,8 +23,8 @@
   <itemizedlist>
    <listitem>
     <para>
-     Server side generated files are easy to identify and are not
-     modifiable by the user. This way other user can trust them to be
+     Server-side generated files are easy to identify and are not
+     modifiable by the user. This way, other users can trust them to be
      generated in the documented way without modifications.
     </para>
    </listitem>
@@ -40,42 +40,42 @@
    </listitem>
    <listitem>
     <para>
-     Services are runnable at any time without user commit.
+     Source services are runnable at any time without user commit.
     </para>
    </listitem>
    <listitem>
     <para>
-     Services are runnable on server and client side in the same way.
+     Source services are runnable on server and client side in the same way.
     </para>
    </listitem>
    <listitem>
     <para>
-     Services are safe. A source checkout and service run never harms
+     Source services are safe. A source checkout and service run never harms
      the system of a user.
     </para>
    </listitem>
    <listitem>
     <para>
-     Services avoid unnecessary commits.
+     Source services avoid unnecessary commits.
      This means there are no time-dependent changes. In case the package
-     already contains the same file, the newly generated file are dropped.
+     already contains the same file, the newly generated file is dropped.
     </para>
    </listitem>
    <listitem>
     <para>
-     Services running local or inside the build environment can get created,
+     Source services running local or inside the build environment can get created,
      added and used by everybody.
     </para>
    </listitem>
    <listitem>
     <para>
-     Services running in default or server side mode must be installed by
+     Source services running in default or server side mode must be installed by
      the administrator of the &obsa; server.
     </para>
    </listitem>
    <listitem>
     <para>
-     The use of a service can be defined per package or project wide.
+     The use of a source service can be defined per package or project wide.
     </para>
    </listitem>
   </itemizedlist>
@@ -143,12 +143,12 @@
  </sect1>
 
  <sect1 xml:id="sec-obs-sserv-mode">
-  <title>Modes of Services</title>
-  <para> Each service can be used in a mode defining when it should run
+  <title>Modes of Source Services</title>
+  <para> Each source service can be used in a mode defining when it should run
    and how to use the result. This can be done per package or globally for an
    entire project. </para>
   <table>
-   <title>Service Modes</title>
+   <title>Source Service Modes</title>
    <tgroup cols="4">
     <colspec colnum="1" colwidth="1*"/>
     <colspec colnum="2" colwidth="2*"/>
@@ -299,9 +299,9 @@
  </sect1>
 
  <sect1 xml:id="sec-obs-sserv-validate">
-  <title>Defining Services for Validation</title>
+  <title>Defining Source Services for Validation</title>
   <para>
-   Source Services can be used to validate sources. This can be defined
+   Source services can be used to validate sources. This can be defined
    at different levels:
   </para>
   <itemizedlist>
@@ -418,22 +418,22 @@
         create a token.
   </para>
   <sect2 xml:id="sec-obs-sserv-gitlab">
-   <title>Using it on gitlab</title>
+   <title>Creating a webhook on GitLab</title>
    <para>
-           Go to your repository settings page in your gitlab instance. Select Integrations
-           there. All what you need to fill is the URL
+        Go to your repository settings page in your gitlab instance. Select Integrations
+        there. All what you need to fill is the URL
    </para>
    <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/runservice</screen>
   <para>
-           and the Secret Token. Hit the <guimenu>Add webhook</guimenu> button and you are good.
-           You may specify project and package via CGI parameters in case you created a
-           wildcard token:
+        and the Secret Token. Hit the <guimenu>Add webhook</guimenu> button and you are good.
+        You may specify project and package via CGI parameters in case you created a
+        wildcard token:
   </para>
   <screen>https://<replaceable>YOUR_INSTANCE</replaceable>/trigger/runservice?project=<replaceable>PROJECT</replaceable>&amp;package=<replaceable>PACKAGE</replaceable></screen>
 
   </sect2>
   <sect2 xml:id="sec-obs-sserv-github-com">
-   <title>Using it on github.com</title>
+   <title>Creating a webhook on GitHub</title>
    <para>
       Go to your repository settings page of your repository on github.com. Select Webhooks
       settings and create a hook via <guimenu>Add Webhook</guimenu> button. Define the payload
@@ -448,8 +448,4 @@
   </sect2>
  </sect1>
 
- <sect1 condition="tbd">
-  <title>Interfaces for Using Source Services</title>
-  <para><remark>tbd</remark></para>
- </sect1>
 </chapter>

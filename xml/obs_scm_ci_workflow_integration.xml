@@ -670,7 +670,7 @@ rebuild_master:
         target_project: home:jane</screen>
 
           <note>
-            <para>If you rely on <xref  xrefstyle="select:title" linkend="cha-obs-source-service"/>
+            <para>If you rely on <xref xrefstyle="select:title" linkend="cha-obs-source-services"/>
             to run, for instance to pick up changes from a PR with the <emphasis>obs_scm</emphasis> service, you can't make use of this step.
             Package links do not run the services. Use the <emphasis>branch_package</emphasis> step instead.</para>
           </note>
