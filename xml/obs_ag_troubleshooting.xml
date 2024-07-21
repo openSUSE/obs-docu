@@ -27,7 +27,7 @@
   is not covered by this chapter.</para>
  <sect1 xml:id="general-hints">
   <title>General Hints</title>
-  <para>If you detect unexpected behavior of the open build service, you
+  <para>If you detect unexpected behavior of the OBS, you
    should follow some rules to locate the problem:</para>
   <orderedlist>
    <listitem>
