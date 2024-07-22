@@ -33,6 +33,7 @@
  </info>
 
  <xi:include href="obs_preface.xml"/>
+ <xi:include href="obs_ag_high_level_overview.xml"/>
  <xi:include href="obs_ag_installation_and_configuration.xml"/>
  <xi:include href="obs_ag_overview_filesystem.xml"/>
  <xi:include href="obs_ag_security_concepts.xml"/>

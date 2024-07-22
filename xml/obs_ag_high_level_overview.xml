@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Administration</title>
+ <title>High-level Overview</title>
  <info/>
  <para> This chapter describes the components of an OBS installation and the
   typical administration tasks for an OBS administrator. </para>
