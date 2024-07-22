@@ -764,7 +764,7 @@ At revision 1.</screen>
   </sect2>
  </sect1>
 
- <sect1 xml:id="sec.obs.basicworkflow.manage-group">
+ <sect1 xml:id="sec-obs-basicworkflow-manage-group">
   <title>Manage Group</title>
   <para>
     Users with Maintainer rights can add users to their group and remove users
