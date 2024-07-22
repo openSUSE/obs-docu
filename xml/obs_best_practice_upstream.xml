@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.upstream" os="opensuse;novell">
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha-obs-best-practices-upstream" os="opensuse;novell">
  <title>Publishing Upstream Binaries</title>
  <info/>
 
@@ -26,7 +26,7 @@
    </para>
    <para>
     More information about setting up your own private OBS instance can be
-    found in <xref linkend="cha.obs.best-practices.localsetup"/> .
+    found in <xref linkend="cha-obs-best-practices-localsetup"/> .
    </para>
   </sect2>
   <sect2>
@@ -152,10 +152,10 @@
    on newer websites. An example of download page can be following one
    <link xlink:href="http://software.opensuse.org/download.html?project=openSUSE:Tools&amp;package=osc"/>.
    You can see how it looks like in
-   <xref linkend="cha.obs.best-practices.upstream.download.screenshot"/>. It
+   <xref linkend="cha-obs-best-practices-upstream-download-screenshot"/>. It
    contains links to the packages and instructions how to install them.
   </para>
-  <figure xml:id="cha.obs.best-practices.upstream.download.screenshot">
+  <figure xml:id="cha-obs-best-practices-upstream-download-screenshot">
    <title>openSUSE download page for package from OBS</title>
    <mediaobject>
     <imageobject>
@@ -169,9 +169,9 @@
    any number of <literal>&amp;</literal>-separated parameters. But at least two of them -
    <emphasis>project</emphasis> and <emphasis>package</emphasis> - are
    required. All parameters with descriptions can be found in
-   <xref linkend="cha.obs.best-practices.upstream.download.params"/>.
+   <xref linkend="cha-obs-best-practices-upstream-download-params"/>.
   </para>
-  <table xml:id="cha.obs.best-practices.upstream.download.params">
+  <table xml:id="cha-obs-best-practices-upstream-download-params">
    <title>Parameters for Download Page</title>
    <tgroup cols="2" align="left">
     <thead>
