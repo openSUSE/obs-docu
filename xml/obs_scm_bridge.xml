@@ -3,7 +3,7 @@
 <!ENTITY % entities SYSTEM "entity-decl.ent">
 %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.scm_bridge"
+<chapter version="5.1" xml:id="cha-obs-scm-bridge"
          xmlns="http://docbook.org/ns/docbook"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -14,10 +14,10 @@
          xmlns:ns="http://docbook.org/ns/docbook">
   <title>SCM Bridge</title>
 
-  <sect1 xml:id="sec.obs.obs_scm_bridge">
+  <sect1 xml:id="sec-obs-obs-scm-bridge">
     <title>SCM Bridge</title>
 
-    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.introduction">
+    <sect2 xml:id="sec-obs-obs-scm-bridge-setup-introduction">
       <title>Introduction</title>
 
       <para>The SCM bridge allows the sources of a single package or an entire project
@@ -44,7 +44,7 @@
       allow OBS to follow the sources automatically.</para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.package">
+    <sect2 xml:id="sec-obs-obs-scm-bridge-setup-package">
       <title>Setup a package using the scm bridge</title>
 
       <para>The setup is purely done in package meta by defining the SCM URL inside of the scmsync tag:</para>
@@ -67,7 +67,7 @@
       </para>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_bridge.setup.project">
+    <sect2 xml:id="sec-obs-obs-scm-bridge-setup-project">
       <title>Setup an entire project using the SCM bridge</title>
 
       <para>An entire project can be setup by defining the scmsync tag in project meta data. Every top level
@@ -85,7 +85,7 @@
          <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?onlybuild=glibc&amp;onlybuild=kernel&lt;/scmsync&gt;</screen>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_bridge.implementation_and_limitations">
+    <sect2 xml:id="sec-obs-obs-scm-bridge-implementation-and-limitations">
       <title>Implementation and Limitations</title>
 
       <para>The sources are currently cloned for the OBS source server to allow OBS to process them. This
@@ -112,7 +112,7 @@
        </para>
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?subdir=MY_SUBDIRECTORY&lt;/scmsync&gt;</screen>
 
-      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.revision">
+      <sect3 xml:id="sec-obs-obs-scm-bridge-setup-specials-revision">
         <title>Using a specific revision, tag or branch</title>
 
         <para>The URL can define a revision, tag or branch via an URL fragment. This means the URL can get extended by a
@@ -126,7 +126,7 @@
         </para>
 </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.pbuild">
+      <sect3 xml:id="sec-obs-obs-scm-bridge-setup-specials-pbuild">
         <title>Converting to a project git</title>
         <para>A project git repository is mostly the same as any project for the pbuild tool. The command </para>
         <screen># osc create-pbuild-config</screen>
@@ -137,7 +137,7 @@
         </para>
       </sect3>
 
-      <sect3 xml:id="sec.obs.obs_scm_bridge.setup.specials.fork">
+      <sect3 xml:id="sec-obs-obs-scm-bridge-setup-specials-fork">
         <title>Forking a scmsync package</title>
         <para>The OBS server allows to create a cloned project with another package using a specified
         SCM repository. This can be used by tooling to create forked test builds for merge requests.
@@ -148,11 +148,11 @@
       </sect3>
     </sect2>
 
-    <sect2 xml:id="sec.obs.obs_scm_bridge.update_notifications">
+    <sect2 xml:id="sec-obs-obs-scm-bridge-update-notifications">
       <title>SCM Source Updates</title>
 
       <para>The OBS instance needs to get notified on any change in the SCM server. There are two ways to achieve this.
-      One way is via single configurations for each git repository as documented in the <xref linkend="sec.obs.sserv.token_usage"/> documentation.
+      One way is via single configurations for each git repository as documented in the <xref linkend="sec-obs-sserv-token-usage"/> documentation.
       An alternative way is to configure it globally. This requires admin permissions on the git hosting side
       and another bridge implementation. The advantage is that any used repository will be synced automatically just
       by referencing it via the scmsync meta tag.

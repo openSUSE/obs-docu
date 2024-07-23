@@ -14,7 +14,7 @@ https://www.suse.com/communities/blog/open-build-service-create-image-template/
 https://www.suse.com/communities/blog/suse-studio-integration/
 -->
 
-<chapter version="5.1" xml:lang="en" xml:id="art.obs.bg"
+<chapter version="5.1" xml:lang="en" xml:id="art-obs-bg"
  xmlns="http://docbook.org/ns/docbook" xmlns:dm="urn:x-suse:ns:docmanager"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -31,7 +31,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </abstract>
  </info>
 
- <sect1 xml:id="sec.obsbg.targetaudience">
+ <sect1 xml:id="sec-obsbg-targetaudience">
   <title>Target Audience</title>
   <para>
    This document is intended for users and developers interested in
@@ -42,7 +42,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   <remark>toms 2017-08-03: Add some links to basic tutorials etc.?</remark>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.concept">
+ <sect1 xml:id="sec-obsbg-concept">
   <title>Conceptual Overview</title>
   <para>
    Created in 2005, the &obs; (&obsa;) is a generic system for building and
@@ -53,7 +53,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    (&suse;, Debian, Ubuntu, Red Hat, Windows, etc.) and hardware architectures
    (&x86;, &amd64;, &zseries;, &ppc; etc.).
   </para>
-  <sect2 xml:id="sec.obsbg.concept.pkgspec">
+  <sect2 xml:id="sec-obsbg-concept-pkgspec">
    <title>Build Recipe</title>
    <para>
     To create a package in &obsa;, you need a <firstterm>build recipe</firstterm>
@@ -106,7 +106,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      class="extension">.spec</filename>.
    </para>
   </sect2>
-  <sect2 xml:id="sec.obsbg.buildhost">
+  <sect2 xml:id="sec-obsbg-buildhost">
    <title>Build Hosts and Packages</title>
   <para>
    The &obsa; server provides a Web interface and an API. The API is
@@ -139,10 +139,10 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    scope of this guide.
   </para>
   <para>
-   The schematic in <xref linkend="fig.obsbg.concept"/> shows the components
+   The schematic in <xref linkend="fig-obsbg-concept"/> shows the components
    in context.
   </para>
-  <figure xml:id="fig.obsbg.concept">
+  <figure xml:id="fig-obsbg-concept">
    <title>Conceptual Overview of &obs;</title>
    <mediaobject>
     <imageobject>
@@ -151,7 +151,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </mediaobject>
   </figure>
   </sect2>
-  <sect2 xml:id="sec.obsbg.project">
+  <sect2 xml:id="sec-obsbg-project">
    <title>Projects and Packages</title>
    <para>
     In &obsa;, packages are organized in <emphasis>projects</emphasis>.
@@ -192,14 +192,14 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </sect2>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.req">
+ <sect1 xml:id="sec-obsbg-req">
   <title>Requirements for Working with the &osccmd; Command-Line Tool</title>
   <para>
    Before you start working with &obs;, make sure that the following
    requirements are met.
   </para>
   <variablelist>
-   <varlistentry xml:id="vle.obsbg.req.software">
+   <varlistentry xml:id="vle-obsbg-req-software">
     <term>Software Requirements</term>
     <listitem>
      <para>
@@ -249,7 +249,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </variablelist>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.usagescenarios">
+ <sect1 xml:id="sec-obsbg-usagescenarios">
   <title>Covered Scenarios</title>
   <para>
    This guide is based on the following assumptions.
@@ -276,7 +276,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </listitem>
    <listitem>
     <para>You are using a customized system as shown in <xref
-     linkend="sec.obsbg.obsconfig"/>.</para>
+     linkend="sec-obsbg-obsconfig"/>.</para>
    </listitem>
   </itemizedlist>
   <para>All examples use the following elements.</para>
@@ -312,7 +312,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </para>
   <variablelist>
    <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.setuphome"/></term>
+    <term><xref linkend="sec-obsbg-uc-setuphome"/></term>
     <listitem>
      <para>
       Setting up a home project using the &obsa; Web UI.
@@ -320,7 +320,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.newprj"/></term>
+    <term><xref linkend="sec-obsbg-uc-newprj"/></term>
     <listitem>
      <para>
       Creating packages from a basic project hosted on &gh;.
@@ -328,7 +328,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.patching"/></term>
+    <term><xref linkend="sec-obsbg-uc-patching"/></term>
     <listitem>
      <para>
       Patching source code without touching the original
@@ -337,7 +337,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.branchprj"/></term>
+    <term><xref linkend="sec-obsbg-uc-branchprj"/></term>
     <listitem>
      <para>
       Branching a project, making changes, and submitting back
@@ -346,7 +346,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.install-from-obs"/></term>
+    <term><xref linkend="sec-obsbg-uc-install-from-obs"/></term>
     <listitem>
      <para>
       Integrating the download repository into your system
@@ -357,7 +357,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   </variablelist>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.obsconfig">
+ <sect1 xml:id="sec-obsbg-obsconfig">
   <title>Configuring Your System for &obsa;</title>
   <para>
    While it is possible to use the &osccmd; tool without any
@@ -376,7 +376,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   <para>
    Follow the steps below to customize <command>sudo</command>.
   </para>
-  <procedure xml:id="pro.obsbg.obsconfig">
+  <procedure xml:id="pro-obsbg-obsconfig">
    <title>Configuring <command>sudo</command></title>
    <para>
      To allow all users in the
@@ -389,7 +389,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
        This group will contain all users which are allowed to build packages: </para>
       <screen>&prompt.root;<command>groupadd</command> osc</screen>
      </step>
-     <step xml:id="st.oscbg.usermod">
+     <step xml:id="st-oscbg-usermod">
       <para>Add users to your newly created group <systemitem class="groupname"
         >osc</systemitem> which are allowed to build packages:
       </para>
@@ -443,7 +443,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   </note>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.uc.setuphome">
+ <sect1 xml:id="sec-obsbg-uc-setuphome">
   <title>Setting Up Your Home Project for the First Time</title>
   <para>
    This section shows how to set up your home project after
@@ -459,7 +459,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    specific package.
   </para>
   <para>Setting up a home project is done as shown below.</para>
-  <procedure xml:id="pro.obsbg.uc.setuphome.addrepo">
+  <procedure xml:id="pro-obsbg-uc-setuphome-addrepo">
    <title>Adding Global Build Targets to Your Home Project</title>
    <step>
     <para>
@@ -512,7 +512,7 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   <remark>toms 2017-08-14: Maybe add a screenshot of the Web UI?</remark>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.uc.newprj">
+ <sect1 xml:id="sec-obsbg-uc-newprj">
   <title>Creating a New Project</title>
   <para>
    This section demonstrates how to create packages from a simple C++ project
@@ -545,9 +545,9 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
   <para>
    To create a package from the upstream project, follow the steps below.
   </para>
-  <procedure xml:id="pro.obsbg.uc.basicprj">
+  <procedure xml:id="pro-obsbg-uc-basicprj">
    <step>
-    <para>Set up your project as shown in <xref linkend="sec.obsbg.uc.setuphome"/>.
+    <para>Set up your project as shown in <xref linkend="sec-obsbg-uc-setuphome"/>.
     </para>
    </step>
    <step>
@@ -571,12 +571,12 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       baseform="Working Directory">working directory</firstterm>:
     </para>
     <screen>&prompt.user;<command>cd</command> &obsworkdir1;
-&prompt.user;<command>osc</command> mkpac &gitproject;</screen>
+&prompt.user;<command>osc</command> mkpac &sampleprj;</screen>
    </step>
    <step>
     <para>
      Get the source code of the upstream project and save it in
-     <filename>&obsworkdir1;/&gitproject;</filename>.
+     <filename>&obsworkdir1;/&sampleprj;</filename>.
     </para>
     <para>
      Download a TAR archive of the sources. You do not have to unpack it yet.
@@ -600,32 +600,32 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
       baseform="Spec File">spec file</firstterm>.
      The skeleton of such a spec file looks like this:
     </para>
-    <example xml:id="ex.obsbg.uc.basicprj.skeletonspec">
+    <example xml:id="ex-obsbg-uc-basicprj-skeletonspec">
      <title>Skeleton of a Spec File</title>
     <screen>#
-# spec file for package &gitproject;
+# spec file for package &sampleprj;
 #
 # -- Copyright omitted --
 
-Name:           &gitproject; <co xml:id="co.obsbg.uc.basicprj.metadata"/>
-Version:        &gitprjvers; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-Release:        0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-License:        GPL-3.0 <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-Group:          Documentation <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-Summary:        Frobnication Tool <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-Url:            &gitupstream1; <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-Source:         &gitproject;-%{version}.tar.gz <xref linkend="co.obsbg.uc.basicprj.metadata"/>
-BuildRequires:  gcc <co xml:id="co.obsbg.uc.basicprj.buildreq"/>
-BuildRequires:  cmake <xref linkend="co.obsbg.uc.basicprj.buildreq"/>
+Name:           &sampleprj; <co xml:id="co-obsbg-uc-basicprj-metadata"/>
+Version:        &prjvers; <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Release:        0 <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+License:        GPL-3.0 <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Group:          Documentation <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Summary:        Frobnication Tool <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Url:            &gitupstream1; <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+Source:         &sampleprj;-%{version}.tar.gz <xref linkend="co-obsbg-uc-basicprj-metadata"/>
+BuildRequires:  gcc <co xml:id="co-obsbg-uc-basicprj-buildreq"/>
+BuildRequires:  cmake <xref linkend="co-obsbg-uc-basicprj-buildreq"/>
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-%description <co xml:id="co.obsbg.uc.basicprj.description"/>
+%description <co xml:id="co-obsbg-uc-basicprj-description"/>
 This tool frobnicates the bar with the foo when choosing the baz.
 
-%prep <co xml:id="co.obsbg.uc.basicprj.prep"/>
+%prep <co xml:id="co-obsbg-uc-basicprj-prep"/>
 %setup -q -n %{name}-%{version}
 
-%build <co xml:id="co.obsbg.uc.basicprj.build"/><!--
+%build <co xml:id="co-obsbg-uc-basicprj-build"/><!--
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
 
@@ -636,17 +636,17 @@ cmake . \
 make
 -->
 
-%install <co xml:id="co.obsbg.uc.basicprj.install"/><!--
+%install <co xml:id="co-obsbg-uc-basicprj-install"/><!--
 make install DESTDIR="$RPM_BUILD_ROOT"-->
 
-%files <co xml:id="co.obsbg.uc.basicprj.files"/>
+%files <co xml:id="co-obsbg-uc-basicprj-files"/>
 %defattr(-,root,root,-)
 %doc README LICENSE *.txt
 %{_bindir}/*
 
-%changelog <co xml:id="co.obsbg.uc.basicprj.cl"/></screen>
+%changelog <co xml:id="co-obsbg-uc-basicprj-cl"/></screen>
     <calloutlist>
-     <callout arearefs="co.obsbg.uc.basicprj.metadata">
+     <callout arearefs="co-obsbg-uc-basicprj-metadata">
       <formalpara>
        <title>The Header</title>
        <para>Metadata like package name, version, release,
@@ -655,7 +655,7 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
        </para>
       </formalpara>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.buildreq">
+     <callout arearefs="co-obsbg-uc-basicprj-buildreq">
       <formalpara>
        <title>Build Requirements</title>
        <para>Lists package dependencies that are required for building.
@@ -665,25 +665,25 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
       <para>
       </para>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.description">
+     <callout arearefs="co-obsbg-uc-basicprj-description">
       <formalpara>
        <title>The Description Section</title>
        <para>Describes the purpose of the package and gives a comprehensive
         explanation.</para>
       </formalpara>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.prep">
+     <callout arearefs="co-obsbg-uc-basicprj-prep">
       <formalpara>
        <title>The Preparation Section</title>
        <para>
         Prepares the sources for building. This usually includes unpacking
         them with the <literal>%setup</literal> macro and patching them using
         the <literal>%patch</literal> macro. (For more information about patching, see
-        <xref linkend="sec.obsbg.uc.patching"/>.)
+        <xref linkend="sec-obsbg-uc-patching"/>.)
        </para>
       </formalpara>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.build">
+     <callout arearefs="co-obsbg-uc-basicprj-build">
       <formalpara>
        <title>The Build Section</title>
        <para>
@@ -693,7 +693,7 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
       <para>
       </para>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.install">
+     <callout arearefs="co-obsbg-uc-basicprj-install">
       <formalpara>
        <title>The Install Section</title>
        <para>Contains commands or RPM macros which
@@ -701,7 +701,7 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
        </para>
       </formalpara>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.files">
+     <callout arearefs="co-obsbg-uc-basicprj-files">
       <formalpara>
        <title>The Files Section</title>
        <para>Lists all files and directories which belong to
@@ -711,7 +711,7 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
        </para>
       </formalpara>
      </callout>
-     <callout arearefs="co.obsbg.uc.basicprj.cl">
+     <callout arearefs="co-obsbg-uc-basicprj-cl">
       <formalpara>
        <title>The Changelog Section</title>
        <para>This section is usually empty. Instead, &obsa; searches for a
@@ -725,7 +725,6 @@ make install DESTDIR="$RPM_BUILD_ROOT"-->
     </calloutlist>
     </example>
     <para>
-     <remark>toms 2017-08-17: FIXME: Better link to OBS instead of GH?</remark>
      For the complete spec file, see <link xlink:href="&referencespec;"/>.
     </para>
    </step>
@@ -744,13 +743,13 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
     </para>
     <para>
      Save the file and leave the editor. &osccmd; then
-     creates the file <filename>&gitproject;.changes</filename>.
+     creates the file <filename>&sampleprj;.changes</filename>.
     </para>
     <para>Your project directory should now look something like this:</para>
     <screen><emphasis>project directory</emphasis>
-     ├── &gitproject;-&gitprjvers;.tar.gz
-     ├── &gitproject;.changes
-     └── &gitproject;.spec</screen>
+     ├── &sampleprj;-&prjvers;.tar.gz
+     ├── &sampleprj;.changes
+     └── &sampleprj;.spec</screen>
    </step>
    <step>
     <para>Add all the files to your working directory:</para>
@@ -794,11 +793,11 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
   <screen>&prompt.user;<command>osc</command> buildlog openSUSE_Tumbleweed x86_64</screen>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.uc.patching">
+ <sect1 xml:id="sec-obsbg-uc-patching">
   <title>Patching Source Code</title>
   <para>
    This section describes how to patch an upstream project. We use the same
-   project as shown in <xref linkend="sec.obsbg.uc.newprj"/>.
+   project as shown in <xref linkend="sec-obsbg-uc-newprj"/>.
   </para>
   <para>
    There are different reasons for patching a package.
@@ -854,13 +853,13 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
   </itemizedlist>
   <para>
    We assume that you already have a project as described in
-  <xref linkend="sec.obsbg.uc.newprj"/>. The project directory should look
+  <xref linkend="sec-obsbg-uc-newprj"/>. The project directory should look
    similar to this:
   </para>
   <screen><emphasis>project directory</emphasis>
-├── &gitproject;-&gitprjvers;.tar.gz
-├── &gitproject;.changes
-└── &gitproject;.spec</screen>
+├── &sampleprj;-&prjvers;.tar.gz
+├── &sampleprj;.changes
+└── &sampleprj;.spec</screen>
   <para>In our case, we want to modify the source code under
    <filename>src/main.cpp</filename> to change the greeting message.
   </para>
@@ -874,21 +873,21 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     <substeps>
      <step>
       <para>Unpack the source code:</para>
-      <screen>&prompt.user;<command>tar</command> xvf &gitproject;-*.tar.gz</screen>
+      <screen>&prompt.user;<command>tar</command> xvf &sampleprj;-*.tar.gz</screen>
       <para>
        If you have downloaded the archive from &gh;, the archive contains
        a directory in the form <filename><replaceable
         >NAME</replaceable>-<replaceable>VERSION</replaceable></filename>.
        In our case, unpacking the downloaded archive results in the
-       <filename>&gitproject;-&gitprjvers;/</filename> directory.
+       <filename>&sampleprj;-&prjvers;/</filename> directory.
       </para>
      </step>
      <step>
       <para>
-       Switch to the directory <filename>&gitproject;-&gitprjvers;/</filename>
+       Switch to the directory <filename>&sampleprj;-&prjvers;/</filename>
        and make a copy of the original C++ source file:
       </para>
-      <screen>&prompt.user;<command>cd</command> &gitproject;-&gitprjvers;/
+      <screen>&prompt.user;<command>cd</command> &sampleprj;-&prjvers;/
 &prompt.user;<command>cp</command> src/main.cpp src/main.cpp.orig</screen>
      </step>
      <step>
@@ -913,7 +912,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
      <step>
       <para>Redirect the diff into a file:</para>
       <screen>&prompt.user;<command>diff</command> -u src/main.cpp.orig src/main.cpp \
-  > ../&gitproject;_main.diff</screen>
+  > ../&sampleprj;_main.diff</screen>
       <para>
        You can use an arbitrary name for the patch file. However, we
        recommend giving the file a descriptive name and adding the name of the
@@ -927,7 +926,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
      <step>
       <para>
        You can now remove the directory <filename
-        >&gitproject;-&gitprjvers;/</filename>, as it is not needed anymore.
+        >&sampleprj;-&prjvers;/</filename>, as it is not needed anymore.
       </para>
      </step>
     </substeps>
@@ -935,8 +934,8 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
    <step>
     <para>Open your spec file and add the following line in the header under
     the <literal>Source</literal> line like this:</para>
-    <screen>Source:         &gitproject;-%{version}.tar.gz
-Patch0:         &gitproject;_main.diff</screen>
+    <screen>Source:         &sampleprj;-%{version}.tar.gz
+Patch0:         &sampleprj;_main.diff</screen>
    </step>
    <step>
     <para>In the <literal>%prep</literal> section, add the <literal>%patch</literal>
@@ -949,7 +948,7 @@ Patch0:         &gitproject;_main.diff</screen>
     <para>
      Add your patch file to the local repository:
     </para>
-    <screen>&prompt.user;<command>osc</command> add &gitproject;_main.diff
+    <screen>&prompt.user;<command>osc</command> add &sampleprj;_main.diff
 </screen>
    </step>
    <step>
@@ -974,7 +973,7 @@ Patch0:         &gitproject;_main.diff</screen>
   </para>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.uc.branchprj">
+ <sect1 xml:id="sec-obsbg-uc-branchprj">
   <title>Branching a Package</title>
   <para>
    This section describes how to collaborate between projects.
@@ -1009,7 +1008,7 @@ Patch0:         &gitproject;_main.diff</screen>
   </itemizedlist>
   <para>
    Let us assume that there is a user <systemitem class="username">&obsuser1;</systemitem>
-   who has created a package <uri>&obshome1;/&gitproject;</uri>
+   who has created a package <uri>&obshome1;/&sampleprj;</uri>
    on &obsa;. Now, a second user, <systemitem class="username">&obsuser2;</systemitem>,
    would like to submit a code change request to that package.
   </para>
@@ -1017,7 +1016,7 @@ Patch0:         &gitproject;_main.diff</screen>
    User <systemitem class="username">&obsuser2;</systemitem> has to perform the
    following steps:
   </para>
-  <procedure xml:id="pro.obsbg.uc.branchprj">
+  <procedure xml:id="pro-obsbg-uc-branchprj">
    <title>Branching from a Project</title>
    <step>
     <para>
@@ -1027,19 +1026,19 @@ Patch0:         &gitproject;_main.diff</screen>
    </step>
    <step>
     <para>Create a branch from &exampleuser_plain;'s home project:</para>
-    <screen>&prompt.user2;<command>osc</command> branchco &obshome1; &gitproject;</screen>
-    <para>This creates a branched package in &obsa; at <uri>&obsbranch2;/&gitproject;</uri>
+    <screen>&prompt.user2;<command>osc</command> branchco &obshome1; &sampleprj;</screen>
+    <para>This creates a branched package in &obsa; at <uri>&obsbranch2;/&sampleprj;</uri>
      and checks out a directory
-     <filename>&obsworkdir2;:branches:home:&obsuser1;:&gitproject;</filename>.
+     <filename>&obsworkdir2;:branches:home:&obsuser1;:&sampleprj;</filename>.
     </para>
    </step>
    <step>
     <para>Change the working directory to your checked-out branch:</para>
-    <screen>&prompt.user2;<command>cd</command> &obsworkdir2;/branches/home/&obsuser1;/&gitproject;</screen>
+    <screen>&prompt.user2;<command>cd</command> &obsworkdir2;/branches/home/&obsuser1;/&sampleprj;</screen>
    </step>
    <step>
     <para>Make changes as shown in <xref
-     linkend="sec.obsbg.uc.patching"/>.
+     linkend="sec-obsbg-uc-patching"/>.
     </para>
    </step>
    <step>
@@ -1087,7 +1086,7 @@ Patch0:         &gitproject;_main.diff</screen>
      be submitted together. To avoid that, specify the names of the source and
      destination projects and the package name:
     </para>
-    <screen>&prompt.user2;<command>osc</command> submitreq &obsbranch2;:&obshome1; &gitproject; &obshome1;</screen>
+    <screen>&prompt.user2;<command>osc</command> submitreq &obsbranch2;:&obshome1; &sampleprj; &obshome1;</screen>
    </step>
   </procedure>
   <para>
@@ -1156,7 +1155,7 @@ Patch0:         &gitproject;_main.diff</screen>
   <note>
     <para>If preferred, the below steps can also be performed using the OBS GUI. Requests can be managed under the <guimenu>Tasks</guimenu> tab.</para>
   </note>
-  <procedure xml:id="pro.obsbg.uc.branchprj.sr">
+  <procedure xml:id="pro-obsbg-uc-branchprj-sr">
    <title>Dealing with Submit Requests</title>
    <step>
     <para>Show all submit requests that belong to your home project</para>
@@ -1197,7 +1196,7 @@ Patch0:         &gitproject;_main.diff</screen>
   </para>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.uc.install-from-obs">
+ <sect1 xml:id="sec-obsbg-uc-install-from-obs">
   <title>Installing Packages from &obsa;</title>
   <para>
    &obsa; provides a place containing all the distribution-specific and
@@ -1219,10 +1218,10 @@ Patch0:         &gitproject;_main.diff</screen>
    <uri>&obsdnlurlhome1;/openSUSE_Tumbleweed</uri>. This <emphasis>download
    repository</emphasis> is used as an installation source for Zypper or &yast;.
   </para>
-  <para>To install the <package>&gitproject;</package> package from your home project,
+  <para>To install the <package>&sampleprj;</package> package from your home project,
   use the following steps:</para>
   <procedure>
-   <step xml:id="st.obsbg.uc.install-from-obs.repourls">
+   <step xml:id="st-obsbg-uc-install-from-obs-repourls">
     <para>Inside your working directory, determine the download repository
      URLs:</para>
     <screen>&prompt.user;<command>osc</command> repourls
@@ -1233,27 +1232,27 @@ Patch0:         &gitproject;_main.diff</screen>
     <para>Copy the desired URL of your preferred distribution. In our case, that
      is the line containing <systemitem>openSUSE_Tumbleweed</systemitem>.</para>
    </step>
-   <step xml:id="st.obsbg.uc.install-from-obs.zypperar">
+   <step xml:id="st-obsbg-uc-install-from-obs-zypperar">
     <para>Use <command>zypper</command> and add the copied URL:
     </para>
     <screen>&prompt.root;<command>zypper</command> addrepo &obsdnlurlhome1;/openSUSE_Tumbleweed/&obshome1;.repo</screen>
     <para>
      When prompted, accept the GPG key of the download repository.</para>
    </step>
-   <step xml:id="st.obsbg.install">
+   <step xml:id="st-obsbg-install">
     <para>Install the package:</para>
-    <screen>&prompt.root;<command>zypper</command> install &gitproject;</screen>
+    <screen>&prompt.root;<command>zypper</command> install &sampleprj;</screen>
    </step>
   </procedure>
   <para>
-   To update the package again, run <xref linkend="st.obsbg.install"/>.
+   To update the package again, run <xref linkend="st-obsbg-install"/>.
    You do not need to execute
-   <xref linkend="st.obsbg.uc.install-from-obs.repourls"/>, as the
+   <xref linkend="st-obsbg-uc-install-from-obs-repourls"/>, as the
    repository is already configured in your system.
   </para>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.cheatsheet">
+ <sect1 xml:id="sec-obsbg-cheatsheet">
   <title>Other Useful &osccmd; Commands</title>
   <para>
    The following list gives you a short overview of frequently used &osccmd;

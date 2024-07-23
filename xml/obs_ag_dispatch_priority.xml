@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<sect1 version="5.1" xml:id="_dispatch_priorities"
+<sect1 version="5.1" xml:id="dispatch-priorities"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -20,9 +20,9 @@
     ><emphasis>/build/_dispatchprios</emphasis></emphasis><emphasis
    role="strong">API</emphasis> call or via the <emphasis role="strong"
     ><emphasis>dispatch_adjust</emphasis></emphasis> array in the
-   <emphasis>BSConfig.pm</emphasis><xref linkend="_bsconfig_pm"/> configuration
+   <emphasis>BSConfig.pm</emphasis><xref linkend="bsconfig-pm"/> configuration
   file.</para>
- <sect2 xml:id="_build__dispatchprios_api_call">
+ <sect2 xml:id="dispatch-priorities-build-dispatchprios-api-call">
   <title>The <literal>/build/_dispatchprios</literal> API Call</title>
   <para>The <emphasis>/build/_dispatchprios</emphasis> API call allows an
    Admin to set a priority for defined projects and repositories using the HTTP
@@ -224,7 +224,7 @@
    </tgroup>
   </table>
  </sect2>
- <sect2 xml:id="_dispatch_adjust_array">
+ <sect2 xml:id="dispatch-priorities-dispatch-adjust-array">
   <title><literal>dispatch_adjust</literal> Array</title>
   <para>With the <emphasis role="strong"
      ><emphasis>dispatch_adjust</emphasis></emphasis> array in the

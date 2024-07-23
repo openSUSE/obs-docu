@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.build_containers"
+<chapter version="5.1" xml:id="cha-obs-build-containers"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -19,7 +19,7 @@
   libraries, executables and shared resource files.
  </para>
 
- <sect1 xml:id="_supported_formats">
+ <sect1 xml:id="supported-formats">
   <title>Supported Container Formats</title>
 
   <para>
@@ -84,7 +84,7 @@
     <listitem>
      <para>
       Flatpak packages can be built in the Open Build Service, see
-      <xref linkend="sec.pkgfmt.flatpak"/> for further details.
+      <xref linkend="sec-pkgfmt-flatpak"/> for further details.
      </para>
     </listitem>
    </varlistentry>
@@ -102,7 +102,7 @@
      <para>
       <link xlink:href="https://github.com/systemd/mkosi/">Mkosi</link> allows
       building images for rpm, arch, deb, and gentoo based distributions, see
-      <xref linkend="sec.pkgfmt.mkosi"/> for further details.
+      <xref linkend="sec-pkgfmt-mkosi"/> for further details.
      </para>
     </listitem>
    </varlistentry>
@@ -117,7 +117,7 @@
    <para> </para>
    </sect2>-->
  </sect1>
- <sect1 xml:id="_container_registry">
+ <sect1 xml:id="container-registry">
   <title>Container Registry</title>
 
   <para>
@@ -184,7 +184,7 @@
      xlink:href="https://registry.opensuse.org/">registry.opensuse.org</link>
   </para>
  </sect1>
- <sect1 xml:id="_image_signatures">
+ <sect1 xml:id="image-signatures">
   <title>Container Image Signatures</title>
 
   <para>

@@ -4,7 +4,7 @@
    %entities;
 ]>
 
-<chapter version="5.1" xml:id="cha.obs.notifications"
+<chapter version="5.1" xml:id="cha-obs-notifications"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -35,7 +35,7 @@
   notifications and mark them as read, improving your OBS workflow experience.
  </para>
 
- <sect1 xml:id="cha.obs.notifications.notifications_configuration">
+ <sect1 xml:id="cha-obs-notifications-notifications-configuration">
   <title>Notifications Configuration</title>
   <para>
    Click on the "Manage Your Notifications" link to define which notifications
@@ -86,7 +86,7 @@
   </figure>
  </sect1>
 
- <sect1 xml:id="cha.obs.notifications.where_can_we_find_the_notifications">
+ <sect1 xml:id="cha-obs-notifications-where-can-we-find-the-notifications">
   <title>Where Can We Find the Notifications?</title>
   <para>
    At the top right corner of every page, you will find a link to your
@@ -105,7 +105,7 @@
   </figure>
  </sect1>
 
- <sect1 xml:id="cha.obs.notifications.notifications_content">
+ <sect1 xml:id="cha-obs-notifications-notifications-content">
   <title>Notifications Content</title>
   <para>
    After clicking on the "Notifications" link, you will see a list of your most
@@ -128,7 +128,7 @@
   </para>
  </sect1>
 
- <sect1 xml:id="cha.obs.notifications.mark_notifications_as_read_or_unread">
+ <sect1 xml:id="cha-obs-notifications-mark-notifications-as-read-or-unread">
   <title>Mark Notification as Read or Unread</title>
   <para>
    Once you read a notification and possibly take action, you can mark it as
@@ -198,7 +198,7 @@
   </para>
  </sect1>
 
- <sect1 xml:id="cha.obs.notifications.notifications_filters">
+ <sect1 xml:id="cha-obs-notifications-notifications-filters">
   <title>Notifications Filters</title>
   <para>
    Filters help you in focusing your attention on a subset of your
@@ -287,7 +287,7 @@
    </listitem>
   </itemizedlist>
  </sect1>
- <sect1 xml:id="cha.obs.notifications.api">
+ <sect1 xml:id="cha-obs-notifications-api">
    <title>API</title>
    <para>
      Every user can check their unread notifications by querying:

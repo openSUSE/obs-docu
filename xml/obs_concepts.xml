@@ -4,7 +4,7 @@
     %entities;
 ]>
 <!-- note: this is just a collection file atm, bigger parts should be moved to own files & chapters -->
-<chapter version="5.1" xml:id="cha.obs.concepts"
+<chapter version="5.1" xml:id="cha-obs-concepts"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >

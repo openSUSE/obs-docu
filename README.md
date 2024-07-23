@@ -23,7 +23,7 @@ daps2docker DC-obs-user-guide validate
 or if you want to preview the HTML files you can use
 
 ```
-rm -rf /tmp/daps2docker-*; daps2docker DC-obs-user-guide html; xdg-open /tmp/daps2docker-*/obs-user-guide/html/book.obs-user/index.html
+rm -rf /tmp/daps2docker-*; daps2docker DC-obs-user-guide html; xdg-open /tmp/daps2docker-*/obs-user-guide/html/book-obs-user/index.html
 ```
 
 For more detailed information see

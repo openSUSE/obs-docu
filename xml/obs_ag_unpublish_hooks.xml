@@ -6,7 +6,7 @@
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="_unpublisher_hooks">
+ xml:id="unpublisher-hooks">
  <title>Unpublisher Hooks</title>
  <para>The job of the publisher service is to publish the built packages
   and/or images by creating repositories that are made available through a web
@@ -16,7 +16,7 @@
   called <emphasis role="strong">unpublisher hooks</emphasis>. <emphasis
    role="strong">Unpublisher hooks</emphasis> are run before the <emphasis
    role="strong">publisher hooks</emphasis>.</para>
- <sect2 xml:id="_unpublisher_hooks_configuration">
+ <sect2 xml:id="unpublisher-hooks-unpublisher-hooks-configuration">
   <title>Configuring Unpublisher Hooks</title>
   <para>Hooks are configured via the configuration file
     <emphasis>/usr/lib/obs/server/BSConfig.pm</emphasis>, where one script per
@@ -107,9 +107,9 @@ our $unpublishedhook = {
      hook</emphasis>.</para>
   </note>
  </sect2>
- <sect2 xml:id="_example_unpublisher_scripts">
+ <sect2 xml:id="unpublisher-scripts-example-unpublisher-scripts">
   <title>Example Unpublisher Scripts</title>
-  <sect3 xml:id="_simple_unpublisher_hook">
+  <sect3 xml:id="unpublisher-scripts-example-unpublisher-scripts-simple-unpublisher-hook">
    <title>Simple Unpublisher Hook</title>
    <para>The following example script deletes all packages from the target
     directory that have been removed from the repository.</para>
@@ -137,7 +137,7 @@ done</screen>
     x86_64/icinga-1.13.3-1.3.x86_64.rpm           \
     x86_64/icinga-devel-1.13.3-1.3.x86_64.rpm</screen>
   </sect3>
-  <sect3 xml:id="_advanced_unpublisher_hook">
+  <sect3 xml:id="unpublisher-scripts-example-unpublisher-scripts-advanced-unpublisher-hook">
    <title>Advanced Unpublisher Hook</title>
    <para>The following example script reads the destination path from a
     parameter that is configured via the hook script:</para>

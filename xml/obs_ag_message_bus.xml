@@ -6,13 +6,13 @@
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="_message_bus">
+ xml:id="message-bus">
  <title>Message Bus for Event Notifications</title>
  <para>The OBS has an integrated notification subsystem for sending events that are happening in our app through a message bus.
    We have chosen <link xlink:href="https://www.rabbitmq.com/">RabbitMQ</link> as our message bus server technology based on the
    <link xlink:href="https://www.amqp.org/">AMQP</link> protocol.
  </para>
- <sect2 xml:id="_rabbit_mq">
+ <sect2 xml:id="message-bus-rabbit-mq">
   <title>RabbitMQ</title>
   <para>
     RabbitMQ claims to be <emphasis>"the most popular open source message broker"</emphasis>. Meaning that it can deliver asynchronous messages in many
@@ -22,7 +22,7 @@
     RabbitMQ is lightweight and easy to deploy on premises and in the cloud. It supports multiple messaging protocols too.
     And can be deployed in distributed and federated configurations to meet high-scale, high-availability requirements.
   </para>
-  <sect3 xml:id="_rabbit_mq_configuration">
+  <sect3 xml:id="message-bus-rabbit-mq-rabbit-mq-configuration">
    <title>Configuration</title>
    <para>
     Currently the RabbitMQ configuration is in the file <filename>options.yml</filename>.

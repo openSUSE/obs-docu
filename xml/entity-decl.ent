@@ -65,10 +65,10 @@
 
 <!ENTITY gh             "GitHub">
 <!ENTITY gitorg         "obs-example">
-<!ENTITY gitproject     "my-first-obs-package">
-<!ENTITY gitprjvers     "0.1.0">
-<!ENTITY gitupstream1   "https://github.com/&gitorg;/&gitproject;">
-<!ENTITY referencespec  "&obsrepoviewfile;&obshome1;/&gitproject;/&gitproject;.spec">
+<!ENTITY sampleprj      "my-first-obs-package">
+<!ENTITY prjvers        "0.1.0">
+<!ENTITY gitupstream1   "https://github.com/&gitorg;/&sampleprj;">
+<!ENTITY referencespec  "&obsrepoviewfile;&obshome1;/&sampleprj;/&sampleprj;.spec">
 
 
 <!-- ============================================================= -->

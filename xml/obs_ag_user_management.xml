@@ -6,7 +6,7 @@
 <sect1 xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="_user_and_group_management">
+ xml:id="user-and-group-management">
  <title>Managing Users and Groups</title>
  <para>The OBS has an integrated user and group management with a role based
   access rights model. In every OBS instance, at least one user need to exist
@@ -14,7 +14,7 @@
   and instead of adding a list of users to a project/package role user can
   be added to a group and the group will be added to a project or package
   role.</para>
- <sect2 xml:id="_user_and_group_roles">
+ <sect2 xml:id="user-and-group-management-user-and-group-roles">
   <title>User and Group Roles</title>
   <para>The OBS role model has one global role: Admin, which can be granted
    to users. An OBS admin has access to all projects and packages via the API
@@ -96,7 +96,7 @@
    </tgroup>
   </table>
  </sect2>
- <sect2 xml:id="_standalone_user_and_group_database">
+ <sect2 xml:id="user-and-group-management-standalone-user-and-group-database">
   <title>Standalone User and Group Database</title>
   <para>OBS provides its own user database which can also store a password.
    The authentication to the API happens via HTTP BASIC AUTH. See the API
@@ -107,7 +107,7 @@
    confirmation is needed after registration before the user may
    login.</para>
  </sect2>
- <sect2 xml:id="_users_and_group_maintainers">
+ <sect2 xml:id="user-and-group-management-users-and-group-maintainers">
   <title>Users and Group Maintainers</title>
   <para>
     Administrators can create groups, add users to them, remove users from them and
@@ -116,7 +116,7 @@
   </para>
   <screen><command>osc api -d "&lt;group&gt;&lt;title&gt;&lt;group-title&gt;&lt;/title&gt;&lt;email&gt;&lt;group-email&gt;&lt;/email&gt;&lt;maintainer userid="&lt;user-name&gt;"/&gt;&lt;person&gt;&lt;person userid="&lt;user_name&gt;"/&gt;&lt;/person&gt;&lt;/group&gt;' -X PUT "/group/&lt;group-title&gt;" </command></screen>
  </sect2>
- <sect2 xml:id="_gravatar_for_groups">
+ <sect2 xml:id="user-and-group-management-gravatar-for-groups">
   <title>Gravatar for Groups</title>
   <para>In certain cases, it might be desirable to show a Gravatar for a group,
     similar to the users. In order to show a Gravatar, an email address is needed.
@@ -125,7 +125,7 @@
   </para>
   <screen><command>osc api -X POST "/group/&lt;group-title&gt;?cmd=set_email&amp;email=&lt;groups-email-address&gt;"</command></screen>
  </sect2>
- <sect2 xml:id="_proxy_mode">
+ <sect2 xml:id="user-and-group-management-proxy-mode">
   <title>Proxy Mode</title>
   <para>The proxy mode can be used for specially secured instances, where
    the OBS web server shall not get connected to the network directly. There
@@ -144,7 +144,7 @@
   </important>
   <para>With the proxy mode the user still need to be registered in the OBS
    and all OBS roles and user properties are managed inside the OBS.</para>
-  <sect3 xml:id="_obs_proxy_mode_configuration">
+  <sect3 xml:id="user-and-group-management-proxy-mode-obs-proxy-mode-configuration">
    <title>&obsa; Proxy Mode Configuration</title>
    <para>Currently the LDAP configuration is in the
      <emphasis>options.yml</emphasis> file.</para>
@@ -184,7 +184,7 @@
    </table>
   </sect3>
  </sect2>
- <sect2 xml:id="_ldap_active_directory">
+ <sect2 xml:id="user-and-group-management-ldap-active-directory">
   <title>LDAP/Active Directory</title>
   <note>
    <para>The LDAP support was considered experimental and not officially
@@ -231,7 +231,7 @@
      <emphasis>member</emphasis> attributes of the group are parsed and all
     current users which are in the local database become members.</para>
   </note>
-  <sect3 xml:id="_obs_ldap_configuration">
+  <sect3 xml:id="user-and-group-management-ldap-active-directory-obs-ldap-configuration">
    <title>OBS LDAP Configuration</title>
    <para>
     Currently the main OBS LDAP configuration is in the
@@ -741,9 +741,9 @@ ldap_group_objectclass_attr: group
 ldap_obs_admin_group: obsadmins</screen>
   </sect3>
  </sect2>
- <sect2 xml:id="_authentication_methods">
+ <sect2 xml:id="user-and-group-management-authentication-methods">
   <title>Authentication Methods</title>
-  <sect3 xml:id="_ldap_methods">
+  <sect3 xml:id="user-and-group-management-authentication-methods-ldap-methods">
    <title>LDAP Methods</title>
    <para>The LDAP mode has 2 methods to check
     authorization:</para>
@@ -764,7 +764,7 @@ ldap_obs_admin_group: obsadmins</screen>
      will not be available until you are bind with a privilege user.</para>
    </important>
   </sect3>
-  <sect3 xml:id="_kerberos">
+  <sect3 xml:id="user-and-group-management-authentication-methods-kerberos">
    <title>Kerberos</title>
    <para>In OBS you can use single sign on via Kerberos tickets.</para>
    <para>OBS Kerberos configuration resides in the

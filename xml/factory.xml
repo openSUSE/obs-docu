@@ -6,12 +6,12 @@
 <chapter xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1"
- xml:id="cha.obs.factory" os="opensuse">
+ xml:id="cha-obs-factory" os="opensuse">
  <title>openSUSE Factory</title>
  <info/>
  <para> This chapter describes how the development of the future openSUSE
   distribution is done within OBS. </para>
- <sect1 xml:id="cha.obs.factory.checkin">
+ <sect1 xml:id="cha-obs-factory-checkin">
   <title>openSUSE:Factory project</title>
   <para> The main project is openSUSE:Factory. This project is controlled by a
    small group which does review all submissions according to the policies.
@@ -20,7 +20,7 @@
   </para>
   <remark>TBD</remark>
  </sect1>
- <sect1 xml:id="cha.obs.factory.develprojects">
+ <sect1 xml:id="cha-obs-factory-develprojects">
   <title>Devel Projects</title>
   <para> The goal of openSUSE:Factory is to always have a working state. This
    is needed to allow all developer groups to use it as a base for testing

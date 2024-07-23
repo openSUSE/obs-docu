@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter version="5.1" xml:id="cha.obs.best-practices.webuiusage"
+<chapter version="5.1" xml:id="cha-obs-best-practices-webuiusage"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -212,7 +212,7 @@ flood</screen>
    <para> Wonderful, we've added a pointer to the sources! Now we need to add a
     repository, so the builder knows the target-distribution to build packages
     for. How to add a repository to a project is documented at <xref
-     linkend="cha.obs.best-practices.webuiusage.add-repository"/>. </para>
+     linkend="cha-obs-best-practices-webuiusage-add-repository"/>. </para>
   </sect2>
   <sect2>
    <title>Package Page, Build Log and Project Monitor Page</title>
@@ -286,13 +286,13 @@ flood</screen>
  <sect1>
   <title>Managing Repositories</title>
   <para> This section will show how you can manage your project's repositories. </para>
-  <sect2 xml:id="cha.obs.best-practices.webuiusage.add-repository">
+  <sect2 xml:id="cha-obs-best-practices-webuiusage-add-repository">
    <title>Adding a repository</title>
    <para> To add a repository to your project, click on "Add Repositories" on
     the project's repository tab. This will direct you to a list of possible
     distributions you can build packages for, see <xref
-     linkend="cha.obs.best-practices.webuiusage.add-repository.screenshot"/>. </para>
-   <figure xml:id="cha.obs.best-practices.webuiusage.add-repository.screenshot">
+     linkend="cha-obs-best-practices-webuiusage-add-repository-screenshot"/>. </para>
+   <figure xml:id="cha-obs-best-practices-webuiusage-add-repository-screenshot">
     <title>Adding a Repository to a Project</title>
     <mediaobject>
      <imageobject>
@@ -328,9 +328,8 @@ flood</screen>
    </figure>
    <para> The minimal set of fields you have to enter are architecture,
     repository type and the URL that provides the binary packages. Detailed
-    information about the data you can enter here you can find at the <link
-     xlink:href="https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.concepts.html#concept_dod"
-     >DoD concept section</link>. Press "Save" to create the repository. </para>
+    information about the data you can enter here can be found at
+    <xref linkend="concept-dod"/>. Press "Save" to create the repository. </para>
    <figure>
     <title>Download on Demand Repository Form</title>
     <mediaobject>

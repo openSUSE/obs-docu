@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<sect1 version="5.1" xml:id="cha.obs.admin.backend"
+<sect1 version="5.1" xml:id="cha-obs-admin-backend"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -19,7 +19,7 @@
     >man page</link>. For example, to restart the
    repository server, use:</para>
    <screen><command>systemctl restart obsrepserver.service</command></screen>
-  <table xml:id="tab.obs.service-names">
+  <table xml:id="tab-obs-service-names">
    <title>Service Names</title>
    <tgroup cols="2" align="left">
     <thead>

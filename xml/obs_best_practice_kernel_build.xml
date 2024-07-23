@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha.obs.best-practices.kmp" os="opensuse;novell"><title>Building Kernel Modules</title><info/>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha-obs-best-practices-kmp" os="opensuse;novell"><title>Building Kernel Modules</title><info/>
 
    <para/>
    <remark>TBD: via Ann Davis?</remark>

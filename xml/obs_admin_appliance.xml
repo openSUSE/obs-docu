@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<sect1 version="5.1" xml:id="cha.obs.admin.appliance"
+<sect1 version="5.1" xml:id="cha-obs-admin-appliance"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -28,7 +28,7 @@
   <title>Image Types</title>
   <para> There are different types of &obsa; appliance images.</para>
    <table
-    xml:id="cha.obs.best-practices.appliance_types">
+    xml:id="cha-obs-best-practices-appliance-types">
     <title>Appliance Types</title>
     <tgroup cols="2" align="left">
      <thead>

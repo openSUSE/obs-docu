@@ -3,9 +3,9 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<sect1 xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="_tools">
+<sect1 xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="tools">
  <title>Tools</title>
- <sect2 xml:id="_obs_admin">
+ <sect2 xml:id="tools-obs-admin">
   <title><command>obs_admin</command></title>
   <para>obs_admin is a command-line tool used on the back-end server(s) to manage
 running services, submit maintenance tasks, and debug problems.
@@ -142,7 +142,7 @@ Note: the --update-*-db calls are usually only needed when corrupt data has been
  --show-delta-store &lt;file&gt;
    Show delta store statistics</screen>
  </sect2>
- <sect2 xml:id="_osc">
+ <sect2 xml:id="tools-osc">
   <title>&osccmd;</title>
   <para>The <emphasis role="strong"><emphasis>osc</emphasis></emphasis> command-line client is mainly used by developers and packagers. But
 for some tasks, admin people also need this tool. It too has builtin help:
@@ -158,7 +158,7 @@ osc -A https://api.testobs.org</screen>
 give this file restrictive access rights, only read/write access for your user
 should be allowed. <emphasis role="strong">osc</emphasis> allows to store the password in other ways (in keyrings
 for example) and may use different methods for authentication like
-Kerberos see <xref linkend="_kerberos"/>
+Kerberos see <xref linkend="user-and-group-management-authentication-methods-kerberos"/>
    </para>
   </warning>
   <para>For admins the most important <emphasis role="strong"><emphasis>osc</emphasis></emphasis> subcommands are:</para>
@@ -174,12 +174,12 @@ API - to read and write online configuration data
 </para>
    </listitem>
   </itemizedlist>
-  <sect3 xml:id="_osc_meta_subcommand">
+  <sect3 xml:id="tools-osc-osc-meta-subcommand">
    <title><command>osc meta</command> Subcommand</title>
    <para>The <command>osc meta</command> subcommand is documented inside the "osc" tool itself. This documentation can be displayed by issuing the command:</para>
 <screen>osc meta --help</screen>
   </sect3>
-  <sect3 xml:id="_osc_api_subcommand">
+  <sect3 xml:id="tools-osc-osc-api-subcommand">
    <title><command>osc api</command> Subcommand</title>
    <para>The <command>osc api</command> subcommand is documented inside the "osc" tool itself. This documentation can be displayed by issuing the command:</para>
 <screen>osc api --help</screen>

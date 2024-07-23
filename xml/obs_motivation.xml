@@ -3,7 +3,7 @@
   <!ENTITY % entities SYSTEM "entity-decl.ent">
     %entities;
 ]>
-<preface version="5.1" xml:id="cha.obs.motivation"
+<preface version="5.1" xml:id="cha-obs-motivation"
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
@@ -14,7 +14,7 @@
   </para>
  </info>
 
- <sect1 xml:id="sec.obs.motivation">
+ <sect1 xml:id="sec-obs-motivation">
   <title>Motivation</title>
   <para>
    The basic challenge when distributing Free and Open Source Software
@@ -39,7 +39,7 @@
   </para>
  </sect1>
 
- <sect1 xml:id="sec.obs.goals">
+ <sect1 xml:id="sec-obs-goals">
   <title>Goals and Target Groups for &obsa;</title>
   <para> The goals of the OBS are oriented towards the three groups of people
    that use it: </para>
@@ -67,7 +67,7 @@
    </listitem>
   </itemizedlist>
 
-  <sect2 xml:id="sec.obs.goals.packagers">
+  <sect2 xml:id="sec-obs-goals-packagers">
    <title>Automated Software Builds for Packagers</title>
    <para>
     For people who contribute to the Free Software community by packaging
@@ -78,7 +78,7 @@
    </para>
   </sect2>
 
-  <sect2 xml:id="sec.obs.goals.isv">
+  <sect2 xml:id="sec-obs-goals-isv">
    <title>Reproducibility for Free Software Projects and Independent Software Vendors (ISV)</title>
    <para> &obsa; emphasizes on making builds reproducible. It builds packages in
     a jailed environment that &obsa; sets up from scratch each time. When the
@@ -99,7 +99,7 @@
    </para>
   </sect2>
 
-  <sect2 xml:id="sec.obs.goals.users">
+  <sect2 xml:id="sec-obs-goals-users">
    <title>Easy Access to Software for Users</title>
    <para> The OBS aims to make it easy for users to download the latest version
     of software as binary packages for their operating system. They do not have
