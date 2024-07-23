@@ -6,7 +6,7 @@
 ## Basics
 MAIN="MAIN-obs.xml"
 # See "book-obs-user-guide.xml"
-ROOTID="book.obs-user"
+ROOTID="book-obs-user"
 
 ## Profiling
 PROFOS="opensuse;novell"
@@ -18,8 +18,9 @@ PROFCONDITION="bogus"
 STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
 FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse"
 
-### Use DocBook5 instead of GeekoDoc
+### Use GeekoDoc
 #DOCBOOK5_RNG_URI="http://docbook.org/xml/5.2/rng/docbookxi.rng"
+DOCBOOK5_RNG_URI="urn:x-suse:rng:v2:geekodoc-flat"
 
 ## Disabled SUSE logo
 XSLTPARAM="--param generate.logo=0"

@@ -28,7 +28,7 @@
   <title>Image Types</title>
   <para> There are different types of &obsa; appliance images.</para>
    <table
-    xml:id="cha.obs.best-practices.appliance_types">
+    xml:id="cha-obs-best-practices-appliance-types">
     <title>Appliance Types</title>
     <tgroup cols="2" align="left">
      <thead>

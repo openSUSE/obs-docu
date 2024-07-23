@@ -151,7 +151,7 @@
   </para>
  </sect1>
 
- <sect1 xml:id="sec.obs.basicworkflow.create-new">
+ <sect1 xml:id="sec-obs-basicworkflow-create-new">
   <title>Creating a New Package</title>
   <para>
    This section covers how to create packages for an arbitrary software project,
@@ -512,7 +512,7 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
   </sect2>
  </sect1>
 
- <sect1 xml:id="sec.obs.basicworkflow.add-dependencies">
+ <sect1 xml:id="sec-obs-basicworkflow-add-dependencies">
   <title>Adding Dependencies to Your Project</title>
   <para>
    Software usually depends on other software: To run an application, you

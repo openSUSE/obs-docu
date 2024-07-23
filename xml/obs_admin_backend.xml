@@ -19,7 +19,7 @@
     >man page</link>. For example, to restart the
    repository server, use:</para>
    <screen><command>systemctl restart obsrepserver.service</command></screen>
-  <table xml:id="tab.obs.service-names">
+  <table xml:id="tab-obs-service-names">
    <title>Service Names</title>
    <tgroup cols="2" align="left">
     <thead>

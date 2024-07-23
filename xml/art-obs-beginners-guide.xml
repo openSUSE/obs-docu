@@ -346,7 +346,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><xref linkend="sec.obsbg.uc.install-from-obs"/></term>
+    <term><xref linkend="sec-obsbg-uc-install-from-obs"/></term>
     <listitem>
      <para>
       Integrating the download repository into your system
@@ -1196,7 +1196,7 @@ Patch0:         &sampleprj;_main.diff</screen>
   </para>
  </sect1>
 
- <sect1 xml:id="sec.obsbg.uc.install-from-obs">
+ <sect1 xml:id="sec-obsbg-uc-install-from-obs">
   <title>Installing Packages from &obsa;</title>
   <para>
    &obsa; provides a place containing all the distribution-specific and
@@ -1221,7 +1221,7 @@ Patch0:         &sampleprj;_main.diff</screen>
   <para>To install the <package>&sampleprj;</package> package from your home project,
   use the following steps:</para>
   <procedure>
-   <step xml:id="st.obsbg.uc.install-from-obs.repourls">
+   <step xml:id="st-obsbg-uc-install-from-obs-repourls">
     <para>Inside your working directory, determine the download repository
      URLs:</para>
     <screen>&prompt.user;<command>osc</command> repourls
@@ -1232,7 +1232,7 @@ Patch0:         &sampleprj;_main.diff</screen>
     <para>Copy the desired URL of your preferred distribution. In our case, that
      is the line containing <systemitem>openSUSE_Tumbleweed</systemitem>.</para>
    </step>
-   <step xml:id="st.obsbg.uc.install-from-obs.zypperar">
+   <step xml:id="st-obsbg-uc-install-from-obs-zypperar">
     <para>Use <command>zypper</command> and add the copied URL:
     </para>
     <screen>&prompt.root;<command>zypper</command> addrepo &obsdnlurlhome1;/openSUSE_Tumbleweed/&obshome1;.repo</screen>
@@ -1247,7 +1247,7 @@ Patch0:         &sampleprj;_main.diff</screen>
   <para>
    To update the package again, run <xref linkend="st-obsbg-install"/>.
    You do not need to execute
-   <xref linkend="st.obsbg.uc.install-from-obs.repourls"/>, as the
+   <xref linkend="st-obsbg-uc-install-from-obs-repourls"/>, as the
    repository is already configured in your system.
   </para>
  </sect1>
