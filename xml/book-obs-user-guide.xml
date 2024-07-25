@@ -119,7 +119,6 @@
  <xi:include href="obs_build_preinstall.xml"/>
  <xi:include href="obs_authorization_token.xml"/>
  <xi:include href="obs_qa_hooks.xml"/>
- <xi:include href="factory.xml"/>
  </part>
  <!-- Appendices -->
  <xi:include href="obs_glossary.xml"/>
