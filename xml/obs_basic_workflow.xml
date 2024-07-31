@@ -645,10 +645,6 @@ Requires:         zool >= 1.5.6</screen>
   </sect2>
   <sect2 xml:id="sec-obs-basicworkflow-reuse">
    <title>Reusing Packages in Your Project</title>
-   <remark>toms 2017-08-30: This part and its subsections needs to be
-   further discussed. "Aggregate" as a word doesn't really fit with the
-   OBS terminology
-   </remark>
    <para>
     To reuse existing packages in your package repository, &obsa; offers
     two methods: <quote>aggregating</quote> and <quote>linking</quote>.
@@ -657,7 +653,7 @@ Requires:         zool >= 1.5.6</screen>
    <remark>toms 2017-08-30: add a notes when NOT to use the two methods.
    </remark>
 
-   <sect3 xml:id="sec-obs-basicworkflow-reuse-aggregating" condition="tbs">
+   <sect3 xml:id="sec-obs-basicworkflow-reuse-aggregating">
     <title>Aggregating a Package</title>
     <para>
      An <quote>aggregate</quote> package is a pointer to an &obsa; package.
