@@ -198,7 +198,7 @@ Constraint: hardware:disk:size unit=M 4000
    When specifying constraints using XML syntax, attribute values must be
    enclosed in double-quotes (<literal>unit="G"</literal>,
    <literal>exclude="true"</literal>, etc.), while in project configurations and
-   build recipes the attributes must be given <emphasis>without</emphasis>
+   build recipes the values must be given <emphasis>without</emphasis>
    quotes (<literal>unit=G</literal>, <literal>exclude=true</literal>).
    </para></note>
   <sect2>
