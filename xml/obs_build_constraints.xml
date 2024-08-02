@@ -188,6 +188,19 @@ Constraint: hardware:disk:size unit=M 4000
   <title>Constraint syntax</title>
   <para> This section describes the various constraint qualifiers and their
    syntax. </para>
+  <para> In general, it is important to understand that the syntax used will
+   differ depending on where the constraints are specified. When specified
+   via a <literal>_constraints</literal> file, XML syntax is used, while a
+   different syntax is used when specifying constraints in a project
+   configuration or a build recipe (e.g., an RPM spec file). In this section,
+   both syntaxes are described for each qualifier. </para>
+  <note><para>
+   When specifying constraints using XML syntax, attribute values must be
+   enclosed in double-quotes (<literal>unit="G"</literal>,
+   <literal>exclude="true"</literal>, etc.), while in project configurations and
+   build recipes the values must be given <emphasis>without</emphasis>
+   quotes (<literal>unit=G</literal>, <literal>exclude=true</literal>).
+   </para></note>
   <sect2>
    <title><literal>hostlabel</literal></title>
    <para> The "hostlabel" qualifier is any string which can be assigned to
@@ -413,7 +426,7 @@ Constraint: hardware:cpu:flag sse2</screen>
       <screen>&lt;constraints&gt;
    &lt;hardware&gt;
      &lt;physicalmemory&gt;
-       &lt;size unit=M&gt;1400&lt;/size&gt;
+       &lt;size unit="M"&gt;1400&lt;/size&gt;
      &lt;/physicalmemory&gt;
    &lt;/hardware&gt;
 &lt;/constraints&gt;</screen>
