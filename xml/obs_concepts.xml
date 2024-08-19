@@ -114,7 +114,8 @@
     <screen><command>osc meta prjconf -e $PROJECT</command>
 <command>osc co $PROJECT _project</command></screen>
     <para>
-     This file contains information on how to set up a build environment.
+     The build configuration is used to tell the OBS how to set up the build
+     environment, and is explained in <xref linkend="cha-obs-prjconfig"/>.
     </para>
   </sect2>
   <sect2>
