@@ -107,22 +107,31 @@
   </sect2>
   <sect2>
    <title>Project Build Configuration</title>
-   <para> A project is configured in the project
-     <command>/source/$PROJECT/_config</command> path. It can be edited in web
+   <para>
+    A project is configured in the project
+    <command>/source/$PROJECT/_config</command> path. It can be edited in web
     interface in the <command>Project Config</command> tab or via one of the
-    following command lines </para>
-    <screen><command>osc meta prjconf -e $PROJECT</command>
+    following command lines
+   </para>
+   <screen><command>osc meta prjconf -e $PROJECT</command>
 <command>osc co $PROJECT _project</command></screen>
-    <para>
-     The build configuration is used to tell the OBS how to set up the build
-     environment, and is explained in <xref linkend="cha-obs-prjconfig"/>.
-    </para>
+   <para>
+    The build configuration is used to tell the OBS how to set up the build
+    environment, and is explained in <xref linkend="cha-obs-prjconfig"/>.
+   </para>
   </sect2>
   <sect2>
    <title>Project Build Macro Configuration</title>
-   <para> The macro configuration is part of the build configuration in
-     <command>/source/$PROJECT/_config</command>. It can be added at the end
-    after a <command>Macros:</command> line. </para>
+   <para>
+    The macro configuration is part of the build configuration in
+    <command>/source/$PROJECT/_config</command>. It can be added at the end
+    after a <command>Macros:</command> line.
+   </para>
+   <para>
+    The build configuration is used to tell the OBS how to set up the build
+    environment, and is explained in <xref linkend="cha-obs-prjconfig"/>.
+    Within that chapter, build macros are explained in <xref linkend="sec-prjconfig-macros"/>.
+   </para>
   </sect2>
   <sect2>
    <title>An OBS Package</title>
