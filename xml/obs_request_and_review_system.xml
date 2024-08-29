@@ -7,7 +7,7 @@
  xmlns="http://docbook.org/ns/docbook"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink" >
- <title>Request And Review System</title>
+ <title>Request and Review System</title>
  <info/>
  <para> The OBS comes with a generic request system where one party can ask
   another to complete a certain action. This can be, for example, taking source
@@ -219,5 +219,16 @@
     </listitem>
    </itemizedlist>
   </sect2>
+ </sect1>
+ <sect1>
+  <title>Who can accept a request</title>
+  <para>
+    The question of who can accept a request can be answered by inspecting who
+    has write permissions on the target project of the request. This includes
+    both maintainers listed in the project itself, plus all maintainers of
+    higher-level projects within the project hierarchy. (For example, requests
+    touching a project "foo:bar" can be accepted by all maintainers of that
+    project, as well as by all maintainers of the project "foo".)
+  </para>
  </sect1>
 </chapter>
