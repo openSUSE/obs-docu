@@ -25,8 +25,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
   <abstract>
    <para>
     This guide describes basic workflows for working with packages on
-    &obs;. This includes checking out a package from an upstream project,
-    creating patches, branching a repository, and more.
+    &obs;. This includes checking out an upstream package from a public
+    source code repository, creating patches, branching a repository, and more.
    </para>
   </abstract>
  </info>
@@ -162,7 +162,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </para>
    <para>
     Projects can also have other projects (subprojects) to structure work.
-    They are isolated from their parent project and can be configured
+    They are mostly isolated from their parent project and can be configured
     individually.
    </para>
    <para>
@@ -302,8 +302,8 @@ https://www.suse.com/communities/blog/suse-studio-integration/
    </listitem>
    <listitem>
     <para>
-     An example upstream open source project available at <link
-      xlink:href="&gitupstream1;"/>. This project contains source code in the C++ programming language.
+     An example upstream open source repository at <link
+      xlink:href="&gitupstream1;"/>. This repository contains source code in the C++ programming language.
     </para>
    </listitem>
   </itemizedlist>
@@ -323,7 +323,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     <term><xref linkend="sec-obsbg-uc-newprj"/></term>
     <listitem>
      <para>
-      Creating packages from a basic project hosted on &gh;.
+      Creating packages from a repository hosted on &gh;.
      </para>
     </listitem>
    </varlistentry>
@@ -513,22 +513,20 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
  </sect1>
 
  <sect1 xml:id="sec-obsbg-uc-newprj">
-  <title>Creating a New Project</title>
+  <title>Creating a New Package Within Your Home Project</title>
   <para>
-   This section demonstrates how to create packages from a simple C++ project
-   hosted on &gh; (the <quote>upstream project</quote>). We assume that this
-   project contains source code which you want to package for different
-   &suse; distributions.
+   This section demonstrates how to create packages for different &suse; distributions
+   from some simple C++ source code hosted on &gh; (the <quote>upstream repository</quote>).
   </para>
   <note>
    <title>Check the License First</title>
    <para>
-    Before building, go to the homepage of the upstream project and check the
+    Before building, go to the upstream homepage or documentation and check the
     license.
    </para>
    <para>
-    For example, in the &osbs;, you must only redistribute packages which are
-    available under an open source license.
+    For example, in the &osbs;, you may only redistribute source code which was
+    distributed to you under an open source license.
     If you are submitting a package to &opensuse;, its source code will be checked
     for license compliance. If your package is not released under an open source
     license, it will be rejected.
@@ -543,11 +541,11 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    </para>
   </note>
   <para>
-   To create a package from the upstream project, follow the steps below.
+   To create a package from the upstream repository, follow the steps below.
   </para>
   <procedure xml:id="pro-obsbg-uc-basicprj">
    <step>
-    <para>Set up your project as shown in <xref linkend="sec-obsbg-uc-setuphome"/>.
+    <para>Set up your home project as shown in <xref linkend="sec-obsbg-uc-setuphome"/>.
     </para>
    </step>
    <step>
@@ -575,17 +573,17 @@ Cmnd_Alias  OSC_CMD = /usr/bin/osc, /usr/bin/build
    </step>
    <step>
     <para>
-     Get the source code of the upstream project and save it in
+     Get the source code from the upstream repository and save it in
      <filename>&obsworkdir1;/&sampleprj;</filename>.
     </para>
     <para>
      Download a TAR archive of the sources. You do not have to unpack it yet.
     </para>
     <para>
-     In our example, the project is hosted on &gh; and you can use the
+     In our example, the upstream repository is hosted on &gh; and you can use the
      following URL:
      <link xlink:href="&gitupstream1;/releases"/>.
-     If there is no published release of a project, click the <guimenu>Clone or
+     If there is no published release, click the <guimenu>Clone or
      download</guimenu> button and download the latest sources using the <guimenu>Download ZIP</guimenu> link.
     </para>
    </step>
@@ -796,8 +794,8 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
  <sect1 xml:id="sec-obsbg-uc-patching">
   <title>Patching Source Code</title>
   <para>
-   This section describes how to patch an upstream project. We use the same
-   project as shown in <xref linkend="sec-obsbg-uc-newprj"/>.
+   This section describes how to tell &obs; to apply a patch to your package
+   before building it. We use the same package as shown in <xref linkend="sec-obsbg-uc-newprj"/>.
   </para>
   <para>
    There are different reasons for patching a package.
@@ -807,14 +805,14 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     <formalpara>
      <title>You Do Not Have Permission to Commit Upstream</title>
     <para>
-     Often, you cannot commit changes directly to the upstream project.
-     If you send changes to the upstream project, they may be integrated
+     Often, you cannot commit changes directly to the upstream repository.
+     If you send changes to the upstream repository, they may be integrated
      late or even be rejected.
     </para>
     </formalpara>
     <para>
-     Patch files allow making changes while keeping source code clean and also
-     allow independence from an upstream project's release cycle, coding
+     Patch files allow making changes while keeping source code clean while
+     insulating your package from upstream's release cycle, coding
      style, and internal workings.
     </para>
    </listitem>
