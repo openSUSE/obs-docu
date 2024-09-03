@@ -63,38 +63,38 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     <listitem>
      <formalpara>
       <title>Metadata</title>
-      <para>The package name and the description are mandatory. Other data
-       such as the version, the license, the upstream URL
-       is optional.</para>
+      <para>This is the package name, description, version, license
+      information, upstream URL...</para>
      </formalpara>
     </listitem>
     <listitem>
      <formalpara>
-      <title>Requirements</title>
+      <title>How to build the upstream source</title>
       <para>
-       Packages depend on other packages to function properly.
-       There are two types of requirements:
-       <emphasis>build requirements</emphasis> and
-       <emphasis>installation requirements</emphasis>.
+        You need to indicate how to produce the files that will be
+        part of the package: where to get the sources, the patches to
+        apply if any, and which command(s) to run, e.g.
+        <command>make</command>.
+      </para>
+      <para>
+        These commands often require other packages to be installed
+        beforehand; for example, to build a C++ program, you need a
+        C++ compiler.  You need to indicate this list of packages: the
+        <emphasis>build requirements</emphasis>.
       </para>
      </formalpara>
-     <para>
-      Build requirements are dependencies which are needed during the
-      build process in &obsa;. For example, a C++ program needs
-      a C++ compiler.
-     </para>
-     <para>
-      Installation requirements are dependencies which are needed when installing
-      the final package.
-     </para>
     </listitem>
     <listitem>
      <formalpara>
-      <title>A Package List</title>
+      <title>Package contents, installation requirements and install/uninstall actions</title>
       <para>
-       To successfully install and remove a package and all its contents,
-       the package manager needs to know which files and directories belong to
-       which package.
+        You need to list the files and directories to include into the
+        package.
+      </para>
+      <para>
+        The installed package may require other packages to function
+        properly.  They are called the <emphasis>installation
+        requirements</emphasis>.
       </para>
      </formalpara>
     </listitem>
