@@ -853,6 +853,32 @@ amqp_queue_options:
             </para>
           </entry>
         </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.container.published</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A container has been published</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :project, :repo, :buildid, :container
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.relationship.create</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para></para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :who, :user, :group, :project, :package, :role, :notifiable_id
+            </para>
+          </entry>
+        </row>
       </tbody>
     </tgroup>
   </table>
