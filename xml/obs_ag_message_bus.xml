@@ -871,7 +871,20 @@ amqp_queue_options:
             <para><emphasis>__prefix__</emphasis>.relationship.create</para>
           </entry>
           <entry align="left" valign="top">
-            <para></para>
+            <para>A user or group role has been added</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>
+              :who, :user, :group, :project, :package, :role, :notifiable_id
+            </para>
+          </entry>
+        </row>
+        <row>
+          <entry align="left" valign="top">
+            <para><emphasis>__prefix__</emphasis>.relationship.delete</para>
+          </entry>
+          <entry align="left" valign="top">
+            <para>A user or group role has been removed</para>
           </entry>
           <entry align="left" valign="top">
             <para>
