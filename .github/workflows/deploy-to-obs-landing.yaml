@@ -82,3 +82,6 @@ jobs:
           git add -A
           git commit -m "Update books to current state"
           git push
+      - name: Setup tmate session
+        if: failure()
+        uses: mxschmitt/action-tmate@v3
