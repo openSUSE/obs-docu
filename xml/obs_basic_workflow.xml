@@ -513,30 +513,18 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
  </sect1>
 
  <sect1 xml:id="sec-obs-basicworkflow-add-dependencies">
-  <title>Adding Dependencies to Your Project</title>
+  <title>Dependency Handling in Your Projects</title>
   <para>
-   Software usually depends on other software: To run an application, you
-   may, for example, need additional libraries. Such dependencies are called
-   <emphasis>installation requirements</emphasis>.
-  </para>
-  <remark>
-   Firstterm for installation req/build req? - sknorr, 2017-08-24
-  </remark>
-  <para>
-   Additionally, there are also dependencies that are only necessary for
-   building a package but not when the software it contains is run. Such
-   dependencies are called <emphasis>build requirements</emphasis>.
+   As described in more detail in <xref linkend="art-obs-bg"/>, both types
+   of package dependencies (build and runtime) are specified in the build
+   recipe, and exactly how this is done is beyond the scope of this &obs;
+   documentation.
   </para>
   <para>
-   The &obs; provides the following methods to handle both dependencies in
-   your projects:
+   The &obs; provides the following methods to handle both types of
+   dependencies (build and runtime) in your projects:
   </para>
   <itemizedlist>
-   <listitem>
-    <para>
-     <xref linkend="sec-obs-basicworkflow-deps"/>
-    </para>
-   </listitem>
    <listitem>
     <para>
      <xref linkend="sec-obs-basicworkflow-layering"/>
@@ -551,25 +539,6 @@ Fri Aug 23 08:42:42 UTC 2017 - &exampleuser_mail;</screen>
    </listitem>
   </itemizedlist>
 
-  <sect2 xml:id="sec-obs-basicworkflow-deps">
-   <title>Adding Dependencies to Your Build Recipes</title>
-   <remark>toms 2017-08-24: Should probably go into the concept part?</remark>
-   <remark>toms 2017-08-24: should we explain hard and soft requirements?</remark>
-   <para>
-    In a spec file, dependencies are expressed with the keywords <literal>Requires</literal>
-    (installation requirements) and <literal>BuildRequires</literal> (installation
-    requirements). Both belong to the header of the spec file<!-- (see <xref
-     linkend=""/>)-->.
-   </para>
-   <example xml:id="ex-obs-basicworkflow-excerpt">
-    <title>Excerpt of Build and Installation Requirements</title>
-    <screen>Name:             foo-example
-Version:          1.0.0
-BuildRequires:    bar
-Requires:         zool >= 1.5.6</screen>
-   </example>
-   <remark>toms 2017-08-24: Version compare with zypper vcmp?</remark>
-  </sect2>
   <sect2 xml:id="sec-obs-basicworkflow-layering">
    <title>Associating Other Repositories with Your Repository</title>
    <para>
