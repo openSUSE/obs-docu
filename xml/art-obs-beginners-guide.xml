@@ -86,7 +86,9 @@ https://www.suse.com/communities/blog/suse-studio-integration/
        Both types of dependencies - build and runtime - are specified in the
        build recipe. Exactly how this is done is described in the documentation
        of the build system (RPM, Debian, etc.) in question and is beyond the
-       scope of this &obs; documentation.
+       scope of this &obs; documentation. You need to look up documentation
+       of the individual package managers like <link xlink:href="https://rpm.org/"/>
+       or <link xlink:href="https://www.debian.org/doc/devel-manuals#packaging-tutorial"/>
       </para>
      </formalpara>
     </listitem>
