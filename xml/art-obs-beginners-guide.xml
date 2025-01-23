@@ -70,23 +70,27 @@ https://www.suse.com/communities/blog/suse-studio-integration/
     </listitem>
     <listitem>
      <formalpara>
-      <title>Requirements</title>
+      <title>Dependencies</title>
       <para>
-       Packages depend on other packages to function properly.
-       There are two types of requirements:
-       <emphasis>build requirements</emphasis> and
-       <emphasis>installation requirements</emphasis>.
+       Packages depend on other packages to function properly. These
+       relationships are referred to as "dependencies".
+       There are two types of dependencies:
+       <emphasis>build dependencies</emphasis> and
+       <emphasis>runtime dependencies</emphasis>.
+       Build dependencies are packages that must be present at build time
+       in order to successfully build your source package. The act of building
+       your source package will create one or more binary packages. Each binary
+       package can specify some number of runtime dependencies (packages that
+       your software needs to be present at runtime), and the package
+       manager will try to install these together with your package.
+       Both types of dependencies - build and runtime - are specified in the
+       build recipe. Exactly how this is done is described in the documentation
+       of the build system (RPM, Debian, etc.) in question and is beyond the
+       scope of this &obs; documentation. You need to look up documentation
+       of the individual package managers like <link xlink:href="https://rpm.org/"/>
+       or <link xlink:href="https://www.debian.org/doc/devel-manuals#packaging-tutorial"/>
       </para>
      </formalpara>
-     <para>
-      Build requirements are dependencies which are needed during the
-      build process in &obsa;. For example, a C++ program needs
-      a C++ compiler.
-     </para>
-     <para>
-      Installation requirements are dependencies which are needed when installing
-      the final package.
-     </para>
     </listitem>
     <listitem>
      <formalpara>
