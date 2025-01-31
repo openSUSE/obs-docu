@@ -106,6 +106,7 @@
  <xi:include href="obs_request_and_review_system.xml"/>
  <!--<xi:include href="obs_package_formats.xml"/>-->
  <xi:include href="obs_image_templates.xml"/>
+ <xi:include href="obs_package_templates.xml"/>
 <!-- <xi:include href="obs_build_config.xml"/>-->
  <!-- advanced parts -->
  <xi:include href="obs_multibuild.xml"/>
