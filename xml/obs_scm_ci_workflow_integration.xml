@@ -1006,6 +1006,43 @@ rebuild_master:
             </para>
           </note>
         </sect4>
+
+        <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-filters-labels-filter">
+          <title>Labels Filter</title>
+
+          <para>The labels filter attempts to match labels created on a pull request. The workflow will
+          run only if the label name on the pull request matches one of the labels names defined in the filter.</para>
+
+          <para>Example of running a workflow for a <emphasis>duplicate</emphasis> label:</para>
+
+          <screen>workflow:
+  steps:
+    - branch_package:
+        source_project: home:jane_doe
+        source_package: ctris
+        target_project: games
+  filters:
+    labels:
+      only:
+        - duplicate </screen>
+
+        <para>Removing the label matching the one's defined in the filter section from the pull request will do
+        the following for the listed steps:</para>
+        <itemizedlist>
+          <listitem><para><emphasis role="bold">submit_request:</emphasis> revoke the previously created request</para>
+          </listitem>
+          <listitem><para><emphasis role="bold">branch_package, link_package:</emphasis> delete the previously created target package</para>
+          </listitem>
+          <listitem><para><emphasis role="bold">configure_repositories, rebuild_package, set_flags, trigger_services:</emphasis> nothing</para>
+          </listitem>
+        </itemizedlist>
+
+        <note>
+          <para>The labels filter is currently only supported for Github and Gitea.</para>
+        </note>
+          <para>Learn more about <xref  xrefstyle="select:title"
+          linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-filters-delimiters"/>.</para>
+        </sect4>
       </sect3>
 
       <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-placeholder-variables">
@@ -1040,6 +1077,10 @@ rebuild_master:
           <listitem>
             <para><emphasis>%{SCM_COMMIT_SHA}</emphasis>: The SHA of the commit from
             which the webhook event originates.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis>%{LABEL}</emphasis>: The LABEL of the pull request from which the webhook event was initiated.</para>
           </listitem>
         </itemizedlist>
 
