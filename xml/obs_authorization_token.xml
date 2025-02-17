@@ -86,12 +86,12 @@
    <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST /trigger/runservice</screen>
 
    <para>A token to rebuild a package can be created and trigger by </para>
-   <screen><command>osc</command> token --opertion rebuild --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <screen><command>osc</command> token --operation rebuild --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
    <screen><command>osc</command> token --operation rebuild --trigger &lt;TOKEN&gt;</screen>
    <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST https://$obs_instance/trigger/rebuild</screen>
 
    <para>A token to release a package can be created and trigger by </para>
-   <screen><command>osc</command> token --opertion release --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
+   <screen><command>osc</command> token --operation release --create &lt;PROJECT&gt; &lt;PACKAGE&gt;</screen>
    <screen><command>osc</command> token --operation release --trigger &lt;TOKEN&gt;</screen>
    <screen><command>curl</command> -H "Authorization: Token &lt;TOKEN&gt;" -X POST https://$obs_instance/trigger/release</screen>
   </sect2>
