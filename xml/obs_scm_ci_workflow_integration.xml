@@ -680,7 +680,7 @@ rebuild_master:
           <title>Configure Repositories/Architectures for a Project</title>
 
           <para>Given a project called <emphasis>home:jane</emphasis>, the step will
-          configure a number of repositories and architectures for:</para>
+          configure a number of repositories and architectures for the following <emphasis>target projects</emphasis>:</para>
 
           <itemizedlist>
             <listitem>
@@ -739,6 +739,12 @@ rebuild_master:
                 target_repository: standard
             architectures:
               - x86_64</screen>
+
+          <para>Bear in mind that this step would overwrite any repository path on 'home:jane's 'openSUSE_Tumbleweed' 
+          repository that matched 'openSUSE:Factory/snapshot' or 'openSUSE:Tumbleweed/standard'. Meaning any repository 
+          configuration or architecture you had previously not present in the step would be gone.</para>
+
+          <para>Repositories whose names are not listed in this configuration would be left untouched.</para>
         </sect4>
 
         <sect4 xml:id="sec-obs-obs-scm-ci-workflow-integration-obs-workflows-steps-rebuild-a-package">
