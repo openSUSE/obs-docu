@@ -533,6 +533,16 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
+      <varlistentry>
+    <term><parameter>Release: <replaceable>CI_CNT</replaceable> <replaceable>B_CNT</replaceable></parameter> (RPM only)</term>
+    <listitem>
+     <para>
+       <command>CI_CNT</command> is the number of commits.
+       <command>B_CNT</command> is the number of rebuilds.
+       The default is <command>CI_CNT.B_CNT</command>.
+     </para>
+    </listitem>
+   </varlistentry>
    <varlistentry>
     <term><parameter>Order: <replaceable>PACKAG_A</replaceable>:<replaceable>PACKAGE_B</replaceable></parameter></term>
     <listitem>
