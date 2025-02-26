@@ -107,7 +107,7 @@
    condition.
   </para>
   <para>
-   Many keywords, like `Require` or `BuildFlags`, do not replace existing
+   Many keywords, like `Required` or `BuildFlags`, do not replace existing
    data, but add to it. This means you can have multiple `BuildFlags`
    lines instead of having one line with all the flags you need.
   </para>
@@ -1050,7 +1050,7 @@ Support: pax debbuild</screen>
       of build recipes.
 
       Typical use cases are macros inside of %if statements inside of the build
-      configuration or macros in any Support, Require or Substitute line.
+      configuration or macros in any Support, Required or Substitute line.
      </para>
     </formalpara>
    </listitem>
