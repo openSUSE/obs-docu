@@ -711,6 +711,16 @@ Support: pax debbuild</screen>
     </listitem>
    </varlistentry>
    <varlistentry>
+    <term><parameter>Release: <replaceable>CI_CNT</replaceable> <replaceable>B_CNT</replaceable></parameter> (RPM only)</term>
+    <listitem>
+     <para>
+       <command>CI_CNT</command> is the number of commits.
+       <command>B_CNT</command> is the number of rebuilds.
+       The default is <command>CI_CNT.B_CNT</command>.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
     <term><parameter>Repotype:  <replaceable>TYPE[:OPTIONS]</replaceable></parameter></term>
     <listitem>
      <para> Defines the repository format for published repositories. Read on
