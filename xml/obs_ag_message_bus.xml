@@ -821,9 +821,10 @@ amqp_queue_options:
           </entry>
           <entry align="left" valign="top">
             <para>
-              :author, :comment, :description, :number, :actions, :state, :when, :who,
-              :commenters, :commenter, :comment_body, :comment_title,
-              :request_number
+              :id, :author, :comment, :description, :number, :actions, :state,
+              :when, :who, :commenters, :commenter, :comment_body, :comment_title,
+              :request_number, :number, :diff_ref, :diff_file_index,
+              :diff_line_number
             </para>
           </entry>
         </row>
