@@ -50,7 +50,7 @@ jobs:
             ./daps2docker.sh ../DC-$doc html || exit 1
 
             rm -rf ../obs-landing/help/manuals/${doc} || exit 1
-            cp -v /tmp/daps2docker-*/$doc/html/${ROOTID} ../obs-landing/help/manuals/${doc} || exit 1
+            cp -rv /tmp/daps2docker-*/$doc/html/${ROOTID} ../obs-landing/help/manuals/${doc} || exit 1
           done
       - name: build pdf
         run: |
