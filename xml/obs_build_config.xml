@@ -227,6 +227,14 @@ Support: pax debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
+       <term><parameter>nouseforbuild:PACKAGE</parameter></term>
+       <listitem>
+         <para>This can be used to configure that package is build, but not used
+               for building other packages. The package may get published anyway.
+               </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
        <term><parameter>onlybuild:PACKAGE</parameter></term>
        <listitem>
          <para>DANGER: this may remove many build results when introduced the first time!
