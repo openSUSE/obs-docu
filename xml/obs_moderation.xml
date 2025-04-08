@@ -52,6 +52,23 @@
   </sect1>
 
   <sect1>
+    <title>Setup Notifications</title>
+    <para>
+      To make use of the full potential of the moderation feature in OBS, it is recommended to subscribe all users and moderators to notifications produced as soon as content gets reported or moderated.
+      Admins can configure default subscriptions for events related to moderated or reported content, enabling notifications for all users and moderators in an OBS instance.
+      Admins can configure default subscriptions under <emphasis>Configuration > Notifications</emphasis>
+    </para>
+    <figure>
+      <title>Subscriptions for Reported and Moderated Content</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="default_subscriptions_for_moderation.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+  <sect1>
     <title>Reporting Problematic Content</title>
     <sect2>
       <title>Who Can Report?</title>
