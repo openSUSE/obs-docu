@@ -23,7 +23,10 @@
    <listitem>
     <para>
      A file with the extension <filename class="extension">.changes</filename>
-     can be used to document the package history, but it is not required.
+     can be used to document the package history, but it is not required. On SUSE
+     distributions a reduced version of it gets applied into the build rpm. This
+     keeps the rpm database in installed systems smaller, but avoids loosing information
+     in the source repository.
     </para>
    </listitem>
    <listitem>
@@ -50,7 +53,7 @@
    </listitem>
    <listitem>
     <para>
-        <code>#!BuildConflicts: STRING</code> defines a conflicting package or dependency at build time only.
+     <code>#!BuildConflicts: STRING</code> defines a conflicting package or dependency at build time only.
     </para>
    </listitem>
    <listitem>
@@ -67,25 +70,39 @@
    </listitem>
    <listitem>
     <para>
-	    <code>#!needsrootforbuild</code> The build will be executed by root user. Please note that this must
-    be permitted either by the OBS admin (via the BSConfig.pm configuration) or enabled in via build configuration rule. Also osc requires an additional parameter for local build (--userootforbuild).</para>
+     <code>#!CreateArchive</code> or <code>#!CreateArchive: DIRECTORY</code> creates a tar ball based on
+
+     a provided directory. The tar ball name is used from next Source line of the spec file. The expected
+     directory name needs either to be specified as part of the tag or is also derived from the next Source line. This is useful when working with directories coming from git submodules or source services.
+    </para>
    </listitem>
    <listitem>
     <para>
-	    <code>#!needsslcertforbuild</code> This will prepare an SSL certification based on the project key. It is
-	    used to create secure boot enabled packages usually. Please note that this will fail, if the project
-	    still has an old DSA key.
+     <code>#!NoUseForBuild</code> This can be used to configure that package is built, but not used
+           for building other packages. The package may get published anyway.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <code>#!needsrootforbuild</code> The build will be executed by root user. Please note that this must
+     be permitted either by the OBS admin (via the BSConfig.pm configuration) or enabled in via build configuration rule. Also osc requires an additional parameter for local build (--userootforbuild).</para>
+   </listitem>
+   <listitem>
+    <para>
+     <code>#!needssslcertforbuild</code> This will prepare a X.509 certification based on the project key. It is
+     used to create secure boot enabled packages usually. Please note that this will fail, if the project
+     still has an old DSA key.
 </para>
    </listitem>
    <listitem>
     <para>
-	    <code>#!needsappxsslcertforbuild</code> Creates an appx compatible ssl certificate based on the project key.
-            Please note that this will fail, if the project still has an old DSA key.
+     <code>#!needsappxcertforbuild</code> Creates an appx compatible X.509 certificate based on the project key.
+     Please note that this will fail, if the project still has an old DSA key.
 </para>
    </listitem>
    <listitem>
     <para>
-	    <code>#!needsbinariesforbuild</code> All package files are usually removed before starting the build (after finishing to setup the build environment). This marker keeps them also during build.</para>
+     <code>#!NeedsBinariesForBuild</code> All package files are usually removed before starting the build (after finishing to setup the build environment). This marker keeps them also during build.</para>
    </listitem>
   </itemizedlist>
  </sect1>
