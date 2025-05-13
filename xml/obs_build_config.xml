@@ -284,7 +284,7 @@ Support: pax debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
-        <term><parameter>setvcs</parameter></term>
+       <term><parameter>setvcs</parameter></term>
        <listitem>
         <para>
           Add the SCM URL to binary results when the package sources are managed
@@ -294,7 +294,7 @@ Support: pax debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
-        <term><parameter>nodisturl</parameter></term>
+       <term><parameter>nodisturl</parameter></term>
        <listitem>
         <para>
           Skip the embedding of DISTURL tag into binaries. Please note that this might
@@ -304,7 +304,31 @@ Support: pax debbuild</screen>
        </listitem>
       </varlistentry>
       <varlistentry>
-        <term><parameter>sbom:FORMAT</parameter></term>
+       <term><parameter>productcompose-buildoption:OPTION</parameter></term>
+       <listitem>
+        <para>
+          This option can be used to hand over additional build options to productcomposer
+          builds. This is typical used to enable debug or testing options and avoids
+          the need to modify the recipe source of the product. For example to be
+          used in test staging projects where you want to enable certain options for testing
+          purposes.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><parameter>productcompose-onlydirectrepos</parameter></term>
+       <listitem>
+        <para>
+          This option can be used to limit used binaries of product builds to repositories
+          which are directly referenced as path in the building repository.
+          This is typical used to reduce the size or a project for test builds or to be
+          able to build add-on products ensuring that binaries only from certain repositories
+          appear in the product.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term><parameter>sbom:FORMAT</parameter></term>
        <listitem>
         <para>
           OBS 2.11 can produce and publish additional SBOM (Software Bill Of Material)
