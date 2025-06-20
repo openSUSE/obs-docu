@@ -131,7 +131,7 @@
   <variablelist xml:id="vl-prjconfig-keywords">
    <title>Available Keywords in Build Configuration</title>
    <!-- AssetsURL is not mentioned here as it has no effect in OBS -->
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-binarytype">
     <term><parameter>BinaryType: <replaceable>TYPE</replaceable></parameter> (OBS 2.4 or later)</term>
     <listitem>
      <para>
@@ -149,7 +149,7 @@
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-buildengine">
     <term><parameter>BuildEngine: <replaceable>ENGINE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -166,75 +166,67 @@ BuildEngine: debbuild
 Support: pax debbuild</screen>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-buildflags">
     <term><parameter>BuildFlags: <replaceable>FLAG</replaceable>:<replaceable>VALUE</replaceable></parameter></term>
     <listitem>
-     <para>
-      The <parameter>BuildFlags</parameter> keyword defines flags for the
-      build process. The following values for FLAG are usable.</para>
+      <para>The <parameter>BuildFlags</parameter> keyword defines flags for the
+            build process. The following values for FLAG are usable:</para>
      <variablelist>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-allowrootforbuild">
        <term><parameter>allowrootforbuild</parameter></term>
        <listitem>
-        <para>
-         Allow any package build to use root user for building. This still needs
-         a marker inside of the build description to enable it.
-        </para>
+         <para>Allow any package build to use root user for building. This still needs
+               a marker inside of the build description to enable it.</para>
         </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-vmfstype">
        <term><parameter>vmfstype:TYPE</parameter></term>
        <listitem>
-        <para>
-         Defines a specific file system when building inside of a VM.
-         Possible values are
-         <literal>ext2</literal>, <literal>ext3</literal>,
-         <literal>ext4</literal>, <literal>btrfs</literal>,
-         <literal>xfs</literal>, <literal>reiserfs</literal> (v3).
-        </para>
+         <para>Defines a specific file system when building inside of a VM.
+               Possible values are
+               <literal>ext2</literal>, <literal>ext3</literal>,
+               <literal>ext4</literal>, <literal>btrfs</literal>,
+               <literal>xfs</literal>, <literal>reiserfs</literal> (v3).</para>
         </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-vmfsoptions">
        <term><parameter>vmfsoptions:OPTION</parameter></term>
        <listitem>
-        <para>
-          Sets options for file system creation. Currently only the `nodirindex`
-          option is supported, which disables directory indexing for ext file
-          systems. This makes file ordering inside of directories reproducible
-          but may have a negative performance impact.
-         <literal>vmfsoptions:nodirindex</literal>
-        </para>
+         <para>Sets options for file system creation. Currently only the `nodirindex`
+               option is supported, which disables directory indexing for ext file
+               systems. This makes file ordering inside of directories reproducible
+               but may have a negative performance impact.
+              <literal>vmfsoptions:nodirindex</literal></para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-kiwiprofile">
        <term><parameter>kiwiprofile:PROFILE</parameter></term>
        <listitem>
-        <para>Selects the profiles to build in kiwi appliance builds.</para>
+         <para>Selects the profiles to build in kiwi appliance builds.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-logidlelimit">
        <term><parameter>logidlelimit:SECONDS</parameter></term>
        <listitem>
          <para>Build jobs which do not create any output are aborted after some time.
                This flag can be used to modify the limit.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-excludebuild">
        <term><parameter>excludebuild:PACKAGE</parameter></term>
        <listitem>
          <para>Exclude a package from building. If a package builds multiple flavors,
                the corresponding flavor can be specified via the `package:flavor` syntax.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-nouseforbuild">
        <term><parameter>nouseforbuild:PACKAGE</parameter></term>
        <listitem>
-         <para>This can be used to configure that package is build, but not used
-               for building other packages. The package may get published anyway.
-               </para>
+         <para>This can be used to specify that a package is to be built, but not used
+               for building other packages. The package may get published anyway.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-onlybuild">
        <term><parameter>onlybuild:PACKAGE</parameter></term>
        <listitem>
          <para>DANGER: this may remove many build results when introduced the first time!
@@ -242,135 +234,110 @@ Support: pax debbuild</screen>
                will turn to excluded state and get removed if available.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-useccache">
        <term><parameter>useccache:PACKAGE</parameter></term>
        <listitem>
-        <para>
-         Configure usage of ccache when building the specified package.
-        </para>
+         <para>Configure usage of ccache when building the specified package.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-ccachetype">
        <term><parameter>ccachetype:TYPE</parameter></term>
        <listitem>
-        <para>
-          Defines the ccache implementation, possible values are: ccache, sccache
-        </para>
+         <para>Defines the ccache implementation, possible values are: ccache, sccache</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
-        <term><parameter>obsgendiff</parameter></term>
+      <varlistentry xml:id="vl-prjconfig-buildflags-obsgendiff">
+       <term><parameter>obsgendiff</parameter></term>
        <listitem>
-        <para>
-          OBS can run an external program that has access to the current build
-          and the previously successful result, e.g. to generate a difference or
-          a changelog from the diff.
-        </para>
-        <para>
-          OBS will run all scripts in
-          <filename>/usr/lib/build/obsgendiff.d/</filename> on the build host
-          (not in the <emphasis>%buildroot</emphasis>) when this flag is set.
-          If one of the scripts fails to run or no scripts are found, then the
-          overall build fails. I.e. if <literal>BuildFlags: obsgendiff</literal>
-          is set, then you <emphasis>must</emphasis> provide at least one script
-          in <filename>/usr/lib/build/obsgendiff.d/</filename>, otherwise your
-          build will fail.
-        </para>
-        <para>
-          A common use case for <literal>obsgendiff</literal> is to run <link
-          xlink:href="https://github.com/openSUSE/release-compare">release-compare</link>
-          after the build.
-        </para>
+         <para>OBS can run an external program that has access to the current build
+               and the previously successful result, e.g. to generate a difference or
+               a changelog from the diff.</para>
+         <para>OBS will run all scripts in <filename>/usr/lib/build/obsgendiff.d/</filename>
+               on the build host (not in the <emphasis>%buildroot</emphasis>) when this flag
+               is set. If one of the scripts fails to run or no scripts are found, then the
+               overall build fails. I.e. if <literal>BuildFlags: obsgendiff</literal>
+               is set, then you <emphasis>must</emphasis> provide at least one script
+               in <filename>/usr/lib/build/obsgendiff.d/</filename>, otherwise your
+               build will fail.</para>
+         <para>A common use case for <literal>obsgendiff</literal> is to run <link
+               xlink:href="https://github.com/openSUSE/release-compare">release-compare</link>
+               after the build.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-setvcs">
        <term><parameter>setvcs</parameter></term>
        <listitem>
-        <para>
-          Add the SCM URL to binary results when the package sources are managed
-          via the scmsync mechanic. The url is written into the VCS tag of rpms
-          when enabling this functionality.
-        </para>
+         <para>Add the SCM URL to binary results when the package sources are managed
+               via the scmsync mechanic. The url is written into the VCS tag of rpms
+               when enabling this functionality.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-nodisturl">
        <term><parameter>nodisturl</parameter></term>
        <listitem>
-        <para>
-          Skip the embedding of DISTURL tag into binaries. Please note that this might
-          also break other features like binary tracking. So never do this for maintained
-          binaries.
-        </para>
+         <para>Skip the embedding of DISTURL tag into binaries. Please note that this might
+               also break other features like binary tracking. So never do this for maintained
+               binaries.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-productcompose-buildoption">
        <term><parameter>productcompose-buildoption:OPTION</parameter></term>
        <listitem>
-        <para>
-          This option can be used to hand over additional build options to productcomposer
-          builds. This is typical used to enable debug or testing options and avoids
-          the need to modify the recipe source of the product. For example to be
-          used in test staging projects where you want to enable certain options for testing
-          purposes.
-        </para>
+         <para>This option can be used to pass additional build options to productcomposer
+               builds. This is typically used to enable debug or testing options and avoids
+               the need to modify the recipe source of the product. For example, this can be
+               useful in test and/or staging projects where you want to enable certain options
+               for testing purposes.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-productcompose-onlydirectrepos">
        <term><parameter>productcompose-onlydirectrepos</parameter></term>
        <listitem>
-        <para>
-          This option can be used to limit used binaries of product builds to repositories
-          which are directly referenced as path in the building repository.
-          This is typical used to reduce the size or a project for test builds or to be
-          able to build add-on products ensuring that binaries only from certain repositories
-          appear in the product.
-        </para>
+         <para>This option can be used to limit used binaries of product builds to repositories
+               which are directly referenced as path in the building repository.
+               This is typical used to reduce the size or a project for test builds or to be
+               able to build add-on products ensuring that binaries only from certain repositories
+               appear in the product.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-sbom">
        <term><parameter>sbom:FORMAT</parameter></term>
        <listitem>
-        <para>
-          OBS 2.11 can produce and publish additional SBOM (Software Bill Of Material)
-          meta data by enabling this flag.
-          This is currently supported for container and kiwi images builds and includes
-          only data from installed rpm packages. Supported formats are spdx and cyclonedx.
-        </para>
+         <para>OBS 2.11 can produce and publish additional SBOM (Software Bill Of Material)
+               meta data by enabling this flag.</para>
+         <para>This is currently supported for container and kiwi images builds and includes
+               only data from installed rpm packages. Supported formats are spdx and cyclonedx.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-slsaversion">
         <term><parameter>slsaversion:VERSION</parameter></term>
        <listitem>
-        <para>
-	  OBS 2.11 is producing slsa provenance files in version 0 by default at build
-	  time, when enabled.
-          It is possible to switch to v1 by specifing slsaversion:v1 as buildflag.
-        </para>
+         <para>OBS 2.11 is producing slsa provenance files in version 0 by default at build
+               time, when enabled. It is possible to switch to v1 by specifing slsaversion:v1
+               as buildflag.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-container-compression-format">
         <term><parameter>container-compression-format:FORMAT</parameter></term>
        <listitem>
-        <para>
-          Sets a compression format for container layers. Possible values are gzip, zstd,
-          zstd:chunked. Every value other than gzip is only supported by podman and buildah.
-        </para>
+         <para>Sets a compression format for container layers. Possible values are gzip,
+               zstd, zstd:chunked. Every value other than gzip is only supported by podman
+               and buildah.</para>
        </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-container-build-format">
         <term><parameter>container-build-format:FORMAT</parameter></term>
        <listitem>
-        <para>
-          For podman container builds, it specifies the container config format. Possible values
-          are 'docker' and 'oci'. The default is 'docker'. The 'docker' format allows a few
-          extensions like ONBUILD, SHELL, DOMAINNAME, COMMENT, HEALTHCHECK amongst others.
-        </para>
+         <para>For podman container builds, it specifies the container config format.
+               Possible values are 'docker' and 'oci'. The default is 'docker'. The 'docker'
+               format allows a few extensions like ONBUILD, SHELL, DOMAINNAME, COMMENT,
+               HEALTHCHECK amongst others.</para>
        </listitem>
       </varlistentry>
      </variablelist>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-conflict">
     <term><parameter>Conflict: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>Specify that a package must not be installed in the build environment.</para>
@@ -382,7 +349,7 @@ Support: pax debbuild</screen>
      <para>Specify a synthetic conflict between two given packages.</para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-constraint">
     <term><parameter>Constraint: <replaceable>SELECTOR</replaceable> <replaceable>STRING</replaceable></parameter> (OBS 2.4 or later)</term>
     <listitem>
      <para>
@@ -392,7 +359,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-dist-macro">
     <term><parameter>DistMacro: <replaceable>NAME</replaceable> <replaceable>VALUE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -408,29 +375,31 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-expandflags">
     <term><parameter>ExpandFlags: <replaceable>FLAG</replaceable></parameter></term>
     <listitem>
      <para>
       Flags which modify the behaviour during dependency resolution.
      </para>
       <variablelist>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-unorderedimagerepos">
         <term><parameter>unorderedimagerepos</parameter> (OBS 2.10 or later)</term>
         <listitem>
-           <para>The priority of repositories defined in an image build is usually important. This is to avoid switching repositories
-           when the same package is available in multiple repositories. However, it might be wanted to ignore that and just
-           pick the highest version. This can be achieved by defining this flag</para>
+           <para>The priority of repositories defined in an image build is usually
+                 important. This is to avoid switching repositories when the same
+                 package is available in multiple repositories. However, it might be
+                 wanted to ignore that and just pick the highest version. This can
+                 be achieved by defining this flag.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-preinstallexpand">
         <term><parameter>preinstallexpand</parameter></term>
         <listitem>
            <para>Preinstall also all dependencies of a preinstalled package.
                  This may increase the amount of preinstalled packages a lot.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-module">
         <term><parameter>module:NAME-STREAM</parameter> (OBS 2.10.7 or later)</term>
         <listitem>
         <para>Enable Red Hat-specific module support in repo md repositories. By default,
@@ -439,14 +408,14 @@ Support: pax debbuild</screen>
               add an exclamation mark (<literal>!</literal>) as prefix.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-dorecommends">
         <term><parameter>dorecommends</parameter></term>
         <listitem>
           <para>Try to install all recommended packages. Packages with dependency conflicts
                 are ignored.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-dosupplements">
         <term><parameter>dosupplements</parameter></term>
         <listitem>
           <para>Try to install all supplemented packages. Packages with dependency conflicts
@@ -455,39 +424,37 @@ Support: pax debbuild</screen>
                 cases.  </para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-ignoreconflicts">
         <term><parameter>ignoreconflicts</parameter></term>
         <listitem>
           <para>Ignore defined conflicts of packages. By default these are reported as unresolvable.
                 This switch may be useful when packages get not installed in the build environment,
                 but getting processed afterwards. That tool, e.g. some image building tool, must be
-                able to handle the situation (e.g. by just using a subset of the packages).
-                </para>
+                able to handle the situation (e.g. by just using a subset of the packages).</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-kiwi-nobasepackages">
         <term><parameter>kiwi-nobasepackages</parameter></term>
         <listitem>
           <para>Do not put the require/support/preinstall packages in the repositories
-                offered to the kiwi build tool. This should have been the default.
-           </para>
+                offered to the kiwi build tool. This should have been the default.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-expandflags-keepfilerequires">
         <term><parameter>keepfilerequires</parameter></term>
         <listitem>
           <para>Dependencies on files are only fulfilled if matching FileProvides are specified
-                in the build configuration (prjconf). If those are missing, the dependency results in
-                an "unresolvable" state for directly required files or in silent breaking of the
-                dependency for indirectly required files. With this option, all file requires are
-                honoured by default and lead to "unresolvable" if there are no matching FileProvides defined.
-           </para>
+                in the build configuration (prjconf). If those are missing, the dependency results
+                in an "unresolvable" state for directly required files or in silent breaking of
+                the dependency for indirectly required files. With this option, all file requires
+                are honoured by default and lead to "unresolvable" if there are no matching
+                FileProvides defined.</para>
         </listitem>
        </varlistentry>
       </variablelist>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-exportsfilter">
     <term><parameter>ExportFilter: <replaceable>REGEX</replaceable> <replaceable>ARCHITECTURES</replaceable></parameter></term>
     <listitem>
      <para>
@@ -502,7 +469,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-fileprovides">
     <term><parameter>FileProvides: <replaceable>FILE</replaceable> <replaceable>PACKAGES</replaceable></parameter></term>
     <listitem>
      <para> &obsa; ignores dependencies to files (instead of package names) by
@@ -512,7 +479,7 @@ Support: pax debbuild</screen>
       packages contain a file. The File needs to have the full path.</para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-expandflags-hostarch">
     <term><parameter>HostArch: <replaceable>HOST_ARCH</replaceable></parameter></term>
     <listitem>
      <para>
@@ -522,7 +489,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-ignore-dependency">
     <term><parameter>Ignore: <replaceable>PACKAGE_OR_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
@@ -533,7 +500,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-ignore-dependency-from-package">
     <term><parameter>Ignore: <replaceable>ORIGIN_PACKAGE</replaceable>:<replaceable>PACKAGE_OR_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
@@ -542,7 +509,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-keep">
     <term><parameter>Keep: <replaceable>PACKAGES</replaceable></parameter></term>
     <listitem>
      <para>
@@ -554,7 +521,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-optflags">
     <term><parameter>OptFlags: <replaceable>TARGET_ARCH</replaceable> <replaceable>FLAGS</replaceable></parameter> (RPM only)</term>
     <listitem>
      <para>
@@ -565,7 +532,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-order">
     <term><parameter>Order: <replaceable>PACKAG_A</replaceable>:<replaceable>PACKAGE_B</replaceable></parameter></term>
     <listitem>
      <para>
@@ -580,7 +547,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-patterntype">
     <term><parameter>Patterntype: <replaceable>TYPE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -589,7 +556,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-prefer">
     <term><parameter>Prefer: <replaceable>PACKAGES</replaceable></parameter></term>
     <listitem>
      <para>
@@ -603,7 +570,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-prefer-from-package">
     <term><parameter>Prefer: <replaceable>ORIGIN_PACKAGE</replaceable>:<replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -612,7 +579,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-preinstall">
     <term><parameter>Preinstall: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -624,7 +591,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-publishfilter">
     <term><parameter>PublishFilter: <replaceable>REGEXP</replaceable> [<replaceable>REGEXP</replaceable>]</parameter></term>
     <listitem>
      <para>
@@ -636,14 +603,21 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-publishflags">
     <term><parameter>PublishFlags: <replaceable>FLAG</replaceable></parameter></term>
     <listitem>
      <para>
       Flags which modify the behaviour during repository generation.
      </para>
       <variablelist>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-archsync">
+        <term><parameter>archsync</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+        <para>Publish all architectures at the same time. This means that the publisher is waiting
+              until the last architecture has finished building.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-artifacthub">
         <term><parameter>artifacthub:TAG</parameter> (OBS 2.11 or later)</term>
         <listitem>
         <para>Publish a specific verified publisher identifier (aka repository id) for artifactub.io.
@@ -651,13 +625,27 @@ Support: pax debbuild</screen>
               OBS repositories.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-createempty">
         <term><parameter>createempty</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Create a repository even with no content, but with meta data.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-keepobsolete">
+        <term><parameter>keepobsolete</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+           <para>
+             The default behaviour of OBS is to remove binaries when a package object gets removed,
+             even when the project is publish disabled (but the package may have been enabled).
+           </para>
+           <para>
+             This flag is changing this behaviour to keep binaries in published repositories
+             even when a package gets removed. As consequence this flag has only an effect on
+             publish disabled projects.
+           </para>
+        </listitem>
+       </varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-noearlypublish">
         <term><parameter>noearlypublish</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Only publish build results after entire repository has finished building. This is the default for
@@ -665,14 +653,7 @@ Support: pax debbuild</screen>
                 Without this, build results get published immediately after the build is finished.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
-        <term><parameter>archsync</parameter> (OBS 2.11 or later)</term>
-        <listitem>
-        <para>Publish all architectures at the same time. This means that the publisher is waiting
-              until the last architecture has finished building.</para>
-        </listitem>
-       </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-nofailedpackages">
         <term><parameter>nofailedpackages</parameter> (OBS 2.11 or later)</term>
         <listitem>
            <para>
@@ -687,21 +668,7 @@ Support: pax debbuild</screen>
            </para>
         </listitem>
        </varlistentry>
-       <varlistentry>
-        <term><parameter>keepobsolete</parameter> (OBS 2.11 or later)</term>
-        <listitem>
-           <para>
-             The default behaviour of OBS is to remove binaries when a package object gets removed,
-             even when the project is publish disabled (but the package may have been enabled).
-           </para>
-           <para>
-             This flag is changing this behaviour to keep binaries in published repositories
-             even when a package gets removed. As consequence this flag has only an effect on
-             publish disabled projects.
-           </para>
-        </listitem>
-       </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-singleexport">
         <term><parameter>singleexport</parameter> (OBS 2.11 or later)</term>
         <listitem>
            <para>
@@ -712,29 +679,33 @@ Support: pax debbuild</screen>
            </para>
         </listitem>
        </varlistentry>
-       <varlistentry>
-        <term><parameter>withsbom</parameter> (OBS 2.11 or later)</term>
-        <listitem>
-          <para>Enables publishing of SBOM files (SPDX or CycloneDX format) (<literal>.cdx.json</literal> or <literal>.spdx.json</literal> files). Please note that the building of SBOM files usually needs to get enabled via a BuildFlags switch as well.</para>
-        </listitem>
-       </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-withreports">
         <term><parameter>withreports</parameter> (OBS 2.11 or later)</term>
         <listitem>
           <para>Also publish internal content tracking files (<literal>.report</literal> files).</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-withsbom">
+        <term><parameter>withsbom</parameter> (OBS 2.11 or later)</term>
+        <listitem>
+          <para>Enables publishing of SBOM files (SPDX or CycloneDX format)x
+                (<literal>.cdx.json</literal> or <literal>.spdx.json</literal> files).
+                Please note that the building of SBOM files usually needs to get
+                enabled via a BuildFlags switch as well.</para>
+        </listitem>
+       </varlistentry>
+       <varlistentry xml:id="vl-prjconfig-publishflags-ympdist">
         <term><parameter>ympdist:NAME</parameter> (OBS 2.11 or later)</term>
         <listitem>
         <para>Defines the distversion to be used in group element of ymp files.
-              This is used by the installer to check if the repository is suitable for the installed distribution.</para>
+              This is used by the installer to check if the repository is suitable
+              for the installed distribution.</para>
         </listitem>
        </varlistentry>
       </variablelist>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-registryurl">
     <term><parameter>RegistryURL: <replaceable>URL</replaceable></parameter></term>
     <listitem>
      <para>
@@ -742,7 +713,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-release">
     <term><parameter>Release: <replaceable>CI_CNT</replaceable> <replaceable>B_CNT</replaceable></parameter> (RPM only)</term>
     <listitem>
      <para>
@@ -752,7 +723,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-repotype">
     <term><parameter>Repotype:  <replaceable>TYPE[:OPTIONS]</replaceable></parameter></term>
     <listitem>
      <para> Defines the repository format for published repositories. Read on
@@ -764,73 +735,73 @@ Support: pax debbuild</screen>
       in the same line, separated by spaces.
      </para>
       <variablelist>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-rpm-md">
         <term><parameter>rpm-md</parameter></term>
         <listitem>
         <para>rpm-md repository data is generated as invented by YUM originaly.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-suse">
         <term><parameter>suse</parameter></term>
         <listitem>
         <para>suse tag repository data is generated as used until SUSE Linux 10 generation.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-hdlist2">
         <term><parameter>hdlist2</parameter></term>
         <listitem>
         <para>Mandriva repository format</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-debian">
         <term><parameter>debian</parameter></term>
         <listitem>
         <para>Debian repository format</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-arch">
         <term><parameter>arch</parameter></term>
         <listitem>
         <para>Arch Linux repository format</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-vagrant">
         <term><parameter>vagrant</parameter></term>
         <listitem>
         <para>Vagrant image repository format</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-staticlinks">
         <term><parameter>staticlinks</parameter></term>
         <listitem>
         <para>Additional links to build results excluding version and build numbers are created.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-zyppservice">
         <term><parameter>zyppservice</parameter></term>
         <listitem>
         <para>Generate zypp service files, publishing all used repository pathes to the zypp client.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-helm">
         <term><parameter>helm</parameter></term>
         <listitem>
         <para>Helm repository metadata</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-checksumsfile">
         <term><parameter>checksumsfile</parameter></term>
         <listitem>
         <para>Checksums file with signatures of repository content</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-ymp">
         <term><parameter>ymp</parameter></term>
         <listitem>
         <para>YaST single install ymp file generation. Zypp services should be used instead.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-comps">
         <term><parameter>comps</parameter></term>
         <listitem>
         <para>Generate comps files, Fedora style patterns</para>
@@ -840,62 +811,62 @@ Support: pax debbuild</screen>
     <para>
       This is the list of repository options to modify the way the repository type is generated:</para>
       <variablelist>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-sha256">
         <term><parameter>sha256</parameter></term>
         <listitem>
         <para>rpm-md repository data is generated using SHA-256 checksums. This is the default.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-sha512">
         <term><parameter>sha512</parameter></term>
         <listitem>
         <para>rpm-md repository data is generated using SHA-512 checksums.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-legacy">
         <term><parameter>legacy</parameter></term>
         <listitem>
         <para>rpm-md repository data is generated using SHA-1 checksums. Considered to be unsafe and not anymore recommended.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-zchunk">
         <term><parameter>zchunk</parameter></term>
         <listitem>
         <para>rpm-md repository data gets extended with additional zchunk compressed files.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-filelists-ext">
         <term><parameter>filelists-ext</parameter></term>
         <listitem>
         <para>rpm-md repository provides additional filelist-ext provides</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-compression-zstd">
         <term><parameter>compression-zstd</parameter></term>
         <listitem>
         <para>rpm-md repository data is compressed using zstd instead of gz</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
-        <term><parameter>deltainfo</parameter></term> <!-- prestodelta is a synonim, but we don't confuse people here -->
+       <varlistentry xml:id="vl-prjconfig-repotype-deltainfo">
+        <term><parameter>deltainfo</parameter></term> <!-- prestodelta is a synonym, but we don't confuse people here -->
         <listitem>
         <para>rpm-md repository provides additional rpm delta informations for incremental rpm updates.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-splitdebug">
         <term><parameter>splitdebug:SUFFIX</parameter></term>
         <listitem>
         <para>A second repository is generated where all debuginfo and debugsource packages get moved to. The specified SUFFIX is added to the repository name. For example:</para>
         <screen>Repotype: rpm-md splitdebug:-debuginfo</screen>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-rsyncable">
         <term><parameter>rsyncable</parameter></term>
         <listitem>
         <para>rpm-md repository gets recompressed using rsyncable format.</para>
         </listitem>
        </varlistentry>
-       <varlistentry>
+       <varlistentry xml:id="vl-prjconfig-repotype-rawsig">
         <term><parameter>rawsig</parameter></term>
         <listitem>
         <para>checksumsfile repository provides binary signatures instead of ascii signatures</para>
@@ -904,7 +875,7 @@ Support: pax debbuild</screen>
       </variablelist>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-repourl">
     <term><parameter>RepoURL: <replaceable>[TYPE@]URL</replaceable></parameter></term>
     <listitem>
      <para>
@@ -914,7 +885,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-required">
     <term><parameter>Required: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -923,7 +894,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-runscripts">
     <term><parameter>Runscripts: <replaceable>PACKAGES</replaceable></parameter></term>
     <listitem>
      <para>
@@ -933,7 +904,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-substitute">
     <term><parameter>Substitute: <replaceable>OLD_DEPENDENCY</replaceable> <replaceable>NEW_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
@@ -943,7 +914,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-support">
     <term><parameter>Support: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -957,7 +928,7 @@ Support: pax debbuild</screen>
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-target-arch">
     <term><parameter>Target: <replaceable>TARGET_ARCH</replaceable></parameter></term>
     <listitem>
      <para>Defines the target architecture. This can be used to build for i686
@@ -965,7 +936,7 @@ Support: pax debbuild</screen>
       to be specified, but on debian systems the gnu triplet, for example arm-linux-gnueabihf.</para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-target-gnu-triplet">
     <term><parameter>Target: <replaceable>GNU_TRIPLET</replaceable></parameter></term>
     <listitem>
      <para>Defines the target architecture. This can be used to build for i686
@@ -973,7 +944,7 @@ Support: pax debbuild</screen>
       to be specified, but on debian systems the gnu triplet, for example arm-linux-gnueabihf.</para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-type">
     <term><parameter>Type: <replaceable>TYPE</replaceable></parameter></term>
     <listitem>
      <para>
@@ -987,7 +958,7 @@ Support: pax debbuild</screen>
       type from the binary type. </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vl-prjconfig-vminstall">
     <term><parameter>VMInstall: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
