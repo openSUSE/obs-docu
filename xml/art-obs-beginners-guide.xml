@@ -239,7 +239,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
      </itemizedlist>
     </listitem>
    </varlistentry>
-   <varlistentry>
+   <varlistentry xml:id="vle-obsbg-hardware-reqs">
     <term>Hardware Requirements</term>
     <listitem>
      <para>
