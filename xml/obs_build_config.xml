@@ -1158,10 +1158,8 @@ Support: pax debbuild</screen>
     <formalpara>
      <title>%_project</title>
      <para>
-       This macro is only set once at the beginning to the project name 
-       used for building.
-       This macro is available in the build configuration context and
-       during build time.
+       This macro is always set to the project name the the build is happening in.
+       This macro is available in the <xref linkend="cha-obs-prjconfig"/> and for all <xref linkend="cha-obs-package-formats"/> during build time.
      </para>
     </formalpara>
    </listitem>
