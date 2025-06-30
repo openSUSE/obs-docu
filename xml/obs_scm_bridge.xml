@@ -70,11 +70,14 @@
     <sect2 xml:id="sec-obs-obs-scm-bridge-setup-project">
       <title>Setup an entire project using the SCM bridge</title>
 
-      <para>An entire project can be setup by defining the scmsync tag in project meta data. Every top level
-            subdirectory of the scm repository is considered as a package.</para>
+      <para>An entire project can be setup by defining the scmsync tag in project meta data. 
+            By default every top level subdirectory of the scm repository is considered as a package.</para>
 
       <para>Large projects may use git submodules for each package. This avoids the need to
-            clone the entire project to modify a single package.</para>
+      clone the entire project to modify a single package. Also it allows to run a package centric
+      development setup where you use one git repository per package, but have all branches of that
+      package in a single git repository. A _manifest file can be used to structure the project package directories instead
+ .</para>
 
       <para>The build configuration part can get stored as '_config' file in the top level directory.</para>
 
@@ -85,11 +88,36 @@
          <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?onlybuild=glibc&amp;onlybuild=kernel&lt;/scmsync&gt;</screen>
     </sect2>
 
+    <sect2 xml:id="sec-obs-obs-scm-bridge-setup-project-manifest">
+      <title>The _manifest file</title>
+
+      <para>A project git repository may provide a _manifest file. In the long run it is supposed to
+            provide all informations how to use the sources and possible external binaries for building.
+      OBS would read repository information for here and pbuild will process it directly.</para>
+
+      <para>Currently only the listing of sources is implemented. This may be done by single packages or
+      entire package sets inside of a directory. 
+      The file format is YAML with the following keywords:
+       </para>
+         <itemizedlist>
+           <listitem>
+             <para>packages: Lists single package directories. Each of the item is considered to be a package. Using a package from a subdirectory is not yet implemented.</para>
+           </listitem>
+           <listitem>
+             <para>subdirectories: Lists directories where each subdirecotory is considered to be a package. In case a _manifest file exists in the subdirectory it is interpreted as well. Current implementation limitation is that a submodule here is not yet supported.</para>
+           </listitem>
+         </itemizedlist>
+       <para>
+         In case a package directory name exists multiple times, the first item gets used. Any later 
+	 existing package source is not used for building.
+       </para>
+    </sect2>
+
     <sect2 xml:id="sec-obs-obs-scm-bridge-implementation-and-limitations">
       <title>Implementation and Limitations</title>
 
       <para>The sources are currently cloned for the OBS source server to allow OBS to process them. This
-            is to be considered an internal implementation detail and may change in future.</para>
+      is to be considered an internal implementation detail and may change in future.  </para>
        <itemizedlist>
         <listitem>
           <para>Git submodules: are cloned by default</para>
@@ -107,9 +135,9 @@
           <para>Architecture specific remote assets can be selected by adding an arch=ARCH CGI parameter to the URL.</para>
         </listitem>
        </itemizedlist>
-       <para>
-         As an example, for the subdirectory case the URL would look like this:
-       </para>
+      <para>
+        As an example, for the subdirectory case the URL would look like this:
+      </para>
               <screen>&lt;scmsync&gt;https://gitlab.com/some/repository?subdir=MY_SUBDIRECTORY&lt;/scmsync&gt;</screen>
 
       <sect3 xml:id="sec-obs-obs-scm-bridge-setup-specials-revision">
