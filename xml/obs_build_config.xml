@@ -479,6 +479,18 @@ Support: pax debbuild</screen>
       packages contain a file. The File needs to have the full path.</para>
     </listitem>
    </varlistentry>
+   <varlistentry xml:id="vl-prjconfig-fromscratch">
+    <term><parameter>FromScratch:</parameter></term>
+    <listitem>
+      <para> &obsa; merges all build config parts according to the used 
+      repository path elements. The FromScratch parameter is droping all already
+      read parts and restarts the merging. This must be the first line of a build
+      config snippet. This is useful for example to test changes of a base project
+      where you want to use binaries from the original base project. By providing the
+      modified build config with FromScratch: as first line it drops all former
+      provided config settings.</para>
+    </listitem>
+   </varlistentry>
    <varlistentry xml:id="vl-prjconfig-expandflags-hostarch">
     <term><parameter>HostArch: <replaceable>HOST_ARCH</replaceable></parameter></term>
     <listitem>
