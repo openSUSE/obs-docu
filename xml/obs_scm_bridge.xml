@@ -92,7 +92,7 @@
       <title>The _manifest file</title>
 
       <para>A project git repository may provide a _manifest file. In the long run it is supposed to
-            provide all informations how to use the sources and possible external binaries for building.
+            provide all the information regarding how to use the sources and possible external binaries for building.
       OBS would read repository information for here and pbuild will process it directly.</para>
 
       <para>Currently only the listing of sources is implemented. This may be done by single packages or
