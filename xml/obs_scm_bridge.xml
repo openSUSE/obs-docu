@@ -108,7 +108,7 @@
            </listitem>
          </itemizedlist>
        <para>
-         In case a package directory name exists multiple times, the first item gets used. Any later 
+         In case a package directory name exists multiple times, the first item is used. Any later 
 	 existing package source is not used for building.
        </para>
     </sect2>
