@@ -365,9 +365,9 @@ Support: pax debbuild</screen>
      <para>
       Define a macro to be used when parsing the spec files of packages.
       This is similar to using a `Macros:` section with the difference
-      that the macro will not be written to the .rpmmacros file. It should
-      therefore be used for macros that come from packages of the
-      distributions.
+      that the macro will not be written to the <filename>.rpmmacros</filename>
+      file. It should therefore be used for macros that come from packages
+      of the distributions.
 
       Note that the lines of the project config are macro expanded while
       parsing, so you have to use `%%` for a literal percent sign in
@@ -1019,7 +1019,6 @@ Support: pax debbuild</screen>
     It is also possible to set the type, eg:
   </para>
   <screen><command>Substitute: cargo cargo --enable-ccache=sccache</command></screen>
-
  </sect1>
 
  <sect1 xml:id="sec-prjconfig-macros">
@@ -1096,6 +1095,7 @@ Support: pax debbuild</screen>
     the build configuration.
    </para>
   </sect2>
+
   <sect2 xml:id="sec-prjconfig-macros-macrosection">
    <title>Macros Used in Spec Files Only</title>
    <para>
@@ -1104,8 +1104,8 @@ Support: pax debbuild</screen>
     definitions between "Macros:"/":Macros" lines, or place them at the end of the
     prjconf file. All lines after a line containing the directive "Macros:" up
     to the end of the config, or up to a :Macros line, are used when parsing
-    spec files and also made available to the build by copying them to the
-    .rpmmacros file in the build root.
+    spec files and also made available to the build by exporting them to the
+    <filename>.rpmmacros</filename> file in the build root.
    </para>
    <para>
     The macro definition in the project configuration is located at the end
@@ -1122,10 +1122,132 @@ Support: pax debbuild</screen>
     considered a comment.
    </para>
    <para>
-    The macro definition itself are defined without a <literal>%define</literal>
-    keyword. Start with <literal>%macroname</literal>, for example:
+    As already mentioned above, the <literal>%define</literal> keyword is not
+    used when defining macros in the build configuration (project config).
+    Start with <literal>%macroname</literal>, like so:
    </para>
    <screen>%_hardened_build 0</screen>
+  </sect2>
+
+  <sect2 xml:id="sec-prjconfig-obs-specific-rpm-macros">
+   <title>OBS-Specific RPM Macros</title>
+   <para>
+    In addition to the ability for users to define RPM macros (covered in <xref
+    linkend="sec-prjconfig-macros"/>, above), OBS implements some OBS-specific
+    macros which are available for use at build time without having to explicitly
+    define them. These "OBS-specific", or "OBS built-in", macros are listed and
+    explained below. Some of these are useful only in the build configuration,
+    while others can be used in both the build configuration and RPM spec files.
+   </para>
+   <para>
+    Of these OBS-specific macros, the ones that start with an underscore will
+    most likely not be found in other build environments, so they should be
+    used with care in RPM spec files that might need to be used outside of OBS.
+   </para>
+   <para>
+    Even though these are RPM macros, there are ways use them even in
+    non-RPM builds - for example, by running <code>rpm --eval</code> and capturing
+    the output.
+   </para>
+
+  <itemizedlist>
+   <listitem>
+    <formalpara>
+     <title>%_download_url</title>
+     <para>
+       This macro expands to the base download URL string defined
+       by the admin of the OBS instance. This macro can be used in the
+       build configuration and is also exported into the <filename>.rpmmacros</filename>
+       file in the build root.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%_is_in_project (OBS 2.11 and later)</title>
+     <para>
+       This macro expands to "1" in the build configuration snippet
+       of the project in which the build is taking place
+       and also in the build configuration snippets of all
+       projects in that project's namespace (to the extent that these
+       projects are actually being built against). For example, when
+       building in <emphasis>home:user:subproject</emphasis> against
+       a path of <emphasis>home:user</emphasis>, it
+       expands to "1" for both of them. In build configuration
+       snippets coming from other namespaces, it expands to "0".
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%_is_this_project (OBS 2.11 and later)</title>
+     <para>
+       This macro expands to "1" only in the build configuration
+       snippet the project in which the build is taking place.
+       It is equivalent to the conditional
+       <code>%_project == "PROJECT"</code>, without the need to
+       explicitly mention the project name.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%_project</title>
+     <para>
+       This macro is always set to the name of the project in which
+       the build is taking place. It can be used in the build
+       configuration as well as at build time, as it is exported into
+       the <filename>.rpmmacros</filename> file in the build root.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%_repository</title>
+     <para>
+       This macro expands to the repository (i.e., the string configured
+       in the project metadata) being built for. It can be used to guard
+       certain lines of the build configuration or build recipe so they
+       are only active when building for a certain repository.
+       This macro can also be used at build time, as it is exported into
+       the <filename>.rpmmacros</filename> file in the build root.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%distribution</title>
+     <para>
+       This macro expands to a string "PROJECT / REPOSITORY", where PROJECT
+       is the name of the project in which the build is happening and
+       repository is the repository (i.e., the string defined in the project
+       metadata) being built for. If the repository name is "standard", the
+       macro expands to "PROJECT". (Consider, for example, a build happening
+       in a project <emphasis>home:hans</emphasis> for the repository with the
+       name <emphasis>15.6</emphasis>. In this case, the macro will expand to
+       <code>home:hans / 15.6</code>. Now consider another example: a build
+       happening in <emphasis>openSUSE:Factory</emphasis> for the repository
+       <emphasis>standard</emphasis>. In this case, the macro will expand to
+       <code>openSUSE:Factory</code>.) This macro is available in the build
+       configuration and at build time, as it is exported into the
+       <filename>.rpmmacros</filename> file in the build root.
+     </para>
+    </formalpara>
+   </listitem>
+   <listitem>
+    <formalpara>
+     <title>%vendor</title>
+     <para>
+       This macro expands to the string "obs://OBS_NAME/PROJECT", where
+       OBS_NAME is the name of the OBS instance configured by the admin,
+       and PROJECT is the name of the project in which the build is
+       happening. This macro is available in the build configuration and
+       at build time, as it is exported into the <filename>.rpmmacros</filename>
+       file in the build root.
+     </para>
+    </formalpara>
+   </listitem>
+  </itemizedlist>
   </sect2>
  </sect1>
 </chapter>
