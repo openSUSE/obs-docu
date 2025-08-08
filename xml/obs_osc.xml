@@ -33,7 +33,7 @@
     <command>zypper</command> command (replace
     <replaceable>DISTRI</replaceable> with your distribution): </para>
   <screen>&prompt.root;<command>zypper</command> addrepo &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRI</replaceable>/openSUSE:Tools.repo
-&prompt.root;<command>zypper</command> install osc</screen>
+&prompt.root;<command>zypper</command> install --recommends osc</screen>
   <remark>toms 2017-08-16: Maybe add more information about installing
   osc on other distributions?</remark>
   <para>For other systems, use your preferred package manager.</para>
