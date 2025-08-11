@@ -219,7 +219,7 @@ https://www.suse.com/communities/blog/suse-studio-integration/
         <replaceable>DISTRIBUTION</replaceable> with your distribution):
        </para>
        <screen>&prompt.root;<command>zypper</command> ar &obsrepourl;/openSUSE:/Tools/<replaceable>DISTRIBUTION</replaceable>/openSUSE:Tools.repo
-&prompt.root;<command>zypper</command> install osc</screen>
+&prompt.root;<command>zypper</command> install --recommends osc</screen>
       </listitem>
       <listitem>
        <para>
