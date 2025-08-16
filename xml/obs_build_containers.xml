@@ -100,7 +100,7 @@
     <term>Mkosi</term>
     <listitem>
      <para>
-      <link xlink:href="https://github.com/systemd/mkosi/">Mkosi</link> allows
+      <link xlink:href="https://mkosi.systemd.io/">Mkosi</link> allows
       building images for rpm, arch, deb, and gentoo based distributions, see
       <xref linkend="sec-pkgfmt-mkosi"/> for further details.
      </para>
