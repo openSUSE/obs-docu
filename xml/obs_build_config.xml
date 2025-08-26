@@ -1175,6 +1175,8 @@ Support: pax debbuild</screen>
        a path of <emphasis>home:user</emphasis>, it
        expands to "1" for both of them. In build configuration
        snippets coming from other namespaces, it expands to "0".
+       This macro is useful for guarding lines of the build configuration so
+       they are not applied to builds outside of the project's namespace.
      </para>
     </formalpara>
    </listitem>
@@ -1184,9 +1186,11 @@ Support: pax debbuild</screen>
      <para>
        This macro expands to "1" only in the build configuration
        snippet the project in which the build is taking place.
-       It is equivalent to the conditional
-       <code>%_project == "PROJECT"</code>, without the need to
-       explicitly mention the project name.
+       Use this macro instead of <code>%_project == "PROJECT"</code>
+       (where <code>"PROJECT"</code> is a literal string containing
+       the name of the project) if you would like to be able to copy-
+       paste your project config into other projects without having to
+       manually adjust the <code>%_project</code> conditionals.
      </para>
     </formalpara>
    </listitem>
