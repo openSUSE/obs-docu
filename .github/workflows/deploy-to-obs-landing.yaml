@@ -21,11 +21,11 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
       - name: Checkout obs-landing repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: openSUSE/obs-landing
           path: obs-landing
