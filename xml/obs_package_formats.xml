@@ -423,67 +423,182 @@ Support: kmod-compat kernel-default perl-YAML-LibYAML
   <para>
    <link xlink:href="https://github.com/systemd/mkosi/">Mkosi</link> allows
    building images for rpm, arch, deb and gentoo based distributions, on any
-   architecture that supports UEFI. Images built with mkosi will follow the
+   architecture. Images built with mkosi by default will follow the
    <link xlink:href="https://systemd.io/DISCOVERABLE_PARTITIONS/">Discoverable Partitions Specification</link>
    and will be bootable on baremetal (UEFI), virtual machines (UEFI),
    containers via
    <link xlink:href="https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html">systemd-nspawn,</link>
    or as
    <link xlink:href="https://systemd.io/PORTABLE_SERVICES/">Portable Services</link>
-   in systemd.</para>
-  <para> For building an image in mkosi you need the
-   <filename>mkosi.my_image</filename> recipe file. This file contains the
+   in systemd. GRUB2 is also supported. It can also be used to build
+   <link xlink:href="https://uapi-group.org/specifications/specs/unified_kernel_image/">Unified Kernel Images (UKIs)</link>
+   (and addons) and <link xlink:href="https://uapi-group.org/specifications/specs/extension_image/">Sysexts</link>.</para>
+  <para> In order to build an image in mkosi you need at least a
+   <filename>mkosi.conf</filename> recipe file. This file contains the
    image configuration in INI format. All available options can be found in the
    <link xlink:href="https://github.com/systemd/mkosi/blob/main/mkosi.md">Mkosi documentation</link>.
+  </para>
+  <para>
+   With a recent enough version of mkosi (at least v26) it is possible to sign
+   images on OBS. Simply add <literal>Include=mkosi-obs</literal> and
+   <literal># needssslcertforbuild</literal> to the main <literal>mkosi.conf</literal>
+   configuration file, and UKIs, bootloaders in the ESP, and dm-verity images
+   will be signed with the project's certificate. If the sources have a
+   <literal>mkosi.uefi.db/</literal> and/or <literal>mkosi.uefi.KEK/</literal>
+   subdirectory, any x509 PEM certificate contained therein will be set up for
+   self-enrolling on first boot in UEFI images for the respective key database.
   </para>
 
   <note>
    <para>Ensure to set <literal>Type: mkosi</literal> in the repository's
    <literal>prjconf</literal> where the image builds are enabled on &obsa;.
+   <literal>Repotype: checksumsfile:rawsig staticlinks</literal> can also
+   be set to be compatible with <literal>systemd-sysupdate</literal>.
    </para>
   </note>
 
-  <example>
-   <title>mkosi minimal build recipe (<filename>mkosi.suse</filename>) for a
-   Tumbleweed image</title>
-   <screen>
-[Distribution]
-Distribution=opensuse
-Release=tumbleweed
+  <sect2 xml:id="sec-pkgfmt-mkosi-uki">
+    <title>UKI from inline config</title>
+    <example>
+    <title>mkosi minimal build recipe (<filename>mkosi.conf</filename>) for a
+    Debian UKI</title>
+    <screen>
+  # needssslcertforbuild
 
-[Output]
-Format=gpt_ext4
+  [Distribution]
+  Distribution=debian
 
-[Content]
-Password=
-Autologin=yes
-Packages=
- patterns-base-minimal_base
-   </screen>
-  </example>
-  <example>
-   <title>mkosi Project config (<filename>prjconf</filename>)</title>
-   <screen>
-%if "%_repository" == "suse"
-Type: mkosi
-Substitute: integritysetup
-Substitute: veritysetup
-Prefer: openSUSE-release-appliance-custom python310-cryptography
-%endif
-   </screen>
-  </example>
-  <example>
-   <title>mkosi Project meta example</title>
-   <screen>
-&lt;project name="Your:Project:Name"&gt;
-  &lt;title&gt;Title&lt;/title&gt;
-  &lt;description&gt;Description&lt;/description&gt;
-  &lt;repository name="suse"&gt;
-    &lt;path project="openSUSE:Factory" repository="snapshot"/&gt;
-    &lt;arch&gt;x86_64&lt;/arch&gt;
-  &lt;/repository&gt;
-&lt;/project&gt;
-   </screen>
-  </example>
+  [Include]
+  Include=mkosi-initrd
+          mkosi-obs
+
+  [Output]
+  Format=uki
+  ManifestFormat=json
+  ImageId=%d-%r
+  Output=%d-%r_%v_%a
+  SplitArtifacts=pcrs
+
+  [Content]
+  Packages=
+          systemd
+          udev
+          p11-kit
+          lvm2
+          util-linux
+          kmod
+          dmsetup
+          dosfstools
+          btrfs-progs
+          e2fsprogs
+          systemd-cryptsetup
+          systemd-repart
+          libcryptsetup12
+          libfido2-1
+          libtss2-esys-3.0.2-0t64
+          libtss2-mu-4.0.1-0t64
+          libtss2-rc0
+          libtss2-tcti-device0
+          libseccomp2
+          linux-image-generic
+          plymouth-themes
+          kbd
+          desktop-base
+          amd64-microcode
+          intel-microcode
+          systemd-boot-efi
+
+  RemoveFiles=
+          /usr/lib/systemd/boot
+          /usr/lib/firmware
+          /boot
+          /efi
+          /vmlinuz
+          /vmlinuz.old
+          /initrd.img
+          /initrd.img.old
+          /etc/xdg/
+          /usr/share/bug/
+          /usr/share/doc/
+          /usr/share/doc-base/
+          /usr/share/man/
+          /usr/share/common-licenses/
+          /usr/share/bash-completion/
+          /usr/share/reportbug/
+          /usr/share/zsh/
+          /usr/share/initramfs-tools/
+          /usr/share/lintian/
+          /usr/share/desktop-base/
+          /usr/share/wallpapers/
+          /usr/share/plasma/
+          /usr/share/gnome-background-properties/
+          /usr/share/pixmaps/
+          /usr/share/icons/
+          /usr/share/images/
+          /var/cache
+          /var/log
+          /var/lib/systemd/deb-systemd-helper-enabled
+
+  KernelModulesExclude=.*
+  KernelModulesInclude=defaultstack
+                      /drivers/gpu/drm
+
+  KernelCommandLine=plymouth.use-simpledrm
+    </screen>
+    </example>
+    <example>
+    <title>mkosi Project config (<filename>prjconf</filename>)</title>
+    <screen>
+  %if "%_repository" == "Debian_Testing_images"
+  Type: mkosi
+  Repotype: checksumsfile:rawsig staticlinks
+  Patterntype: none
+  %endif
+    </screen>
+    </example>
+    <example>
+    <title>mkosi Project meta example</title>
+    <screen>
+  &lt;project name="Your:Project:Name"&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;description&gt;Description&lt;/description&gt;
+    &lt;repository name="suse"&gt;
+      &lt;path project="Debian:Testing" repository="standard"/&gt;
+      &lt;path project="Debian:Testing" repository="non-free-firmware"/&gt;
+      &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;/repository&gt;
+  &lt;/project&gt;
+    </screen>
+    </example>
+  </sect2>
+
+  <sect2 xml:id="sec-pkgfmt-mkosi-git">
+    <title>Full Discoverable Disk Image from git</title>
+    <para>
+    In order to build a more complex project, with multiple configuration files,
+    it is possible to use a git repository via
+    <link xlink:href="https://github.com/openSUSE/obs-service-tar_scm#obs_scm">obs-service-tar_scm.</link>
+    OBS needs a single config file to be extracted, to resolve, download and
+    and preseed dependencies, so make sure one of the config files in the repository
+    lists all required dependencies for the build. It can be a hidden file that mkosi
+    itself doesn't use, in case that is desired. See the
+    <link xlink:href="https://github.com/systemd/particleos">ParticleOS</link>
+    repository for a real world example.
+    </para>
+    <example>
+    <title>mkosi _service file to build image from git</title>
+    <screen>
+&lt;services&gt;
+  &lt;service name="obs_scm"&gt;
+    &lt;param name="scm"&gt;git&lt;/param&gt;
+    &lt;param name="url"&gt;https://github.com/systemd/particleos.git&lt;/param&gt;
+    &lt;param name="revision"&gt;obs&lt;/param&gt;
+    &lt;param name="extract"&gt;.obs/debian/x86-64/gnome/mkosi.conf&lt;/param&gt;
+    &lt;param name="without-version"&gt;1&lt;param&gt;
+  &lt;/service&gt;
+&lt;/services&gt;
+    </screen>
+    </example>
+  </sect2>
  </sect1>
 </chapter>
