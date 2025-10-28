@@ -25,7 +25,7 @@ jobs:
         pushd daps2docker
         ./daps2docker.sh ../DC-obs-all html || exit 1
     - name: Upload artifacts for inspection
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: obs-docu-html
         path: /tmp/daps2docker-*/obs-all/html/obs-all/
