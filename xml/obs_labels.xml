@@ -1,0 +1,153 @@
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha-obs-labels"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <title>Labels</title>
+  <info/>
+
+  <para>
+    The goal of this feature is to help you to manage your projects, packages and requests. You can assign labels and then list, search and filter by those labels.
+  </para>
+
+  <sect1>
+    <title>Project Labels</title>
+    <para>
+      The project labels are assigned from the project detail page by the project maintainer.
+    </para>
+    <figure>
+      <title>The project detail page and the assignment controls</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="label_assignment_in_the_project_detail.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>
+      Once set, the labels will appear in both the project list and in the project detail page.
+    </para>
+    <figure>
+      <title>The project list page and the labels</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="project_list_and_its_labels.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>
+      You can search for project labels in the Public Projects list, for example.
+    </para>
+    <figure>
+      <title>Search projects having specific labels</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="project_list_and_the_label_search.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+  <sect1>
+    <title>Package Labels</title>
+    <para>
+      Maintainers can assign labels to packages from the package detail page.
+    </para>
+    <figure>
+      <title>The package detail and the label assignment controls</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="label_assignment_controls_in_package_detail.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>
+      Then, labels are shown in the list of packages on the project page.
+    </para>
+    <figure>
+      <title>The list of packages and its labels</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="package_list_and_its_labels.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>
+      In the lists you can search for packages having specific labels.
+    </para>
+    <figure>
+      <title>Search packages having specific labels</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="package_list_and_the_label_search.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+  <sect1>
+    <title>Request Labels</title>
+    <para>
+      Maintainers can also assign labels to requests and then, labels will appear in the request listing and in the request detail page.
+      The color and the text are derived from the label templates.
+    </para>
+    <figure>
+      <title>The list of requests and it's labels</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="requests_list_and_its_labels.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <figure>
+      <title>The request and it's labels</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="request_and_its_labels.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+  <sect1>
+    <title>Label Templates</title>
+    <para>
+      The list of labels you can assign for a package or a request are the label templates. Those are defined by project or package maintainers.
+      The label templates can be defined via the label template tab, inside a project page.
+      There, the maintainer can assign the color and the text for the label template.
+    </para>
+    <figure>
+      <title>The label templates tab</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="project_label_templates.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <figure>
+      <title>The label templates edit page</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="label_templates_edit_page.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>
+      There are also instance wide label templates for assigning to projects. 
+      Those label templates are defined by the OBS admins from the configuration label templates tab.
+      There, the admin can assign the color and the text for the label template.
+      The label templates for projects are defined globally per OBS instance.
+    </para>
+    <figure>
+      <title>The label templates tab in the configuration page</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="global_label_templates_in_the_configuration_page.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+</chapter>

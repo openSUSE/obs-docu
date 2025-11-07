@@ -72,6 +72,7 @@
   <xi:include href="obs_staging_workflow.xml"/>
   <xi:include href="obs_notifications.xml"/>
   <xi:include href="obs_moderation.xml"/>
+  <xi:include href="obs_labels.xml"/>
  </part>
 
  <part condition="tbd">
