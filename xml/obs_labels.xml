@@ -110,6 +110,17 @@
         </imageobject>
       </mediaobject>
     </figure>
+    <para>
+      You can also filter requests by label in Your Requests page.
+    </para>
+    <figure>
+      <title>Filter request by label</title>
+      <mediaobject>
+        <imageobject>
+        <imagedata fileref="filter_requests_by_label.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
   </sect1>
 
   <sect1>
