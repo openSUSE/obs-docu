@@ -16,7 +16,7 @@
     The main advantage of using KMPs is that they are built to work against multiple kernel <quote>flavors</quote> (like <literal>default</literal>, <literal>desktop</literal>, or <literal>xen</literal>) and are managed correctly by the package manager during kernel updates, ensuring the module remains available for the newly installed kernel.
   </para>
 
-  <section xml:id="sec.obs-best-practices.kmp-spec">
+  <section xml:id="sec-obs-best-practices-kmp-spec">
     <title>The KMP Spec File</title>
     <para>
       The core of a KMP is the RPM <literal>.spec</literal> file. The process is heavily simplified by using the <command>%kernel_module_package</command> macro, which is provided by the <package>kmp-macros</package> package. This macro automatically creates the necessary sub-packages for each kernel flavor your project is configured to build against.
@@ -71,7 +71,7 @@
     </para>
   </section>
 
-  <section xml:id="sec.obs-best-practices.kmp-further-reading">
+  <section xml:id="sec-obs-best-practices-kmp-further-reading">
     <title>Further Reading</title>
     <itemizedlist>
       <listitem>
