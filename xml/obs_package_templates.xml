@@ -1,0 +1,210 @@
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha.obs.package_templates"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Package Templates</title>
+
+  <para>To make packaging easier, common elements within package definitions can
+  be put into Package Templates. Whenever a user creates a new package, the
+  option to use one of those templates will be presented to them.</para>
+
+  <sect1 xml:id="sec.obs.package_templates.setup">
+    <title>Initial Setup</title>
+
+    <para>Package Templates are managed within Package Template Projects.
+    Package Template Projects are created by setting
+    <emphasis role="bold">OBS:PackageTemplates</emphasis> Attribute by the OBS
+    Server Administrator in any project. Each of those projects is then
+    displayed as a category in a template dropdown when creating a new package
+    in a local OBS server or in an interconnected OBS server, identified by
+    project title, and, if that's not available, project name.</para>
+
+    <figure>
+      <title><emphasis role="bold">OBS:PackageTemplates</emphasis> Attribute</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obs_package_templates_attribute.png" width="480"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+
+  <sect1 xml:id="sec.obs.package_templates.creating_templates">
+    <title>Creating and Editing Templates</title>
+
+    <sect2 xml:id="sec.obs.package_templates.creating_templates.introduction">
+      <title>Introduction</title>
+
+      <para>Package Templates provide an option for creating new packages with a
+      custom set of files already there. To accomplish that, we need packages
+      that specify the template contents from which those files are generated.</para>
+
+      <para>Files in Package Template package will be copied over to the target
+      package directly, with the exception of files with
+      <emphasis role="bold">.liquid</emphasis> file extension. Those files will
+      be processed by
+      <link xlink:href="https://shopify.github.io/liquid/basics/introduction/">liquid template language</link>
+      processor, including title and contents of the file.</para>
+
+      <para>As an example, let's assume the following list of files in a Package
+      Template:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>{{ package.name }}.spec.liquid</emphasis></para>
+          <screen>
+Name:       {{ package.name }}
+Version:    1
+Release:    1
+Summary:    {{ package.title }}
+License:    CC0-1.0
+
+%description
+{{ package.description }}
+          </screen>
+        </listitem>
+        <listitem>
+          <para><emphasis>{{ package.name }}.changes</emphasis></para>
+          <screen>
+-------------------------------------------------------------------
+{{ "now" | date: "%a %_b %e %_k:%M:%S UTC %Y" }} - {{ user.name }} &lt;{{ user.email }}&gt;
+
+- Initial package
+          </screen>
+        </listitem>
+      </itemizedlist>
+
+      <para>If the user creates a package based on that template, they will get
+      the following list of files:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>package_1.spec</emphasis></para>
+          <screen>
+Name:       package_1
+Version:    1
+Release:    1
+Summary:    New Package
+License:    CC0-1.0
+
+%description
+A longer text.
+          </screen>
+        </listitem>
+        <listitem>
+          <para><emphasis>{{ package.name }}.changes</emphasis></para>
+          <screen>
+-------------------------------------------------------------------
+{{ "now" | date: "%a %_b %e %_k:%M:%S UTC %Y" }} - {{ user.name }} &lt;{{ user.email }}&gt;
+
+- Initial package
+          </screen>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 xml:id="sec.obs.package_templates.creating_templates.liquid_objects">
+      <title>Liquid Objects</title>
+
+      <para>When creating packages from a template, it's necessary to template
+      the values that the user provides in the package creation form,
+      information about user creating the package from template, and sometimes
+      the project in which the package is being created. All of those things are
+      provided by the custom Liquid Objects available in this feature.</para>
+
+      <table>
+        <title>Liquid Objects Table</title>
+
+        <tgroup align="left" cols="2">
+          <thead>
+            <row>
+              <entry>Variable</entry>
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>{{ user.name }}</entry>
+              <entry>User's full name. For example <emphasis role="bold">Jane Doe</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ user.login }}</entry>
+              <entry>User's username or login. For example <emphasis role="bold">janedoe</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ user.email }}</entry>
+              <entry>User's email. For example <emphasis role="bold">janedoe@example.com</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ package.name }}</entry>
+              <entry>Newly created package's name. For example <emphasis role="bold">package_1</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ package.title }}</entry>
+              <entry>Newly created package's title. For example <emphasis role="bold">New Package</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ package.url }}</entry>
+              <entry>Newly created package's url value. For example <emphasis role="bold">https://example.com</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ package.description }}</entry>
+              <entry>Newly created package's url value. This can be a very long text.</entry>
+            </row>
+
+            <row>
+              <entry>{{ project.name }}</entry>
+              <entry>The name of the project in which the package is being
+              created. For example <emphasis role="bold">home:janedoe</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ project.title }}</entry>
+              <entry>The title of the project in which the package is being
+              created. For example <emphasis role="bold">My Great Groject</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ project.url }}</entry>
+              <entry>The url value of the project in which the package is being
+              created. For example <emphasis role="bold">https://example.com</emphasis>.</entry>
+            </row>
+
+            <row>
+              <entry>{{ project.description }}</entry>
+              <entry>The description of the project in which the package is being
+              created. This can be a very long text.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="sec.obs.package_templates.using_templates">
+    <title>Using Templates</title>
+
+    <para>All packages in Package Template projects are displayed in a dropdown available when creating a new package.</para>
+
+    <figure>
+      <title>Package Creation Dialog</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="package_creation_dialog_templates.png" width="480"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </sect1>
+</chapter>
