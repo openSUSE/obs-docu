@@ -491,6 +491,8 @@ Support: kmod-compat kernel-default perl-YAML-LibYAML
           dosfstools
           btrfs-progs
           e2fsprogs
+          less
+          procps
           systemd-cryptsetup
           systemd-repart
           libcryptsetup12
