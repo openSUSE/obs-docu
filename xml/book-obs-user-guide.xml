@@ -73,6 +73,7 @@
   <xi:include href="obs_notifications.xml"/>
   <xi:include href="obs_moderation.xml"/>
   <xi:include href="obs_labels.xml"/>
+  <xi:include href="obs_version_tracking.xml"/>
  </part>
 
  <part condition="tbd">
