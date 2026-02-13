@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<chapter version="5.1" xml:id="cha-obs-versiontracking"
+ xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+ <title>Package Version Tracking</title>
+ <sect1 xml:id="sec-obs-version-tracking">
+   <title>Working with Version Tracking</title>
+   <para>
+     This feature provides a way to compare the version of the software
+     packaged in OBS (downstream) with the version of the software developed by
+     the original authors (upstream). It is meant to help maintainers stay up
+     to date.
+   </para>
+
+   <para>
+     In order to provide current and accurate data, OBS utilizes the project called
+     <link xlink:href="https://github.com/fedora-infra/anitya/">Anitya</link> and
+     its primary instance called <link xlink:href="https://release-monitoring.org">
+     Release Monitoring</link>. Those names may be used interchangably throughout
+     this documentation.
+   </para>
+
+   <para>
+     For guidance on how to use Release Monitoring, please consult the
+     <link xlink:href="https://release-monitoring.org/static/docs/user-guide.html">
+     Release Monitoring User Guide</link>.
+   </para>
+
+   <sect2 xml:id="sec-obs-version-tracking-setup">
+    <title>Setting up Version Tracking</title>
+    <para>
+      You need to be the project maintainer for every project in which you want
+      to set this feature up. Open up the project and click the edit button.
+      Modify the <emphasis role="bold">Anitya Distribution Name</emphasis> value
+      to one of the distributions listed in the
+      <link xlink:href="https://release-monitoring.org/distros/">
+      Release Monitoring Distribution List</link>. Follow <xref linkend="sec-obs-version-tracking-project"/>
+      if you are unsure which distribution to choose. If the appropriate
+      Distribution doesn't exist,
+      <link xlink:href="https://release-monitoring.org/static/docs/user-guide.html#creating-distribution">
+      create it</link>.
+    </para>
+
+    <figure>
+      <title>Editing the <emphasis role="bold">Anitya Distribution Name</emphasis> Property</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obs_version_tracking_distribution.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      After refreshing the page, the package list in the project will include
+      an additional <emphasis role="bold">Version</emphasis> column. This might
+      not be filled out right away, it takes up to half an hour for the job
+      processing to finish. The job goes through every package to parse the
+      current local version and fetches the version from Release Monitoring.
+    </para>
+
+    <figure>
+      <title>List of packages with upstream and local versions next to them</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obs_version_tracking_list.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      Whenever OBS detects a change of version upstream, it will send a
+      notification to the package maintainers letting them know about it.
+    </para>
+  </sect2>
+
+  <sect2 xml:id="sec-obs-version-tracking-project">
+    <title>Which Distribution Is Right for Me</title>
+    <para>
+      There are a couple of things that can help you figure out the right
+      distribution value for your project:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Is your project a development project for an existing distribution?</para>
+      </listitem>
+      <listitem>
+        <para>Is your project a derivative of another distribution?</para>
+      </listitem>
+      <listitem>
+        <para>Do you follow a naming scheme of an existing distribution?</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      If you can name a single distribution that answers any of these questions,
+      that should be your choice. Don't choose distribution names that include
+      flavours, since they will follow the same naming scheme as a base
+      distribution (i.e. openSUSE Leap or openSUSE Tumbleweed will use the
+      openSUSE naming scheme, making openSUSE distribution a better choice
+      for both).
+    </para>
+
+    <para>
+      In case you don't find anything that matches, <link xlink:href="https://release-monitoring.org/static/docs/user-guide.html#creating-distribution">create a distribution yourself</link>.
+    </para>
+  </sect2>
+
+  <sect2 xml:id="sec-obs-version-tracking-filtering">
+    <title>Filtering by versions</title>
+    <para>
+      In some cases, you may want to get an overview of the packages that are
+      in a specific version state. In such cases, searching by the strings
+      visible in the Version column (i.e. <emphasis role="bold">no upstream</emphasis>
+      or <emphasis role="bold">up to date</emphasis>) is possible.
+    </para>
+
+    <figure>
+      <title>Filtered list of versions</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="obs_version_tracking_filter.png" width="80%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+  </sect2>
+ </sect1>
+
+</chapter>
