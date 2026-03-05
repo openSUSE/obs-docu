@@ -143,33 +143,41 @@
    </note>
   </sect2>
   <sect2>
-   <title>Follow Project Links</title>
+   <title>Enable Builds via Project Linked Sources</title>
    <variablelist>
     <varlistentry>
      <term>off</term>
      <listitem>
-      <para> DEFAULT: do not build packages from project links </para>
+      <para>DEFAULT: Package sources available via project links remain in excluded build state.</para>
      </listitem>
     </varlistentry>
     <varlistentry>
      <term>localdep</term>
      <listitem>
-      <para> only build project linked packages if they depend on a local
-       package result. </para>
+      <para>Limit the build of package sourcess via project links if they depend on a local
+       package build result.</para>
      </listitem>
     </varlistentry>
     <varlistentry>
      <term>alldirect</term>
      <listitem>
-       <para> build all packages from the linked projects. Indirectly linked
-              projects get not build.
+       <para>Build all packages from the linked projects. Package sources from indirectly linked
+             projects remain in excluded build state.
+       </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>alldirect_or_localdep</term>
+     <listitem>
+       <para>Build all packages from the linked projects. Indirectly linked
+             projects get only build when they depend on a local package build result.
        </para>
      </listitem>
     </varlistentry>
     <varlistentry>
      <term>all</term>
      <listitem>
-      <para> build all packages from direct and indirect linked projects</para>
+      <para>Build all package sources available via linked projects</para>
      </listitem>
     </varlistentry>
    </variablelist>
