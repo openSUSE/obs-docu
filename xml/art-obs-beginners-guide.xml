@@ -783,7 +783,7 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
     <remark>toms 2017-08-17: FIXME: Link to User Guide? Troubleshooting
     section with chroot and buildlog specialties?</remark>
     <para>
-     If you encounter build errors, use the <command>osc buildlog</command>
+     If you encounter build errors, use the <command>osc localbuildlog</command>
      command to review them, as described below.
     </para>
    </step>
