@@ -100,14 +100,7 @@
 
     <para>
       If you can name a single distribution that answers any of these questions,
-      that should be your choice. Don't choose distribution names that include
-      flavours, since they will follow the same naming scheme as a base
-      distribution (i.e. openSUSE Leap or openSUSE Tumbleweed will use the
-      openSUSE naming scheme, making openSUSE distribution a better choice
-      for both).
-    </para>
-
-    <para>
+      that should be your choice.
       In case you don't find anything that matches, <link xlink:href="https://release-monitoring.org/static/docs/user-guide.html#creating-distribution">create a distribution yourself</link>.
     </para>
   </sect2>
