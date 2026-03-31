@@ -28,5 +28,7 @@ XSLTPARAM="--param generate.logo=0"
 ## Disable share links
 XSLTPARAM+=" --param generate.share.and.print=0"
 
+XSLTPARAM+=" --param include.suse.header=1"
+
 ## enable sourcing
 export DOCCONF=$BASH_SOURCE
