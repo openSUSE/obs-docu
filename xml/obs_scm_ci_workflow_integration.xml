@@ -498,6 +498,16 @@ rebuild_master:
         </figure>
       </sect3>
 
+      <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-orphan-branches">
+        <title>Orphan Branches</title>
+	<para>If you add an orphan/disconnected branch (such as gh-pages) to your SCM repository, <emphasis>do not include the OBS configuration YAML file</emphasis>. Since the branch shares no history with the main branch and requires no OBS actions, omitting the file ensures a clean process: it acknowledges the webhook and skips processing. No workflow runs will be created and the SCM webhook will receive and informative message.</para>
+	<code>
+	  <status code="ok">
+	    <summary>Ok</summary>
+	    <data name="info">There is no workflow configuration file in branch 'gh-pages'.</data>
+	  </status>
+	</code>
+      </sect3>
       <sect3 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-steps">
         <title>OBS Workflow Steps</title>
 
