@@ -1273,58 +1273,6 @@ test_build:
       the workflow run will record error messages. And reading the artifacts will help to understand what happened behind the scenes.</para>
     </sect2>
 
-    <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-errors">
-      <title>Errors</title>
-
-      <table>
-        <title>Common Errors</title>
-
-        <tgroup align="left" cols="2">
-          <thead>
-            <row>
-              <entry>Error</entry>
-
-              <entry>Reason</entry>
-            </row>
-          </thead>
-
-          <tbody>
-            <row>
-              <entry><emphasis>"Project not found"</emphasis></entry>
-
-              <entry>Make sure the projects you declared in the
-              .obs/workflows.yml file exist in your OBS instance.</entry>
-            </row>
-
-            <row>
-              <entry><emphasis>"Package not found"</emphasis></entry>
-
-              <entry>Make sure the packages you declared in the
-              .obs/workflows.yml file exist in your OBS instance.</entry>
-            </row>
-
-            <row>
-              <entry>No build result updates are displayed in your
-              PR/MR</entry>
-
-              <entry>Make sure there are repositories defined on your source
-              project. Another reason can be that the build did not start because
-              your package is "unresolvable" or "broken".</entry>
-            </row>
-
-            <row>
-              <entry>The project in OBS doesn't get updated with the latest
-              changes in the SCM.</entry>
-
-              <entry>For certain steps you need to set up a
-              <emphasis>_service</emphasis> file. Follow the <link
-              xlink:href="https://github.com/openSUSE/obs-service-tar_scm#user-documentation">obs-service-tar_scm</link>
-              documentation.</entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </table>
-    </sect2>
 
     <sect2 xml:id="sec-obs-obs-scm-ci-workflow-integration-setup-equivalence-table">
       <title>Equivalence Table</title>
@@ -2067,6 +2015,217 @@ test_build:
       <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-placeholder-variables"/>
       and <xref linkend="sec-obs-obs-scm-ci-workflow-integration-setup-obs-workflows-config-location"/>
       to get some inspiration on how you can use them in your project.</para>
+    </sect2>
+  </sect1>
+
+  <sect1 xml:id="sec-obs-obs-scm-ci-troubleshooting">
+    <title>SCM/CI Troubleshooting</title>
+
+    <sect2 xml:id="sec-obs-obs-scm-ci-troubleshooting-debugging">
+      <title>When Things Stop Working</title>
+
+      <para>The SCM/CI integration can fail in three ways:
+      the SCM triggering a webhook that does not reach OBS,
+      the workflow itself encountering an error on OBS
+      or OBS failing when reporting build statuses back to the SCM.</para>
+
+      <sect3 xml:id="sec-obs-obs-scm-ci-troubleshooting-debugging-triggering">
+        <title>Problems When the SCM Talks to OBS</title>
+
+        <para>When your SCM sends a webhook to OBS and the communication fails,
+        no Workflow Run is created in OBS and no build status appears on your
+        pull or merge request. This can happen for several reasons:</para>
+
+        <itemizedlist>
+          <listitem><para>One of the tools is unreachable (network or DNS errors, or the tool is offline)</para></listitem>
+          <listitem><para>One of the tools is broken</para></listitem>
+          <listitem><para>Authentication errors (wrong token or missing secret)</para></listitem>
+          <listitem><para>Message format errors</para></listitem>
+        </itemizedlist>
+
+        <formalpara>
+          <title>How to detect it</title>
+          <para>Open your repository settings and navigate to the webhook
+          configuration. Each platform keeps a history of recent deliveries.
+          A failed delivery shows a non-2xx HTTP status or a connection error
+          next to the event that triggered it.</para>
+        </formalpara>
+
+        <formalpara>
+          <title>What to do</title>
+          <para>Check the webhook delivery history for error details.
+          Common issues such as format errors can be fixed by
+          updating your webhook configuration.
+          Read carefully to understand other kinds of errors. If you cannot identify
+          or resolve the problem yourself, contact the OBS team for help.
+          Once the issue is resolved, use the redeliver function next to the failed
+          delivery to retry.</para>
+        </formalpara>
+
+        <figure>
+          <title>Redeliver Action on GitHub</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="50%" fileref="github_redeliver_action.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect3>
+
+      <sect3 xml:id="sec-obs-obs-scm-ci-troubleshooting-debugging-workflow">
+        <title>Workflow Goes Wrong on OBS</title>
+
+        <para>The workflow itself can fail on the OBS side for several reasons:
+        an invalid <filename>.obs/workflows.yml</filename> file or a missing
+        project or package, for example.</para>
+
+        <formalpara>
+          <title>How to detect it</title>
+          <para>In the Workflow Runs list, click the link next to the red
+          exclamation icon for the affected workflow run and open the
+          <emphasis role="bold">Webhook from &lt;SCM&gt;</emphasis> tab.
+          The <emphasis>Webhook Response Body</emphasis> field contains
+          the error message.</para>
+        </formalpara>
+
+        <figure>
+          <title>Failed Webhook Body</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="50%" fileref="failed_webhook_body.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <formalpara>
+          <title>What to do</title>
+          <para>Fix the root cause shown in the error message:</para>
+        </formalpara>
+
+        <variablelist>
+          <varlistentry>
+            <term>Invalid workflows.yml</term>
+            <listitem>
+              <para>Correct the syntax or configuration in
+              <filename>.obs/workflows.yml</filename> and push the change to
+              the SCM repository. There are various online <link xlink:href="https://duckduckgo.com/?t=ffab&amp;q=yaml+validator&amp;ia=web">YAML validators</link> you can use to check the syntax.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Missing project or package</term>
+            <listitem>
+              <para>Create the missing OBS project or package. See also
+              <xref linkend="sec-obs-obs-scm-ci-troubleshooting-errors"/>
+              for a list of common configuration errors.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </sect3>
+
+      <sect3 xml:id="sec-obs-obs-scm-ci-troubleshooting-debugging-reporting">
+        <title>Problems When OBS Tries to Talk to the SCM</title>
+
+        <para>When OBS finishes processing a workflow step or a build
+        completes, it sends a status update to the SCM. If the communication
+        fails, the status check never appears on the pull or merge request
+        even though the workflow ran successfully on OBS. This can happen
+        for several reasons:</para>
+
+        <itemizedlist>
+          <listitem><para>One of the tools is unreachable (network or DNS errors, or the tool is offline)</para></listitem>
+          <listitem><para>One of the tools is broken</para></listitem>
+          <listitem><para>Authentication errors in your Token::Workflow configuration (wrong token, token disabled, etc.)</para></listitem>
+        </itemizedlist>
+
+        <formalpara>
+          <title>How to detect it</title>
+          <para>In the Workflow Runs list, click the affected workflow run and open the
+          <emphasis role="bold">Reports to the SCM</emphasis> tab. Each
+          outgoing status call is listed there with its result. A failed report
+          shows a red <emphasis>Fail</emphasis> badge and the error message
+          returned by the SCM or the network layer.</para>
+        </formalpara>
+
+        <formalpara>
+          <title>What to do</title>
+          <para>Check the error message in the <emphasis role="bold">Reports to
+          the SCM</emphasis> tab and fix your Token::Workflow configuration if
+          needed. Be aware that OBS tokens may be automatically disabled after repeated
+          failures. If you cannot identify or resolve the problem yourself,
+          contact the contact the OBS team for help.</para>
+        </formalpara>
+
+        <figure>
+          <title>Reports to the SCM Tab</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="50%" fileref="reports_to_the_scm.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <figure>
+          <title>Disabled Token on OBS</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="50%" fileref="disabled_token.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="sec-obs-obs-scm-ci-troubleshooting-errors">
+      <title>Errors</title>
+
+      <table>
+        <title>Common Errors</title>
+
+        <tgroup align="left" cols="2">
+          <thead>
+            <row>
+              <entry>Error</entry>
+
+              <entry>Reason</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry><emphasis>"Project not found"</emphasis></entry>
+
+              <entry>Make sure the projects you declared in the
+              .obs/workflows.yml file exist in your OBS instance.</entry>
+            </row>
+
+            <row>
+              <entry><emphasis>"Package not found"</emphasis></entry>
+
+              <entry>Make sure the packages you declared in the
+              .obs/workflows.yml file exist in your OBS instance.</entry>
+            </row>
+
+            <row>
+              <entry>No build result updates are displayed in your
+              PR/MR</entry>
+
+              <entry>Make sure there are repositories defined on your source
+              project. Another reason can be that the build did not start because
+              your package is "unresolvable" or "broken".</entry>
+            </row>
+
+            <row>
+              <entry>The project in OBS doesn't get updated with the latest
+              changes in the SCM.</entry>
+
+              <entry>For certain steps you need to set up a
+              <emphasis>_service</emphasis> file. Follow the <link
+              xlink:href="https://github.com/openSUSE/obs-service-tar_scm#user-documentation">obs-service-tar_scm</link>
+              documentation.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
     </sect2>
   </sect1>
 </chapter>
