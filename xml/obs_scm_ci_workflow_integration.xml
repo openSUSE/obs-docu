@@ -1787,7 +1787,7 @@ test_build:
 
       <para>You have a test build set up and you want it to keep up to date
       with the new changes you add to the PR. One way to do it, is to
-      configure a rebuild package step with a push event filter.</para>
+      configure a trigger services step with a push event filter.</para>
 
       <para>You need:</para>
 
@@ -1824,7 +1824,7 @@ test_build:
 
       <screen>workflow:
   steps:
-    - rebuild_package:
+    - trigger_services:
         project: home:jane
         package: rust
   filters:
