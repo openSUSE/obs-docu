@@ -122,7 +122,7 @@
       </mediaobject>
     </figure>
     <figure>
-      <title>Filter request by label</title>
+      <title>Filter notifications by label</title>
       <mediaobject>
         <imageobject>
         <imagedata fileref="filter_notifications_by_label.png" width="80%"/>
