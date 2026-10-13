@@ -219,11 +219,15 @@ Support: pax debbuild</screen>
                the corresponding flavor can be specified via the `package:flavor` syntax.</para>
        </listitem>
       </varlistentry>
-      <varlistentry xml:id="vl-prjconfig-buildflags-nouseforbuild">
+            <varlistentry xml:id="vl-prjconfig-buildflags-nouseforbuild">
        <term><parameter>nouseforbuild:PACKAGE</parameter></term>
        <listitem>
          <para>This can be used to specify that a package is to be built, but not used
-               for building other packages. The package may get published anyway.</para>
+               for building other packages in the project. Its build artifacts are excluded
+               from the internal build pool (<literal>useforbuild</literal> repository tree),
+               preventing dependent packages from resolving it as a build dependency. The package
+               may still be published. Note that the package must exist locally in the project
+               repository for its artifacts to be placed in the build tree once this flag is removed.</para>
        </listitem>
       </varlistentry>
       <varlistentry xml:id="vl-prjconfig-buildflags-onlybuild">
