@@ -1,10 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter
 [
-  <!ENTITY % entities SYSTEM "entity-decl.ent">
-    %entities;
+<!ENTITY % entities SYSTEM "entity-decl.ent">
+%entities;
 ]>
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha-obs-best-practices-kmp" os="opensuse;novell"><title>Building Kernel Modules</title><info/>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.1" xml:id="cha-obs-best-practices-kmp" os="opensuse;novell">
+  <title>Building Kernel Modules</title>
+  <info/>
 
-   <para/>
-   <remark>TBD: via Ann Davis?</remark>
+  <para>
+    The standard method for building and distributing kernel modules on openSUSE and SUSE Linux Enterprise is by creating Kernel Module Packages (KMPs). KMPs are RPM packages specifically designed to handle kernel modules.
+  </para>
+
+  <para>
+    The main advantage of using KMPs is that they are built to work against multiple kernel <quote>flavors</quote> (like <literal>default</literal>, <literal>desktop</literal>, or <literal>xen</literal>) and are managed correctly by the package manager during kernel updates, ensuring the module remains available for the newly installed kernel.
+  </para>
+
+  <section xml:id="sec-obs-best-practices-kmp-spec">
+    <title>The KMP Spec File</title>
+    <para>
+      The core of a KMP is the RPM <literal>.spec</literal> file. The process is heavily simplified by using the <command>%kernel_module_package</command> macro, which is provided by the <package>kmp-macros</package> package. This macro automatically creates the necessary sub-packages for each kernel flavor your project is configured to build against.
+    </para>
+
+    <para>Key requirements for your <literal>.spec</literal> file:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Add <literal>BuildRequires: kmp-macros</literal> to pull in the required macro.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Add <literal>BuildRequires: kernel-devel</literal> to build against the kernel sources.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Call the <command>%kernel_module_package</command> macro in the preamble of your spec file.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <example>
+      <title>Example KMP <literal>.spec</literal> Preamble</title>
+      <programlisting language="spec"><![CDATA[Name:           my-driver
+        Version:        1.0
+        Release:        1
+        Summary:        My kernel module
+        License:        GPL-2.0-only
+
+        # Add the required BuildRequires
+        BuildRequires:  kmp-macros
+        BuildRequires:  kernel-devel
+        BuildRequires:  modutils
+
+        # Call the KMP macro
+        %kernel_module_package
+
+        %description
+        This package contains the kernel module for my-driver.
+
+        %prep
+        # ... (rest of your spec file)
+        ]]></programlisting>
+    </example>
+
+    <para>
+      The KMP macros automatically handle installing the module into the correct directory, typically <filename>/lib/modules/VERSION-RELEASE-FLAVOR/updates/</filename>. You should not manually place files in kernel directories.
+    </para>
+  </section>
+
+  <section xml:id="sec-obs-best-practices-kmp-further-reading">
+    <title>Further Reading</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <link xlink:href="https://documentation.suse.com/sbp/systems-management/html/SBP-KMP-Manual/index.html">SUSE Kernel Module Packages Manual</link> - The complete guide to KMP creation.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="https://en.opensuse.org/Kernel_Module_Packages">openSUSE Wiki: Kernel Module Packages</link> - Community-provided information and examples.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
 </chapter>
