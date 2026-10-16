@@ -39,6 +39,9 @@
    <listitem>
     <para>Arch package format, used by Arch Linux</para>
    </listitem>
+   <listitem>
+    <para>APK package format, used by Alpine Linux</para>
+   </listitem>
   </itemizedlist>
 
   <itemizedlist>
@@ -48,6 +51,9 @@
    </listitem>
    <listitem>
     <para>Dsc format for DEB packages</para>
+   </listitem>
+   <listitem>
+    <para>APKBUILD format for Alpine Linux packages</para>
    </listitem>
    <listitem>
     <para>&kiwi; format, both product and appliances</para>
@@ -160,6 +166,26 @@
    </varlistentry>
   </variablelist>
  </sect1>
+
+  <sect1 xml:id="sec-pkgfmt-apk">
+   <title>Alpine: APKBUILD</title>
+   <para>
+    APK packages are used on Alpine Linux and its derivatives. For building
+    APK packages you need:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term><filename>APKBUILD</filename></term>
+     <listitem>
+      <para>
+       The <filename>APKBUILD</filename> build script containing package metadata and instructions.
+       &obsa; parses <literal>makedepends</literal> and <literal>depends</literal> to determine dependencies
+       and set up the build environment.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </sect1>
 
  <sect1 condition="tbd">
   <title>Snap</title>
