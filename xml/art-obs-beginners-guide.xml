@@ -747,8 +747,8 @@ Fri Aug 23 12:31:41 UTC 2017 - &exampleuser_mail;</screen>
      Save the file and leave the editor. &osccmd; then
      creates the file <filename>&sampleprj;.changes</filename>.
     </para>
-    <para>Your project directory should now look something like this:</para>
-    <screen><emphasis>project directory</emphasis>
+    <para>Your package directory should now look something like this:</para>
+    <screen><emphasis>package directory</emphasis>
      ├── &sampleprj;-&prjvers;.tar.gz
      ├── &sampleprj;.changes
      └── &sampleprj;.spec</screen>
@@ -855,10 +855,10 @@ openSUSE_Tumbleweed x86_64 *.spec--></screen>
   </itemizedlist>
   <para>
    We assume that you already have a project as described in
-  <xref linkend="sec-obsbg-uc-newprj"/>. The project directory should look
+  <xref linkend="sec-obsbg-uc-newprj"/>. The package directory should look
    similar to this:
   </para>
-  <screen><emphasis>project directory</emphasis>
+  <screen><emphasis>package directory</emphasis>
 ├── &sampleprj;-&prjvers;.tar.gz
 ├── &sampleprj;.changes
 └── &sampleprj;.spec</screen>
