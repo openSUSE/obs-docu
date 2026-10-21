@@ -47,7 +47,8 @@
    project to another with a standard copy or submit request. </para>
   <para> The _multibuild file lists all build container names, each of them
    will be built as usual for each defined repository and each scheduler
-   architecture. </para>
+   architecture. Note that because all flavors share the same package sources,
+   triggering a build or committing changes to the package affects all flavors. </para>
   <para> For example, inside the <command>kernel</command> source package we
    can build both <command>kernel-source</command> and
     <command>kernel-obs-build</command> packages by listing them inside the
