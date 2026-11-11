@@ -526,6 +526,16 @@ Support: pax debbuild</screen>
        Ignore a dependency coming from ORIGIN_PACKAGE. See the previous section
        for more details.
      </para>
+     <note>
+      <para>
+       The <parameter>Ignore:</parameter> keyword ignores a dependency for the
+       whole project. To ignore a dependency for a single package only, use the
+       <literal>#!BuildIgnore:</literal> directive in that package's spec file,
+       next to the matching <literal>BuildRequires</literal>. See
+       <xref linkend="cha-obs-supported-formats"/> for the available spec file
+       extensions.
+      </para>
+     </note>
     </listitem>
    </varlistentry>
    <varlistentry xml:id="vl-prjconfig-keep">
