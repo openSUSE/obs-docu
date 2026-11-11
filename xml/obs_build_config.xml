@@ -730,13 +730,19 @@ Support: pax debbuild</screen>
      [<replaceable>TYPE:TEMPLATE</replaceable> ...]</parameter></term>
     <listitem>
      <para>
-      Defines the template used to generate release numbers. This setting also applies
-      to build types other than RPM, such as Debian packages and Docker containers.
+      Defines the template used to generate release numbers. This setting is
+      supported for most build formats, not only RPM.
      </para>
      <para>
       The placeholders <literal>&lt;CI_CNT&gt;</literal> and <literal>&lt;B_CNT&gt;</literal>
       are replaced with the check-in (source change) counter and the build counter, respectively.
       The default template is <literal>&lt;CI_CNT&gt;.&lt;B_CNT&gt;</literal>.
+     </para>
+     <para>
+      In build recipes, the <literal>&lt;RELEASE&gt;</literal> tag is a shortcut for the
+      generated release number, which is <literal>&lt;CI_CNT&gt;.&lt;B_CNT&gt;</literal>
+      by default. For example, it can be used in the <literal>Release:</literal> line of
+      a spec file or in container tags.
      </para>
      <para>
       The first template is the default for build types without an override.
