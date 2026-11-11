@@ -246,6 +246,13 @@ Support: pax debbuild</screen>
          <para>Defines the ccache implementation, possible values are: ccache, sccache</para>
        </listitem>
       </varlistentry>
+      <varlistentry xml:id="vl-prjconfig-buildflags-dockerarg">
+       <term><parameter>dockerarg:KEY=VALUE</parameter></term>
+       <listitem>
+         <para>Defines a key value pair for Dockerfile based builds. This can be used inside of
+               the Dockerfile like a local defined variable via the ARG directive.</para>
+       </listitem>
+      </varlistentry>
       <varlistentry xml:id="vl-prjconfig-buildflags-obsgendiff">
        <term><parameter>obsgendiff</parameter></term>
        <listitem>
