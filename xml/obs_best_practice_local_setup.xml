@@ -13,45 +13,37 @@
  <para> This chapter explains how you could setup/Install/test OBS in your
   system. This chapter is written for those who are not so familiar with Linux
   and OBS. So in case you are confident to set up OBS, skip this chapter.
-  Following would be explained in this chapter.</para>
+  The following topics are explained in this chapter:</para>
  <itemizedlist>
   <listitem>
-   <para> OBS 1 click install, then manual setup in openSUSE 13.1; </para>
+   <para> OBS test run on Microsoft Windows using VMware Player; </para>
   </listitem>
   <listitem>
-   <para> OBS 1 click install, then manual setup in SLES11; </para>
+   <para> OBS appliance installed manually in VirtualBox; </para>
   </listitem>
   <listitem>
-   <para> OBS test run on Microsoft Windows using VMware player; </para>
-  </listitem>
-  <listitem>
-   <para> OBS appliance installed manually in a VirtualBox. </para>
+   <para> First steps with the new OBS server. </para>
   </listitem>
  </itemizedlist>
- <para>Unfortunately, didn't have a chance to install OBS in other Linux
-  distribution yet. The last section will explain your first steps with the new
-  OBS server. </para>
- <para> How you could install and purchase openSUSE 13.1 and SLES12 will not be
-  explained in this chapter. VMware player install and purchase also will not
-  be explained. For these topics, you could visit for help:</para> 
+ <para> How to install openSUSE or SLES, or how to install VMware Player, will not
+  be explained in this chapter. For these topics, you can visit:</para>
   <itemizedlist>
    <listitem>
     <para>
-     <link xlink:href="http://software.opensuse.org/131/en"
-      >http://software.opensuse.org/131/en</link>
+     <link xlink:href="https://get.opensuse.org/"
+      >https://get.opensuse.org/</link>
     </para>
    </listitem>
    <listitem>
     <para>
-     <link xlink:href="http://www.suse.com/products/server/"
-      >http://www.suse.com/products/server/</link>
+     <link xlink:href="https://www.suse.com/products/server/"
+      >https://www.suse.com/products/server/</link>
     </para>
    </listitem>
    <listitem>
     <para>
-     <link
-      xlink:href="http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0"
-      >http://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/6_0</link>
+     <link xlink:href="https://www.vmware.com/"
+      >https://www.vmware.com/</link>
     </para>
    </listitem>
   </itemizedlist>
@@ -212,7 +204,7 @@
    <step>
     <para> Go back to your home project, and click the
       <guimenu>Repositories</guimenu> button. Choose to add a new
-     repository and pick <guimenu>openSUSE 13.1</guimenu> (for example).
+     repository and pick <guimenu>openSUSE Tumbleweed</guimenu> (for example).
     </para>
    </step>
    <step>
