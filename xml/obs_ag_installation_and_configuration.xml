@@ -617,6 +617,111 @@ cat /tmp/obs.config
       >unlisted_projects_filter_description</emphasis> is part of the link
      shown in the project list for filtering </para>
    </important>
+   <para>The individual configuration settings have the following meaning:</para>
+   <variablelist>
+    <varlistentry>
+     <term><literal>title</literal>, <literal>description</literal></term>
+     <listitem>
+      <para>The title and welcome description displayed on the OBS Web UI main page.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>name</literal></term>
+     <listitem>
+      <para>The short instance name generated into each package (for example, as part of the distribution tag). White spaces are not recommended.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>download_on_demand</literal></term>
+     <listitem>
+      <para>Allows downloading packages and build dependencies from external repositories on demand.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>enforce_project_keys</literal></term>
+     <listitem>
+      <para>Ensures that every repository has a signing key.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>anonymous</literal></term>
+     <listitem>
+      <para>Allows anonymous (unauthenticated) browsing of the OBS instance.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>registration</literal></term>
+     <listitem>
+      <para>Controls whether new users can register accounts. Supported values are <literal>allow</literal>, <literal>confirmation</literal> (requires admin confirmation), and <literal>deny</literal>.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>default_access_disabled</literal></term>
+     <listitem>
+      <para>When set to <literal>on</literal>, newly created projects have access disabled by default (an <literal>&lt;access&gt;&lt;disable/&gt;&lt;/access&gt;</literal> flag is added unless an explicit <literal>&lt;access&gt;</literal> element is provided). Additionally, non-admin users cannot re-enable access on existing projects where access is disabled.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>allow_user_to_create_home_project</literal></term>
+     <listitem>
+      <para>Allows regular users to create their own <literal>home:</literal> projects.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>disallow_group_creation</literal></term>
+     <listitem>
+      <para>Disables creating groups via the API. Useful when groups are managed externally, such as through LDAP.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>change_password</literal></term>
+     <listitem>
+      <para>Allows users to change their password through OBS. This may not work with external authentication mechanisms.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>hide_private_options</literal></term>
+     <listitem>
+      <para>Hides options in the Web UI for making projects or packages private.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>gravatar</literal></term>
+     <listitem>
+      <para>Loads user profile pictures from Gravatar.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>cleanup_empty_projects</literal></term>
+     <listitem>
+      <para>Automatically removes projects that have no content.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>disable_publish_for_branches</literal></term>
+     <listitem>
+      <para>Disables publishing by default when creating a new branch project.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>admin_email</literal></term>
+     <listitem>
+      <para>The email address used in the <literal>From:</literal> header of emails sent by OBS.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>unlisted_projects_filter</literal>, <literal>unlisted_projects_filter_description</literal></term>
+     <listitem>
+      <para>A MySQL/MariaDB <literal>RLIKE</literal> regular expression matching projects to exclude from the default project list (such as <literal>^home:.+</literal>), and the human-readable description shown in the filter link.</para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><literal>schedulers</literal></term>
+     <listitem>
+      <para>The list of build architectures (<literal>&lt;arch&gt;</literal>) enabled for scheduling builds on this OBS instance.</para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
 
    <para>You should edit this file according to your preferences, then sent it
     back to the server:</para>
