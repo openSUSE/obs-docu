@@ -436,6 +436,28 @@ Constraint: hardware:cpu:flag sse2</screen>
       <screen>#!BuildConstraint: hardware:physicalmemory:size unit=M 1400</screen>
     </sect4>
    </sect3>
+   <sect3>
+    <title><literal>memoryperjob</literal></title>
+    <para> Memory specific. </para>
+    <sect4>
+     <title><literal>size</literal></title>
+     <para> To require a minimal memory size per parallel build job on the worker
+      (including swap space). The total required memory is calculated by multiplying
+      this value with the number of parallel jobs configured on the worker. </para>
+     <para> Example for <literal>_constraints</literal> file:</para>
+      <screen>&lt;constraints&gt;
+   &lt;hardware&gt;
+     &lt;memoryperjob&gt;
+       &lt;size unit="M"&gt;700&lt;/size&gt;
+     &lt;/memoryperjob&gt;
+   &lt;/hardware&gt;
+&lt;/constraints&gt;</screen>
+      <para>Example for project configuration: </para>
+      <screen>Constraint: hardware:memoryperjob:size unit=M 700</screen>
+      <para>Example for RPM spec file or Dockerfile:</para>
+      <screen>#!BuildConstraint: hardware:memoryperjob:size unit=M 700</screen>
+    </sect4>
+   </sect3>
   </sect2>
  </sect1>
  <sect1 xml:id="constraint-handling">
