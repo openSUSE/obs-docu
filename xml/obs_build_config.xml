@@ -107,13 +107,23 @@
    condition.
   </para>
   <para>
-   Many keywords, like `Required` or `BuildFlags`, do not replace existing
-   data, but add to it. This means you can have multiple `BuildFlags`
+   Many keywords, like <parameter>Required</parameter> or <parameter>BuildFlags</parameter>, do not replace existing
+   data, but add to it. This means you can have multiple <parameter>BuildFlags</parameter>
    lines instead of having one line with all the flags you need.
-  </para>
-  <para>
-   An exclamation mark `!` can be prepended to the argument to remove
-   an existing entry from the data.
+   An exclamation mark <literal>!</literal> can be prepended to an argument to remove
+   an existing matching entry from the data (or <literal>!*</literal> to clear all entries).
+   This applies to list-based keywords (<parameter>Preinstall</parameter>,
+   <parameter>VMInstall</parameter>, <parameter>Required</parameter>,
+   <parameter>Support</parameter>, <parameter>Keep</parameter>,
+   <parameter>Prefer</parameter>, <parameter>Ignore</parameter>,
+   <parameter>Conflict</parameter>, <parameter>Runscripts</parameter>,
+   <parameter>Order</parameter>, <parameter>ExpandFlags</parameter>,
+   <parameter>BuildFlags</parameter>, <parameter>PublishFlags</parameter>,
+   <parameter>RepoURL</parameter>, <parameter>RegistryURL</parameter>,
+   <parameter>AssetsURL</parameter>, <parameter>OnlyNative</parameter>,
+   <parameter>AlsoNative</parameter>, and <parameter>IgnoreRebuild</parameter>),
+   as well as <parameter>Substitute</parameter> and <parameter>FileProvides</parameter>
+   (by key).
   </para>
   <para>
    In the following list, the placeholder <replaceable>PACKAGES</replaceable>
@@ -122,6 +132,7 @@
    For example, as a package name you need the base name like
    <package>gcc</package> but not the full name as in
    <package>gcc-1.2.3.i386.rpm</package>.
+   All package list keywords also support removing entries with <literal>!</literal>.
   </para>
 
   <para>
@@ -170,7 +181,8 @@ Support: pax debbuild</screen>
     <term><parameter>BuildFlags: <replaceable>FLAG</replaceable>:<replaceable>VALUE</replaceable></parameter></term>
     <listitem>
       <para>The <parameter>BuildFlags</parameter> keyword defines flags for the
-            build process. The following values for FLAG are usable:</para>
+            build process (for additive and removal syntax with <literal>!</literal>, see <xref linkend="sec-prjconfig-syntax"/>).
+            The following values for FLAG are usable:</para>
      <variablelist>
       <varlistentry xml:id="vl-prjconfig-buildflags-allowrootforbuild">
        <term><parameter>allowrootforbuild</parameter></term>
@@ -347,7 +359,7 @@ Support: pax debbuild</screen>
    <varlistentry xml:id="vl-prjconfig-conflict">
     <term><parameter>Conflict: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
-     <para>Specify that a package must not be installed in the build environment.</para>
+     <para>Specify that a package must not be installed in the build environment (see <xref linkend="sec-prjconfig-syntax"/> for package syntax and negation with <literal>!</literal>).</para>
     </listitem>
    </varlistentry>
    <varlistentry>
@@ -483,7 +495,7 @@ Support: pax debbuild</screen>
       default. This is mostly done to reduce the amount of memory needed, as
       the package file lists take up a considerable amount of repository meta
       data. As a workaround, FileProvides can be used to tell the systems which
-      packages contain a file. The File needs to have the full path.</para>
+      packages contain a file (see <xref linkend="sec-prjconfig-syntax"/> for package syntax). The File needs to have the full path.</para>
     </listitem>
    </varlistentry>
    <varlistentry xml:id="vl-prjconfig-fromscratch">
@@ -512,7 +524,7 @@ Support: pax debbuild</screen>
     <term><parameter>Ignore: <replaceable>PACKAGE_OR_DEPENDENCY</replaceable></parameter></term>
     <listitem>
      <para>
-      Ignore can be used to break dependencies. This can be useful to
+      Ignore can be used to break dependencies (see <xref linkend="sec-prjconfig-syntax"/> for package syntax). This can be useful to
       reduce the number of needed packages or to break cyclic dependencies. If a
       package is specified, all capabilities provided by the package are
       ignored.
@@ -534,7 +546,7 @@ Support: pax debbuild</screen>
      <para>
       To eliminate build cycles the to-be-built package are not installed
       by default, even when it is required. Keep can be used to overwrite this
-      behavior. It is usually needed for packages like <systemitem>make</systemitem>
+      behavior (see <xref linkend="sec-prjconfig-syntax"/> for package syntax and removal with <literal>!</literal>). It is usually needed for packages like <systemitem>make</systemitem>
       that are used to build itself. Preinstalled packages are automatically kept, as the
       package installation program needs to work all the time.
      </para>
@@ -584,7 +596,7 @@ Support: pax debbuild</screen>
       tools, which just pick one of the package. Because one of OBS' goal is to
       provide reproducible builds, it reports an error in this case instead of
       choosing a random package. The Prefer: tag lists packages to be preferred
-      in case a choice exists. When the package name is prefixed with a dash,
+      in case a choice exists (see <xref linkend="sec-prjconfig-syntax"/>). When the package name is prefixed with a dash,
       this is treated as a de-prefer.
      </para>
     </listitem>
@@ -603,7 +615,7 @@ Support: pax debbuild</screen>
     <listitem>
      <para>
        This is used to specify packages needed to run the package installation
-       program. These packages are unpacked so that the native installation
+       program (see <xref linkend="sec-prjconfig-syntax"/> for package syntax and cancellation with <literal>!</literal>). These packages are unpacked so that the native installation
        program can be used to install the build environment.
        Included scripts are <emphasis>not</emphasis> executed during this phase. However, these
        packages will be re-installed later on including script execution.
@@ -908,7 +920,7 @@ Support: pax debbuild</screen>
     <term><parameter>Required: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
-      Specify a package that always is installed for package builds.
+      Specify a package that always is installed for package builds (see <xref linkend="sec-prjconfig-syntax"/> for package syntax and cancellation with <literal>!</literal>).
       A change in one of these packages triggers a new build.
      </para>
     </listitem>
@@ -919,7 +931,7 @@ Support: pax debbuild</screen>
      <para>
       Defines the scripts of preinstalled packages which needs to be executed
       directly after the preinstall phase, but before installing the
-      remaining packages.
+      remaining packages (see <xref linkend="sec-prjconfig-syntax"/>).
      </para>
     </listitem>
    </varlistentry>
@@ -937,7 +949,7 @@ Support: pax debbuild</screen>
     <term><parameter>Support: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
-       Specify a package that always is installed for package builds.
+       Specify a package that always is installed for package builds (see <xref linkend="sec-prjconfig-syntax"/> for package syntax and cancellation with <literal>!</literal>).
        Unlike Required:, a change in one of these packages does not trigger an
        automatic rebuild.
      </para>
@@ -981,7 +993,7 @@ Support: pax debbuild</screen>
     <term><parameter>VMInstall: <replaceable>PACKAGE</replaceable></parameter></term>
     <listitem>
      <para>
-      Like <parameter>Preinstall</parameter>, but these packages get only
+      Like <parameter>Preinstall</parameter> (see <xref linkend="sec-prjconfig-syntax"/>), but these packages get only
       installed when a virtual machine like Xen or KVM is used for building.
       Usually  packages like <package>mount</package> are listed here.
      </para>
