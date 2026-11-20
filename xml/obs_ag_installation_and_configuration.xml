@@ -104,14 +104,16 @@
     <?dbhtml table-width="75%"?>
     <?dbfo table-width="75%"?>
     <?dblatex table-width="75%"?>
-    <tgroup cols="3">
-     <colspec colname="col_1" colwidth="98*"/>
-     <colspec colname="col_2" colwidth="147*"/>
-     <colspec colname="col_3" colwidth="74*"/>
+    <tgroup cols="4">
+     <colspec colname="col_1" colwidth="100*"/>
+     <colspec colname="col_2" colwidth="110*"/>
+     <colspec colname="col_3" colwidth="40*"/>
+     <colspec colname="col_4" colwidth="70*"/>
      <thead>
       <row>
        <entry align="left" valign="top"> Service </entry>
        <entry align="left" valign="top"> Description </entry>
+       <entry align="left" valign="top"> Port </entry>
        <entry align="left" valign="top"> Remark </entry>
       </row>
      </thead>
@@ -122,6 +124,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Source server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>5352</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -135,6 +140,9 @@
         <para>Repository server</para>
        </entry>
        <entry align="left" valign="top">
+        <para>5252</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
@@ -144,6 +152,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Source services server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>5152</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -157,6 +168,9 @@
         <para>Repository metadata download</para>
        </entry>
        <entry align="left" valign="top">
+        <para>-</para>
+       </entry>
+       <entry align="left" valign="top">
         <para>since 2.7</para>
        </entry>
       </row>
@@ -166,6 +180,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Delta storage</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>-</para>
        </entry>
        <entry align="left" valign="top">
         <para>since 2.7</para>
@@ -179,6 +196,9 @@
         <para>Scheduler</para>
        </entry>
        <entry align="left" valign="top">
+        <para>-</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
@@ -188,6 +208,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Dispatcher proxy</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>-</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -201,6 +224,9 @@
         <para>Dispatcher</para>
        </entry>
        <entry align="left" valign="top">
+        <para>-</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
@@ -210,6 +236,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Publisher</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>-</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -223,6 +252,9 @@
         <para>Signer proxy</para>
        </entry>
        <entry align="left" valign="top">
+        <para>-</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
@@ -232,6 +264,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Signer</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>-</para>
        </entry>
        <entry align="left" valign="top">
         <para/>
@@ -245,6 +280,9 @@
         <para>Warden</para>
        </entry>
        <entry align="left" valign="top">
+        <para>-</para>
+       </entry>
+       <entry align="left" valign="top">
         <para/>
        </entry>
       </row>
@@ -256,6 +294,9 @@
         <para>Cloud upload worker</para>
        </entry>
        <entry align="left" valign="top">
+        <para>-</para>
+       </entry>
+       <entry align="left" valign="top">
         <para>Only needed for cloud upload feature</para>
        </entry>
       </row>
@@ -265,6 +306,9 @@
        </entry>
        <entry align="left" valign="top">
         <para>Cloud upload server</para>
+       </entry>
+       <entry align="left" valign="top">
+        <para>5452</para>
        </entry>
        <entry align="left" valign="top">
         <para>Only needed for cloud upload feature</para>
@@ -282,7 +326,7 @@
    </para>
    <screen>systemctl restart obsrepserver.service</screen>
    <para>When starting the various services, <emphasis>obssrcserver.service</emphasis>
-    (the source server) must be started first, and <emphasis>obsrepservice.service</emphasis>
+    (the source server) must be started first, and <emphasis>obsrepserver.service</emphasis>
     (the repository server) second, followed by the remaining services in
     any order. When installing manually, you will need to first enable the
     services with</para>
@@ -298,8 +342,11 @@ systemctl start obsrepserver.service
    <para>followed by the remaining services in any order.</para>
    <warning>
     <para>The start-up commands start services which are accessible from the
-     outside. If the system is connected to an untrusted network, either block
-     the ports with a firewall or do not run the commands at all.</para>
+     outside (such as port 5352 for <emphasis>obssrcserver</emphasis>, port 5252 for
+     <emphasis>obsrepserver</emphasis>, port 5152 for <emphasis>obsservice</emphasis>,
+     and port 5452 for <emphasis>obsclouduploadserver</emphasis>). If the system is
+     connected to an untrusted network, either block these ports with a firewall
+     or do not run the commands at all.</para>
    </warning>
    <sect3 xml:id="simple-installation-backend-installation-cloud-upload-setup">
     <title>Cloud Upload Setup</title>
