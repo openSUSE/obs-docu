@@ -128,6 +128,16 @@
    The following list contains a list of allowed keywords in the build
    configuration (prjconf):
   </para>
+  <para>
+   The keywords listed below apply to the whole project. A single package can
+   override them for itself with a
+   <literal>#!Build&lt;KEYWORD&gt;:</literal> directive in its spec file, next
+   to the matching dependency. For example,
+   <literal>#!BuildIgnore:</literal> ignores a dependency for that package
+   only, while the <parameter>Ignore:</parameter> keyword ignores it for the
+   whole project. See <xref linkend="cha-obs-supported-formats"/> for the
+   available spec file extensions.
+  </para>
   <variablelist xml:id="vl-prjconfig-keywords">
    <title>Available Keywords in Build Configuration</title>
    <!-- AssetsURL is not mentioned here as it has no effect in OBS -->
@@ -526,6 +536,13 @@ Support: pax debbuild</screen>
        Ignore a dependency coming from ORIGIN_PACKAGE. See the previous section
        for more details.
      </para>
+     <note>
+      <para>
+       The <parameter>Ignore:</parameter> keyword applies to the whole
+       project. A single package can override it with the
+       <literal>#!BuildIgnore:</literal> directive in its spec file.
+      </para>
+     </note>
     </listitem>
    </varlistentry>
    <varlistentry xml:id="vl-prjconfig-keep">
